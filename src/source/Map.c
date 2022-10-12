@@ -3,18 +3,17 @@
 
  
 Map map;
- 
- 
+
 void initMaps(void)
 {
 // Charge l'image du fond (background)
 map.background = loadImage("src/Graphics/background.png");
-//On initialise le timer
+//timer 60 fps
 map.mapTimer = TIME_BETWEEN_2_FRAMES * 3;
+//Nombre de tile sur un jpg
 map.tileSetNumber = 0;
 }
- 
- 
+
 SDL_Texture *getBackground(void)
 {
 return map.background;
@@ -37,13 +36,14 @@ if (fp == NULL)
  
 /* Lit les données du fichier dans la map */
  
-/* Lit les coordonnées de début du joueur */
+// coord du joueur qui seront dans le .txt
 fscanf(fp, "%d", &map.beginx);
 fscanf(fp, "%d", &map.beginy);
  
-/* Read the number of the tileset */
+/* nb de tileset */
 fscanf(fp, "%d", &map.tilesetAffiche);
  
+//init a 0 
 map.maxX = map.maxY = 0;
  
 for (y = 0; y < MAX_MAP_Y; y++)

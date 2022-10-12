@@ -10,13 +10,13 @@ int main(int argc, char *argv[])
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
  
-// Initialisation de la SDL
+// Nom
 init("SDL 2");
  
-// Chargement des ressources (graphismes, sons)
+// Load game dans init soit la selection du niveau + creation de la fenetre
 loadGame();
  
-// Appelle la fonction cleanup à la fin du programme
+// Clean de la mémoire a la fin du programme + go = 1 pour fermer la boucle while et finir
 atexit(cleanup);
  
 go = 1;
@@ -24,18 +24,18 @@ go = 1;
 // Boucle infinie, principale, du jeu
 while (go == 1)
 {
-//Gestion des inputs clavier
+//input clavier
 gestionInputs(&input);
  
-//On dessine tout
+//init de tous les tiles
 drawGame();
  
-// Gestion des 60 fps (1000ms/60 = 16.6 -> 16
+// init fps a 60 fps (1000ms/60 = 16.6 -> 16
 delay(frameLimit);
 frameLimit = SDL_GetTicks() + 16;
 }
  
-// On quitte
+// fin
 exit(0);
  
 }

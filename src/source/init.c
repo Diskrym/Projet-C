@@ -13,22 +13,16 @@ SDL_Renderer *getrenderer(void)
  
 void init(char *title)
 {
-    /* On crée la fenêtre, représentée par le pointeur jeu.window en utilisant la largeur et la
-    hauteur définies dans les defines (defs.h).
-    Nouveautés SDL2 : on peut centrer la fenêtre avec SDL_WINDOWPOS_CENTERED, et choisir la taille
-    de la fenêtre, pour que la carte graphique l'agrandisse automatiquement. Notez aussi qu'on peut
-    maintenant créer plusieurs fenêtres. */
- 
     screen = SDL_CreateWindow(title,
                                   SDL_WINDOWPOS_CENTERED,
                                   SDL_WINDOWPOS_CENTERED,
                                   SCREEN_WIDTH, SCREEN_HEIGHT,
                                   SDL_WINDOW_SHOWN);
  
-    //On crée un renderer pour la SDL et on active la synchro verticale : VSYNC
+    //VSYNC
     renderer = SDL_CreateRenderer(screen, -1, SDL_RENDERER_PRESENTVSYNC);
  
-    // Si on n'y arrive pas, on quitte en enregistrant l'erreur dans stdout.txt
+    // Init écran avec erreur
     if (screen == NULL || renderer == NULL)
     {
         printf("Impossible d'initialiser le mode écran à %d x %d: %s\n", SCREEN_WIDTH,
@@ -44,15 +38,17 @@ void init(char *title)
         exit(1);
     }
  
-    //On cache le curseur de la souris
+    //curseur souris en -
     SDL_ShowCursor(SDL_DISABLE);
- 
-    //On initialise SDL_TTF 2 qui gérera l'écriture de texte
+
+
+    //A voir si on utilise
+    /*//On initialise SDL_TTF 2 qui gérera l'écriture de texte
     if (TTF_Init() < 0)
     {
         printf("Impossible d'initialiser SDL TTF: %s\n", TTF_GetError());
         exit(1);
-    }
+    }*/
 
  
 }
@@ -66,9 +62,10 @@ void cleanup()
     renderer = NULL;
     SDL_DestroyWindow(screen);
     screen = NULL;
- 
+    
+    //A voir si utile
     //On quitte SDL_TTF 2
-    TTF_Quit();
+    //TTF_Quit();
 
     //Nettoie les sprites de la map
     cleanMaps();
@@ -76,7 +73,6 @@ void cleanup()
     //On quitte la SDL
     SDL_Quit();
 }
-
 
 void loadGame(void)
 {
