@@ -21,7 +21,7 @@
 #define MAX_MAP_Y 562
  
 /* Taille d'une tile (32 x 32 pixels) */
-#define TILE_SIZE 32
+#define TILE_SIZE 64
  
 /* Constantes pour l'animation */
 #define TIME_BETWEEN_2_FRAMES 20
