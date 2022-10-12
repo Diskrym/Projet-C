@@ -13,12 +13,12 @@
 //#include <SDL_mixer.h>//
  
 // Taille de la fenêtre : 800x480 pixels 
-#define SCREEN_WIDTH 1000
-#define SCREEN_HEIGHT 562
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 384
  
 /* Taille maxi de la map : 400 x 150 tiles */
-#define MAX_MAP_X 1000
-#define MAX_MAP_Y 562
+#define MAX_MAP_X 640
+#define MAX_MAP_Y 384
  
 /* Taille d'une tile (32 x 32 pixels) */
 #define TILE_SIZE 32
