@@ -78,7 +78,6 @@ void cleanup()
 }
 
 
-
 void loadGame(void)
 {
  

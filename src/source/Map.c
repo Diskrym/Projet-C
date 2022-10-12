@@ -269,10 +269,10 @@ if (map.tileSetB != NULL)
 SDL_DestroyTexture(map.tileSetB);
 }
  
-sprintf(file, "graphics/tileset%d.png", map.tilesetAffiche);
+sprintf(file, "src/graphics/tileset%d.png", map.tilesetAffiche);
 map.tileSet = loadImage(file);
  
-sprintf(file, "graphics/tileset%dB.png", map.tilesetAffiche);
+sprintf(file, "src/graphics/tileset%dB.png", map.tilesetAffiche);
 map.tileSetB = loadImage(file);
  
 }
