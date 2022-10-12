@@ -1,6 +1,6 @@
 
 #include "../header/proto.h"
- 
+
  
 Map map;
  
@@ -25,34 +25,33 @@ void loadMap(char *name)
 {
 int x, y;
 FILE *fp;
-int err;
-
  
-//Ouvre le fichier en lecture (renvoie une erreur s'il n'existe pas)
-if ((err = fopen_s(&fp, name, "rb")) != 0)
+fp = fopen(name, "rb");
+ 
+// Si on ne peut pas ouvrir le fichier, on quitte
+if (fp == NULL)
     {
-    printf("Le fichier map n'a pas pu etre ouvert.\n");
+    printf("Failed to open map %s\n", name);
     exit(1);
     }
  
 /* Lit les données du fichier dans la map */
  
 /* Lit les coordonnées de début du joueur */
-fscanf_s(fp, "%d", &map.beginx);
-fscanf_s(fp, "%d", &map.beginy);
+fscanf(fp, "%d", &map.beginx);
+fscanf(fp, "%d", &map.beginy);
  
 /* Read the number of the tileset */
-fscanf_s(fp, "%d", &map.tilesetAffiche);
+fscanf(fp, "%d", &map.tilesetAffiche);
  
 map.maxX = map.maxY = 0;
- 
  
 for (y = 0; y < MAX_MAP_Y; y++)
     {
     for (x = 0; x < MAX_MAP_X; x++)
         {
         /* On lit le numéro de la tile et on le copie dans notre tableau */
-        fscanf_s(fp, "%d", &map.tile[y][x]);
+        fscanf(fp, "%d", &map.tile[y][x]);
  
         /* Permet de déterminer la taille de la map (voir plus bas) */
         if (map.tile[y][x] > 0)
@@ -76,7 +75,7 @@ for (y = 0; y < MAX_MAP_Y; y++)
     for (x = 0; x < MAX_MAP_X; x++)
         {
         /* On lit le numéro de la tile et on le copie dans notre tableau */
-        fscanf_s(fp, "%d", &map.tile2[y][x]);
+        fscanf(fp, "%d", &map.tile2[y][x]);
         }
     }
  
@@ -86,7 +85,7 @@ for (y = 0; y < MAX_MAP_Y; y++)
     for (x = 0; x < MAX_MAP_X; x++)
         {
         /* On lit le numéro de la tile et on le copie dans notre tableau */
-        fscanf_s(fp, "%d", &map.tile3[y][x]);
+        fscanf(fp, "%d", &map.tile3[y][x]);
         }
     }
  
@@ -98,8 +97,7 @@ map.maxX = (map.maxX + 1) * TILE_SIZE;
 map.maxY = (map.maxY + 1) * TILE_SIZE;
  
 /* Et on referme le fichier */
-fclose(fp);
- 
+fclose(fp); 
 }
 
 void drawMap(int layer)
@@ -258,7 +256,7 @@ void changeLevel(void)
 char file[200];
  
 /* Charge la map depuis le fichier */
-sprintf_s(file, sizeof(file), "map/map%d.txt", getLevel());
+sprintf(file, "src/map/map%d.txt", getLevel());
 loadMap(file);
  
 //Charge le tileset
@@ -271,10 +269,10 @@ if (map.tileSetB != NULL)
 SDL_DestroyTexture(map.tileSetB);
 }
  
-sprintf_s(file, sizeof(file), "graphics/tileset%d.png", map.tilesetAffiche);
+sprintf(file, "graphics/tileset%d.png", map.tilesetAffiche);
 map.tileSet = loadImage(file);
  
-sprintf_s(file, sizeof(file), "graphics/tileset%dB.png", map.tilesetAffiche);
+sprintf(file, "graphics/tileset%dB.png", map.tilesetAffiche);
 map.tileSetB = loadImage(file);
  
 }
