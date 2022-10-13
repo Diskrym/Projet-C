@@ -1,7 +1,7 @@
 #include "../header/proto.h"
- 
- 
 
+
+ 
 void drawGame(void)
 {
  
@@ -56,4 +56,29 @@ dest.y = y;
 SDL_QueryTexture(image, NULL, NULL, &dest.w, &dest.h);
 SDL_RenderCopy(getrenderer(), image, NULL, &dest);
  
+}
+
+
+
+
+
+void delay(unsigned int frameLimit)
+{
+    // Gestion des 60 fps (images/seconde)
+    unsigned int ticks = SDL_GetTicks();
+ 
+    if (frameLimit < ticks)
+    {
+        return;
+    }
+ 
+    if (frameLimit > ticks + 16)
+    {
+        SDL_Delay(16);
+    }
+ 
+    else
+    {
+        SDL_Delay(frameLimit - ticks);
+    }
 }
