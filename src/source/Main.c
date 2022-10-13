@@ -1,4 +1,3 @@
-
 #include "../header/proto.h"
  
 /* Déclaration des variables / structures utilisées par le jeu */
@@ -7,16 +6,17 @@ Input input;
  
 int main(int argc, char *argv[])
 {
+extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
  
-// Nom
+// Initialisation de la SDL
 init("SDL 2");
  
-// Load game dans init soit la selection du niveau + creation de la fenetre
+// Chargement des ressources (graphismes, sons)
 loadGame();
  
-// Clean de la mémoire a la fin du programme + go = 1 pour fermer la boucle while et finir
+// Appelle la fonction cleanup à la fin du programme
 atexit(cleanup);
  
 go = 1;
@@ -24,18 +24,18 @@ go = 1;
 // Boucle infinie, principale, du jeu
 while (go == 1)
 {
-//input clavier
+//Gestion des inputs clavier
 gestionInputs(&input);
  
-//init de tous les tiles
+//On dessine tout
 drawGame();
  
-// init fps a 60 fps (1000ms/60 = 16.6 -> 16
+// Gestion des 60 fps (1000ms/60 = 16.6 -> 16
 delay(frameLimit);
 frameLimit = SDL_GetTicks() + 16;
 }
  
-// fin
+// On quitte
 exit(0);
  
 }
