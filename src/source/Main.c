@@ -30,11 +30,13 @@ gestionInputs(&input);
 //On dessine tout
 drawGame();
 SDL_Texture *chevalier=loadImage("src/graphics/epeev31.png");
-drawImage(chevalier,0,0);
+drawImage(chevalier,SCREEN_WIDTH/2-SPRITE_SIZE/2,SCREEN_HEIGHT/2-SPRITE_SIZE/2);
 SDL_RenderPresent(getrenderer());
 //Gestion des déplacements joueurs
-//mouvement(&input, &pos);
 
+
+//mouvement(&input, &pos);
+getInput(&input);
 
 // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
 delay(frameLimit);
