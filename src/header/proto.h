@@ -18,8 +18,9 @@ extern void getInput(Input *input);
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void initMaps(void);
-extern void loadGame(void);
+extern void loadGame(Pos *pos);
 extern SDL_Texture *loadImage(char *name);
+extern void mouvement(Input *input, Pos *pos);
  
  
 #endif

@@ -76,13 +76,14 @@ void init(char *title)
  
 }
 
-void loadGame(void)
+void loadGame(Pos *pos)
 {
-//On charge les données pour la map
+//On charge les données pour la map + joueur
 initMaps();
+pos->inposx = SCREEN_WIDTH/2;
+pos->inposy = SCREEN_HEIGHT/2;
 }
- 
- 
+
 void cleanup()
 {
     //On quitte SDL_Mixer 2 et on décharge la mémoire

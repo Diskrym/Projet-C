@@ -2,7 +2,7 @@
  
 /* Déclaration des variables / structures utilisées par le jeu */
 Input input;
- 
+Pos pos;
  
 int main(int argc, char *argv[])
 {
@@ -14,7 +14,7 @@ int go;
 init("SDL 2");
  
 // Chargement des ressources (graphismes, sons)
-loadGame();
+loadGame(&pos);
  
 // Appelle la fonction cleanup à la fin du programme
 atexit(cleanup);
@@ -26,6 +26,7 @@ while (go == 1)
 {
 //Gestion des inputs clavier
 gestionInputs(&input);
+mouvement(&input, &pos);
  
 //On dessine tout
 drawGame();

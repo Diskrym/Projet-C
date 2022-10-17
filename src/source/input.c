@@ -112,25 +112,53 @@ void getInput(Input *input)
     }
 }
 
-int LargeurMap=640;
-int HauteurMap=384;
-int x=0
-int y=1
-int CoordonneesPerso={LargeurMap/2;HauteurMap/2};
-
-a = _getch();
-
-switch(a)
+void mouvement(Input *input, Pos *pos)
+{
+while ( input->down || input->up || input->right || input->left != 0)
+{
+    if (input->down == 1)
     {
-    case 'z':
-        CoordonneesPerso[y]=CoordonneesPerso[y]-5;
-        break;
-    case 'q':
-        CoordonneesPerso[x]=CoordonneesPerso[x]-5;
-        break;
-    case 's':
-        CoordonneesPerso[y]=CoordonneesPerso[y]+5;
-        break;
-    case 'd':
-        CoordonneesPerso[x]=CoordonneesPerso[x]+5;
-        break;
+        pos->posx+=10;
+    }
+
+    else if (input->up == 1)
+    {
+        pos->posx-=10;
+    }
+
+    else if (input->right == 1)
+    {
+        pos->posy+=10;
+    }
+    
+    else if (input->left == 1)
+    {
+        pos->posy+=10;
+    }
+}
+}
+
+
+// int LargeurMap=640;
+// int HauteurMap=384;
+// int x=0;
+// int y=1;
+// int CoordonneesPerso={LargeurMap/2;HauteurMap/2};
+
+// a = _getch();
+
+// switch(a)
+//     {
+//     case 'z':
+//         CoordonneesPerso[y]=CoordonneesPerso[y]-5;
+//         break;
+//     case 'q':
+//         CoordonneesPerso[x]=CoordonneesPerso[x]-5;
+//         break;
+//     case 's':
+//         CoordonneesPerso[y]=CoordonneesPerso[y]+5;
+//         break;
+//     case 'd':
+//         CoordonneesPerso[x]=CoordonneesPerso[x]+5;
+//         break;
+// }

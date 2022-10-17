@@ -21,5 +21,10 @@ typedef struct Map
 SDL_Texture *background;
  
 } Map;
+
+typedef struct Pos
+{
+    int inposx, inposy, posx, posy;
+} Pos;
  
 #endif
