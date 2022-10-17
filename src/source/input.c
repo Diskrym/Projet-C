@@ -1,6 +1,8 @@
 #include "../header/proto.h"
  
- 
+
+Pos pos;
+
 void gestionInputs(Input *input)
 {
     //On gère le clavier (on rajoutera plus tard la gestion

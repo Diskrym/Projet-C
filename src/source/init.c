@@ -80,8 +80,8 @@ void loadGame(Pos *pos)
 {
 //On charge les données pour la map + joueur
 initMaps();
-pos->inposx = SCREEN_WIDTH/2;
-pos->inposy = SCREEN_HEIGHT/2;
+pos->inposx = (SCREEN_WIDTH-SPRITE_SIZE)/2;
+pos->inposy = (SCREEN_HEIGHT-SPRITE_SIZE)/2;
 }
 
 void cleanup()

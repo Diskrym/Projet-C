@@ -30,10 +30,25 @@ gestionInputs(&input);
 //On dessine tout
 drawGame();
 SDL_Texture *chevalier=loadImage("src/graphics/epeev31.png");
-drawImage(chevalier,SCREEN_WIDTH/2-SPRITE_SIZE/2,SCREEN_HEIGHT/2-SPRITE_SIZE/2);
+drawImage(chevalier,pos.inposx,pos.inposy);
 SDL_RenderPresent(getrenderer());
 //Gestion des déplacements joueurs
-
+if (input.left==1)
+{
+    pos.inposx-=5;
+}
+if (input.right==1)
+{
+    pos.inposx+=5;
+}
+if (input.up==1)
+{
+    pos.inposy-=5;
+}
+if (input.down==1)
+{
+    pos.inposy+=5;
+}
 
 //mouvement(&input, &pos);
 getInput(&input);
