@@ -9,7 +9,7 @@ void gestionInputs(Input *input)
 }
  
  
-void getInput(Input *input)
+void getInput(Input *input )
 {
     SDL_Event event;
  
@@ -139,27 +139,3 @@ while ( input->down || input->up || input->right || input->left != 0)
 }
 }
 
-
-// int LargeurMap=640;
-// int HauteurMap=384;
-// int x=0;
-// int y=1;
-// int CoordonneesPerso={LargeurMap/2;HauteurMap/2};
-
-// a = _getch();
-
-// switch(a)
-//     {
-//     case 'z':
-//         CoordonneesPerso[y]=CoordonneesPerso[y]-5;
-//         break;
-//     case 'q':
-//         CoordonneesPerso[x]=CoordonneesPerso[x]-5;
-//         break;
-//     case 's':
-//         CoordonneesPerso[y]=CoordonneesPerso[y]+5;
-//         break;
-//     case 'd':
-//         CoordonneesPerso[x]=CoordonneesPerso[x]+5;
-//         break;
-// }

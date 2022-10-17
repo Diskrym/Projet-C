@@ -1,7 +1,12 @@
 #include "../header/proto.h"
 
+#define SPRITE_SIZE     128
+#define SCREEN_WIDTH  640
+#define SCREEN_HEIGHT 384
+#define DIR_RIGHT       0
+#define DIR_LEFT        3
 
- 
+
 void drawGame(void)
 {
  
@@ -15,11 +20,33 @@ SDL_RenderPresent(getrenderer());
 SDL_Delay(1);
  
 }
- 
+
+void Sprite (void)
+{
+    SDL_Surface *screen, *temp, *sprite;
+    SDL_Rect spritePosition;
+    int currentDirection = DIR_RIGHT;
+    int animationFlip = 0;
+    temp   = SDL_LoadBMP("sprite.bmp");
+    sprite = SDL_DisplayFormat(temp);
+    SDL_FreeSurface(temp);
+    spritePosition.x = (SCREEN_WIDTH - SPRITE_SIZE) / 2;
+    spritePosition.y = (SCREEN_HEIGHT - SPRITE_SIZE) / 2;
+    SDL_Rect spriteImage;
+            spriteImage.y = 0;
+            spriteImage.w = SPRITE_SIZE;
+            spriteImage.h = SPRITE_SIZE;
+            /* choose image according to direction and animation flip: */
+            spriteImage.x = SPRITE_SIZE*(2*currentDirection + animationFlip);
+
+            SDL_BlitSurface(sprite, &spriteImage, screen, &spritePosition);
+}
  
 SDL_Texture *loadImage(char *name)
 {
  
+SDL_Surface *screen, *temp, *sprite, *grass;
+int animationFlip = 0;
 /* Charge les images avec SDL Image dans une SDL_Surface */
  
 SDL_Surface *loadedImage = NULL;
@@ -82,3 +109,4 @@ void delay(unsigned int frameLimit)
         SDL_Delay(frameLimit - ticks);
     }
 }
+
