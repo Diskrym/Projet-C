@@ -26,10 +26,12 @@ while (go == 1)
 {
 //Gestion des inputs clavier
 gestionInputs(&input);
-mouvement(&input, &pos);
- 
+
 //On dessine tout
 drawGame();
+
+//Gestion des déplacements joueurs
+mouvement(&input, &pos);
  
 // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
 delay(frameLimit);
