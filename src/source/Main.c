@@ -31,7 +31,7 @@ gestionInputs(&input);
 drawGame();
 
 //Gestion des déplacements joueurs
-mouvement(&input, &pos);
+//mouvement(&input, &pos);
  
 // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
 delay(frameLimit);
