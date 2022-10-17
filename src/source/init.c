@@ -1,9 +1,7 @@
 #include "../header/proto.h"
  
- 
 SDL_Window *screen;
 SDL_Renderer *renderer;
- 
  
 SDL_Renderer *getrenderer(void)
 {
@@ -78,10 +76,10 @@ void init(char *title)
 
 void loadGame(Pos *pos)
 {
-//On charge les données pour la map + joueur
-initMaps();
-pos->inposx = (SCREEN_WIDTH-SPRITE_SIZE)/2;
-pos->inposy = (SCREEN_HEIGHT-SPRITE_SIZE)/2;
+    //On charge les données pour la map + joueur
+    initMaps();
+    pos->inposx = (SCREEN_WIDTH-SPRITE_SIZE)/2;
+    pos->inposy = (SCREEN_HEIGHT-SPRITE_SIZE)/2;
 }
 
 void cleanup()

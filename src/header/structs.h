@@ -24,7 +24,7 @@ SDL_Texture *background;
 
 typedef struct Pos
 {
-    int inposx, inposy, posx, posy;
+    int inposx, inposy;
 } Pos;
  
 #endif
