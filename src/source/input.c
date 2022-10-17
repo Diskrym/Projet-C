@@ -119,12 +119,14 @@ if (input->left==1)
 {
     pos->inposx-=5;
     input->NumSprit+=1;
+    input->Direction =1;
 
 }
 if (input->right==1)
 {
     pos->inposx+=5;
     input->NumSprit+=1;
+    input->Direction =0;
 }
 if (input->up==1)
 {
@@ -145,7 +147,7 @@ drawImage(chevalier,pos->inposx,pos->inposy);}
 if (input->NumSprit ==1 )
 {SDL_Texture *chevalier=loadImage("src/graphics/marche1D.png");
 drawImage(chevalier,pos->inposx,pos->inposy);}
-if (input->NumSprit ==3 )
+if (input->NumSprit >=3 )
 {SDL_Texture *chevalier=loadImage("src/graphics/marche2D.png");
 drawImage(chevalier,pos->inposx,pos->inposy);
 input->NumSprit =0;}
@@ -158,7 +160,7 @@ drawImage(chevalier,pos->inposx,pos->inposy);}
 if (input->NumSprit ==1 )
 {SDL_Texture *chevalier=loadImage("src/graphics/marche1G.png");
 drawImage(chevalier,pos->inposx,pos->inposy);}
-if (input->NumSprit ==3 )
+if (input->NumSprit >=3 )
 {SDL_Texture *chevalier=loadImage("src/graphics/marche2G.png");
 drawImage(chevalier,pos->inposx,pos->inposy);
 input->NumSprit =0;}
