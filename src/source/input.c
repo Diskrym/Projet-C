@@ -114,30 +114,53 @@ void getInput(Input *input )
     }
 }
 
-// void mouvement(Input *input, Pos *pos)
-// {
-// while ( input->down || input->up || input->right || input->left != 0)
-// {
-//     if (input->down == 1)
-//     {
-//         pos->posx+=10;
-//         printf("%d", pos->posx );
-//     }
+void deplacement (Input *input, Pos *pos){
+if (input->left==1)
+{
+    pos->inposx-=5;
+    input->NumSprit+=1;
 
-//     else if (input->up == 1)
-//     {
-//         pos->posx-=10;
-//     }
+}
+if (input->right==1)
+{
+    pos->inposx+=5;
+    input->NumSprit+=1;
+}
+if (input->up==1)
+{
+    pos->inposy-=5;
+    input->NumSprit+=1;
+}
+if (input->down==1)
+{
+    pos->inposy+=5;
+    input->NumSprit+=1;
+}
 
-//     else if (input->right == 1)
-//     {
-//         pos->posy+=10;
-//     }
-    
-//     else if (input->left == 1)
-//     {
-//         pos->posy+=10;
-//     }
-// }
-// }
+if (input->Direction ==0)
+{
+if (input->NumSprit==0 || input->NumSprit ==2 )
+{SDL_Texture *chevalier=loadImage("src/graphics/neutreD.png");
+drawImage(chevalier,pos->inposx,pos->inposy);}
+if (input->NumSprit ==1 )
+{SDL_Texture *chevalier=loadImage("src/graphics/marche1D.png");
+drawImage(chevalier,pos->inposx,pos->inposy);}
+if (input->NumSprit ==3 )
+{SDL_Texture *chevalier=loadImage("src/graphics/marche2D.png");
+drawImage(chevalier,pos->inposx,pos->inposy);
+input->NumSprit =0;}
+}
 
+if (input->Direction ==1)
+{if (input->NumSprit ==0 || input->NumSprit ==2 )
+{SDL_Texture *chevalier=loadImage("src/graphics/neutreG.png");
+drawImage(chevalier,pos->inposx,pos->inposy);}
+if (input->NumSprit ==1 )
+{SDL_Texture *chevalier=loadImage("src/graphics/marche1G.png");
+drawImage(chevalier,pos->inposx,pos->inposy);}
+if (input->NumSprit ==3 )
+{SDL_Texture *chevalier=loadImage("src/graphics/marche2G.png");
+drawImage(chevalier,pos->inposx,pos->inposy);
+input->NumSprit =0;}
+}
+}
