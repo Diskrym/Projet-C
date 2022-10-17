@@ -112,30 +112,30 @@ void getInput(Input *input )
     }
 }
 
-void mouvement(Input *input, Pos *pos)
-{
-while ( input->down || input->up || input->right || input->left != 0)
-{
-    if (input->down == 1)
-    {
-        pos->posx+=10;
-        printf("%d", pos->posx );
-    }
+// void mouvement(Input *input, Pos *pos)
+// {
+// while ( input->down || input->up || input->right || input->left != 0)
+// {
+//     if (input->down == 1)
+//     {
+//         pos->posx+=10;
+//         printf("%d", pos->posx );
+//     }
 
-    else if (input->up == 1)
-    {
-        pos->posx-=10;
-    }
+//     else if (input->up == 1)
+//     {
+//         pos->posx-=10;
+//     }
 
-    else if (input->right == 1)
-    {
-        pos->posy+=10;
-    }
+//     else if (input->right == 1)
+//     {
+//         pos->posy+=10;
+//     }
     
-    else if (input->left == 1)
-    {
-        pos->posy+=10;
-    }
-}
-}
+//     else if (input->left == 1)
+//     {
+//         pos->posy+=10;
+//     }
+// }
+// }
 

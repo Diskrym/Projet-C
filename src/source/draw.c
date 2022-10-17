@@ -23,6 +23,7 @@ SDL_Delay(1);
 
 void Sprite (void)
 {
+    
     SDL_Surface *screen, *temp, *sprite;
     SDL_Rect spritePosition;
     int currentDirection = DIR_RIGHT;
