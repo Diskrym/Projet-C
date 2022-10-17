@@ -110,3 +110,47 @@ void delay(unsigned int frameLimit)
     }
 }
 
+
+
+
+
+void afficherImage ( int           x          ,
+                     int           y          ,
+                     SDL_Renderer* renderer   ,
+                     char*         nomFichier )
+ {
+  SDL_Surface* surface_image = IMG_Load (nomFichier);
+
+  if ( surface_image )
+        {
+         SDL_Texture* image = SDL_CreateTextureFromSurface ( renderer , surface_image );
+
+         if ( image )
+               {
+                SDL_SetRenderTarget ( renderer , image );
+
+                SDL_Rect r;
+
+                r.x = x;
+                r.y = y;
+
+                SDL_QueryTexture ( image, NULL, NULL, &(r.w), &(r.h));
+
+                printf ("On rend l'image dans le rectangle %d %d %d %d\n", r.x, r.y, r.w, r.h);
+
+                SDL_RenderCopy ( renderer , image , NULL , &r);
+
+                SDL_SetRenderTarget ( renderer , NULL );
+
+                SDL_DestroyTexture (image);
+               }
+          else {
+                fprintf (stderr, "Erreur de création de la texture\n");
+               }
+
+         SDL_FreeSurface (surface_image);
+        }
+   else {
+         fprintf (stderr, "Erreur de chargement de l'image %s\n", nomFichier);
+        }
+ }
