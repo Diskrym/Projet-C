@@ -130,3 +130,4 @@ void s_sleep(void) {
         current_time = time(NULL);
 
     }
+}

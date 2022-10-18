@@ -6,7 +6,10 @@
 #include <stdlib.h>
 #include <math.h>
 #include <SDL.h>
- 
+#include <windows.h>
+#include <unistd.h>
+#include <time.h>
+
 /* On inclut les libs supplémentaires */
 #include <SDL_image.h>
 #include <SDL_ttf.h>
