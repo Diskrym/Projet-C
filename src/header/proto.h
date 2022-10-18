@@ -18,7 +18,7 @@ extern void getInput(Input *input);
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void initMaps(void);
-extern void loadGame(Pos *pos);
+extern void loadGame(Pos *pos, Monstre *monstre);
 extern SDL_Texture *loadImage(char *name);
 extern void deplacement(Input *intput, Pos *pos); 
 extern void deplacementMonstre (Pos *pos, Monstre *monstre);

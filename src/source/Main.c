@@ -16,7 +16,7 @@ int go;
 init("SDL 2");
  
     // Chargement des ressources (graphismes, sons)
-    loadGame(&pos);
+    loadGame(&pos, &monstre);
  
     // Appelle la fonction cleanup à la fin du programme
     atexit(cleanup);

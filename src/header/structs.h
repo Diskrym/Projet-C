@@ -16,7 +16,7 @@ typedef struct Input
 typedef struct Monstre
 {
  
-    int attack, NumSprit, Direction;
+    int attack, NumSprit, Direction, posmonsx, posmonsy;
  
 } Monstre;
 
@@ -31,7 +31,7 @@ SDL_Texture *background;
 
 typedef struct Pos
 {
-    int inposx, inposy, posmonsx, posmonsy;
+    int inposx, inposy;
 } Pos;
  
 #endif
