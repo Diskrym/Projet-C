@@ -80,6 +80,8 @@ void loadGame(Pos *pos)
     initMaps();
     pos->inposx = (SCREEN_WIDTH-SPRITE_SIZE)/2;
     pos->inposy = (SCREEN_HEIGHT-SPRITE_SIZE)/2;
+    pos->posmonsx =(SPRITE_SIZE);
+    pos->posmonsy =(SPRITE_SIZE);
 }
 
 void cleanup()

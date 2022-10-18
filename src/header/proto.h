@@ -21,5 +21,5 @@ extern void initMaps(void);
 extern void loadGame(Pos *pos);
 extern SDL_Texture *loadImage(char *name);
 extern void deplacement(Input *intput, Pos *pos); 
-
+extern void deplacementMonstre (Pos *pos, Monstre *monstre);
 #endif

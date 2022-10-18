@@ -13,6 +13,13 @@ typedef struct Input
  
 } Input;
 
+typedef struct Monstre
+{
+ 
+    int attack, NumSprit, Direction;
+ 
+} Monstre;
+
 
 // Structure pour gérer la map à afficher (à compléter plus tard)
 typedef struct Map
@@ -24,7 +31,7 @@ SDL_Texture *background;
 
 typedef struct Pos
 {
-    int inposx, inposy;
+    int inposx, inposy, posmonsx, posmonsy;
 } Pos;
  
 #endif

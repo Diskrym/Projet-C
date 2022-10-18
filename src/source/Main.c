@@ -3,6 +3,7 @@
 /* Déclaration des variables / structures utilisées par le jeu */
 Input input;
 Pos pos;
+Monstre monstre;
 int main(int argc, char *argv[])
 {
     
@@ -32,12 +33,15 @@ init("SDL 2");
 
         //Gestion des inputs et des déplacements
         deplacement(&input,&pos);
+        deplacementMonstre(&pos, &monstre);
         SDL_RenderPresent(getrenderer());
         getInput(&input);
+        
 
+        
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
-        frameLimit = SDL_GetTicks() + 16;
+        frameLimit = SDL_GetTicks() + 4;
     }
  
     // On quitte

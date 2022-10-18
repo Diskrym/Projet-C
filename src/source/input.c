@@ -2,6 +2,7 @@
  
 
 Pos pos;
+Monstre monstre;
 
 void gestionInputs(Input *input)
 {
@@ -195,4 +196,82 @@ void deplacement (Input *input, Pos *pos)
             input->NumSprit =0;
         }
     }
+}
+
+
+void deplacementMonstre (Pos *pos, Monstre *monstre)
+{
+    if (pos->inposx<pos->posmonsx)
+    {
+        pos->posmonsx-=2;
+        monstre->NumSprit+=1;
+        monstre->Direction=0;
+    
+        
+    }
+
+    if (pos->inposx>pos->posmonsx)
+    {
+        pos->posmonsx+=2;
+        monstre->NumSprit+=1;
+        monstre->Direction=0;
+    
+        
+    }
+    if (pos->inposy<pos->posmonsy)
+    {
+        pos->posmonsy-=2;
+        monstre->NumSprit+=1;
+        monstre->Direction=0;
+        
+        
+    }
+    if (pos->inposy>pos->posmonsy)
+    {
+        pos->posmonsy+=2;
+        monstre->NumSprit+=1;
+        monstre->Direction=1;
+        
+        
+    }
+    
+
+
+        if (monstre->NumSprit==0 || monstre->NumSprit ==5 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Meduseneutre.png");
+            drawImage(Spritemonstre,pos->posmonsx,pos->posmonsy);
+        }
+        if (monstre->NumSprit ==1 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
+            drawImage(Spritemonstre,pos->posmonsx,pos->posmonsy);
+        }
+        if (monstre->NumSprit ==2 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche2.png");
+            drawImage(Spritemonstre,pos->posmonsx,pos->posmonsy);
+        }
+        if (monstre->NumSprit ==3 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche3.png");
+            drawImage(Spritemonstre,pos->posmonsx,pos->posmonsy);
+        }
+        if (monstre->NumSprit ==4 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche4.png");
+            drawImage(Spritemonstre,pos->posmonsx,pos->posmonsy);
+        }
+        if (monstre->NumSprit >=5 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Meduseneutre.png");
+            drawImage(Spritemonstre,pos->posmonsx,pos->posmonsy);
+            monstre->NumSprit =0;
+           // monstre->attack+=1
+        }
+
+    //if (monstre->attack==2)
+
+    
+
 }

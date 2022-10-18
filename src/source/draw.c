@@ -65,3 +65,11 @@ void delay(unsigned int frameLimit)
         SDL_Delay(frameLimit - ticks);
     }
 }
+
+
+
+void texte ()
+{
+
+    
+}
