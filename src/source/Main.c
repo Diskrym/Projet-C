@@ -5,8 +5,6 @@ Input input;
 Pos pos;
 int main(int argc, char *argv[])
 {
-    
-// extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
 
