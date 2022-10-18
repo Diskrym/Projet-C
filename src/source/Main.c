@@ -4,19 +4,27 @@
 Input input;
 Pos pos;
 Monstre monstre;
+Monstre monstre1;
+
 int main(int argc, char *argv[])
 {
     
 // extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
+int lvl=0;
 
  
 // Initialisation de la SDL
 init("SDL 2");
  
     // Chargement des ressources (graphismes, sons)
-    loadGame(&pos, &monstre);
+    LoadJoueur(&pos);
+    if (lvl=0)
+    {LoadMonstre(&monstre, 64,64);}
+    if (lvl=1)
+    {LoadMonstre(&monstre, 64,64);
+    LoadMonstre(&monstre1,300,300);}
  
     // Appelle la fonction cleanup à la fin du programme
     atexit(cleanup);
@@ -24,7 +32,7 @@ init("SDL 2");
     go = 1; 
     // Boucle infinie, principale, du jeu
     while (go == 1)
-    {
+    {    
         //Gestion des inputs clavier
         gestionInputs(&input);
 
@@ -34,6 +42,7 @@ init("SDL 2");
         //Gestion des inputs et des déplacements
         deplacement(&input,&pos);
         deplacementMonstre(&pos, &monstre);
+        deplacementMonstre(&pos, &monstre1);
         SDL_RenderPresent(getrenderer());
         getInput(&input);
         
