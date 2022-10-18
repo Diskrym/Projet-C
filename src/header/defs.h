@@ -15,5 +15,5 @@
 // Taille de la fenêtre : 800x480 pixels 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 384
-#define SPRITE_SIZE 128
+#define SPRITE_SIZE 64
 #endif

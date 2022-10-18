@@ -74,14 +74,20 @@ void init(char *title)
  
 }
 
-void loadGame(Pos *pos, Monstre *monstre)
+void LoadJoueur(Pos *pos)
 {
     //On charge les données pour la map + joueur
     initMaps();
     pos->inposx = (SCREEN_WIDTH-SPRITE_SIZE)/2;
     pos->inposy = (SCREEN_HEIGHT-SPRITE_SIZE)/2;
-    monstre->posmonsx =(SPRITE_SIZE);
-    monstre->posmonsy =(SPRITE_SIZE);
+    
+}  
+
+void LoadMonstre(Monstre *monstre , int x, int y)
+{  
+    monstre->posmonsx =(x);
+    monstre->posmonsy =(y);
+
 }
 
 void cleanup()
@@ -105,3 +111,22 @@ void cleanup()
     //On quitte la SDL
     SDL_Quit();
 }
+
+
+void s_sleep(void) {
+
+    /* Init. */
+
+    time_t start_time = 0;
+
+    time_t current_time = 0;
+
+    /* Operate. */
+
+    start_time = time(NULL);
+
+    while(current_time-start_time+1 <= 0.1) {
+
+        current_time = time(NULL);
+
+    }
