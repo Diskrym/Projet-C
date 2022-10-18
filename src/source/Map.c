@@ -1,29 +1,24 @@
-#include "../header/proto.h"
- 
+#include "../header/proto.h" 
  
 Map map;
  
- 
 void initMaps(void)
 {
-// Charge l'image du fond (background)
-map.background = loadImage("src/graphics/background.png");
+    // Charge l'image du fond (background)
+    map.background = loadImage("src/graphics/background.png");
 }
- 
- 
+  
 SDL_Texture *getBackground(void)
 {
-return map.background;
+    return map.background;
 }
- 
- 
+  
 void cleanMaps(void)
 {
-// Libère la texture du background
-if (map.background != NULL)
-{
-SDL_DestroyTexture(map.background);
-map.background = NULL;
-}
- 
+    // Libère la texture du background
+    if (map.background != NULL)
+    {
+        SDL_DestroyTexture(map.background);
+        map.background = NULL;
+    }
 }

@@ -22,7 +22,6 @@ void getInput(Input *input )
     {
         switch (event.type)
         {
- 
             case SDL_QUIT:
                 exit(0);
             break;
@@ -114,55 +113,86 @@ void getInput(Input *input )
     }
 }
 
-void deplacement (Input *input, Pos *pos){
-if (input->left==1)
+void deplacement (Input *input, Pos *pos)
 {
-    pos->inposx-=5;
-    input->NumSprit+=1;
-    input->Direction =1;
+    if (input->left==1)
+    {
+        pos->inposx-=5;
+        input->NumSprit+=1;
+        input->Direction =1;
+        if (pos->inposx <= 0)
+        {
+            pos->inposx+=5;
+        }
+        
+    }
 
-}
-if (input->right==1)
-{
-    pos->inposx+=5;
-    input->NumSprit+=1;
-    input->Direction =0;
-}
-if (input->up==1)
-{
-    pos->inposy-=5;
-    input->NumSprit+=1;
-}
-if (input->down==1)
-{
-    pos->inposy+=5;
-    input->NumSprit+=1;
-}
+    if (input->right==1)
+    {
+        pos->inposx+=5;
+        input->NumSprit+=1;
+        input->Direction =0;
+        if (pos->inposx >= SCREEN_WIDTH-SPRITE_SIZE/2)
+        {
+            pos->inposx-=5;
+        }
+    }
+    if (input->up==1)
+    {
+        pos->inposy-=5;
+        input->NumSprit+=1;
+        if (pos->inposy <= 0)
+        {
+            pos->inposy+=5;
+        }
+    }
+    if (input->down==1)
+    {
+        pos->inposy+=5;
+        input->NumSprit+=1;
+        if (pos->inposy >= SCREEN_HEIGHT-SPRITE_SIZE/2)
+        {
+            pos->inposy-=5;
+        }
+    }
 
-if (input->Direction ==0)
-{
-if (input->NumSprit==0 || input->NumSprit ==2 )
-{SDL_Texture *chevalier=loadImage("src/graphics/neutreD.png");
-drawImage(chevalier,pos->inposx,pos->inposy);}
-if (input->NumSprit ==1 )
-{SDL_Texture *chevalier=loadImage("src/graphics/marche1D.png");
-drawImage(chevalier,pos->inposx,pos->inposy);}
-if (input->NumSprit >=3 )
-{SDL_Texture *chevalier=loadImage("src/graphics/marche2D.png");
-drawImage(chevalier,pos->inposx,pos->inposy);
-input->NumSprit =0;}
-}
+    if (input->Direction ==0)
+    {
+        if (input->NumSprit==0 || input->NumSprit ==2 )
+        {
+            SDL_Texture *chevalier=loadImage("src/graphics/neutreD.png");
+            drawImage(chevalier,pos->inposx,pos->inposy);
+        }
+        if (input->NumSprit ==1 )
+        {
+            SDL_Texture *chevalier=loadImage("src/graphics/marche1D.png");
+            drawImage(chevalier,pos->inposx,pos->inposy);
+        }
+        if (input->NumSprit >=3 )
+        {
+            SDL_Texture *chevalier=loadImage("src/graphics/marche2D.png");
+            drawImage(chevalier,pos->inposx,pos->inposy);
+            input->NumSprit =0;
+        }
+    }
 
-if (input->Direction ==1)
-{if (input->NumSprit ==0 || input->NumSprit ==2 )
-{SDL_Texture *chevalier=loadImage("src/graphics/neutreG.png");
-drawImage(chevalier,pos->inposx,pos->inposy);}
-if (input->NumSprit ==1 )
-{SDL_Texture *chevalier=loadImage("src/graphics/marche1G.png");
-drawImage(chevalier,pos->inposx,pos->inposy);}
-if (input->NumSprit >=3 )
-{SDL_Texture *chevalier=loadImage("src/graphics/marche2G.png");
-drawImage(chevalier,pos->inposx,pos->inposy);
-input->NumSprit =0;}
-}
+    if (input->Direction ==1)
+    {
+        if (input->NumSprit ==0 || input->NumSprit ==2 )
+        {
+            SDL_Texture *chevalier=loadImage("src/graphics/neutreG.png");
+            drawImage(chevalier,pos->inposx,pos->inposy);
+        }
+        if (input->NumSprit ==1 )
+        {
+            SDL_Texture *chevalier=loadImage("src/graphics/marche1G.png");
+            drawImage(chevalier,pos->inposx,pos->inposy);
+        }
+        if (input->NumSprit >=3 )
+        {
+            SDL_Texture *chevalier=loadImage("src/graphics/marche2G.png");
+            drawImage(chevalier,pos->inposx,pos->inposy);
+            input->NumSprit =0;
+        }
+    }
 }
