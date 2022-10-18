@@ -22,4 +22,5 @@ extern void loadGame(Pos *pos, Monstre *monstre);
 extern SDL_Texture *loadImage(char *name);
 extern void deplacement(Input *intput, Pos *pos); 
 extern void deplacementMonstre (Pos *pos, Monstre *monstre);
+extern void collision (Pos *pos, Monstre *monstre);
 #endif
