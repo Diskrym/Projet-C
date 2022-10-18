@@ -1,6 +1,6 @@
 #include "../header/proto.h"
  
-
+Input input;
 Pos pos;
 Monstre monstre;
 
@@ -121,10 +121,7 @@ void deplacement (Input *input, Pos *pos)
         pos->inposx-=5;
         input->NumSprit+=1;
         input->Direction =1;
-        // if (pos->inposx <= 0)
-        // {
-        //     pos->inposx+=5;
-        // }
+
         
     }
 
@@ -133,29 +130,17 @@ void deplacement (Input *input, Pos *pos)
         pos->inposx+=5;
         input->NumSprit+=1;
         input->Direction =0;
-        // if (pos->inposx >= SCREEN_WIDTH-SPRITE_SIZE/2)
-        // {
-        //     pos->inposx-=5;
-        // }
     }
     if (input->up==1)
     {
         pos->inposy-=5;
         input->NumSprit+=1;
-        // if (pos->inposy <= 0)
-        // {
-        //     pos->inposy+=5;
-        // }
         
     }
     if (input->down==1)
     {
         pos->inposy+=5;
         input->NumSprit+=1;
-        // if (pos->inposy >= SCREEN_HEIGHT-SPRITE_SIZE/2)
-        // {
-        //     pos->inposy-=5;
-        // }
     }
 
     if (input->Direction ==0)
@@ -232,7 +217,6 @@ void deplacementMonstre (Pos *pos, Monstre *monstre)
         monstre->posmonsy+=2;
         monstre->NumSprit+=1;
         monstre->Direction=1;
-        collision(pos, monstre);
         
         
     }

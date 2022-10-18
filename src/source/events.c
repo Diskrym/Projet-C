@@ -1,34 +1,95 @@
 #include "../header/proto.h"
 
-void collision (Pos *pos, Monstre *monstre)
+void collision (Pos *pos, Monstre *monstre, Input *input)
 {
     //collision joueur mur
-    // if (pos->inposx <= 0)
-    //     {
-    //         pos->inposx+=5;
-    //     }
-    //  if (pos->inposx >= SCREEN_WIDTH-SPRITE_SIZE/2)
-    //     {
-    //         pos->inposx-=5;
-    //     }
-    // if (pos->inposy <= 0)
-    //     {
-    //         pos->inposy+=5;
-    //     }
-    // if (pos->inposy >= SCREEN_HEIGHT-SPRITE_SIZE/2)
-    //     {
-    //         pos->inposy-=5;
-    //     }
+    if (pos->inposx <= 0)
+        {
+            pos->inposx+=5;
+        }
+     if (pos->inposx >= SCREEN_WIDTH-SPRITE_SIZE)
+        {
+            pos->inposx-=5;
+        }
+    if (pos->inposy <= 0)
+        {
+            pos->inposy+=5;
+        }
+    if (pos->inposy >= SCREEN_HEIGHT-SPRITE_SIZE)
+        {
+            pos->inposy-=5;
+        }
 
     //collision entre les monstre et joueur
-    if ((pos->inposy < monstre->posmonsy + SPRITE_SIZE/2) && ((pos->inposx <= monstre->posmonsx <= pos->inposx+SPRITE_SIZE/2) || (pos->inposx <= monstre->posmonsx+SPRITE_SIZE/2 <= pos->inposx+SPRITE_SIZE/2 )))
+    //collision haut joueur
+
+    if (((pos->inposy <= monstre->posmonsy + SPRITE_SIZE)&&(pos->inposy >= monstre->posmonsy )) && (((monstre->posmonsx >= pos->inposx) && (monstre->posmonsx <= pos->inposx+SPRITE_SIZE)) || ((monstre->posmonsx + SPRITE_SIZE >= pos->inposx) && (monstre->posmonsx + SPRITE_SIZE <= pos->inposx+SPRITE_SIZE))))
     {
-        //pos->inposy+=5;
         monstre->posmonsy-=2;
+        if (input->up == 1)
+        {
+          pos->inposy+=5;  
+        }
     }
-    if (pos->inposx >= monstre->posmonsx <= pos->inposx+SPRITE_SIZE/2 || pos->inposx >= monstre->posmonsx+SPRITE_SIZE/2 <= pos->inposx+SPRITE_SIZE/2)
+
+    //collision bas joueur
+    if (((pos->inposy + SPRITE_SIZE >= monstre->posmonsy) && (pos->inposy <= monstre->posmonsy)) && (((monstre->posmonsx >= pos->inposx) && (monstre->posmonsx <= pos->inposx+SPRITE_SIZE)) || ((monstre->posmonsx + SPRITE_SIZE >= pos->inposx) && (monstre->posmonsx + SPRITE_SIZE <= pos->inposx+SPRITE_SIZE))))
     {
-         printf("bbb");
+        monstre->posmonsy+=2;
+        if (input->down == 1)
+        {
+          pos->inposy-=5;  
+        }   
     }
     
+    // //coter droit joueur
+    if (pos->inposx <= monstre->posmonsx)
+    {
+        if (pos->inposx + SPRITE_SIZE >= monstre->posmonsx)
+        {
+            if ((monstre->posmonsy >= pos->inposy) && (monstre->posmonsy <= pos->inposy+SPRITE_SIZE))
+            {
+                monstre->posmonsx+=2;
+                if (input->right == 1)
+                {
+                    pos->inposx-=5;  
+                }   
+            }
+
+            if ((monstre->posmonsy + SPRITE_SIZE >= pos->inposy) && (monstre->posmonsy + SPRITE_SIZE <= pos->inposy + SPRITE_SIZE))
+            {
+                monstre->posmonsx+=2;
+                if (input->right == 1)
+                {
+                    pos->inposx-=5;  
+                }  
+            }
+            
+            
+        }
+        
+    }
+    //coter gauche joueur
+    if (pos->inposx + SPRITE_SIZE >= monstre->posmonsx)
+    {
+        if (pos->inposx <= monstre->posmonsx + SPRITE_SIZE)
+        {
+            if (monstre->posmonsy >= pos->inposy && monstre->posmonsy <= pos->inposy+SPRITE_SIZE)
+            {
+                monstre->posmonsx-=2;
+                if (input->left == 1)
+                {
+                    pos->inposx+=5;  
+                }
+            }
+            if (monstre->posmonsy + SPRITE_SIZE >= pos->inposy && monstre->posmonsy + SPRITE_SIZE <= pos->inposy + SPRITE_SIZE)
+            {
+                monstre->posmonsx-=2;
+                if (input->left == 1)
+                {
+                    pos->inposx+=5;  
+                }
+            } 
+        } 
+    }
 }

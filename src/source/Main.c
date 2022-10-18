@@ -22,9 +22,9 @@ init("SDL 2");
     LoadJoueur(&pos);
     if (lvl=0)
     {LoadMonstre(&monstre, 64,64);}
-    if (lvl=1)
-    {LoadMonstre(&monstre, 64,64);
-    LoadMonstre(&monstre1,300,300);}
+    //  if (lvl=1)
+    //  {LoadMonstre(&monstre, 64,64);
+    //  LoadMonstre(&monstre1,300,300);}
  
     // Appelle la fonction cleanup à la fin du programme
     atexit(cleanup);
@@ -42,9 +42,12 @@ init("SDL 2");
         //Gestion des inputs et des déplacements
         deplacement(&input,&pos);
         deplacementMonstre(&pos, &monstre);
-        deplacementMonstre(&pos, &monstre1);
+        //deplacementMonstre(&pos, &monstre1);
         SDL_RenderPresent(getrenderer());
         getInput(&input);
+        //collision
+        collision(&pos, &monstre, &input);
+
         
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
