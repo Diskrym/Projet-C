@@ -41,6 +41,8 @@ init("SDL 2");
 
         //On dessine tout
         drawGame();
+        
+        printf("%d", input.Life);
 
         //Gestion des inputs et des déplacements
         deplacement(&input,&pos);
@@ -55,6 +57,12 @@ init("SDL 2");
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;
+        if (input.Life<=0)
+        {
+
+        exit(0);
+        }
+
     }
  
     // On quitte
