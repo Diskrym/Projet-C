@@ -254,31 +254,33 @@ void deplacementMonstre (Pos *pos, Monstre *monstre)
         if  (pos->compteur>100){
             if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
         {
-            SDL_Texture *Spritemonstre=loadImage("src/graphics/Meduseneutre.png");
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup1.png");
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
         }
         if (monstre->NumSprit==5 || monstre->NumSprit==6 || monstre->NumSprit==7 || monstre->NumSprit==8 || monstre->NumSprit==31 || monstre->NumSprit==32 || monstre->NumSprit==33 || monstre->NumSprit==34 )
         {
-            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup2.png");
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
         }
         if (monstre->NumSprit==9 || monstre->NumSprit==10 || monstre->NumSprit==11 || monstre->NumSprit==12|| monstre->NumSprit==26 || monstre->NumSprit==27 || monstre->NumSprit==28 || monstre->NumSprit==29 || monstre->NumSprit==30 )
         {
-            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche2.png");
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup3.png");
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
         }
         if (monstre->NumSprit==13 || monstre->NumSprit==14 || monstre->NumSprit==15 || monstre->NumSprit==21 || monstre->NumSprit==22 || monstre->NumSprit==23 || monstre->NumSprit==24 || monstre->NumSprit==25 )
         {
-            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche3.png");
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup4.png");
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            SDL_Texture *Spriteattaque=loadImage("src/graphics/AttaqueMeduse.png");
+            drawImage(Spriteattaque,monstre->posmonsx -5 ,monstre->posmonsy - 5);
         }
         if (monstre->NumSprit==17 || monstre->NumSprit==18 || monstre->NumSprit==19 || monstre->NumSprit==20 )
         {
-            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche4.png");
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup2.png");
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
             
         }
-        if (pos->compteur>200){
+        if (pos->compteur>150){
             pos->compteur=0;
         }
         
