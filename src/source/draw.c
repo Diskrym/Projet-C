@@ -79,11 +79,11 @@ void texte ()
 
 void AffichageVie (Input *input)
 {
-int i=1;
+int i=2;
 while (i<=input->Life)
 {
 SDL_Texture *Vie=loadImage("src/graphics/Vie.png");
-drawImage(Vie,SCREEN_WIDTH-(i*34),0);
-i+=1;
+drawImage(Vie,SCREEN_WIDTH-(i/2*34),0);
+i+=2;
 }
 }
