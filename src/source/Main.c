@@ -45,7 +45,7 @@ init("SDL 2");
         
         //Gestion des inputs et des déplacements
         deplacement(&input,&pos);
-        deplacementMonstre(&pos, &monstre);
+        deplacementMonstre(&pos, &monstre, &input);
         //deplacementMonstre(&pos, &monstre1);
         SDL_RenderPresent(getrenderer());
         getInput(&input);

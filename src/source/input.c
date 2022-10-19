@@ -185,7 +185,7 @@ void deplacement (Input *input, Pos *pos)
 }
 
 
-void deplacementMonstre (Pos *pos, Monstre *monstre)
+void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
 {
     pos->compteur += 1;
     printf("%d \n", pos->compteur);
@@ -274,7 +274,11 @@ void deplacementMonstre (Pos *pos, Monstre *monstre)
             SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup4.png");
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
             SDL_Texture *Spriteattaque=loadImage("src/graphics/AttaqueMeduse.png");
-            drawImage(Spriteattaque,monstre->posmonsx -5 ,monstre->posmonsy - 5);
+            drawImage(Spriteattaque,monstre->posmonsx -23 ,monstre->posmonsy - 23);
+
+            if(inside(monstre->posmonsx,monstre->posmonsy)==1){
+                input->Life--;
+            }
         }
         if (monstre->NumSprit==17 || monstre->NumSprit==18 || monstre->NumSprit==19 || monstre->NumSprit==20 )
         {
@@ -282,7 +286,7 @@ void deplacementMonstre (Pos *pos, Monstre *monstre)
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
             
         }
-        if (pos->compteur>150){
+        if (pos->compteur>140){
             pos->compteur=0;
         }
         

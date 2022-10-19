@@ -5,7 +5,7 @@
 /* Catalogue des prototypes des fonctions utilisées.
 On le complétera au fur et à mesure. */
  
-extern void delay2(void);
+//extern void delay2(void);
 extern void cleanMaps(void);
 extern void cleanup(void);
 extern void delay(unsigned int frameLimit);
@@ -22,9 +22,9 @@ extern void LoadJoueur(Pos *pos);
 extern void LoadMonstre(Monstre *monstre,int x, int y);
 extern SDL_Texture *loadImage(char *name);
 extern void deplacement(Input *input, Pos *pos); 
-extern void deplacementMonstre (Pos *pos, Monstre *monstre);
+extern void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input);
 extern void collision (Pos *pos, Monstre *monstre, Input *input);
-extern void s_sleep(void);
+//extern void s_sleep(void);
 extern void AffichageVie(Input *input);
 extern void GameOver (void);
 extern void AffichageLevel (Lvl *lvl);
