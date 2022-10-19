@@ -25,4 +25,5 @@ extern void deplacement(Input *input, Pos *pos);
 extern void deplacementMonstre (Pos *pos, Monstre *monstre);
 extern void collision (Pos *pos, Monstre *monstre, Input *input);
 extern void s_sleep(void);
+extern void AffichageVie(Input *input);
 #endif

@@ -3,19 +3,19 @@
 void collision (Pos *pos, Monstre *monstre, Input *input)
 {
     //collision joueur mur
-    if (pos->inposx <= 0)
+    if (pos->inposx <= 25)
         {
             pos->inposx+=5;
         }
-     if (pos->inposx >= SCREEN_WIDTH-SPRITE_SIZE)
+     if (pos->inposx >= SCREEN_WIDTH-SPRITE_SIZE-25)
         {
             pos->inposx-=5;
         }
-    if (pos->inposy <= 0)
+    if (pos->inposy <= 25)
         {
             pos->inposy+=5;
         }
-    if (pos->inposy >= SCREEN_HEIGHT-SPRITE_SIZE)
+    if (pos->inposy >= SCREEN_HEIGHT-SPRITE_SIZE-20)
         {
             pos->inposy-=5;
         }
@@ -92,4 +92,13 @@ void collision (Pos *pos, Monstre *monstre, Input *input)
             } 
         } 
     }
+}
+
+
+
+void DegatChevalier (Input *input)
+{
+
+
+
 }

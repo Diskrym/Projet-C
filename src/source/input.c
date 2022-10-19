@@ -252,9 +252,12 @@ void deplacementMonstre (Pos *pos, Monstre *monstre)
 
         if (monstre->NumSprit>=35 )
 
-       {SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
+       {
+        SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
         drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
-        monstre->NumSprit =0;}
+        monstre->NumSprit =0;
+        monstre->attack+=1;
+        }
 
     //if (monstre->attack==2)
 

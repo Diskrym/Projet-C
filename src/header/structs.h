@@ -9,7 +9,7 @@
 typedef struct Input
 {
  
-    int left, right, up, down, jump, attack, enter, erase, pause, NumSprit, Direction;
+    int left, right, up, down, jump, attack, enter, erase, pause, NumSprit, Direction, Life;
  
 } Input;
 

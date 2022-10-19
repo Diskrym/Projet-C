@@ -1,10 +1,11 @@
 #include "../header/proto.h"
-
+Input input;
 
 void drawGame(void)
 {
     // Affiche le fond (background) aux coordonnées (0,0)
     drawImage(getBackground(), 0, 0);
+    AffichageVie (&input);
     // Affiche l'écran
     SDL_RenderPresent(getrenderer());
     // Délai
@@ -71,5 +72,18 @@ void delay(unsigned int frameLimit)
 void texte ()
 {
 
-    
+
+}
+
+
+
+void AffichageVie (Input *input)
+{
+int i=1;
+while (i<=input->Life)
+{
+SDL_Texture *Vie=loadImage("src/graphics/Vie.png");
+drawImage(Vie,SCREEN_WIDTH-(i*34),0);
+i+=1;
+}
 }

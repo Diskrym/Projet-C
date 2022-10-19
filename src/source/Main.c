@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
 int lvl=0;
-
+input.Life=7;
  
 // Initialisation de la SDL
 init("SDL 2");
@@ -21,7 +21,10 @@ init("SDL 2");
     // Chargement des ressources (graphismes, sons)
     LoadJoueur(&pos);
     if (lvl=0)
-    {LoadMonstre(&monstre, 64,64);}
+    {
+    LoadMonstre(&monstre, 64,64);
+    }
+    
     //  if (lvl=1)
     //  {LoadMonstre(&monstre, 64,64);
     //  LoadMonstre(&monstre1,300,300);}
