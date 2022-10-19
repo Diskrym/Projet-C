@@ -215,7 +215,7 @@ void deplacementMonstre (Pos *pos, Monstre *monstre)
         monstre->posmonsy+=2;
         monstre->Direction=1;
     }
-    }
+    
 
         if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
         {
@@ -247,10 +247,12 @@ void deplacementMonstre (Pos *pos, Monstre *monstre)
         {
         SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
         drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
-        monstre->NumSprit =0;
         //monstre->attack+=1;
         }
-
+        }
+        if (monstre->NumSprit>=35){
+            monstre->NumSprit =0;
+        }
         if  (pos->compteur>100){
             if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
         {
