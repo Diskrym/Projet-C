@@ -276,7 +276,7 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
             SDL_Texture *Spriteattaque=loadImage("src/graphics/AttaqueMeduse.png");
             drawImage(Spriteattaque,monstre->posmonsx -23 ,monstre->posmonsy - 23);
 
-            if(inside(pos, monstre)==1 && monstre->NumSprit==25){
+            if(inside(pos, monstre)==1 && (monstre->NumSprit==25 || monstre->NumSprit==15)){
                 if (coup == 0){
                     input->Life--;
                     coup =1 ;
