@@ -5,6 +5,7 @@ Input input;
 Pos pos;
 Monstre monstre;
 Monstre monstre1;
+Lvl lvl;
 
 int main(int argc, char *argv[])
 {
@@ -12,7 +13,7 @@ int main(int argc, char *argv[])
 // extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
-int lvl=0;
+lvl.Num=1;
 input.Life=6;
  
 // Initialisation de la SDL
@@ -20,9 +21,9 @@ init("SDL 2");
  
     // Chargement des ressources (graphismes, sons)
     LoadJoueur(&pos);
-    if (lvl=0)
+    if (lvl.Num==1)
     {
-    LoadMonstre(&monstre, 64,64);
+    LoadMonstre(&monstre, 70,70);
     }
     
     //  if (lvl=1)
@@ -59,7 +60,7 @@ init("SDL 2");
         frameLimit = SDL_GetTicks() + 4;
         if (input.Life<=0)
         {
-
+        GameOver ();
         exit(0);
         }
 
