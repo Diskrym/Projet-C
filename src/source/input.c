@@ -3,6 +3,7 @@
 Input input;
 Pos pos;
 Monstre monstre;
+int coup = 0;
 
 void gestionInputs(Input *input)
 {
@@ -188,9 +189,8 @@ void deplacement (Input *input, Pos *pos)
 void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
 {
     pos->compteur += 1;
-    printf("%d \n", pos->compteur);
     monstre->NumSprit+=1;
-
+    
     if (pos ->compteur <= 100){
     if (pos->inposx<monstre->posmonsx)
     {
@@ -276,8 +276,12 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
             SDL_Texture *Spriteattaque=loadImage("src/graphics/AttaqueMeduse.png");
             drawImage(Spriteattaque,monstre->posmonsx -23 ,monstre->posmonsy - 23);
 
-            if(inside(monstre->posmonsx,monstre->posmonsy)==1){
-                input->Life--;
+            if(inside(pos, monstre)==1 && monstre->NumSprit==25){
+                if (coup == 0){
+                    input->Life--;
+                    coup =1 ;
+                }
+                
             }
         }
         if (monstre->NumSprit==17 || monstre->NumSprit==18 || monstre->NumSprit==19 || monstre->NumSprit==20 )
@@ -288,10 +292,11 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
         }
         if (pos->compteur>140){
             pos->compteur=0;
+            coup = 0;
         }
         
         }
-
+ 
         
         
 
