@@ -187,27 +187,25 @@ void deplacement (Input *input, Pos *pos)
 
 void deplacementMonstre (Pos *pos, Monstre *monstre)
 {
+    pos->compteur += 1;
+    printf("%d \n", pos->compteur);
+    monstre->NumSprit+=1;
+
+    if (pos ->compteur <= 100){
     if (pos->inposx<monstre->posmonsx)
     {
         monstre->posmonsx-=2;
-        monstre->NumSprit+=1;
         monstre->Direction=0;
-    
-        
     }
 
     if (pos->inposx>monstre->posmonsx)
     {
         monstre->posmonsx+=2;
-        monstre->NumSprit+=1;
-        monstre->Direction=0;
-    
-        
+        monstre->Direction=0;    
     }
     if (pos->inposy<monstre->posmonsy)
     {
         monstre->posmonsy-=2;
-        monstre->NumSprit+=1;
         monstre->Direction=0;
         
         
@@ -215,13 +213,9 @@ void deplacementMonstre (Pos *pos, Monstre *monstre)
     if (pos->inposy>monstre->posmonsy)
     {
         monstre->posmonsy+=2;
-        monstre->NumSprit+=1;
         monstre->Direction=1;
-        
-        
     }
-    
-
+    }
 
         if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
         {
@@ -249,15 +243,51 @@ void deplacementMonstre (Pos *pos, Monstre *monstre)
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
             
         }
-
         if (monstre->NumSprit>=35 )
-
-       {
+        {
         SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
         drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
         monstre->NumSprit =0;
-        monstre->attack+=1;
+        //monstre->attack+=1;
         }
+
+        if  (pos->compteur>100){
+            if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Meduseneutre.png");
+            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+        }
+        if (monstre->NumSprit==5 || monstre->NumSprit==6 || monstre->NumSprit==7 || monstre->NumSprit==8 || monstre->NumSprit==31 || monstre->NumSprit==32 || monstre->NumSprit==33 || monstre->NumSprit==34 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
+            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+        }
+        if (monstre->NumSprit==9 || monstre->NumSprit==10 || monstre->NumSprit==11 || monstre->NumSprit==12|| monstre->NumSprit==26 || monstre->NumSprit==27 || monstre->NumSprit==28 || monstre->NumSprit==29 || monstre->NumSprit==30 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche2.png");
+            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+        }
+        if (monstre->NumSprit==13 || monstre->NumSprit==14 || monstre->NumSprit==15 || monstre->NumSprit==21 || monstre->NumSprit==22 || monstre->NumSprit==23 || monstre->NumSprit==24 || monstre->NumSprit==25 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche3.png");
+            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+        }
+        if (monstre->NumSprit==17 || monstre->NumSprit==18 || monstre->NumSprit==19 || monstre->NumSprit==20 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche4.png");
+            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            
+        }
+        if (pos->compteur>200){
+            pos->compteur=0;
+        }
+        
+        }
+
+        
+        
+
+        
 
     //if (monstre->attack==2)
 
