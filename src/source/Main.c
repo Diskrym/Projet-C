@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
 lvl.Num=1;
-input.Life=6;
+input.Life=3;
  
 // Initialisation de la SDL
 init("SDL 2");
