@@ -28,4 +28,5 @@ extern void s_sleep(void);
 extern void AffichageVie(Input *input);
 extern void GameOver (void);
 extern void AffichageLevel (Lvl *lvl);
+extern int inside (Pos *pos, Monstre *monstre)
 #endif
