@@ -3,7 +3,6 @@
 Input input;
 Pos pos;
 Monstre monstre;
-int coup = 0;
 
 void gestionInputs(Input *input)
 {
@@ -146,6 +145,7 @@ void deplacement (Input *input, Pos *pos)
 
     if (input->Direction ==0)
     {
+        if( pos->coup == 0){
         if (input->NumSprit==0 || input->NumSprit ==1 || input->NumSprit==4 || input->NumSprit ==5)
         {
             SDL_Texture *chevalier=loadImage("src/graphics/neutreD.png");
@@ -162,10 +162,18 @@ void deplacement (Input *input, Pos *pos)
             drawImage(chevalier,pos->inposx,pos->inposy);
             input->NumSprit =0;
         }
+        }
+        else
+        {
+        SDL_Texture *chevalier=loadImage("src/graphics/DégatD.png");
+        drawImage(chevalier,pos->inposx,pos->inposy);
+        }
     }
+    
 
     if (input->Direction ==1)
     {
+        if (pos->coup == 0){
         if (input->NumSprit==0 || input->NumSprit ==1 || input->NumSprit==4 || input->NumSprit ==5)
         {
             SDL_Texture *chevalier=loadImage("src/graphics/neutreG.png");
@@ -182,7 +190,14 @@ void deplacement (Input *input, Pos *pos)
             drawImage(chevalier,pos->inposx,pos->inposy);
             input->NumSprit =0;
         }
+        }
+        else
+    {
+        SDL_Texture *chevalier=loadImage("src/graphics/DégatG.png");
+        drawImage(chevalier,pos->inposx,pos->inposy);
     }
+    }
+    
 }
 
 
@@ -277,9 +292,9 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
             drawImage(Spriteattaque,monstre->posmonsx -23 ,monstre->posmonsy - 23);
 
             if(inside(pos, monstre)==1 && (monstre->NumSprit==25 || monstre->NumSprit==15)){
-                if (coup == 0){
+                if (pos->coup == 0){
                     input->Life--;
-                    coup =1 ;
+                    pos->coup =1 ;
                 }
                 
             }
@@ -292,7 +307,7 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
         }
         if (pos->compteur>140){
             pos->compteur=0;
-            coup = 0;
+            pos->coup = 0;
         }
         
         }

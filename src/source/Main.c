@@ -26,7 +26,7 @@ init("SDL 2");
     LoadMonstre(&monstre, 70,70);
     }
     
-    //  if (lvl=1)
+    //  if (lvl.Num=1)
     //  {LoadMonstre(&monstre, 64,64);
     //  LoadMonstre(&monstre1,300,300);}
  
