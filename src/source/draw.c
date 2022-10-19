@@ -82,13 +82,6 @@ void delay(unsigned int frameLimit)
 
 
 
-void texte ()
-{
-
-
-}
-
-
 
 void AffichageVie (Input *input)
 {
@@ -97,7 +90,7 @@ while (i<=input->Life)
 {
 SDL_Texture *Vie=loadImage("src/graphics/Vie.png");
 drawImage(Vie,SCREEN_WIDTH-(i*34),0);
-i=1;
+i+=1;
 }
 }
 
