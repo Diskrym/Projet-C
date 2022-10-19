@@ -19,4 +19,5 @@
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 384
 #define SPRITE_SIZE 64
+#define SPRITE_HITBOX_MIN 10
 #endif

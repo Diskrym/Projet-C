@@ -43,8 +43,6 @@ init("SDL 2");
         //On dessine tout
         drawGame();
         
-        printf("%d", input.Life);
-
         //Gestion des inputs et des déplacements
         deplacement(&input,&pos);
         deplacementMonstre(&pos, &monstre);
