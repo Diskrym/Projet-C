@@ -33,5 +33,11 @@ typedef struct Pos
 {
     int inposx, inposy, compteur;
 } Pos;
+
+typedef struct Lvl
+{
+    int Num;
+} Lvl;
+ 
  
 #endif

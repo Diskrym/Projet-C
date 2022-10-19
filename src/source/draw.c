@@ -1,15 +1,28 @@
 #include "../header/proto.h"
 Input input;
+Lvl lvl;
 
 void drawGame(void)
 {
     // Affiche le fond (background) aux coordonnées (0,0)
     drawImage(getBackground(), 0, 0);
     AffichageVie (&input);
+    AffichageLevel(&lvl);
     // Affiche l'écran
     SDL_RenderPresent(getrenderer());
     // Délai
     SDL_Delay(1);
+}
+
+
+void GameOver (void)
+{
+
+SDL_Texture *GameOver=loadImage("src/graphics/GameOver.png");
+drawImage(GameOver,0,0);
+SDL_RenderPresent(getrenderer());
+SDL_Delay(3000);
+
 }
 
 SDL_Texture *loadImage(char *name)
@@ -86,4 +99,16 @@ SDL_Texture *Vie=loadImage("src/graphics/Vie.png");
 drawImage(Vie,SCREEN_WIDTH-(i/2*34),0);
 i+=2;
 }
+}
+
+void AffichageLevel (Lvl *lvl)
+{
+SDL_Texture *Level=loadImage("src/graphics/Level.png");
+drawImage(Level,0,0);
+if (lvl->Num==1)
+{
+SDL_Texture *Level=loadImage("src/graphics/1.png");
+drawImage(Level,139,0);
+}
+
 }
