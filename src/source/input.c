@@ -42,7 +42,7 @@ void getInput(Input *input )
                         input->jump = 1;
                     break;
  
-                    case SDLK_v:
+                    case SDLK_SPACE:
                         input->attack = 1;
                     break;
  
