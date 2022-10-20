@@ -15,6 +15,7 @@ unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
 lvl.Num=1;
 input.Life=3;
+monstre.Life=3;
  
 // Initialisation de la SDL
 init("SDL 2");
@@ -44,7 +45,7 @@ init("SDL 2");
         drawGame();
         
         //Gestion des inputs et des déplacements
-        deplacement(&input,&pos);
+        deplacement(&input,&pos,&monstre);
         deplacementMonstre(&pos, &monstre, &input);
         //deplacementMonstre(&pos, &monstre1);
         SDL_RenderPresent(getrenderer());
@@ -57,6 +58,11 @@ init("SDL 2");
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;
         if (input.Life<=0)
+        {
+        GameOver ();
+        exit(0);
+        }
+        if (monstre.Life<=0)
         {
         GameOver ();
         exit(0);

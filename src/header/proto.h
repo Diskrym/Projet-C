@@ -21,7 +21,7 @@ extern void initMaps(void);
 extern void LoadJoueur(Pos *pos);
 extern void LoadMonstre(Monstre *monstre,int x, int y);
 extern SDL_Texture *loadImage(char *name);
-extern void deplacement(Input *input, Pos *pos); 
+extern void deplacement (Input *input, Pos *pos, Monstre *monstre);
 extern void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input);
 extern void collision (Pos *pos, Monstre *monstre, Input *input);
 //extern void s_sleep(void);
@@ -29,4 +29,6 @@ extern void AffichageVie(Input *input);
 extern void GameOver (void);
 extern void AffichageLevel (Lvl *lvl);
 extern int inside (Pos *pos, Monstre *monstre);
+extern int insidechevalier (Pos *pos, Monstre *monstre, Input *input);
+
 #endif
