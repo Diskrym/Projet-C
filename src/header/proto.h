@@ -30,6 +30,6 @@ extern void GameOver (void);
 extern void AffichageLevel (Lvl *lvl);
 extern int inside (Pos *pos, Monstre *monstre);
 extern int insidechevalier (Pos *pos, Monstre *monstre, Input *input);
-extern void Win (void)
+extern void Win (void);
 
 #endif

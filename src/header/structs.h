@@ -9,7 +9,7 @@
 typedef struct Input
 {
  
-    int left, right, up, down, jump, attack, enter, erase, pause, NumSprit, Numattack;
+    int left, right, up, down, jump, attack, enter, erase, pause;
  
 } Input;
 
@@ -31,7 +31,7 @@ SDL_Texture *background;
 
 typedef struct Pos
 {
-    int inposx, inposy, compteur, coup, Eattack, life, Direction;
+    int inposx, inposy, compteur, coup, Eattack, life, Direction, NumSprit, Numattack;
 } Pos;
 
 typedef struct Lvl

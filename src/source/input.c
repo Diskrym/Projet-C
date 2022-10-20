@@ -124,28 +124,28 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
     if (input->left==1)
     {
         pos->inposx-=3;
-        input->NumSprit+=1;
+        pos->NumSprit+=1;
         pos->Direction =1;
     }
     if (input->right==1)
     {
         pos->inposx+=3;
-        input->NumSprit+=1;
+        pos->NumSprit+=1;
         pos->Direction =0;
     }
     if (input->up==1)
     {
         pos->inposy-=3;
-        input->NumSprit+=1;   
+        pos->NumSprit+=1;   
     }
     if (input->down==1)
     {
         pos->inposy+=3;
-        input->NumSprit+=1;
+        pos->NumSprit+=1;
     }
     if (input->attack==1)
     {
-        input->NumSprit=0;
+        pos->NumSprit=0;
         pos->Eattack=1;
     }
     if(pos->Eattack==0)
@@ -154,21 +154,21 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
         {
             if( pos->coup == 0)
             {
-                if (input->NumSprit==0 || input->NumSprit ==1 || input->NumSprit==4 || input->NumSprit ==5)
+                if (pos->NumSprit==0 || pos->NumSprit ==1 || pos->NumSprit==4 || pos->NumSprit ==5)
                 {
                     SDL_Texture *chevalier=loadImage("src/graphics/neutreD.png");
                     drawImage(chevalier,pos->inposx,pos->inposy);
                 }
-                if (input->NumSprit==2 || input->NumSprit==3  )
+                if (pos->NumSprit==2 || pos->NumSprit==3  )
                 {
                     SDL_Texture *chevalier=loadImage("src/graphics/marche1D.png");
                     drawImage(chevalier,pos->inposx,pos->inposy);
                 }
-                if (input->NumSprit >=7 || input->NumSprit ==6 )
+                if (pos->NumSprit >=7 || pos->NumSprit ==6 )
                 {
                     SDL_Texture *chevalier=loadImage("src/graphics/marche2D.png");
                     drawImage(chevalier,pos->inposx,pos->inposy);
-                    input->NumSprit =0;
+                    pos->NumSprit =0;
                 }
             }
             else
@@ -181,21 +181,21 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
         {
             if (pos->coup == 0)
             {
-                if (input->NumSprit==0 || input->NumSprit ==1 || input->NumSprit==4 || input->NumSprit ==5)
+                if (pos->NumSprit==0 || pos->NumSprit ==1 || pos->NumSprit==4 || pos->NumSprit ==5)
                 {
                     SDL_Texture *chevalier=loadImage("src/graphics/neutreG.png");
                     drawImage(chevalier,pos->inposx,pos->inposy);
                 }
-                if (input->NumSprit==2 || input->NumSprit==3  )
+                if (pos->NumSprit==2 || pos->NumSprit==3  )
                 {
                     SDL_Texture *chevalier=loadImage("src/graphics/marche1G.png");
                     drawImage(chevalier,pos->inposx,pos->inposy);
                 }
-                if (input->NumSprit >=7 || input->NumSprit ==6 )
+                if (pos->NumSprit >=7 || pos->NumSprit ==6 )
                 {
                     SDL_Texture *chevalier=loadImage("src/graphics/marche2G.png");
                     drawImage(chevalier,pos->inposx,pos->inposy);
-                    input->NumSprit =0;
+                    pos->NumSprit =0;
                 }   
             }
             else
@@ -207,36 +207,36 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
     }
     if (pos->Eattack==1)
     {
-        input->Numattack+=1;
+        pos->Numattack+=1;
         if (pos->Direction==1)
         {   
-            if (input->Numattack==0 || input->Numattack==1 || input->Numattack==3 || input->Numattack==4 )
+            if (pos->Numattack==0 || pos->Numattack==1 || pos->Numattack==3 || pos->Numattack==4 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee2G.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
             }
-            if (input->Numattack==5 || input->Numattack==6 || input->Numattack==7 || input->Numattack==8 || input->Numattack==21 || input->Numattack==22 || input->Numattack==23 || input->Numattack==24 )
+            if (pos->Numattack==5 || pos->Numattack==6 || pos->Numattack==7 || pos->Numattack==8 || pos->Numattack==21 || pos->Numattack==22 || pos->Numattack==23 || pos->Numattack==24 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee3G.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
             }
-            if (input->Numattack==9 || input->Numattack==10 || input->Numattack==11 || input->Numattack==12|| input->Numattack==17 || input->Numattack==18 || input->Numattack==19 || input->Numattack==20 )
+            if (pos->Numattack==9 || pos->Numattack==10 || pos->Numattack==11 || pos->Numattack==12|| pos->Numattack==17 || pos->Numattack==18 || pos->Numattack==19 || pos->Numattack==20 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee4G.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
             }
-            if (input->Numattack==13 || input->Numattack==14 || input->Numattack==15 || input->Numattack==16 )
+            if (pos->Numattack==13 || pos->Numattack==14 || pos->Numattack==15 || pos->Numattack==16 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee5G.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueG.png");
                 drawImage(Spriteattaque,pos->inposx-21,pos->inposy+32);
-                if(insidechevalier(pos, monstre, input)==1 && input->Numattack==15)
+                if(insidechevalier(pos, monstre, input)==1 && pos->Numattack==15)
                 {   
                 monstre->Life--;  
                 }
             }
-            if (input->Numattack==17 || input->Numattack==18 || input->Numattack==19 || input->Numattack==20 )
+            if (pos->Numattack==17 || pos->Numattack==18 || pos->Numattack==19 || pos->Numattack==20 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee2G.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
@@ -244,39 +244,39 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
         }
         if (pos->Direction==0)
         {
-            if (input->Numattack==0 || input->Numattack==1 || input->Numattack==3 || input->Numattack==4 )
+            if (pos->Numattack==0 || pos->Numattack==1 || pos->Numattack==3 || pos->Numattack==4 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee2D.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
             }
-            if (input->Numattack==5 || input->Numattack==6 || input->Numattack==7 || input->Numattack==8 || input->Numattack==21 || input->Numattack==22 || input->Numattack==23 || input->Numattack==24 )
+            if (pos->Numattack==5 || pos->Numattack==6 || pos->Numattack==7 || pos->Numattack==8 || pos->Numattack==21 || pos->Numattack==22 || pos->Numattack==23 || pos->Numattack==24 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee3D.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
             }
-            if (input->Numattack==9 || input->Numattack==10 || input->Numattack==11 || input->Numattack==12|| input->Numattack==17 || input->Numattack==18 || input->Numattack==19 || input->Numattack==20 )
+            if (pos->Numattack==9 || pos->Numattack==10 || pos->Numattack==11 || pos->Numattack==12|| pos->Numattack==17 || pos->Numattack==18 || pos->Numattack==19 || pos->Numattack==20 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee4D.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
             }
-            if (input->Numattack==13 || input->Numattack==14 || input->Numattack==15 || input->Numattack==16 )
+            if (pos->Numattack==13 || pos->Numattack==14 || pos->Numattack==15 || pos->Numattack==16 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee5D.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueD.png");
                 drawImage(Spriteattaque,pos->inposx+SPRITE_SIZE ,pos->inposy +32);
 
-                if(insidechevalier(pos, monstre, input)==1 && input->Numattack==15)
+                if(insidechevalier(pos, monstre, input)==1 && pos->Numattack==15)
                 {
                 monstre->Life--;
                 }
             }
         }
-        if(input->Numattack > 24)
+        if(pos->Numattack > 24)
         {
-            input->Numattack=0;
+            pos->Numattack=0;
             pos->Eattack = 0;
-            printf("%d\n",input->Numattack);
+            printf("%d\n",pos->Numattack);
         }
     }
 }
