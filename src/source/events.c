@@ -119,3 +119,21 @@ int inside (Pos *pos, Monstre *monstre)
         return 1;
     }
 }
+
+int insidechevalier (Pos *pos, Monstre *monstre)
+{
+    int x=0;
+    int y=0;
+    if ((pos->inposx>=monstre->posmonsx-23 || pos->inposx+SPRITE_SIZE>=monstre->posmonsx-23) && (pos->inposx<=monstre->posmonsx+SPRITE_SIZE+23 || pos->inposx + SPRITE_SIZE <=monstre->posmonsx+SPRITE_SIZE+23))
+    {
+        x=1;
+    }
+    if ((pos->inposy>=monstre->posmonsy-23 || pos->inposy+SPRITE_SIZE>=monstre->posmonsy-23) && (pos->inposy<=monstre->posmonsy+SPRITE_SIZE+23 || pos->inposy + SPRITE_SIZE <=monstre->posmonsy+SPRITE_SIZE+23))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {
+        return 1;
+    }
+}
