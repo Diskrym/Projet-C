@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
 lvl.Num=1;
-input.Life=3;
+pos.life=3;
 monstre.Life=3;
  
 // Initialisation de la SDL
@@ -61,7 +61,7 @@ init("SDL 2");
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;
-        if (input.Life<=0)
+        if (pos.life<=0)
         {
         GameOver ();
         exit(0);

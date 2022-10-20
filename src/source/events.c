@@ -124,7 +124,7 @@ int insidechevalier (Pos *pos, Monstre *monstre, Input *input)
 {
     int x=0;
     int y=0;
-    if (input->Direction==1)
+    if (pos->Direction==1)
     {
     if ((monstre->posmonsx>=pos->inposx-21 || monstre->posmonsx+SPRITE_SIZE>=pos->inposx-21) && (monstre->posmonsx>=pos->inposx || monstre->posmonsx+SPRITE_SIZE>=pos->inposx))
     {
@@ -140,7 +140,7 @@ int insidechevalier (Pos *pos, Monstre *monstre, Input *input)
     }
     }
 
-    if (input->Direction==0)
+    if (pos->Direction==0)
     {
     if ((monstre->posmonsx>=pos->inposx+SPRITE_SIZE || monstre->posmonsx+SPRITE_SIZE>=pos->inposx+SPRITE_SIZE) && (monstre->posmonsx>=pos->inposx+SPRITE_SIZE+21|| monstre->posmonsx+SPRITE_SIZE>=pos->inposx+SPRITE_SIZE+21))
     {
