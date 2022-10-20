@@ -25,6 +25,16 @@ SDL_Delay(3000);
 
 }
 
+void Win (void)
+{
+
+SDL_Texture *GameOver=loadImage("src/graphics/Win.png");
+drawImage(GameOver,0,0);
+SDL_RenderPresent(getrenderer());
+SDL_Delay(3000);
+
+}
+
 SDL_Texture *loadImage(char *name)
 { 
     /* Charge les images avec SDL Image dans une SDL_Surface */

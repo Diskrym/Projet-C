@@ -68,7 +68,7 @@ init("SDL 2");
         }
         if (monstre.Life<=0)
         {
-        GameOver ();
+        Win ();
         exit(0);
         }
 
