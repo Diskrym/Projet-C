@@ -3,7 +3,6 @@
 Input input;
 Pos pos;
 Monstre monstre;
-int coup = 0;
 
 void gestionInputs(Input *input)
 {
@@ -122,10 +121,7 @@ void deplacement (Input *input, Pos *pos)
         pos->inposx-=5;
         input->NumSprit+=1;
         input->Direction =1;
-
-        
     }
-
     if (input->right==1)
     {
         pos->inposx+=5;
@@ -135,52 +131,66 @@ void deplacement (Input *input, Pos *pos)
     if (input->up==1)
     {
         pos->inposy-=5;
-        input->NumSprit+=1;
-        
+        input->NumSprit+=1;   
     }
     if (input->down==1)
     {
         pos->inposy+=5;
         input->NumSprit+=1;
     }
-
     if (input->Direction ==0)
     {
-        if (input->NumSprit==0 || input->NumSprit ==1 || input->NumSprit==4 || input->NumSprit ==5)
+        if( pos->coup == 0)
         {
-            SDL_Texture *chevalier=loadImage("src/graphics/neutreD.png");
-            drawImage(chevalier,pos->inposx,pos->inposy);
+            if (input->NumSprit==0 || input->NumSprit ==1 || input->NumSprit==4 || input->NumSprit ==5)
+            {
+                SDL_Texture *chevalier=loadImage("src/graphics/neutreD.png");
+                drawImage(chevalier,pos->inposx,pos->inposy);
+            }
+            if (input->NumSprit==2 || input->NumSprit==3  )
+            {
+                SDL_Texture *chevalier=loadImage("src/graphics/marche1D.png");
+                drawImage(chevalier,pos->inposx,pos->inposy);
+            }
+            if (input->NumSprit >=7 || input->NumSprit ==6 )
+            {
+                SDL_Texture *chevalier=loadImage("src/graphics/marche2D.png");
+                drawImage(chevalier,pos->inposx,pos->inposy);
+                input->NumSprit =0;
+            }
         }
-        if (input->NumSprit==2 || input->NumSprit==3  )
+        else
         {
-            SDL_Texture *chevalier=loadImage("src/graphics/marche1D.png");
+            SDL_Texture *chevalier=loadImage("src/graphics/DégatD.png");
             drawImage(chevalier,pos->inposx,pos->inposy);
-        }
-        if (input->NumSprit >=7 || input->NumSprit ==6 )
-        {
-            SDL_Texture *chevalier=loadImage("src/graphics/marche2D.png");
-            drawImage(chevalier,pos->inposx,pos->inposy);
-            input->NumSprit =0;
         }
     }
 
     if (input->Direction ==1)
     {
-        if (input->NumSprit==0 || input->NumSprit ==1 || input->NumSprit==4 || input->NumSprit ==5)
+        if (pos->coup == 0)
         {
-            SDL_Texture *chevalier=loadImage("src/graphics/neutreG.png");
-            drawImage(chevalier,pos->inposx,pos->inposy);
+            if (input->NumSprit==0 || input->NumSprit ==1 || input->NumSprit==4 || input->NumSprit ==5)
+            {
+                SDL_Texture *chevalier=loadImage("src/graphics/neutreG.png");
+                drawImage(chevalier,pos->inposx,pos->inposy);
+            }
+            if (input->NumSprit==2 || input->NumSprit==3  )
+            {
+                SDL_Texture *chevalier=loadImage("src/graphics/marche1G.png");
+                drawImage(chevalier,pos->inposx,pos->inposy);
+            }
+            if (input->NumSprit >=7 || input->NumSprit ==6 )
+            {
+                SDL_Texture *chevalier=loadImage("src/graphics/marche2G.png");
+                drawImage(chevalier,pos->inposx,pos->inposy);
+                input->NumSprit =0;
+            }
         }
-        if (input->NumSprit==2 || input->NumSprit==3  )
+        else
         {
-            SDL_Texture *chevalier=loadImage("src/graphics/marche1G.png");
+            SDL_Texture *chevalier=loadImage("src/graphics/DégatG.png");
             drawImage(chevalier,pos->inposx,pos->inposy);
-        }
-        if (input->NumSprit >=7 || input->NumSprit ==6 )
-        {
-            SDL_Texture *chevalier=loadImage("src/graphics/marche2G.png");
-            drawImage(chevalier,pos->inposx,pos->inposy);
-            input->NumSprit =0;
         }
     }
 }
@@ -191,31 +201,28 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
     pos->compteur += 1;
     monstre->NumSprit+=1;
     
-    if (pos ->compteur <= 100){
-    if (pos->inposx<monstre->posmonsx)
+    if (pos ->compteur <= 100)
     {
-        monstre->posmonsx-=2;
-        monstre->Direction=0;
-    }
-
-    if (pos->inposx>monstre->posmonsx)
-    {
-        monstre->posmonsx+=2;
-        monstre->Direction=0;    
-    }
-    if (pos->inposy<monstre->posmonsy)
-    {
-        monstre->posmonsy-=2;
-        monstre->Direction=0;
-        
-        
-    }
-    if (pos->inposy>monstre->posmonsy)
-    {
-        monstre->posmonsy+=2;
-        monstre->Direction=1;
-    }
-    
+        if (pos->inposx<monstre->posmonsx)
+        {
+            monstre->posmonsx-=2;
+            monstre->Direction=0;
+        }
+        if (pos->inposx>monstre->posmonsx)
+        {
+            monstre->posmonsx+=2;
+            monstre->Direction=0;    
+        }
+        if (pos->inposy<monstre->posmonsy)
+        {
+            monstre->posmonsy-=2;
+            monstre->Direction=0;  
+        }
+        if (pos->inposy>monstre->posmonsy)
+        {
+            monstre->posmonsy+=2;
+            monstre->Direction=1;
+        }
 
         if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
         {
@@ -240,8 +247,7 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
         if (monstre->NumSprit==17 || monstre->NumSprit==18 || monstre->NumSprit==19 || monstre->NumSprit==20 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche4.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
-            
+            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);    
         }
         if (monstre->NumSprit>=35 )
         {
@@ -249,12 +255,14 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
         drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
         //monstre->attack+=1;
         }
-        }
-        if (monstre->NumSprit>=35){
-            monstre->NumSprit =0;
-        }
-        if  (pos->compteur>100){
-            if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
+    }
+    if (monstre->NumSprit>=35)
+    {
+        monstre->NumSprit =0;
+    }
+    if  (pos->compteur>100)
+    {
+        if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup1.png");
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
@@ -276,32 +284,24 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
             SDL_Texture *Spriteattaque=loadImage("src/graphics/AttaqueMeduse.png");
             drawImage(Spriteattaque,monstre->posmonsx -23 ,monstre->posmonsy - 23);
 
-            if(inside(pos, monstre)==1 && (monstre->NumSprit==25 || monstre->NumSprit==15)){
-                if (coup == 0){
+            if(inside(pos, monstre)==1 && (monstre->NumSprit==25 || monstre->NumSprit==15))
+            {
+                if (pos->coup == 0)
+                {
                     input->Life--;
-                    coup =1 ;
+                    pos->coup =1 ;
                 }
-                
             }
         }
         if (monstre->NumSprit==17 || monstre->NumSprit==18 || monstre->NumSprit==19 || monstre->NumSprit==20 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup2.png");
             drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
-            
         }
-        if (pos->compteur>140){
+        if (pos->compteur>140)
+        {
             pos->compteur=0;
-            coup = 0;
+            pos->coup = 0;
         }
-        
-        }
- 
-        
-        
-
-        
-
-    //if (monstre->attack==2)
-
+    }
 }
