@@ -5,19 +5,19 @@ void collision (Pos *pos, Monstre *monstre, Input *input)
     //collision joueur mur
     if (pos->inposx <= 25)
         {
-            pos->inposx+=5;
+            pos->inposx+=3;
         }
      if (pos->inposx >= SCREEN_WIDTH-SPRITE_SIZE-25)
         {
-            pos->inposx-=5;
+            pos->inposx-=3;
         }
     if (pos->inposy <= 25)
         {
-            pos->inposy+=5;
+            pos->inposy+=3;
         }
     if (pos->inposy >= SCREEN_HEIGHT-SPRITE_SIZE-20)
         {
-            pos->inposy-=5;
+            pos->inposy-=3;
         }
 
     //collision entre les monstre et joueur
@@ -25,22 +25,22 @@ void collision (Pos *pos, Monstre *monstre, Input *input)
 
     if (((pos->inposy <= monstre->posmonsy + SPRITE_SIZE)&&(pos->inposy >= monstre->posmonsy )) && (((monstre->posmonsx >= pos->inposx) && (monstre->posmonsx <= pos->inposx+SPRITE_SIZE)) || ((monstre->posmonsx + SPRITE_SIZE >= pos->inposx) && (monstre->posmonsx + SPRITE_SIZE <= pos->inposx+SPRITE_SIZE))))
     {
-        monstre->posmonsy-=2;
+        monstre->posmonsy-=1;
         //input->Life--;
         if (input->up == 1)
         {
-          pos->inposy+=5;  
+          pos->inposy+=3;  
         }
     }
 
     //collision bas joueur
     if (((pos->inposy + SPRITE_SIZE >= monstre->posmonsy) && (pos->inposy <= monstre->posmonsy)) && (((monstre->posmonsx >= pos->inposx) && (monstre->posmonsx <= pos->inposx+SPRITE_SIZE)) || ((monstre->posmonsx + SPRITE_SIZE >= pos->inposx) && (monstre->posmonsx + SPRITE_SIZE <= pos->inposx+SPRITE_SIZE))))
     {
-        monstre->posmonsy+=2;
+        monstre->posmonsy+=1;
         //input->Life--;
         if (input->down == 1)
         {
-          pos->inposy-=5;  
+          pos->inposy-=3;  
         }   
     }
     
@@ -51,21 +51,21 @@ void collision (Pos *pos, Monstre *monstre, Input *input)
         {
             if ((monstre->posmonsy >= pos->inposy) && (monstre->posmonsy <= pos->inposy+SPRITE_SIZE))
             {
-                monstre->posmonsx+=2;
+                monstre->posmonsx+=1;
                 //input->Life--;
                 if (input->right == 1)
                 {
-                    pos->inposx-=5;  
+                    pos->inposx-=3;  
                 }   
             }
 
             if ((monstre->posmonsy + SPRITE_SIZE >= pos->inposy) && (monstre->posmonsy + SPRITE_SIZE <= pos->inposy + SPRITE_SIZE))
             {
-                monstre->posmonsx+=2;
+                monstre->posmonsx+=1;
                 //input->Life--;
                 if (input->right == 1)
                 {
-                    pos->inposx-=5;  
+                    pos->inposx-=3;  
                 }  
             }
             
@@ -80,20 +80,20 @@ void collision (Pos *pos, Monstre *monstre, Input *input)
         {
             if (monstre->posmonsy >= pos->inposy && monstre->posmonsy <= pos->inposy+SPRITE_SIZE)
             {
-                monstre->posmonsx-=2;
+                monstre->posmonsx-=1;
                 //input->Life--;
                 if (input->left == 1)
                 {
-                    pos->inposx+=5;  
+                    pos->inposx+=3;  
                 }
             }
             if (monstre->posmonsy + SPRITE_SIZE >= pos->inposy && monstre->posmonsy + SPRITE_SIZE <= pos->inposy + SPRITE_SIZE)
             {
-                monstre->posmonsx-=2;
+                monstre->posmonsx-=1;
                 //input->Life--;
                 if (input->left == 1)
                 {
-                    pos->inposx+=5;  
+                    pos->inposx+=3;  
                 }
             } 
         } 

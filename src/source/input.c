@@ -118,24 +118,24 @@ void deplacement (Input *input, Pos *pos)
 {
     if (input->left==1)
     {
-        pos->inposx-=5;
+        pos->inposx-=3;
         input->NumSprit+=1;
         input->Direction =1;
     }
     if (input->right==1)
     {
-        pos->inposx+=5;
+        pos->inposx+=3;
         input->NumSprit+=1;
         input->Direction =0;
     }
     if (input->up==1)
     {
-        pos->inposy-=5;
+        pos->inposy-=3;
         input->NumSprit+=1;   
     }
     if (input->down==1)
     {
-        pos->inposy+=5;
+        pos->inposy+=3;
         input->NumSprit+=1;
     }
     if (input->Direction ==0)
@@ -205,22 +205,22 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
     {
         if (pos->inposx<monstre->posmonsx)
         {
-            monstre->posmonsx-=2;
+            monstre->posmonsx-=1;
             monstre->Direction=0;
         }
         if (pos->inposx>monstre->posmonsx)
         {
-            monstre->posmonsx+=2;
+            monstre->posmonsx+=1;
             monstre->Direction=0;    
         }
         if (pos->inposy<monstre->posmonsy)
         {
-            monstre->posmonsy-=2;
+            monstre->posmonsy-=1;
             monstre->Direction=0;  
         }
         if (pos->inposy>monstre->posmonsy)
         {
-            monstre->posmonsy+=2;
+            monstre->posmonsy+=1;
             monstre->Direction=1;
         }
 

@@ -9,7 +9,7 @@ void drawGame(void)
     AffichageVie (&input);
     AffichageLevel(&lvl);
     // Affiche l'écran
-    SDL_RenderPresent(getrenderer());
+    
     // Délai
     SDL_Delay(1);
 }
