@@ -16,7 +16,7 @@ typedef struct Input
 typedef struct Monstre
 {
  
-    int attack, NumSprit, Direction, posmonsx, posmonsy, coup;
+    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life;
  
 } Monstre;
 

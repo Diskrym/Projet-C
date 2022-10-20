@@ -119,3 +119,40 @@ int inside (Pos *pos, Monstre *monstre)
         return 1;
     }
 }
+
+int insidechevalier (Pos *pos, Monstre *monstre, Input *input)
+{
+    int x=0;
+    int y=0;
+    if (input->Direction==1)
+    {
+    if ((monstre->posmonsx>=pos->inposx-21 || monstre->posmonsx+SPRITE_SIZE>=pos->inposx-21) && (monstre->posmonsx>=pos->inposx || monstre->posmonsx+SPRITE_SIZE>=pos->inposx))
+    {
+        x=1;
+    }
+    if ((monstre->posmonsy>=pos->inposy+32 || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+32) && (monstre->posmonsy>=pos->inposy+SPRITE_SIZE || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+SPRITE_SIZE))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {
+        return 1;
+    }
+    }
+
+    if (input->Direction==0)
+    {
+    if ((monstre->posmonsx>=pos->inposx+SPRITE_SIZE || monstre->posmonsx+SPRITE_SIZE>=pos->inposx+SPRITE_SIZE) && (monstre->posmonsx>=pos->inposx+SPRITE_SIZE+21|| monstre->posmonsx+SPRITE_SIZE>=pos->inposx+SPRITE_SIZE+21))
+    {
+        x=1;
+    }
+    if ((monstre->posmonsy>=pos->inposy+32 || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+32) && (monstre->posmonsy>=pos->inposy+SPRITE_SIZE || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+SPRITE_SIZE))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {
+        return 1;
+    }
+    }
+}
