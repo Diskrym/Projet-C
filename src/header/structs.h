@@ -31,7 +31,7 @@ SDL_Texture *background;
 
 typedef struct Pos
 {
-    int inposx, inposy, compteur, coup, Eattack, life, Direction, NumSprit, Numattack;
+    int inposx, inposy, compteur, Eattack, life, Direction, NumSprit, Numattack;
 } Pos;
 
 typedef struct Lvl

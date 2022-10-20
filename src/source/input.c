@@ -152,7 +152,7 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
     {
         if (pos->Direction ==0)
         {
-            if( pos->coup == 0)
+            if( monstre->coup == 0)
             {
                 if (pos->NumSprit==0 || pos->NumSprit ==1 || pos->NumSprit==4 || pos->NumSprit ==5)
                 {
@@ -179,7 +179,7 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
         }
         if (pos->Direction ==1)
         {
-            if (pos->coup == 0)
+            if (monstre->coup == 0)
             {
                 if (pos->NumSprit==0 || pos->NumSprit ==1 || pos->NumSprit==4 || pos->NumSprit ==5)
                 {
@@ -373,10 +373,10 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
 
             if(inside(pos, monstre)==1 && (monstre->NumSprit==25 || monstre->NumSprit==15))
             {
-                if (pos->coup == 0)
+                if (monstre->coup == 0)
                 {
                     pos->life--;
-                    pos->coup =1 ;
+                    monstre->coup =1 ;
                 }
             }
         }
@@ -388,7 +388,7 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
         if (pos->compteur>140)
         {
             pos->compteur=0;
-            pos->coup = 0;
+            monstre->coup = 0;
         }
     }
 }
