@@ -26,7 +26,7 @@ void getInput(Input *input )
             case SDL_QUIT:
                 exit(0);
             break;
-            
+
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym)
                 {
@@ -230,14 +230,10 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee5G.png");
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueG.png");
-                drawImage(Spriteattaque,pos->inposx ,pos->inposy-21);
-                if(insidechevalier(pos, monstre, input)==1 && input->NumSprit==15)
-                {
-                    if (pos->coup == 0)
-                    {
-                        monstre->Life--;
-                        pos->coup =1 ;
-                    }
+                drawImage(Spriteattaque,pos->inposx-21,pos->inposy+32);
+                if(insidechevalier(pos, monstre, input)==1 && input->Numattack==15)
+                {   
+                monstre->Life--;  
                 }
             }
             if (input->Numattack==17 || input->Numattack==18 || input->Numattack==19 || input->Numattack==20 )
@@ -270,13 +266,9 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueD.png");
                 drawImage(Spriteattaque,pos->inposx+SPRITE_SIZE ,pos->inposy +32);
 
-                if(insidechevalier(pos, monstre, input)==1 && input->NumSprit==15)
+                if(insidechevalier(pos, monstre, input)==1 && input->Numattack==15)
                 {
-                    if (pos->coup == 0)
-                    {
-                        monstre->Life--;
-                        pos->coup =1 ;
-                    }
+                monstre->Life--;
                 }
             }
         }
