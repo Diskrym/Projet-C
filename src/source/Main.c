@@ -1,3 +1,6 @@
+//gcc ./src/source/* -o bin/main2.exe -I include -L lib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+//.\bin\Main2.exe
+
 #include "../header/proto.h"
  
 /* Déclaration des variables / structures utilisées par le jeu */
