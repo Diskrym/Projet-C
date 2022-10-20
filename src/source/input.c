@@ -125,13 +125,13 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
     {
         pos->inposx-=3;
         input->NumSprit+=1;
-        input->Direction =1;
+        pos->Direction =1;
     }
     if (input->right==1)
     {
         pos->inposx+=3;
         input->NumSprit+=1;
-        input->Direction =0;
+        pos->Direction =0;
     }
     if (input->up==1)
     {
@@ -150,7 +150,7 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
     }
     if(pos->Eattack==0)
     {
-        if (input->Direction ==0)
+        if (pos->Direction ==0)
         {
             if( pos->coup == 0)
             {
@@ -177,7 +177,7 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
                 drawImage(chevalier,pos->inposx,pos->inposy);
             }
         }
-        if (input->Direction ==1)
+        if (pos->Direction ==1)
         {
             if (pos->coup == 0)
             {
@@ -208,7 +208,7 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
     if (pos->Eattack==1)
     {
         input->Numattack+=1;
-        if (input->Direction==1)
+        if (pos->Direction==1)
         {   
             if (input->Numattack==0 || input->Numattack==1 || input->Numattack==3 || input->Numattack==4 )
             {
@@ -242,7 +242,7 @@ void deplacement (Input *input, Pos *pos, Monstre *monstre)
                 drawImage(Spritechevalier,pos->inposx,pos->inposy);
             }
         }
-        if (input->Direction==0)
+        if (pos->Direction==0)
         {
             if (input->Numattack==0 || input->Numattack==1 || input->Numattack==3 || input->Numattack==4 )
             {
@@ -375,7 +375,7 @@ void deplacementMonstre (Pos *pos, Monstre *monstre, Input *input)
             {
                 if (pos->coup == 0)
                 {
-                    input->Life--;
+                    pos->life--;
                     pos->coup =1 ;
                 }
             }
