@@ -74,12 +74,12 @@ void init(char *title)
  
 }
 
-void LoadJoueur(Pos *pos)
+void LoadJoueur(Joueur *joueur)
 {
     //On charge les données pour la map + joueur
     initMaps();
-    pos->inposx = (SCREEN_WIDTH-SPRITE_SIZE)/2;
-    pos->inposy = (SCREEN_HEIGHT-SPRITE_SIZE)/2;
+    joueur->inposx = (SCREEN_WIDTH-SPRITE_SIZE)/2;
+    joueur->inposy = (SCREEN_HEIGHT-SPRITE_SIZE)/2;
     
 }  
 
