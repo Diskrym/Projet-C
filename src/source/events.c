@@ -126,11 +126,11 @@ int insidechevalier (Pos *pos, Monstre *monstre, Input *input)
     int y=0;
     if (pos->Direction==1)
     {
-    if ((monstre->posmonsx>=pos->inposx-21 || monstre->posmonsx+SPRITE_SIZE>=pos->inposx-21) && (monstre->posmonsx>=pos->inposx || monstre->posmonsx+SPRITE_SIZE>=pos->inposx))
+    if ((monstre->posmonsx>=pos->inposx-21 || monstre->posmonsx+SPRITE_SIZE>=pos->inposx-21) && (monstre->posmonsx<=pos->inposx || monstre->posmonsx+SPRITE_SIZE<=pos->inposx))
     {
         x=1;
     }
-    if ((monstre->posmonsy>=pos->inposy+32 || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+32) && (monstre->posmonsy>=pos->inposy+SPRITE_SIZE || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+SPRITE_SIZE))
+    if ((monstre->posmonsy>=pos->inposy+32 || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+32) && (monstre->posmonsy<=pos->inposy+SPRITE_SIZE || monstre->posmonsy+SPRITE_SIZE<=pos->inposy+SPRITE_SIZE))
     {
         y=1;
     }
@@ -142,11 +142,11 @@ int insidechevalier (Pos *pos, Monstre *monstre, Input *input)
 
     if (pos->Direction==0)
     {
-    if ((monstre->posmonsx>=pos->inposx+SPRITE_SIZE || monstre->posmonsx+SPRITE_SIZE>=pos->inposx+SPRITE_SIZE) && (monstre->posmonsx>=pos->inposx+SPRITE_SIZE+21|| monstre->posmonsx+SPRITE_SIZE>=pos->inposx+SPRITE_SIZE+21))
+    if ((monstre->posmonsx>=pos->inposx+SPRITE_SIZE || monstre->posmonsx+SPRITE_SIZE>=pos->inposx+SPRITE_SIZE) && (monstre->posmonsx<=pos->inposx+SPRITE_SIZE+21|| monstre->posmonsx+SPRITE_SIZE<=pos->inposx+SPRITE_SIZE+21))
     {
         x=1;
     }
-    if ((monstre->posmonsy>=pos->inposy+32 || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+32) && (monstre->posmonsy>=pos->inposy+SPRITE_SIZE || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+SPRITE_SIZE))
+    if ((monstre->posmonsy>=pos->inposy+32 || monstre->posmonsy+SPRITE_SIZE>=pos->inposy+32) && (monstre->posmonsy<=pos->inposy+SPRITE_SIZE || monstre->posmonsy+SPRITE_SIZE<=pos->inposy+SPRITE_SIZE))
     {
         y=1;
     }
