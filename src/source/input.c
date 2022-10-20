@@ -163,6 +163,7 @@ void deplacement (Input *input, Pos *pos)
         {
             SDL_Texture *chevalier=loadImage("src/graphics/DégatD.png");
             drawImage(chevalier,pos->inposx,pos->inposy);
+            
         }
     }
 
