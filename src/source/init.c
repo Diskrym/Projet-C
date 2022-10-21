@@ -83,10 +83,10 @@ void LoadJoueur(Joueur *joueur)
     
 }  
 
-void LoadMonstre(Monstre *monstre , int x, int y)
+void LoadMonstre(Meduse *meduse , int x, int y)
 {  
-    monstre->posmonsx =(x);
-    monstre->posmonsy =(y);
+    meduse->posmonsx =(x);
+    meduse->posmonsy =(y);
 
 }
 

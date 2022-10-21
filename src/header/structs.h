@@ -13,12 +13,12 @@ typedef struct Input
  
 } Input;
 
-typedef struct Monstre
+typedef struct Meduse
 {
  
     int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life;
  
-} Monstre;
+} Meduse;
 
 
 // Structure pour gérer la map à afficher (à compléter plus tard)

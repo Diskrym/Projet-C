@@ -2,7 +2,7 @@
  
 Input input;
 Joueur joueur;
-Monstre monstre;
+Meduse meduse;
 
 void gestionInputs(Input *input)
 {
@@ -148,40 +148,40 @@ void deplacement (Input *input, Joueur *joueur)
         joueur->NumSprit=0;
         joueur->Eattack=1;
     }
-    SpritHeros(joueur, &monstre, input);
+    SpritHeros(joueur, &meduse, input);
 }
 
 
 
-void deplacementMonstre (Joueur *joueur, Monstre *monstre)
+void deplacementMonstre (Joueur *joueur, Meduse *meduse)
 {
     joueur->compteur += 1;
-    monstre->NumSprit+=1;
+    meduse->NumSprit+=1;
     
     if (joueur->compteur <= 100)
     {
-        if (joueur->inposx<monstre->posmonsx)
+        if (joueur->inposx<meduse->posmonsx)
         {
-            monstre->posmonsx-=1;
-            monstre->Direction=0;
+            meduse->posmonsx-=1;
+            meduse->Direction=0;
         }
-        if (joueur->inposx>monstre->posmonsx)
+        if (joueur->inposx>meduse->posmonsx)
         {
-            monstre->posmonsx+=1;
-            monstre->Direction=0;    
+            meduse->posmonsx+=1;
+            meduse->Direction=0;    
         }
-        if (joueur->inposy<monstre->posmonsy)
+        if (joueur->inposy<meduse->posmonsy)
         {
-            monstre->posmonsy-=1;
-            monstre->Direction=0;  
+            meduse->posmonsy-=1;
+            meduse->Direction=0;  
         }
-        if (joueur->inposy>monstre->posmonsy)
+        if (joueur->inposy>meduse->posmonsy)
         {
-            monstre->posmonsy+=1;
-            monstre->Direction=1;
+            meduse->posmonsy+=1;
+            meduse->Direction=1;
         }
 
     }
-    SpritMeduse (monstre, joueur);
+    SpritMeduse (meduse, joueur);
 }
 

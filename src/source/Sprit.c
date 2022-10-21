@@ -1,11 +1,11 @@
 #include "../header/proto.h" 
-void SpritHeros(Joueur *joueur, Monstre *monstre, Input *input)
+void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
 {
     if(joueur->Eattack==0)
     {
         if (joueur->Direction ==0)
         {
-            if( monstre->coup == 0)
+            if( meduse->coup == 0)
             {
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
@@ -32,7 +32,7 @@ void SpritHeros(Joueur *joueur, Monstre *monstre, Input *input)
         }
         if (joueur->Direction ==1)
         {
-            if (monstre->coup == 0)
+            if (meduse->coup == 0)
             {
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
@@ -84,9 +84,9 @@ void SpritHeros(Joueur *joueur, Monstre *monstre, Input *input)
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueG.png");
                 drawImage(Spriteattaque,joueur->inposx-21,joueur->inposy+32);
-                if(insidechevalier(joueur, monstre, input)==1 && joueur->Numattack==15)
+                if(insidechevalier(joueur, meduse, input)==1 && joueur->Numattack==15)
                 {   
-                monstre->Life--;  
+                meduse->Life--;  
                 }
             }
             if (joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19 || joueur->Numattack==20 )
@@ -119,9 +119,9 @@ void SpritHeros(Joueur *joueur, Monstre *monstre, Input *input)
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueD.png");
                 drawImage(Spriteattaque,joueur->inposx+SPRITE_SIZE ,joueur->inposy +32);
 
-                if(insidechevalier(joueur, monstre, input)==1 && joueur->Numattack==15)
+                if(insidechevalier(joueur, meduse, input)==1 && joueur->Numattack==15)
                 {
-                monstre->Life--;
+                meduse->Life--;
                 }
             }
         }
@@ -133,94 +133,94 @@ void SpritHeros(Joueur *joueur, Monstre *monstre, Input *input)
     }
 }
 
-void SpritMeduse (Monstre *monstre, Joueur *joueur)
+void SpritMeduse (Meduse *meduse, Joueur *joueur)
 {
     if (joueur ->compteur <= 100)
     {
-    if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
+    if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==3 || meduse->NumSprit==4 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Meduseneutre.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
         }
-        if (monstre->NumSprit==5 || monstre->NumSprit==6 || monstre->NumSprit==7 || monstre->NumSprit==8 || monstre->NumSprit==31 || monstre->NumSprit==32 || monstre->NumSprit==33 || monstre->NumSprit==34 )
+        if (meduse->NumSprit==5 || meduse->NumSprit==6 || meduse->NumSprit==7 || meduse->NumSprit==8 || meduse->NumSprit==31 || meduse->NumSprit==32 || meduse->NumSprit==33 || meduse->NumSprit==34 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
         }
-        if (monstre->NumSprit==9 || monstre->NumSprit==10 || monstre->NumSprit==11 || monstre->NumSprit==12|| monstre->NumSprit==26 || monstre->NumSprit==27 || monstre->NumSprit==28 || monstre->NumSprit==29 || monstre->NumSprit==30 )
+        if (meduse->NumSprit==9 || meduse->NumSprit==10 || meduse->NumSprit==11 || meduse->NumSprit==12|| meduse->NumSprit==26 || meduse->NumSprit==27 || meduse->NumSprit==28 || meduse->NumSprit==29 || meduse->NumSprit==30 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche2.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
         }
-        if (monstre->NumSprit==13 || monstre->NumSprit==14 || monstre->NumSprit==15 || monstre->NumSprit==21 || monstre->NumSprit==22 || monstre->NumSprit==23 || monstre->NumSprit==24 || monstre->NumSprit==25 )
+        if (meduse->NumSprit==13 || meduse->NumSprit==14 || meduse->NumSprit==15 || meduse->NumSprit==21 || meduse->NumSprit==22 || meduse->NumSprit==23 || meduse->NumSprit==24 || meduse->NumSprit==25 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche3.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
         }
-        if (monstre->NumSprit==17 || monstre->NumSprit==18 || monstre->NumSprit==19 || monstre->NumSprit==20 )
+        if (meduse->NumSprit==17 || meduse->NumSprit==18 || meduse->NumSprit==19 || meduse->NumSprit==20 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche4.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);    
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);    
         }
-        if (monstre->NumSprit>=35 )
+        if (meduse->NumSprit>=35 )
         {
         SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
-        drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
-        //monstre->attack+=1;
+        drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
+        //meduse->attack+=1;
         }
     
-    if (monstre->NumSprit>=35)
+    if (meduse->NumSprit>=35)
     {
-        monstre->NumSprit =0;
+        meduse->NumSprit =0;
     }
     }
     if  (joueur->compteur>100)
     {
-        printf("%d \n", monstre->NumSprit);
-        if (monstre->NumSprit==0 || monstre->NumSprit==1 || monstre->NumSprit==3 || monstre->NumSprit==4 )
+        printf("%d \n", meduse->NumSprit);
+        if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==3 || meduse->NumSprit==4 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup1.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
         }
-        if (monstre->NumSprit==5 || monstre->NumSprit==6 || monstre->NumSprit==7 || monstre->NumSprit==8 || monstre->NumSprit==31 || monstre->NumSprit==32 || monstre->NumSprit==33 || monstre->NumSprit==34 )
+        if (meduse->NumSprit==5 || meduse->NumSprit==6 || meduse->NumSprit==7 || meduse->NumSprit==8 || meduse->NumSprit==31 || meduse->NumSprit==32 || meduse->NumSprit==33 || meduse->NumSprit==34 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup2.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
         }
-        if (monstre->NumSprit==9 || monstre->NumSprit==10 || monstre->NumSprit==11 || monstre->NumSprit==12|| monstre->NumSprit==26 || monstre->NumSprit==27 || monstre->NumSprit==28 || monstre->NumSprit==29 || monstre->NumSprit==30 )
+        if (meduse->NumSprit==9 || meduse->NumSprit==10 || meduse->NumSprit==11 || meduse->NumSprit==12|| meduse->NumSprit==26 || meduse->NumSprit==27 || meduse->NumSprit==28 || meduse->NumSprit==29 || meduse->NumSprit==30 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup3.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
         }
-        if (monstre->NumSprit==13 || monstre->NumSprit==14 || monstre->NumSprit==15 || monstre->NumSprit==21 || monstre->NumSprit==22 || monstre->NumSprit==23 || monstre->NumSprit==24 || monstre->NumSprit==25 )
+        if (meduse->NumSprit==13 || meduse->NumSprit==14 || meduse->NumSprit==15 || meduse->NumSprit==21 || meduse->NumSprit==22 || meduse->NumSprit==23 || meduse->NumSprit==24 || meduse->NumSprit==25 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup4.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
             SDL_Texture *Spriteattaque=loadImage("src/graphics/AttaqueMeduse.png");
-            drawImage(Spriteattaque,monstre->posmonsx -23 ,monstre->posmonsy - 23);
+            drawImage(Spriteattaque,meduse->posmonsx -23 ,meduse->posmonsy - 23);
 
-            if(inside(joueur, monstre)==1 && (monstre->NumSprit==25 || monstre->NumSprit==15))
+            if(inside(joueur, meduse)==1 && (meduse->NumSprit==25 || meduse->NumSprit==15))
             {
-                if (monstre->coup == 0)
+                if (meduse->coup == 0)
                 {
                     joueur->life--;
-                    monstre->coup =1 ;
+                    meduse->coup =1 ;
                 }
             }
         }
-        if (monstre->NumSprit==17 || monstre->NumSprit==18 || monstre->NumSprit==19 || monstre->NumSprit==20 )
+        if (meduse->NumSprit==17 || meduse->NumSprit==18 || meduse->NumSprit==19 || meduse->NumSprit==20 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup2.png");
-            drawImage(Spritemonstre,monstre->posmonsx,monstre->posmonsy);
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
         }
         if (joueur->compteur>140)
         {
             joueur->compteur=0;
-            monstre->coup = 0;
+            meduse->coup = 0;
         }
-        if (monstre->NumSprit>=35)
+        if (meduse->NumSprit>=35)
         {
-            monstre->NumSprit =0;
+            meduse->NumSprit =0;
         }
     }
 }

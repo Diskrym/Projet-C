@@ -1,6 +1,6 @@
 #include "../header/proto.h"
 
-void collision (Joueur *joueur, Monstre *monstre, Input *input)
+void collision (Joueur *joueur, Meduse *meduse, Input *input)
 {
     //collision joueur mur
     if (joueur->inposx <= 25)
@@ -20,12 +20,12 @@ void collision (Joueur *joueur, Monstre *monstre, Input *input)
             joueur->inposy-=3;
         }
 
-    //collision entre les monstre et joueur
+    //collision entre les meduse et joueur
     //collision haut joueur
 
-    if (((joueur->inposy <= monstre->posmonsy + SPRITE_SIZE)&&(joueur->inposy >= monstre->posmonsy )) && (((monstre->posmonsx >= joueur->inposx) && (monstre->posmonsx <= joueur->inposx+SPRITE_SIZE)) || ((monstre->posmonsx + SPRITE_SIZE >= joueur->inposx) && (monstre->posmonsx + SPRITE_SIZE <= joueur->inposx+SPRITE_SIZE))))
+    if (((joueur->inposy <= meduse->posmonsy + SPRITE_SIZE)&&(joueur->inposy >= meduse->posmonsy )) && (((meduse->posmonsx >= joueur->inposx) && (meduse->posmonsx <= joueur->inposx+SPRITE_SIZE)) || ((meduse->posmonsx + SPRITE_SIZE >= joueur->inposx) && (meduse->posmonsx + SPRITE_SIZE <= joueur->inposx+SPRITE_SIZE))))
     {
-        monstre->posmonsy-=1;
+        meduse->posmonsy-=1;
         //input->Life--;
         if (input->up == 1)
         {
@@ -34,9 +34,9 @@ void collision (Joueur *joueur, Monstre *monstre, Input *input)
     }
 
     //collision bas joueur
-    if (((joueur->inposy + SPRITE_SIZE >= monstre->posmonsy) && (joueur->inposy <= monstre->posmonsy)) && (((monstre->posmonsx >= joueur->inposx) && (monstre->posmonsx <= joueur->inposx+SPRITE_SIZE)) || ((monstre->posmonsx + SPRITE_SIZE >= joueur->inposx) && (monstre->posmonsx + SPRITE_SIZE <= joueur->inposx+SPRITE_SIZE))))
+    if (((joueur->inposy + SPRITE_SIZE >= meduse->posmonsy) && (joueur->inposy <= meduse->posmonsy)) && (((meduse->posmonsx >= joueur->inposx) && (meduse->posmonsx <= joueur->inposx+SPRITE_SIZE)) || ((meduse->posmonsx + SPRITE_SIZE >= joueur->inposx) && (meduse->posmonsx + SPRITE_SIZE <= joueur->inposx+SPRITE_SIZE))))
     {
-        monstre->posmonsy+=1;
+        meduse->posmonsy+=1;
         //input->Life--;
         if (input->down == 1)
         {
@@ -45,13 +45,13 @@ void collision (Joueur *joueur, Monstre *monstre, Input *input)
     }
     
     // //coter droit joueur
-    if (joueur->inposx <= monstre->posmonsx)
+    if (joueur->inposx <= meduse->posmonsx)
     {
-        if (joueur->inposx + SPRITE_SIZE >= monstre->posmonsx)
+        if (joueur->inposx + SPRITE_SIZE >= meduse->posmonsx)
         {
-            if ((monstre->posmonsy >= joueur->inposy) && (monstre->posmonsy <= joueur->inposy+SPRITE_SIZE))
+            if ((meduse->posmonsy >= joueur->inposy) && (meduse->posmonsy <= joueur->inposy+SPRITE_SIZE))
             {
-                monstre->posmonsx+=1;
+                meduse->posmonsx+=1;
                 //input->Life--;
                 if (input->right == 1)
                 {
@@ -59,9 +59,9 @@ void collision (Joueur *joueur, Monstre *monstre, Input *input)
                 }   
             }
 
-            if ((monstre->posmonsy + SPRITE_SIZE >= joueur->inposy) && (monstre->posmonsy + SPRITE_SIZE <= joueur->inposy + SPRITE_SIZE))
+            if ((meduse->posmonsy + SPRITE_SIZE >= joueur->inposy) && (meduse->posmonsy + SPRITE_SIZE <= joueur->inposy + SPRITE_SIZE))
             {
-                monstre->posmonsx+=1;
+                meduse->posmonsx+=1;
                 //input->Life--;
                 if (input->right == 1)
                 {
@@ -74,22 +74,22 @@ void collision (Joueur *joueur, Monstre *monstre, Input *input)
         
     }
     //coter gauche joueur
-    if (joueur->inposx + SPRITE_SIZE >= monstre->posmonsx)
+    if (joueur->inposx + SPRITE_SIZE >= meduse->posmonsx)
     {
-        if (joueur->inposx <= monstre->posmonsx + SPRITE_SIZE)
+        if (joueur->inposx <= meduse->posmonsx + SPRITE_SIZE)
         {
-            if (monstre->posmonsy >= joueur->inposy && monstre->posmonsy <= joueur->inposy+SPRITE_SIZE)
+            if (meduse->posmonsy >= joueur->inposy && meduse->posmonsy <= joueur->inposy+SPRITE_SIZE)
             {
-                monstre->posmonsx-=1;
+                meduse->posmonsx-=1;
                 //input->Life--;
                 if (input->left == 1)
                 {
                     joueur->inposx+=3;  
                 }
             }
-            if (monstre->posmonsy + SPRITE_SIZE >= joueur->inposy && monstre->posmonsy + SPRITE_SIZE <= joueur->inposy + SPRITE_SIZE)
+            if (meduse->posmonsy + SPRITE_SIZE >= joueur->inposy && meduse->posmonsy + SPRITE_SIZE <= joueur->inposy + SPRITE_SIZE)
             {
-                monstre->posmonsx-=1;
+                meduse->posmonsx-=1;
                 //input->Life--;
                 if (input->left == 1)
                 {
@@ -102,15 +102,15 @@ void collision (Joueur *joueur, Monstre *monstre, Input *input)
 
 
 
-int inside (Joueur *joueur, Monstre *monstre)
+int inside (Joueur *joueur, Meduse *meduse)
 {
     int x=0;
     int y=0;
-    if ((joueur->inposx>=monstre->posmonsx-23 || joueur->inposx+SPRITE_SIZE>=monstre->posmonsx-23) && (joueur->inposx<=monstre->posmonsx+SPRITE_SIZE+23 || joueur->inposx + SPRITE_SIZE <=monstre->posmonsx+SPRITE_SIZE+23))
+    if ((joueur->inposx>=meduse->posmonsx-23 || joueur->inposx+SPRITE_SIZE>=meduse->posmonsx-23) && (joueur->inposx<=meduse->posmonsx+SPRITE_SIZE+23 || joueur->inposx + SPRITE_SIZE <=meduse->posmonsx+SPRITE_SIZE+23))
     {
         x=1;
     }
-    if ((joueur->inposy>=monstre->posmonsy-23 || joueur->inposy+SPRITE_SIZE>=monstre->posmonsy-23) && (joueur->inposy<=monstre->posmonsy+SPRITE_SIZE+23 || joueur->inposy + SPRITE_SIZE <=monstre->posmonsy+SPRITE_SIZE+23))
+    if ((joueur->inposy>=meduse->posmonsy-23 || joueur->inposy+SPRITE_SIZE>=meduse->posmonsy-23) && (joueur->inposy<=meduse->posmonsy+SPRITE_SIZE+23 || joueur->inposy + SPRITE_SIZE <=meduse->posmonsy+SPRITE_SIZE+23))
     {
         y=1;
     }
@@ -120,17 +120,17 @@ int inside (Joueur *joueur, Monstre *monstre)
     }
 }
 
-int insidechevalier (Joueur *joueur, Monstre *monstre, Input *input)
+int insidechevalier (Joueur *joueur, Meduse *meduse, Input *input)
 {
     int x=0;
     int y=0;
     if (joueur->Direction==1)
     {
-    if ((monstre->posmonsx>=joueur->inposx-21 || monstre->posmonsx+SPRITE_SIZE>=joueur->inposx-21) && (monstre->posmonsx<=joueur->inposx || monstre->posmonsx+SPRITE_SIZE<=joueur->inposx))
+    if ((meduse->posmonsx>=joueur->inposx-21 || meduse->posmonsx+SPRITE_SIZE>=joueur->inposx-21) && (meduse->posmonsx<=joueur->inposx || meduse->posmonsx+SPRITE_SIZE<=joueur->inposx))
     {
         x=1;
     }
-    if ((monstre->posmonsy>=joueur->inposy+32 || monstre->posmonsy+SPRITE_SIZE>=joueur->inposy+32) && (monstre->posmonsy<=joueur->inposy+SPRITE_SIZE || monstre->posmonsy+SPRITE_SIZE<=joueur->inposy+SPRITE_SIZE))
+    if ((meduse->posmonsy>=joueur->inposy+32 || meduse->posmonsy+SPRITE_SIZE>=joueur->inposy+32) && (meduse->posmonsy<=joueur->inposy+SPRITE_SIZE || meduse->posmonsy+SPRITE_SIZE<=joueur->inposy+SPRITE_SIZE))
     {
         y=1;
     }
@@ -142,13 +142,13 @@ int insidechevalier (Joueur *joueur, Monstre *monstre, Input *input)
 
     if (joueur->Direction==0)
     {
-    if ((monstre->posmonsx>=joueur->inposx+SPRITE_SIZE || monstre->posmonsx+SPRITE_SIZE>=joueur->inposx+SPRITE_SIZE) && (monstre->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| monstre->posmonsx+SPRITE_SIZE<=joueur->inposx+SPRITE_SIZE+21))
+    if ((meduse->posmonsx>=joueur->inposx+SPRITE_SIZE || meduse->posmonsx+SPRITE_SIZE>=joueur->inposx+SPRITE_SIZE) && (meduse->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| meduse->posmonsx+SPRITE_SIZE<=joueur->inposx+SPRITE_SIZE+21))
     {
         x=1;
             
 
     }
-    if ((monstre->posmonsy>=joueur->inposy+32 || monstre->posmonsy+SPRITE_SIZE>=joueur->inposy+32) && (monstre->posmonsy<=joueur->inposy+SPRITE_SIZE || monstre->posmonsy+SPRITE_SIZE<=joueur->inposy+SPRITE_SIZE))
+    if ((meduse->posmonsy>=joueur->inposy+32 || meduse->posmonsy+SPRITE_SIZE>=joueur->inposy+32) && (meduse->posmonsy<=joueur->inposy+SPRITE_SIZE || meduse->posmonsy+SPRITE_SIZE<=joueur->inposy+SPRITE_SIZE))
     {
         y=1;
     

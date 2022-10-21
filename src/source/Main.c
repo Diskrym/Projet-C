@@ -6,8 +6,8 @@
 /* Déclaration des variables / structures utilisées par le jeu */
 Input input;
 Joueur joueur;
-Monstre monstre;
-Monstre monstre1;
+Meduse meduse;
+Meduse meduse1;
 Lvl lvl;
 
 int main(int argc, char *argv[])
@@ -18,7 +18,7 @@ unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
 lvl.Num=1;
 joueur.life=3;
-monstre.Life=3;
+meduse.Life=3;
  
 // Initialisation de la SDL
 init("SDL 2");
@@ -27,12 +27,12 @@ init("SDL 2");
     LoadJoueur(&joueur);
     if (lvl.Num==1)
     {
-    LoadMonstre(&monstre, 70,70);
+    LoadMonstre(&meduse, 70,70);
     }
     
     //  if (lvl.Num=1)
-    //  {LoadMonstre(&monstre, 64,64);
-    //  LoadMonstre(&monstre1,300,300);}
+    //  {LoadMonstre(&meduse, 64,64);
+    //  LoadMonstre(&meduse1,300,300);}
  
     // Appelle la fonction cleanup à la fin du programme
     atexit(cleanup);
@@ -49,12 +49,12 @@ init("SDL 2");
         
         //Gestion des inputs et des déplacements
         deplacement(&input,&joueur);
-        deplacementMonstre(&joueur, &monstre);
-        //deplacementMonstre(&joueur, &monstre1);
+        deplacementMonstre(&joueur, &meduse);
+        //deplacementMonstre(&joueur, &meduse1);
         SDL_RenderPresent(getrenderer());
         getInput(&input);
         //collision
-        collision(&joueur, &monstre, &input);
+        collision(&joueur, &meduse, &input);
 
         
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
@@ -65,7 +65,7 @@ init("SDL 2");
         GameOver ();
         exit(0);
         }
-        if (monstre.Life<=0)
+        if (meduse.Life<=0)
         {
         Win ();
         exit(0);
