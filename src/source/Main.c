@@ -48,9 +48,8 @@ init("SDL 2");
         drawGame();
         
         //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur,&monstre);
-        deplacementMonstre(&joueur, &monstre, &input);
-        printf("%d",monstre.Life);
+        deplacement(&input,&joueur);
+        deplacementMonstre(&joueur, &monstre);
         //deplacementMonstre(&joueur, &monstre1);
         SDL_RenderPresent(getrenderer());
         getInput(&input);
