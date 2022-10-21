@@ -1,13 +1,13 @@
 #include "../header/proto.h"
 Input input;
 Lvl lvl;
-Pos pos;
+Joueur joueur;
 
 void drawGame(void)
 {
     // Affiche le fond (background) aux coordonnées (0,0)
     drawImage(getBackground(), 0, 0);
-    AffichageVie (&pos);
+    AffichageVie (&joueur);
     AffichageLevel(&lvl);
     // Affiche l'écran
     
@@ -94,10 +94,10 @@ void delay(unsigned int frameLimit)
 
 
 
-void AffichageVie (Pos *pos)
+void AffichageVie (Joueur *joueur)
 {
 int i=1;
-while (i<=pos->life)
+while (i<=joueur->life)
 {
 SDL_Texture *Vie=loadImage("src/graphics/Vie.png");
 drawImage(Vie,SCREEN_WIDTH-(i*34),0);

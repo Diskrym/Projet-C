@@ -29,10 +29,10 @@ SDL_Texture *background;
  
 } Map;
 
-typedef struct Pos
+typedef struct Joueur
 {
-    int inposx, inposy, compteur, coup, Eattack, life, Direction, NumSprit, Numattack;
-} Pos;
+    int inposx, inposy, compteur, Eattack, life, Direction, NumSprit, Numattack;
+} Joueur;
 
 typedef struct Lvl
 {
