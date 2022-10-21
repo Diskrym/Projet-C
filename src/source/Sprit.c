@@ -86,7 +86,8 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
                 drawImage(Spriteattaque,joueur->inposx-21,joueur->inposy+32);
                 if(insidechevalier(joueur, meduse, input)==1 && joueur->Numattack==15)
                 {   
-                meduse->Life--;  
+                meduse->Life--;
+                  
                 }
             }
             if (joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19 || joueur->Numattack==20 )
@@ -122,6 +123,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
                 if(insidechevalier(joueur, meduse, input)==1 && joueur->Numattack==15)
                 {
                 meduse->Life--;
+
                 }
             }
         }
