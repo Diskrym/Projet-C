@@ -38,6 +38,8 @@ typedef struct Lvl
 {
     int Num;
 } Lvl;
- 
+// level [1.Numlvl]
+static const int level[10][5]={{1,1}};
+
  
 #endif

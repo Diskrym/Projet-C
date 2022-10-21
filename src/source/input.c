@@ -12,7 +12,7 @@ void gestionInputs(Input *input)
 }
  
  
-void getInput(Input *input )
+void getInput(Input *input)
 {
     SDL_Event event;
  
@@ -153,7 +153,7 @@ void deplacement (Input *input, Joueur *joueur)
 
 
 
-void deplacementMonstre (Joueur *joueur, Meduse *meduse)
+void deplacementMeduse (Joueur *joueur, Meduse *meduse)
 {
     joueur->compteur += 1;
     meduse->NumSprit+=1;

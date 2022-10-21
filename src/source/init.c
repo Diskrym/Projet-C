@@ -2,13 +2,13 @@
  
 SDL_Window *screen;
 SDL_Renderer *renderer;
- 
+
 SDL_Renderer *getrenderer(void)
 {
     return renderer;
 }
  
- 
+
 void init(char *title)
 {
     /* On crée la fenêtre, représentée par le pointeur jeu.window en utilisant la largeur et la
@@ -85,8 +85,12 @@ void LoadJoueur(Joueur *joueur)
 
 void LoadMonstre(Meduse *meduse , int x, int y)
 {  
-    meduse->posmonsx =(x);
-    meduse->posmonsy =(y);
+    if(level[0][0]==1) 
+    {
+        meduse->posmonsx =(x);
+        meduse->posmonsy =(y);
+    }
+    
 
 }
 
@@ -113,21 +117,3 @@ void cleanup()
 }
 
 
-void s_sleep(void) {
-
-    /* Init. */
-
-    time_t start_time = 0;
-
-    time_t current_time = 0;
-
-    /* Operate. */
-
-    start_time = time(NULL);
-
-    while(current_time-start_time+1 <= 0.1) {
-
-        current_time = time(NULL);
-
-    }
-}
