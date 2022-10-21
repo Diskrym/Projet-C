@@ -49,8 +49,9 @@ init("SDL 2");
         
         //Gestion des inputs et des déplacements
         deplacement(&input,&joueur);
-        deplacementMonstre(&joueur, &meduse);
-        //deplacementMonstre(&joueur, &meduse1);
+
+        deplacementMeduse(&joueur, &meduse);
+        //deplacementMeduse(&joueur, &meduse1);
         SDL_RenderPresent(getrenderer());
         getInput(&input);
         //collision
