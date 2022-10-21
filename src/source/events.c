@@ -145,13 +145,16 @@ int insidechevalier (Joueur *joueur, Monstre *monstre, Input *input)
     if ((monstre->posmonsx>=joueur->inposx+SPRITE_SIZE || monstre->posmonsx+SPRITE_SIZE>=joueur->inposx+SPRITE_SIZE) && (monstre->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| monstre->posmonsx+SPRITE_SIZE<=joueur->inposx+SPRITE_SIZE+21))
     {
         x=1;
+            
+
     }
     if ((monstre->posmonsy>=joueur->inposy+32 || monstre->posmonsy+SPRITE_SIZE>=joueur->inposy+32) && (monstre->posmonsy<=joueur->inposy+SPRITE_SIZE || monstre->posmonsy+SPRITE_SIZE<=joueur->inposy+SPRITE_SIZE))
     {
         y=1;
+    
     }
     if (x==1 && y==1)
-    {
+    {   printf("%d ",x,"%d ",y);
         return 1;
     }
     }
