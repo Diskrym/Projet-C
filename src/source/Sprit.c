@@ -84,7 +84,11 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueG.png");
                 drawImage(Spriteattaque,joueur->inposx-21,joueur->inposy+32);
-                
+                if(insidechevalier(joueur, meduse)==1 && joueur->Numattack==15)
+                {   
+                meduse->Life--;
+                  
+                }
             }
             if (joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19 || joueur->Numattack==20 )
             {
@@ -126,7 +130,8 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
 }
 
 void SpritMeduse (Meduse *meduse, Joueur *joueur)
-{
+{   if (meduse->Life >=1)
+    {
     if (joueur ->compteur <= 100)
     {
         printf("%d \n", meduse->CompteurSpriteDegat);
@@ -238,4 +243,44 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
             meduse->NumSprit =0;
         }
     }
+    }
+    else{
+        MortMonstre(meduse);
+        }
+    
 }
+
+
+void MortMonstre (Meduse *meduse)
+{
+
+ //printf("%d \n", meduse->NumSprit);
+        if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==3 || meduse->NumSprit==4 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemort1.png");
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
+            
+        }
+        if (meduse->NumSprit==5 || meduse->NumSprit==6 || meduse->NumSprit==7 || meduse->NumSprit==8 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemort2.png");
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
+        }
+        if (meduse->NumSprit==9 || meduse->NumSprit==10 || meduse->NumSprit==11 || meduse->NumSprit==12)
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemort3.png");
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
+        }
+        if (meduse->NumSprit==13 || meduse->NumSprit==14 || meduse->NumSprit==15 || meduse->NumSprit==16 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemort4.png");
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
+        }
+        if (meduse->NumSprit==7 || meduse->NumSprit==18 || meduse->NumSprit==19 || meduse->NumSprit==20 )
+        {
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemort5.png");
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
+        }
+
+}
+

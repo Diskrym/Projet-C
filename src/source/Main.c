@@ -49,10 +49,12 @@ init("SDL 2");
         
         //Gestion des inputs et des déplacements
         deplacement(&input,&joueur);
-
+        //IA monstre
         deplacementMeduse(&joueur, &meduse);
         //deplacementMeduse(&joueur, &meduse1);
+        //Rendu des images dans le buffer
         SDL_RenderPresent(getrenderer());
+        //Acquisition des inputs du joueur
         getInput(&input);
         //collision
         collision(&joueur, &meduse, &input);
@@ -62,16 +64,18 @@ init("SDL 2");
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;
+        //Test defaite
         if (joueur.life<=0)
         {
         GameOver ();
         exit(0);
         }
-        if (meduse.Life<=0)
-        {
-        Win ();
-        exit(0);
-        }
+        //Test victoire
+        // if (meduse.Life<=0)
+        // {
+        // Win ();
+        // exit(0);
+        // }
 
     }
  

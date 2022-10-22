@@ -30,4 +30,5 @@ extern int insidechevalier (Joueur *joueur, Meduse *meduse);
 extern void Win (void);
 extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input);
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur);
+extern void MortMonstre (Meduse *meduse);
 #endif
