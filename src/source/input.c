@@ -158,7 +158,7 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse)
     joueur->compteur += 1;
     meduse->NumSprit+=1;
     
-    if (joueur->compteur <= 100)
+    if (joueur->compteur <= 100 && meduse->Life >=1)
     {
         if (joueur->inposx<meduse->posmonsx)
         {
