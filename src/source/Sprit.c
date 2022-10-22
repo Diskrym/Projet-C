@@ -84,11 +84,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueG.png");
                 drawImage(Spriteattaque,joueur->inposx-21,joueur->inposy+32);
-                if(insidechevalier(joueur, meduse, input)==1 && joueur->Numattack==15)
-                {   
-                meduse->Life--;
-                  
-                }
+                
             }
             if (joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19 || joueur->Numattack==20 )
             {
@@ -119,12 +115,6 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueD.png");
                 drawImage(Spriteattaque,joueur->inposx+SPRITE_SIZE ,joueur->inposy +32);
-
-                if(insidechevalier(joueur, meduse, input)==1 && joueur->Numattack==15)
-                {
-                meduse->Life--;
-
-                }
             }
         }
         if(joueur->Numattack > 24)
@@ -139,6 +129,11 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
 {
     if (joueur ->compteur <= 100)
     {
+        printf("%d \n", meduse->CompteurSpriteDegat);
+        if (meduse->CompteurSpriteDegat==0)
+        {
+        
+        
     if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==3 || meduse->NumSprit==4 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Meduseneutre.png");
@@ -168,17 +163,35 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
         {
         SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemarche1.png");
         drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
-        //meduse->attack+=1;
+        meduse->attack+=1;
         }
-    
-    if (meduse->NumSprit>=35)
-    {
-        meduse->NumSprit =0;
-    }
+        if (meduse->NumSprit>=35)
+        {
+            meduse->NumSprit =0;
+        }
+        if(insidechevalier(joueur, meduse)==1 && joueur->Numattack==15)
+        {    
+            meduse->CompteurSpriteDegat=1; 
+            meduse->Life--;
+            
+        }
+        }
+        
+        else 
+        {
+            meduse->CompteurSpriteDegat+=1;
+            SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusedegat.png");
+            drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy); 
+            if (meduse->CompteurSpriteDegat > 15)
+            {
+                meduse->CompteurSpriteDegat=0;
+            }
+            
+        }
+        
     }
     if  (joueur->compteur>100)
     {
-        printf("%d \n", meduse->NumSprit);
         if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==3 || meduse->NumSprit==4 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/medusecoup1.png");

@@ -120,7 +120,7 @@ int inside (Joueur *joueur, Meduse *meduse)
     }
 }
 
-int insidechevalier (Joueur *joueur, Meduse *meduse, Input *input)
+int insidechevalier (Joueur *joueur, Meduse *meduse)
 {
     int x=0;
     int y=0;

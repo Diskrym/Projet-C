@@ -26,7 +26,7 @@ extern void AffichageVie(Joueur *joueur);
 extern void GameOver (void);
 extern void AffichageLevel (Lvl *lvl);
 extern int inside (Joueur *joueur, Meduse *meduse);
-extern int insidechevalier (Joueur *joueur, Meduse *meduse, Input *input);
+extern int insidechevalier (Joueur *joueur, Meduse *meduse);
 extern void Win (void);
 extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input);
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur);
