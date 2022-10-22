@@ -135,7 +135,9 @@ int insidechevalier (Joueur *joueur, Meduse *meduse, Input *input)
         y=1;
     }
     if (x==1 && y==1)
-    {
+    {   printf("coup 1");
+        printf("%d",x);
+        printf("%d",y);
         return 1;
     }
     }
@@ -154,7 +156,10 @@ int insidechevalier (Joueur *joueur, Meduse *meduse, Input *input)
     
     }
     if (x==1 && y==1)
-    {   printf("%d ",x,"%d ",y);
+
+    {   printf("coup 0");
+        printf("%d",x);
+        printf("%d",y);
         return 1;
     }
     }
