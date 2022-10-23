@@ -125,8 +125,7 @@ int insidechevalier (Joueur *joueur, Meduse *meduse)
     int x=0;
     int y=0;
     if (joueur->Direction==1)
-    {
-    if ((meduse->posmonsx>=joueur->inposx-21 || meduse->posmonsx+SPRITE_SIZE>=joueur->inposx-21) && (meduse->posmonsx<=joueur->inposx || meduse->posmonsx+SPRITE_SIZE<=joueur->inposx))
+    {if ((meduse->posmonsx>=joueur->inposx-21 || meduse->posmonsx+SPRITE_SIZE>=joueur->inposx-21) && (meduse->posmonsx<=joueur->inposx || meduse->posmonsx+SPRITE_SIZE<=joueur->inposx))
     {
         x=1;
     }
@@ -135,28 +134,23 @@ int insidechevalier (Joueur *joueur, Meduse *meduse)
         y=1;
     }
     if (x==1 && y==1)
-    {   
-        return 1;
+    {return 1;}
+    else 
+    {return 0;}
     }
-    }
-
     if (joueur->Direction==0)
     {
     if ((meduse->posmonsx>=joueur->inposx+SPRITE_SIZE || meduse->posmonsx+SPRITE_SIZE>=joueur->inposx+SPRITE_SIZE) && (meduse->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| meduse->posmonsx+SPRITE_SIZE<=joueur->inposx+SPRITE_SIZE+21))
     {
         x=1;
-            
-
     }
     if ((meduse->posmonsy>=joueur->inposy+32 || meduse->posmonsy+SPRITE_SIZE>=joueur->inposy+32) && (meduse->posmonsy<=joueur->inposy+SPRITE_SIZE || meduse->posmonsy+SPRITE_SIZE<=joueur->inposy+SPRITE_SIZE))
     {
         y=1;
-    
     }
     if (x==1 && y==1)
-
-    {   
-        return 1;
-    }
+    {return 1;}
+    else 
+    {return 0;}
     }
 }
