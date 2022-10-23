@@ -245,7 +245,6 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
     //Mort meduse
     if (meduse->Life==0)
     {
-        printf("a");
         if (meduse->CompteurSpriteDegat==0 || meduse->CompteurSpriteDegat==1 || meduse->CompteurSpriteDegat==3 || meduse->CompteurSpriteDegat==4 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemort1.png");
