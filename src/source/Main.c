@@ -68,8 +68,8 @@ init("SDL 2");
         //Test defaite
         if (joueur.life<=0)
         {
-        GameOver ();
-        exit(0);
+            GameOver ();
+            exit(0);
         }
         //Test victoire
         // if (meduse.Life<=0)

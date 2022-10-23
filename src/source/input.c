@@ -184,4 +184,3 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse)
     }
     SpritMeduse (meduse, joueur);
 }
-

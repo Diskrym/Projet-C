@@ -20,22 +20,18 @@ void drawGame(void)
 
 void GameOver (void)
 {
-
-SDL_Texture *GameOver=loadImage("src/graphics/GameOver.png");
-drawImage(GameOver,0,0);
-SDL_RenderPresent(getrenderer());
-SDL_Delay(3000);
-
+    SDL_Texture *GameOver=loadImage("src/graphics/GameOver.png");
+    drawImage(GameOver,0,0);
+    SDL_RenderPresent(getrenderer());
+    SDL_Delay(3000);
 }
 
 void Win (void)
 {
-
-SDL_Texture *GameOver=loadImage("src/graphics/Win.png");
-drawImage(GameOver,0,0);
-SDL_RenderPresent(getrenderer());
-SDL_Delay(3000);
-
+    SDL_Texture *GameOver=loadImage("src/graphics/Win.png");
+    drawImage(GameOver,0,0);
+    SDL_RenderPresent(getrenderer());
+    SDL_Delay(3000);
 }
 
 SDL_Texture *loadImage(char *name)
@@ -57,7 +53,6 @@ SDL_Texture *loadImage(char *name)
         printf("L'image n'a pas pu être chargée! SDL_Error : %s\n", SDL_GetError());
     }
     return texture;
- 
 }
  
 void drawImage(SDL_Texture *image, int x, int y)
@@ -98,23 +93,22 @@ void delay(unsigned int frameLimit)
 
 void AffichageVie (Joueur *joueur)
 {
-int i=1;
-while (i<=joueur->life)
-{
-SDL_Texture *Vie=loadImage("src/graphics/Vie.png");
-drawImage(Vie,SCREEN_WIDTH-(i*34),0);
-i+=1;
-}
+    int i=1;
+    while (i<=joueur->life)
+    {
+        SDL_Texture *Vie=loadImage("src/graphics/Vie.png");
+        drawImage(Vie,SCREEN_WIDTH-(i*34),0);
+        i+=1;
+    }
 }
 
 void AffichageLevel (Lvl *lvl)
 {
-SDL_Texture *Level=loadImage("src/graphics/Level.png");
-drawImage(Level,0,0);
-if (lvl->Num==1)
-{
-SDL_Texture *Level=loadImage("src/graphics/1.png");
-drawImage(Level,139,0);
-}
-
+    SDL_Texture *Level=loadImage("src/graphics/Level.png");
+    drawImage(Level,0,0);
+    if (lvl->Num==1)
+    {
+        SDL_Texture *Level=loadImage("src/graphics/1.png");
+        drawImage(Level,139,0);
+    }
 }

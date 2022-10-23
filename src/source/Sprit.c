@@ -2,7 +2,6 @@
 void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
 {
     //Mouvement joueur de base avec direction 0 pour droite et 1 gauche
-
     if(joueur->Eattack==0)
     {
         if (joueur->Direction ==0)
@@ -62,7 +61,6 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
     }
 
     //Mouvement attaque 
-
     if (joueur->Eattack==1)
     {
         joueur->Numattack+=1;
@@ -123,7 +121,6 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
         }
 
         //reset des compteur pour sprite et attaque
-
         if(joueur->Numattack > 24)
         {
             joueur->Numattack=0;
