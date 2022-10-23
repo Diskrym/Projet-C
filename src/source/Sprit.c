@@ -140,7 +140,6 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
     {
         if (meduse->compteur < 100)
         {
-            printf("a");
             if (meduse->CompteurSpriteDegat==0)
             {
                 if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==2 || meduse->NumSprit==3 )
@@ -217,7 +216,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
                 drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/AttaqueMeduse.png");
                 drawImage(Spriteattaque,meduse->posmonsx -23 ,meduse->posmonsy - 23);
-                if(inside(joueur, meduse)==1 && (meduse->NumSprit==25 || meduse->NumSprit==15))                    
+                if(inside(joueur, meduse)==1 && (meduse->NumSprit==23 || meduse->NumSprit==14))                    
                 {
                     if (meduse->coup == 0)
                     {
@@ -242,7 +241,6 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
     //Mort meduse
     if (meduse->Life==0)
     {
-        printf("v");
         if (meduse->CompteurSpriteDegat==0 || meduse->CompteurSpriteDegat==1 || meduse->CompteurSpriteDegat==2 || meduse->CompteurSpriteDegat==3 )
         {
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemort1.png");
