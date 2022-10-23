@@ -2,6 +2,7 @@
 
 void collision (Joueur *joueur, Meduse *meduse, Input *input)
 {
+    
     //collision joueur mur
     if (joueur->inposx <= 25)
         {
@@ -22,7 +23,8 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input)
 
     //collision entre les meduse et joueur
     //collision haut joueur
-
+    if (meduse->Life!=0)
+    {
     if (((joueur->inposy <= meduse->posmonsy + SPRITE_SIZE)&&(joueur->inposy >= meduse->posmonsy )) && (((meduse->posmonsx >= joueur->inposx) && (meduse->posmonsx <= joueur->inposx+SPRITE_SIZE)) || ((meduse->posmonsx + SPRITE_SIZE >= joueur->inposx) && (meduse->posmonsx + SPRITE_SIZE <= joueur->inposx+SPRITE_SIZE))))
     {
         meduse->posmonsy-=1;
@@ -98,6 +100,7 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input)
             } 
         } 
     }
+}
 }
 
 
