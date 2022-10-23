@@ -47,10 +47,11 @@ init("SDL 2");
         //On dessine tout
         drawGame();
         
-        //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur);
         //IA monstre
         deplacementMeduse(&joueur, &meduse);
+        //Gestion des inputs et des déplacements
+        deplacement(&input,&joueur);
+        
         //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer
         SDL_RenderPresent(getrenderer());
