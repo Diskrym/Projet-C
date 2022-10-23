@@ -155,30 +155,30 @@ void deplacement (Input *input, Joueur *joueur)
 
 void deplacementMeduse (Joueur *joueur, Meduse *meduse)
 {
-    joueur->compteur += 1;
+    meduse->compteur += 1;
     meduse->NumSprit+=1;
+    if  (meduse->Life==0 && meduse->CompteurSpriteDegat<20)
+    {
+        meduse->CompteurSpriteDegat+=1;
+    }
     
-    if (joueur->compteur <= 100 && meduse->Life >=1)
+    if (meduse->compteur <= 100 && meduse->Life >=1)
     {
         if (joueur->inposx<meduse->posmonsx)
         {
             meduse->posmonsx-=1;
-            meduse->Direction=0;
         }
         if (joueur->inposx>meduse->posmonsx)
         {
-            meduse->posmonsx+=1;
-            meduse->Direction=0;    
+            meduse->posmonsx+=1;   
         }
         if (joueur->inposy<meduse->posmonsy)
         {
             meduse->posmonsy-=1;
-            meduse->Direction=0;  
         }
         if (joueur->inposy>meduse->posmonsy)
         {
             meduse->posmonsy+=1;
-            meduse->Direction=1;
         }
 
     }

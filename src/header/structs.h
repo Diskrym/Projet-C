@@ -16,7 +16,7 @@ typedef struct Input
 typedef struct Meduse
 {
  
-    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat;
+    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort;
  
 } Meduse;
 
@@ -31,7 +31,7 @@ SDL_Texture *background;
 
 typedef struct Joueur
 {
-    int inposx, inposy, compteur, Eattack, life, Direction, NumSprit, Numattack, coup;
+    int inposx, inposy, Eattack, life, Direction, NumSprit, Numattack, coup;
 } Joueur;
 
 typedef struct Lvl
