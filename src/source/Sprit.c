@@ -1,6 +1,8 @@
 #include "../header/proto.h" 
 void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
 {
+    //Mouvement joueur de base avec direction 0 pour droite et 1 gauche
+
     if(joueur->Eattack==0)
     {
         if (joueur->Direction ==0)
@@ -58,6 +60,9 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
             }
         }
     }
+
+    //Mouvement attaque 
+
     if (joueur->Eattack==1)
     {
         joueur->Numattack+=1;
@@ -116,6 +121,9 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
                 drawImage(Spriteattaque,joueur->inposx+SPRITE_SIZE ,joueur->inposy +32);
             }
         }
+
+        //reset des compteur pour sprite et attaque
+
         if(joueur->Numattack > 24)
         {
             joueur->Numattack=0;
@@ -126,6 +134,8 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
 
 void SpritMeduse (Meduse *meduse, Joueur *joueur)
 {   
+
+    //Mouvement  meduse
     if (meduse->Life >=1)
     {
         if (meduse->compteur < 100)
@@ -185,6 +195,8 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
                 }
             }   
         }
+
+        //Attaque meduse
         if  (meduse->compteur>=100)
         {
             if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==3 || meduse->NumSprit==4 )
@@ -229,6 +241,8 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
             }
         }
     }
+
+    //Mort meduse
     if (meduse->Life==0)
     {
         printf("a");
@@ -262,6 +276,8 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
             }
         }
     }
+
+    //reset compteur pour sprite
     if (meduse->NumSprit>=35)
     {
         meduse->NumSprit=0;
