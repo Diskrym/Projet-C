@@ -66,52 +66,47 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
         joueur->Numattack+=1;
         if (joueur->Direction==1)
         {   
-            if (joueur->Numattack==0 || joueur->Numattack==1 || joueur->Numattack==3 || joueur->Numattack==4 )
+            if (joueur->Numattack==0 || joueur->Numattack==1 || joueur->Numattack==2 || joueur->Numattack==3 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee2G.png");
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
             }
-            if (joueur->Numattack==5 || joueur->Numattack==6 || joueur->Numattack==7 || joueur->Numattack==8 || joueur->Numattack==21 || joueur->Numattack==22 || joueur->Numattack==23 || joueur->Numattack==24 )
+            if (joueur->Numattack==4 || joueur->Numattack==5 || joueur->Numattack==6 || joueur->Numattack==7 || joueur->Numattack==20 || joueur->Numattack==21 || joueur->Numattack==22 || joueur->Numattack==23 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee3G.png");
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
             }
-            if (joueur->Numattack==9 || joueur->Numattack==10 || joueur->Numattack==11 || joueur->Numattack==12|| joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19 || joueur->Numattack==20 )
+            if (joueur->Numattack==8 || joueur->Numattack==9 || joueur->Numattack==10 || joueur->Numattack==11|| joueur->Numattack==16 || joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19)
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee4G.png");
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
             }
-            if (joueur->Numattack==13 || joueur->Numattack==14 || joueur->Numattack==15 || joueur->Numattack==16 )
+            if (joueur->Numattack==12 || joueur->Numattack==13 || joueur->Numattack==14 || joueur->Numattack==15 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee5G.png");
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
                 SDL_Texture *Spriteattaque=loadImage("src/graphics/attaqueG.png");
                 drawImage(Spriteattaque,joueur->inposx-21,joueur->inposy+32);
             }
-            if (joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19 || joueur->Numattack==20 )
-            {
-                SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee2G.png");
-                drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
-            }
         }
         if (joueur->Direction==0)
         {
-            if (joueur->Numattack==0 || joueur->Numattack==1 || joueur->Numattack==3 || joueur->Numattack==4 )
+            if (joueur->Numattack==0 || joueur->Numattack==1 || joueur->Numattack==2 || joueur->Numattack==3 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee2D.png");
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
             }
-            if (joueur->Numattack==5 || joueur->Numattack==6 || joueur->Numattack==7 || joueur->Numattack==8 || joueur->Numattack==21 || joueur->Numattack==22 || joueur->Numattack==23 || joueur->Numattack==24 )
+            if (joueur->Numattack==4 || joueur->Numattack==5 || joueur->Numattack==6 || joueur->Numattack==7 || joueur->Numattack==20 || joueur->Numattack==21 || joueur->Numattack==22 || joueur->Numattack==23 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee3D.png");
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
             }
-            if (joueur->Numattack==9 || joueur->Numattack==10 || joueur->Numattack==11 || joueur->Numattack==12|| joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19 || joueur->Numattack==20 )
+            if (joueur->Numattack==8 || joueur->Numattack==9 || joueur->Numattack==10 || joueur->Numattack==11|| joueur->Numattack==16 || joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19)
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee4D.png");
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
             }
-            if (joueur->Numattack==13 || joueur->Numattack==14 || joueur->Numattack==15 || joueur->Numattack==16 )
+            if (joueur->Numattack==12 || joueur->Numattack==13 || joueur->Numattack==14 || joueur->Numattack==15 )
             {
                 SDL_Texture *Spritechevalier=loadImage("src/graphics/Epee5D.png");
                 drawImage(Spritechevalier,joueur->inposx,joueur->inposy);
@@ -121,7 +116,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
         }
 
         //reset des compteur pour sprite et attaque
-        if(joueur->Numattack > 24)
+        if(joueur->Numattack >= 23)
         {
             joueur->Numattack=0;
             joueur->Eattack = 0;
