@@ -2,7 +2,7 @@
  
 SDL_Window *screen;
 SDL_Renderer *renderer;
-
+Chauvesouris chauvesouris;
 Meduse meduse, meduse1, meduse2;
 Joueur joueur;
 Input input;
@@ -82,7 +82,7 @@ void SelectNiv (Lvl *lvl)
 {
     if(lvl->Num==0)
     {
-        LoadNiv1(&meduse, lvl, &joueur);
+        LoadNiv1(&meduse, lvl, &joueur, &chauvesouris);
     }
     if(lvl->Num==1)
     {
