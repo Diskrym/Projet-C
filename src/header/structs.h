@@ -37,12 +37,24 @@ typedef struct Lvl
 {
     int Num;
 } Lvl;
-// level [1.Numlvl]
-//{NumLvl,Méduse,Squelette,Chauvesouris,NbMonstre,0,0,0,0,0}
-static const int level [5][10] =   {{1,0,0,0,0,0,0,0,0,0},
-                                    {2,0,0,0,0,0,0,0,0,0},
-                                    {3,0,0,0,0,0,0,0,0,0},
-                                    {4,0,0,0,0,0,0,0,0,0},
-                                    {5,0,0,0,0,0,0,0,0,0}};
- 
+
+ /*
+ static const int level [5][5][10]={ 
+                                        { 
+                                            {NumLvl, NbMonstre, Xjoueur, yjoueur }
+                                            {TypeMonstre, xMonstre, yMonstre, Vitesse monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Vitesse monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Vitesse monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Vitesse monstre, DegatsMoinstre, VieMonstre}
+                                        }
+                                    }
+ */
+static const int level [1][3][6] = {
+                                        {
+                                            {1,1,288,160,0,0},
+                                            {1,70,70,2,1,3},
+                                            {1,300,300,2,1,3}
+                                        }
+                                    };
+
 #endif

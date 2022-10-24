@@ -74,24 +74,16 @@ void init(char *title)
  
 }
 
-void LoadJoueur(Joueur *joueur)
-{
-    //On charge les données pour la map + joueur
-    initMaps();
-    joueur->inposx = (SCREEN_WIDTH-SPRITE_SIZE)/2;
-    joueur->inposy = (SCREEN_HEIGHT-SPRITE_SIZE)/2;
-    
-}  
 
-void LoadMonstre(Meduse *meduse , int x, int y)
+
+void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
 {  
-    if(level[0][0]==1) 
-    {
-        meduse->posmonsx =(x);
-        meduse->posmonsy =(y);
-    }
-    
-
+        initMaps();
+        joueur->inposx = level[0][0][2];
+        joueur->inposy = level[0][0][3];
+        meduse->posmonsx =level[0][1][1];
+        meduse->posmonsy =level[0][1][2];
+        meduse->Life=level[0][1][5];
 }
 
 void cleanup()
@@ -117,8 +109,3 @@ void cleanup()
 }
 
 
-int niveau [5][10] =   {{1,0,0,0,0,0,0,0,0,0},
-                        {2,0,0,0,0,0,0,0,0,0},
-                        {3,0,0,0,0,0,0,0,0,0},
-                        {4,0,0,0,0,0,0,0,0,0},
-                        {5,0,0,0,0,0,0,0,0,0}};
