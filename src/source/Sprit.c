@@ -1,6 +1,6 @@
 #include "../header/proto.h" 
 void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris)
-{
+{   
     //Mouvement joueur de base avec direction 0 pour droite et 1 gauche
     if(joueur->Eattack==0 && joueur->Eshield==0)
     {
