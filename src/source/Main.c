@@ -6,8 +6,7 @@
 /* Déclaration des variables / structures utilisées par le jeu */
 Input input;
 Joueur joueur;
-Meduse meduse;
-Meduse meduse1;
+Meduse meduse, meduse1, meduse2;
 Lvl lvl;
 
 int main(int argc, char *argv[])
@@ -39,12 +38,11 @@ init("SDL 2");
     // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
-        printf("%d %d \n", lvl.changement, joueur.inposy);
-        if (lvl.changement==1 && joueur.inposy==28)
+        printf("%d \n" , lvl.MortMonstre);
+        if (lvl.MortMonstre==level[lvl.Num][0][1] && joueur.inposy==28)
         {
             lvl.Num+=1;
             SelectNiv(&lvl);
-            lvl.changement=0;
         }
         
         //Gestion des inputs clavier
@@ -54,8 +52,7 @@ init("SDL 2");
         drawGame();
         
         //IA monstre
-        deplacementMeduse(&joueur, &meduse, &lvl);
-        
+        GestionMonstre(&meduse, &meduse1, &meduse2, &lvl);
         
         //meduse 2
         //deplacementMeduse(&joueur, &meduse1);
@@ -70,7 +67,6 @@ init("SDL 2");
         //Acquisition des inputs du joueur
         getInput(&input);
         //collision
-        collision(&joueur, &meduse, &input);
 
         
 

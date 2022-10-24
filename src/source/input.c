@@ -165,10 +165,6 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
     {
         lvl->MortMonstre+=1;
     }
-    if (lvl->MortMonstre==level[0][0][1])
-    {
-        lvl->changement=1;
-    }
     
     
     if (meduse->compteur <= 100 && meduse->Life >=1)
@@ -191,5 +187,5 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
         }
 
     }
-    SpritMeduse (meduse, joueur);
+    SpritMeduse (meduse, joueur, lvl);
 }

@@ -124,7 +124,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input)
     }
 }
 
-void SpritMeduse (Meduse *meduse, Joueur *joueur)
+void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl)
 {   
 
     //Mouvement  meduse
@@ -258,6 +258,11 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur)
             SDL_Texture *Spritemonstre=loadImage("src/graphics/Medusemort5.png");
             drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
         }
+        if (meduse->CompteurSpriteDegat==0)
+        {
+            lvl->MortMonstre+=1;
+        }
+        
     }
 
     //reset compteur pour sprite

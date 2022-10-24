@@ -24,6 +24,9 @@ extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
 extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
+void LoadNiv2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
+void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse3, Lvl *lvl);
+
 extern void cleanup(void);
 void SelectNiv (Lvl *lvl);
 
@@ -40,7 +43,7 @@ extern void cleanMaps(void);
 
 //Sprit.c
 extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input);
-extern void SpritMeduse (Meduse *meduse, Joueur *joueur);
+extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl);
 
 //extern void drawMap(int);
 #endif
