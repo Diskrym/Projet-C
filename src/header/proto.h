@@ -17,7 +17,7 @@ extern void porte (Lvl *lvl);
 //events.c
 extern void collision (Joueur *joueur, Meduse *meduse, Input *input);
 extern int inside (Joueur *joueur, Meduse *meduse);
-extern int insidechevalier (Joueur *joueur, Meduse *meduse, Chauvesouris *chauvesouris);
+extern int insidechevalier (Joueur *joueur, Meduse *meduse);
 extern int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris);
 
 
@@ -50,7 +50,6 @@ extern void GestionMap(Joueur *joueur, Lvl *lvl);
 extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris);
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl);
 extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Meduse *meduse);
-
 
 //extern void drawMap(int);
 #endif

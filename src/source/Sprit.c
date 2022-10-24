@@ -188,7 +188,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur, Chauvesouris *chauvesouris,Lvl
                     drawImage(Spritemonstre,meduse->posmonsx,meduse->posmonsy);
                     meduse->attack+=1;
                 }
-                if(insidechevalier(joueur, meduse, chauvesouris)==1 && joueur->Numattack==15)
+                if(insidechevalier(joueur, meduse)==1 && joueur->Numattack==15)
                 {           
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
