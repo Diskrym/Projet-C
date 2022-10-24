@@ -3,6 +3,10 @@
 SDL_Window *screen;
 SDL_Renderer *renderer;
 
+Meduse meduse, meduse1, meduse2;
+Joueur joueur;
+Input input;
+
 SDL_Renderer *getrenderer(void)
 {
     return renderer;
@@ -74,11 +78,41 @@ void init(char *title)
  
 }
 
+void SelectNiv (Lvl *lvl)
+{
+    if(lvl->Num==0)
+    {
+        LoadNiv1(&meduse, lvl, &joueur);
+    }
+    if(lvl->Num==1)
+    {
+        LoadNiv2(&meduse, &meduse1, &meduse2, lvl, &joueur);
+    }
+    lvl->MortMonstre=0;
+}
+
+void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse2, Lvl *lvl)
+{
+    if(lvl->Num==0)
+    {
+        deplacementMeduse(&joueur, meduse, lvl);
+        collision(&joueur, meduse, &input);
+    }
+    if(lvl->Num==1)
+    {
+        deplacementMeduse(&joueur, meduse, lvl);
+        deplacementMeduse(&joueur, meduse1, lvl);
+        deplacementMeduse(&joueur, meduse2, lvl);
+        collision(&joueur, meduse, &input);
+        collision(&joueur, meduse1, &input);
+        collision(&joueur, meduse2, &input);
+    }
+}
 
 
 void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur, Chauvesouris *chauvesouris)
 {  
-        initMaps();
+        initMaps(lvl);
         joueur->inposx = level[0][0][2];
         joueur->inposy = level[0][0][3];
         meduse->posmonsx =level[0][1][1];
@@ -88,6 +122,22 @@ void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur, Chauvesouris *chauvesour
         chauvesouris->posmonsy =level[0][3][2];
         chauvesouris->Life=level[0][3][5];
 
+}
+
+void LoadNiv2(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, Joueur *joueur)
+{  
+        initMaps(lvl);
+        joueur->inposx = level[1][0][2];
+        joueur->inposy = level[1][0][3];
+        meduse->posmonsx =level[1][1][1];
+        meduse->posmonsy =level[1][1][2];
+        meduse->Life=level[1][1][5];
+        meduse1->posmonsx =level[1][2][1];
+        meduse1->posmonsy =level[1][2][2];
+        meduse1->Life=level[1][2][5];
+        meduse2->posmonsx =level[1][3][1];
+        meduse2->posmonsy =level[1][3][2];
+        meduse2->Life=level[1][3][5];
 }
 
 void cleanup()
@@ -111,5 +161,3 @@ void cleanup()
     //On quitte la SDL
     SDL_Quit();
 }
-
-

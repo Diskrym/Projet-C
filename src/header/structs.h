@@ -42,7 +42,7 @@ typedef struct Joueur
 
 typedef struct Lvl
 {
-    int Num;
+    int Num, changement, MortMonstre;
 } Lvl;
 
  /*
@@ -56,12 +56,17 @@ typedef struct Lvl
                                         }
                                     }
  */
-static const int level [1][4][6] = {
+static const int level [2][4][6] = {
                                         {
                                             {1,1,288,160,0,0},
                                             {1,70,70,2,1,3},
-                                            {1,300,300,2,1,3},
-                                            {2,70,300,2,1,1}
+                                            {1,300,300,2,1,3}
+                                        },
+                                        {
+                                            {2,3,298,384,0,0},
+                                            {1,100,20,2,1,3},
+                                            {1,300,20,2,1,3},
+                                            {1,500,20,2,1,3}
                                         }
                                     };
 

@@ -21,7 +21,7 @@ void drawGame(void)
 
 void GameOver (void)
 {
-    SDL_Texture *GameOver=loadImage("src/graphics/GameOver.png");
+    SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");
     drawImage(GameOver,0,0);
     SDL_RenderPresent(getrenderer());
     SDL_Delay(3000);
@@ -29,7 +29,7 @@ void GameOver (void)
 
 void Win (void)
 {
-    SDL_Texture *GameOver=loadImage("src/graphics/Win.png");
+    SDL_Texture *GameOver=loadImage("src/graphics/lvl/Win.png");
     drawImage(GameOver,0,0);
     SDL_RenderPresent(getrenderer());
     SDL_Delay(3000);
@@ -97,7 +97,7 @@ void AffichageVie (Joueur *joueur)
     int i=1;
     while (i<=joueur->life)
     {
-        SDL_Texture *Vie=loadImage("src/graphics/Vie.png");
+        SDL_Texture *Vie=loadImage("src/graphics/lvl/Vie.png");
         drawImage(Vie,SCREEN_WIDTH-(i*34),0);
         i+=1;
     }
@@ -105,26 +105,29 @@ void AffichageVie (Joueur *joueur)
 
 void AffichageLevel (Lvl *lvl)
 {
-    SDL_Texture *Level=loadImage("src/graphics/Level.png");
+    SDL_Texture *Level=loadImage("src/graphics/lvl/Level.png");
     drawImage(Level,0,0);
+    SDL_Texture *niv=loadImage("src/graphics/lvl/1.png");
+    drawImage(niv,139,0);
     if (lvl->Num==1)
     {
-        SDL_Texture *Level=loadImage("src/graphics/1.png");
+        SDL_Texture *Level=loadImage("src/graphics/lvl/1.png");
         drawImage(Level,139,0);
     }
 }
 
 void porte (int NbMonstre)
 {
-if (NbMonstre>=1)
+if (lvl.MortMonstre==level[lvl.Num][0][1])
 {
-SDL_Texture *Porte=loadImage("src/graphics/Porteferme.png");
-drawImage(Porte,SCREEN_WIDTH/2-22,0);
+    SDL_Texture *Porte=loadImage("src/graphics/lvl/Porteouverte.png");
+    drawImage(Porte,SCREEN_WIDTH/2-22,0);
 }
 else
 {
-SDL_Texture *Porte=loadImage("src/graphics/Porteouverte.png");
-drawImage(Porte,SCREEN_WIDTH/2-22,0);
+
+    SDL_Texture *Porte=loadImage("src/graphics/lvl/Porteferme.png");
+    drawImage(Porte,SCREEN_WIDTH/2-22,0);
 }
 
 }

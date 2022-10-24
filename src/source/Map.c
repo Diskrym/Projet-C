@@ -2,10 +2,14 @@
  
 Map map;
  
-void initMaps(void)
+void initMaps(Lvl *lvl)
 {
     // Charge l'image du fond (background)
-    map.background = loadImage("src/graphics/background.png");
+    if (lvl->Num==0)
+    {
+        map.background = loadImage("src/graphics/lvl/background.png");
+    }
+    
 }
   
 SDL_Texture *getBackground(void)

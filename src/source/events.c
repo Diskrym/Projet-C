@@ -46,8 +46,9 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input)
         // //coter droit joueur
         if (joueur->inposx <= meduse->posmonsx)
         {
-            if (joueur->inposx + SPRITE_SIZE >= meduse->posmonsx)
+            if (joueur->inposx + SPRITE_SIZE >= meduse->posmonsx-3)
             {
+                ("condition 2 \n");
                 if ((meduse->posmonsy >= joueur->inposy) && (meduse->posmonsy <= joueur->inposy+SPRITE_SIZE))
                 {
                     meduse->posmonsx+=1;
@@ -71,10 +72,13 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input)
         //coter gauche joueur
         if (joueur->inposx + SPRITE_SIZE >= meduse->posmonsx)
         {
+
             if (joueur->inposx <= meduse->posmonsx + SPRITE_SIZE)
             {
+
                 if (meduse->posmonsy >= joueur->inposy && meduse->posmonsy <= joueur->inposy+SPRITE_SIZE)
                 {
+
                     meduse->posmonsx-=1;
                     if (input->left == 1)
                     {
@@ -83,6 +87,7 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input)
                 }
                 if (meduse->posmonsy + SPRITE_SIZE >= joueur->inposy && meduse->posmonsy + SPRITE_SIZE <= joueur->inposy + SPRITE_SIZE)
                 {
+
                     meduse->posmonsx-=1;
                     if (input->left == 1)
                     {
