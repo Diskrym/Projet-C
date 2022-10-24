@@ -46,10 +46,13 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input)
         // //coter droit joueur
         if (joueur->inposx <= meduse->posmonsx)
         {
+            //printf("condistion 1 \n");
             if (joueur->inposx + SPRITE_SIZE >= meduse->posmonsx)
             {
+                printf("condition 2 \n");
                 if ((meduse->posmonsy >= joueur->inposy) && (meduse->posmonsy <= joueur->inposy+SPRITE_SIZE))
                 {
+                    //printf("condition 3 \n");
                     meduse->posmonsx+=1;
                     if (input->right == 1)
                     {
@@ -59,6 +62,7 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input)
 
                 if ((meduse->posmonsy + SPRITE_SIZE >= joueur->inposy) && (meduse->posmonsy + SPRITE_SIZE <= joueur->inposy + SPRITE_SIZE))
                 {
+                    //printf("condition 3 bis \n");
                     meduse->posmonsx+=1;
                     if (input->right == 1)
                     {
@@ -71,10 +75,16 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input)
         //coter gauche joueur
         if (joueur->inposx + SPRITE_SIZE >= meduse->posmonsx)
         {
+            printf("condistion 1 \n");
+
             if (joueur->inposx <= meduse->posmonsx + SPRITE_SIZE)
             {
+                                printf("condition 2 \n");
+
                 if (meduse->posmonsy >= joueur->inposy && meduse->posmonsy <= joueur->inposy+SPRITE_SIZE)
                 {
+                    printf("condition 3 \n");
+
                     meduse->posmonsx-=1;
                     if (input->left == 1)
                     {
@@ -83,6 +93,8 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input)
                 }
                 if (meduse->posmonsy + SPRITE_SIZE >= joueur->inposy && meduse->posmonsy + SPRITE_SIZE <= joueur->inposy + SPRITE_SIZE)
                 {
+                    printf("condition 3 bis \n");
+
                     meduse->posmonsx-=1;
                     if (input->left == 1)
                     {

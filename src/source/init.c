@@ -107,5 +107,3 @@ void cleanup()
     //On quitte la SDL
     SDL_Quit();
 }
-
-
