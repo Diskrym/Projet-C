@@ -82,7 +82,7 @@ void SelectNiv (Lvl *lvl)
 {
     if(lvl->Num==0)
     {
-        LoadNiv1(&meduse, lvl, &joueur, &chauvesouris);
+        LoadNiv1(&meduse, lvl, &joueur);
     }
     if(lvl->Num==1)
     {
@@ -110,7 +110,7 @@ void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse2, Lvl *lvl)
 }
 
 
-void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur, Chauvesouris *chauvesouris)
+void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
 {  
         initMaps(lvl);
         joueur->inposx = level[0][0][2];
@@ -118,10 +118,6 @@ void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur, Chauvesouris *chauvesour
         meduse->posmonsx =level[0][1][1];
         meduse->posmonsy =level[0][1][2];
         meduse->Life=level[0][1][5];
-        chauvesouris->posmonsx =level[0][3][1];
-        chauvesouris->posmonsy =level[0][3][2];
-        chauvesouris->Life=level[0][3][5];
-
 }
 
 void LoadNiv2(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, Joueur *joueur)

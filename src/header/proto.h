@@ -25,7 +25,7 @@ extern int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris);
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
-extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur, Chauvesouris *chauvesouris);
+extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
 void LoadNiv2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
 void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse3, Lvl *lvl);
 
