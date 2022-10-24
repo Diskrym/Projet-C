@@ -118,15 +118,16 @@ void AffichageLevel (Lvl *lvl)
 
 void porte (int NbMonstre)
 {
-if (NbMonstre>=1)
+if (lvl.MortMonstre==level[lvl.Num][0][1])
 {
-SDL_Texture *Porte=loadImage("src/graphics/Porteferme.png");
-drawImage(Porte,SCREEN_WIDTH/2-22,0);
+    SDL_Texture *Porte=loadImage("src/graphics/Porteouverte.png");
+    drawImage(Porte,SCREEN_WIDTH/2-22,0);
 }
 else
 {
-SDL_Texture *Porte=loadImage("src/graphics/Porteouverte.png");
-drawImage(Porte,SCREEN_WIDTH/2-22,0);
+
+    SDL_Texture *Porte=loadImage("src/graphics/Porteferme.png");
+    drawImage(Porte,SCREEN_WIDTH/2-22,0);
 }
 
 }
