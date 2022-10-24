@@ -107,11 +107,29 @@ void AffichageLevel (Lvl *lvl)
 {
     SDL_Texture *Level=loadImage("src/graphics/lvl/Level.png");
     drawImage(Level,0,0);
-    SDL_Texture *niv=loadImage("src/graphics/lvl/1.png");
-    drawImage(niv,139,0);
-    if (lvl->Num==1)
+    if (lvl->Num==0)
     {
         SDL_Texture *Level=loadImage("src/graphics/lvl/1.png");
+        drawImage(Level,139,0);
+    }
+    if (lvl->Num==1)
+    {
+        SDL_Texture *Level=loadImage("src/graphics/lvl/2.png");
+        drawImage(Level,139,0);
+    }
+    if (lvl->Num==2)
+    {
+        SDL_Texture *Level=loadImage("src/graphics/lvl/3.png");
+        drawImage(Level,139,0);
+    }
+    if (lvl->Num==3)
+    {
+        SDL_Texture *Level=loadImage("src/graphics/lvl/4.png");
+        drawImage(Level,139,0);
+    }
+    if (lvl->Num==4)
+    {
+        SDL_Texture *Level=loadImage("src/graphics/lvl/5.png");
         drawImage(Level,139,0);
     }
 }
