@@ -9,6 +9,7 @@ void drawGame(void)
     drawImage(getBackground(), 0, 0);
     AffichageVie (&joueur);
     AffichageLevel(&lvl);
+    porte (0);
     // Affiche l'écran
     
     // Délai
@@ -111,4 +112,19 @@ void AffichageLevel (Lvl *lvl)
         SDL_Texture *Level=loadImage("src/graphics/1.png");
         drawImage(Level,139,0);
     }
+}
+
+void porte (int NbMonstre)
+{
+if (NbMonstre>=1)
+{
+SDL_Texture *Porte=loadImage("src/graphics/Porteferme.png");
+drawImage(Porte,SCREEN_WIDTH/2-22,0);
+}
+else
+{
+SDL_Texture *Porte=loadImage("src/graphics/Porteouverte.png");
+drawImage(Porte,SCREEN_WIDTH/2-22,0);
+}
+
 }

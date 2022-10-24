@@ -12,6 +12,7 @@ extern void drawImage(SDL_Texture *, int, int);
 extern void delay(unsigned int frameLimit);
 extern void AffichageVie(Joueur *joueur);
 extern void AffichageLevel (Lvl *lvl);
+extern void porte (int NbMonstre);
 
 //events.c
 extern void collision (Joueur *joueur, Meduse *meduse, Input *input);
