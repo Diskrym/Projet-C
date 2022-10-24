@@ -39,13 +39,8 @@ init("SDL 2");
     // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
-        printf("%d \n" , lvl.MortMonstre);
-        if (lvl.MortMonstre==level[lvl.Num][0][1] && joueur.inposy==28 && joueur.inposx >= 298 && joueur.inposx <= 320)
-        {
-            lvl.Num+=1;
-            SelectNiv(&lvl);
-        }
         
+        GestionMap(&joueur, &lvl);
         //Gestion des inputs clavier
         gestionInputs(&input);
 

@@ -235,4 +235,3 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Meduse
     }
     SpritChauvesouris (chauvesouris, joueur, meduse);
 }
-

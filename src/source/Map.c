@@ -1,6 +1,8 @@
 #include "../header/proto.h" 
  
 Map map;
+Lvl lvl;
+Joueur joueur;
  
 void initMaps(Lvl *lvl)
 {
@@ -25,4 +27,13 @@ void cleanMaps(void)
         SDL_DestroyTexture(map.background);
         map.background = NULL;
     }
+}
+
+void GestionMap(Joueur *joueur, Lvl *lvl)
+{
+    if (lvl->MortMonstre==level[lvl->Num][0][1] && joueur->inposy==28 && joueur->inposx >= 298 && joueur->inposx <= 320)
+        {
+            lvl->Num+=1;
+            SelectNiv(lvl);
+        }
 }
