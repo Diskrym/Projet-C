@@ -16,21 +16,17 @@ int main(int argc, char *argv[])
 // extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
-lvl.Num=1;
+lvl.Num=0;
 joueur.life=3;
-meduse.Life=3;
 //meduse1.Life=3;
  
 // Initialisation de la SDL
 init("SDL 2");
  
     // Chargement des ressources (graphismes, sons)
-    LoadJoueur(&joueur);
-    if (lvl.Num==1)
-    {
-    LoadMonstre(&meduse, 70,70);
-    //LoadMonstre(&meduse1,300,300);
-    }
+    LoadNiv1(&meduse, &lvl, &joueur);
+    //LoadMonstre(&meduse1, &lvl, &joueur);
+    
     
     
      

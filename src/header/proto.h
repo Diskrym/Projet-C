@@ -23,7 +23,7 @@ extern int insidechevalier (Joueur *joueur, Meduse *meduse);
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
-extern void LoadMonstre(Meduse *meduse,int x, int y);
+extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
 extern void cleanup(void);
 
 //input.c
