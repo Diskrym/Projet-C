@@ -17,20 +17,25 @@ extern void porte (int NbMonstre);
 //events.c
 extern void collision (Joueur *joueur, Meduse *meduse, Input *input);
 extern int inside (Joueur *joueur, Meduse *meduse);
-extern int insidechevalier (Joueur *joueur, Meduse *meduse);
+extern int insidechevalier (Joueur *joueur, Meduse *meduse, Chauvesouris *chauvesouris);
+extern int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris);
+
 
 //init.c
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
-extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
+extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur, Chauvesouris *chauvesouris);
 extern void cleanup(void);
 
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
 extern void deplacement (Input *input, Joueur *joueur);
-extern void deplacementMeduse (Joueur *joueur, Meduse *meduse);
+extern void deplacementMeduse (Joueur *joueur, Meduse *meduse );
+extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Meduse *meduse);
+
+
 
 //map.c
 extern void initMaps(void);
@@ -38,8 +43,9 @@ extern SDL_Texture *getBackground(void);
 extern void cleanMaps(void);
 
 //Sprit.c
-extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input);
-extern void SpritMeduse (Meduse *meduse, Joueur *joueur);
+extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris);
+extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Chauvesouris *chauvesouris);
+extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Meduse *meduse);
 
 //extern void drawMap(int);
 #endif

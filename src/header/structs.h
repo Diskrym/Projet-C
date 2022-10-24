@@ -8,7 +8,7 @@
 typedef struct Input
 {
  
-    int left, right, up, down, jump, attack, enter, erase, pause;
+    int left, right, up, down, shield, attack, enter, erase, pause;
  
 } Input;
 
@@ -20,6 +20,13 @@ typedef struct Meduse
  
 } Meduse;
 
+typedef struct Chauvesouris
+{
+ 
+    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort;
+ 
+} Chauvesouris;
+
 
 typedef struct Map
 {
@@ -30,7 +37,7 @@ SDL_Texture *background;
 
 typedef struct Joueur
 {
-    int inposx, inposy, Eattack, life, Direction, NumSprit, Numattack, coup;
+    int inposx, inposy, Eattack,Eshield, life, Direction, NumSprit, Numattack, coup;
 } Joueur;
 
 typedef struct Lvl
@@ -49,11 +56,12 @@ typedef struct Lvl
                                         }
                                     }
  */
-static const int level [1][3][6] = {
+static const int level [1][4][6] = {
                                         {
                                             {1,1,288,160,0,0},
                                             {1,70,70,2,1,3},
-                                            {1,300,300,2,1,3}
+                                            {1,300,300,2,1,3},
+                                            {2,70,300,2,1,1}
                                         }
                                     };
 

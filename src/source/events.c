@@ -114,7 +114,7 @@ int inside (Joueur *joueur, Meduse *meduse)
     }
 }
 
-int insidechevalier (Joueur *joueur, Meduse *meduse)
+int insidechevalier (Joueur *joueur, Meduse *meduse, Chauvesouris *chauvesouris)
 {
     int x=0;
     int y=0;
@@ -143,9 +143,63 @@ int insidechevalier (Joueur *joueur, Meduse *meduse)
         {
             y=1;
         }
+        
         if (x==1 && y==1)
         {return 1;}
         else 
         {return 0;}
     }
+    if (joueur->Direction==1)
+    {
+        if ((chauvesouris->posmonsx>=joueur->inposx-21 || chauvesouris->posmonsx+50>=joueur->inposx-21) && (chauvesouris->posmonsx<=joueur->inposx || chauvesouris->posmonsx+50<=joueur->inposx))
+        {
+            x=1;
+        }
+        if ((chauvesouris->posmonsy>=joueur->inposy+32 || chauvesouris->posmonsy+50>=joueur->inposy+32) && (chauvesouris->posmonsy<=joueur->inposy+SPRITE_SIZE || chauvesouris->posmonsy+50<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    }
+    if (joueur->Direction==0)
+    {
+        if ((chauvesouris->posmonsx>=joueur->inposx+SPRITE_SIZE || chauvesouris->posmonsx+SPRITE_SIZE>=joueur->inposx+SPRITE_SIZE) && (chauvesouris->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| chauvesouris->posmonsx+SPRITE_SIZE<=joueur->inposx+SPRITE_SIZE+21))
+        {
+            x=1;
+        }
+        if ((chauvesouris->posmonsy>=joueur->inposy+32 || chauvesouris->posmonsy+50>=joueur->inposy+32) && (chauvesouris->posmonsy<=joueur->inposy+SPRITE_SIZE || chauvesouris->posmonsy+50<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+         if (x==1 && y==1)
+        {return 1;}
+        else 
+        {return 0;}
+    }
+
 }
+
+
+int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris)
+{
+    int x=0;
+    int y=0;
+ 
+        if ((chauvesouris->posmonsx+10>=joueur->inposx || chauvesouris->posmonsx+40>=joueur->inposx) && (chauvesouris->posmonsx+10<=joueur->inposx+SPRITE_SIZE || chauvesouris->posmonsx+40<=joueur->inposx+SPRITE_SIZE))
+        {
+            x=1;
+        }
+        if ((chauvesouris->posmonsy+10>=joueur->inposy || chauvesouris->posmonsy+40>=joueur->inposy) && (chauvesouris->posmonsy+10<=joueur->inposy+SPRITE_SIZE || chauvesouris->posmonsy+40<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    
+}
+ 

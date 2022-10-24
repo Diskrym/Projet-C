@@ -8,6 +8,7 @@ Input input;
 Joueur joueur;
 Meduse meduse;
 Meduse meduse1;
+Chauvesouris chauvesouris;
 Lvl lvl;
 
 int main(int argc, char *argv[])
@@ -24,7 +25,7 @@ joueur.life=3;
 init("SDL 2");
  
     // Chargement des ressources (graphismes, sons)
-    LoadNiv1(&meduse, &lvl, &joueur);
+    LoadNiv1(&meduse, &lvl, &joueur, &chauvesouris);
     //LoadMonstre(&meduse1, &lvl, &joueur);
     
     
@@ -46,6 +47,7 @@ init("SDL 2");
         
         //IA monstre
         deplacementMeduse(&joueur, &meduse);
+        deplacementChauvesouris(&joueur, &chauvesouris, &meduse);
         
         
         //meduse 2

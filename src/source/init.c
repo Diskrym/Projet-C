@@ -76,7 +76,7 @@ void init(char *title)
 
 
 
-void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
+void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur, Chauvesouris *chauvesouris)
 {  
         initMaps();
         joueur->inposx = level[0][0][2];
@@ -84,6 +84,10 @@ void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
         meduse->posmonsx =level[0][1][1];
         meduse->posmonsy =level[0][1][2];
         meduse->Life=level[0][1][5];
+        chauvesouris->posmonsx =level[0][3][1];
+        chauvesouris->posmonsy =level[0][3][2];
+        chauvesouris->Life=level[0][3][5];
+
 }
 
 void cleanup()

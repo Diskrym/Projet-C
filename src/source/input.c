@@ -3,6 +3,7 @@
 Input input;
 Joueur joueur;
 Meduse meduse;
+Chauvesouris chauvesouris;
 
 void gestionInputs(Input *input)
 {
@@ -38,8 +39,8 @@ void getInput(Input *input)
                         input->erase = 1;
                     break;
  
-                    case SDLK_c:
-                        input->jump = 1;
+                    case SDLK_z:
+                        input->shield = 1;
                     break;
  
                     case SDLK_SPACE:
@@ -80,8 +81,8 @@ void getInput(Input *input)
                         input->erase = 0;
                     break;
  
-                    case SDLK_c:
-                        input->jump = 0;
+                    case SDLK_z:
+                        input->shield = 0;
                     break;
  
                     case SDLK_LEFT:
@@ -148,7 +149,16 @@ void deplacement (Input *input, Joueur *joueur)
         joueur->NumSprit=0;
         joueur->Eattack=1;
     }
-    SpritHeros(joueur, &meduse, input);
+    if (input->shield==1)
+    {
+        joueur->NumSprit=0;
+        joueur->Eshield=1;
+    }
+    if (input->shield==0)
+    {
+        joueur->Eshield=0;
+    }
+    SpritHeros(joueur, &meduse, input, &chauvesouris);
 }
 
 
@@ -182,5 +192,41 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse)
         }
 
     }
-    SpritMeduse (meduse, joueur);
+    SpritMeduse (meduse, joueur, &chauvesouris);
+}
+
+
+void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Meduse *meduse)
+{
+    chauvesouris->NumSprit+=1;
+    if  (chauvesouris->Life==0 && chauvesouris->CompteurSpriteDegat<19)
+    {
+        chauvesouris->CompteurSpriteDegat+=1;
+    }
+   
+    if (chauvesouris->Life >=1)
+    {
+        if (joueur->inposx<chauvesouris->posmonsx)
+        {
+            chauvesouris->posmonsx-=2;
+            chauvesouris->Direction=1;
+            
+        }
+        if (joueur->inposx>chauvesouris->posmonsx)
+        {
+            chauvesouris->posmonsx+=2;
+            chauvesouris->Direction=0;
+
+        }
+        if (joueur->inposy+32<chauvesouris->posmonsy)
+        {
+            chauvesouris->posmonsy-=2;
+        }
+        if (joueur->inposy+32>chauvesouris->posmonsy)
+        {
+            chauvesouris->posmonsy+=2;
+        }
+ 
+    }
+    SpritChauvesouris (chauvesouris, joueur, meduse);
 }
