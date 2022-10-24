@@ -3,6 +3,10 @@
 SDL_Window *screen;
 SDL_Renderer *renderer;
 
+Meduse meduse;
+Joueur joueur;
+
+
 SDL_Renderer *getrenderer(void)
 {
     return renderer;
@@ -74,11 +78,18 @@ void init(char *title)
  
 }
 
+void SelectNiv (Lvl *lvl)
+{
+    if(lvl->Num==0)
+    {
+        LoadNiv1(&meduse, lvl, &joueur);
+    }
+}
 
 
 void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
 {  
-        initMaps();
+        initMaps(lvl);
         joueur->inposx = level[0][0][2];
         joueur->inposy = level[0][0][3];
         meduse->posmonsx =level[0][1][1];

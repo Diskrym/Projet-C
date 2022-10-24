@@ -25,15 +25,16 @@ extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
 extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
 extern void cleanup(void);
+void SelectNiv (Lvl *lvl);
 
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
 extern void deplacement (Input *input, Joueur *joueur);
-extern void deplacementMeduse (Joueur *joueur, Meduse *meduse);
+extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl);
 
 //map.c
-extern void initMaps(void);
+extern void initMaps(Lvl *lvl);
 extern SDL_Texture *getBackground(void);
 extern void cleanMaps(void);
 

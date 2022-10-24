@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 // extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
+
 lvl.Num=0;
 joueur.life=3;
 //meduse1.Life=3;
@@ -38,6 +39,14 @@ init("SDL 2");
     // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
+        printf("%d %d \n", lvl.changement, joueur.inposy);
+        if (lvl.changement==1 && joueur.inposy==28)
+        {
+            lvl.Num+=1;
+            SelectNiv(&lvl);
+            lvl.changement=0;
+        }
+        
         //Gestion des inputs clavier
         gestionInputs(&input);
 
@@ -45,7 +54,7 @@ init("SDL 2");
         drawGame();
         
         //IA monstre
-        deplacementMeduse(&joueur, &meduse);
+        deplacementMeduse(&joueur, &meduse, &lvl);
         
         
         //meduse 2
