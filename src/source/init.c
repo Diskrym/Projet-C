@@ -118,9 +118,7 @@ void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur, Chauvesouris *chauvesour
         meduse->posmonsx =level[0][1][1];
         meduse->posmonsy =level[0][1][2];
         meduse->Life=level[0][1][5];
-        chauvesouris->posmonsx =level[0][3][1];
-        chauvesouris->posmonsy =level[0][3][2];
-        chauvesouris->Life=level[0][3][5];
+        ;
 
 }
 
