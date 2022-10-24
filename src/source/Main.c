@@ -25,7 +25,7 @@ joueur.life=3;
 init("SDL 2");
  
     // Chargement des ressources (graphismes, sons)
-    LoadNiv1(&meduse, &lvl, &joueur, &chauvesouris);
+    LoadNiv1(&meduse, &lvl, &joueur);
     //LoadMonstre(&meduse1, &lvl, &joueur);
     
     
@@ -39,13 +39,8 @@ init("SDL 2");
     // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
-        printf("%d \n" , lvl.MortMonstre);
-        if (lvl.MortMonstre==level[lvl.Num][0][1] && joueur.inposy==28 && joueur.inposx >= 298 && joueur.inposx <= 320)
-        {
-            lvl.Num+=1;
-            SelectNiv(&lvl);
-        }
         
+        GestionMap(&joueur, &lvl);
         //Gestion des inputs clavier
         gestionInputs(&input);
 
@@ -54,7 +49,7 @@ init("SDL 2");
         
         //IA monstre
         
-        deplacementChauvesouris(&joueur, &chauvesouris, &meduse);
+        //deplacementChauvesouris(&joueur, &chauvesouris, &meduse);
         
         GestionMonstre(&meduse, &meduse1, &meduse2, &lvl);
         

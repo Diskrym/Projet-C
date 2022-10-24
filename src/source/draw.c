@@ -9,7 +9,7 @@ void drawGame(void)
     drawImage(getBackground(), 0, 0);
     AffichageVie (&joueur);
     AffichageLevel(&lvl);
-    porte (0);
+    porte (&lvl);
     // Affiche l'écran
     
     // Délai
@@ -107,27 +107,56 @@ void AffichageLevel (Lvl *lvl)
 {
     SDL_Texture *Level=loadImage("src/graphics/lvl/Level.png");
     drawImage(Level,0,0);
-    SDL_Texture *niv=loadImage("src/graphics/lvl/1.png");
-    drawImage(niv,139,0);
-    if (lvl->Num==1)
+    if (lvl->Num==0)
     {
         SDL_Texture *Level=loadImage("src/graphics/lvl/1.png");
         drawImage(Level,139,0);
     }
+    if (lvl->Num==1)
+    {
+        SDL_Texture *Level=loadImage("src/graphics/lvl/2.png");
+        drawImage(Level,139,0);
+    }
+    if (lvl->Num==2)
+    {
+        SDL_Texture *Level=loadImage("src/graphics/lvl/3.png");
+        drawImage(Level,139,0);
+    }
+    if (lvl->Num==3)
+    {
+        SDL_Texture *Level=loadImage("src/graphics/lvl/4.png");
+        drawImage(Level,139,0);
+    }
+    if (lvl->Num==4)
+    {
+        SDL_Texture *Level=loadImage("src/graphics/lvl/5.png");
+        drawImage(Level,139,0);
+    }
 }
 
-void porte (int NbMonstre)
+void porte (Lvl *lvl)
 {
-if (lvl.MortMonstre==level[lvl.Num][0][1])
+if (lvl->MortMonstre==level[lvl->Num][0][1])
 {
     SDL_Texture *Porte=loadImage("src/graphics/lvl/Porteouverte.png");
     drawImage(Porte,SCREEN_WIDTH/2-22,0);
+    if (lvl->Num != 0)
+    {
+        SDL_Texture *Portebas=loadImage("src/graphics/lvl/Porteouvertebas.png");
+        drawImage(Portebas,SCREEN_WIDTH/2-22,345);
+    }
 }
 else
 {
 
     SDL_Texture *Porte=loadImage("src/graphics/lvl/Porteferme.png");
     drawImage(Porte,SCREEN_WIDTH/2-22,0);
+    if (lvl->Num != 0)
+    {
+        SDL_Texture *Portebas=loadImage("src/graphics/lvl/Portefermebas.png");
+        drawImage(Portebas,SCREEN_WIDTH/2-22,345);
+    }
+    
 }
 
 }
