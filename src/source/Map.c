@@ -7,7 +7,7 @@ void initMaps(Lvl *lvl)
     // Charge l'image du fond (background)
     if (lvl->Num==0)
     {
-        map.background = loadImage("src/graphics/background.png");
+        map.background = loadImage("src/graphics/lvl/background.png");
     }
     
 }
