@@ -157,7 +157,7 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse)
 {
     meduse->compteur += 1;
     meduse->NumSprit+=1;
-    if  (meduse->Life==0 && meduse->CompteurSpriteDegat<20)
+    if  (meduse->Life==0 && meduse->CompteurSpriteDegat<19)
     {
         meduse->CompteurSpriteDegat+=1;
     }
@@ -184,4 +184,3 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse)
     }
     SpritMeduse (meduse, joueur);
 }
-

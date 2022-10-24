@@ -19,6 +19,7 @@ int go;
 lvl.Num=1;
 joueur.life=3;
 meduse.Life=3;
+//meduse1.Life=3;
  
 // Initialisation de la SDL
 init("SDL 2");
@@ -49,9 +50,15 @@ init("SDL 2");
         
         //IA monstre
         deplacementMeduse(&joueur, &meduse);
+        
+        
+        //meduse 2
+        //deplacementMeduse(&joueur, &meduse1);
+        //collision(&joueur, &meduse1, &input);
+
         //Gestion des inputs et des déplacements
         deplacement(&input,&joueur);
-        
+
         //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer
         SDL_RenderPresent(getrenderer());
@@ -59,7 +66,8 @@ init("SDL 2");
         getInput(&input);
         //collision
         collision(&joueur, &meduse, &input);
-        //collision(&joueur, &meduse1, &input);
+
+        
 
         
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
@@ -68,8 +76,8 @@ init("SDL 2");
         //Test defaite
         if (joueur.life<=0)
         {
-        GameOver ();
-        exit(0);
+            GameOver ();
+            exit(0);
         }
         //Test victoire
         // if (meduse.Life<=0)
