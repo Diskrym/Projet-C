@@ -6,7 +6,7 @@
 /* Déclaration des variables / structures utilisées par le jeu */
 Input input;
 Joueur joueur;
-Chauvesouris chauvesouris;
+Chauvesouris chauvesouris, chauvesouris1;
 Meduse meduse, meduse1, meduse2;
 Lvl lvl;
 Monstre monstre;
@@ -60,7 +60,7 @@ init("SDL 2");
         //collision(&joueur, &meduse1, &input);
 
         //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur,&meduse, &meduse1, &meduse2, &chauvesouris);
+        deplacement(&input,&joueur,&meduse ,&meduse1 ,&meduse2, &chauvesouris, &chauvesouris1);
 
         //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer

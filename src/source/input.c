@@ -115,7 +115,7 @@ void getInput(Input *input)
     }
 }
 
-void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2, Meduse *meduse,  Chauvesouris *chauvesouris)
+void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2, Meduse *meduse,  Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
 {  
     
     if (input->left==1)
