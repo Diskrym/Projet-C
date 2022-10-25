@@ -17,6 +17,9 @@ typedef struct Meduse
 {
  
     int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort;
+    SDL_Texture *attaque;
+    SDL_Texture *meduse;
+    
  
 } Meduse;
 
@@ -24,7 +27,7 @@ typedef struct Chauvesouris
 {
  
     int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort;
- 
+    SDL_Texture *chauvesouris;
 } Chauvesouris;
 
 
@@ -38,6 +41,8 @@ SDL_Texture *background;
 typedef struct Joueur
 {
     int inposx, inposy, Eattack,Eshield, life, Direction, NumSprit, Numattack, coup;
+    SDL_Texture *chevalier;
+    SDL_Texture *attaque;
 } Joueur;
 
 typedef struct Lvl
