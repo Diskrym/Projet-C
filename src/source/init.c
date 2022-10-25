@@ -2,10 +2,7 @@
  
 SDL_Window *screen;
 SDL_Renderer *renderer;
-Chauvesouris chauvesouris;
-Meduse meduse, meduse1, meduse2;
-Joueur joueur;
-Input input;
+
 
 SDL_Renderer *getrenderer(void)
 {
@@ -78,34 +75,34 @@ void init(char *title)
  
 }
 
-void SelectNiv (Lvl *lvl)
+void SelectNiv (Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris)
 {
     if(lvl->Num==0)
     {
-        LoadNiv1(&meduse, lvl, &joueur);
+        LoadNiv1(meduse, lvl, joueur);
     }
     if(lvl->Num==1)
     {
-        LoadNiv2(&meduse, &meduse1, &meduse2, lvl, &joueur);
+        LoadNiv2(meduse, meduse1, meduse2, lvl, joueur);
     }
     lvl->MortMonstre=0;
 }
 
-void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse2, Lvl *lvl)
+void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse2, Lvl *lvl, Input *input, Joueur *joueur, Chauvesouris *chauvesouris)
 {
     if(lvl->Num==0)
     {
-        deplacementMeduse(&joueur, meduse, lvl);
-        collision(&joueur, meduse, &input);
+        deplacementMeduse(joueur, meduse, lvl, chauvesouris);
+        collision(joueur, meduse, input);
     }
     if(lvl->Num==1)
     {
-        deplacementMeduse(&joueur, meduse, lvl);
-        deplacementMeduse(&joueur, meduse1, lvl);
-        deplacementMeduse(&joueur, meduse2, lvl);
-        collision(&joueur, meduse, &input);
-        collision(&joueur, meduse1, &input);
-        collision(&joueur, meduse2, &input);
+        deplacementMeduse(joueur, meduse, lvl, chauvesouris);
+        deplacementMeduse(joueur, meduse1, lvl, chauvesouris);
+        deplacementMeduse(joueur, meduse2, lvl ,chauvesouris);
+        collision(joueur, meduse, input);
+        collision(joueur, meduse1, input);
+        collision(joueur, meduse2, input);
     }
 }
 

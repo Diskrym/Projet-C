@@ -404,4 +404,3 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Meduse *medu
         chauvesouris->NumSprit=0;
     }
     }
-    

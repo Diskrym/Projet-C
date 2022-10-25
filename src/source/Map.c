@@ -1,8 +1,7 @@
 #include "../header/proto.h" 
  
 Map map;
-Lvl lvl;
-Joueur joueur;
+
  
 void initMaps(Lvl *lvl)
 {
@@ -29,11 +28,11 @@ void cleanMaps(void)
     }
 }
 
-void GestionMap(Joueur *joueur, Lvl *lvl)
+void GestionMap(Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris)
 {
     if (lvl->MortMonstre==level[lvl->Num][0][1] && joueur->inposy==28 && joueur->inposx >= 298 && joueur->inposx <= 320)
         {
             lvl->Num+=1;
-            SelectNiv(lvl);
+            SelectNiv(joueur, lvl, meduse, meduse1, meduse2, chauvesouris);
         }
 }

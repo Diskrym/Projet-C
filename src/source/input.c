@@ -1,9 +1,5 @@
 #include "../header/proto.h"
  
-Input input;
-Joueur joueur;
-Meduse meduse;
-Chauvesouris chauvesouris;
 
 void gestionInputs(Input *input)
 {
@@ -119,7 +115,7 @@ void getInput(Input *input)
     }
 }
 
-void deplacement (Input *input, Joueur *joueur)
+void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2, Meduse *meduse,  Chauvesouris *chauvesouris)
 {  
     
     if (input->left==1)
@@ -158,12 +154,12 @@ void deplacement (Input *input, Joueur *joueur)
     {
         joueur->Eshield=0;
     }
-    SpritHeros(joueur, &meduse, input, &chauvesouris);
+    SpritHeros(joueur, meduse, input, chauvesouris);
 }
 
 
 
-void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
+void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, Chauvesouris *chauvesouris)
 {
     meduse->compteur += 1;
     meduse->NumSprit+=1;
@@ -197,7 +193,7 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
         }
 
     }
-    SpritMeduse (meduse, joueur, &chauvesouris, lvl);
+    SpritMeduse (meduse, joueur, chauvesouris, lvl);
 }
 
 

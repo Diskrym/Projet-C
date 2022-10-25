@@ -42,7 +42,7 @@ typedef struct Joueur
 
 typedef struct Lvl
 {
-    int Num, changement, MortMonstre, lvl1 ,lvl2;
+    int Num, changement, MortMonstre;
 } Lvl;
 
  /*

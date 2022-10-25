@@ -10,6 +10,8 @@ Chauvesouris chauvesouris;
 Meduse meduse, meduse1, meduse2;
 Lvl lvl;
 
+//Meduse nv1__tab_meduse[3];
+
 int main(int argc, char *argv[])
 {
     
@@ -40,25 +42,23 @@ init("SDL 2");
     while (go == 1)
     {    
         
-        GestionMap(&joueur, &lvl);
+        GestionMap(&joueur, &lvl, &meduse, &meduse1, &meduse2 , &chauvesouris);
         //Gestion des inputs clavier
         gestionInputs(&input);
-
         //On dessine tout
-        drawGame();
-        
+        drawGame(&joueur, &lvl);
         //IA monstre
         
         //deplacementChauvesouris(&joueur, &chauvesouris, &meduse);
         
-        GestionMonstre(&meduse, &meduse1, &meduse2, &lvl);
+        GestionMonstre(&meduse, &meduse1, &meduse2, &lvl, &input ,&joueur, &chauvesouris);
         
         //meduse 2
         //deplacementMeduse(&joueur, &meduse1);
         //collision(&joueur, &meduse1, &input);
 
         //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur);
+        deplacement(&input,&joueur,&meduse ,&meduse1 ,&meduse2, &chauvesouris);
 
         //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer

@@ -1,15 +1,12 @@
 #include "../header/proto.h"
-Input input;
-Lvl lvl;
-Joueur joueur;
 
-void drawGame(void)
+void drawGame(Joueur *joueur, Lvl *lvl)
 {
     // Affiche le fond (background) aux coordonnées (0,0)
     drawImage(getBackground(), 0, 0);
-    AffichageVie (&joueur);
-    AffichageLevel(&lvl);
-    porte (&lvl);
+    AffichageVie (joueur);
+    AffichageLevel(lvl);
+    porte (lvl);
     // Affiche l'écran
     
     // Délai
@@ -142,10 +139,11 @@ if (lvl->MortMonstre==level[lvl->Num][0][1])
     drawImage(Porte,SCREEN_WIDTH/2-22,0);
     if (lvl->Num != 0)
     {
-        SDL_Texture *Portebas=loadImage("src/graphics/lvl/Porteouvertebas.png");
+        SDL_Texture *Portebas=loadImage("src/graphics/lvl/Portefermebas.png");
         drawImage(Portebas,SCREEN_WIDTH/2-22,345);
     }
 }
+
 else
 {
 
