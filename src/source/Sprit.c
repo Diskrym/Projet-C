@@ -157,7 +157,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
     
 }
 
-void SpritMeduse (Meduse *meduse, Joueur *joueur, Chauvesouris *chauvesouris,Lvl *lvl)
+void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
 {   if (meduse->meduse!=NULL)
     {
         SDL_DestroyTexture(meduse->meduse);

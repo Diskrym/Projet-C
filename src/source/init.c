@@ -75,34 +75,34 @@ void init(char *title)
  
 }
 
-void SelectNiv (Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris)
+void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre)
 {
     if(lvl->Num==0)
     {
-        LoadNiv1(meduse, lvl, joueur);
+        LoadNiv1(&monstre->meduse, lvl, joueur);
     }
     if(lvl->Num==1)
     {
-        LoadNiv2(meduse, meduse1, meduse2, lvl, joueur);
+        LoadNiv2(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, lvl, joueur);
     }
     lvl->MortMonstre=0;
 }
 
-void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse2, Lvl *lvl, Input *input, Joueur *joueur, Chauvesouris *chauvesouris)
+void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
 {
     if(lvl->Num==0)
     {
-        deplacementMeduse(joueur, meduse, lvl, chauvesouris);
-        collision(joueur, meduse, input);
+        deplacementMeduse(joueur, &monstre->meduse, lvl);
+        collision(joueur, &monstre->meduse, input);
     }
     if(lvl->Num==1)
     {
-        deplacementMeduse(joueur, meduse, lvl, chauvesouris);
-        deplacementMeduse(joueur, meduse1, lvl, chauvesouris);
-        deplacementMeduse(joueur, meduse2, lvl ,chauvesouris);
-        collision(joueur, meduse, input);
-        collision(joueur, meduse1, input);
-        collision(joueur, meduse2, input);
+        deplacementMeduse(joueur, &monstre->meduse, lvl);
+        deplacementMeduse(joueur, &monstre->meduse1, lvl);
+        deplacementMeduse(joueur, &monstre->meduse2, lvl);
+        collision(joueur, &monstre->meduse, input);
+        collision(joueur, &monstre->meduse1, input);
+        collision(joueur, &monstre->meduse2, input);
     }
 }
 

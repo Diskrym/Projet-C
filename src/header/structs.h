@@ -31,6 +31,16 @@ typedef struct Chauvesouris
 } Chauvesouris;
 
 
+typedef struct Monstre
+{
+    Meduse meduse;
+    Meduse meduse1;
+    Meduse meduse2;
+    Chauvesouris chauvesouris;
+} Monstre;
+
+
+
 typedef struct Map
 {
  
@@ -74,5 +84,6 @@ static const int level [2][4][6] = {
                                             {1,500,20,2,1,3}
                                         }
                                     };
+
 
 #endif

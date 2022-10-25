@@ -159,7 +159,7 @@ void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2
 
 
 
-void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, Chauvesouris *chauvesouris)
+void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
 {
     meduse->compteur += 1;
     meduse->NumSprit+=1;
@@ -193,7 +193,7 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, Chauvesouris *
         }
 
     }
-    SpritMeduse (meduse, joueur, chauvesouris, lvl);
+    SpritMeduse (meduse, joueur, lvl);
 }
 
 
