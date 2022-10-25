@@ -75,7 +75,7 @@ void init(char *title)
  
 }
 
-void SelectNiv (Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris)
+void SelectNiv (Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
 {
     if(lvl->Num==0)
     {
@@ -85,10 +85,14 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Medus
     {
         LoadNiv2(meduse, meduse1, meduse2, lvl, joueur);
     }
+    if(lvl->Num==2)
+    {
+         LoadNiv3(meduse, meduse1, chauvesouris , chauvesouris1, lvl, joueur);
+    }
     lvl->MortMonstre=0;
 }
 
-void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse2, Lvl *lvl, Input *input, Joueur *joueur, Chauvesouris *chauvesouris)
+void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse2, Lvl *lvl, Input *input, Joueur *joueur, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
 {
     if(lvl->Num==0)
     {
@@ -100,6 +104,16 @@ void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse2, Lvl *lvl,
         deplacementMeduse(joueur, meduse, lvl, chauvesouris);
         deplacementMeduse(joueur, meduse1, lvl, chauvesouris);
         deplacementMeduse(joueur, meduse2, lvl ,chauvesouris);
+        collision(joueur, meduse, input);
+        collision(joueur, meduse1, input);
+        collision(joueur, meduse2, input);
+    }
+    if(lvl->Num==2)
+    {
+        deplacementMeduse(joueur, meduse, lvl, chauvesouris);
+        deplacementMeduse(joueur, meduse1, lvl, chauvesouris);
+        deplacementChauvesouris(joueur,chauvesouris,meduse);
+        deplacementChauvesouris(joueur,chauvesouris1,meduse);
         collision(joueur, meduse, input);
         collision(joueur, meduse1, input);
         collision(joueur, meduse2, input);
@@ -131,6 +145,25 @@ void LoadNiv2(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, Joueur 
         meduse2->posmonsx =level[1][3][1];
         meduse2->posmonsy =level[1][3][2];
         meduse2->Life=level[1][3][5];
+}
+
+void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur)
+{  
+        initMaps(lvl);
+        joueur->inposx = level[2][0][2];
+        joueur->inposy = level[2][0][3];
+        meduse->posmonsx =level[2][1][1];
+        meduse->posmonsy =level[2][1][2];
+        meduse->Life=level[2][1][5];
+        meduse1->posmonsx =level[2][2][1];
+        meduse1->posmonsy =level[2][2][2];
+        meduse1->Life=level[2][2][5];
+        chauvesouris->posmonsx =level[2][3][1];
+        chauvesouris->posmonsy =level[2][3][2];
+        chauvesouris->Life=level[2][3][5];
+        chauvesouris1->posmonsx =level[2][4][1];
+        chauvesouris1->posmonsy =level[2][4][2];
+        chauvesouris1->Life=level[2][4][5];
 }
 
 void cleanup()

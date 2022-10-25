@@ -6,7 +6,7 @@
 /* Déclaration des variables / structures utilisées par le jeu */
 Input input;
 Joueur joueur;
-Chauvesouris chauvesouris;
+Chauvesouris chauvesouris, chauvesouris1;
 Meduse meduse, meduse1, meduse2;
 Lvl lvl;
 
@@ -42,23 +42,22 @@ init("SDL 2");
     while (go == 1)
     {    
         
-        GestionMap(&joueur, &lvl, &meduse, &meduse1, &meduse2 , &chauvesouris);
+        GestionMap(&joueur, &lvl, &meduse, &meduse1, &meduse2 , &chauvesouris, &chauvesouris1);
         //Gestion des inputs clavier
         gestionInputs(&input);
         //On dessine tout
         drawGame(&joueur, &lvl);
         //IA monstre
-        
         //deplacementChauvesouris(&joueur, &chauvesouris, &meduse);
         
-        GestionMonstre(&meduse, &meduse1, &meduse2, &lvl, &input ,&joueur, &chauvesouris);
+        GestionMonstre(&meduse, &meduse1, &meduse2, &lvl, &input ,&joueur, &chauvesouris, &chauvesouris1);
         
         //meduse 2
         //deplacementMeduse(&joueur, &meduse1);
         //collision(&joueur, &meduse1, &input);
 
         //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur,&meduse ,&meduse1 ,&meduse2, &chauvesouris);
+        deplacement(&input,&joueur,&meduse ,&meduse1 ,&meduse2, &chauvesouris, &chauvesouris1);
 
         //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer

@@ -27,24 +27,26 @@ extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
 extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
 extern void LoadNiv2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
-extern void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse3, Lvl *lvl, Input *input, Joueur *joueur ,Chauvesouris *chauvesouris);
+extern void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
+
+extern void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse3, Lvl *lvl, Input *input, Joueur *joueur ,Chauvesouris *chauvesouris,Chauvesouris *chauvesouris1);
 
 extern void cleanup(void);
-extern void SelectNiv (Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris);
+extern void SelectNiv (Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris,  Chauvesouris *chauvesouris1);
 
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
-extern void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2, Meduse *meduse3,  Chauvesouris *chauvesouris);
+extern void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2, Meduse *meduse3,  Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1);
 extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, Chauvesouris *chauvesouris );
-extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Meduse *meduse);
+extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Meduse *meduse);
 
 
 //map.c
 extern void initMaps(Lvl *lvl);
 extern SDL_Texture *getBackground(void);
 extern void cleanMaps(void);
-extern void GestionMap(Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris);
+extern void GestionMap(Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1);
 
 //Sprit.c
 extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris);
