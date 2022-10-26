@@ -70,30 +70,30 @@ typedef struct Lvl
  /*
  static const int level [5][5][10]={ 
                                         { 
-                                            {NumLvl, NbMonstre, Xjoueur, yjoueur }
-                                            {TypeMonstre, xMonstre, yMonstre, Vitesse monstre, DegatsMoinstre, VieMonstre}
-                                            {TypeMonstre, xMonstre, yMonstre, Vitesse monstre, DegatsMoinstre, VieMonstre}
-                                            {TypeMonstre, xMonstre, yMonstre, Vitesse monstre, DegatsMoinstre, VieMonstre}
-                                            {TypeMonstre, xMonstre, yMonstre, Vitesse monstre, DegatsMoinstre, VieMonstre}
+                                            {NumLvl, NbMonstre, Xjoueur, yjoueur, Range }
+                                            {TypeMonstre, xMonstre, yMonstre, Range monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Range monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Range monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Range monstre, DegatsMoinstre, VieMonstre}
                                         }
                                     }
  */
 static const int level [3][5][6] = {
                                         {
-                                            {1,1,288,160,0,0},
-                                            {1,70,70,1,1,3},
-                                            {1,300,300,1,1,3}
+                                            {1,1,288,160,64,0},
+                                            {1,70,70,64,1,3},
+                                            {1,300,300,64,1,3}
                                         },
                                         {
-                                            {2,3,298,384,0,0},
-                                            {1,100,20,1,1,3},
-                                            {1,300,20,1,1,3},
-                                            {1,500,20,1,1,3}
+                                            {2,3,298,384,64,0},
+                                            {1,100,20,64,1,3},
+                                            {1,300,20,64,1,3},
+                                            {1,500,20,64,1,3}
                                         },
                                         {
                                             {3,4,298,384,0,0},
-                                            {1,100,20,1,1,3},
-                                            {1,500,200,1,1,3},
+                                            {1,100,20,64,1,3},
+                                            {1,500,200,64,1,3},
                                             {2,500,20,2,1,1},
                                             {2,100,200,2,1,1}
                                         }

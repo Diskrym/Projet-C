@@ -15,7 +15,7 @@ extern void AffichageLevel (Lvl *lvl);
 extern void porte (Lvl *lvl);
 
 //events.c
-extern void collision (Joueur *joueur, Meduse *meduse, Input *input);
+extern void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl);
 extern int inside (Joueur *joueur, Meduse *meduse);
 extern int insidechevalier (Joueur *joueur, Meduse *meduse);
 extern int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris);

@@ -1,6 +1,6 @@
 #include "../header/proto.h"
 
-void collision (Joueur *joueur, Meduse *meduse, Input *input)
+void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
 {
     //collision joueur mur
     if (joueur->inposx <= 25)

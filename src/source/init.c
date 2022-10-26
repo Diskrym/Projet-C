@@ -67,7 +67,7 @@ void Son (EffetSon *son)
     son->musique = Mix_LoadMUS("src/Sik/musikdous.mp3"); //Chargement de la musique
     //Mix_PlayMusic(son ->musique, -1); //Jouer infiniment la musique
     Mix_Volume(1, MIX_MAX_VOLUME/2); //Mettre à mi-volume le post 1
-    son->epee = Mix_LoadWAV("src/Sik/épée.wav"); //Charger un wav dans un pointeur
+    son->epee = Mix_LoadWAV("src/Sik/épéev2.wav"); //Charger un wav dans un pointeur
     
 }
 
@@ -93,16 +93,16 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
     if(lvl->Num==0)
     {
         deplacementMeduse(joueur, &monstre->meduse, lvl);
-        collision(joueur, &monstre->meduse, input);
+        collision(joueur, &monstre->meduse, input, lvl);
     }
     if(lvl->Num==1)
     {
         deplacementMeduse(joueur, &monstre->meduse, lvl);
         deplacementMeduse(joueur, &monstre->meduse1, lvl);
         deplacementMeduse(joueur, &monstre->meduse2, lvl);
-        collision(joueur, &monstre->meduse, input);
-        collision(joueur, &monstre->meduse1, input);
-        collision(joueur, &monstre->meduse2, input);
+        collision(joueur, &monstre->meduse, input,lvl);
+        collision(joueur, &monstre->meduse1, input, lvl);
+        collision(joueur, &monstre->meduse2, input, lvl);
     }
     if(lvl->Num==2)
     {
@@ -110,9 +110,9 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
         deplacementMeduse(joueur, &monstre->meduse1, lvl);
         deplacementChauvesouris(joueur,&monstre->chauvesouris, &monstre->meduse);
         deplacementChauvesouris(joueur, &monstre->chauvesouris1, &monstre->meduse);
-        collision(joueur, &monstre->meduse, input);
-        collision(joueur, &monstre->meduse1, input);
-        collision(joueur, &monstre->meduse2, input);
+        collision(joueur, &monstre->meduse, input, lvl);
+        collision(joueur, &monstre->meduse1, input, lvl);
+        collision(joueur, &monstre->meduse2, input, lvl);
     }
 }
 
