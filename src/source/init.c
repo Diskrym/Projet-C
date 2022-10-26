@@ -87,7 +87,7 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre)
     }
     if(lvl->Num==2)
     {
-         LoadNiv3(meduse, meduse1, chauvesouris , chauvesouris1, lvl, joueur);
+         LoadNiv3(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
     lvl->MortMonstre=0;
 }
@@ -110,13 +110,13 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
     }
     if(lvl->Num==2)
     {
-        deplacementMeduse(joueur, meduse, lvl, chauvesouris);
-        deplacementMeduse(joueur, meduse1, lvl, chauvesouris);
-        deplacementChauvesouris(joueur,chauvesouris,meduse);
-        deplacementChauvesouris(joueur,chauvesouris1,meduse);
-        collision(joueur, meduse, input);
-        collision(joueur, meduse1, input);
-        collision(joueur, meduse2, input);
+        deplacementMeduse(joueur, &monstre->meduse, lvl);
+        deplacementMeduse(joueur, &monstre->meduse1, lvl);
+        deplacementChauvesouris(joueur,&monstre->chauvesouris, &monstre->meduse);
+        deplacementChauvesouris(joueur, &monstre->chauvesouris1, &monstre->meduse);
+        collision(joueur, &monstre->meduse, input);
+        collision(joueur, &monstre->meduse1, input);
+        collision(joueur, &monstre->meduse2, input);
     }
 }
 

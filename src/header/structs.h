@@ -37,6 +37,7 @@ typedef struct Monstre
     Meduse meduse1;
     Meduse meduse2;
     Chauvesouris chauvesouris;
+    Chauvesouris chauvesouris1;
 } Monstre;
 
 
