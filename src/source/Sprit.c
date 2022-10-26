@@ -362,7 +362,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                  
-                
+            }
 
 
             if (chauvesouris->Direction==1){
@@ -383,7 +383,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
                 }
                     
                 
-            } }
+            } 
         
  
     //     Attaque chauvesouris
