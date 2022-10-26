@@ -25,7 +25,7 @@ joueur.life=3;
 //meduse1.Life=3;
  
 // Initialisation de la SDL
-init("SDL 2");
+init("JELOMA²");
  
     // Chargement des ressources (graphismes, sons)
     LoadNiv1(&monstre.meduse, &lvl, &joueur);
