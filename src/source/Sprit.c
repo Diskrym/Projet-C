@@ -128,6 +128,12 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                 joueur->attaque=loadImage("src/graphics/Chevalier/attaqueD.png");
                 drawImage(joueur->attaque,joueur->inposx+SPRITE_SIZE ,joueur->inposy +32);
+                if(joueur->Numattack==13)
+                {
+                    //Son
+                    Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
+                }
             }
         }}
 

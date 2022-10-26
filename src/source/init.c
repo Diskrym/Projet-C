@@ -67,7 +67,7 @@ void Son (EffetSon *son)
     son->musique = Mix_LoadMUS("src/Sik/musikdous.mp3"); //Chargement de la musique
     //Mix_PlayMusic(son ->musique, -1); //Jouer infiniment la musique
     Mix_Volume(1, MIX_MAX_VOLUME/2); //Mettre à mi-volume le post 1
-    son->epee = Mix_LoadWAV("src/Sik/épée.wav"); //Charger un wav dans un pointeur
+    son->epee = Mix_LoadWAV("src/Sik/épéev2.wav"); //Charger un wav dans un pointeur
     
 }
 
