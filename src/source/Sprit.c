@@ -330,7 +330,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
 
 
 
-void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Meduse *meduse)
+void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
 {  if (chauvesouris->chauvesouris!=NULL)
     {
         SDL_DestroyTexture(chauvesouris->chauvesouris);
@@ -393,11 +393,13 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Meduse *medu
                           joueur->life--;
                           chauvesouris->Life--;
                           chauvesouris->coup =1 ;
+                          lvl->MortMonstre+=1;
                         }
                    if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==1)
                      {
                           chauvesouris->Life--;
                           chauvesouris->coup =1 ;
+                          lvl ->MortMonstre+=1;
                         }}     
                         
                         }

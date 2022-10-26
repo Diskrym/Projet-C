@@ -197,7 +197,7 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
 }
 
 
-void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Meduse *meduse)
+void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl)
 {
     chauvesouris->NumSprit+=1;
     if  (chauvesouris->Life==0 && chauvesouris->CompteurSpriteDegat<19)
@@ -229,5 +229,5 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Meduse
         }
  
     }
-    SpritChauvesouris (chauvesouris, joueur, meduse);
+    SpritChauvesouris (chauvesouris, joueur, lvl);
 }

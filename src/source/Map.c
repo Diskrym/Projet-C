@@ -6,9 +6,13 @@ Map map;
 void initMaps(Lvl *lvl)
 {
     // Charge l'image du fond (background)
-    if (lvl->Num==0)
+    if (lvl->Num==0 || lvl->Num==1 || lvl->Num==2)
     {
         map.background = loadImage("src/graphics/lvl/background.png");
+    }
+    if (lvl ->Num==3)
+    {
+        map.background = loadImage("src/graphics/lvl/mapboss.png");
     }
     
 }

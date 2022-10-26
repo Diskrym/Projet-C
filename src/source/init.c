@@ -85,6 +85,10 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre)
     {
          LoadNiv3(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
+    if(lvl->Num==3)
+    {
+        loadNiv4 (joueur, lvl);
+    }
     lvl->MortMonstre=0;
 }
 
@@ -108,12 +112,17 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
     {
         deplacementMeduse(joueur, &monstre->meduse, lvl);
         deplacementMeduse(joueur, &monstre->meduse1, lvl);
-        deplacementChauvesouris(joueur,&monstre->chauvesouris, &monstre->meduse);
-        deplacementChauvesouris(joueur, &monstre->chauvesouris1, &monstre->meduse);
+        deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl);
+        deplacementChauvesouris(joueur, &monstre->chauvesouris1, lvl);
         collision(joueur, &monstre->meduse, input, lvl);
         collision(joueur, &monstre->meduse1, input, lvl);
         collision(joueur, &monstre->meduse2, input, lvl);
     }
+    if (lvl->Num==3)
+    {
+        
+    }
+    
 }
 
 
@@ -160,6 +169,11 @@ void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauv
         chauvesouris1->posmonsx =level[2][4][1];
         chauvesouris1->posmonsy =level[2][4][2];
         chauvesouris1->Life=level[2][4][5];
+}
+
+void loadNiv4 (Joueur *joueur, Lvl *lvl)
+{
+    initMaps(lvl);
 }
 
 void cleanup(EffetSon *son)
