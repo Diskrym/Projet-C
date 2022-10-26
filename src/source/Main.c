@@ -11,6 +11,7 @@ Meduse meduse, meduse1, meduse2;
 Lvl lvl;
 Monstre monstre;
 EffetSon son;
+Boss boss;
 //Meduse nv1__tab_meduse[3];
 
 int main(int argc, char *argv[])
