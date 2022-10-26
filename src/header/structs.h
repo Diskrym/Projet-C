@@ -30,6 +30,12 @@ typedef struct Chauvesouris
     SDL_Texture *chauvesouris;
 } Chauvesouris;
 
+typedef struct  Boss
+{
+        int attack, NumSprit, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, CompteurSpriteMort, compteur;
+        SDL_Texture *Boss;
+        SDL_Texture *Bossattaque;
+}Boss;
 
 typedef struct Monstre
 {
@@ -38,8 +44,8 @@ typedef struct Monstre
     Meduse meduse2;
     Chauvesouris chauvesouris;
     Chauvesouris chauvesouris1;
+    Boss boss;
 } Monstre;
-
 
 
 typedef struct Map
@@ -98,7 +104,8 @@ static const int level [4][5][6] = {
                                             {2,100,200,2,1,1}
                                         },
                                         {
-                                            {4,4,298,384,0,0}
+                                            {4,4,298,384,0,0},
+                                            {3,288,160,128,1,10}
                                         }
                                     };
 

@@ -87,7 +87,7 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre)
     }
     if(lvl->Num==3)
     {
-        loadNiv4 (joueur, lvl);
+        loadNiv4 (joueur, &monstre->boss, lvl);
     }
     lvl->MortMonstre=0;
 }
@@ -120,7 +120,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
     }
     if (lvl->Num==3)
     {
-        
+        deplacementBoss(joueur, &monstre->boss, lvl);
     }
     
 }
@@ -171,9 +171,14 @@ void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauv
         chauvesouris1->Life=level[2][4][5];
 }
 
-void loadNiv4 (Joueur *joueur, Lvl *lvl)
+void loadNiv4 (Joueur *joueur,Boss *boss, Lvl *lvl)
 {
     initMaps(lvl);
+    joueur->inposx = level[3][0][2];
+    joueur->inposy = level[3][0][3];
+    boss->posmonsx =level[3][1][1];
+    boss->posmonsy =level[3][1][2];
+    boss->Life=level [3][1][5];
 }
 
 void cleanup(EffetSon *son)

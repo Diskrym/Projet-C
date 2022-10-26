@@ -231,3 +231,40 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *l
     }
     SpritChauvesouris (chauvesouris, joueur, lvl);
 }
+
+void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl)
+{
+    boss->compteur += 1;
+    boss->NumSprit+=1;
+    if  (boss->Life==0 && boss->CompteurSpriteDegat<19)
+    {
+        boss->CompteurSpriteDegat+=1;
+    }
+    if (boss->CompteurSpriteDegat==18)
+    {
+        lvl->MortMonstre+=1;
+    }
+    
+    
+    if (boss->compteur <= 100 && boss->Life >=1 && boss->compteur%2==0)
+    {
+        if (joueur->inposx<boss->posmonsx)
+        {
+            boss->posmonsx-=1;
+        }
+        if (joueur->inposx>boss->posmonsx)
+        {
+            boss->posmonsx+=1;   
+        }
+        if (joueur->inposy<boss->posmonsy)
+        {
+            boss->posmonsy-=1;
+        }
+        if (joueur->inposy>boss->posmonsy)
+        {
+            boss->posmonsy+=1;
+        }
+
+    }
+    SpritBoss (boss, joueur, lvl);
+}

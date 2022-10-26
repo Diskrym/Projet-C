@@ -266,7 +266,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
                 {
                     if (meduse->coup == 0)
                     {
-                        joueur->life--;
+                        //joueur->life--;
                         meduse->coup =1 ;
                     }
                 }
@@ -441,3 +441,165 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
         chauvesouris->NumSprit=0;
     }
     }
+
+void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
+{
+   if (boss->Boss!=NULL)
+    {
+        SDL_DestroyTexture(boss->Boss);
+        boss->Boss=NULL;
+    }
+    if (boss->Bossattaque!=NULL)
+    {
+        SDL_DestroyTexture(boss->Bossattaque);
+        boss->Bossattaque=NULL;
+    }
+
+    //Mouvement  meduse
+    if (boss->Life >=1)
+    {
+        printf("a");
+        if (boss->compteur < 150)
+        {   
+            printf("a");
+            if (boss->CompteurSpriteDegat==0)
+            {
+                if (boss->NumSprit==0 || boss->NumSprit==1 || boss->NumSprit==2 || boss->NumSprit==3 )
+                {
+                    printf("&&");
+                    boss->Boss=loadImage("src/graphics/Boss/BossNeutre.png");
+                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                }
+                if (boss->NumSprit==4 || boss->NumSprit==5 || boss->NumSprit==6 || boss->NumSprit==7 || boss->NumSprit==29 || boss->NumSprit==30 || boss->NumSprit==32 || boss->NumSprit==31 )
+                {
+                    boss->Boss=loadImage("src/graphics/Boss/BossMarche1.png");
+                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                }
+                if (boss->NumSprit==8 || boss->NumSprit==9 || boss->NumSprit==10 || boss->NumSprit==11|| boss->NumSprit==24 || boss->NumSprit==25 || boss->NumSprit==26 || boss->NumSprit==27 || boss->NumSprit==28 )
+                {
+                    boss->Boss=loadImage("src/graphics/Boss/BossMarche2.png");
+                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                }
+                if (boss->NumSprit==12 || boss->NumSprit==13 || boss->NumSprit==14 || boss->NumSprit==19 || boss->NumSprit==20 || boss->NumSprit==21 || boss->NumSprit==22 || boss->NumSprit==23 )                   
+                {
+                    boss->Boss=loadImage("src/graphics/Boss/BossMarche3.png");
+                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                }
+                if (boss->NumSprit==15 || boss->NumSprit==16 || boss->NumSprit==17 || boss->NumSprit==18 )
+                {
+                    boss->Boss=loadImage("src/graphics/Boss/BossMarche4.png");
+                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);    
+                }
+                // if (boss->NumSprit>=33 )
+                // {
+                //     boss->Boss=loadImage("src/graphics/Meduse/Medusemarche1.png");
+                //     drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                //     //boss->attack+=1;
+                // }
+                // if(insidechevalier(joueur, meduse)==1 && joueur->Numattack==15)
+                // {           
+                //     meduse->CompteurSpriteDegat=1; 
+                //     meduse->Life--; 
+                // }
+            }
+            
+            
+            //degat sur Boss
+            else 
+            {
+                boss->CompteurSpriteDegat+=1;
+                boss->Boss=loadImage("src/graphics/Meduse/Medusedegat.png");
+                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);    
+                if (boss->CompteurSpriteDegat > 15)
+                {
+                    boss->CompteurSpriteDegat=0;
+                }
+            }   
+        }
+
+        //Attaque boss
+        if  (boss->compteur>=150)
+        {
+            if (boss->NumSprit==0 || boss->NumSprit==1 || boss->NumSprit==2 || boss->NumSprit==3 )
+            {
+                boss->Boss=loadImage("src/graphics/Meduse/medusecoup1.png");
+                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            }
+            if (boss->NumSprit==4 || boss->NumSprit==5 || boss->NumSprit==6 || boss->NumSprit==7 || boss->NumSprit==29 || boss->NumSprit==30 || boss->NumSprit==31 || boss->NumSprit==32 )
+            {
+                boss->Boss=loadImage("src/graphics/Meduse/medusecoup2.png");
+                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            }
+            if (boss->NumSprit==8 || boss->NumSprit==9 || boss->NumSprit==10 || boss->NumSprit==11|| boss->NumSprit==24 || boss->NumSprit==25 || boss->NumSprit==26 || boss->NumSprit==27 || boss->NumSprit==28 )
+            {
+                boss->Boss=loadImage("src/graphics/Meduse/medusecoup3.png");
+                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            }
+            if (boss->NumSprit==12 || boss->NumSprit==13 || boss->NumSprit==14 || boss->NumSprit==19 || boss->NumSprit==20 || boss->NumSprit==21 || boss->NumSprit==22 || boss->NumSprit==23 )
+            {
+                boss->Boss=loadImage("src/graphics/Meduse/medusecoup4.png");                    
+                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                boss->Bossattaque=loadImage("src/graphics/Meduse/AttaqueMeduse.png");
+                drawImage(boss->Bossattaque,boss->posmonsx -23 ,boss->posmonsy - 23);
+                // if(inside(joueur, meduse)==1 && (meduse->NumSprit==23 || meduse->NumSprit==14))                    
+                // {
+                //     if (meduse->coup == 0)
+                //     {
+                //         joueur->life--;
+                //         meduse->coup =1 ;
+                //     }
+                // }
+                if (boss->NumSprit==15 || boss->NumSprit==16 || boss->NumSprit==17 || boss->NumSprit==18 )
+                {
+                    boss->Boss=loadImage("src/graphics/Meduse/medusecoup2.png");
+                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                }
+            }
+            if (boss->compteur>130)
+            {
+                boss->compteur=0;
+                boss->coup = 0;
+            }
+        }
+        if (boss->NumSprit>31)
+        {
+            boss->NumSprit=0;
+        }
+        
+    }
+
+    //Mort meduse
+    // if (meduse->Life==0)
+    // {
+    //     if (meduse->CompteurSpriteDegat==0 || meduse->CompteurSpriteDegat==1 || meduse->CompteurSpriteDegat==2 || meduse->CompteurSpriteDegat==3 )
+    //     {
+    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort1.png");
+    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+    //     }
+    //     if (meduse->CompteurSpriteDegat==4 || meduse->CompteurSpriteDegat==5 || meduse->CompteurSpriteDegat==6 || meduse->CompteurSpriteDegat==7 )
+    //     {
+    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort2.png");
+    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+    //     }
+    //     if (meduse->CompteurSpriteDegat==8 || meduse->CompteurSpriteDegat==9 || meduse->CompteurSpriteDegat==10 || meduse->CompteurSpriteDegat==11)
+    //     {
+    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort3.png");
+    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+    //     }
+    //     if (meduse->CompteurSpriteDegat==12 || meduse->CompteurSpriteDegat==13 || meduse->CompteurSpriteDegat==14 || meduse->CompteurSpriteDegat==15 )
+    //     {
+    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort4.png");
+    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+    //     }
+    //     if (meduse->CompteurSpriteDegat==16 || meduse->CompteurSpriteDegat==17 || meduse->CompteurSpriteDegat==18 || meduse->CompteurSpriteDegat==19 )
+    //     {
+    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort5.png");
+    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+    //     }
+    //     if (meduse->CompteurSpriteDegat==0)
+    //     {
+    //         lvl->MortMonstre+=1;
+    //     }
+        
+    // } 
+}
