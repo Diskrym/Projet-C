@@ -53,5 +53,6 @@ extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouri
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl);
 extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Meduse *meduse);
 
+
 //extern void drawMap(int);
 #endif

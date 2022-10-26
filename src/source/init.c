@@ -2,6 +2,7 @@
  
 SDL_Window *screen;
 SDL_Renderer *renderer;
+Mix_Music*musique;
 
 
 SDL_Renderer *getrenderer(void)
@@ -52,28 +53,23 @@ void init(char *title)
         printf("Impossible d'initialiser SDL TTF: %s\n", TTF_GetError());
         exit(1);
     }
- 
-    /*On initialise SDL_Mixer 2, qui gérera la musique et les effets sonores
-    int flags = MIX_INIT_MP3;
-    int initted = Mix_Init(flags);
-    if ((initted & flags) != flags)
-    {
-        printf("Mix_Init: Failed to init SDL_Mixer\n");
-        printf("Mix_Init: %s\n", Mix_GetError());
-        exit(1);
-    }
- 
-     Open 44.1KHz, signed 16bit, system byte order,
-    stereo audio, using 1024 byte chunks (voir la doc pour plus d'infos) 
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
-        printf("Mix_OpenAudio: %s\n", Mix_GetError());
-        exit(1);
-    }
- 
-    // Définit le nombre de pistes audio (channels) à mixer
-    Mix_AllocateChannels(32);*/
- 
+    SDL_Event event;
+   if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+   {
+      printf("%s", Mix_GetError());
+   }
+   Mix_AllocateChannels(32); //Allouer 32 canaux
+   musique = Mix_LoadMUS("src/Sik/musikdous.mp3"); //Chargement de la musique
+    Mix_PlayMusic(musique, -1); //Jouer infiniment la musique
+    Mix_Volume(1, MIX_MAX_VOLUME/2); //Mettre à mi-volume le post 1
+   Mix_Chunk *son;//Créer un pointeur pour stocker un .WAV
+//    Mix_Chunk *son2;
+   son = Mix_LoadWAV("src/Sik/épée.wav"); //Charger un wav dans un pointeur
+//    son2 = Mix_LoadWAV("son2.wav");
+   Mix_VolumeChunk(son, MIX_MAX_VOLUME/2); //Mettre un volume pour ce wav
+   Mix_PlayChannel(1, son, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
 }
+
 
 void SelectNiv (Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
 {
@@ -168,10 +164,9 @@ void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauv
 
 void cleanup()
 {
-    //On quitte SDL_Mixer 2 et on décharge la mémoire
-    //Mix_CloseAudio();
-    //Mix_Quit();
- 
+    Mix_FreeMusic(musique); //Libération de la musique
+    Mix_CloseAudio(); //Fermeture de l'API
+
     //On fait le ménage et on remet les pointeurs à NULL
     SDL_DestroyRenderer(renderer);
     renderer = NULL;
