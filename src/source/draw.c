@@ -18,6 +18,7 @@ void drawGame(Joueur *joueur, Lvl *lvl)
 
 void GameOver (void)
 {
+    Mix_PauseMusic();
     SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");
     drawImage(GameOver,0,0);
     SDL_RenderPresent(getrenderer());
