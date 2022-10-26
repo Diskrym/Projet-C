@@ -28,16 +28,11 @@ void cleanMaps(void)
     }
 }
 
-void GestionMap(Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
+void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre)
 {  
-
-    if ( joueur->inposy==28 && joueur->inposx >= 298 && joueur->inposx <= 320)
-    {
-        printf("ok2");
-    }
     if (lvl->MortMonstre==level[lvl->Num][0][1] && joueur->inposy<=28 && joueur->inposx >= 298 && joueur->inposx <= 320)
-        {   printf("boucle");
+        {   
             lvl->Num+=1;
-            SelectNiv(joueur, lvl, meduse, meduse1, meduse2, chauvesouris, chauvesouris1);
+            SelectNiv(joueur, lvl, monstre);
         }
 }

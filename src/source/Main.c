@@ -9,12 +9,13 @@ Joueur joueur;
 Chauvesouris chauvesouris, chauvesouris1;
 Meduse meduse, meduse1, meduse2;
 Lvl lvl;
-
+Monstre monstre;
+EffetSon son;
 //Meduse nv1__tab_meduse[3];
 
 int main(int argc, char *argv[])
 {
-    
+
 // extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
@@ -27,37 +28,39 @@ joueur.life=3;
 init("SDL 2");
  
     // Chargement des ressources (graphismes, sons)
-    LoadNiv1(&meduse, &lvl, &joueur);
+    LoadNiv1(&monstre.meduse, &lvl, &joueur);
     //LoadMonstre(&meduse1, &lvl, &joueur);
     
-    
+    Son(&son);
     
      
  
     // Appelle la fonction cleanup à la fin du programme
-    atexit(cleanup);
+    //atexit(cleanup);
  
     go = 1; 
     // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
         
-        GestionMap(&joueur, &lvl, &meduse, &meduse1, &meduse2 , &chauvesouris, &chauvesouris1);
+        GestionMap(&joueur, &lvl, &monstre);
         //Gestion des inputs clavier
         gestionInputs(&input);
         //On dessine tout
         drawGame(&joueur, &lvl);
         //IA monstre
+        
+        
         //deplacementChauvesouris(&joueur, &chauvesouris, &meduse);
         
-        GestionMonstre(&meduse, &meduse1, &meduse2, &lvl, &input ,&joueur, &chauvesouris, &chauvesouris1);
+        GestionMonstre(&monstre, &lvl, &input ,&joueur);
         
         //meduse 2
         //deplacementMeduse(&joueur, &meduse1);
         //collision(&joueur, &meduse1, &input);
 
         //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur,&meduse ,&meduse1 ,&meduse2, &chauvesouris, &chauvesouris1);
+        deplacement(&input,&joueur,&meduse, &chauvesouris, &son);
 
         //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer

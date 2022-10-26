@@ -31,6 +31,17 @@ typedef struct Chauvesouris
 } Chauvesouris;
 
 
+typedef struct Monstre
+{
+    Meduse meduse;
+    Meduse meduse1;
+    Meduse meduse2;
+    Chauvesouris chauvesouris;
+    Chauvesouris chauvesouris1;
+} Monstre;
+
+
+
 typedef struct Map
 {
  
@@ -44,6 +55,12 @@ typedef struct Joueur
     SDL_Texture *chevalier;
     SDL_Texture *attaque;
 } Joueur;
+
+typedef struct EffetSon
+{
+    Mix_Music *musique;
+    Mix_Chunk *epee;
+}EffetSon;
 
 typedef struct Lvl
 {
@@ -81,5 +98,6 @@ static const int level [3][5][6] = {
                                             {2,100,200,2,1,1}
                                         }
                                     };
+
 
 #endif

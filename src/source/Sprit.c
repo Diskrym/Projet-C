@@ -1,5 +1,5 @@
 #include "../header/proto.h" 
-void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris)
+void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son)
 {   
     if (joueur->chevalier!=NULL)
     {   
@@ -97,6 +97,12 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                 joueur->attaque=loadImage("src/graphics/Chevalier/attaqueG.png");
                 drawImage(joueur->attaque,joueur->inposx-21,joueur->inposy+32);
+                if(joueur->Numattack==13)
+                {
+                    //Son
+                    Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
+                }
             }
         }
         if (joueur->Direction==0)
@@ -157,7 +163,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
     
 }
 
-void SpritMeduse (Meduse *meduse, Joueur *joueur, Chauvesouris *chauvesouris,Lvl *lvl)
+void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
 {   if (meduse->meduse!=NULL)
     {
         SDL_DestroyTexture(meduse->meduse);

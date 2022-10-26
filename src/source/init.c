@@ -4,6 +4,7 @@ SDL_Window *screen;
 SDL_Renderer *renderer;
 
 
+
 SDL_Renderer *getrenderer(void)
 {
     return renderer;
@@ -52,71 +53,66 @@ void init(char *title)
         printf("Impossible d'initialiser SDL TTF: %s\n", TTF_GetError());
         exit(1);
     }
- 
-    /*On initialise SDL_Mixer 2, qui gérera la musique et les effets sonores
-    int flags = MIX_INIT_MP3;
-    int initted = Mix_Init(flags);
-    if ((initted & flags) != flags)
-    {
-        printf("Mix_Init: Failed to init SDL_Mixer\n");
-        printf("Mix_Init: %s\n", Mix_GetError());
-        exit(1);
-    }
- 
-     Open 44.1KHz, signed 16bit, system byte order,
-    stereo audio, using 1024 byte chunks (voir la doc pour plus d'infos) 
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
-        printf("Mix_OpenAudio: %s\n", Mix_GetError());
-        exit(1);
-    }
- 
-    // Définit le nombre de pistes audio (channels) à mixer
-    Mix_AllocateChannels(32);*/
- 
+    SDL_Event event;
+
 }
 
-void SelectNiv (Joueur *joueur, Lvl *lvl, Meduse *meduse, Meduse *meduse1, Meduse *meduse2, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
+void Son (EffetSon *son)
+{
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+   {
+      printf("%s", Mix_GetError());
+   }
+    Mix_AllocateChannels(32); //Allouer 32 canaux
+    son->musique = Mix_LoadMUS("src/Sik/musikdous.mp3"); //Chargement de la musique
+    //Mix_PlayMusic(son ->musique, -1); //Jouer infiniment la musique
+    Mix_Volume(1, MIX_MAX_VOLUME/2); //Mettre à mi-volume le post 1
+    son->epee = Mix_LoadWAV("src/Sik/épée.wav"); //Charger un wav dans un pointeur
+    
+}
+
+void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre)
 {
     if(lvl->Num==0)
     {
-        LoadNiv1(meduse, lvl, joueur);
+        LoadNiv1(&monstre->meduse, lvl, joueur);
     }
     if(lvl->Num==1)
     {
-        LoadNiv2(meduse, meduse1, meduse2, lvl, joueur);
+        LoadNiv2(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, lvl, joueur);
     }
     if(lvl->Num==2)
     {
-         LoadNiv3(meduse, meduse1, chauvesouris , chauvesouris1, lvl, joueur);
+         LoadNiv3(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
     lvl->MortMonstre=0;
 }
 
-void GestionMonstre (Meduse* meduse, Meduse *meduse1, Meduse *meduse2, Lvl *lvl, Input *input, Joueur *joueur, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
+void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
 {
     if(lvl->Num==0)
     {
-        deplacementMeduse(joueur, meduse, lvl, chauvesouris);
-        collision(joueur, meduse, input);
+        deplacementMeduse(joueur, &monstre->meduse, lvl);
+        collision(joueur, &monstre->meduse, input);
     }
     if(lvl->Num==1)
     {
-        deplacementMeduse(joueur, meduse, lvl, chauvesouris);
-        deplacementMeduse(joueur, meduse1, lvl, chauvesouris);
-        deplacementMeduse(joueur, meduse2, lvl ,chauvesouris);
-        collision(joueur, meduse, input);
-        collision(joueur, meduse1, input);
-        collision(joueur, meduse2, input);
+        deplacementMeduse(joueur, &monstre->meduse, lvl);
+        deplacementMeduse(joueur, &monstre->meduse1, lvl);
+        deplacementMeduse(joueur, &monstre->meduse2, lvl);
+        collision(joueur, &monstre->meduse, input);
+        collision(joueur, &monstre->meduse1, input);
+        collision(joueur, &monstre->meduse2, input);
     }
     if(lvl->Num==2)
     {
-        deplacementMeduse(joueur, meduse, lvl, chauvesouris);
-        deplacementMeduse(joueur, meduse1, lvl, chauvesouris);
-        deplacementChauvesouris(joueur,chauvesouris,meduse);
-        deplacementChauvesouris(joueur,chauvesouris1,meduse);
-        collision(joueur, meduse, input);
-        collision(joueur, meduse1, input);
-        collision(joueur, meduse2, input);
+        deplacementMeduse(joueur, &monstre->meduse, lvl);
+        deplacementMeduse(joueur, &monstre->meduse1, lvl);
+        deplacementChauvesouris(joueur,&monstre->chauvesouris, &monstre->meduse);
+        deplacementChauvesouris(joueur, &monstre->chauvesouris1, &monstre->meduse);
+        collision(joueur, &monstre->meduse, input);
+        collision(joueur, &monstre->meduse1, input);
+        collision(joueur, &monstre->meduse2, input);
     }
 }
 
@@ -166,12 +162,12 @@ void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauv
         chauvesouris1->Life=level[2][4][5];
 }
 
-void cleanup()
+void cleanup(EffetSon *son)
 {
-    //On quitte SDL_Mixer 2 et on décharge la mémoire
-    //Mix_CloseAudio();
-    //Mix_Quit();
- 
+    Mix_FreeMusic(son->musique); //Libération de la musique
+    //Mix_FreeChunk(son);
+    Mix_CloseAudio(); //Fermeture de l'API
+
     //On fait le ménage et on remet les pointeurs à NULL
     SDL_DestroyRenderer(renderer);
     renderer = NULL;

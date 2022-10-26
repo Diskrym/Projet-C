@@ -115,7 +115,7 @@ void getInput(Input *input)
     }
 }
 
-void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2, Meduse *meduse,  Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
+void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *chauvesouris, EffetSon *son)
 {  
     
     if (input->left==1)
@@ -154,12 +154,12 @@ void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2
     {
         joueur->Eshield=0;
     }
-    SpritHeros(joueur, meduse, input, chauvesouris);
+    SpritHeros(joueur, meduse, input, chauvesouris, son);
 }
 
 
 
-void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, Chauvesouris *chauvesouris)
+void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
 {
     meduse->compteur += 1;
     meduse->NumSprit+=1;
@@ -193,7 +193,7 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, Chauvesouris *
         }
 
     }
-    SpritMeduse (meduse, joueur, chauvesouris, lvl);
+    SpritMeduse (meduse, joueur, lvl);
 }
 
 
