@@ -29,14 +29,15 @@ extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
 void LoadNiv2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
 void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur);
 extern void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
+extern void Son (EffetSon *son);
 
-extern void cleanup(void);
+extern void cleanup(EffetSon *son);
 extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre);
 
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
-extern void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2, Meduse *meduse3,  Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1);
+extern void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *chauvesouris , EffetSon *son);
 extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl);
 extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Meduse *meduse);
 
@@ -48,7 +49,7 @@ extern void cleanMaps(void);
 extern void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre);
 
 //Sprit.c
-extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris);
+extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son);
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl);
 extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Meduse *meduse);
 

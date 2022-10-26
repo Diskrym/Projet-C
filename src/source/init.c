@@ -2,7 +2,7 @@
  
 SDL_Window *screen;
 SDL_Renderer *renderer;
-Mix_Music*musique;
+
 
 
 SDL_Renderer *getrenderer(void)
@@ -54,20 +54,21 @@ void init(char *title)
         exit(1);
     }
     SDL_Event event;
-   if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
+
+}
+
+void Son (EffetSon *son)
+{
+    if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
    {
       printf("%s", Mix_GetError());
    }
-   Mix_AllocateChannels(32); //Allouer 32 canaux
-   musique = Mix_LoadMUS("src/Sik/musikdous.mp3"); //Chargement de la musique
-    Mix_PlayMusic(musique, -1); //Jouer infiniment la musique
+    Mix_AllocateChannels(32); //Allouer 32 canaux
+    son->musique = Mix_LoadMUS("src/Sik/musikdous.mp3"); //Chargement de la musique
+    //Mix_PlayMusic(son ->musique, -1); //Jouer infiniment la musique
     Mix_Volume(1, MIX_MAX_VOLUME/2); //Mettre à mi-volume le post 1
-   Mix_Chunk *son;//Créer un pointeur pour stocker un .WAV
-//    Mix_Chunk *son2;
-   son = Mix_LoadWAV("src/Sik/épée.wav"); //Charger un wav dans un pointeur
-//    son2 = Mix_LoadWAV("son2.wav");
-   Mix_VolumeChunk(son, MIX_MAX_VOLUME/2); //Mettre un volume pour ce wav
-   Mix_PlayChannel(1, son, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
+    son->epee = Mix_LoadWAV("src/Sik/épée.wav"); //Charger un wav dans un pointeur
+    
 }
 
 void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre)
@@ -161,9 +162,10 @@ void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauv
         chauvesouris1->Life=level[2][4][5];
 }
 
-void cleanup()
+void cleanup(EffetSon *son)
 {
-    Mix_FreeMusic(musique); //Libération de la musique
+    Mix_FreeMusic(son->musique); //Libération de la musique
+    //Mix_FreeChunk(son);
     Mix_CloseAudio(); //Fermeture de l'API
 
     //On fait le ménage et on remet les pointeurs à NULL

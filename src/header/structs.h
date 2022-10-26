@@ -56,6 +56,12 @@ typedef struct Joueur
     SDL_Texture *attaque;
 } Joueur;
 
+typedef struct EffetSon
+{
+    Mix_Music *musique;
+    Mix_Chunk *epee;
+}EffetSon;
+
 typedef struct Lvl
 {
     int Num, changement, MortMonstre;

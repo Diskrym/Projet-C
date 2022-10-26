@@ -115,7 +115,7 @@ void getInput(Input *input)
     }
 }
 
-void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2, Meduse *meduse,  Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
+void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *chauvesouris, EffetSon *son)
 {  
     
     if (input->left==1)
@@ -154,7 +154,7 @@ void deplacement (Input *input, Joueur *joueur, Meduse *meduse1, Meduse *meduse2
     {
         joueur->Eshield=0;
     }
-    SpritHeros(joueur, meduse, input, chauvesouris);
+    SpritHeros(joueur, meduse, input, chauvesouris, son);
 }
 
 
