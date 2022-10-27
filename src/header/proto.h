@@ -33,21 +33,21 @@ extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
 extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
 void LoadNiv2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
-void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur);
+void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son);
 extern void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
 extern void Son (EffetSon *son);
 extern void loadNiv4 (Joueur *joueur, Boss *boss, Lvl *lvl);
 
 extern void cleanup(EffetSon *son);
-extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre);
+extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
 
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
-extern void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *chauvesouris , EffetSon *son);
-extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl);
-extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Lvl *lvl);
-extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl);
+extern void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *chauvesouris , EffetSon *son, Boss *boss);
+extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son);
+extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Lvl *lvl, EffetSon *son);
+extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, EffetSon *son);
 
 
 
@@ -55,13 +55,13 @@ extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl);
 extern void initMaps(Lvl *lvl);
 extern SDL_Texture *getBackground(void);
 extern void cleanMaps(void);
-extern void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre);
+extern void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
 
 //Sprit.c
-extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son);
-extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl);
-extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl);
-extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl);
+extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son, Boss *boss);
+extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl, EffetSon *son);
+extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son);
+extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
 
 
 //extern void drawMap(int);

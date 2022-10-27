@@ -139,6 +139,7 @@ void porte (Lvl *lvl)
         {
             SDL_Texture *Porte=loadImage("src/graphics/lvl/Porteouverte.png");
             drawImage(Porte,SCREEN_WIDTH/2-22,0);
+            
             if (lvl->Num != 0)
             {
                 SDL_Texture *Portebas=loadImage("src/graphics/lvl/Portefermebas.png");
