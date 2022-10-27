@@ -64,8 +64,6 @@ init("Dungeon Fate");
         GestionMonstre(&monstre, &lvl, &input ,&joueur);
         
         //meduse 2
-        //deplacementMeduse(&joueur, &meduse1);
-        //collision(&joueur, &meduse1, &input);
 
         //Gestion des inputs et des déplacements
         deplacement(&input,&joueur,&meduse, &chauvesouris, &son);

@@ -16,10 +16,14 @@ extern void porte (Lvl *lvl);
 extern void menu (void);
 
 //events.c
+extern void collisionmur (Joueur *joueur);
+extern void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl);
 extern void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl);
 extern int inside (Joueur *joueur, Meduse *meduse);
 extern int insidechevalier (Joueur *joueur, Meduse *meduse);
 extern int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris);
+extern int insidechevalierBoss (Joueur *joueur, Boss *boss);
+
 
 
 //init.c
