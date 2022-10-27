@@ -505,16 +505,16 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
             }
             
             //degat sur Boss
-            // else 
-            // {
-            //     boss->CompteurSpriteDegat+=1;
-            //     boss->Boss=loadImage("src/graphics/Meduse/Medusedegat.png");
-            //     drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);    
-            //     if (boss->CompteurSpriteDegat > 15)
-            //     {
-            //         boss->CompteurSpriteDegat=0;
-            //     }
-            // }   
+            else 
+            {
+                boss->CompteurSpriteDegat+=1;
+                boss->Boss=loadImage("src/graphics/Boss/BossDegat.png");
+                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);    
+                if (boss->CompteurSpriteDegat > 15)
+                {
+                    boss->CompteurSpriteDegat=0;
+                }
+            }   
         }
 
         //Attaque boss
@@ -544,16 +544,16 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
             {
                 boss->Boss=loadImage("src/graphics/Boss/Bossattaque5.png");
                 drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
-                //boss->Bossattaque=loadImage("src/graphics/Meduse/AttaqueMeduse.png");
-                //drawImage(boss->Bossattaque,boss->posmonsx -23 ,boss->posmonsy - 23);
-                // if(inside(joueur, meduse)==1 && (meduse->NumSprit==23 || meduse->NumSprit==14))                    
-                // {
-                //     if (meduse->coup == 0)
-                //     {
-                //         joueur->life--;
-                //         meduse->coup =1 ;
-                //     }
-                // }
+                boss->Bossattaque=loadImage("src/graphics/Boss/AttaqueBoss.png");
+                drawImage(boss->Bossattaque,boss->posmonsx -46 ,boss->posmonsy - 46);
+                if(insideBoss(joueur, boss)==1 && (boss->NumSprit==23 || boss->NumSprit==14))                    
+                {
+                    if (boss->coup == 0)
+                    {
+                        joueur->life--;
+                        boss->coup =1 ;
+                    }
+                }
                 }
             
             if (boss->compteur>260)
