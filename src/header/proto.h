@@ -47,7 +47,7 @@ extern void getInput(Input *input);
 extern void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *chauvesouris , EffetSon *son);
 extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl);
 extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Lvl *lvl);
-extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl);
+extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input);
 
 
 

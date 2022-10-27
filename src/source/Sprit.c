@@ -542,7 +542,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
                 {
                     if (boss->coup == 0)
                     {
-                        joueur->life--;
+                        //joueur->life--;
                         boss->coup =1;
                     }
                 }
@@ -554,7 +554,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
                 boss->coup = 0;
             }
         }
-        if (boss->NumSprit>32)
+        if (boss->NumSprit>=32)
         {
             boss->NumSprit=0;
         }
@@ -584,16 +584,17 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
             boss->Boss=loadImage("src/graphics/Boss/Bossmort4.png");
             drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
-        if (boss->CompteurSpriteDegat>=21 && boss->CompteurSpriteDegat<=25 )
+        if (boss->CompteurSpriteDegat==21)
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort5.png");
             drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
-        if (boss->CompteurSpriteDegat>=26 && boss->CompteurSpriteDegat==30 )
+        if (boss->CompteurSpriteDegat==22 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort6.png");
             drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
+        
         if (boss->CompteurSpriteDegat==0)
         {
             lvl->MortMonstre+=1;

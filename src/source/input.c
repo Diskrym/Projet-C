@@ -232,11 +232,17 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *l
     SpritChauvesouris (chauvesouris, joueur, lvl);
 }
 
-void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl)
+void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input)
 {
     boss->compteur += 1;
     boss->NumSprit+=1;
-    if  (boss->Life==0 && boss->CompteurSpriteDegat<30)
+    //gestion compteur mort
+    printf("%d \n", boss->CompteurSpriteDegat);
+    if (boss->CompteurSpriteDegat==21 && insideBoss(joueur, boss)==1 && input->enter == 1)
+    {
+        boss->CompteurSpriteDegat=22;
+    }
+    if  (boss->Life==0 && boss->CompteurSpriteDegat<21)
     {
         boss->CompteurSpriteDegat+=1;
     }

@@ -125,7 +125,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
     {   
         collisionmur (joueur);
         collisionboss(joueur, &monstre->boss, input, lvl);
-        deplacementBoss(joueur, &monstre->boss, lvl);
+        deplacementBoss(joueur, &monstre->boss, lvl, input);
     }
     
 }
