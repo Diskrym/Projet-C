@@ -1,4 +1,6 @@
 #include "../header/proto.h" 
+
+
 void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son)
 {   
     if (joueur->chevalier!=NULL)
@@ -362,7 +364,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                  
-                
+            }
 
 
             if (chauvesouris->Direction==1){
@@ -383,7 +385,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
                 }
                     
                 
-            } }
+            } 
         
  
     //     Attaque chauvesouris
@@ -495,11 +497,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
                 //     drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
                 //     //boss->attack+=1;
                 // }
-                // if(insidechevalier(joueur, meduse)==1 && joueur->Numattack==15)
-                // {           
-                //     meduse->CompteurSpriteDegat=1; 
-                //     meduse->Life--; 
-                // }
+                if(insidechevalierBoss(joueur, boss)==1 && joueur->Numattack==15)
+                {           
+                    boss->CompteurSpriteDegat=1; 
+                    boss->Life--; 
+                }
             }
             
             //degat sur Boss

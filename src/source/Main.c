@@ -26,18 +26,25 @@ joueur.life=3;
 //meduse1.Life=3;
  
 // Initialisation de la SDL
-init("JELOMA²");
+init("Dungeon Fate");
  
-    // Chargement des ressources (graphismes, sons)
-    LoadNiv1(&monstre.meduse, &lvl, &joueur);
+    
     //LoadMonstre(&meduse1, &lvl, &joueur);
     
     Son(&son);
     
-     
- 
+    
+    while(input.enter==0)
+    {
+    gestionInputs(&input);
+    menu();
+    SDL_RenderPresent(getrenderer());
+    
+    }
     // Appelle la fonction cleanup à la fin du programme
     //atexit(cleanup);
+    // Chargement des ressources (graphismes, sons)
+    LoadNiv1(&monstre.meduse, &lvl, &joueur);
  
     go = 1; 
     // Boucle infinie, principale, du jeu
@@ -57,8 +64,6 @@ init("JELOMA²");
         GestionMonstre(&monstre, &lvl, &input ,&joueur);
         
         //meduse 2
-        //deplacementMeduse(&joueur, &meduse1);
-        //collision(&joueur, &meduse1, &input);
 
         //Gestion des inputs et des déplacements
         deplacement(&input,&joueur,&meduse, &chauvesouris, &son);
