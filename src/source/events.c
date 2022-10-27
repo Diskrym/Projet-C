@@ -297,3 +297,20 @@ int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris)
     
 }
  
+int insideBoss (Joueur *joueur, Boss *boss)
+{
+    int x=0;
+    int y=0;
+    if ((joueur->inposx>=boss->posmonsx-46 || joueur->inposx+SPRITE_SIZE>=boss->posmonsx-46) && (joueur->inposx<=boss->posmonsx+128+46 || joueur->inposx + SPRITE_SIZE <=boss->posmonsx+128+46))
+    {
+        x=1;
+    }
+    if ((joueur->inposy>=boss->posmonsy-46 || joueur->inposy+SPRITE_SIZE>=boss->posmonsy-46) && (joueur->inposy<=boss->posmonsy+128+46 || joueur->inposy + SPRITE_SIZE <=boss->posmonsy+128+46))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {
+        return 1;
+    }
+}

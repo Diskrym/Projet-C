@@ -23,6 +23,7 @@ extern int inside (Joueur *joueur, Meduse *meduse);
 extern int insidechevalier (Joueur *joueur, Meduse *meduse);
 extern int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris);
 extern int insidechevalierBoss (Joueur *joueur, Boss *boss);
+extern int insideBoss (Joueur *joueur, Boss *boss);
 
 
 
