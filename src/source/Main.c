@@ -41,6 +41,7 @@ init("Dungeon Fate");
     SDL_RenderPresent(getrenderer());
     
     }
+    Mix_PauseMusic();
     // Appelle la fonction cleanup à la fin du programme
     //atexit(cleanup);
     // Chargement des ressources (graphismes, sons)
