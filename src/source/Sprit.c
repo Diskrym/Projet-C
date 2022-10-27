@@ -460,14 +460,12 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
     //Mouvement  meduse
     if (boss->Life >=1)
     {
-        printf("a");
         if (boss->compteur <= 200)
         {   
             if (boss->CompteurSpriteDegat==0)
             {
                 if (boss->NumSprit==0 || boss->NumSprit==1 || boss->NumSprit==2 || boss->NumSprit==3 )
                 {
-                    printf("&&");
                     boss->Boss=loadImage("src/graphics/Boss/BossNeutre.png");
                     drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
                 }
@@ -490,13 +488,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
                 {
                     boss->Boss=loadImage("src/graphics/Boss/BossMarche4.png");
                     drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);    
-                }
-                // if (boss->NumSprit>=33 )
-                // {
-                //     boss->Boss=loadImage("src/graphics/Meduse/Medusemarche1.png");
-                //     drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
-                //     //boss->attack+=1;
-                // }
+                } 
                 if(insidechevalierBoss(joueur, boss)==1 && joueur->Numattack==15)
                 {           
                     boss->CompteurSpriteDegat=1; 
@@ -512,7 +504,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
                 drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);    
                 if (boss->CompteurSpriteDegat > 15)
                 {
-                    boss->CompteurSpriteDegat=0;
+                    boss->CompteurSpriteDegat=0;  
                 }
             }   
         }
@@ -546,12 +538,12 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
                 drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
                 boss->Bossattaque=loadImage("src/graphics/Boss/AttaqueBoss.png");
                 drawImage(boss->Bossattaque,boss->posmonsx -46 ,boss->posmonsy - 46);
-                if(insideBoss(joueur, boss)==1 && (boss->NumSprit==23 || boss->NumSprit==14))                    
+                if(insideBoss(joueur, boss)==1 && (boss->NumSprit==15 || boss->NumSprit==18))                    
                 {
                     if (boss->coup == 0)
                     {
                         joueur->life--;
-                        boss->coup =1 ;
+                        boss->coup =1;
                     }
                 }
                 }
@@ -570,37 +562,42 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
     }
 
     //Mort meduse
-    // if (meduse->Life==0)
-    // {
-    //     if (meduse->CompteurSpriteDegat==0 || meduse->CompteurSpriteDegat==1 || meduse->CompteurSpriteDegat==2 || meduse->CompteurSpriteDegat==3 )
-    //     {
-    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort1.png");
-    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-    //     }
-    //     if (meduse->CompteurSpriteDegat==4 || meduse->CompteurSpriteDegat==5 || meduse->CompteurSpriteDegat==6 || meduse->CompteurSpriteDegat==7 )
-    //     {
-    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort2.png");
-    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-    //     }
-    //     if (meduse->CompteurSpriteDegat==8 || meduse->CompteurSpriteDegat==9 || meduse->CompteurSpriteDegat==10 || meduse->CompteurSpriteDegat==11)
-    //     {
-    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort3.png");
-    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-    //     }
-    //     if (meduse->CompteurSpriteDegat==12 || meduse->CompteurSpriteDegat==13 || meduse->CompteurSpriteDegat==14 || meduse->CompteurSpriteDegat==15 )
-    //     {
-    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort4.png");
-    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-    //     }
-    //     if (meduse->CompteurSpriteDegat==16 || meduse->CompteurSpriteDegat==17 || meduse->CompteurSpriteDegat==18 || meduse->CompteurSpriteDegat==19 )
-    //     {
-    //         meduse->meduse=loadImage("src/graphics/Meduse/Medusemort5.png");
-    //         drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-    //     }
-    //     if (meduse->CompteurSpriteDegat==0)
-    //     {
-    //         lvl->MortMonstre+=1;
-    //     }
+    if (boss->Life==0)
+    {
+        if (boss->CompteurSpriteDegat>=0 && boss->CompteurSpriteDegat <= 5 )
+        {
+            boss->Boss=loadImage("src/graphics/Boss/Bossmort1.png");
+            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+        }
+        if (boss->CompteurSpriteDegat>= 6 && boss->CompteurSpriteDegat<=10 )
+        {
+            boss->Boss=loadImage("src/graphics/Boss/Bossmort2.png");
+            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+        }
+        if (boss->CompteurSpriteDegat>=11 && boss->CompteurSpriteDegat<=15)
+        {
+            boss->Boss=loadImage("src/graphics/Boss/Bossmort3.png");
+            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+        }
+        if (boss->CompteurSpriteDegat>=16 && boss->CompteurSpriteDegat<=20 )
+        {
+            boss->Boss=loadImage("src/graphics/Boss/Bossmort4.png");
+            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+        }
+        if (boss->CompteurSpriteDegat>=21 && boss->CompteurSpriteDegat<=25 )
+        {
+            boss->Boss=loadImage("src/graphics/Boss/Bossmort5.png");
+            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+        }
+        if (boss->CompteurSpriteDegat>=26 && boss->CompteurSpriteDegat==30 )
+        {
+            boss->Boss=loadImage("src/graphics/Boss/Bossmort6.png");
+            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+        }
+        if (boss->CompteurSpriteDegat==0)
+        {
+            lvl->MortMonstre+=1;
+        }
         
-    // } 
+    } 
 }

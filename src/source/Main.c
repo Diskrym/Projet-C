@@ -45,7 +45,7 @@ init("Dungeon Fate");
     //atexit(cleanup);
     // Chargement des ressources (graphismes, sons)
     LoadNiv1(&monstre.meduse, &lvl, &joueur);
- 
+
     go = 1; 
     // Boucle infinie, principale, du jeu
     while (go == 1)

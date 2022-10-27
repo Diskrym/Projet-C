@@ -236,7 +236,7 @@ void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl)
 {
     boss->compteur += 1;
     boss->NumSprit+=1;
-    if  (boss->Life==0 && boss->CompteurSpriteDegat<19)
+    if  (boss->Life==0 && boss->CompteurSpriteDegat<30)
     {
         boss->CompteurSpriteDegat+=1;
     }
