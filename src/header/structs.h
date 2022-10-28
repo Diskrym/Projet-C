@@ -64,8 +64,28 @@ typedef struct Joueur
 
 typedef struct EffetSon
 {
-    Mix_Music *musique;
+    Mix_Music *musiquemenu;
+    Mix_Music *musiqueboss;
+    Mix_Music *musiquelvl;
     Mix_Chunk *epee;
+    Mix_Chunk *bouclier;
+    Mix_Chunk *depchevalier;
+    Mix_Chunk *degatchevalier;
+    Mix_Chunk *mortchevalier;
+    Mix_Chunk *lowlifechevalier;
+    Mix_Chunk *attaquemeduse;
+    Mix_Chunk *depmeduse;
+    Mix_Chunk *degatmeduse;
+    Mix_Chunk *mortmeduse;
+    Mix_Chunk *mortchauvesouris;
+    Mix_Chunk *attaqueboss;
+    Mix_Chunk *mortboss;
+    Mix_Chunk *boss;
+    Mix_Chunk *degatboss;
+    Mix_Chunk *porte;
+    Mix_Chunk *gameoverson;
+
+
 }EffetSon;
 
 typedef struct Lvl
@@ -105,7 +125,7 @@ static const int level [4][5][6] = {
                                         },
                                         {
                                             {4,4,298,384,0,0},
-                                            {3,288,110,128,1,10}
+                                            {3,288,80,128,1,10}
                                         }
                                     };
 

@@ -1,7 +1,7 @@
 #include "../header/proto.h" 
 
 
-void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son)
+void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son, Boss *boss)
 {   
     if (joueur->chevalier!=NULL)
     {   
@@ -18,7 +18,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
     {
         if (joueur->Direction ==0)
         {
-            if( meduse->coup == 0 && chauvesouris->coup==0)
+            if( meduse->coup == 0 && chauvesouris->coup==0 && boss->coup==0)
             {
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
@@ -29,23 +29,35 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche1D.png");
                     drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    // if (joueur->NumSprit==2)
+                    // {Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                    // Mix_PlayChannel(3, son->depchevalier, 0);}
+                    
                 }
                 if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche2D.png");
                     drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                     joueur->NumSprit =0;
+                    // if (joueur->NumSprit==7)
+                    // {
+                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                    // Mix_PlayChannel(3, son->depchevalier, 0);
+                    // }
                 }
             }
             else
             {
                 joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(1, son->degatchevalier, 0);
+
             }
         }
         if (joueur->Direction ==1)
         {
-            if (meduse->coup == 0 && chauvesouris->coup==0)
+            if (meduse->coup == 0 && chauvesouris->coup==0 && boss->coup==0)
             {
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
@@ -56,11 +68,21 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche1G.png");
                     drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    // if (joueur->NumSprit==2)
+                    // {
+                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                    // Mix_PlayChannel(3, son->depchevalier, 0);
+                    // }
                 }
                 if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche2G.png");
                     drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    // if (joueur->NumSprit==7)
+                    // {
+                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                    // Mix_PlayChannel(3, son->depchevalier, 0);
+                    // }
                     joueur->NumSprit =0;
                 }   
             }
@@ -68,6 +90,8 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
             {
                 joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(1, son->degatchevalier, 0);
             }
         }
     }
@@ -149,6 +173,8 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
             {
                 joueur->chevalier=loadImage("src/graphics/ChevaliershieldD.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME/2);
+                //Mix_PlayChannel(2, son->bouclier, 0);
             }
             }
              if (joueur->Direction==1)
@@ -157,6 +183,8 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
             {
                 joueur->chevalier=loadImage("src/graphics/ChevaliershieldG.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME/2);
+                //Mix_PlayChannel(2, son->bouclier, 0);
             }
             }}
 
@@ -171,7 +199,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
     
 }
 
-void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
+void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
 {   if (meduse->meduse!=NULL)
     {
         SDL_DestroyTexture(meduse->meduse);
@@ -232,7 +260,13 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
             {
                 meduse->CompteurSpriteDegat+=1;
                 meduse->meduse=loadImage("src/graphics/Meduse/Medusedegat.png");
-                drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);    
+                drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                if (meduse->CompteurSpriteDegat==2)
+                {
+                Mix_VolumeChunk(son->degatmeduse, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(4, son->degatmeduse, 0); 
+                }          
+
                 if (meduse->CompteurSpriteDegat > 15)
                 {
                     meduse->CompteurSpriteDegat=0;
@@ -244,7 +278,8 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
         if  (meduse->compteur>=100)
         {
             if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==2 || meduse->NumSprit==3 )
-            {
+            {  
+                
                 meduse->meduse=loadImage("src/graphics/Meduse/medusecoup1.png");
                 drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             }
@@ -259,7 +294,13 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
                 drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             }
             if (meduse->NumSprit==12 || meduse->NumSprit==13 || meduse->NumSprit==14 || meduse->NumSprit==19 || meduse->NumSprit==20 || meduse->NumSprit==21 || meduse->NumSprit==22 || meduse->NumSprit==23 )
-            {
+            {   if (meduse->NumSprit==14 || meduse->NumSprit==14 )
+
+                {
+                Mix_VolumeChunk(son->attaquemeduse, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(4, son->attaquemeduse, 0);
+
+                }
                 meduse->meduse=loadImage("src/graphics/Meduse/medusecoup4.png");                    
                 drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 meduse->attaque=loadImage("src/graphics/Meduse/AttaqueMeduse.png");
@@ -293,6 +334,11 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
         {
             meduse->meduse=loadImage("src/graphics/Meduse/Medusemort1.png");
             drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+            if (meduse->CompteurSpriteDegat==1)
+            {
+            Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME/2);
+            Mix_PlayChannel(4, son->mortmeduse, 0);
+            }
         }
         if (meduse->CompteurSpriteDegat==4 || meduse->CompteurSpriteDegat==5 || meduse->CompteurSpriteDegat==6 || meduse->CompteurSpriteDegat==7 )
         {
@@ -332,7 +378,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
 
 
 
-void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
+void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {  if (chauvesouris->chauvesouris!=NULL)
     {
         SDL_DestroyTexture(chauvesouris->chauvesouris);
@@ -414,6 +460,11 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
         {
             chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismort1D.png");
             drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+            if (chauvesouris->CompteurSpriteDegat==0)
+            {
+            Mix_VolumeChunk(son->mortchauvesouris, MIX_MAX_VOLUME/2);
+            Mix_PlayChannel(6, son->mortchauvesouris, 0);
+            }
         }
         if (chauvesouris->CompteurSpriteDegat==4 || chauvesouris->CompteurSpriteDegat==5 || chauvesouris->CompteurSpriteDegat==6 || chauvesouris->CompteurSpriteDegat==7 )
         {
@@ -444,7 +495,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
     }
     }
 
-void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
+void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {
    if (boss->Boss!=NULL)
     {
@@ -501,7 +552,12 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
             {
                 boss->CompteurSpriteDegat+=1;
                 boss->Boss=loadImage("src/graphics/Boss/BossDegat.png");
-                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);    
+                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy); 
+                if (boss->CompteurSpriteDegat==2)
+                {
+                Mix_VolumeChunk(son->degatboss, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(2, son->degatboss, 0);   
+                }
                 if (boss->CompteurSpriteDegat > 15)
                 {
                     boss->CompteurSpriteDegat=0;  
@@ -533,7 +589,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
                 drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
             }
             if (boss->NumSprit==15 || boss->NumSprit==16 || boss->NumSprit==17 || boss->NumSprit==18 )
-            {
+            {   if (boss->NumSprit==15)
+                {
+                Mix_VolumeChunk(son->attaqueboss, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(7, son->attaqueboss, 0);
+                }
                 boss->Boss=loadImage("src/graphics/Boss/Bossattaque5.png");
                 drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
                 boss->Bossattaque=loadImage("src/graphics/Boss/AttaqueBoss.png");
@@ -561,13 +621,15 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl)
         
     }
 
-    //Mort meduse
+
     if (boss->Life==0)
-    {
+    {   Mix_PauseMusic();
         if (boss->CompteurSpriteDegat>=0 && boss->CompteurSpriteDegat <= 5 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort1.png");
             drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            Mix_VolumeChunk(son->mortboss, MIX_MAX_VOLUME/2);
+            Mix_PlayChannel(6, son->mortboss, 0);
         }
         if (boss->CompteurSpriteDegat>= 6 && boss->CompteurSpriteDegat<=10 )
         {

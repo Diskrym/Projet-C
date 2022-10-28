@@ -115,7 +115,7 @@ void getInput(Input *input)
     }
 }
 
-void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *chauvesouris, EffetSon *son)
+void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *chauvesouris, EffetSon *son, Boss *boss)
 {  
     
     if (input->left==1)
@@ -154,12 +154,12 @@ void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *c
     {
         joueur->Eshield=0;
     }
-    SpritHeros(joueur, meduse, input, chauvesouris, son);
+    SpritHeros(joueur, meduse, input, chauvesouris, son, boss);
 }
 
 
 
-void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
+void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
 {
     meduse->compteur += 1;
     meduse->NumSprit+=1;
@@ -193,11 +193,11 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
         }
 
     }
-    SpritMeduse (meduse, joueur, lvl);
+    SpritMeduse (meduse, joueur, lvl, son);
 }
 
 
-void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl)
+void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl, EffetSon *son)
 {
     chauvesouris->NumSprit+=1;
     if  (chauvesouris->Life==0 && chauvesouris->CompteurSpriteDegat<19)
@@ -229,10 +229,10 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *l
         }
  
     }
-    SpritChauvesouris (chauvesouris, joueur, lvl);
+    SpritChauvesouris (chauvesouris, joueur, lvl, son);
 }
 
-void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl)
+void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, EffetSon *son)
 {
     boss->compteur += 1;
     boss->NumSprit+=1;
@@ -266,5 +266,5 @@ void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl)
         }
 
     }
-    SpritBoss (boss, joueur, lvl);
+    SpritBoss (boss, joueur, lvl, son);
 }

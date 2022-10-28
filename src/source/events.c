@@ -126,14 +126,27 @@ void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
                 joueur->inposy-=3;  
             }   
         }
+
+        // if (((joueur->inposx + SPRITE_SIZE >= boss->posmonsx) && (joueur->inposx <= boss->posmonsx)) && (((boss->posmonsy >= joueur->inposy) && (boss->posmonsy <= joueur->inposy+SPRITE_SIZE)) || ((boss->posmonsy + 128 >= joueur->inposy) && (boss->posmonsy + 128 <= joueur->inposy+SPRITE_SIZE))))
+        // {
+        //     boss->posmonsx+=1;
+        //     if (input->down == 1)
+        //     {
+        //         joueur->inposx-=3;  
+        //     }   
+        // }
+
+        // if (((joueur->inposx <= boss->posmonsx + 128)&&(joueur->inposx >= boss->posmonsx )) && (((boss->posmonsy >= joueur->inposy) && (boss->posmonsy <= joueur->inposy+SPRITE_SIZE)) || ((boss->posmonsy + 128 >= joueur->inposy) && (boss->posmonsy + 128 <= joueur->inposy+SPRITE_SIZE))))
+        // {
+        //     boss->posmonsx-=1;
+        //     if (input->up == 1)
+        //     {
+        //         joueur->inposx+=3;  
+        //     }
+        // }
     
         // //coter droit joueur
-        if (joueur->inposx <= boss->posmonsx)
-        {
-            if (joueur->inposx + SPRITE_SIZE >= boss->posmonsx)
-            {
-                ("condition 2 \n");
-                if ((boss->posmonsy >= joueur->inposy) && (boss->posmonsy <= joueur->inposy+SPRITE_SIZE))
+        if (((joueur->inposx <= boss->posmonsx) && (joueur->inposx + SPRITE_SIZE >= boss->posmonsx)) && (((boss->posmonsy >= joueur->inposy) && (boss->posmonsy <= joueur->inposy+SPRITE_SIZE)) ||((joueur->inposx <= boss->posmonsx) && (joueur->inposx + SPRITE_SIZE >= boss->posmonsx) && (boss->posmonsy >= joueur->inposy) && (boss->posmonsy + 128 >= joueur->inposy) && (boss->posmonsy + 128 <= joueur->inposy + SPRITE_SIZE))))
                 {
                     boss->posmonsx+=1;
                     if (input->right == 1)
@@ -142,25 +155,10 @@ void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
                     }   
                 }
 
-                if ((boss->posmonsy + 128 >= joueur->inposy) && (boss->posmonsy + 128 <= joueur->inposy + SPRITE_SIZE))
-                {
-                    boss->posmonsx+=1;
-                    if (input->right == 1)
-                    {
-                        joueur->inposx-=3;  
-                    }  
-                }
-            }  
-        }
+
         
         //coter gauche joueur
-        if (joueur->inposx + SPRITE_SIZE >= boss->posmonsx)
-        {
-
-            if (joueur->inposx <= boss->posmonsx + 128)
-            {
-
-                if (boss->posmonsy >= joueur->inposy && boss->posmonsy <= joueur->inposy+SPRITE_SIZE)
+        if (((joueur->inposx + SPRITE_SIZE >= boss->posmonsx) && (joueur->inposx <= boss->posmonsx + 128) && (boss->posmonsy >= joueur->inposy && boss->posmonsy <= joueur->inposy+SPRITE_SIZE)) || ((joueur->inposx + SPRITE_SIZE >= boss->posmonsx) && (joueur->inposx <= boss->posmonsx + 128) &&(boss->posmonsy + 128 >= joueur->inposy && boss->posmonsy + 128 <= joueur->inposy + SPRITE_SIZE)))
                 {
 
                     boss->posmonsx-=1;
@@ -169,19 +167,9 @@ void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
                         joueur->inposx+=3;  
                     }
                 }
-                if (boss->posmonsy + 128 >= joueur->inposy && boss->posmonsy + 128 <= joueur->inposy + SPRITE_SIZE)
-                {
-
-                    boss->posmonsx-=1;
-                    if (input->left == 1)
-                    {
-                        joueur->inposx+=3;  
-                    }
-                }    
             } 
-        }
-    }
-}
+         }
+    
 
 
 
