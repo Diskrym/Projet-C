@@ -3,13 +3,10 @@
 SDL_Window *screen;
 SDL_Renderer *renderer;
 
-
-
 SDL_Renderer *getrenderer(void)
 {
     return renderer;
 }
- 
 
 void init(char *title)
 {
@@ -129,7 +126,6 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
     }
     
 }
-
 
 void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
 {  

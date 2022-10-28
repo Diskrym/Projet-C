@@ -8,7 +8,6 @@ void gestionInputs(Input *input)
     getInput(input);
 }
  
- 
 void getInput(Input *input)
 {
     SDL_Event event;
@@ -157,8 +156,6 @@ void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *c
     SpritHeros(joueur, meduse, input, chauvesouris, son);
 }
 
-
-
 void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
 {
     meduse->compteur += 1;
@@ -195,7 +192,6 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
     }
     SpritMeduse (meduse, joueur, lvl);
 }
-
 
 void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl)
 {
@@ -237,7 +233,6 @@ void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input)
     boss->compteur += 1;
     boss->NumSprit+=1;
     //gestion compteur mort
-    printf("%d \n", boss->CompteurSpriteDegat);
     if (boss->CompteurSpriteDegat==21 && insideBoss(joueur, boss)==1 && input->enter == 1)
     {
         boss->CompteurSpriteDegat=22;

@@ -1,4 +1,5 @@
 #include "../header/proto.h"
+
 void collisionmur (Joueur *joueur)
 {
     if (joueur->inposx <= 25)
@@ -18,6 +19,7 @@ void collisionmur (Joueur *joueur)
             joueur->inposy-=3;
         }
 }
+
 void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
 {
    
@@ -100,7 +102,6 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
     }
 }
 
-
 void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
 {
    
@@ -182,8 +183,6 @@ void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
         }
     }
 }
-
-
 
 int inside (Joueur *joueur, Meduse *meduse)
 {
@@ -275,7 +274,6 @@ int insidechevalierBoss (Joueur *joueur, Boss *boss)
     }
 
 }
-
 
 int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris)
 {

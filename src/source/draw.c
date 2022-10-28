@@ -13,9 +13,6 @@ void drawGame(Joueur *joueur, Lvl *lvl)
     SDL_Delay(1);
 }
 
-
-
-
 void GameOver (void)
 {
     SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");
@@ -85,9 +82,6 @@ void delay(unsigned int frameLimit)
         SDL_Delay(frameLimit - ticks);
     }
 }
-
-
-
 
 void AffichageVie (Joueur *joueur)
 {
@@ -192,7 +186,6 @@ void porte (Lvl *lvl)
     }
     
 }
-
 
 void menu (void)
 {   

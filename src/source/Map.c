@@ -1,7 +1,6 @@
 #include "../header/proto.h" 
  
 Map map;
-
  
 void initMaps(Lvl *lvl)
 {

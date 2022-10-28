@@ -328,10 +328,6 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl)
     }
 }
 
-
-
-
-
 void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl)
 {  if (chauvesouris->chauvesouris!=NULL)
     {
