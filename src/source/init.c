@@ -61,18 +61,37 @@ void Son (EffetSon *son)
       printf("%s", Mix_GetError());
    }
     Mix_AllocateChannels(32); //Allouer 32 canaux
-    son->musique = Mix_LoadMUS("src/Sik/musique menu.mp3"); //Chargement de la musique
-    Mix_PlayMusic(son ->musique, -1); //Jouer infiniment la musique
+    son->musiquemenu = Mix_LoadMUS("src/Sik/m_menu.mp3"); //Chargement de la musique
+    son->musiqueboss = Mix_LoadMUS("src/Sik/m_Boss.mp3");
+    son->musiquelvl = Mix_LoadMUS("src/Sik/MusiqueLvl.mp3");
+
+    Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
     Mix_Volume(1, MIX_MAX_VOLUME/2); //Mettre à mi-volume le post 1
-    son->epee = Mix_LoadWAV("src/Sik/épéev2.wav"); //Charger un wav dans un pointeur
-    
+    son->epee = Mix_LoadWAV("src/Sik/attackChe.WAV"); //Charger un wav dans un pointeur
+    son->bouclier= Mix_LoadWAV("src/Sik/BouclierChe.WAV");
+    son->depchevalier= Mix_LoadWAV("src/Sik/deplacementchevalier.WAV");
+    son->degatchevalier= Mix_LoadWAV("src/Sik/degatChe.WAV");
+    son->mortchevalier= Mix_LoadWAV("src/Sik/mortChe.WAV");
+    son->lowlifechevalier= Mix_LoadWAV("src/Sik/Chelowlife.WAV");
+    son->attaquemeduse= Mix_LoadWAV("src/Sik/Attakmeduz.WAV");
+    son->depmeduse= Mix_LoadWAV("src/Sik/depMeduz.WAV");
+    son->degatmeduse= Mix_LoadWAV("src/Sik/degatMeduz.WAV");
+    son->mortmeduse= Mix_LoadWAV("src/Sik/MortMeduz.WAV");
+    son->mortchauvesouris= Mix_LoadWAV("src/Sik/MortChS.WAV");
+    son->attaqueboss= Mix_LoadWAV("src/Sik/attakBossM.WAV");
+    son->mortboss= Mix_LoadWAV("src/Sik/Mortboss.WAV");
+    son->degatboss= Mix_LoadWAV("src/Sik/degatBoss.WAV");
+    son->porte= Mix_LoadWAV("src/Sik/porte.WAV");
+    son->gameoverson= Mix_LoadWAV("src/Sik/GameOver.WAV");
 }
 
-void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre)
+void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
 {
     if(lvl->Num==0)
-    {
+    {   
+        Mix_PauseMusic();
         LoadNiv1(&monstre->meduse, lvl, joueur);
+        Mix_PlayMusic(son ->musiquelvl, -1);
     }
     if(lvl->Num==1)
     {
@@ -83,37 +102,39 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre)
          LoadNiv3(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
     if(lvl->Num==3)
-    {
+    {   Mix_PauseMusic();
         loadNiv4 (joueur, &monstre->boss, lvl);
+        Mix_PlayMusic(son ->musiqueboss, -1);
     }
     lvl->MortMonstre=0;
 }
 
-void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
+void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son)
 {
     if(lvl->Num==0)
     {
-        deplacementMeduse(joueur, &monstre->meduse, lvl);
+        deplacementMeduse(joueur, &monstre->meduse, lvl, son);
         collision(joueur, &monstre->meduse, input, lvl);
         collisionmur (joueur);
     }
     if(lvl->Num==1)
     {   
         collisionmur (joueur);
-        deplacementMeduse(joueur, &monstre->meduse, lvl);
-        deplacementMeduse(joueur, &monstre->meduse1, lvl);
-        deplacementMeduse(joueur, &monstre->meduse2, lvl);
+        deplacementMeduse(joueur, &monstre->meduse, lvl, son);
+        deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
+        deplacementMeduse(joueur, &monstre->meduse2, lvl, son);
         collision(joueur, &monstre->meduse, input,lvl);
         collision(joueur, &monstre->meduse1, input, lvl);
-        collision(joueur, &monstre->meduse2, input, lvl);
+        collision(joueur, &monstre->meduse2, input, lvl
+        );
     }
     if(lvl->Num==2)
     {   
         collisionmur (joueur);
-        deplacementMeduse(joueur, &monstre->meduse, lvl);
-        deplacementMeduse(joueur, &monstre->meduse1, lvl);
-        deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl);
-        deplacementChauvesouris(joueur, &monstre->chauvesouris1, lvl);
+        deplacementMeduse(joueur, &monstre->meduse, lvl, son);
+        deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
+        deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl, son);
+        deplacementChauvesouris(joueur, &monstre->chauvesouris1, lvl, son);
         collision(joueur, &monstre->meduse, input, lvl);
         collision(joueur, &monstre->meduse1, input, lvl);
         collision(joueur, &monstre->meduse2, input, lvl);
@@ -122,7 +143,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur)
     {   
         collisionmur (joueur);
         collisionboss(joueur, &monstre->boss, input, lvl);
-        deplacementBoss(joueur, &monstre->boss, lvl, input);
+        deplacementBoss(joueur, &monstre->boss, lvl, son);
     }
     
 }
@@ -184,7 +205,7 @@ void loadNiv4 (Joueur *joueur,Boss *boss, Lvl *lvl)
 
 void cleanup(EffetSon *son)
 {
-    Mix_FreeMusic(son->musique); //Libération de la musique
+    Mix_FreeMusic(son->musiquemenu); //Libération de la musique
     //Mix_FreeChunk(son);
     Mix_CloseAudio(); //Fermeture de l'API
 

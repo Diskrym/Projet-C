@@ -31,11 +31,11 @@ void cleanMaps(void)
     }
 }
 
-void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre)
+void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son)
 {  
     if (lvl->MortMonstre==level[lvl->Num][0][1] && joueur->inposy<=28 && joueur->inposx >= 298 && joueur->inposx <= 320)
         {   
             lvl->Num+=1;
-            SelectNiv(joueur, lvl, monstre);
+            SelectNiv(joueur, lvl, monstre, son);
         }
 }

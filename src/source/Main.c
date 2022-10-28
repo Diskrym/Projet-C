@@ -52,7 +52,7 @@ init("Dungeon Fate");
     while (go == 1)
     {    
         
-        GestionMap(&joueur, &lvl, &monstre);
+        GestionMap(&joueur, &lvl, &monstre, &son);
         //Gestion des inputs clavier
         gestionInputs(&input);
         //On dessine tout
@@ -62,12 +62,12 @@ init("Dungeon Fate");
         
         //deplacementChauvesouris(&joueur, &chauvesouris, &meduse);
         
-        GestionMonstre(&monstre, &lvl, &input ,&joueur);
+        GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
         
         //meduse 2
 
         //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur,&meduse, &chauvesouris, &son);
+        deplacement(&input,&joueur,&meduse, &chauvesouris, &son, &boss);
 
         //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer
@@ -85,7 +85,7 @@ init("Dungeon Fate");
         //Test defaite
         if (joueur.life<=0)
         {
-            GameOver ();
+            GameOver (&son);
             exit(0);
         }
         //Test victoire
