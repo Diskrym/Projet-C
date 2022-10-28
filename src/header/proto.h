@@ -5,7 +5,7 @@
 
 //draw.c
 extern void drawGame(Joueur *joueur, Lvl *lvl);
-extern void GameOver (void);
+extern void GameOver (EffetSon *son);
 extern void Win (void);
 extern SDL_Texture *loadImage(char *name);
 extern void drawImage(SDL_Texture *, int, int);

@@ -16,11 +16,14 @@ void drawGame(Joueur *joueur, Lvl *lvl)
 
 
 
-void GameOver (void)
-{
+void GameOver (EffetSon *son)
+{   Mix_PauseMusic();
     SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");
     drawImage(GameOver,0,0);
     SDL_RenderPresent(getrenderer());
+
+    Mix_VolumeChunk(son->gameoverson, MIX_MAX_VOLUME);
+    Mix_PlayChannel(10, son->gameoverson, 2);
     SDL_Delay(3000);
 }
 
@@ -139,7 +142,7 @@ void porte (Lvl *lvl)
         {
             SDL_Texture *Porte=loadImage("src/graphics/lvl/Porteouverte.png");
             drawImage(Porte,SCREEN_WIDTH/2-22,0);
-            
+
             if (lvl->Num != 0)
             {
                 SDL_Texture *Portebas=loadImage("src/graphics/lvl/Portefermebas.png");

@@ -85,7 +85,7 @@ init("Dungeon Fate");
         //Test defaite
         if (joueur.life<=0)
         {
-            GameOver ();
+            GameOver (&son);
             exit(0);
         }
         //Test victoire
