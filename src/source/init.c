@@ -64,8 +64,8 @@ void Son (EffetSon *son)
       printf("%s", Mix_GetError());
    }
     Mix_AllocateChannels(32); //Allouer 32 canaux
-    son->musiquemenu = Mix_LoadMUS("src/Sik/musique menu.mp3"); //Chargement de la musique
-    son->musiqueboss = Mix_LoadMUS("src/Sik/MusiqueBoss.mp3");
+    son->musiquemenu = Mix_LoadMUS("src/Sik/m_menu.mp3"); //Chargement de la musique
+    son->musiqueboss = Mix_LoadMUS("src/Sik/m_Boss.mp3");
     son->musiquelvl = Mix_LoadMUS("src/Sik/MusiqueLvl.mp3");
 
     Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
@@ -78,12 +78,12 @@ void Son (EffetSon *son)
     son->lowlifechevalier= Mix_LoadWAV("src/Sik/Chelowlife.WAV");
     son->attaquemeduse= Mix_LoadWAV("src/Sik/Attakmeduz.WAV");
     son->depmeduse= Mix_LoadWAV("src/Sik/depMeduz.WAV");
-    son->degatmeduse= Mix_LoadWAV("src/Sik/degaMeduz.WAV");
+    son->degatmeduse= Mix_LoadWAV("src/Sik/degatMeduz.WAV");
     son->mortmeduse= Mix_LoadWAV("src/Sik/MortMeduz.WAV");
     son->mortchauvesouris= Mix_LoadWAV("src/Sik/MortChS.WAV");
     son->attaqueboss= Mix_LoadWAV("src/Sik/attakBossM.WAV");
     son->mortboss= Mix_LoadWAV("src/Sik/Mortboss.WAV");
-    son->degatboss= Mix_LoadWAV("src/Sik/Debut boss.WAV");
+    son->degatboss= Mix_LoadWAV("src/Sik/degatBoss.WAV");
     son->porte= Mix_LoadWAV("src/Sik/porte.WAV");
     son->gameoverson= Mix_LoadWAV("src/Sik/GameOver.WAV");
 }

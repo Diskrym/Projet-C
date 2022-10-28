@@ -337,7 +337,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (meduse->CompteurSpriteDegat==1)
             {
             Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME/2);
-            Mix_PlayChannel(4, son->mortmeduse, 0);
+            Mix_PlayChannel(9, son->mortmeduse, 0);
             }
         }
         if (meduse->CompteurSpriteDegat==4 || meduse->CompteurSpriteDegat==5 || meduse->CompteurSpriteDegat==6 || meduse->CompteurSpriteDegat==7 )
