@@ -158,7 +158,7 @@ void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *c
 
 
 
-void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
+void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
 {
     meduse->compteur += 1;
     meduse->NumSprit+=1;
@@ -196,7 +196,7 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl)
 }
 
 
-void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl)
+void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl, EffetSon *son)
 {
     chauvesouris->NumSprit+=1;
     if  (chauvesouris->Life==0 && chauvesouris->CompteurSpriteDegat<19)
@@ -231,7 +231,7 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *l
     SpritChauvesouris (chauvesouris, joueur, lvl, son);
 }
 
-void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl)
+void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son)
 {
     boss->compteur += 1;
     boss->NumSprit+=1;
