@@ -507,11 +507,22 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         SDL_DestroyTexture(boss->Bossattaque);
         boss->Bossattaque=NULL;
     }
+    if (boss->Eclair1!=NULL)
+    {
+        SDL_DestroyTexture(boss->Eclair1);
+        SDL_DestroyTexture(boss->Eclair2);
+        SDL_DestroyTexture(boss->Eclair3);
+        SDL_DestroyTexture(boss->Eclair4);
+        boss->Eclair1=NULL;
+        boss->Eclair2=NULL;
+        boss->Eclair3=NULL;
+        boss->Eclair4=NULL;
+    }
 
     //Mouvement  meduse
     if (boss->Life >=1)
     {
-        if (boss->compteur <= 200)
+        if (boss->compteur <= 400)
         {   
             if (boss->CompteurSpriteDegat==0)
             {
@@ -545,6 +556,60 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
                 }
+                //init eclair une fois par round
+                if (boss->compteur == 200)
+                {
+                    initEclair(boss);
+                }
+                
+                if (boss->compteur >= 200 && boss->compteur < 280)
+                {   
+                    //Eclair 1
+                    if (boss->CompteurSpriteEclair>=0 && boss->CompteurSpriteEclair<=10 )
+                    {
+                        boss->Eclair1=loadImage("src/graphics/Boss/WarningBoss.png");
+                        drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-16);
+                    }
+                    if (boss->CompteurSpriteEclair>=11 && boss->CompteurSpriteEclair<=20 )
+                    {
+                        boss->Eclair1=loadImage("src/graphics/Boss/EclairBoss.png");
+                        drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-374);
+                    }
+                    //Eclair 2
+                    if (boss->CompteurSpriteEclair>=21 && boss->CompteurSpriteEclair<=30 )
+                    {
+                        boss->Eclair2=loadImage("src/graphics/Boss/WarningBoss.png");
+                        drawImage(boss->Eclair2,boss->Ex2,boss->Ey2-16);
+                    }
+                    if (boss->CompteurSpriteEclair>=31 && boss->CompteurSpriteEclair<=40 )
+                    {
+                        boss->Eclair2=loadImage("src/graphics/Boss/EclairBoss.png");
+                        drawImage(boss->Eclair2,boss->Ex2,boss->Ey2-374);
+                    }
+                    //Eclair 3
+                    if (boss->CompteurSpriteEclair>=41 && boss->CompteurSpriteEclair<=50 )
+                    {
+                        boss->Eclair3=loadImage("src/graphics/Boss/WarningBoss.png");
+                        drawImage(boss->Eclair3,boss->Ex3,boss->Ey3-16);
+                    }
+                    if (boss->CompteurSpriteEclair>=51 && boss->CompteurSpriteEclair<=60 )
+                    {
+                        boss->Eclair3=loadImage("src/graphics/Boss/EclairBoss.png");
+                        drawImage(boss->Eclair3,boss->Ex3,boss->Ey3-374);
+                    }
+                    //Eclair 4
+                    if (boss->CompteurSpriteEclair>=61 && boss->CompteurSpriteEclair<=70 )
+                    {
+                        boss->Eclair4=loadImage("src/graphics/Boss/WarningBoss.png");
+                        drawImage(boss->Eclair4,boss->Ex4,boss->Ey4-16);
+                    }
+                    if (boss->CompteurSpriteEclair>=71 && boss->CompteurSpriteEclair<=80 )
+                    {
+                        boss->Eclair4=loadImage("src/graphics/Boss/EclairBoss.png");
+                        drawImage(boss->Eclair4,boss->Ex4,boss->Ey4-374);
+                    }
+                }
+                
             }
             
             //degat sur Boss
@@ -566,7 +631,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         }
 
         //Attaque boss
-        if  (boss->compteur > 200)
+        if  (boss->compteur > 400)
         {
             if (boss->NumSprit==0 || boss->NumSprit==1 || boss->NumSprit==2 || boss->NumSprit==3 )
             {
@@ -608,10 +673,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 }
                 }
             
-            if (boss->compteur>260)
+            if (boss->compteur>500)
             {
-                boss->compteur=0;
+                boss->compteur = 0;
                 boss->coup = 0;
+                boss->CompteurSpriteEclair= 0;
             }
         }
         if (boss->NumSprit>=32)
@@ -661,6 +727,5 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         {
             lvl->MortMonstre+=1;
         }
-        
     } 
 }

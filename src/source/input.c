@@ -248,9 +248,13 @@ void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetS
     {
         lvl->MortMonstre+=1;
     }
+    if (boss->compteur > 200 && boss->compteur < 280)
+    {
+        boss->CompteurSpriteEclair+=1;
+    }
     
     
-    if (boss->compteur <= 100 && boss->Life >=1 && boss->compteur%2==0)
+    if (boss->compteur <= 400 && boss->Life >=1 && boss->compteur%2==0)
     {
         if (joueur->inposx<boss->posmonsx)
         {

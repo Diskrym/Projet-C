@@ -224,3 +224,15 @@ void cleanup(EffetSon *son)
     //On quitte la SDL
     SDL_Quit();
 }
+
+void initEclair(Boss *boss)
+{
+    boss->Ex1= rand() % (SCREEN_WIDTH-50)+25;
+    boss->Ey1= rand() % (SCREEN_HEIGHT-50)+25;
+    boss->Ex2= rand() % (SCREEN_WIDTH-50)+25;
+    boss->Ey2= rand() % (SCREEN_HEIGHT-50)+25;
+    boss->Ex3= rand() % (SCREEN_WIDTH-50)+25;
+    boss->Ey3= rand() % (SCREEN_HEIGHT-50)+25;
+    boss->Ex4= rand() % (SCREEN_WIDTH-50)+25;
+    boss->Ey4= rand() % (SCREEN_HEIGHT-50)+25;
+}

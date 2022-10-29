@@ -40,6 +40,7 @@ extern void loadNiv4 (Joueur *joueur, Boss *boss, Lvl *lvl);
 
 extern void cleanup(EffetSon *son);
 extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
+extern void initEclair(Boss *boss);
 
 //input.c
 extern void gestionInputs(Input *input);
