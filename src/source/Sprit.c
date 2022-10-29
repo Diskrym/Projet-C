@@ -171,7 +171,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
             {
                 if (joueur->NumSprit==0 )
             {
-                joueur->chevalier=loadImage("src/graphics/ChevaliershieldD.png");
+                joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldD.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                 //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME/2);
                 //Mix_PlayChannel(2, son->bouclier, 0);
@@ -181,7 +181,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
             {
                 if (joueur->NumSprit==0     )
             {
-                joueur->chevalier=loadImage("src/graphics/ChevaliershieldG.png");
+                joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldG.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                 //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME/2);
                 //Mix_PlayChannel(2, son->bouclier, 0);
@@ -396,17 +396,17 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
             if (chauvesouris->Direction==0){
                 if (chauvesouris->NumSprit==0 || chauvesouris->NumSprit==1 || chauvesouris->NumSprit==2 || chauvesouris->NumSprit==3 ||chauvesouris->NumSprit==8 || chauvesouris->NumSprit==9 || chauvesouris->NumSprit==10 || chauvesouris->NumSprit==11 )
                 {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourisneutreD.png");
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreD.png");
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                 if (chauvesouris->NumSprit==4 || chauvesouris->NumSprit==5 || chauvesouris->NumSprit==6 || chauvesouris->NumSprit==7  )
                 {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismarche1D.png");
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche1D.png");
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                 if (chauvesouris->NumSprit==12 || chauvesouris->NumSprit==13 || chauvesouris->NumSprit==14 || chauvesouris->NumSprit==15 )
                 {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismarche2D.png");
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2D.png");
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                  
@@ -416,17 +416,17 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
             if (chauvesouris->Direction==1){
                 if (chauvesouris->NumSprit==0 || chauvesouris->NumSprit==1 || chauvesouris->NumSprit==2 || chauvesouris->NumSprit==3 ||chauvesouris->NumSprit==8 || chauvesouris->NumSprit==9 || chauvesouris->NumSprit==10 || chauvesouris->NumSprit==11 )
                 {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourisneutreG.png");
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreG.png");
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                 if (chauvesouris->NumSprit==4 || chauvesouris->NumSprit==5 || chauvesouris->NumSprit==6 || chauvesouris->NumSprit==7  )
                 {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismarche1G.png");
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche1G.png");
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                 if (chauvesouris->NumSprit==12 || chauvesouris->NumSprit==13 || chauvesouris->NumSprit==14 || chauvesouris->NumSprit==15 )
                 {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismarche2G.png");
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2G.png");
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                     
@@ -458,7 +458,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
     {
         if (chauvesouris->CompteurSpriteDegat==0 || chauvesouris->CompteurSpriteDegat==1 || chauvesouris->CompteurSpriteDegat==2 || chauvesouris->CompteurSpriteDegat==3 )
         {
-            chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismort1D.png");
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort1D.png");
             drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
             if (chauvesouris->CompteurSpriteDegat==0)
             {
@@ -468,22 +468,22 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
         }
         if (chauvesouris->CompteurSpriteDegat==4 || chauvesouris->CompteurSpriteDegat==5 || chauvesouris->CompteurSpriteDegat==6 || chauvesouris->CompteurSpriteDegat==7 )
         {
-            chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismort2D.png");
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort2D.png");
             drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
         }
         if (chauvesouris->CompteurSpriteDegat==8 || chauvesouris->CompteurSpriteDegat==9 || chauvesouris->CompteurSpriteDegat==10 || chauvesouris->CompteurSpriteDegat==11)
         {
-            chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismort3D.png");
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort3D.png");
             drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
         }
         if (chauvesouris->CompteurSpriteDegat==12 || chauvesouris->CompteurSpriteDegat==13 || chauvesouris->CompteurSpriteDegat==14 || chauvesouris->CompteurSpriteDegat==15 )
         {
-            chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismort4D.png");
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort4D.png");
             drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
         }
         if (chauvesouris->CompteurSpriteDegat==16 || chauvesouris->CompteurSpriteDegat==17 || chauvesouris->CompteurSpriteDegat==18 || chauvesouris->CompteurSpriteDegat==19 )
         {
-            chauvesouris->chauvesouris=loadImage("src/graphics/chauvesourismort5D.png");
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort5D.png");
             drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
          }
      }

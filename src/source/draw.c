@@ -196,6 +196,6 @@ void porte (Lvl *lvl)
 
 void menu (void)
 {   
-    SDL_Texture *Menu=loadImage("src/graphics/Menu.png");
+    SDL_Texture *Menu=loadImage("src/graphics/lvl/Menu.png");
     drawImage(Menu,0,0);   
 }
