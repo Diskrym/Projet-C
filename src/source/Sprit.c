@@ -126,7 +126,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
                 if(joueur->Numattack==13)
                 {
                     //Son
-                    Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
+                    //Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
                     Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                 }
             }
@@ -157,7 +157,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
                 if(joueur->Numattack==13)
                 {
                     //Son
-                    Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
+                    //Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
                     Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                 }
             }
@@ -493,7 +493,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
     {
         chauvesouris->NumSprit=0;
     }
-    }
+}
 
 void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {
@@ -568,7 +568,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     if (boss->CompteurSpriteEclair>=0 && boss->CompteurSpriteEclair<=10 )
                     {
                         boss->Eclair1=loadImage("src/graphics/Boss/WarningBoss.png");
-                        drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-16);
+                        drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-16);   
                     }
                     if (boss->CompteurSpriteEclair>=11 && boss->CompteurSpriteEclair<=20 )
                     {
@@ -608,8 +608,12 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                         boss->Eclair4=loadImage("src/graphics/Boss/EclairBoss.png");
                         drawImage(boss->Eclair4,boss->Ex4,boss->Ey4-374);
                     }
+                    if ((boss->CompteurSpriteEclair==15 && insideEclair(joueur, boss->Ex1, boss->Ey1-374)==1) || (boss->CompteurSpriteEclair==35 && insideEclair(joueur, boss->Ex2, boss->Ey2-374)==1) || (boss->CompteurSpriteEclair==55 && insideEclair(joueur, boss->Ex3, boss->Ey3-374)==1) || (boss->CompteurSpriteEclair==75 && insideEclair(joueur, boss->Ex4, boss->Ey4-374)==1))
+                    {
+                        joueur->life--;
+                        boss->coup=1;
+                    }
                 }
-                
             }
             
             //degat sur Boss

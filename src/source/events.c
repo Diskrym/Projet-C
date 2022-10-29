@@ -300,3 +300,21 @@ int insideBoss (Joueur *joueur, Boss *boss)
         return 1;
     }
 }
+
+int insideEclair(Joueur *joueur,int Eclairx, int Eclairy)
+{
+    int x=0;
+    int y=0;
+    if ((joueur->inposx>=Eclairx-22 || joueur->inposx+SPRITE_SIZE>=Eclairx-22) && (joueur->inposx<=Eclairx+22 || joueur->inposx + SPRITE_SIZE <=Eclairx+22))
+    {
+        x=1;
+    }
+    if ((joueur->inposy>=Eclairy-50+374 || joueur->inposy+SPRITE_SIZE>=Eclairy+374-50) && (joueur->inposy<=Eclairy+374+50 || joueur->inposy + SPRITE_SIZE <=Eclairy+374+50))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {
+        return 1;
+    }
+}
