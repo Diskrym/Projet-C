@@ -153,7 +153,7 @@ void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son)
     {
         joueur->Eshield=0;
     }
-    SpritHeros(joueur, &monstre->meduse, input, &monstre->chauvesouris, son, &monstre->boss);
+    SpritHeros(joueur, input, son, monstre);
 }
 
 

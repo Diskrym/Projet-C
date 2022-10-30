@@ -1,7 +1,7 @@
 #include "../header/proto.h" 
 
 
-void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son, Boss *boss)
+void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
 {   
 
 
@@ -20,7 +20,8 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
     {
         if (joueur->Direction ==0)
         {
-            if( meduse->coup == 0 && chauvesouris->coup==0 && boss->coup==0 && boss->coupE1 == 0 && boss->coupE2 == 0 && boss->coupE3 == 0 && boss->coupE4 == 0)
+            printf("%d \n", DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss));
+            if (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
             {
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
@@ -60,7 +61,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
         }
         if (joueur->Direction ==1)
         {
-            if (meduse->coup == 0 && chauvesouris->coup==0 && boss->coup==0 && boss->coupE1==0 && boss->coupE2 == 0 && boss->coupE3 == 0 && boss->coupE4 == 0)
+            if(DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
             {
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {

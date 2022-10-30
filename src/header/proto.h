@@ -25,7 +25,7 @@ extern int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris);
 extern int insidechevalierBoss (Joueur *joueur, Boss *boss);
 extern int insideBoss (Joueur *joueur, Boss *boss);
 extern int insideEclair(Joueur *joueur,int Eclairx, int Eclairy);
-
+extern int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss);
 
 
 
@@ -61,7 +61,7 @@ extern void cleanMaps(void);
 extern void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
 
 //Sprit.c
-extern void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son, Boss *boss);
+extern void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre);
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
