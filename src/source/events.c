@@ -96,8 +96,8 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
                     {
                         joueur->inposx+=3;  
                     }
-                }    
-            } 
+                }
+            }
         }
     }
 }

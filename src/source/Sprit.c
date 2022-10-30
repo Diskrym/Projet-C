@@ -3,6 +3,8 @@
 
 void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chauvesouris, EffetSon *son, Boss *boss)
 {   
+
+
     if (joueur->chevalier!=NULL)
     {   
         SDL_DestroyTexture(joueur->chevalier);
@@ -48,6 +50,7 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
             }
             else
             {
+
                 joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                 Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
@@ -126,8 +129,8 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
                 if(joueur->Numattack==13)
                 {
                     //Son
-                    //Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
-                    Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
+                    Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
+                    //Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                 }
             }
         }
@@ -157,11 +160,12 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
                 if(joueur->Numattack==13)
                 {
                     //Son
-                    //Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
-                    Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
+                    Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
+                    //Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                 }
             }
-        }}
+        }
+        }
 
 
         //mouvement defense
@@ -186,7 +190,8 @@ void SpritHeros(Joueur *joueur, Meduse *meduse, Input *input, Chauvesouris *chau
                 //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME/2);
                 //Mix_PlayChannel(2, son->bouclier, 0);
             }
-            }}
+            }
+            }
 
         
     
@@ -671,11 +676,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 {
                     if (boss->coup == 0)
                     {
-                        //joueur->life--;
+                        joueur->life--;
                         boss->coup =1;
                     }
                 }
-                }
+            }
             
             if (boss->compteur>500)
             {

@@ -60,14 +60,12 @@ init("Dungeon Fate");
         //IA monstre
         
         
-        //deplacementChauvesouris(&joueur, &chauvesouris, &meduse);
         
         GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
         
         //meduse 2
-
         //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur,&meduse, &chauvesouris, &son, &boss);
+        deplacement(&input,&joueur,&monstre, &son);
 
         //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer

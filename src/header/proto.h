@@ -35,7 +35,7 @@ extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
 extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
 void LoadNiv2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
-void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son);
+extern void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son);
 extern void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
 extern void Son (EffetSon *son);
 extern void loadNiv4 (Joueur *joueur, Boss *boss, Lvl *lvl);
@@ -47,7 +47,7 @@ extern void initEclair(Boss *boss);
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
-extern void deplacement (Input *input, Joueur *joueur, Meduse *meduse,  Chauvesouris *chauvesouris , EffetSon *son, Boss *boss);
+extern void deplacement (Input *input, Joueur *joueur, Monstre *monstre,EffetSon *son);
 extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son);
 extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Lvl *lvl, EffetSon *son);
 extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son);

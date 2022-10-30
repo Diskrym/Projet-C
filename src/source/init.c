@@ -114,8 +114,9 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     if(lvl->Num==0)
     {
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
-        collision(joueur, &monstre->meduse, input, lvl);
         collisionmur (joueur);
+        collision(joueur, &monstre->meduse, input, lvl);
+
     }
     if(lvl->Num==1)
     {   
@@ -125,8 +126,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         deplacementMeduse(joueur, &monstre->meduse2, lvl, son);
         collision(joueur, &monstre->meduse, input,lvl);
         collision(joueur, &monstre->meduse1, input, lvl);
-        collision(joueur, &monstre->meduse2, input, lvl
-        );
+        collision(joueur, &monstre->meduse2, input, lvl);
     }
     if(lvl->Num==2)
     {   
@@ -145,7 +145,6 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         collisionboss(joueur, &monstre->boss, input, lvl);
         deplacementBoss(joueur, &monstre->boss, lvl, input,son);
     }
-    
 }
 
 void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)

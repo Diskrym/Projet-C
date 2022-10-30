@@ -41,6 +41,14 @@ typedef struct  Boss
         SDL_Texture *Eclair4;
 }Boss;
 
+
+typedef struct Joueur
+{
+    int inposx, inposy, Eattack,Eshield, life, Direction, NumSprit, Numattack, coup;
+    SDL_Texture *chevalier;
+    SDL_Texture *attaque;
+} Joueur;
+
 typedef struct Monstre
 {
     Meduse meduse;
@@ -59,12 +67,7 @@ SDL_Texture *background;
  
 } Map;
 
-typedef struct Joueur
-{
-    int inposx, inposy, Eattack,Eshield, life, Direction, NumSprit, Numattack, coup;
-    SDL_Texture *chevalier;
-    SDL_Texture *attaque;
-} Joueur;
+
 
 typedef struct EffetSon
 {
