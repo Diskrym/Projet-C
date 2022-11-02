@@ -452,6 +452,11 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
             {
                 chauvesouris->Life--;
                 lvl ->MortMonstre+=1;
+                if (joueur->TimingBouclier>15)
+                {
+                    joueur->life--;
+                }
+                
             }
         }     
     }
