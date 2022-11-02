@@ -34,7 +34,7 @@ extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
 extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
-void LoadNiv2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
+extern void LoadNiv2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
 extern void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son);
 extern void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
 extern void Son (EffetSon *son);

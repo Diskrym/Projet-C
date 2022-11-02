@@ -391,10 +391,10 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
         chauvesouris->chauvesouris=NULL;
     }
     //Mouvement  chauvesouris
-    if (chauvesouris->Life <=0)
-    {
-     chauvesouris->coup =0 ;
-    }
+    // if (chauvesouris->Life <=0)
+    // {
+    //  chauvesouris->coup =0 ;
+    // }
     if (chauvesouris->Life >=1)
     {
          if (chauvesouris->CompteurSpriteDegat==0)
@@ -442,23 +442,20 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
  
     //     Attaque chauvesouris
         
-                  if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==0)
-                     {
-                          joueur->life--;
-                          chauvesouris->Life--;
-                          chauvesouris->coup =1 ;
-                          lvl->MortMonstre+=1;
-                        }
-                   if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==1)
-                     {
-                          chauvesouris->Life--;
-                          chauvesouris->coup =1 ;
-                          lvl ->MortMonstre+=1;
-                        }}     
-                        
-                        }
-          
- 
+            if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==0)
+            {
+                joueur->life--;
+                chauvesouris->Life--;
+                chauvesouris->coup =1 ;
+                lvl->MortMonstre+=1;
+            }
+            if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==1)
+            {
+                chauvesouris->Life--;
+                lvl ->MortMonstre+=1;
+            }
+        }     
+    }
     //Mort chauvesouris
     if (chauvesouris->Life==0)
     {
@@ -499,6 +496,15 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
     {
         chauvesouris->NumSprit=0;
     }
+    if (chauvesouris->coup==1)
+    {
+        chauvesouris->CompteurSpriteDegatChevalier+=1;
+    }
+    if  (chauvesouris->CompteurSpriteDegatChevalier==15)
+    {
+        chauvesouris->coup=0;
+    }
+    
 }
 
 void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)

@@ -26,7 +26,7 @@ typedef struct Meduse
 typedef struct Chauvesouris
 {
  
-    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort;
+    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteDegatChevalier;
     SDL_Texture *chauvesouris;
 } Chauvesouris;
 
