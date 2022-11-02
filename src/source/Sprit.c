@@ -3,8 +3,6 @@
 
 void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
 {   
-
-
     if (joueur->chevalier!=NULL)
     {   
         SDL_DestroyTexture(joueur->chevalier);
@@ -16,92 +14,89 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         joueur->attaque=NULL;
     }
     //Mouvement joueur de base avec direction 0 pour droite et 1 gauche
-    if(joueur->Eattack==0 && joueur->Eshield==0)
+    if (joueur->Direction ==0 && joueur->Eattack==0 && joueur->Eshield==0)
     {
-        if (joueur->Direction ==0)
+        if (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
         {
-            printf("%d \n", DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss));
-            if (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
+            if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
             {
-                if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
-                {
-                   joueur->chevalier=loadImage("src/graphics/Chevalier/neutreD.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                }
-                if (joueur->NumSprit==2 || joueur->NumSprit==3  )
-                {
-                    joueur->chevalier=loadImage("src/graphics/Chevalier/marche1D.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                    // if (joueur->NumSprit==2)
-                    // {Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
-                    // Mix_PlayChannel(3, son->depchevalier, 0);}
-                    
-                }
-                if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
-                {
-                    joueur->chevalier=loadImage("src/graphics/Chevalier/marche2D.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                    joueur->NumSprit =0;
-                    // if (joueur->NumSprit==7)
-                    // {
-                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
-                    // Mix_PlayChannel(3, son->depchevalier, 0);
-                    // }
-                }
-            }
-            else
-            {
-
-                joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
+                joueur->chevalier=loadImage("src/graphics/Chevalier/neutreD.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
-                Mix_PlayChannel(1, son->degatchevalier, 0);
-
             }
-        }
-        if (joueur->Direction ==1)
-        {
-            if(DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
+            if (joueur->NumSprit==2 || joueur->NumSprit==3  )
             {
-                if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
-                {
-                    joueur->chevalier=loadImage("src/graphics/Chevalier/neutreG.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                }
-                if (joueur->NumSprit==2 || joueur->NumSprit==3  )
-                {
-                    joueur->chevalier=loadImage("src/graphics/Chevalier/marche1G.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                    // if (joueur->NumSprit==2)
-                    // {
-                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
-                    // Mix_PlayChannel(3, son->depchevalier, 0);
-                    // }
-                }
-                if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
-                {
-                    joueur->chevalier=loadImage("src/graphics/Chevalier/marche2G.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                    // if (joueur->NumSprit==7)
-                    // {
-                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
-                    // Mix_PlayChannel(3, son->depchevalier, 0);
-                    // }
-                    joueur->NumSprit =0;
-                }   
-            }
-            else
-            {
-                joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
+                joueur->chevalier=loadImage("src/graphics/Chevalier/marche1D.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
-                Mix_PlayChannel(1, son->degatchevalier, 0);
+                // if (joueur->NumSprit==2)
+                // {Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                // Mix_PlayChannel(3, son->depchevalier, 0);}   
+            }
+            if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
+            {
+                joueur->chevalier=loadImage("src/graphics/Chevalier/marche2D.png");
+                drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                joueur->NumSprit =0;
+                // if (joueur->NumSprit==7)
+                // {
+                // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                // Mix_PlayChannel(3, son->depchevalier, 0);
+                // }
             }
         }
     }
+    if(joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0)
+    {
+
+        joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
+        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+        Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
+        Mix_PlayChannel(1, son->degatchevalier, 0);
+    }
+        
+    if (joueur->Direction ==1 && joueur->Eattack==0 && joueur->Eshield==0)
+    {
+        if(DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
+        {
+            if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
+            {
+                joueur->chevalier=loadImage("src/graphics/Chevalier/neutreG.png");
+                drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+            }
+            if (joueur->NumSprit==2 || joueur->NumSprit==3  )
+            {
+                joueur->chevalier=loadImage("src/graphics/Chevalier/marche1G.png");
+                drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                // if (joueur->NumSprit==2)
+                // {
+                // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                // Mix_PlayChannel(3, son->depchevalier, 0);
+                // }
+            }
+            if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
+            {
+                joueur->chevalier=loadImage("src/graphics/Chevalier/marche2G.png");
+                drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                // if (joueur->NumSprit==7)
+                // {
+                // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                // Mix_PlayChannel(3, son->depchevalier, 0);
+                // }
+                joueur->NumSprit =0;
+            }   
+        }
+    }
+    if (joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0)
+    {
+        joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
+        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+        Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
+        Mix_PlayChannel(1, son->degatchevalier, 0);
+    }
+        
+    
 
     //Mouvement attaque 
-    if (joueur->Eattack==1)
+    if (joueur->Eattack==1 && DegatChevalier(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, &monstre->chauvesouris, &monstre->chauvesouris1,&monstre->boss)==1)
     {
         joueur->Numattack+=1;
         if (joueur->Direction==1)
@@ -166,42 +161,42 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                 }
             }
         }
-        }
+    }
 
 
-        //mouvement defense
-        if (joueur->Eshield==1)
+    //mouvement defense
+    if (joueur->Eshield==1)
+    {
+        if (joueur->Direction==0)
         {
-            if (joueur->Direction==0)
-            {
-                if (joueur->NumSprit==0 )
+            if (joueur->NumSprit==0 )
             {
                 joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldD.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                 //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME/2);
                 //Mix_PlayChannel(2, son->bouclier, 0);
             }
-            }
-             if (joueur->Direction==1)
-            {
-                if (joueur->NumSprit==0     )
+        }
+        if (joueur->Direction==1)
+        {
+            if (joueur->NumSprit==0)
             {
                 joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldG.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                 //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME/2);
                 //Mix_PlayChannel(2, son->bouclier, 0);
             }
-            }
-            }
+        }
+    }
 
         
     
-        //reset des compteur pour sprite et attaque
-        if(joueur->Numattack >= 23)
-        {
-            joueur->Numattack=0;
-            joueur->Eattack = 0;
-        }
+    //reset des compteur pour sprite et attaque
+    if(joueur->Numattack >= 23)
+    {
+        joueur->Numattack=0;
+        joueur->Eattack = 0;
+    }
     
 }
 
