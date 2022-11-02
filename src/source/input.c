@@ -152,6 +152,7 @@ void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son)
     if (input->shield==0)
     {
         joueur->Eshield=0;
+        joueur->TimingBouclier=0;
     }
     SpritHeros(joueur, input, son, monstre);
 }
