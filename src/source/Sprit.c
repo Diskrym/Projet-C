@@ -44,7 +44,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
             }
         }
     }
-    if(joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0)
+    if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) && joueur->Direction==0)
     {
 
         joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
@@ -85,7 +85,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
             }   
         }
     }
-    if (joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0)
+    if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) && joueur->Direction==1 )
     {
         joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
         drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
