@@ -3,6 +3,7 @@
 
 void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
 {   
+    //reset des pointeurs des sprites
     if (joueur->chevalier!=NULL)
     {   
         SDL_DestroyTexture(joueur->chevalier);
@@ -13,9 +14,11 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         SDL_DestroyTexture(joueur->attaque);
         joueur->attaque=NULL;
     }
-    //Mouvement joueur de base avec direction 0 pour droite et 1 gauche
+
+    //Mouvement du joueur droite si bouclier baisser ou si timing bouclier dépassé
     if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
     {
+        //se deplace si ne prend pas de dégat sinon sprit degat
         if (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
         {
             if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
@@ -44,15 +47,16 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
             }
         }
     }
+    //affiche sprite degat si degat de la part du monstre et si degat de la part du monstre lors de notre attack/defense pour la droite
     if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) && joueur->Direction==0)
     {
-
         joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
         drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
         Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
         Mix_PlayChannel(1, son->degatchevalier, 0);
     }
-        
+    
+    //cf fonction gauche
     if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
     {
         if(DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
@@ -95,7 +99,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         
     
 
-    //Mouvement attaque 
+    //Mouvement attaque si Eattack = 1 et si on ne prend pas de dégat
     if (joueur->Eattack==1 && DegatChevalier(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, &monstre->chauvesouris, &monstre->chauvesouris1,&monstre->boss)==1)
     {
         joueur->Numattack+=1;
@@ -164,9 +168,10 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     }
 
 
-    //mouvement defense
+    //mouvement defense si etat shield a 1
     if (joueur->Eshield==1)
     {
+        //timer shield
         if (joueur->TimingBouclier<=15)
         {
             if (joueur->Direction==0)
@@ -189,13 +194,14 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                     //Mix_PlayChannel(2, son->bouclier, 0);
                 }
             }
+            //incrémentation de timer shield jusqu'a 15
             joueur->TimingBouclier+=1;
         }
     }
 
         
     
-    //reset des compteur pour sprite et attaque
+    //reset des compteur pour sprite et attaque (attaque pour les sprit)
     if(joueur->Numattack >= 23)
     {
         joueur->Numattack=0;
@@ -205,7 +211,9 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
 }
 
 void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
-{   if (meduse->meduse!=NULL)
+{   
+    //reset pointeur meduse
+    if (meduse->meduse!=NULL)
     {
         SDL_DestroyTexture(meduse->meduse);
         meduse->meduse=NULL;
@@ -216,11 +224,13 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         meduse->attaque=NULL;
     }
 
-    //Mouvement  meduse
+    //Mouvement  meduse quand en vie
     if (meduse->Life >=1)
     {
+        //compteur < 100 pour déplacement normal
         if (meduse->compteur < 100)
         {
+            //si la meduse n'a pas prit de coup
             if (meduse->CompteurSpriteDegat==0)
             {
                 if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==2 || meduse->NumSprit==3 )
@@ -263,6 +273,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
 
             else 
             {
+                //si la meduse prend un coup
                 meduse->CompteurSpriteDegat+=1;
                 meduse->meduse=loadImage("src/graphics/Meduse/Medusedegat.png");
                 drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
@@ -271,7 +282,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 Mix_VolumeChunk(son->degatmeduse, MIX_MAX_VOLUME/2);
                 Mix_PlayChannel(4, son->degatmeduse, 0); 
                 }          
-
+                //compteur duree affichage degat meduse
                 if (meduse->CompteurSpriteDegat > 15)
                 {
                     meduse->CompteurSpriteDegat=0;
@@ -279,7 +290,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
             }   
         }
 
-        //Attaque meduse
+        //Attaque meduse quand compteur > 100
         if  (meduse->compteur>=100)
         {
             if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==2 || meduse->NumSprit==3 )
@@ -299,17 +310,20 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             }
             if (meduse->NumSprit==12 || meduse->NumSprit==13 || meduse->NumSprit==14 || meduse->NumSprit==19 || meduse->NumSprit==20 || meduse->NumSprit==21 || meduse->NumSprit==22 || meduse->NumSprit==23 )
-            {   if (meduse->NumSprit==14 || meduse->NumSprit==14 )
-
+            {   
+                //attaque meduse
+                if (meduse->NumSprit==14 || meduse->NumSprit==14 )
                 {
-                Mix_VolumeChunk(son->attaquemeduse, MIX_MAX_VOLUME/2);
-                Mix_PlayChannel(4, son->attaquemeduse, 0);
-
+                    Mix_VolumeChunk(son->attaquemeduse, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(4, son->attaquemeduse, 0);
                 }
+
                 meduse->meduse=loadImage("src/graphics/Meduse/medusecoup4.png");                    
                 drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 meduse->attaque=loadImage("src/graphics/Meduse/AttaqueMeduse.png");
                 drawImage(meduse->attaque,meduse->posmonsx -23 ,meduse->posmonsy - 23);
+                
+                // Si joueur dans la range de la meduse durant les éclaires
                 if(inside(joueur, meduse)==1 && (meduse->NumSprit==23 || meduse->NumSprit==14))                    
                 {
                     if (meduse->coup == 0)
@@ -324,6 +338,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 }
             }
+            //reset compteur meduse
             if (meduse->compteur>130)
             {
                 meduse->compteur=0;
@@ -331,7 +346,6 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
             }
         }
     }
-
     //Mort meduse
     if (meduse->Life==0)
     {
@@ -368,10 +382,8 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         if (meduse->CompteurSpriteDegat==0)
         {
             lvl->MortMonstre+=1;
-        }
-        
+        }  
     }
-
     //reset compteur pour sprite
     if (meduse->NumSprit>=33)
     {
@@ -507,12 +519,12 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
     if  (chauvesouris->CompteurSpriteDegatChevalier==15)
     {
         chauvesouris->coup=0;
-    }
-    
+    }   
 }
 
 void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {
+    //suppression pointeur des images
    if (boss->Boss!=NULL)
     {
         SDL_DestroyTexture(boss->Boss);
@@ -535,11 +547,13 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         boss->Eclair4=NULL;
     }
 
-    //Mouvement  meduse
+    //Mouvement  meduse qd en vie
     if (boss->Life >=1)
     {
+        //compteur sans attaque boss
         if (boss->compteur <= 400)
         {   
+            //si il ne prend pas de degat
             if (boss->CompteurSpriteDegat==0)
             {
                 if (boss->NumSprit==0 || boss->NumSprit==1 || boss->NumSprit==2 || boss->NumSprit==3 )
@@ -577,7 +591,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 {
                     initEclair(boss);
                 }
-                
+                // lancement attaque eclair
                 if (boss->compteur >= 200 && boss->compteur < 280)
                 {   
                     //Eclair 1
@@ -659,6 +673,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                         boss->coupE4=1;
                     } 
                 }
+                // inside eclair 4 hors boucle
                 if (boss->compteur>290 && boss->coupE4==1)
                 {
                     boss->coupE4=0;
@@ -717,6 +732,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
                 boss->Bossattaque=loadImage("src/graphics/Boss/AttaqueBoss.png");
                 drawImage(boss->Bossattaque,boss->posmonsx -46 ,boss->posmonsy - 46);
+                //fonction inside
                 if(insideBoss(joueur, boss)==1 && (boss->NumSprit==15 || boss->NumSprit==18))                    
                 {
                     if (boss->coup == 0)
