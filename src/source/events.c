@@ -305,11 +305,11 @@ int insideEclair(Joueur *joueur,int Eclairx, int Eclairy)
 {
     int x=0;
     int y=0;
-    if ((joueur->inposx>=Eclairx-22 || joueur->inposx+SPRITE_SIZE>=Eclairx-22) && (joueur->inposx<=Eclairx+22 || joueur->inposx + SPRITE_SIZE <=Eclairx+22))
+    if ((joueur->inposx>=Eclairx || joueur->inposx+SPRITE_SIZE>=Eclairx) && (joueur->inposx<=Eclairx+64 || joueur->inposx + SPRITE_SIZE <=Eclairx+64))
     {
         x=1;
     }
-    if ((joueur->inposy>=Eclairy-50+374 || joueur->inposy+SPRITE_SIZE>=Eclairy+374-50) && (joueur->inposy<=Eclairy+374+50 || joueur->inposy + SPRITE_SIZE <=Eclairy+374+50))
+    if ((joueur->inposy>=Eclairy+405-28 || joueur->inposy+SPRITE_SIZE>=Eclairy+405-28) && (joueur->inposy<=Eclairy+405 || joueur->inposy + SPRITE_SIZE <=Eclairy+405))
     {
         y=1;
     }
