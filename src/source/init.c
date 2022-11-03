@@ -124,8 +124,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         collision(joueur, &monstre->meduse2, input, lvl);
     }
     if(lvl->Num==2)
-    {   
-        collisionmur (joueur);
+    {   collisionmur (joueur);
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
         deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
         deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl, son);
@@ -153,7 +152,9 @@ void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
 }
 
 void LoadNiv2(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, Joueur *joueur)
-{  
+{       SDL_RenderClear(renderer);
+        SDL_RenderPresent(renderer);
+    
         initMaps(lvl);
         joueur->inposx = level[1][0][2];
         joueur->inposy = level[1][0][3];
