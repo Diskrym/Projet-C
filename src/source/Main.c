@@ -58,9 +58,6 @@ init("Dungeon Fate");
         //On dessine tout
         drawGame(&joueur, &lvl);
         //IA monstre
-        
-        
-        
         GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
         
         //meduse 2
