@@ -396,16 +396,14 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
 
 
 void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
-{  if (chauvesouris->chauvesouris!=NULL)
+{  
+    //reset pointeur sprite
+    if (chauvesouris->chauvesouris!=NULL)
     {
         SDL_DestroyTexture(chauvesouris->chauvesouris);
         chauvesouris->chauvesouris=NULL;
     }
-    //Mouvement  chauvesouris
-    // if (chauvesouris->Life <=0)
-    // {
-    //  chauvesouris->coup =0 ;
-    // }
+    //Qd en vie et quelle ne prend pas dégât
     if (chauvesouris->Life >=1)
     {
          if (chauvesouris->CompteurSpriteDegat==0)
@@ -446,13 +444,10 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2G.png");
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
-                    
-                
             } 
-        
  
-    //     Attaque chauvesouris
-        
+            //Attaque chauvesouris sans compt
+            //si non bouclier
             if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==0)
             {
                 //joueur->life--;
@@ -460,17 +455,18 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
                 chauvesouris->coup =1 ;
                 lvl->MortMonstre+=1;
             }
+            //si bouclier
             if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==1)
             {
                 chauvesouris->Life--;
                 lvl ->MortMonstre+=1;
+                //si bouclier boucle active
                 if (joueur->TimingBouclier>15)
                 {
                     //joueur->life--;
                 }
-                
             }
-        }     
+        }
     }
     //Mort chauvesouris
     if (chauvesouris->Life==0)
@@ -504,18 +500,19 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
         {
             chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort5D.png");
             drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-         }
-     }
- 
+        }
+    }
     //reset compteur pour sprite
     if (chauvesouris->NumSprit>=15)
     {
         chauvesouris->NumSprit=0;
     }
+    //activation boucle dans event des degats chevalier
     if (chauvesouris->coup==1)
     {
         chauvesouris->CompteurSpriteDegatChevalier+=1;
     }
+    //reset degat chevalier
     if  (chauvesouris->CompteurSpriteDegatChevalier==15)
     {
         chauvesouris->coup=0;
@@ -780,9 +777,10 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         
     }
 
-
+    //mort bosse
     if (boss->Life==0)
-    {   Mix_PauseMusic();
+    {   
+        Mix_PauseMusic();
         if (boss->CompteurSpriteDegat>=0 && boss->CompteurSpriteDegat <= 5 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort1.png");

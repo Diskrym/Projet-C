@@ -3,18 +3,13 @@
 
 void gestionInputs(Input *input)
 {
-    //On gère le clavier (on rajoutera plus tard la gestion
-    //des joysticks)
+    //On gère le clavier
     getInput(input);
 }
  
 void getInput(Input *input)
 {
     SDL_Event event;
- 
-    /* Keymapping : gère les appuis sur les touches et les enregistre
-    dans la structure input */
- 
     while (SDL_PollEvent(&event))
     {
         switch (event.type)
@@ -116,6 +111,7 @@ void getInput(Input *input)
 
 void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son)
 {  
+    //Si on a pas le bouclier on se déplace
     if (!(joueur->Eshield==1 && joueur->TimingBouclier<15) && input->shield==0)
     {
         if (input->left==1)
@@ -165,16 +161,17 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
 {
     meduse->compteur += 1;
     meduse->NumSprit+=1;
+    //Compteur mort méduse
     if  (meduse->Life==0 && meduse->CompteurSpriteDegat<19)
     {
         meduse->CompteurSpriteDegat+=1;
     }
+    //Compteur mort pour passage de niveau
     if (meduse->CompteurSpriteDegat==18)
     {
         lvl->MortMonstre+=1;
     }
-    
-    
+    //Deplacement meduse
     if (meduse->compteur <= 100 && meduse->Life >=1)
     {
         if (joueur->inposx<meduse->posmonsx)
@@ -219,7 +216,6 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *l
         {
             chauvesouris->posmonsx+=2;
             chauvesouris->Direction=0;
-
         }
         if (joueur->inposy+32<chauvesouris->posmonsy)
         {
@@ -238,19 +234,24 @@ void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetS
 {
     boss->compteur += 1;
     boss->NumSprit+=1;
-    //gestion compteur mort
+    //gestion mort + ouverture coffre
     if (boss->CompteurSpriteDegat==21 && insideBoss(joueur, boss)==1 && input->enter == 1)
     {
         boss->CompteurSpriteDegat=22;
+        Mix_VolumeChunk(son->coffre, MIX_MAX_VOLUME/2);
+        Mix_PlayChannel(6, son->coffre, 0);
     }
+    //compteur mort
     if  (boss->Life==0 && boss->CompteurSpriteDegat<21)
     {
         boss->CompteurSpriteDegat+=1;
     }
+    //ajout mort pour passage de niveau
     if (boss->CompteurSpriteDegat==18)
     {
         lvl->MortMonstre+=1;
     }
+    //Gestion coimmepteur eclair
     if (boss->compteur > 200 && boss->compteur < 530)
     {
         boss->CompteurSpriteEclair+=1;
