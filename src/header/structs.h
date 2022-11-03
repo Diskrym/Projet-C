@@ -91,6 +91,7 @@ typedef struct EffetSon
     Mix_Chunk *degatboss;
     Mix_Chunk *porte;
     Mix_Chunk *gameoverson;
+    Mix_Chunk *coffre;
 
 
 }EffetSon;

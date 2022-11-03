@@ -83,6 +83,7 @@ void Son (EffetSon *son)
     son->degatboss= Mix_LoadWAV("src/Sik/degatBoss.WAV");
     son->porte= Mix_LoadWAV("src/Sik/porte.WAV");
     son->gameoverson= Mix_LoadWAV("src/Sik/GameOver.WAV");
+    son->coffre= Mix_LoadWAV("src/Sik/OuvertureCoffre.WAV");
 }
 
 void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
