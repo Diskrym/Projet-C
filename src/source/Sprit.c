@@ -455,7 +455,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
         
             if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==0)
             {
-                joueur->life--;
+                //joueur->life--;
                 chauvesouris->Life--;
                 chauvesouris->coup =1 ;
                 lvl->MortMonstre+=1;
@@ -466,7 +466,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
                 lvl ->MortMonstre+=1;
                 if (joueur->TimingBouclier>15)
                 {
-                    joueur->life--;
+                    //joueur->life--;
                 }
                 
             }
@@ -613,7 +613,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     
                     if ((boss->CompteurSpriteEclair==25 && insideEclair(joueur, boss->Ex1, boss->Ey1-405)==1))
                     {
-                        joueur->life--;
+                        //joueur->life--;
                         boss->coupE1=1;
                     }
                     if (boss->coupE1==1 && boss->compteur>240)
@@ -639,7 +639,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     }
                     if ((boss->CompteurSpriteEclair==55 && insideEclair(joueur, boss->Ex2, boss->Ey2-405)==1))
                     {
-                        joueur->life--;
+                        //joueur->life--;
                         boss->coupE2=1;
                     }
                     if (boss->compteur>270 && boss->coupE2==1)
@@ -665,7 +665,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     }
                     if ((boss->CompteurSpriteEclair==85 && insideEclair(joueur, boss->Ex3, boss->Ey3-405)==1))
                     {
-                        joueur->life--;
+                        //joueur->life--;
                         boss->coupE3=1;
                     }
                     if (boss->coupE3==1 && boss->compteur==300)
@@ -691,7 +691,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     }
                     if ((boss->CompteurSpriteEclair==115 && insideEclair(joueur, boss->Ex4, boss->Ey4-405)==1))
                     {
-                        joueur->life--;
+                        //joueur->life--;
                         boss->coupE4=1;
                     } 
                     // inside eclair 4 hors boucle
