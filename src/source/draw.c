@@ -13,9 +13,7 @@ void drawGame(Joueur *joueur, Lvl *lvl)
     SDL_Delay(1);
 }
 
-
-
-
+//ecran fin 
 void GameOver (EffetSon *son)
 {   Mix_PauseMusic();
     SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");
@@ -26,7 +24,7 @@ void GameOver (EffetSon *son)
     Mix_PlayChannel(10, son->gameoverson, 2);
     SDL_Delay(3000);
 }
-
+//ecran fin
 void Win (void)
 {
     SDL_Texture *GameOver=loadImage("src/graphics/lvl/Win.png");
@@ -116,7 +114,6 @@ void AffichageLevel (Lvl *lvl)
         SDL_DestroyTexture(lvl->SpritLvl);
         lvl->SpritLvl = NULL;
     }
-    
     
     lvl->SpritMotLVL=loadImage("src/graphics/lvl/Level.png");
     drawImage(lvl->SpritMotLVL,0,0);
@@ -217,7 +214,6 @@ void porte (Lvl *lvl)
               
         }
     }
-    
 }
 
 void menu (Lvl *lvl)

@@ -12,7 +12,6 @@ void initMaps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/lvl/mapboss.png");
     }
-    
 }
   
 
