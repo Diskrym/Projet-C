@@ -2,12 +2,14 @@
 //.\bin\Main2.exe
 /*
 Historique version :
-    V0: Lancement projet 03/10/22
+    V0: Lancement projet ✓ 03/10/22
     V1 : Map + Joueur + Deplacement ✓ 17/10/22
     V2 : Meduse seul + degat ✓ 21/10//22
     V3 : Plusieurs mêmes types de monstre + changement de salle ✓ 23/10/22
     V4 : Donjon 1 + Son ✓ 29/10/22
-    V5 : Optimisation ressource jeu/ ✓ 03/11/22 
+    V5 : Optimisation ressource jeu/ ✓ 03/11/22
+    V5.1 : Gestion item
+    V6 : Donjon multiple + map 
 */
 
 #include "../header/proto.h"
