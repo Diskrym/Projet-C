@@ -60,13 +60,6 @@ typedef struct Monstre
 } Monstre;
 
 
-typedef struct Map
-{
- 
-SDL_Texture *background;
- 
-} Map;
-
 
 
 typedef struct EffetSon
@@ -99,9 +92,10 @@ typedef struct EffetSon
 typedef struct Lvl
 {
     int Num, changement, MortMonstre;
-    SDL_Texture PorteHaut;
-    SDL_Texture PorteBas;
-    SDL_Texture Vie;
+    SDL_Texture *PorteHaut;
+    SDL_Texture *PorteBas;
+    SDL_Texture *Vie;
+    SDL_Texture *Map;
 } Lvl;
 
  /*

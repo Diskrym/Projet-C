@@ -3,7 +3,7 @@
 void drawGame(Joueur *joueur, Lvl *lvl)
 {
     // Affiche le fond (background) aux coordonnées (0,0)
-    drawImage(getBackground(), 0, 0);
+    drawImage(lvl->Map, 0, 0);
     AffichageVie (joueur,lvl);
     AffichageLevel(lvl);
     porte (lvl);
