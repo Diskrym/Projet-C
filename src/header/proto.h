@@ -57,7 +57,6 @@ extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input,
 //map.c
 extern void initMaps(Lvl *lvl);
 extern SDL_Texture *getBackground(void);
-extern void cleanMaps(void);
 extern void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
 
 //Sprit.c

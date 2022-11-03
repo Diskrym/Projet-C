@@ -210,8 +210,7 @@ void cleanup(EffetSon *son)
     SDL_DestroyWindow(screen);
     screen = NULL;
     
-    //Nettoie les sprites de la map
-    cleanMaps();
+    ;
 
     //On quitte SDL_TTF 2
     //TTF_Quit();
