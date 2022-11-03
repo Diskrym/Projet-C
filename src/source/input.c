@@ -116,28 +116,30 @@ void getInput(Input *input)
 
 void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son)
 {  
-    
-    if (input->left==1)
+    if (!(joueur->Eshield==1 && joueur->TimingBouclier<15) && input->shield==0)
     {
-        joueur->inposx-=3;
-        joueur->NumSprit+=1;
-        joueur->Direction =1;
-    }
-    if (input->right==1)
-    {
-        joueur->inposx+=3;
-        joueur->NumSprit+=1;
-        joueur->Direction =0;
-    }
-    if (input->up==1)
-    {
-        joueur->inposy-=3;
-        joueur->NumSprit+=1;   
-    }
-    if (input->down==1)
-    {
-        joueur->inposy+=3;
-        joueur->NumSprit+=1;
+        if (input->left==1)
+        {
+            joueur->inposx-=3;
+            joueur->NumSprit+=1;
+            joueur->Direction =1;
+        }
+        if (input->right==1)
+        {
+            joueur->inposx+=3;
+            joueur->NumSprit+=1;
+            joueur->Direction =0;
+        }
+        if (input->up==1)
+        {
+            joueur->inposy-=3;
+            joueur->NumSprit+=1;   
+        }
+        if (input->down==1)
+        {
+            joueur->inposy+=3;
+            joueur->NumSprit+=1;
+        }
     }
     if (input->attack==1)
     {
