@@ -137,61 +137,71 @@ void AffichageLevel (Lvl *lvl)
 
 void porte (Lvl *lvl)
 {
+    if (lvl->PorteHaut !=NULL)
+    {
+        SDL_DestroyTexture(lvl->PorteHaut);
+        lvl->PorteHaut=NULL;
+    }
+    if (lvl->PorteBas !=NULL)
+    {
+        SDL_DestroyTexture (lvl->PorteBas) ;
+        lvl->PorteBas =NULL ;
+    }
     if(lvl->Num==0 || lvl->Num==1)
     {
         if (lvl->MortMonstre==level[lvl->Num][0][1])
         {
-            SDL_Texture *Porte=loadImage("src/graphics/lvl/Porteouverte.png");
-            drawImage(Porte,SCREEN_WIDTH/2-22,0);
+            lvl->PorteHaut=loadImage("src/graphics/lvl/Porteouverte.png");
+            drawImage(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
 
             if (lvl->Num != 0)
             {
-                SDL_Texture *Portebas=loadImage("src/graphics/lvl/Portefermebas.png");
-                drawImage(Portebas,SCREEN_WIDTH/2-22,345);
+                lvl->PorteBas=loadImage("src/graphics/lvl/Portefermebas.png");
+                drawImage(lvl->PorteBas,SCREEN_WIDTH/2-22,345);
             }
         }
         else
         {
-            SDL_Texture *Porte=loadImage("src/graphics/lvl/Porteferme.png");
-            drawImage(Porte,SCREEN_WIDTH/2-22,0);
+            lvl->PorteHaut=loadImage("src/graphics/lvl/Porteferme.png");
+            drawImage(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
             if (lvl->Num != 0)
             {
-                SDL_Texture *Portebas=loadImage("src/graphics/lvl/Portefermebas.png");
-                drawImage(Portebas,SCREEN_WIDTH/2-22,345);
+                lvl->PorteBas=loadImage("src/graphics/lvl/Portefermebas.png");
+                drawImage(lvl->PorteBas,SCREEN_WIDTH/2-22,345);
             }    
         }
     }
     if (lvl->Num==2)
     {
-        SDL_Texture *Portebas=loadImage("src/graphics/lvl/Portefermebas.png");
-        drawImage(Portebas,SCREEN_WIDTH/2-22,345);
+        lvl->PorteBas=loadImage("src/graphics/lvl/Portefermebas.png");
+        drawImage(lvl->PorteBas,SCREEN_WIDTH/2-22,345);
          if (lvl->MortMonstre==level[lvl->Num][0][1])
         {
-            SDL_Texture *Porte=loadImage("src/graphics/lvl/PorteBossOuverte.png");
-            drawImage(Porte,SCREEN_WIDTH/2-22,0);
+            lvl->PorteHaut=loadImage("src/graphics/lvl/PorteBossOuverte.png");
+            drawImage(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
             
         }
         else
         {
-            SDL_Texture *Porte=loadImage("src/graphics/lvl/PorteBossFerme.png");
-            drawImage(Porte,SCREEN_WIDTH/2-22,0);
+            lvl->PorteHaut=loadImage("src/graphics/lvl/PorteBossFerme.png");
+            drawImage(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
               
         }
     }
     if (lvl->Num==3)
     {
-        SDL_Texture *Portebas=loadImage("src/graphics/lvl/PorteBossFermeBas.png");
-        drawImage(Portebas,SCREEN_WIDTH/2-22,345);
+        lvl->PorteBas=loadImage("src/graphics/lvl/PorteBossFermeBas.png");
+        drawImage(lvl->PorteBas,SCREEN_WIDTH/2-22,345);
          if (lvl->MortMonstre==level[lvl->Num][0][1])
         {
-            SDL_Texture *Porte=loadImage("src/graphics/lvl/PorteRougeOuverte.png");
-            drawImage(Porte,SCREEN_WIDTH/2-22,0);
+            lvl->PorteHaut=loadImage("src/graphics/lvl/PorteRougeOuverte.png");
+            drawImage(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
             
         }
         else
         {
-            SDL_Texture *Porte=loadImage("src/graphics/lvl/PorteRougeFerme.png");
-            drawImage(Porte,SCREEN_WIDTH/2-22,0);
+            lvl->PorteHaut=loadImage("src/graphics/lvl/PorteRougeFerme.png");
+            drawImage(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
               
         }
     }

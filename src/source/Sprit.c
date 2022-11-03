@@ -5,7 +5,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
 {   
     //reset des pointeurs des sprites
     if (joueur->chevalier!=NULL)
-    {   
+    {  
         SDL_DestroyTexture(joueur->chevalier);
         joueur->chevalier=NULL;
     }
@@ -532,7 +532,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         SDL_DestroyTexture(boss->Bossattaque);
         boss->Bossattaque=NULL;
     }
-    if (boss->Eclair1!=NULL)
+    if (boss->Eclair4!=NULL)
     {
         SDL_DestroyTexture(boss->Eclair1);
         SDL_DestroyTexture(boss->Eclair2);
