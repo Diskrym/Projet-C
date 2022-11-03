@@ -99,6 +99,9 @@ typedef struct EffetSon
 typedef struct Lvl
 {
     int Num, changement, MortMonstre;
+    SDL_Texture PorteHaut;
+    SDL_Texture PorteBas;
+    SDL_Texture Vie;
 } Lvl;
 
  /*

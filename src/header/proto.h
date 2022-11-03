@@ -10,7 +10,7 @@ extern void Win (void);
 extern SDL_Texture *loadImage(char *name);
 extern void drawImage(SDL_Texture *, int, int);
 extern void delay(unsigned int frameLimit);
-extern void AffichageVie(Joueur *joueur);
+extern void AffichageVie(Joueur *joueur, Lvl *lvl);
 extern void AffichageLevel (Lvl *lvl);
 extern void porte (Lvl *lvl);
 extern void menu (void);

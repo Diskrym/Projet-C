@@ -4,7 +4,7 @@ void drawGame(Joueur *joueur, Lvl *lvl)
 {
     // Affiche le fond (background) aux coordonnées (0,0)
     drawImage(getBackground(), 0, 0);
-    AffichageVie (joueur);
+    AffichageVie (joueur,lvl);
     AffichageLevel(lvl);
     porte (lvl);
     // Affiche l'écran
@@ -89,13 +89,17 @@ void delay(unsigned int frameLimit)
     }
 }
 
-void AffichageVie (Joueur *joueur)
-{
+void AffichageVie (Joueur *joueur,Lvl *lvl)
+{   if (lvl->Vie != NULL)
+    {
+        SDL_DestroyTexture(lvl->Vie);
+        lvl->Vie=NULL;
+    }
     int i=1;
     while (i<=joueur->life)
     {
-        SDL_Texture *Vie=loadImage("src/graphics/lvl/Vie.png");
-        drawImage(Vie,SCREEN_WIDTH-(i*34),0);
+        lvl->Vie=loadImage("src/graphics/lvl/Vie.png");
+        drawImage(lvl->Vie,SCREEN_WIDTH-(i*34),0);
         i+=1;
     }
 }
