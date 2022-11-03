@@ -106,32 +106,44 @@ void AffichageVie (Joueur *joueur,Lvl *lvl)
 
 void AffichageLevel (Lvl *lvl)
 {
-    SDL_Texture *Level=loadImage("src/graphics/lvl/Level.png");
-    drawImage(Level,0,0);
+    if (lvl->SpritMotLVL !=NULL)
+    {
+        SDL_DestroyTexture(lvl->SpritMotLVL);
+        lvl->SpritMotLVL = NULL;
+    }
+    if (lvl->SpritLvl != NULL)
+    {
+        SDL_DestroyTexture(lvl->SpritLvl);
+        lvl->SpritLvl = NULL;
+    }
+    
+    
+    lvl->SpritMotLVL=loadImage("src/graphics/lvl/Level.png");
+    drawImage(lvl->SpritMotLVL,0,0);
     if (lvl->Num==0)
     {
-        SDL_Texture *Level=loadImage("src/graphics/lvl/1.png");
-        drawImage(Level,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
+        drawImage(lvl->SpritLvl,139,0);
     }
     if (lvl->Num==1)
     {
-        SDL_Texture *Level=loadImage("src/graphics/lvl/2.png");
-        drawImage(Level,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/2.png");
+        drawImage(lvl->SpritLvl,139,0);
     }
     if (lvl->Num==2)
     {
-        SDL_Texture *Level=loadImage("src/graphics/lvl/3.png");
-        drawImage(Level,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/3.png");
+        drawImage(lvl->SpritLvl,139,0);
     }
     if (lvl->Num==3)
     {
-        SDL_Texture *Level=loadImage("src/graphics/lvl/4.png");
-        drawImage(Level,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/4.png");
+        drawImage(lvl->SpritLvl,139,0);
     }
     if (lvl->Num==4)
     {
-        SDL_Texture *Level=loadImage("src/graphics/lvl/5.png");
-        drawImage(Level,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/5.png");
+        drawImage(lvl->SpritLvl,139,0);
     }
 }
 

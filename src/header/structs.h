@@ -96,6 +96,8 @@ typedef struct Lvl
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
     SDL_Texture *Map;
+    SDL_Texture *SpritLvl;
+    SDL_Texture *SpritMotLVL;
 } Lvl;
 
  /*
