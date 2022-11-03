@@ -220,8 +220,13 @@ void porte (Lvl *lvl)
     
 }
 
-void menu (void)
+void menu (Lvl *lvl)
 {   
-    SDL_Texture *Menu=loadImage("src/graphics/lvl/Menu.png");
-    drawImage(Menu,0,0);   
+    if (lvl->Menu!=NULL)
+    {
+        SDL_DestroyTexture(lvl->Menu);
+        lvl->Menu=NULL;
+    }
+    lvl->Menu=loadImage("src/graphics/lvl/Menu.png");
+    drawImage(lvl->Menu,0,0);   
 }

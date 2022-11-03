@@ -37,7 +37,7 @@ init("Dungeon Fate");
     while(input.enter==0)
     {
     gestionInputs(&input);
-    menu();
+    menu(&lvl);
     SDL_RenderPresent(getrenderer());
     
     }

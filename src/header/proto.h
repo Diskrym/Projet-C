@@ -13,7 +13,7 @@ extern void delay(unsigned int frameLimit);
 extern void AffichageVie(Joueur *joueur, Lvl *lvl);
 extern void AffichageLevel (Lvl *lvl);
 extern void porte (Lvl *lvl);
-extern void menu (void);
+extern void menu (Lvl *lvl);
 
 //events.c
 extern void collisionmur (Joueur *joueur);
