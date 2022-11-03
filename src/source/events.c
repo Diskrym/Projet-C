@@ -1,30 +1,36 @@
 #include "../header/proto.h"
 
+
+//collision entre le joueur et les murs 
 void collisionmur (Joueur *joueur)
 {
+    //mur du haut
     if (joueur->inposx <= 25)
         {
             joueur->inposx+=3;
         }
+    //mur de droite
      if (joueur->inposx >= SCREEN_WIDTH-SPRITE_SIZE-25)
         {
             joueur->inposx-=3;
         }
+    //mur de gauche
     if (joueur->inposy <= 25)
         {
             joueur->inposy+=3;
         }
+    //mur du bas 
     if (joueur->inposy >= SCREEN_HEIGHT-SPRITE_SIZE-20)
         {
             joueur->inposy-=3;
         }
 }
 
+
+ //collision entre les meduse et joueur
 void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
 {
-   
-    //collision entre les meduse et joueur
-    //collision haut joueur
+   //collision haut joueur
     if (meduse->Life!=0)
     {
         if (((joueur->inposy <= meduse->posmonsy + SPRITE_SIZE)&&(joueur->inposy >= meduse->posmonsy )) && (((meduse->posmonsx >= joueur->inposx) && (meduse->posmonsx <= joueur->inposx+SPRITE_SIZE)) || ((meduse->posmonsx + SPRITE_SIZE >= joueur->inposx) && (meduse->posmonsx + SPRITE_SIZE <= joueur->inposx+SPRITE_SIZE))))
@@ -102,71 +108,67 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
     }
 }
 
+
+//collision entre le boss et joueur
 void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
-{
-   
-    //collision entre le boss et joueur
-    //collision haut joueur
+{  
     if (boss->Life!=0)
-    {
+    {   //collision haut joueur
         if((joueur->inposx>=boss->posmonsx && joueur->inposx<=boss->posmonsx+128 )||(joueur->inposx+SPRITE_SIZE>=boss->posmonsx && joueur->inposx+SPRITE_SIZE<=boss->posmonsx+128 )||((joueur->inposx>=boss->posmonsx && joueur->inposx<=boss->posmonsx+128 )&&(joueur->inposx+SPRITE_SIZE>=boss->posmonsx && joueur->inposx+SPRITE_SIZE<=boss->posmonsx+128 )))
         {
             if ((joueur->inposy <= boss->posmonsy + 128)&&(joueur->inposy >= boss->posmonsy ))
-        {
-            boss->posmonsy-=1;
-            if (input->up == 1)
             {
+                boss->posmonsy-=1;
+                if (input->up == 1)
+                {
                 joueur->inposy+=3;  
+                }
             }
-        }
         }
         
         //collision bas joueur
         if((joueur->inposx>=boss->posmonsx && joueur->inposx<=boss->posmonsx+128 )||(joueur->inposx+SPRITE_SIZE>=boss->posmonsx && joueur->inposx+SPRITE_SIZE<=boss->posmonsx+128 )||((joueur->inposx>=boss->posmonsx && joueur->inposx<=boss->posmonsx+128 )&&(joueur->inposx+SPRITE_SIZE>=boss->posmonsx && joueur->inposx+SPRITE_SIZE<=boss->posmonsx+128 )))
         {
             if ((joueur->inposy+SPRITE_SIZE <= boss->posmonsy + 128)&&(joueur->inposy+SPRITE_SIZE >= boss->posmonsy ))        
-        {
-            boss->posmonsy+=1;
-            if (input->down == 1)
             {
-                joueur->inposy-=3;  
-            }   
-        }
+                boss->posmonsy+=1;
+                if (input->down == 1)
+                {
+                    joueur->inposy-=3;  
+                }   
+            }
         }
     
         // //coter droit joueur
         if((joueur->inposy>=boss->posmonsy && joueur->inposy<=boss->posmonsy+128 )||(joueur->inposy+SPRITE_SIZE>=boss->posmonsy && joueur->inposy+SPRITE_SIZE<=boss->posmonsy+128 )||((joueur->inposy>=boss->posmonsy && joueur->inposy<=boss->posmonsy+128 )&&(joueur->inposy+SPRITE_SIZE>=boss->posmonsy && joueur->inposy+SPRITE_SIZE<=boss->posmonsy+128 )))
         {
             if ((joueur->inposx+SPRITE_SIZE <= boss->posmonsx + 128)&&(joueur->inposx+SPRITE_SIZE >= boss->posmonsx ))
-        {
-                    boss->posmonsx+=1;
-                    if (input->right == 1)
-                    {
-                        joueur->inposx-=3;  
-                    }   
+            {
+                boss->posmonsx+=1;
+                if (input->right == 1)
+                {
+                    joueur->inposx-=3;  
+                }   
+            }
         }
-        }
-
-
         
         // //coter gauche joueur
         if((joueur->inposy>=boss->posmonsy && joueur->inposy<=boss->posmonsy+128 )||(joueur->inposy+SPRITE_SIZE>=boss->posmonsy && joueur->inposy+SPRITE_SIZE<=boss->posmonsy+128 )||((joueur->inposy>=boss->posmonsy && joueur->inposy<=boss->posmonsy+128 )&&(joueur->inposy+SPRITE_SIZE>=boss->posmonsy && joueur->inposy+SPRITE_SIZE<=boss->posmonsy+128 )))
         {
             if ((joueur->inposx <= boss->posmonsx + 128)&&(joueur->inposx >= boss->posmonsx ))
-
-        {
-
-                    boss->posmonsx-=1;
-                    if (input->left == 1)
-                    {
-                        joueur->inposx+=3;  
-                    }
+            {
+                boss->posmonsx-=1;
+                if (input->left == 1)
+                {
+                    joueur->inposx+=3;  
+                }
+            }
         }
-        }
-        } 
-        }
+    } 
+}
     
 
+//test si l'attaque de la méduse touche le joueur
 int inside (Joueur *joueur, Meduse *meduse)
 {
     int x=0;
@@ -185,6 +187,7 @@ int inside (Joueur *joueur, Meduse *meduse)
     }
 }
 
+//test si l'attaque du joueur touche la méduse
 int insidechevalier (Joueur *joueur, Meduse *meduse)
 {
     int x=0;
@@ -221,6 +224,7 @@ int insidechevalier (Joueur *joueur, Meduse *meduse)
         {return 0;}
     }}
 
+//test si l'attaque du joueur touche le boss
 int insidechevalierBoss (Joueur *joueur, Boss *boss)
 {       int x=0;
         int y=0;
@@ -258,6 +262,7 @@ int insidechevalierBoss (Joueur *joueur, Boss *boss)
 
 }
 
+//test si l'attaque de la chauve-souris touche le joueur
 int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris)
 {
     int x=0;
@@ -278,6 +283,7 @@ int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris)
     
 }
  
+//test si l'attaque du boss touche le joueur
 int insideBoss (Joueur *joueur, Boss *boss)
 {
     int x=0;
@@ -296,6 +302,7 @@ int insideBoss (Joueur *joueur, Boss *boss)
     }
 }
 
+//test si les éclairs touchent le joueur
 int insideEclair(Joueur *joueur,int Eclairx, int Eclairy)
 {
     int x=0;
@@ -314,6 +321,7 @@ int insideEclair(Joueur *joueur,int Eclairx, int Eclairy)
     }
 }
 
+//Indique au chevalier s'il prend des dégats
 int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss)
 {
     if  (meduse->coup==0 && meduse1->coup==0 && meduse2->coup==0 && chauvesouris->coup==0 && chauvesouris1->coup==0 && boss->coup==0 && boss->coupE1==0 && boss->coupE2==0 && boss->coupE3==0 && boss->coupE4==0)
