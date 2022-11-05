@@ -543,6 +543,12 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         boss->Eclair3=NULL;
         boss->Eclair4=NULL;
     }
+    if (boss->Coeur!=NULL)
+    {
+        SDL_DestroyTexture(boss->Coeur);
+        boss->Coeur=NULL;
+    }
+    
 
     //Mouvement  meduse qd en vie
     if (boss->Life >=1)
@@ -809,64 +815,56 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
         //Coffre ouvert
-        if (boss->CompteurSpriteDegat==22 )
+        if (boss->CompteurSpriteDegat>=22 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort6.png");
             drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
-        // if (boss->CompteurSpriteDegat>22 && boss->CompteurSpriteDegat<27)
-        // {
-        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
-        //     drawImage(boss->Coeur,boss->posmonsx,boss->posmonsy);
-        // }
-        // if (boss->CompteurSpriteDegat>=27 && boss->CompteurSpriteDegat<32)
-        // {
-        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
-        //     drawImage(boss->Coeur,boss->posmonsx-10,boss->posmonsy-10);
-        // }
-        // if (boss->CompteurSpriteDegat>=32 && boss->CompteurSpriteDegat<37)
-        // {
-        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
-        //     drawImage(boss->Coeur,boss->posmonsx-20,boss->posmonsy-20);
-        // }
-        // if (boss->CompteurSpriteDegat>=37 && boss->CompteurSpriteDegat<42)
-        // {
-        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
-        //     drawImage(boss->Coeur,boss->posmonsx-30,boss->posmonsy-10);
-        // }
-        // if (boss->CompteurSpriteDegat>=42)
-        // {
-        //     if (boss->RecupCoeur==0)
-        //     {
-        //         if (boss->CompteurSpriteDegat % 3 == 0)
-        //         {
-        //             boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
-        //             drawImage(boss->Coeur,boss->posmonsx-40,boss->posmonsy);
-        //         }
-        //         else
-        //         {
-        //             boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
-        //             drawImage(boss->Coeur,boss->posmonsx-40,boss->posmonsy);
-        //         }
-        //         if (insideItem(joueur,boss)==1)
-        //         {
-        //             joueur->life++;
-        //             boss->RecupCoeur==1;
-        //         }
-        //     }
-        //     else
-        //     {
-        //         boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
-        //         drawImage(boss->Coeur,boss->posmonsx-1000,boss->posmonsy-1000);
-        //     }
-            
-
-        // }
-
-        
-        if (boss->CompteurSpriteDegat==0)
+        if (boss->CompteurSpriteDegat>22 && boss->CompteurSpriteDegat<27)
         {
-            lvl->MortMonstre+=1;
+            boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
+            drawImage(boss->Coeur,boss->posmonsx,boss->posmonsy+78);
+        }
+        if (boss->CompteurSpriteDegat>=27 && boss->CompteurSpriteDegat<32)
+        {
+            boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
+            drawImage(boss->Coeur,boss->posmonsx-5,boss->posmonsy+73);
+        }
+        if (boss->CompteurSpriteDegat>=32 && boss->CompteurSpriteDegat<37)
+        {
+            boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
+            drawImage(boss->Coeur,boss->posmonsx-10,boss->posmonsy+68);
+        }
+        if (boss->CompteurSpriteDegat>=37 && boss->CompteurSpriteDegat<42)
+        {
+            boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
+            drawImage(boss->Coeur,boss->posmonsx-15,boss->posmonsy+73);
+        }
+        if (boss->CompteurSpriteDegat>=42)
+        {
+            if (boss->RecupCoeur==0)
+            {
+                if (boss->CompteurSpriteDegat % 50 == 0)
+                {
+                    boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
+                    drawImage(boss->Coeur,boss->posmonsx-20,boss->posmonsy+78);
+                }
+                else
+                {
+                    boss->Coeur=loadImage("src/graphics/lvl/Coeur2.png");
+                    drawImage(boss->Coeur,boss->posmonsx-20,boss->posmonsy+78);
+                }
+                if (insideItem(joueur,boss)==1)
+                {
+                    joueur->life++;
+                    boss->RecupCoeur=1;
+                }
+            }
+            else
+            {
+                boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
+                drawImage(boss->Coeur,boss->posmonsx-1000,boss->posmonsy-1000);
+            }
         }
     } 
 }

@@ -325,11 +325,11 @@ int insideItem (Joueur *joueur, Boss *boss)
 {
     int x=0;
     int y=0;
-    if ((joueur->inposx>=boss->posmonsx-23 || joueur->inposx+SPRITE_SIZE>=boss->posmonsx-23) && (joueur->inposx<=boss->posmonsx+SPRITE_SIZE+23 || joueur->inposx + SPRITE_SIZE <= boss->posmonsx+SPRITE_SIZE+23))
+    if ((joueur->inposx>=boss->posmonsx-20 || joueur->inposx+SPRITE_SIZE>=boss->posmonsx-20) && (joueur->inposx<=boss->posmonsx+SPRITE_SIZE+20 || joueur->inposx + SPRITE_SIZE <= boss->posmonsx+SPRITE_SIZE+20))
     {
         x=1;
     }
-    if ((joueur->inposy>= boss->posmonsy-23 || joueur->inposy+SPRITE_SIZE>=boss->posmonsy-23) && (joueur->inposy<=boss->posmonsy+SPRITE_SIZE+23 || joueur->inposy + SPRITE_SIZE <= boss->posmonsy+SPRITE_SIZE+23))
+    if ((joueur->inposy>= boss->posmonsy-20 || joueur->inposy+SPRITE_SIZE>=boss->posmonsy-20) && (joueur->inposy<=boss->posmonsy+SPRITE_SIZE+20 || joueur->inposy + SPRITE_SIZE <= boss->posmonsy+SPRITE_SIZE+20))
     {
         y=1;
     }

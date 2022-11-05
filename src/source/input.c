@@ -246,11 +246,13 @@ void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetS
     {
         boss->CompteurSpriteDegat+=1;
     }
+    
     //Compteur pour item coffre
-    // if (boss->Life == 0 && boss->CompteurSpriteDegat>=22)
-    // {
-    //     boss->CompteurSpriteDegat+=1;
-    // }
+    if (boss->Life == 0 && boss->CompteurSpriteDegat>=22)
+    {
+        boss->CompteurSpriteDegat+=1;
+    }
+
     //ajout mort pour passage de niveau
     if (boss->CompteurSpriteDegat==18)
     {
