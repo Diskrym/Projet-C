@@ -808,11 +808,38 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             boss->Boss=loadImage("src/graphics/Boss/Bossmort5.png");
             drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
+        //Coffre ouvert
         if (boss->CompteurSpriteDegat==22 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort6.png");
             drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
+        // if (boss->CompteurSpriteDegat>22 && boss->CompteurSpriteDegat<27)
+        // {
+        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
+        //     drawImage(boss->Coeur,boss->posmonsx,boss->posmonsy);
+        // }
+        // if (boss->CompteurSpriteDegat>=27 && boss->CompteurSpriteDegat<32)
+        // {
+        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
+        //     drawImage(boss->Coeur,boss->posmonsx-10,boss->posmonsy-10);
+        // }
+        // if (boss->CompteurSpriteDegat>=32 && boss->CompteurSpriteDegat<37)
+        // {
+        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
+        //     drawImage(boss->Coeur,boss->posmonsx-20,boss->posmonsy-20);
+        // }
+        // if (boss->CompteurSpriteDegat>=37 && boss->CompteurSpriteDegat<42)
+        // {
+        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
+        //     drawImage(boss->Coeur,boss->posmonsx-30,boss->posmonsy-10);
+        // }
+        // if (boss->CompteurSpriteDegat>=42 && boss->CompteurSpriteDegat<47)
+        // {
+        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
+        //     drawImage(boss->Coeur,boss->posmonsx-40,boss->posmonsy);
+        // }
+
         
         if (boss->CompteurSpriteDegat==0)
         {

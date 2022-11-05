@@ -39,6 +39,7 @@ typedef struct  Boss
         SDL_Texture *Eclair2;
         SDL_Texture *Eclair3;
         SDL_Texture *Eclair4;
+        SDL_Texture *Coeur;
 }Boss;
 
 
