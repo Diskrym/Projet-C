@@ -26,6 +26,7 @@ extern int insidechevalierBoss (Joueur *joueur, Boss *boss);
 extern int insideBoss (Joueur *joueur, Boss *boss);
 extern int insideEclair(Joueur *joueur,int Eclairx, int Eclairy);
 extern int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss);
+extern int insideItem (Joueur *joueur, Boss *boss);
 
 
 

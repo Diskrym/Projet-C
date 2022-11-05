@@ -320,6 +320,24 @@ int insideEclair(Joueur *joueur,int Eclairx, int Eclairy)
         return 1;
     }
 }
+//recup item
+int insideItem (Joueur *joueur, Boss *boss)
+{
+    int x=0;
+    int y=0;
+    if ((joueur->inposx>=boss->posmonsx-23 || joueur->inposx+SPRITE_SIZE>=boss->posmonsx-23) && (joueur->inposx<=boss->posmonsx+SPRITE_SIZE+23 || joueur->inposx + SPRITE_SIZE <= boss->posmonsx+SPRITE_SIZE+23))
+    {
+        x=1;
+    }
+    if ((joueur->inposy>= boss->posmonsy-23 || joueur->inposy+SPRITE_SIZE>=boss->posmonsy-23) && (joueur->inposy<=boss->posmonsy+SPRITE_SIZE+23 || joueur->inposy + SPRITE_SIZE <= boss->posmonsy+SPRITE_SIZE+23))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {
+        return 1;
+    }
+}
 
 //Indique au chevalier s'il prend des dégats
 int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss)

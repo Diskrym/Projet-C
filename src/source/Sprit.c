@@ -834,10 +834,33 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
         //     drawImage(boss->Coeur,boss->posmonsx-30,boss->posmonsy-10);
         // }
-        // if (boss->CompteurSpriteDegat>=42 && boss->CompteurSpriteDegat<47)
+        // if (boss->CompteurSpriteDegat>=42)
         // {
-        //     boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
-        //     drawImage(boss->Coeur,boss->posmonsx-40,boss->posmonsy);
+        //     if (boss->RecupCoeur==0)
+        //     {
+        //         if (boss->CompteurSpriteDegat % 3 == 0)
+        //         {
+        //             boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
+        //             drawImage(boss->Coeur,boss->posmonsx-40,boss->posmonsy);
+        //         }
+        //         else
+        //         {
+        //             boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
+        //             drawImage(boss->Coeur,boss->posmonsx-40,boss->posmonsy);
+        //         }
+        //         if (insideItem(joueur,boss)==1)
+        //         {
+        //             joueur->life++;
+        //             boss->RecupCoeur==1;
+        //         }
+        //     }
+        //     else
+        //     {
+        //         boss->Coeur=loadImage("src/graphics/Boss/Bossmort6.png");
+        //         drawImage(boss->Coeur,boss->posmonsx-1000,boss->posmonsy-1000);
+        //     }
+            
+
         // }
 
         

@@ -32,7 +32,7 @@ typedef struct Chauvesouris
 
 typedef struct  Boss
 {
-        int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, CompteurSpriteEclair, compteur, Ex1, Ey1, Ex2, Ey2, Ex3, Ey3, Ex4, Ey4, coupE1 , coupE2 ,coupE3, coupE4;
+        int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, CompteurSpriteEclair, compteur, Ex1, Ey1, Ex2, Ey2, Ex3, Ey3, Ex4, Ey4, coupE1 , coupE2 ,coupE3, coupE4, RecupCoeur;
         SDL_Texture *Boss;
         SDL_Texture *Bossattaque;
         SDL_Texture *Eclair1;
