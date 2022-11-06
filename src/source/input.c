@@ -57,6 +57,11 @@ void getInput(Input *input)
                     case SDLK_RETURN:
                         input->enter = 1;
                     break;
+
+                    //#A enlever#
+                    case SDLK_o:
+                        input->Bypass = 1;
+                    break;
  
  
                     default:
@@ -97,6 +102,11 @@ void getInput(Input *input)
 
                     case SDLK_SPACE:
                         input->attack = 0;
+                    break;
+
+                    //#A enlever#
+                    case SDLK_o:
+                        input->Bypass = 0;
                     break;
  
                     default:

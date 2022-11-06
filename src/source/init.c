@@ -106,38 +106,41 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
 
 void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son)
 {
-    if(lvl->Num==0)
+    if (lvl->NumDonjon==0)
     {
-        deplacementMeduse(joueur, &monstre->meduse, lvl, son);
-        collisionmur (joueur);
-        collision(joueur, &monstre->meduse, input, lvl);
+        if(lvl->Num==0)
+        {
+            deplacementMeduse(joueur, &monstre->meduse, lvl, son);
+            collisionmur (joueur);
+            collision(joueur, &monstre->meduse, input, lvl);
 
-    }
-    if(lvl->Num==1)
-    {   
-        collisionmur (joueur);
-        deplacementMeduse(joueur, &monstre->meduse, lvl, son);
-        deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
-        deplacementMeduse(joueur, &monstre->meduse2, lvl, son);
-        collision(joueur, &monstre->meduse, input,lvl);
-        collision(joueur, &monstre->meduse1, input, lvl);
-        collision(joueur, &monstre->meduse2, input, lvl);
-    }
-    if(lvl->Num==2)
-    {   collisionmur (joueur);
-        deplacementMeduse(joueur, &monstre->meduse, lvl, son);
-        deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
-        deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl, son);
-        deplacementChauvesouris(joueur, &monstre->chauvesouris1, lvl, son);
-        collision(joueur, &monstre->meduse, input, lvl);
-        collision(joueur, &monstre->meduse1, input, lvl);
-        collision(joueur, &monstre->meduse2, input, lvl);
-    }
-    if (lvl->Num==3)
-    {   
-        collisionmur (joueur);
-        collisionboss(joueur, &monstre->boss, input, lvl);
-        deplacementBoss(joueur, &monstre->boss, lvl, input,son);
+        }
+        if(lvl->Num==1)
+        {   
+            collisionmur (joueur);
+            deplacementMeduse(joueur, &monstre->meduse, lvl, son);
+            deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
+            deplacementMeduse(joueur, &monstre->meduse2, lvl, son);
+            collision(joueur, &monstre->meduse, input,lvl);
+            collision(joueur, &monstre->meduse1, input, lvl);
+            collision(joueur, &monstre->meduse2, input, lvl);
+        }
+        if(lvl->Num==2)
+        {   collisionmur (joueur);
+            deplacementMeduse(joueur, &monstre->meduse, lvl, son);
+            deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
+            deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl, son);
+            deplacementChauvesouris(joueur, &monstre->chauvesouris1, lvl, son);
+            collision(joueur, &monstre->meduse, input, lvl);
+            collision(joueur, &monstre->meduse1, input, lvl);
+            collision(joueur, &monstre->meduse2, input, lvl);
+        }
+        if (lvl->Num==3)
+        {   
+            collisionmur (joueur);
+            collisionboss(joueur, &monstre->boss, input, lvl);
+            deplacementBoss(joueur, &monstre->boss, lvl, input,son);
+        }
     }
 }
 

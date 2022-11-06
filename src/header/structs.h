@@ -8,7 +8,7 @@
 typedef struct Input
 {
  
-    int left, right, up, down, shield, attack, enter, erase, pause;
+    int left, right, up, down, shield, attack, enter, erase, pause, Bypass;
  
 } Input;
 
@@ -92,7 +92,7 @@ typedef struct EffetSon
 
 typedef struct Lvl
 {
-    int Num, changement, MortMonstre;
+    int Num, MortMonstre, NumDonjon;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
