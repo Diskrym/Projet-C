@@ -85,20 +85,20 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
     if(lvl->Num==0)
     {   
         Mix_PauseMusic();
-        LoadNiv1(&monstre->meduse, lvl, joueur);
+        LoadNiv11(&monstre->meduse, lvl, joueur);
         Mix_PlayMusic(son ->musiquelvl, -1);
     }
     if(lvl->Num==1)
     {
-        LoadNiv2(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, lvl, joueur);
+        LoadNiv12(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, lvl, joueur);
     }
     if(lvl->Num==2)
     {
-         LoadNiv3(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
+         LoadNiv13(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
     if(lvl->Num==3)
     {   Mix_PauseMusic();
-        loadNiv4 (joueur, &monstre->boss, lvl);
+        loadNiv14 (joueur, &monstre->boss, lvl);
         Mix_PlayMusic(son ->musiqueboss, -1);
     }
     lvl->MortMonstre=0;
@@ -141,7 +141,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     }
 }
 
-void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
+void LoadNiv11(Meduse *meduse, Lvl *lvl, Joueur *joueur)
 {  
         initMaps(lvl);
         joueur->inposx = level[0][0][2];
@@ -151,7 +151,7 @@ void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
         meduse->Life=level[0][1][5];
 }
 
-void LoadNiv2(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, Joueur *joueur)
+void LoadNiv12(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, Joueur *joueur)
 {       SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
     
@@ -169,7 +169,7 @@ void LoadNiv2(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, Joueur 
         meduse2->Life=level[1][3][5];
 }
 
-void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur)
+void LoadNiv13(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur)
 {  
         initMaps(lvl);
         joueur->inposx = level[2][0][2];
@@ -188,7 +188,7 @@ void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauv
         chauvesouris1->Life=level[2][4][5];
 }
 
-void loadNiv4 (Joueur *joueur,Boss *boss, Lvl *lvl)
+void loadNiv14 (Joueur *joueur,Boss *boss, Lvl *lvl)
 {
     initMaps(lvl);
     joueur->inposx = level[3][0][2];

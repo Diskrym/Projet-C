@@ -23,7 +23,6 @@ Lvl lvl;
 Monstre monstre;
 EffetSon son;
 Boss boss;
-//Meduse nv1__tab_meduse[3];
 
 int main(int argc, char *argv[])
 {
@@ -35,7 +34,7 @@ int go;
 lvl.Num=0;
 joueur.life=3;
 //meduse1.Life=3;
- 
+
 // Initialisation de la SDL
 init("Dungeon Fate");
  
@@ -56,7 +55,7 @@ init("Dungeon Fate");
     // Appelle la fonction cleanup à la fin du programme
     //atexit(cleanup);
     // Chargement des ressources (graphismes, sons)
-    LoadNiv1(&monstre.meduse, &lvl, &joueur);
+    LoadNiv11(&monstre.meduse, &lvl, &joueur);
 
     go = 1; 
     // Boucle infinie, principale, du jeu
@@ -70,21 +69,12 @@ init("Dungeon Fate");
         drawGame(&joueur, &lvl);
         //IA monstre
         GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
-        
-        //meduse 2
         //Gestion des inputs et des déplacements
         deplacement(&input,&joueur,&monstre, &son);
-
-        //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer
         SDL_RenderPresent(getrenderer());
         //Acquisition des inputs du joueur
         getInput(&input);
-        //collision
-
-        
-
-        
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;

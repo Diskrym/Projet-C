@@ -862,8 +862,8 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             }
             else
             {
-                boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
-                drawImage(boss->Coeur,boss->posmonsx-1000,boss->posmonsy-1000);
+                SDL_DestroyTexture(boss->Coeur);
+                boss->Coeur=NULL;
             }
         }
     } 
