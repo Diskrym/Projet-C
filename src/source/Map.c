@@ -12,6 +12,11 @@ void initMaps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/lvl/mapboss.png");
     }
+    if (lvl-> Num == 4)
+    {
+        lvl->Map = loadImage("src/graphics/lvl/backgroundmarchand.png");
+    }
+    
 }
   
 
@@ -24,7 +29,21 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     }
     else
     {
-        if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320)
+        if (lvl->Num == 4)
+        {
+            if (joueur->inposy >=298  && joueur->inposx >= 298 && joueur->inposx <= 320)
+            {
+                if (lvl->WinDonjon == 1)
+                {
+                    lvl->WinDonjon = 2;
+                }
+                
+                lvl->Num = -1;
+            }
+            
+        }
+        
+        else if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320)
         {   
              //Variable pour bouger sur map global
             if (lvl->Num == 3 && lvl->NumDonjon == 0 && lvl->WinDonjon == 0)
