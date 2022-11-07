@@ -12,6 +12,11 @@ void initMaps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/lvl/mapboss.png");
     }
+    if (lvl-> Num == 4)
+    {
+        lvl->Map = loadImage("src/graphics/lvl/backgroundmarchand.png");
+    }
+    
 }
   
 
