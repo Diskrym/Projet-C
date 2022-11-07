@@ -73,7 +73,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     
     if (lvl->NumDonjon == 0)
     {
-        lvl->Icone=loadImage("src/graphics/lvl/5.png");
+        lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
         drawImage(lvl->Icone,313,313);
         if (input->attack == 1)
         {
@@ -86,7 +86,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     {
         if (lvl->WinDonjon >=1)
         {
-            lvl->Icone=loadImage("src/graphics/lvl/5.png");
+            lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
             drawImage(lvl->Icone,354,253);
         }
         else
@@ -98,7 +98,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     {
         if (lvl->WinDonjon >=2)
         {
-            lvl->Icone=loadImage("src/graphics/lvl/5.png");
+            lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
             drawImage(lvl->Icone,260,195);
         }
         else
@@ -110,7 +110,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     {
         if (lvl->WinDonjon >=3)
         {
-            lvl->Icone=loadImage("src/graphics/lvl/5.png");
+            lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
             drawImage(lvl->Icone,228,125);
         }
         else
@@ -122,7 +122,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     {
         if (lvl->WinDonjon >=3)
         {
-            lvl->Icone=loadImage("src/graphics/lvl/5.png");
+            lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
             drawImage(lvl->Icone,293,68);
         }
         else
@@ -130,4 +130,46 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             lvl->NumDonjon -= 1;
         }
     }
+
+    if (lvl->WinDonjon == 0)
+    {
+        lvl->Cadenas1=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas1,354,253);
+
+        lvl->Cadenas2=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas2,260,195);
+
+        lvl->Cadenas3=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas3,228,125);
+
+        lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas4,293,68);
+    }
+
+    if (lvl->WinDonjon == 1)
+    {
+
+        lvl->Cadenas2=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas2,260,195);
+
+        lvl->Cadenas3=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas3,228,125);
+
+        lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas4,293,68);
+    }
+    if (lvl->WinDonjon == 2)
+    {
+        lvl->Cadenas3=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas3,228,125);
+
+        lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas4,293,68);
+    }
+    if (lvl->WinDonjon == 3)
+    {
+        lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
+        drawImage(lvl->Cadenas4,293,68);
+    }
+    
 }
