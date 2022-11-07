@@ -31,7 +31,6 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     {
         if (lvl->Num == 4)
         {
-            printf("%d \n", joueur->inposx);
             if (joueur->inposy >=298  && joueur->inposx >= 264 && joueur->inposx <= 300)
             {
                 if (lvl->WinDonjon == 1)
@@ -40,6 +39,7 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
                 }
                 
                 lvl->Num = -1;
+                Mix_PlayMusic(son ->musiqueMapG, -1);
             }
             
         }
@@ -54,6 +54,7 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             if (lvl->NumDonjon == 0 && lvl->Num == 3)
             {
                 lvl->Num = -1;
+                Mix_PlayMusic(son ->musiqueMapG, -1);
             }
             else
             {
@@ -76,7 +77,6 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         SDL_DestroyTexture(lvl->Icone);
         lvl->Icone = NULL;
     }
-    
     lvl->Map=loadImage("src/graphics/lvl/mapglobal.png");
     //drawImage(lvl->Map,0,0);
 
