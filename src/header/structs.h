@@ -118,7 +118,7 @@ typedef struct Lvl
                                         }
                                     }
  */
-static const int level [4][5][6] = {
+static const int level [5][5][6] = {
                                         {
                                             {1,1,288,160,64,0},
                                             {1,70,70,64,1,3},
@@ -140,6 +140,9 @@ static const int level [4][5][6] = {
                                         {
                                             {4,1,298,384,0,0},
                                             {3,288,80,128,1,10}
+                                        },
+                                        {
+                                            {5,0,288,64,0}
                                         }
                                     };
 

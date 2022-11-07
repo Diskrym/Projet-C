@@ -82,66 +82,72 @@ void Son (EffetSon *son)
 
 void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
 {
-    if(lvl->Num==0)
+    if(lvl->Num == 0)
     {   
         Mix_PauseMusic();
         LoadNiv11(&monstre->meduse, lvl, joueur);
         Mix_PlayMusic(son ->musiquelvl, -1);
     }
-    if(lvl->Num==1)
+    if(lvl->Num == 1)
     {
         LoadNiv12(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, lvl, joueur);
     }
-    if(lvl->Num==2)
+    if(lvl->Num == 2)
     {
          LoadNiv13(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
-    if(lvl->Num==3)
+    if(lvl->Num == 3)
     {   Mix_PauseMusic();
         loadNiv14 (joueur, &monstre->boss, lvl);
         Mix_PlayMusic(son ->musiqueboss, -1);
     }
+    if (lvl->Num == 4)
+    {
+        loadNiv21(joueur, lvl);
+    }
+    
     lvl->MortMonstre=0;
 }
 
 void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son)
 {
-    if (lvl->NumDonjon==0)
+    if(lvl->Num==0)
     {
-        if(lvl->Num==0)
-        {
-            deplacementMeduse(joueur, &monstre->meduse, lvl, son);
-            collisionmur (joueur);
-            collision(joueur, &monstre->meduse, input, lvl);
+        deplacementMeduse(joueur, &monstre->meduse, lvl, son);
+        collisionmur (joueur);
+        collision(joueur, &monstre->meduse, input, lvl);
 
-        }
-        if(lvl->Num==1)
-        {   
-            collisionmur (joueur);
-            deplacementMeduse(joueur, &monstre->meduse, lvl, son);
-            deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
-            deplacementMeduse(joueur, &monstre->meduse2, lvl, son);
-            collision(joueur, &monstre->meduse, input,lvl);
-            collision(joueur, &monstre->meduse1, input, lvl);
-            collision(joueur, &monstre->meduse2, input, lvl);
-        }
-        if(lvl->Num==2)
-        {   collisionmur (joueur);
-            deplacementMeduse(joueur, &monstre->meduse, lvl, son);
-            deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
-            deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl, son);
-            deplacementChauvesouris(joueur, &monstre->chauvesouris1, lvl, son);
-            collision(joueur, &monstre->meduse, input, lvl);
-            collision(joueur, &monstre->meduse1, input, lvl);
-            collision(joueur, &monstre->meduse2, input, lvl);
-        }
-        if (lvl->Num==3)
-        {   
-            collisionmur (joueur);
-            collisionboss(joueur, &monstre->boss, input, lvl);
-            deplacementBoss(joueur, &monstre->boss, lvl, input,son);
-        }
     }
+    if(lvl->Num==1)
+    {   
+        collisionmur (joueur);
+        deplacementMeduse(joueur, &monstre->meduse, lvl, son);
+        deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
+        deplacementMeduse(joueur, &monstre->meduse2, lvl, son);
+        collision(joueur, &monstre->meduse, input,lvl);
+        collision(joueur, &monstre->meduse1, input, lvl);
+        collision(joueur, &monstre->meduse2, input, lvl);
+    }
+    if(lvl->Num==2)
+    {   collisionmur (joueur);
+        deplacementMeduse(joueur, &monstre->meduse, lvl, son);
+        deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
+        deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl, son);
+        deplacementChauvesouris(joueur, &monstre->chauvesouris1, lvl, son);
+        collision(joueur, &monstre->meduse, input, lvl);
+        collision(joueur, &monstre->meduse1, input, lvl);
+        collision(joueur, &monstre->meduse2, input, lvl);
+    }
+    if (lvl->Num==3)
+    {   
+        collisionmur (joueur);
+        collisionboss(joueur, &monstre->boss, input, lvl);
+        deplacementBoss(joueur, &monstre->boss, lvl, input,son);
+    }
+    if (lvl->Num==4)
+    {
+        collisionmur(joueur);
+    }   
 }
 
 void LoadNiv11(Meduse *meduse, Lvl *lvl, Joueur *joueur)
@@ -199,6 +205,13 @@ void loadNiv14 (Joueur *joueur,Boss *boss, Lvl *lvl)
     boss->posmonsx =level[3][1][1];
     boss->posmonsy =level[3][1][2];
     boss->Life=level [3][1][5];
+}
+
+void loadNiv21 (Joueur *joueur, Lvl* lvl)
+{
+    initMaps(lvl);
+    joueur->inposx = level[4][0][2];
+    joueur->inposy = level[4][0][3];
 }
 
 void cleanup(EffetSon *son)
