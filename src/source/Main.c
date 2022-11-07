@@ -40,7 +40,7 @@ init("Dungeon Fate");
     menu(&lvl);
     SDL_RenderPresent(getrenderer());
     }
-    Mix_PauseMusic();
+    // Mix_PauseMusic();
     //atexit(cleanup);
     //LoadNiv11(&monstre.meduse, &lvl, &joueur);
     go = 1; 
