@@ -28,8 +28,7 @@ int main(int argc, char *argv[])
 //extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
-lvl.NumDonjon=0;
-lvl.Num=0;
+lvl.Num=-1;
 joueur.life=3;
 // Initialisation de la SDL
 init("Dungeon Fate");
@@ -43,20 +42,25 @@ init("Dungeon Fate");
     }
     Mix_PauseMusic();
     //atexit(cleanup);
-    LoadNiv11(&monstre.meduse, &lvl, &joueur);
+    //LoadNiv11(&monstre.meduse, &lvl, &joueur);
     go = 1; 
     // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
-        GestionMap(&joueur, &lvl, &monstre, &son);
+        GestionMap(&joueur, &lvl, &monstre, &son, &input);
         //Gestion des inputs clavier
         gestionInputs(&input);
         //On dessine tout
         drawGame(&joueur, &lvl);
-        //IA monstre
-        GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
-        //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur,&monstre, &son);
+        
+        if(lvl.Num != -1)
+        {
+            //IA monstre
+            GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
+            //Gestion des inputs et des déplacements
+            deplacement(&input,&joueur,&monstre, &son);
+        }
+
         //Rendu des images dans le buffer
         SDL_RenderPresent(getrenderer());
         //Acquisition des inputs du joueur
@@ -76,7 +80,7 @@ init("Dungeon Fate");
         // Win ();
         // exit(0);
         // }
-        
+
         //#A enlver#
         if (input.Bypass==1)
         {
