@@ -66,6 +66,7 @@ typedef struct Monstre
 typedef struct EffetSon
 {
     Mix_Music *musiquemenu;
+    Mix_Music *musiqueMapG;
     Mix_Music *musiqueboss;
     Mix_Music *musiquelvl;
     Mix_Chunk *epee;
