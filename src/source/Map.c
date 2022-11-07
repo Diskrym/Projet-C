@@ -31,7 +31,8 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     {
         if (lvl->Num == 4)
         {
-            if (joueur->inposy >=298  && joueur->inposx >= 298 && joueur->inposx <= 320)
+            printf("%d \n", joueur->inposx);
+            if (joueur->inposy >=298  && joueur->inposx >= 264 && joueur->inposx <= 300)
             {
                 if (lvl->WinDonjon == 1)
                 {
