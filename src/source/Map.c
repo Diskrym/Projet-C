@@ -26,18 +26,30 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     {
         if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320)
         {   
-            lvl->Num += 1;
-            SelectNiv(joueur, lvl, monstre, son);
+             //Variable pour bouger sur map global
+            if (lvl->Num == 3 && lvl->NumDonjon == 0 && lvl->WinDonjon == 0)
+            {
+                lvl->WinDonjon = 1;
+            }
+            if (lvl->NumDonjon == 0 && lvl->Num == 3)
+            {
+                lvl->Num = -1;
+            }
+            else
+            {
+                lvl->Num += 1;
+                SelectNiv(joueur, lvl, monstre, son);
+            }
         }
     }
 }
 
 void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input)
 {
-    if (lvl->MapGlobal != NULL)
+    if (lvl->Map != NULL)
     {
-        SDL_DestroyTexture(lvl->MapGlobal);
-        lvl->MapGlobal = NULL;
+        SDL_DestroyTexture(lvl->Map);
+        lvl->Map = NULL;
     }
     if  (lvl->Icone !=NULL)
     {
@@ -45,8 +57,8 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         lvl->Icone = NULL;
     }
     
-    lvl->MapGlobal=loadImage("src/graphics/lvl/mapglobal.png");
-    drawImage(lvl->MapGlobal,0,0);
+    lvl->Map=loadImage("src/graphics/lvl/mapglobal.png");
+    //drawImage(lvl->Map,0,0);
 
     if (input->up == 1 && lvl->NumDonjon < 4)
     {
@@ -72,22 +84,50 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     }
     if (lvl->NumDonjon == 1)
     {
-        lvl->Icone=loadImage("src/graphics/lvl/5.png");
-        drawImage(lvl->Icone,354,253);
+        if (lvl->WinDonjon >=1)
+        {
+            lvl->Icone=loadImage("src/graphics/lvl/5.png");
+            drawImage(lvl->Icone,354,253);
+        }
+        else
+        {
+            lvl->NumDonjon -= 1;
+        }
     }
     if (lvl->NumDonjon == 2)
     {
-        lvl->Icone=loadImage("src/graphics/lvl/5.png");
-        drawImage(lvl->Icone,260,195);
+        if (lvl->WinDonjon >=2)
+        {
+            lvl->Icone=loadImage("src/graphics/lvl/5.png");
+            drawImage(lvl->Icone,260,195);
+        }
+        else
+        {
+            lvl->NumDonjon -= 1;
+        }
     }
     if (lvl->NumDonjon == 3)
     {
-        lvl->Icone=loadImage("src/graphics/lvl/5.png");
-        drawImage(lvl->Icone,228,125);
+        if (lvl->WinDonjon >=3)
+        {
+            lvl->Icone=loadImage("src/graphics/lvl/5.png");
+            drawImage(lvl->Icone,228,125);
+        }
+        else
+        {
+            lvl->NumDonjon -= 1;
+        }
     }
     if (lvl->NumDonjon == 4)
     {
-        lvl->Icone=loadImage("src/graphics/lvl/5.png");
-        drawImage(lvl->Icone,293,68);
+        if (lvl->WinDonjon >=3)
+        {
+            lvl->Icone=loadImage("src/graphics/lvl/5.png");
+            drawImage(lvl->Icone,293,68);
+        }
+        else
+        {
+            lvl->NumDonjon -= 1;
+        }
     }
 }

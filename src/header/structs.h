@@ -92,7 +92,7 @@ typedef struct EffetSon
 
 typedef struct Lvl
 {
-    int Num, MortMonstre, NumDonjon;
+    int Num, MortMonstre, NumDonjon, WinDonjon;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
@@ -135,7 +135,7 @@ static const int level [4][5][6] = {
                                             {2,100,200,2,1,1}
                                         },
                                         {
-                                            {4,4,298,384,0,0},
+                                            {4,1,298,384,0,0},
                                             {3,288,80,128,1,10}
                                         }
                                     };

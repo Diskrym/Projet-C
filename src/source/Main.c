@@ -47,11 +47,13 @@ init("Dungeon Fate");
     // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
+        //On dessine tout
+        drawGame(&joueur, &lvl);
         GestionMap(&joueur, &lvl, &monstre, &son, &input);
         //Gestion des inputs clavier
         gestionInputs(&input);
-        //On dessine tout
-        drawGame(&joueur, &lvl);
+        
+        
         
         if(lvl.Num != -1)
         {
