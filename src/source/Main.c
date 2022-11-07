@@ -52,9 +52,6 @@ init("Dungeon Fate");
         GestionMap(&joueur, &lvl, &monstre, &son, &input);
         //Gestion des inputs clavier
         gestionInputs(&input);
-        
-        
-        
         if(lvl.Num != -1)
         {
             //IA monstre

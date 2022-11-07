@@ -40,7 +40,7 @@ extern void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *jo
 extern void LoadNiv13(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
 extern void Son (EffetSon *son);
 extern void loadNiv14 (Joueur *joueur, Boss *boss, Lvl *lvl);
-
+extern void loadNiv21 (Joueur *jouer, Lvl* lvl);
 extern void cleanup(EffetSon *son);
 extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
 extern void initEclair(Boss *boss);
