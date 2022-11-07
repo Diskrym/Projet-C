@@ -76,7 +76,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                 // Mix_PlayChannel(3, son->depchevalier, 0);
                 // }
             }
-            if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
+            if (joueur->NumSprit >=6)
             {
                 joueur->chevalier=loadImage("src/graphics/Chevalier/marche2G.png");
                 drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
