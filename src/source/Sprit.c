@@ -781,7 +781,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
     //mort bosse
     if (boss->Life==0)
     {   
-        Mix_PauseMusic();
+        // Mix_PauseMusic();
         if (boss->CompteurSpriteDegat>=0 && boss->CompteurSpriteDegat <= 5 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort1.png");

@@ -15,7 +15,8 @@ void drawGame(Joueur *joueur, Lvl *lvl)
 
 //ecran fin 
 void GameOver (EffetSon *son)
-{   Mix_PauseMusic();
+{   
+    // Mix_PauseMusic();
     SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");
     drawImage(GameOver,0,0);
     SDL_RenderPresent(getrenderer());

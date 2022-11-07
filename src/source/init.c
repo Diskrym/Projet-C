@@ -85,7 +85,7 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
 {
     if(lvl->Num == 0)
     {   
-        Mix_PauseMusic();
+        // Mix_PauseMusic();
         LoadNiv11(&monstre->meduse, lvl, joueur);
         Mix_PlayMusic(son ->musiquelvl, -1);
     }
@@ -98,7 +98,8 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
          LoadNiv13(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
     if(lvl->Num == 3)
-    {   Mix_PauseMusic();
+    {   
+        // Mix_PauseMusic();
         loadNiv14 (joueur, &monstre->boss, lvl);
         Mix_PlayMusic(son ->musiqueboss, -1);
     }
