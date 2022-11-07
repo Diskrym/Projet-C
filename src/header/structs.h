@@ -8,7 +8,7 @@
 typedef struct Input
 {
  
-    int left, right, up, down, shield, attack, enter, erase, pause;
+    int left, right, up, down, shield, attack, enter, erase, pause, Bypass;
  
 } Input;
 
@@ -92,7 +92,7 @@ typedef struct EffetSon
 
 typedef struct Lvl
 {
-    int Num, changement, MortMonstre;
+    int Num, MortMonstre, NumDonjon, WinDonjon;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
@@ -100,6 +100,8 @@ typedef struct Lvl
     SDL_Texture *SpritLvl;
     SDL_Texture *SpritMotLVL;
     SDL_Texture *Menu;
+    SDL_Texture *MapGlobal;
+    SDL_Texture *Icone;
 } Lvl;
 
  /*
@@ -133,7 +135,7 @@ static const int level [4][5][6] = {
                                             {2,100,200,2,1,1}
                                         },
                                         {
-                                            {4,4,298,384,0,0},
+                                            {4,1,298,384,0,0},
                                             {3,288,80,128,1,10}
                                         }
                                     };

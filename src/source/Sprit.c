@@ -589,124 +589,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
                 }
-                //init eclair une fois par round
-                if (boss->compteur == 200)
-                {
-                    initEclair(boss);
-                }
-                // lancement attaque eclair
-                if (boss->compteur >= 200 && boss->compteur < 530)
-                {   
-                    //Eclair 1
-                    if (boss->CompteurSpriteEclair>=0 && boss->CompteurSpriteEclair<=10 )
-                    {
-                        boss->Eclair1=loadImage("src/graphics/Boss/WarningBoss1.png");
-                        drawImage(boss->Eclair1,boss->Ex1+12,boss->Ey1-16);   
-                    }
-                    if (boss->CompteurSpriteEclair>=11 && boss->CompteurSpriteEclair<=20 )
-                    {
-                        boss->Eclair1=loadImage("src/graphics/Boss/WarningBoss2.png");
-                        drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-26);
-                    }
-                    if (boss->CompteurSpriteEclair>=21 && boss->CompteurSpriteEclair<=30)
-                    {
-                        boss->Eclair1=loadImage("src/graphics/Boss/EclairBoss.png");
-                        drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-405);
-                    }
-                    
-                    if ((boss->CompteurSpriteEclair==25 && insideEclair(joueur, boss->Ex1, boss->Ey1-405)==1))
-                    {
-                        //joueur->life--;
-                        boss->coupE1=1;
-                    }
-                    if (boss->coupE1==1 && boss->compteur>240)
-                    {
-                        boss->coupE1=0;
-                    }
-                
-                    //Eclair 2
-                    if (boss->CompteurSpriteEclair>=31 && boss->CompteurSpriteEclair<=40 )
-                    {
-                        boss->Eclair2=loadImage("src/graphics/Boss/WarningBoss1.png");
-                        drawImage(boss->Eclair2,boss->Ex2+12,boss->Ey2-16);
-                    }
-                    if (boss->CompteurSpriteEclair>=41 && boss->CompteurSpriteEclair<=50 )
-                    {
-                        boss->Eclair2=loadImage("src/graphics/Boss/WarningBoss2.png");
-                        drawImage(boss->Eclair2,boss->Ex2,boss->Ey2-26);
-                    }
-                    if (boss->CompteurSpriteEclair>=51 && boss->CompteurSpriteEclair<=60 )
-                    {
-                        boss->Eclair2=loadImage("src/graphics/Boss/EclairBoss.png");
-                        drawImage(boss->Eclair2,boss->Ex2,boss->Ey2-405);
-                    }
-                    if ((boss->CompteurSpriteEclair==55 && insideEclair(joueur, boss->Ex2, boss->Ey2-405)==1))
-                    {
-                        //joueur->life--;
-                        boss->coupE2=1;
-                    }
-                    if (boss->compteur>270 && boss->coupE2==1)
-                    {
-                        boss->coupE2=0;
-                    }
-                    
-                    //Eclair 3
-                    if (boss->CompteurSpriteEclair>=61 && boss->CompteurSpriteEclair<=70 )
-                    {
-                        boss->Eclair3=loadImage("src/graphics/Boss/WarningBoss1.png");
-                        drawImage(boss->Eclair3,boss->Ex3+12,boss->Ey3-16);
-                    }
-                    if (boss->CompteurSpriteEclair>=71 && boss->CompteurSpriteEclair<=80 )
-                    {
-                        boss->Eclair3=loadImage("src/graphics/Boss/WarningBoss2.png");
-                        drawImage(boss->Eclair3,boss->Ex3,boss->Ey3-26);
-                    }
-                    if (boss->CompteurSpriteEclair>=81 && boss->CompteurSpriteEclair<=90 )
-                    {
-                        boss->Eclair3=loadImage("src/graphics/Boss/EclairBoss.png");
-                        drawImage(boss->Eclair3,boss->Ex3,boss->Ey3-405);
-                    }
-                    if ((boss->CompteurSpriteEclair==85 && insideEclair(joueur, boss->Ex3, boss->Ey3-405)==1))
-                    {
-                        //joueur->life--;
-                        boss->coupE3=1;
-                    }
-                    if (boss->coupE3==1 && boss->compteur==300)
-                    {
-                        boss->coupE3=0;
-                    }
-
-                    //Eclair 4
-                    if (boss->CompteurSpriteEclair>=91 && boss->CompteurSpriteEclair<=100 )
-                    {
-                        boss->Eclair4=loadImage("src/graphics/Boss/WarningBoss1.png");
-                        drawImage(boss->Eclair4,boss->Ex4+12,boss->Ey4-16);
-                    }
-                    if (boss->CompteurSpriteEclair>=101 && boss->CompteurSpriteEclair<=110 )
-                    {
-                        boss->Eclair4=loadImage("src/graphics/Boss/WarningBoss2.png");
-                        drawImage(boss->Eclair4,boss->Ex4,boss->Ey4-26);
-                    }
-                    if (boss->CompteurSpriteEclair>=111 && boss->CompteurSpriteEclair<=121 )
-                    {
-                        boss->Eclair4=loadImage("src/graphics/Boss/EclairBoss.png");
-                        drawImage(boss->Eclair4,boss->Ex4,boss->Ey4-405);
-                    }
-                    if ((boss->CompteurSpriteEclair==115 && insideEclair(joueur, boss->Ex4, boss->Ey4-405)==1))
-                    {
-                        //joueur->life--;
-                        boss->coupE4=1;
-                    } 
-                    // inside eclair 4 hors boucle
-                    if (boss->compteur>330 && boss->coupE4==1)
-                    {
-                        boss->coupE4=0;
-                    }
-                }
-                
-                
-            }
-            
+            } 
             //degat sur Boss
             else 
             {
@@ -724,7 +607,119 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 }
             }   
         }
+        //init eclair une fois par round
+        if (boss->compteur == 200)
+        {
+            initEclair(boss);
+        }
+        // lancement attaque eclair
+        if (boss->compteur >= 200 && boss->compteur < 530)
+        {   
+            //Eclair 1
+            if (boss->CompteurSpriteEclair>=0 && boss->CompteurSpriteEclair<=10 )
+            {
+                boss->Eclair1=loadImage("src/graphics/Boss/WarningBoss1.png");
+                drawImage(boss->Eclair1,boss->Ex1+12,boss->Ey1-16);   
+            }
+            if (boss->CompteurSpriteEclair>=11 && boss->CompteurSpriteEclair<=20 )
+            {
+                boss->Eclair1=loadImage("src/graphics/Boss/WarningBoss2.png");
+                drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-26);
+            }
+            if (boss->CompteurSpriteEclair>=21 && boss->CompteurSpriteEclair<=30)
+            {
+                boss->Eclair1=loadImage("src/graphics/Boss/EclairBoss.png");
+                drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-405);
+            }
+            
+            if ((boss->CompteurSpriteEclair==25 && insideEclair(joueur, boss->Ex1, boss->Ey1-405)==1))
+            {
+                //joueur->life--;
+                boss->coupE1=1;
+            }
+            if (boss->coupE1==1 && boss->compteur>240)
+            {
+                boss->coupE1=0;
+            }
+        
+            //Eclair 2
+            if (boss->CompteurSpriteEclair>=31 && boss->CompteurSpriteEclair<=40 )
+            {
+                boss->Eclair2=loadImage("src/graphics/Boss/WarningBoss1.png");
+                drawImage(boss->Eclair2,boss->Ex2+12,boss->Ey2-16);
+            }
+            if (boss->CompteurSpriteEclair>=41 && boss->CompteurSpriteEclair<=50 )
+            {
+                boss->Eclair2=loadImage("src/graphics/Boss/WarningBoss2.png");
+                drawImage(boss->Eclair2,boss->Ex2,boss->Ey2-26);
+            }
+            if (boss->CompteurSpriteEclair>=51 && boss->CompteurSpriteEclair<=60 )
+            {
+                boss->Eclair2=loadImage("src/graphics/Boss/EclairBoss.png");
+                drawImage(boss->Eclair2,boss->Ex2,boss->Ey2-405);
+            }
+            if ((boss->CompteurSpriteEclair==55 && insideEclair(joueur, boss->Ex2, boss->Ey2-405)==1))
+            {
+                //joueur->life--;
+                boss->coupE2=1;
+            }
+            if (boss->compteur>270 && boss->coupE2==1)
+            {
+                boss->coupE2=0;
+            }
+            //Eclair 3
+            if (boss->CompteurSpriteEclair>=61 && boss->CompteurSpriteEclair<=70 )
+            {
+                boss->Eclair3=loadImage("src/graphics/Boss/WarningBoss1.png");
+                drawImage(boss->Eclair3,boss->Ex3+12,boss->Ey3-16);
+            }
+            if (boss->CompteurSpriteEclair>=71 && boss->CompteurSpriteEclair<=80 )
+            {
+                boss->Eclair3=loadImage("src/graphics/Boss/WarningBoss2.png");
+                drawImage(boss->Eclair3,boss->Ex3,boss->Ey3-26);
+            }
+            if (boss->CompteurSpriteEclair>=81 && boss->CompteurSpriteEclair<=90 )
+            {
+                boss->Eclair3=loadImage("src/graphics/Boss/EclairBoss.png");
+                drawImage(boss->Eclair3,boss->Ex3,boss->Ey3-405);
+            }
+            if ((boss->CompteurSpriteEclair==85 && insideEclair(joueur, boss->Ex3, boss->Ey3-405)==1))
+            {
+                //joueur->life--;
+                boss->coupE3=1;
+            }
+            if (boss->coupE3==1 && boss->compteur==300)
+            {
+                boss->coupE3=0;
+            }
 
+            //Eclair 4
+            if (boss->CompteurSpriteEclair>=91 && boss->CompteurSpriteEclair<=100 )
+            {
+                boss->Eclair4=loadImage("src/graphics/Boss/WarningBoss1.png");
+                drawImage(boss->Eclair4,boss->Ex4+12,boss->Ey4-16);
+            }
+            if (boss->CompteurSpriteEclair>=101 && boss->CompteurSpriteEclair<=110 )
+            {
+                boss->Eclair4=loadImage("src/graphics/Boss/WarningBoss2.png");
+                drawImage(boss->Eclair4,boss->Ex4,boss->Ey4-26);
+            }
+            if (boss->CompteurSpriteEclair>=111 && boss->CompteurSpriteEclair<=121 )
+            {
+                boss->Eclair4=loadImage("src/graphics/Boss/EclairBoss.png");
+                drawImage(boss->Eclair4,boss->Ex4,boss->Ey4-405);
+            }
+            if ((boss->CompteurSpriteEclair==115 && insideEclair(joueur, boss->Ex4, boss->Ey4-405)==1))
+            {
+                //joueur->life--;
+                boss->coupE4=1;
+            } 
+            // inside eclair 4 hors boucle
+            if (boss->compteur>330 && boss->coupE4==1)
+            {
+                boss->coupE4=0;
+            }
+        }
         //Attaque boss
         if  (boss->compteur>=450)
         {   
@@ -862,8 +857,8 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             }
             else
             {
-                boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
-                drawImage(boss->Coeur,boss->posmonsx-1000,boss->posmonsy-1000);
+                SDL_DestroyTexture(boss->Coeur);
+                boss->Coeur=NULL;
             }
         }
     } 

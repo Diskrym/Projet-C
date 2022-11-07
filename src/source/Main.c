@@ -2,13 +2,12 @@
 //.\bin\Main2.exe
 /*
 Historique version :
-    V0: Lancement projet ✓ 03/10/22
+    V0 : Lancement projet ✓ 03/10/22
     V1 : Map + Joueur + Deplacement ✓ 17/10/22
     V2 : Meduse seul + degat ✓ 21/10//22
     V3 : Plusieurs mêmes types de monstre + changement de salle ✓ 23/10/22
     V4 : Donjon 1 + Son ✓ 29/10/22
-    V5 : Optimisation ressource jeu/ ✓ 03/11/22
-    V5.1 : Gestion item
+    V5 : Optimisation ressource jeu + gestion coeur/ ✓ 03/11/22
     V6 : Donjon multiple + map 
 */
 
@@ -23,68 +22,51 @@ Lvl lvl;
 Monstre monstre;
 EffetSon son;
 Boss boss;
-//Meduse nv1__tab_meduse[3];
 
 int main(int argc, char *argv[])
 {
-
-// extern void delay(unsigned int frameLimit);
+//extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
-
-lvl.Num=0;
+lvl.Num=-1;
 joueur.life=3;
-//meduse1.Life=3;
- 
 // Initialisation de la SDL
 init("Dungeon Fate");
- 
-    
-    //LoadMonstre(&meduse1, &lvl, &joueur);
-    
     Son(&son);
-    
-    
+    //Menu
     while(input.enter==0)
     {
     gestionInputs(&input);
     menu(&lvl);
     SDL_RenderPresent(getrenderer());
-    
     }
     Mix_PauseMusic();
-    // Appelle la fonction cleanup à la fin du programme
     //atexit(cleanup);
-    // Chargement des ressources (graphismes, sons)
-    LoadNiv1(&monstre.meduse, &lvl, &joueur);
-
+    //LoadNiv11(&monstre.meduse, &lvl, &joueur);
     go = 1; 
     // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
-        
-        GestionMap(&joueur, &lvl, &monstre, &son);
-        //Gestion des inputs clavier
-        gestionInputs(&input);
         //On dessine tout
         drawGame(&joueur, &lvl);
-        //IA monstre
-        GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
+        GestionMap(&joueur, &lvl, &monstre, &son, &input);
+        //Gestion des inputs clavier
+        gestionInputs(&input);
         
-        //meduse 2
-        //Gestion des inputs et des déplacements
-        deplacement(&input,&joueur,&monstre, &son);
+        
+        
+        if(lvl.Num != -1)
+        {
+            //IA monstre
+            GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
+            //Gestion des inputs et des déplacements
+            deplacement(&input,&joueur,&monstre, &son);
+        }
 
-        //deplacementMeduse(&joueur, &meduse1);
         //Rendu des images dans le buffer
         SDL_RenderPresent(getrenderer());
         //Acquisition des inputs du joueur
         getInput(&input);
-        //collision
-
-        
-
-        
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;
@@ -101,8 +83,16 @@ init("Dungeon Fate");
         // exit(0);
         // }
 
+        //#A enlver#
+        if (input.Bypass==1)
+        {
+            SDL_Delay(250);
+            lvl.MortMonstre=level[lvl.Num][0][1];
+            joueur.inposy=28;
+            joueur.inposx=300;
+        }
+        
     }
- 
     // On quitte
     exit(0); 
 }

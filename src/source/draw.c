@@ -88,17 +88,22 @@ void delay(unsigned int frameLimit)
 }
 
 void AffichageVie (Joueur *joueur,Lvl *lvl)
-{   if (lvl->Vie != NULL)
+{   
+    if (lvl->Vie != NULL)
     {
         SDL_DestroyTexture(lvl->Vie);
         lvl->Vie=NULL;
     }
     int i=1;
-    while (i<=joueur->life)
+
+    if (lvl->Num >= 0)
     {
-        lvl->Vie=loadImage("src/graphics/lvl/Vie.png");
-        drawImage(lvl->Vie,SCREEN_WIDTH-(i*34),0);
-        i+=1;
+        while (i<=joueur->life)
+        {
+            lvl->Vie=loadImage("src/graphics/lvl/Vie.png");
+            drawImage(lvl->Vie,SCREEN_WIDTH-(i*34),0);
+            i+=1;
+        }
     }
 }
 
@@ -115,8 +120,12 @@ void AffichageLevel (Lvl *lvl)
         lvl->SpritLvl = NULL;
     }
     
-    lvl->SpritMotLVL=loadImage("src/graphics/lvl/Level.png");
-    drawImage(lvl->SpritMotLVL,0,0);
+    if (lvl->Num >= 0)
+    {
+        lvl->SpritMotLVL=loadImage("src/graphics/lvl/Level.png");
+        drawImage(lvl->SpritMotLVL,0,0);
+    }
+
     if (lvl->Num==0)
     {
         lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");

@@ -34,12 +34,12 @@ extern int insideItem (Joueur *joueur, Boss *boss);
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
-extern void LoadNiv1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
-extern void LoadNiv2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
+extern void LoadNiv11(Meduse *meduse, Lvl *lvl, Joueur *joueur);
+extern void LoadNiv12(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
 extern void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son);
-extern void LoadNiv3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
+extern void LoadNiv13(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
 extern void Son (EffetSon *son);
-extern void loadNiv4 (Joueur *joueur, Boss *boss, Lvl *lvl);
+extern void loadNiv14 (Joueur *joueur, Boss *boss, Lvl *lvl);
 
 extern void cleanup(EffetSon *son);
 extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
@@ -58,7 +58,8 @@ extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input,
 //map.c
 extern void initMaps(Lvl *lvl);
 extern SDL_Texture *getBackground(void);
-extern void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
+extern void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son, Input *input);
+extern void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input);
 
 //Sprit.c
 extern void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre);
