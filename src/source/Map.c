@@ -77,9 +77,29 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         SDL_DestroyTexture(lvl->Icone);
         lvl->Icone = NULL;
     }
-    lvl->Map=loadImage("src/graphics/lvl/mapglobal.png");
-    //drawImage(lvl->Map,0,0);
+    if (lvl->Cadenas1 != NULL)
+    {
+        SDL_DestroyTexture(lvl->Cadenas1);
+        lvl->Cadenas1 = NULL;
+    }
+    if (lvl->Cadenas2 != NULL)
+    {
+        SDL_DestroyTexture(lvl->Cadenas2);
+        lvl->Cadenas2 = NULL;
+    }
+    if (lvl->Cadenas3 != NULL)
+    {
+        SDL_DestroyTexture(lvl->Cadenas3);
+        lvl->Cadenas3 = NULL;
+    }
+    if (lvl->Cadenas4 != NULL)
+    {
+        SDL_DestroyTexture(lvl->Cadenas4);
+        lvl->Cadenas4 = NULL;
+    }
 
+
+    lvl->Map=loadImage("src/graphics/lvl/mapglobal.png");
     if (input->up == 1 && lvl->NumDonjon < 4)
     {
         SDL_Delay(200);

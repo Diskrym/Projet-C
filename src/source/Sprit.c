@@ -863,3 +863,15 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         }
     } 
 }
+
+void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
+{
+    if (marchand->Jerem !=NULL)
+    {
+        SDL_DestroyTexture(marchand->Jerem);
+        marchand->Jerem = NULL;
+    }
+    
+    marchand->Jerem=loadImage("src/graphics/Marchand/JarmyLeMarchand.png");
+    drawImage(marchand->Jerem,288,210);
+}

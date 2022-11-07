@@ -22,6 +22,7 @@ Lvl lvl;
 Monstre monstre;
 EffetSon son;
 Boss boss;
+Marchand marchand;
 
 int main(int argc, char *argv[])
 {
