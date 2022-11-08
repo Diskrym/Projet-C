@@ -71,7 +71,7 @@ init("Dungeon Fate");
         frameLimit = SDL_GetTicks() + 4;
         //Test defaite
         if (joueur.life<=0)
-        {
+        {   Mix_PauseMusic();
             GameOver (&son);
             exit(0);
         }
