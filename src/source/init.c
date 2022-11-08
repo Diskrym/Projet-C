@@ -62,7 +62,7 @@ void Son (EffetSon *son)
     son->musiqueshop= Mix_LoadMUS("src/Sik/m_Shop.mp3");
 
     Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
-    Mix_Volume(1, MIX_MAX_VOLUME/2); //Mettre à mi-volume le post 1
+    Mix_Volume(1, MIX_MAX_VOLUME/4); //Mettre à mi-volume le post 1
     son->epee = Mix_LoadWAV("src/Sik/attackChe.WAV"); //Charger un wav dans un pointeur
     son->bouclier= Mix_LoadWAV("src/Sik/BouclierChe.WAV");
     son->depchevalier= Mix_LoadWAV("src/Sik/deplacementchevalier.WAV");
