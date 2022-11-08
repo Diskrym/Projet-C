@@ -166,6 +166,62 @@ void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
         }
     } 
 }
+
+
+
+void collisionTable (Joueur *joueur, Input *input, Lvl *lvl)
+{  
+    
+    if (lvl->Num==4)
+    {   //collision haut joueur
+        if((joueur->inposx>=225 && joueur->inposx<=415 )||(joueur->inposx+SPRITE_SIZE>=225 && joueur->inposx+SPRITE_SIZE<=415 )||((joueur->inposx>=225 && joueur->inposx<=415 )&&(joueur->inposx+SPRITE_SIZE>=225 && joueur->inposx+SPRITE_SIZE<=415 )))
+        {
+            if ((joueur->inposy <= 120)&&(joueur->inposy >= 55 ))
+            {
+               if (input->up == 1)
+                {
+                joueur->inposy+=3;  
+                }
+            }
+        }
+        
+        //collision bas joueur
+        if((joueur->inposx>=225 && joueur->inposx<=415 )||(joueur->inposx+SPRITE_SIZE>=225 && joueur->inposx+SPRITE_SIZE<=415 )||((joueur->inposx>=225 && joueur->inposx<=415 )&&(joueur->inposx+SPRITE_SIZE>=225 && joueur->inposx+SPRITE_SIZE<=415 )))
+        {
+            if ((joueur->inposy+SPRITE_SIZE <= 120)&&(joueur->inposy+SPRITE_SIZE >= 55 ))        
+            {
+                if (input->down == 1)
+                {
+                    joueur->inposy-=3;  
+                }   
+            }
+        }
+    
+        // //coter droit joueur
+        if((joueur->inposy>=55 && joueur->inposy<=120 )||(joueur->inposy+SPRITE_SIZE>=55 && joueur->inposy+SPRITE_SIZE<=120 )||((joueur->inposy>=55 && joueur->inposy<=120 )&&(joueur->inposy+SPRITE_SIZE>=55 && joueur->inposy+SPRITE_SIZE<=120 )))
+        {
+            if ((joueur->inposx+SPRITE_SIZE <= 415)&&(joueur->inposx+SPRITE_SIZE >= 225 ))
+            {
+                if (input->right == 1)
+                {
+                    joueur->inposx-=3;  
+                }   
+            }
+        }
+        
+        // //coter gauche joueur
+        if((joueur->inposy>=55 && joueur->inposy<=120 )||(joueur->inposy+SPRITE_SIZE>=55 && joueur->inposy+SPRITE_SIZE<=120)||((joueur->inposy>=55 && joueur->inposy<=120 )&&(joueur->inposy+SPRITE_SIZE>=55 && joueur->inposy+SPRITE_SIZE<=120)))
+        {
+            if ((joueur->inposx <= 415)&&(joueur->inposx >= 225 ))
+            {
+                if (input->left == 1)
+                {
+                    joueur->inposx+=3;  
+                }
+            }
+        }
+    } 
+}
     
 
 //test si l'attaque de la méduse touche le joueur

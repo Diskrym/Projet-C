@@ -872,6 +872,11 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         SDL_DestroyTexture(marchand->Jerem);
         marchand->Jerem = NULL;
     }
+    if (marchand->Marchand !=NULL)
+    {
+        SDL_DestroyTexture(marchand->Marchand);
+        marchand->Marchand = NULL;
+    }
     if (marchand->bulle != NULL)
     {
         SDL_DestroyTexture(marchand->bulle);
@@ -945,4 +950,61 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     {
         marchand->CompteurMess = 0;
     }
+
+
+    marchand->Compteur2 +=1 ;
+
+    if ((marchand->Compteur2>=0 && marchand->Compteur2<10) || (marchand->Compteur2>=50 && marchand->Compteur2<=60))
+    {
+        marchand->Marchand=loadImage("src/graphics/Marchand/Karine1.png");
+        drawImage(marchand->Marchand,180,48);
+        
+    }
+    if ((marchand->Compteur2>=10 && marchand->Compteur2<20) || (marchand->Compteur2>=40 && marchand->Compteur2<50))
+    {
+        marchand->Jerem=loadImage("src/graphics/Marchand/Karine2.png");
+        drawImage(marchand->Jerem,180,48);
+        
+    }
+    if ((marchand->Compteur2>=20 && marchand->Compteur2<40))
+    { 
+        marchand->Jerem=loadImage("src/graphics/Marchand/Karine3.png");
+        drawImage(marchand->Jerem,180,48);
+        
+    }
+    if (marchand->Compteur2 == 60)
+    {
+        marchand->Compteur2 = 0;
+    }
+    // if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
+    // {
+    //     if (input->enter == 1)
+    //     {
+    //         SDL_Delay(200);
+    //         marchand->CompteurMess += 1;
+    //     }
+    //     if (marchand->CompteurMess==1)
+    //     {
+    //         marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
+    //         drawImage(marchand->bulle,210,130);
+    //     }
+    //     if (marchand->CompteurMess==2)
+    //     {
+    //         marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
+    //         drawImage(marchand->bulle,210,130);
+    //     }
+    //     if (marchand->CompteurMess==3)
+    //     {
+    //         marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
+    //         drawImage(marchand->bulle,210,95);
+    //     }
+    // }
+    // else
+    // {
+    //     marchand->CompteurMess = 0;
+    // }
+    // if (marchand->CompteurMess == 4)
+    // {
+    //     marchand->CompteurMess = 0;
+    // }
 }

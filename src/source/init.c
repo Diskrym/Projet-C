@@ -151,6 +151,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     if (lvl->Num==4)
     {
         collisionmur(joueur);
+        collisionTable(joueur,input,lvl);
         GestionMarchands(joueur, input, &monstre->marchand);
     }   
 }
