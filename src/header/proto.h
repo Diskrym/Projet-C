@@ -66,6 +66,7 @@ extern void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *mon
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
+extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand);
 
 
 //extern void drawMap(int);

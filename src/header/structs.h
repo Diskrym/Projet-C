@@ -50,6 +50,13 @@ typedef struct Joueur
     SDL_Texture *attaque;
 } Joueur;
 
+typedef struct Marchand
+{
+    int CompteurMess;
+    SDL_Texture *Jerem;
+    SDL_Texture *Marchand;
+}Marchand;
+
 typedef struct Monstre
 {
     Meduse meduse;
@@ -58,6 +65,7 @@ typedef struct Monstre
     Chauvesouris chauvesouris;
     Chauvesouris chauvesouris1;
     Boss boss;
+    Marchand marchand;
 } Monstre;
 
 
@@ -144,7 +152,7 @@ static const int level [5][5][6] = {
                                             {3,288,80,128,1,10}
                                         },
                                         {
-                                            {5,0,288,64,0}
+                                            {5,0,288,297,0}
                                         }
                                     };
 
