@@ -921,19 +921,19 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         if (input->enter == 1)
         {
             SDL_Delay(200);
-            marchand->CompteurMess += 1;
+            marchand->CompteurMess1 += 1;
         }
-        if (marchand->CompteurMess==1)
+        if (marchand->CompteurMess1==1)
         {
             marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
             drawImage(marchand->bulle,210,130);
         }
-        if (marchand->CompteurMess==2)
+        if (marchand->CompteurMess1==2)
         {
             marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
             drawImage(marchand->bulle,210,130);
         }
-        if (marchand->CompteurMess==3)
+        if (marchand->CompteurMess1==3)
         {
             marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
             drawImage(marchand->bulle,210,95);
@@ -941,11 +941,11 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     }
     else
     {
-        marchand->CompteurMess = 0;
+        marchand->CompteurMess1 = 0;
     }
-    if (marchand->CompteurMess == 4)
+    if (marchand->CompteurMess1 == 4)
     {
-        marchand->CompteurMess = 0;
+        marchand->CompteurMess1 = 0;
     }
 
     if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
@@ -970,35 +970,35 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     {
         marchand->Compteur1 = 0;
     }
-    // if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
-    // {
-    //     if (input->enter == 1)
-    //     {
-    //         SDL_Delay(200);
-    //         marchand->CompteurMess += 1;
-    //     }
-    //     if (marchand->CompteurMess==1)
-    //     {
-    //         marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
-    //         drawImage(marchand->bulle,210,130);
-    //     }
-    //     if (marchand->CompteurMess==2)
-    //     {
-    //         marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
-    //         drawImage(marchand->bulle,210,130);
-    //     }
-    //     if (marchand->CompteurMess==3)
-    //     {
-    //         marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
-    //         drawImage(marchand->bulle,210,95);
-    //     }
-    // }
-    // else
-    // {
-    //     marchand->CompteurMess = 0;
-    // }
-    // if (marchand->CompteurMess == 4)
-    // {
-    //     marchand->CompteurMess = 0;
-    // }
+    if (joueur->inposx >= 170 && joueur->inposx <= 420 && joueur->inposy >= 48 && joueur->inposy<160)
+    {
+        if (input->enter == 1)
+        {
+            SDL_Delay(200);
+            marchand->CompteurMess2 += 1;
+        }
+        if (marchand->CompteurMess2==1)
+        {
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine1.png");
+            drawImage(marchand->bulle,10,115);
+        }
+        if (marchand->CompteurMess2==2)
+        {
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine2.png");
+            drawImage(marchand->bulle,10,115);
+        }
+        if (marchand->CompteurMess2==3)
+        {
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine3.png");
+            drawImage(marchand->bulle,10,115);
+        }
+    }
+    else
+    {
+        marchand->CompteurMess2 = 0;
+    }
+    if (marchand->CompteurMess2 == 4)
+    {
+        marchand->CompteurMess2 = 0;
+    }
 }
