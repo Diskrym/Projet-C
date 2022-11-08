@@ -915,10 +915,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
         drawImage(marchand->Enter,463,300);
     }
-    if (marchand->Compteur1 == 60)
-    {
-        marchand->Compteur1 = 0;
-    }
+    
     if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
     {
         if (input->enter == 1)
@@ -951,30 +948,27 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         marchand->CompteurMess = 0;
     }
 
-
-    marchand->Compteur2 +=1 ;
-
-    if ((marchand->Compteur2>=0 && marchand->Compteur2<10) || (marchand->Compteur2>=50 && marchand->Compteur2<=60))
+    if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
         marchand->Marchand=loadImage("src/graphics/Marchand/Karine1.png");
         drawImage(marchand->Marchand,180,48);
         
     }
-    if ((marchand->Compteur2>=10 && marchand->Compteur2<20) || (marchand->Compteur2>=40 && marchand->Compteur2<50))
+    if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
     {
         marchand->Jerem=loadImage("src/graphics/Marchand/Karine2.png");
         drawImage(marchand->Jerem,180,48);
         
     }
-    if ((marchand->Compteur2>=20 && marchand->Compteur2<40))
+    if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
     { 
         marchand->Jerem=loadImage("src/graphics/Marchand/Karine3.png");
         drawImage(marchand->Jerem,180,48);
         
     }
-    if (marchand->Compteur2 == 60)
+    if (marchand->Compteur1 == 60)
     {
-        marchand->Compteur2 = 0;
+        marchand->Compteur1 = 0;
     }
     // if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
     // {
