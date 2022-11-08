@@ -59,6 +59,7 @@ void Son (EffetSon *son)
     son->musiqueboss = Mix_LoadMUS("src/Sik/m_Boss.mp3");
     son->musiquelvl = Mix_LoadMUS("src/Sik/MusiqueLvl.mp3");
     son ->musiqueMapG = Mix_LoadMUS("src/Sik/MapGlobal.mp3");
+    son->musiqueshop= Mix_LoadMUS("src/Sik/m_Shop.mp3");
 
     Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
     Mix_Volume(1, MIX_MAX_VOLUME/2); //Mettre à mi-volume le post 1
@@ -106,6 +107,7 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
     if (lvl->Num == 4)
     {
         loadNiv21(joueur, lvl);
+        Mix_PlayMusic(son ->musiqueshop, -1);
     }
     
     lvl->MortMonstre=0;

@@ -77,6 +77,7 @@ typedef struct EffetSon
     Mix_Music *musiqueMapG;
     Mix_Music *musiqueboss;
     Mix_Music *musiquelvl;
+    Mix_Music *musiqueshop;
     Mix_Chunk *epee;
     Mix_Chunk *bouclier;
     Mix_Chunk *depchevalier;
