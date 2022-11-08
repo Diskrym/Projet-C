@@ -874,22 +874,22 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
 
     marchand->Compteur1 +=1 ;
 
-    if ((marchand->Compteur1>=0 && marchand->Compteur1<5) || (marchand->Compteur1>=25 && marchand->Compteur1<=30))
+    if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
-        marchand->Jerem=loadImage("src/graphics/Marchand/JarmyLeMarchand.png");
+        marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy1.png");
         drawImage(marchand->Jerem,288,210);
     }
-    if ((marchand->Compteur1>=5 && marchand->Compteur1<10) || (marchand->Compteur1>=20 && marchand->Compteur1<25))
+    if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
     {
-        marchand->Jerem=loadImage("src/graphics/Marchand/JarmyLeMarchand.png");
-        drawImage(marchand->Jerem,288,210);
+        marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy2.png");
+        drawImage(marchand->Jerem,286,210);
     }
-    if ((marchand->Compteur1>=10 && marchand->Compteur1<20))
+    if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
     { 
-        marchand->Jerem=loadImage("src/graphics/Marchand/JarmyLeMarchand.png");
+        marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy3.png");
         drawImage(marchand->Jerem,288,210);
     }
-    if (marchand->Compteur1 == 30)
+    if (marchand->Compteur1 == 60)
     {
         marchand->Compteur1 = 0;
     }
@@ -897,5 +897,4 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     {
         
     }
-    
 }
