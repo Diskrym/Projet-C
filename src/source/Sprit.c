@@ -877,7 +877,15 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         SDL_DestroyTexture(marchand->bulle);
         marchand->bulle = NULL;
     }
+    if (marchand->Enter !=NULL)
+    {
+        SDL_DestroyTexture(marchand->Jerem);
+        marchand->Enter = NULL;
+    }
     
+    marchand->Table=loadImage("src/graphics/Marchand/Table.png");
+    drawImage(marchand->Table,220,55);
+
 
     marchand->Compteur1 +=1 ;
 
@@ -885,22 +893,28 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     {
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy1.png");
         drawImage(marchand->Jerem,450,210);
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        drawImage(marchand->Enter,463,300);
     }
     if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
     {
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy2.png");
         drawImage(marchand->Jerem,448,210);
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        drawImage(marchand->Enter,463,300);
     }
     if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
     { 
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy3.png");
         drawImage(marchand->Jerem,450,210);
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        drawImage(marchand->Enter,463,300);
     }
     if (marchand->Compteur1 == 60)
     {
         marchand->Compteur1 = 0;
     }
-    if (joueur->inposx >= 408 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
+    if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
     {
         if (input->enter == 1)
         {
