@@ -55,6 +55,7 @@ typedef struct Marchand
     int CompteurMess, Compteur1;
     SDL_Texture *Jerem;
     SDL_Texture *Marchand;
+    SDL_Texture *bulle;
 }Marchand;
 
 typedef struct Monstre
