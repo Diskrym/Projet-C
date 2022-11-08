@@ -900,7 +900,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     {
         marchand->Compteur1 = 0;
     }
-    if (joueur->inposx >= 248 && joueur->inposx <= 348 && joueur->inposy >= 210 && joueur->inposy<270)
+    if (joueur->inposx >= 408 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
     {
         if (input->enter == 1)
         {
@@ -910,17 +910,17 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         if (marchand->CompteurMess==1)
         {
             marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
-            drawImage(marchand->bulle,288,210);
+            drawImage(marchand->bulle,210,130);
         }
         if (marchand->CompteurMess==2)
         {
             marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
-            drawImage(marchand->bulle,220,210);
+            drawImage(marchand->bulle,210,130);
         }
-        if (marchand->CompteurMess==2)
+        if (marchand->CompteurMess==3)
         {
             marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
-            drawImage(marchand->bulle,288,210);
+            drawImage(marchand->bulle,210,95);
         }
     }
     else
@@ -931,5 +931,4 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     {
         marchand->CompteurMess = 0;
     }
-    
 }
