@@ -874,9 +874,9 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     marchand->Jerem=loadImage("src/graphics/Marchand/JarmyLeMarchand.png");
     drawImage(marchand->Jerem,288,210);
 
-    if (joueur->inposx >= 248 && joueur->inposx <= 348 && joueur->inposy >= 210 && joueur->inposy<290)
+    if (joueur->inposx >= 248 && joueur->inposx <= 348 && joueur->inposy >= 210 && joueur->inposy<270)
     {
-        printf("1");
+        
     }
     
 }
