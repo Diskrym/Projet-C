@@ -951,19 +951,25 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
         marchand->Marchand=loadImage("src/graphics/Marchand/Karine1.png");
-        drawImage(marchand->Marchand,180,48);
+        drawImage(marchand->Marchand,160,50);
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        drawImage(marchand->Enter,148,120);
         
     }
     if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
     {
         marchand->Jerem=loadImage("src/graphics/Marchand/Karine2.png");
-        drawImage(marchand->Jerem,180,48);
+        drawImage(marchand->Jerem,160,50);
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        drawImage(marchand->Enter,148,120);
         
     }
     if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
     { 
         marchand->Jerem=loadImage("src/graphics/Marchand/Karine3.png");
-        drawImage(marchand->Jerem,180,48);
+        drawImage(marchand->Jerem,160,50);
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        drawImage(marchand->Enter,148,120);
         
     }
     if (marchand->Compteur1 == 60)
