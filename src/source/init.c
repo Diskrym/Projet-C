@@ -39,12 +39,12 @@ void init(char *title)
     SDL_ShowCursor(SDL_DISABLE);
  
     //On initialise SDL_TTF 2 qui gérera l'écriture de texte
-    // if (TTF_Init() < 0)
-    // {
-    //     printf("Impossible d'initialiser SDL TTF: %s\n", TTF_GetError());
-    //     exit(1);
-    // }
-    // SDL_Event event;
+    if (TTF_Init() < 0)
+    {
+        printf("Impossible d'initialiser SDL TTF: %s\n", TTF_GetError());
+        exit(1);
+    }
+    SDL_Event event;
 
 }
 
