@@ -197,9 +197,11 @@ void LoadNiv13(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chau
         chauvesouris->posmonsx =level[2][3][1];
         chauvesouris->posmonsy =level[2][3][2];
         chauvesouris->Life=level[2][3][5];
+        chauvesouris->CompteurSpriteDegat=0;
         chauvesouris1->posmonsx =level[2][4][1];
         chauvesouris1->posmonsy =level[2][4][2];
         chauvesouris1->Life=level[2][4][5];
+        chauvesouris1->CompteurSpriteDegat=0;
 }
 
 void loadNiv14 (Joueur *joueur,Boss *boss, Lvl *lvl)
