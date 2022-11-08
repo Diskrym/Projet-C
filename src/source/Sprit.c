@@ -884,17 +884,17 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy1.png");
-        drawImage(marchand->Jerem,288,210);
+        drawImage(marchand->Jerem,450,210);
     }
     if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
     {
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy2.png");
-        drawImage(marchand->Jerem,286,210);
+        drawImage(marchand->Jerem,448,210);
     }
     if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
     { 
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy3.png");
-        drawImage(marchand->Jerem,288,210);
+        drawImage(marchand->Jerem,450,210);
     }
     if (marchand->Compteur1 == 60)
     {
@@ -909,17 +909,17 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         }
         if (marchand->CompteurMess==1)
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/Jarmy3.png");
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
             drawImage(marchand->bulle,288,210);
         }
         if (marchand->CompteurMess==2)
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/Jarmy3.png");
-            drawImage(marchand->bulle,288,210);
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
+            drawImage(marchand->bulle,220,210);
         }
         if (marchand->CompteurMess==2)
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/Jarmy3.png");
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
             drawImage(marchand->bulle,288,210);
         }
     }
