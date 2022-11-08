@@ -52,7 +52,7 @@ typedef struct Joueur
 
 typedef struct Marchand
 {
-    int CompteurMess;
+    int CompteurMess, Compteur1;
     SDL_Texture *Jerem;
     SDL_Texture *Marchand;
 }Marchand;

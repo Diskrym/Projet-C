@@ -871,9 +871,28 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         SDL_DestroyTexture(marchand->Jerem);
         marchand->Jerem = NULL;
     }
-    marchand->Jerem=loadImage("src/graphics/Marchand/JarmyLeMarchand.png");
-    drawImage(marchand->Jerem,288,210);
 
+    marchand->Compteur1 +=1 ;
+
+    if ((marchand->Compteur1>=0 && marchand->Compteur1<5) || (marchand->Compteur1>=25 && marchand->Compteur1<=30))
+    {
+        marchand->Jerem=loadImage("src/graphics/Marchand/JarmyLeMarchand.png");
+        drawImage(marchand->Jerem,288,210);
+    }
+    if ((marchand->Compteur1>=5 && marchand->Compteur1<10) || (marchand->Compteur1>=20 && marchand->Compteur1<25))
+    {
+        marchand->Jerem=loadImage("src/graphics/Marchand/JarmyLeMarchand.png");
+        drawImage(marchand->Jerem,288,210);
+    }
+    if ((marchand->Compteur1>=10 && marchand->Compteur1<20))
+    { 
+        marchand->Jerem=loadImage("src/graphics/Marchand/JarmyLeMarchand.png");
+        drawImage(marchand->Jerem,288,210);
+    }
+    if (marchand->Compteur1 == 30)
+    {
+        marchand->Compteur1 = 0;
+    }
     if (joueur->inposx >= 248 && joueur->inposx <= 348 && joueur->inposy >= 210 && joueur->inposy<270)
     {
         
