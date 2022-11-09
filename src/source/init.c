@@ -114,6 +114,11 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
         loadNiv21(joueur, lvl);
         Mix_PlayMusic(son ->musiqueshop, -1);
     }
+    if (lvl->Num == 5)
+    {
+        loadNiv31(joueur, lvl);
+    }
+    
     
     lvl->MortMonstre=0;
 }
@@ -164,6 +169,12 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         collisionDecor(joueur, input,lvl,80,240,320,240);
         GestionMarchands(joueur, input, &monstre->marchand);
     }   
+    if (lvl -> Num == 5)
+    {
+        collisionmur(joueur);
+
+    }
+    
 }
 
 void LoadNiv11(Meduse *meduse, Lvl *lvl, Joueur *joueur)
@@ -230,6 +241,13 @@ void loadNiv21 (Joueur *joueur, Lvl* lvl)
     initMaps(lvl);
     joueur->inposx = level[4][0][2];
     joueur->inposy = level[4][0][3];
+}
+
+void loadNiv31 (Joueur *joueur, Lvl *lvl)
+{
+    initMaps(lvl);
+    joueur->inposx = level[5][0][2];
+    joueur->inposy = level[5][0][3];
 }
 
 void cleanup(EffetSon *son)

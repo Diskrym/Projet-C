@@ -16,7 +16,10 @@ void initMaps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundmarchand.png");
     }
-    
+    if  (lvl->Num == 5)
+    {
+        lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon2.png");
+    }
 }
   
 
@@ -146,6 +149,11 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         {
             lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
             drawImage(lvl->Icone,260,195);
+            if (input->attack == 1)
+            {
+                lvl->Num = 5;
+                SelectNiv(joueur, lvl, monstre, son);
+            }
         }
         else
         {
