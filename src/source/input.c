@@ -160,6 +160,7 @@ void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son)
         joueur->Edague = 1;
         joueur->xdague=joueur->inposx;
         joueur->ydague=joueur->inposy+32;
+        joueur->DirDague=joueur->Direction;
     }
     
     if (input->attack==1)

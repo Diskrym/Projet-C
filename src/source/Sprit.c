@@ -52,14 +52,6 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                 // }
             }
         }
-        //dague
-        if (joueur->Edague == 1 && joueur->nbDague>0)
-        {
-            joueur->dague=loadImage("src/graphics/Chevalier/DagueD.png");
-            drawImage(joueur->dague,joueur->xdague,joueur->ydague);
-            joueur->xdague+=7;
-
-        }
         
     }
     //affiche sprite degat si degat de la part du monstre et si degat de la part du monstre lors de notre attack/defense pour la droite
@@ -104,13 +96,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
             }   
         }
         //dague
-        if (joueur->Edague == 1 && joueur->nbDague>0)
-        {
-            joueur->dague=loadImage("src/graphics/Chevalier/DagueG.png");
-            drawImage(joueur->dague,joueur->xdague,joueur->ydague);
-            joueur->xdague-=7;
-
-        }
+        
     }
     if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) && joueur->Direction==1 )
     {
@@ -226,6 +212,40 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     {
         joueur->Numattack=0;
         joueur->Eattack = 0;
+    }
+
+
+
+    //Dague
+    if (joueur->Edague == 1 && joueur->nbDague>0 && joueur->DirDague==1)
+    {
+        if (joueur->xdague>=20 && joueur->xdague<=600 && joueur->ydague>= 20 && joueur->ydague<=384)
+        {
+            joueur->dague=loadImage("src/graphics/Chevalier/DagueG.png");
+            drawImage(joueur->dague,joueur->xdague,joueur->ydague);
+            joueur->xdague-=7;
+        }
+        else
+        {
+            joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
+            drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+        }
+    }
+    //dague
+    if (joueur->Edague == 1 && joueur->nbDague>0 && joueur->DirDague == 0)
+    {
+        if (joueur->xdague>=20 && joueur->xdague<=600 && joueur->ydague>= 20 && joueur->ydague<=384)
+        { 
+            
+            joueur->dague=loadImage("src/graphics/Chevalier/DagueD.png");
+            drawImage(joueur->dague,joueur->xdague,joueur->ydague);
+            joueur->xdague+=7;
+        }
+        else
+        {
+            joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurD.png");
+            drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+        }
     }
 }
 
