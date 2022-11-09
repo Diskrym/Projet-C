@@ -190,6 +190,12 @@ void AffichageLevel (Lvl *lvl)
         lvl->SpritLvl=loadImage("src/graphics/lvl/shop.png");
         drawImage(lvl->SpritLvl,5,5);
     }
+    if (lvl->Num==5)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/5.png");
+        drawImage(lvl->SpritLvl,139,0);
+    }
+    
 }
 
 void porte (Lvl *lvl)
