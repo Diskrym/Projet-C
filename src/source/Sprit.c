@@ -997,6 +997,14 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         {
             marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine3.png");
             drawImage(marchand->bulle,10,115);
+            if (input->attack == 1)
+            {   
+                if (joueur->NbPiece-2>=0 && joueur->life<=4)
+                {
+                joueur->life+=1;
+                joueur->NbPiece-=2;
+                }
+            }
         }
     }
     else
