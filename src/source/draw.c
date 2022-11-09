@@ -159,7 +159,7 @@ void AffichageLevel (Lvl *lvl)
         lvl->SpritLvl = NULL;
     }
     
-    if (lvl->Num >= 0)
+    if (lvl->Num >= 0 && lvl->Num != 4)
     {
         lvl->SpritMotLVL=loadImage("src/graphics/lvl/Level.png");
         drawImage(lvl->SpritMotLVL,0,0);
@@ -187,8 +187,8 @@ void AffichageLevel (Lvl *lvl)
     }
     if (lvl->Num==4)
     {
-        lvl->SpritLvl=loadImage("src/graphics/lvl/5.png");
-        drawImage(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/shop.png");
+        drawImage(lvl->SpritLvl,5,5);
     }
 }
 
