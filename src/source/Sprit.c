@@ -866,7 +866,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
 }
 
 void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
-{
+{   //Verification pointeur pour memoire
     if (marchand->Jerem !=NULL)
     {
         SDL_DestroyTexture(marchand->Jerem);
@@ -888,12 +888,14 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         marchand->Enter = NULL;
     }
     
+    //Affichage de la table 
     marchand->Table=loadImage("src/graphics/Marchand/Table.png");
     drawImage(marchand->Table,220,55);
 
-
+    //Compteur des sprites
     marchand->Compteur1 +=1 ;
 
+    //Sprite Jermy
     if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy1.png");
@@ -915,7 +917,9 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
         drawImage(marchand->Enter,463,300);
     }
-    
+
+
+    //Sprite Bulles Jermy en fonction de la position et de entree
     if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
     {
         if (input->enter == 1)
@@ -939,6 +943,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
             drawImage(marchand->bulle,210,95);
         }
     }
+    //remise a zero du compteur
     else
     {
         marchand->CompteurMess1 = 0;
@@ -948,6 +953,8 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         marchand->CompteurMess1 = 0;
     }
 
+
+    //Sprite Karine 
     if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
         marchand->Marchand=loadImage("src/graphics/Marchand/Karine1.png");
@@ -976,6 +983,8 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     {
         marchand->Compteur1 = 0;
     }
+
+    //Sprite Bulle Karine
     if (joueur->inposx >= 170 && joueur->inposx <= 420 && joueur->inposy >= 48 && joueur->inposy<160)
     {
         if (input->enter == 1)
@@ -997,6 +1006,8 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         {
             marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine3.png");
             drawImage(marchand->bulle,10,115);
+
+            //Achat de coeur
             if (input->attack == 1)
             {   
                 if (joueur->NbPiece-2>=0 && joueur->life<=4)
