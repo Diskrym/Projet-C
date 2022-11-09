@@ -896,26 +896,23 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     marchand->Compteur1 +=1 ;
 
     //Sprite Jermy
+    //enter
+    marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+    drawImage(marchand->Enter,463,300);
     if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy1.png");
         drawImage(marchand->Jerem,450,210);
-        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        drawImage(marchand->Enter,463,300);
     }
     if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
     {
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy2.png");
         drawImage(marchand->Jerem,448,210);
-        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        drawImage(marchand->Enter,463,300);
     }
     if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
     { 
         marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy3.png");
         drawImage(marchand->Jerem,450,210);
-        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        drawImage(marchand->Enter,463,300);
     }
 
 
@@ -955,34 +952,24 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
 
 
     //Sprite Karine 
+    marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+    drawImage(marchand->Enter,138,120);
     if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
         marchand->Marchand=loadImage("src/graphics/Marchand/Karine1.png");
         drawImage(marchand->Marchand,160,50);
-        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        drawImage(marchand->Enter,138,120);
-        
     }
     if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
     {
-        marchand->Jerem=loadImage("src/graphics/Marchand/Karine2.png");
-        drawImage(marchand->Jerem,160,50);
-        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        drawImage(marchand->Enter,138,120);
-        
+        marchand->Marchand=loadImage("src/graphics/Marchand/Karine2.png");
+        drawImage(marchand->Marchand,160,50);
     }
     if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
     { 
-        marchand->Jerem=loadImage("src/graphics/Marchand/Karine3.png");
-        drawImage(marchand->Jerem,160,50);
-        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        drawImage(marchand->Enter,138,120);
-        
+        marchand->Marchand=loadImage("src/graphics/Marchand/Karine3.png");
+        drawImage(marchand->Marchand,160,50);
     }
-    if (marchand->Compteur1 == 60)
-    {
-        marchand->Compteur1 = 0;
-    }
+    
 
     //Sprite Bulle Karine
     if (joueur->inposx >= 170 && joueur->inposx <= 420 && joueur->inposy >= 48 && joueur->inposy<160)
@@ -1022,8 +1009,68 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     {
         marchand->CompteurMess2 = 0;
     }
+    
     if (marchand->CompteurMess2 == 4)
     {
         marchand->CompteurMess2 = 0;
+    }
+
+    //Sprite bec
+    marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+    drawImage(marchand->Enter,55,310);
+    if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
+    {
+        marchand->Bec=loadImage("src/graphics/Marchand/Karine1.png");
+        drawImage(marchand->Bec,70,240); 
+    }
+    if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
+    {
+        marchand->Bec=loadImage("src/graphics/Marchand/Karine2.png");
+        drawImage(marchand->Bec,70,240);
+    }
+    if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
+    { 
+        marchand->Bec=loadImage("src/graphics/Marchand/Karine3.png");
+        drawImage(marchand->Bec,70,240);
+    }
+    //bulle Bec
+    if (joueur->inposx >= 40 && joueur->inposx <= 120 && joueur->inposy >= 230 && joueur->inposy<310)
+    {
+        printf("aaa");
+        if (input->enter == 1)
+        {
+            SDL_Delay(200);
+            marchand->CompteurMess3 += 1;
+        }
+        if (marchand->CompteurMess3==1)
+        {
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
+            drawImage(marchand->bulle,210,130);
+        }
+        if (marchand->CompteurMess3==2)
+        {
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
+            drawImage(marchand->bulle,210,130);
+        }
+        if (marchand->CompteurMess3==3)
+        {
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
+            drawImage(marchand->bulle,210,95);
+        }
+    }
+    //remise a zero du compteur
+    else
+    {
+        marchand->CompteurMess3 = 0;
+    }
+    if (marchand->CompteurMess3 == 4)
+    {
+        marchand->CompteurMess3 = 0;
+    }
+
+    //reset compteur gene sprite
+    if (marchand->Compteur1 == 60)
+    {
+        marchand->Compteur1 = 0;
     }
 }

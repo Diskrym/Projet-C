@@ -52,12 +52,13 @@ typedef struct Joueur
 
 typedef struct Marchand
 {
-    int CompteurMess1,CompteurMess2, Compteur1;
+    int CompteurMess1,CompteurMess2, CompteurMess3, Compteur1;
     SDL_Texture *Jerem;
     SDL_Texture *Enter;
     SDL_Texture *Marchand;
     SDL_Texture *bulle;
     SDL_Texture *Table;
+    SDL_Texture *Bec;
 }Marchand;
 
 typedef struct Monstre
