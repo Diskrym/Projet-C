@@ -1044,6 +1044,8 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     {
         if (input->enter == 1)
         {
+            joueur->NbPiece+=joueur->AttPiece;
+            joueur->AttPiece = 0;
             SDL_Delay(200);
             marchand->CompteurMess3 += 1;
         }
