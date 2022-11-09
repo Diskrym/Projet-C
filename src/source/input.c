@@ -32,6 +32,10 @@ void getInput(Input *input)
                     case SDLK_z:
                         input->shield = 1;
                     break;
+
+                    case SDLK_e :
+                        input->dague = 1;
+                    break;
  
                     case SDLK_SPACE:
                         input->attack = 1;
@@ -78,6 +82,10 @@ void getInput(Input *input)
  
                     case SDLK_z:
                         input->shield = 0;
+                    break;
+
+                    case SDLK_e :
+                        input->dague = 0;
                     break;
  
                     case SDLK_LEFT:

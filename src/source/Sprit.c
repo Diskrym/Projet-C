@@ -198,9 +198,6 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
             joueur->TimingBouclier+=1;
         }
     }
-
-        
-    
     //reset des compteur pour sprite et attaque (attaque pour les sprit)
     if(joueur->Numattack >= 23)
     {
