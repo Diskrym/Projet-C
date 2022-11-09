@@ -1023,24 +1023,24 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
 
     //Sprite bec
     marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-    drawImage(marchand->Enter,65,310);
+    drawImage(marchand->Enter, 95,310);
     if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
         marchand->Bec=loadImage("src/graphics/Marchand/Bec1.png");
-        drawImage(marchand->Bec,80,240); 
+        drawImage(marchand->Bec,60,220); 
     }
     if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
     {
         marchand->Bec=loadImage("src/graphics/Marchand/Bec2.png");
-        drawImage(marchand->Bec,80,240);
+        drawImage(marchand->Bec,60,220);
     }
     if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
     { 
         marchand->Bec=loadImage("src/graphics/Marchand/Bec3.png");
-        drawImage(marchand->Bec,80,240);
+        drawImage(marchand->Bec,60,220);
     }
     //bulle Bec
-    if (joueur->inposx >= 50 && joueur->inposx <= 130 && joueur->inposy >= 230 && joueur->inposy<310)
+    if (joueur->inposx >= 180 && joueur->inposx <= 240 && joueur->inposy >= 185 && joueur->inposy<280)
     {
         if (input->enter == 1)
         {
