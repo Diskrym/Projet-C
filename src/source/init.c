@@ -156,8 +156,12 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     if (lvl->Num==4)
     {
         collisionmur(joueur);
-        collisionTable(joueur,input,lvl);
-        collisionJermy (joueur, input,lvl);
+        //Table
+        collisionDecor(joueur, input,lvl,223,415,120,55);
+        //jermy
+        collisionDecor(joueur, input,lvl,465,530,283,210);
+        //Bec
+        collisionDecor(joueur, input,lvl,80,240,320,240);
         GestionMarchands(joueur, input, &monstre->marchand);
     }   
 }

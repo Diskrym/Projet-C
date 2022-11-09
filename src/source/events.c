@@ -169,14 +169,15 @@ void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
 
 
 
-void collisionTable (Joueur *joueur, Input *input, Lvl *lvl)
+
+void collisionDecor (Joueur *joueur, Input *input, Lvl *lvl, int x1, int x2, int y1, int y2)
 {  
     
     if (lvl->Num==4)
     {   //collision haut joueur
-        if((joueur->inposx>=225 && joueur->inposx<=415 )||(joueur->inposx+SPRITE_SIZE>=225 && joueur->inposx+SPRITE_SIZE<=415 )||((joueur->inposx>=225 && joueur->inposx<=415 )&&(joueur->inposx+SPRITE_SIZE>=225 && joueur->inposx+SPRITE_SIZE<=415 )))
+        if((joueur->inposx>=x1 && joueur->inposx<=x2 )||(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )||((joueur->inposx>=x1 && joueur->inposx<=x2 )&&(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )))
         {
-            if ((joueur->inposy <= 120)&&(joueur->inposy >= 55 ))
+            if ((joueur->inposy <= y1)&&(joueur->inposy >= y2 ))
             {
                if (input->up == 1)
                 {
@@ -186,9 +187,9 @@ void collisionTable (Joueur *joueur, Input *input, Lvl *lvl)
         }
         
         //collision bas joueur
-        if((joueur->inposx>=225 && joueur->inposx<=415 )||(joueur->inposx+SPRITE_SIZE>=225 && joueur->inposx+SPRITE_SIZE<=415 )||((joueur->inposx>=225 && joueur->inposx<=415 )&&(joueur->inposx+SPRITE_SIZE>=225 && joueur->inposx+SPRITE_SIZE<=415 )))
+        if((joueur->inposx>=x1 && joueur->inposx<=x2 )||(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )||((joueur->inposx>=x1 && joueur->inposx<=x2 )&&(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )))
         {
-            if ((joueur->inposy+SPRITE_SIZE <= 120)&&(joueur->inposy+SPRITE_SIZE >= 55 ))        
+            if ((joueur->inposy+SPRITE_SIZE <= y1)&&(joueur->inposy+SPRITE_SIZE >= y2 ))        
             {
                 if (input->down == 1)
                 {
@@ -198,9 +199,9 @@ void collisionTable (Joueur *joueur, Input *input, Lvl *lvl)
         }
     
         // //coter droit joueur
-        if((joueur->inposy>=55 && joueur->inposy<=120 )||(joueur->inposy+SPRITE_SIZE>=55 && joueur->inposy+SPRITE_SIZE<=120 )||((joueur->inposy>=55 && joueur->inposy<=120 )&&(joueur->inposy+SPRITE_SIZE>=55 && joueur->inposy+SPRITE_SIZE<=120 )))
+        if((joueur->inposy>=y2 && joueur->inposy<=y1 )||(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1 )||((joueur->inposy>=y2 && joueur->inposy<=y1 )&&(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1 )))
         {
-            if ((joueur->inposx+SPRITE_SIZE <= 415)&&(joueur->inposx+SPRITE_SIZE >= 225 ))
+            if ((joueur->inposx+SPRITE_SIZE <= x2)&&(joueur->inposx+SPRITE_SIZE >= x1 ))
             {
                 if (input->right == 1)
                 {
@@ -210,64 +211,9 @@ void collisionTable (Joueur *joueur, Input *input, Lvl *lvl)
         }
         
         // //coter gauche joueur
-        if((joueur->inposy>=55 && joueur->inposy<=120 )||(joueur->inposy+SPRITE_SIZE>=55 && joueur->inposy+SPRITE_SIZE<=120)||((joueur->inposy>=55 && joueur->inposy<=120 )&&(joueur->inposy+SPRITE_SIZE>=55 && joueur->inposy+SPRITE_SIZE<=120)))
+        if((joueur->inposy>=y2 && joueur->inposy<=y1 )||(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1)||((joueur->inposy>=y2 && joueur->inposy<=y1 )&&(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1)))
         {
-            if ((joueur->inposx <= 415)&&(joueur->inposx >= 225 ))
-            {
-                if (input->left == 1)
-                {
-                    joueur->inposx+=3;  
-                }
-            }
-        }
-    } 
-}
-
-
-void collisionJermy (Joueur *joueur, Input *input, Lvl *lvl)
-{  
-    
-    if (lvl->Num==4)
-    {   //collision haut joueur
-        if((joueur->inposx>=465 && joueur->inposx<=530 )||(joueur->inposx+SPRITE_SIZE>=465 && joueur->inposx+SPRITE_SIZE<=530 )||((joueur->inposx>=465 && joueur->inposx<=530 )&&(joueur->inposx+SPRITE_SIZE>=465 && joueur->inposx+SPRITE_SIZE<=530 )))
-        {
-            if ((joueur->inposy <= 283)&&(joueur->inposy >= 210 ))
-            {
-               if (input->up == 1)
-                {
-                joueur->inposy+=3;  
-                }
-            }
-        }
-        
-        //collision bas joueur
-        if((joueur->inposx>=465 && joueur->inposx<=530 )||(joueur->inposx+SPRITE_SIZE>=465 && joueur->inposx+SPRITE_SIZE<=530 )||((joueur->inposx>=465 && joueur->inposx<=530 )&&(joueur->inposx+SPRITE_SIZE>=465 && joueur->inposx+SPRITE_SIZE<=530 )))
-        {
-            if ((joueur->inposy+SPRITE_SIZE <= 283)&&(joueur->inposy+SPRITE_SIZE >= 210 ))        
-            {
-                if (input->down == 1)
-                {
-                    joueur->inposy-=3;  
-                }   
-            }
-        }
-    
-        // //coter droit joueur
-        if((joueur->inposy>=210 && joueur->inposy<=283 )||(joueur->inposy+SPRITE_SIZE>=210 && joueur->inposy+SPRITE_SIZE<=283 )||((joueur->inposy>=210 && joueur->inposy<=283 )&&(joueur->inposy+SPRITE_SIZE>=210 && joueur->inposy+SPRITE_SIZE<=283 )))
-        {
-            if ((joueur->inposx+SPRITE_SIZE <= 530)&&(joueur->inposx+SPRITE_SIZE >= 465 ))
-            {
-                if (input->right == 1)
-                {
-                    joueur->inposx-=3;  
-                }   
-            }
-        }
-        
-        // //coter gauche joueur
-        if((joueur->inposy>=210 && joueur->inposy<=283 )||(joueur->inposy+SPRITE_SIZE>=210 && joueur->inposy+SPRITE_SIZE<=283)||((joueur->inposy>=210 && joueur->inposy<=283 )&&(joueur->inposy+SPRITE_SIZE>=210 && joueur->inposy+SPRITE_SIZE<=283)))
-        {
-            if ((joueur->inposx <= 530)&&(joueur->inposx >= 465 ))
+            if ((joueur->inposx <= x2)&&(joueur->inposx >= x1 ))
             {
                 if (input->left == 1)
                 {
