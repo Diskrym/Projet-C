@@ -96,16 +96,16 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
         Mix_PlayMusic(son ->musiquelvl, -1);
     }
     if(lvl->Num == 1)
-    {   joueur->NbPiece+=1;
+    {   joueur->AttPiece+=1;
         LoadNiv12(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, lvl, joueur);
     }
     if(lvl->Num == 2)
-    {   joueur->NbPiece+=1;
+    {   joueur->AttPiece+=1;
          LoadNiv13(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
     if(lvl->Num == 3)
     {   
-        joueur->NbPiece+=1;
+        joueur->AttPiece+=1;
         loadNiv14 (joueur, &monstre->boss, lvl);
         Mix_PlayMusic(son ->musiqueboss, -1);
     }
