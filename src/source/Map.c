@@ -186,7 +186,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         drawImage(lvl->Cadenas2,260,190);
 
         lvl->Cadenas3=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas3,228,125);
+        drawImage(lvl->Cadenas3,225,120);
 
         lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
         drawImage(lvl->Cadenas4,293,68);
@@ -199,7 +199,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         drawImage(lvl->Cadenas2,260,190);
 
         lvl->Cadenas3=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas3,228,125);
+        drawImage(lvl->Cadenas3,225,120);
 
         lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
         drawImage(lvl->Cadenas4,293,68);
@@ -207,7 +207,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
     if (lvl->WinDonjon == 2)
     {
         lvl->Cadenas3=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas3,228,125);
+        drawImage(lvl->Cadenas3,225,120);
 
         lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
         drawImage(lvl->Cadenas4,293,68);
