@@ -887,6 +887,12 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         SDL_DestroyTexture(marchand->Jerem);
         marchand->Enter = NULL;
     }
+    if (marchand->Bec != NULL)
+    {
+        SDL_DestroyTexture(marchand->Bec);
+        marchand->Bec = NULL;
+    }
+    
     
     //Affichage de la table 
     marchand->Table=loadImage("src/graphics/Marchand/Table.png");
@@ -1017,26 +1023,25 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
 
     //Sprite bec
     marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-    drawImage(marchand->Enter,55,310);
+    drawImage(marchand->Enter,65,310);
     if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
     {
-        marchand->Bec=loadImage("src/graphics/Marchand/Karine1.png");
-        drawImage(marchand->Bec,70,240); 
+        marchand->Bec=loadImage("src/graphics/Marchand/Bec1.png");
+        drawImage(marchand->Bec,80,240); 
     }
     if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
     {
-        marchand->Bec=loadImage("src/graphics/Marchand/Karine2.png");
-        drawImage(marchand->Bec,70,240);
+        marchand->Bec=loadImage("src/graphics/Marchand/Bec2.png");
+        drawImage(marchand->Bec,80,240);
     }
     if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
     { 
-        marchand->Bec=loadImage("src/graphics/Marchand/Karine3.png");
-        drawImage(marchand->Bec,70,240);
+        marchand->Bec=loadImage("src/graphics/Marchand/Bec3.png");
+        drawImage(marchand->Bec,80,240);
     }
     //bulle Bec
-    if (joueur->inposx >= 40 && joueur->inposx <= 120 && joueur->inposy >= 230 && joueur->inposy<310)
+    if (joueur->inposx >= 50 && joueur->inposx <= 130 && joueur->inposy >= 230 && joueur->inposy<310)
     {
-        printf("aaa");
         if (input->enter == 1)
         {
             SDL_Delay(200);
