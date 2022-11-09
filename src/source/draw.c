@@ -131,15 +131,15 @@ void AffichagePiece (Joueur *joueur,Lvl *lvl, ParamTexte *paramtexte)
     {
             lvl->Piece=loadImage("src/graphics/lvl/Piece.png");
             drawImage(lvl->Piece, 405 ,4);
-            SDL_Color color = { 255, 255, 255 };
+            SDL_Color color = { 0, 0, 0 };
             SDL_itoa(joueur->NbPiece, paramtexte->StrPiece,10); 
-            paramtexte->SurfacePiece = TTF_RenderText_Solid(paramtexte->Font, "0", color);
+            paramtexte->SurfacePiece = TTF_RenderText_Solid(paramtexte->Font, paramtexte->StrPiece, color);
             if (paramtexte->SurfacePiece==NULL)
             {printf("un");}
             paramtexte->TexturePiece = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfacePiece);
             if (paramtexte->TexturePiece==NULL)
             {printf("deux");}
-            drawImage(paramtexte->TexturePiece,430,0);
+            drawImage(paramtexte->TexturePiece,470,4);
 
             
         

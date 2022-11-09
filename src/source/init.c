@@ -84,32 +84,28 @@ void Son (EffetSon *son)
 
 void Texte(ParamTexte *paramtexte)
 {
-TTF_Font * font = TTF_OpenFont("/src/Font/arial.ttf", 25);
-if (font==NULL)
-{
-    printf("AAAAAA");
-}
+paramtexte->Font = TTF_OpenFont("src/font/Pixel.ttf", 25);
 }
 
 void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
 {
     if(lvl->Num == 0)
     {   
-        // Mix_PauseMusic();
+        
         LoadNiv11(&monstre->meduse, lvl, joueur);
         Mix_PlayMusic(son ->musiquelvl, -1);
     }
     if(lvl->Num == 1)
-    {
+    {   joueur->NbPiece+=1;
         LoadNiv12(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, lvl, joueur);
     }
     if(lvl->Num == 2)
-    {
+    {   joueur->NbPiece+=1;
          LoadNiv13(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
     if(lvl->Num == 3)
     {   
-        // Mix_PauseMusic();
+        joueur->NbPiece+=1;
         loadNiv14 (joueur, &monstre->boss, lvl);
         Mix_PlayMusic(son ->musiqueboss, -1);
     }
@@ -161,6 +157,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     {
         collisionmur(joueur);
         collisionTable(joueur,input,lvl);
+        collisionJermy (joueur, input,lvl);
         GestionMarchands(joueur, input, &monstre->marchand);
     }   
 }
