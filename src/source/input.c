@@ -155,6 +155,13 @@ void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son)
             joueur->NumSprit+=1;
         }
     }
+    if (input->dague == 1 && joueur->Edague == 0)
+    {
+        joueur->Edague = 1;
+        joueur->xdague=joueur->inposx;
+        joueur->ydague=joueur->inposy+32;
+    }
+    
     if (input->attack==1)
     {
         joueur->NumSprit=0;

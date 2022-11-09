@@ -45,9 +45,10 @@ typedef struct  Boss
 
 typedef struct Joueur
 {
-    int inposx, inposy, Eattack,Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague;
+    int inposx, inposy, Eattack,Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, NumSpriteDague;
     SDL_Texture *chevalier;
     SDL_Texture *attaque;
+    SDL_Texture *dague;
 } Joueur;
 
 typedef struct Marchand

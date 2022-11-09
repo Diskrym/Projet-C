@@ -27,6 +27,7 @@ ParamTexte paramtexte;
 
 int main(int argc, char *argv[])
 {
+    joueur.nbDague=6;
 //extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
