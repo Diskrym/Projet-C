@@ -82,6 +82,15 @@ void Son (EffetSon *son)
     son->coffre= Mix_LoadWAV("src/Sik/OuvertureCoffre.WAV");
 }
 
+void Texte(ParamTexte *paramtexte)
+{
+TTF_Font * font = TTF_OpenFont("/src/Font/arial.ttf", 25);
+if (font==NULL)
+{
+    printf("AAAAAA");
+}
+}
+
 void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
 {
     if(lvl->Num == 0)

@@ -1,10 +1,11 @@
 #include "../header/proto.h"
 
-void drawGame(Joueur *joueur, Lvl *lvl)
+void drawGame(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte)
 {
     // Affiche le fond (background) aux coordonnées (0,0)
     drawImage(lvl->Map, 0, 0);
     AffichageVie (joueur,lvl);
+    AffichagePiece(joueur,lvl,paramtexte);
     AffichageLevel(lvl);
     porte (lvl);
     // Affiche l'écran
@@ -105,6 +106,43 @@ void AffichageVie (Joueur *joueur,Lvl *lvl)
             drawImage(lvl->Vie,SCREEN_WIDTH-(i*34),0);
             i+=1;
         }
+    }
+}
+
+void AffichagePiece (Joueur *joueur,Lvl *lvl, ParamTexte *paramtexte)
+{   
+    if (lvl->Piece != NULL)
+    {
+        SDL_DestroyTexture(lvl->Piece);
+        lvl->Piece=NULL;
+    }
+    if (paramtexte->TexturePiece != NULL)
+    {
+        SDL_DestroyTexture(paramtexte->TexturePiece);
+        paramtexte->TexturePiece=NULL;
+    }
+    if (paramtexte->SurfacePiece != NULL)
+    {
+        SDL_FreeSurface(paramtexte->SurfacePiece);
+        paramtexte->SurfacePiece=NULL;
+    }
+
+    if (lvl->Num >= 0)
+    {
+            lvl->Piece=loadImage("src/graphics/lvl/Piece.png");
+            drawImage(lvl->Piece, 405 ,4);
+            SDL_Color color = { 255, 255, 255 };
+            SDL_itoa(joueur->NbPiece, paramtexte->StrPiece,10); 
+            paramtexte->SurfacePiece = TTF_RenderText_Solid(paramtexte->Font, "0", color);
+            if (paramtexte->SurfacePiece==NULL)
+            {printf("un");}
+            paramtexte->TexturePiece = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfacePiece);
+            if (paramtexte->TexturePiece==NULL)
+            {printf("deux");}
+            drawImage(paramtexte->TexturePiece,430,0);
+
+            
+        
     }
 }
 

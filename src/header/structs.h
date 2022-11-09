@@ -45,7 +45,7 @@ typedef struct  Boss
 
 typedef struct Joueur
 {
-    int inposx, inposy, Eattack,Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier;
+    int inposx, inposy, Eattack,Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, NbPiece;
     SDL_Texture *chevalier;
     SDL_Texture *attaque;
 } Joueur;
@@ -103,12 +103,24 @@ typedef struct EffetSon
 
 }EffetSon;
 
+
+typedef struct ParamTexte
+{
+    TTF_Font *Font;
+    SDL_Surface *SurfacePiece;
+    SDL_Texture *TexturePiece;
+    char StrPiece[3];
+
+}ParamTexte;
+
+
 typedef struct Lvl
 {
     int Num, MortMonstre, NumDonjon, WinDonjon;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
+    SDL_Texture *Piece;
     SDL_Texture *Map;
     SDL_Texture *SpritLvl;
     SDL_Texture *SpritMotLVL;

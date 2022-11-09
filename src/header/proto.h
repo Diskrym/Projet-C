@@ -4,13 +4,14 @@
 #include "structs.h" 
 
 //draw.c
-extern void drawGame(Joueur *joueur, Lvl *lvl);
+extern void drawGame(Joueur *joueur, Lvl *lvl, ParamTexte *paramtexte);
 extern void GameOver (EffetSon *son);
 extern void Win (void);
 extern SDL_Texture *loadImage(char *name);
 extern void drawImage(SDL_Texture *, int, int);
 extern void delay(unsigned int frameLimit);
 extern void AffichageVie(Joueur *joueur, Lvl *lvl);
+extern void AffichagePiece (Joueur *joueur,Lvl *lvl,ParamTexte *paramtexte);
 extern void AffichageLevel (Lvl *lvl);
 extern void porte (Lvl *lvl);
 extern void menu (Lvl *lvl);
@@ -40,6 +41,7 @@ extern void LoadNiv12(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl,
 extern void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son);
 extern void LoadNiv13(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
 extern void Son (EffetSon *son);
+extern void Texte(ParamTexte *paramtexte);
 extern void loadNiv14 (Joueur *joueur, Boss *boss, Lvl *lvl);
 extern void loadNiv21 (Joueur *jouer, Lvl* lvl);
 extern void cleanup(EffetSon *son);
