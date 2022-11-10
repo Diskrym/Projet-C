@@ -11,6 +11,12 @@ Historique version :
     V6 : Donjon multiple + map 
 */
 
+/*
+    !!! INFO !!!
+    CoupDague en attente mais pret si double coup sur monstre
+    Son attaque chevalier pret mais commenter
+*/
+
 #include "../header/proto.h"
  
 /* Déclaration des variables / structures utilisées par le jeu */
