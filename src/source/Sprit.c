@@ -687,8 +687,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
     
     
     //Sprit boule
-        printf("%d\n", yeti->Eattaque);
-
     if (yeti->Eattaque == 1)
     {
         if (yeti->directionboule==1)
@@ -733,6 +731,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     SDL_DestroyTexture(yeti->boule);
                     yeti->boule=NULL;
                     yeti->Eattaque=0;
+                    yeti->CompteurBoule=0;
                 }
             }
         }
@@ -777,6 +776,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     SDL_DestroyTexture(yeti->boule);
                     yeti->boule=NULL;
                     yeti->Eattaque=0;
+                    yeti->CompteurBoule=0;
                 }
             }
         }
@@ -796,7 +796,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
     if (yeti->compteur>=190)
     {
         yeti->compteur=0;
-        yeti->CompteurBoule=0;
     }
 
     //Mort yeti
