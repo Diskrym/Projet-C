@@ -511,11 +511,11 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                         drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                         yeti->attack+=1;
                     }
-                    // if(insidechevalier(joueur, yeti)==1 && joueur->Numattack==15)
-                    // {          
-                    //     yeti->CompteurSpriteDegat=1;
-                    //     yeti->Life--;
-                    // }
+                    if(insidechevalieryeti(joueur, yeti)==1 && joueur->Numattack==15)
+                    {          
+                        yeti->CompteurSpriteDegat=1;
+                        yeti->Life--;
+                    }
                 }
 
                  if (yeti->Direction==0)
@@ -541,11 +541,11 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                         drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                         yeti->attack+=1;
                     }
-                    // if(insidechevalier(joueur, yeti)==1 && joueur->Numattack==15)
-                    // {          
-                    //     yeti->CompteurSpriteDegat=1;
-                    //     yeti->Life--;
-                    // }
+                    if(insidechevalieryeti(joueur, yeti)==1 && joueur->Numattack==15)
+                    {          
+                        yeti->CompteurSpriteDegat=1;
+                        yeti->Life--;
+                    }
                 }
             }
  
