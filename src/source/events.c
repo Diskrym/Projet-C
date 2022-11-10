@@ -172,9 +172,9 @@ void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
 {  
     if (yeti->Life!=0)
     {   //collision haut joueur
-        if((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsx+65 )||(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsx+65 )||((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsx+65 )&&(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsx+65 )))
+        if((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsy+80 )||(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsy+80 )||((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsy+80 )&&(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsy+80 )))
         {
-            if ((joueur->inposy <= yeti->posmonsy+20+80)&&(joueur->inposy >= yeti->posmonsy+20 ))
+            if ((joueur->inposy <= yeti->posmonsy+80)&&(joueur->inposy >= yeti->posmonsy+20 ))
             {
                 yeti->posmonsy-=1;
                 if (input->up == 1)
@@ -185,9 +185,9 @@ void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
         }
        
         //collision bas joueur
-        if((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsx+65 )||(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsx+65 )||((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsx+65 )&&(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsx+65 )))
+        if((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsy+80 )||(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsy+80 )||((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsy+80 )&&(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsy+80 )))
         {
-            if ((joueur->inposy+SPRITE_SIZE <= yeti->posmonsy+20+80)&&(joueur->inposy+SPRITE_SIZE >= yeti->posmonsy+20 ))        
+            if ((joueur->inposy+SPRITE_SIZE <= yeti->posmonsy+80)&&(joueur->inposy+SPRITE_SIZE >= yeti->posmonsy+20 ))        
             {
                 yeti->posmonsy+=1;
                 if (input->down == 1)
@@ -364,7 +364,7 @@ int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
         int y=0;
     if (joueur->Direction==1)
     {
-        if ((yeti->posmonsx>=joueur->inposx-21 || yeti->posmonsx+65>=joueur->inposx-21) && (yeti->posmonsx<=joueur->inposx || yeti->posmonsx+65<=joueur->inposx))
+        if ((yeti->posmonsx>=joueur->inposx-21 || yeti->posmonsy+80>=joueur->inposx-21) && (yeti->posmonsx<=joueur->inposx || yeti->posmonsy+80<=joueur->inposx))
         {
             x=1;
         }
@@ -379,7 +379,7 @@ int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
     }
     if (joueur->Direction==0)
     {
-        if ((yeti->posmonsx>=joueur->inposx+SPRITE_SIZE || yeti->posmonsx+65>=joueur->inposx+SPRITE_SIZE) && (yeti->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| yeti->posmonsx+65<=joueur->inposx+SPRITE_SIZE+21))
+        if ((yeti->posmonsx>=joueur->inposx+SPRITE_SIZE || yeti->posmonsy+80>=joueur->inposx+SPRITE_SIZE) && (yeti->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| yeti->posmonsy+80<=joueur->inposx+SPRITE_SIZE+21))
         {
             x=1;
         }

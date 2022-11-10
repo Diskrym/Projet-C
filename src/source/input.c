@@ -277,11 +277,11 @@ void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
             yeti->posmonsx+=1;
             yeti->Direction=0;
         }
-        if (joueur->inposy<yeti->posmonsy)
+        if (joueur->inposy<yeti->posmonsy-10)
         {
             yeti->posmonsy-=1;
         }
-        if (joueur->inposy>yeti->posmonsy)
+        if (joueur->inposy>yeti->posmonsy-10)
         {
             yeti->posmonsy+=1;
         }
