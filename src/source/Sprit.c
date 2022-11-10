@@ -478,7 +478,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
         yeti->attaqueyeti=NULL;
     }
 
-     printf("\n %d",yeti->compteur);
  
     //Mouvement  yeti quand en vie
     if (yeti->Life >=1)
@@ -513,11 +512,11 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     yeti->attack+=1;
                 }
-                // if(insidechevalier(joueur, yeti)==1 && joueur->Numattack==15)
-                // {          
-                //     yeti->CompteurSpriteDegat=1;
-                //     yeti->Life--;
-                // }
+                if(insidechevalieryeti(joueur, yeti)==1 && joueur->Numattack==15)
+                {          
+                    yeti->CompteurSpriteDegat=1;
+                    yeti->Life--;
+                }
                 }
 
                  if (yeti->Direction==0)
@@ -543,11 +542,11 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     yeti->attack+=1;
                 }
-                // if(insidechevalier(joueur, yeti)==1 && joueur->Numattack==15)
-                // {          
-                //     yeti->CompteurSpriteDegat=1;
-                //     yeti->Life--;
-                // }
+                if(insidechevalieryeti(joueur, yeti)==1 && joueur->Numattack==15)
+                {          
+                    yeti->CompteurSpriteDegat=1;
+                    yeti->Life--;
+                }
                 }
             }
  
@@ -555,7 +554,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {   
                 if (yeti->Direction==1)
                 {
-                //si la yeti prend un coup
+                //si le yeti prend un coup
                 yeti->CompteurSpriteDegat+=1;
                 yeti->yeti=loadImage("src/graphics/yeti/YetiDegatG.png");
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
@@ -607,23 +606,14 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1G.png");
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
-            if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=70 && yeti->NumSprit<80)
+            if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=65 && yeti->NumSprit<80)
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque2G.png");
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3G.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                
-            }
-            if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
-            {                
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4G.png");                    
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                // Si joueur dans la range de la yeti durant les éclaires
-                // if(inside(joueur, yeti)==1 && (yeti->NumSprit==23 || yeti->NumSprit==14))                    
+                //Boule de neige part à 65
+
+                //Si joueur dans la range de la yeti durant les éclaires
+                // if(insidechevalieryeti(joueur, yeti)==1 && (yeti->NumSprit==23 || yeti->NumSprit==14))                    
                 // {
                 //     if (yeti->coup == 0)
                 //     {
@@ -633,8 +623,18 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 // }
                 // yeti->attaqueyeti=loadImage("src/graphics/yeti/.png");
                 // drawImage(yeti->attaqueyeti,yeti->posmonsx -23 ,yeti->posmonsy - 23);
-               
+            }
+            if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<65)
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3G.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 
+                
+            }
+            if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
+            {                
+                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4G.png");                    
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);                
              
             }
             if (yeti->NumSprit>=40 && yeti->NumSprit<50 )
@@ -652,23 +652,14 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1D.png");
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
-            if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=70 && yeti->NumSprit<80)
+            if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=65 && yeti->NumSprit<80)
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque2D.png");
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3D.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                
-            }
-            if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
-            {                
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4D.png");                    
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                // Si joueur dans la range de la yeti durant les éclaires
-                // if(inside(joueur, yeti)==1 && (yeti->NumSprit==23 || yeti->NumSprit==14))                    
+                //Boule de neige part à 64
+
+                //Si joueur dans la range de la yeti durant les éclaires
+                // if(insidechevalieryeti(joueur, yeti)==1 && (yeti->NumSprit==23 || yeti->NumSprit==14))                    
                 // {
                 //     if (yeti->coup == 0)
                 //     {
@@ -678,9 +669,18 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 // }
                 // yeti->attaqueyeti=loadImage("src/graphics/yeti/.png");
                 // drawImage(yeti->attaqueyeti,yeti->posmonsx -23 ,yeti->posmonsy - 23);
-               
+            }
+            if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<65)
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3D.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 
-             
+            }
+            if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
+            {                
+                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4D.png");                    
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                
             }
             if (yeti->NumSprit>=40 && yeti->NumSprit<50 )
             {                
@@ -778,7 +778,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             lvl->MortMonstre+=1;
         }  
     }
-    //reset compteur pour sprite
    
 }
 
@@ -1183,7 +1182,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         
     }
 
-    //mort bosse
+    //mort boss
     if (boss->Life==0)
     {   
         Mix_PauseMusic();

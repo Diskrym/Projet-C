@@ -135,10 +135,8 @@ void AffichagePiece (Joueur *joueur,Lvl *lvl, ParamTexte *paramtexte)
             SDL_itoa(joueur->NbPiece, paramtexte->StrPiece,10); 
             paramtexte->SurfacePiece = TTF_RenderText_Solid(paramtexte->Font, paramtexte->StrPiece, color);
             if (paramtexte->SurfacePiece==NULL)
-            {printf("un");}
             paramtexte->TexturePiece = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfacePiece);
             if (paramtexte->TexturePiece==NULL)
-            {printf("deux");}
             drawImage(paramtexte->TexturePiece,470,4);
 
             
@@ -190,12 +188,6 @@ void AffichageLevel (Lvl *lvl)
         lvl->SpritLvl=loadImage("src/graphics/lvl/shop.png");
         drawImage(lvl->SpritLvl,5,5);
     }
-    if (lvl->Num==5)
-    {
-        lvl->SpritLvl=loadImage("src/graphics/lvl/5.png");
-        drawImage(lvl->SpritLvl,139,0);
-    }
-    
 }
 
 void porte (Lvl *lvl)

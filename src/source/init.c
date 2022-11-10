@@ -166,12 +166,13 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         //jermy
         collisionDecor(joueur, input,lvl,465,530,283,210);
         //Bec
-        collisionDecor(joueur, input,lvl,80,240,320,240);
+        collisionDecor(joueur, input,lvl,80,220,320,240);
         GestionMarchands(joueur, input, &monstre->marchand);
     }   
     if (lvl -> Num == 5)
     {
         collisionmur(joueur);
+        collisionyeti (joueur, &monstre->yeti, input, lvl);
         deplacementyeti(joueur,&monstre->yeti, lvl, son);
 
     }
