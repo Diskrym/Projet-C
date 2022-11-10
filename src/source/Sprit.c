@@ -1472,18 +1472,18 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         }
         if (marchand->CompteurMess3==1)
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
-            drawImage(marchand->bulle,210,130);
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleBec1.png");
+            drawImage(marchand->bulle,55,170);
         }
         if (marchand->CompteurMess3==2)
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
-            drawImage(marchand->bulle,210,130);
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleBec2.png");
+            drawImage(marchand->bulle,55,170);
         }
         if (marchand->CompteurMess3==3)
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
-            drawImage(marchand->bulle,210,95);
+            marchand->bulle=loadImage("src/graphics/Marchand/BulleBec3.png");
+            drawImage(marchand->bulle,55,170);
         }
     }
     //remise a zero du compteur
