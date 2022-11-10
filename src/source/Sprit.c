@@ -690,15 +690,33 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
     {
         if (yeti->directionboule==1)
         {
-            yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
-            drawImage(yeti->boule,yeti->xboule,yeti->yboule);
-            yeti->xboule-=5;
+            if (yeti->xboule>=20 && yeti->xboule<=600 && yeti->yboule>= 20 && yeti->yboule<=384)
+            { 
+                yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
+                drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                yeti->xboule-=5;  
+            }
+            else
+            {
+                SDL_DestroyTexture(yeti->boule);
+                yeti->boule=NULL;
+                yeti->Eattaque=0;
+            }
         }
         if (yeti->directionboule==0)
         {
-            yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
-            drawImage(yeti->boule,yeti->xboule,yeti->yboule);
-            yeti->xboule+=5;
+            if (yeti->xboule>=20 && yeti->xboule<=600 && yeti->yboule>= 20 && yeti->yboule<=384)
+            { 
+                yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
+                drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                yeti->xboule+=5;  
+            }
+            else
+            {
+                SDL_DestroyTexture(yeti->boule);
+                yeti->boule=NULL;
+                yeti->Eattaque=0;
+            }
         }
         
     }
