@@ -687,6 +687,8 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
     
     
     //Sprit boule
+        printf("%d\n", yeti->Eattaque);
+
     if (yeti->Eattaque == 1)
     {
         if (yeti->directionboule==1)
@@ -730,6 +732,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {
                     SDL_DestroyTexture(yeti->boule);
                     yeti->boule=NULL;
+                    yeti->Eattaque=0;
                 }
             }
         }
@@ -749,7 +752,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             else
             {
                 yeti->CompteurBoule+=1;
-                printf("%d \n", yeti->CompteurBoule);
                 if (yeti->CompteurBoule>=0 && yeti->CompteurBoule<5)
                 {  
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur1D.png");
@@ -774,6 +776,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {
                     SDL_DestroyTexture(yeti->boule);
                     yeti->boule=NULL;
+                    yeti->Eattaque=0;
                 }
             }
         }
