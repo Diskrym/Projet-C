@@ -597,7 +597,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
         {
             if (yeti->Direction==1)
             {             
-                if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 && yeti->NumSprit<90 )
+                if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80  )
                 {  
                 
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1G.png");
@@ -631,11 +631,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque5G.png");                    
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
+                
             }
 
             if (yeti->Direction==0)
             {             
-                if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 && yeti->NumSprit<90 )
+                if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 )
                 {  
                 
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1D.png");
@@ -670,11 +671,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 }
                 //reset compteur yeti
         
-                if (yeti->NumSprit>=90)
+                
+            }
+            if (yeti->NumSprit>90)
                 {
                     yeti->NumSprit=0;
                 } 
-            }
         }
         
     
