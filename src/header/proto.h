@@ -47,13 +47,14 @@ extern void loadNiv21 (Joueur *jouer, Lvl* lvl);
 extern void cleanup(EffetSon *son);
 extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
 extern void initEclair(Boss *boss);
-extern void loadNiv31(Joueur *joueur, Lvl *lvl);
+extern void loadNiv31(Joueur *joueur,Yeti *yeti, Lvl *lvl);
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
 extern void deplacement (Input *input, Joueur *joueur, Monstre *monstre,EffetSon *son);
 extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son);
 extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Lvl *lvl, EffetSon *son);
+extern void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son);
 extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son);
 
 
@@ -69,6 +70,7 @@ extern void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *mon
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
+extern void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand);
 
 

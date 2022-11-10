@@ -23,6 +23,16 @@ typedef struct Meduse
  
 } Meduse;
 
+typedef struct Yeti
+{
+ 
+    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort;
+    SDL_Texture *attaqueyeti;
+    SDL_Texture *yeti;
+    
+ 
+} Yeti;
+
 typedef struct Chauvesouris
 {
  
@@ -72,6 +82,7 @@ typedef struct Monstre
     Chauvesouris chauvesouris1;
     Boss boss;
     Marchand marchand;
+    Yeti yeti;
 } Monstre;
 
 
@@ -146,7 +157,7 @@ typedef struct Lvl
                                         }
                                     }
  */
-static const int level [5][5][6] = {
+static const int level [6][5][6] = {
                                         {
                                             {1,1,288,160,64,0},
                                             {1,70,70,64,1,3},
@@ -171,6 +182,10 @@ static const int level [5][5][6] = {
                                         },
                                         {
                                             {5,0,288,297,0}
+                                        },
+                                        {
+                                            {6,1,288,297,0},
+                                            {4,70,70,100,2,4}
                                         }
                                     };
 

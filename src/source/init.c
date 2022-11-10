@@ -116,7 +116,7 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
     }
     if (lvl->Num == 5)
     {
-        loadNiv31(joueur, lvl);
+        loadNiv31(joueur, &monstre->yeti, lvl);
     }
     
     
@@ -172,6 +172,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     if (lvl -> Num == 5)
     {
         collisionmur(joueur);
+        deplacementyeti(joueur,&monstre->yeti, lvl, son);
 
     }
     
@@ -243,11 +244,14 @@ void loadNiv21 (Joueur *joueur, Lvl* lvl)
     joueur->inposy = level[4][0][3];
 }
 
-void loadNiv31 (Joueur *joueur, Lvl *lvl)
+void loadNiv31 (Joueur *joueur,Yeti *yeti, Lvl *lvl)
 {
     initMaps(lvl);
     joueur->inposx = level[5][0][2];
     joueur->inposy = level[5][0][3];
+    yeti->posmonsx =level[5][1][1];
+    yeti->posmonsy =level[5][1][2];
+    yeti->Life=level [5][1][5];
 }
 
 void cleanup(EffetSon *son)
