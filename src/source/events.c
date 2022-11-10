@@ -224,26 +224,6 @@ void collisionDecor (Joueur *joueur, Input *input, Lvl *lvl, int x1, int x2, int
     } 
 }
     
-
-//test si l'attaque de la méduse touche le joueur
-int inside (Joueur *joueur, Meduse *meduse)
-{
-    int x=0;
-    int y=0;
-    if ((joueur->inposx>=meduse->posmonsx-23 || joueur->inposx+SPRITE_SIZE>=meduse->posmonsx-23) && (joueur->inposx<=meduse->posmonsx+SPRITE_SIZE+23 || joueur->inposx + SPRITE_SIZE <=meduse->posmonsx+SPRITE_SIZE+23))
-    {
-        x=1;
-    }
-    if ((joueur->inposy>=meduse->posmonsy-23 || joueur->inposy+SPRITE_SIZE>=meduse->posmonsy-23) && (joueur->inposy<=meduse->posmonsy+SPRITE_SIZE+23 || joueur->inposy + SPRITE_SIZE <=meduse->posmonsy+SPRITE_SIZE+23))
-    {
-        y=1;
-    }
-    if (x==1 && y==1)
-    {
-        return 1;
-    }
-}
-
 //test si l'attaque du joueur touche la méduse
 int insidechevalier (Joueur *joueur, Meduse *meduse)
 {
@@ -279,7 +259,8 @@ int insidechevalier (Joueur *joueur, Meduse *meduse)
         {return 1;}
         else 
         {return 0;}
-    }}
+    }
+}
 
 //test si l'attaque du joueur touche le boss
 int insidechevalierBoss (Joueur *joueur, Boss *boss)
@@ -317,6 +298,25 @@ int insidechevalierBoss (Joueur *joueur, Boss *boss)
         {return 0;}
     }
 
+}
+
+//test si l'attaque de la méduse touche le joueur
+int inside (Joueur *joueur, Meduse *meduse)
+{
+    int x=0;
+    int y=0;
+    if ((joueur->inposx>=meduse->posmonsx-23 || joueur->inposx+SPRITE_SIZE>=meduse->posmonsx-23) && (joueur->inposx<=meduse->posmonsx+SPRITE_SIZE+23 || joueur->inposx + SPRITE_SIZE <=meduse->posmonsx+SPRITE_SIZE+23))
+    {
+        x=1;
+    }
+    if ((joueur->inposy>=meduse->posmonsy-23 || joueur->inposy+SPRITE_SIZE>=meduse->posmonsy-23) && (joueur->inposy<=meduse->posmonsy+SPRITE_SIZE+23 || joueur->inposy + SPRITE_SIZE <=meduse->posmonsy+SPRITE_SIZE+23))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {
+        return 1;
+    }
 }
 
 //test si l'attaque de la chauve-souris touche le joueur
