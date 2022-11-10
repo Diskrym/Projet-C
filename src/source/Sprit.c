@@ -612,6 +612,13 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3G.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    if (yeti->NumSprit == 65)
+                    {
+                        yeti->Eattaque = 1;
+                        yeti->directionboule=yeti->Direction;
+                        yeti->xboule=yeti->posmonsx+33;
+                        yeti->yboule=yeti->posmonsy+7;
+                    }
                     
                 }
                 if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
@@ -647,8 +654,8 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     {
                         yeti->Eattaque = 1;
                         yeti->directionboule=yeti->Direction;
-                        yeti->xboule=yeti->posmonsx;
-                        yeti->yboule=yeti->yboule;
+                        yeti->xboule=yeti->posmonsx+33;
+                        yeti->yboule=yeti->posmonsy+9;
                     }
                 }
                 if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
@@ -681,10 +688,17 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
     //Sprit boule
     if (yeti->Eattaque == 1)
     {
-        if (yeti->Direction=1)
+        if (yeti->directionboule==1)
         {
-            yeti->boule=loadImage("src/graphics/yeti/YetiAttaque5D.png");                    
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
+            drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+            yeti->xboule-=5;
+        }
+        if (yeti->directionboule==0)
+        {
+            yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
+            drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+            yeti->xboule+=5;
         }
         
     }
