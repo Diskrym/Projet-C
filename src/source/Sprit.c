@@ -478,7 +478,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
         yeti->attaqueyeti=NULL;
     }
 
-     printf("\n %d",yeti->compteur);
  
     //Mouvement  yeti quand en vie
     if (yeti->Life >=1)
@@ -765,7 +764,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             lvl->MortMonstre+=1;
         }  
     }
-    //reset compteur pour sprite
    
 }
 
@@ -1170,7 +1168,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         
     }
 
-    //mort bosse
+    //mort boss
     if (boss->Life==0)
     {   
         Mix_PauseMusic();

@@ -167,6 +167,63 @@ void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
     } 
 }
 
+//collision entre le yeti et joueur
+void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
+{  
+    if (yeti->Life!=0)
+    {   //collision haut joueur
+        if((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsx+60 )||(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsx+60 )||((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsx+60 )&&(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsx+60 )))
+        {
+            if ((joueur->inposy <= yeti->posmonsy + 60)&&(joueur->inposy >= yeti->posmonsy ))
+            {
+                yeti->posmonsy-=1;
+                if (input->up == 1)
+                {
+                joueur->inposy+=3;  
+                }
+            }
+        }
+       
+        //collision bas joueur
+        if((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsx+60 )||(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsx+60 )||((joueur->inposx>=yeti->posmonsx && joueur->inposx<=yeti->posmonsx+60 )&&(joueur->inposx+SPRITE_SIZE>=yeti->posmonsx && joueur->inposx+SPRITE_SIZE<=yeti->posmonsx+60 )))
+        {
+            if ((joueur->inposy+SPRITE_SIZE <= yeti->posmonsy + 60)&&(joueur->inposy+SPRITE_SIZE >= yeti->posmonsy ))        
+            {
+                yeti->posmonsy+=1;
+                if (input->down == 1)
+                {
+                    joueur->inposy-=3;  
+                }  
+            }
+        }
+   
+        // //coter droit joueur
+        if((joueur->inposy>=yeti->posmonsy && joueur->inposy<=yeti->posmonsy+60 )||(joueur->inposy+SPRITE_SIZE>=yeti->posmonsy && joueur->inposy+SPRITE_SIZE<=yeti->posmonsy+60 )||((joueur->inposy>=yeti->posmonsy && joueur->inposy<=yeti->posmonsy+60 )&&(joueur->inposy+SPRITE_SIZE>=yeti->posmonsy && joueur->inposy+SPRITE_SIZE<=yeti->posmonsy+60 )))
+        {
+            if ((joueur->inposx+SPRITE_SIZE <= yeti->posmonsx + 60)&&(joueur->inposx+SPRITE_SIZE >= yeti->posmonsx ))
+            {
+                yeti->posmonsx+=1;
+                if (input->right == 1)
+                {
+                    joueur->inposx-=3;  
+                }  
+            }
+        }
+       
+        // //coter gauche joueur
+        if((joueur->inposy>=yeti->posmonsy && joueur->inposy<=yeti->posmonsy+60 )||(joueur->inposy+SPRITE_SIZE>=yeti->posmonsy && joueur->inposy+SPRITE_SIZE<=yeti->posmonsy+60 )||((joueur->inposy>=yeti->posmonsy && joueur->inposy<=yeti->posmonsy+60 )&&(joueur->inposy+SPRITE_SIZE>=yeti->posmonsy && joueur->inposy+SPRITE_SIZE<=yeti->posmonsy+60 )))
+        {
+            if ((joueur->inposx <= yeti->posmonsx + 60)&&(joueur->inposx >= yeti->posmonsx ))
+            {
+                yeti->posmonsx-=1;
+                if (input->left == 1)
+                {
+                    joueur->inposx+=3;  
+                }
+            }
+        }
+    }
+}
 
 
 
@@ -299,6 +356,46 @@ int insidechevalierBoss (Joueur *joueur, Boss *boss)
     }
 
 }
+
+
+//test si l'attaque du joueur touche le yeti
+int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
+{       int x=0;
+        int y=0;
+    if (joueur->Direction==1)
+    {
+        if ((yeti->posmonsx>=joueur->inposx-21 || yeti->posmonsx+60>=joueur->inposx-21) && (yeti->posmonsx<=joueur->inposx || yeti->posmonsx+60<=joueur->inposx))
+        {
+            x=1;
+        }
+        if ((yeti->posmonsy>=joueur->inposy+32 || yeti->posmonsy+60>=joueur->inposy+32) && (yeti->posmonsy<=joueur->inposy+SPRITE_SIZE || yeti->posmonsy+60<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    }
+    if (joueur->Direction==0)
+    {
+        if ((yeti->posmonsx>=joueur->inposx+SPRITE_SIZE || yeti->posmonsx+60>=joueur->inposx+SPRITE_SIZE) && (yeti->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| yeti->posmonsx+60<=joueur->inposx+SPRITE_SIZE+21))
+        {
+            x=1;
+        }
+        if ((yeti->posmonsy>=joueur->inposy+32 || yeti->posmonsy+60>=joueur->inposy+32) && (yeti->posmonsy<=joueur->inposy+SPRITE_SIZE || yeti->posmonsy+60<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+       
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    }
+ 
+}
+
 
 //test si l'attaque de la méduse touche le joueur
 int inside (Joueur *joueur, Meduse *meduse)
