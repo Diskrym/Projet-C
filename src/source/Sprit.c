@@ -19,6 +19,12 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         SDL_DestroyTexture(joueur->dague);
         joueur->dague = NULL;
     }
+    if (joueur->dagueMur != NULL)
+    {
+        SDL_DestroyTexture(joueur->dagueMur);
+        joueur->dagueMur = NULL;
+    }
+    
     
 
     //Mouvement du joueur droite si bouclier baisser ou si timing bouclier dépassé
@@ -229,6 +235,14 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         {
             joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
             drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+            //recup dague Gauchemap
+            if (joueur->inposx <= joueur->xdague+20 && (joueur->inposy>=joueur->ydague-30 && joueur->inposy<=joueur->ydague))
+            {
+                SDL_DestroyTexture(joueur->dagueMur);
+                joueur->dagueMur = NULL;
+                joueur->Edague=0;
+
+            }
         }
     }
     //dague
@@ -245,6 +259,14 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         {
             joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurD.png");
             drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+            //recup dague Droite map
+            if (joueur->inposx <= joueur->xdague-20 && (joueur->inposy>=joueur->ydague-30 && joueur->inposy<=joueur->ydague))
+            {
+                SDL_DestroyTexture(joueur->dagueMur);
+                joueur->dagueMur = NULL;
+                joueur->Edague=0;
+
+            }
         }
     }
 }
