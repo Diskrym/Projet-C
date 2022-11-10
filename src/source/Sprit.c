@@ -333,7 +333,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     meduse->Life--; 
                 }
                 //degat dague
-                if (insideDague(joueur, meduse->posmonsx, meduse->posmonsy,64,64)==1 && joueur->CoupDague==0)
+                if (insideDague(joueur, meduse->posmonsx, meduse->posmonsy,64,64)==1)
                 {
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
