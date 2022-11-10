@@ -333,7 +333,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     meduse->Life--; 
                 }
                 //degat dague
-                if (insideVol(joueur, meduse->posmonsx, meduse->posmonsy,64,64,30)==1)
+                if (insideVol(joueur->xdague,joueur->ydague, meduse->posmonsx, meduse->posmonsy,64,64,30)==1)
                 {
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
@@ -697,7 +697,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
                 drawImage(yeti->boule,yeti->xboule,yeti->yboule);
                 
-                if (insideVol(joueur,yeti->xboule,yeti->yboule,64,64,21)==1)
+                if (insideVol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
                     yeti->coup=1;
@@ -717,7 +717,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             { 
                 yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
                 drawImage(yeti->boule,yeti->xboule,yeti->yboule);
-                if (insideVol(joueur,yeti->xboule,yeti->yboule,64,64,21)==1)
+                if (insideVol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
                     yeti->coup=1;
@@ -1017,7 +1017,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     boss->Life--; 
                 }
                 //degat dague
-                if (insideVol(joueur,boss->posmonsx,boss->posmonsy,128,128,30)==1)
+                if (insideVol(joueur->xdague,joueur->ydague,boss->posmonsx,boss->posmonsy,128,128,30)==1)
                 {
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 

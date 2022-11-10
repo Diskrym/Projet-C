@@ -492,17 +492,17 @@ int insideItem (Joueur *joueur, Boss *boss)
         return 1;
     }
 }
-
-int insideVol(Joueur* joueur, int x, int y, int Margex, int Margey, int tailleObj)
+//            pos objet vol x,y  pos cible    taille cible x,y         taille obj vol x
+int insideVol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObj)
 {
     int a=0;
     int b=0;
     //si joueur 
-    if ((joueur->xdague>=x || joueur->xdague+tailleObj>=x) && (joueur->xdague<=x+Margex || joueur->xdague + tailleObj <=x+Margex))
+    if ((xobj>=x || xobj+tailleObj>=x) && (xobj<=x+Margex || xobj + tailleObj <=x+Margex))
     {
         a=1;
     }
-    if ((joueur->ydague>=y || joueur->ydague+tailleObj>=y) && (joueur->ydague<=y+Margey || joueur->ydague + tailleObj <= y+Margey))
+    if ((yobj>=y || yobj+tailleObj>=y) && (yobj<=y+Margey || yobj + tailleObj <= y+Margey))
     {
         b=1;
     }
