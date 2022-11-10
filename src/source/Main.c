@@ -24,6 +24,7 @@ Input input;
 Joueur joueur;
 Chauvesouris chauvesouris, chauvesouris1;
 Meduse meduse, meduse1, meduse2;
+Yeti *yeti;
 Lvl lvl;
 Monstre monstre;
 EffetSon son;

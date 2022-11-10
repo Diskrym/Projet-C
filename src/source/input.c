@@ -256,6 +256,41 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *l
     SpritChauvesouris (chauvesouris, joueur, lvl, son);
 }
 
+void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
+{   yeti->compteur+=1;
+    yeti->NumSprit+=1;
+    if  (yeti->Life==0 && yeti->CompteurSpriteDegat<19)
+    {
+        yeti->CompteurSpriteDegat+=1;
+    }
+   
+    if (yeti->Life >=1 && yeti->compteur<100)
+    {
+        if (joueur->inposx<yeti->posmonsx)
+        {
+            yeti->posmonsx-=1;
+            yeti->Direction=1;
+           
+        }
+        if (joueur->inposx>yeti->posmonsx)
+        {
+            yeti->posmonsx+=1;
+            yeti->Direction=0;
+        }
+        if (joueur->inposy+32<yeti->posmonsy)
+        {
+            yeti->posmonsy-=1;
+        }
+        if (joueur->inposy+32>yeti->posmonsy)
+        {
+            yeti->posmonsy+=1;
+        }
+ 
+    }
+    Sprityeti (yeti, joueur, lvl, son);
+}
+
+
 void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son)
 {
     boss->compteur += 1;
