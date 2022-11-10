@@ -700,9 +700,32 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             }
             else
             {
-                SDL_DestroyTexture(yeti->boule);
-                yeti->boule=NULL;
-                yeti->Eattaque=0;
+                yeti->CompteurBoule+=1;
+                if (yeti->CompteurBoule>=0 && yeti->CompteurBoule<5)
+                {  
+                    yeti->boule=loadImage("src/graphics/yeti/BouleDeMur1G.png");
+                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                }
+                if (yeti->CompteurBoule>=5 && yeti->CompteurBoule<10)
+                {  
+                    yeti->boule=loadImage("src/graphics/yeti/BouleDeMur2G.png");
+                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                }
+                if (yeti->CompteurBoule>=15 && yeti->CompteurBoule<20)
+                {  
+                    yeti->boule=loadImage("src/graphics/yeti/BouleDeMur3G.png");
+                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                }
+                if (yeti->CompteurBoule>=20 && yeti->CompteurBoule<25)
+                {  
+                    yeti->boule=loadImage("src/graphics/yeti/BouleDeMur4G.png");
+                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                }
+                if (yeti->CompteurBoule>=25)
+                {
+                    SDL_DestroyTexture(yeti->boule);
+                    yeti->boule=NULL;
+                }
             }
         }
         if (yeti->directionboule==0)
@@ -720,9 +743,32 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             }
             else
             {
-                SDL_DestroyTexture(yeti->boule);
-                yeti->boule=NULL;
-                yeti->Eattaque=0;
+                yeti->CompteurBoule+=1;
+                if (yeti->CompteurBoule>=0 && yeti->CompteurBoule<5)
+                {  
+                    yeti->boule=loadImage("src/graphics/yeti/BouleDeMur1D.png");
+                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                }
+                if (yeti->CompteurBoule>=5 && yeti->CompteurBoule<10)
+                {  
+                    yeti->boule=loadImage("src/graphics/yeti/BouleDeMur2D.png");
+                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                }
+                if (yeti->CompteurBoule>=15 && yeti->CompteurBoule<20)
+                {  
+                    yeti->boule=loadImage("src/graphics/yeti/BouleDeMur3D.png");
+                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                }
+                if (yeti->CompteurBoule>=20 && yeti->CompteurBoule<25)
+                {  
+                    yeti->boule=loadImage("src/graphics/yeti/BouleDeMur4D.png");
+                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                }
+                if (yeti->CompteurBoule>=25)
+                {
+                    SDL_DestroyTexture(yeti->boule);
+                    yeti->boule=NULL;
+                }
             }
         }
         
@@ -741,6 +787,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
     if (yeti->compteur>=190)
     {
         yeti->compteur=0;
+        yeti->CompteurBoule=0;
     }
 
     //Mort yeti
