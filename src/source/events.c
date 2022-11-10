@@ -493,16 +493,16 @@ int insideItem (Joueur *joueur, Boss *boss)
     }
 }
 
-int insideDague(Joueur* joueur, int x, int y, int Margex, int Margey)
+int insideVol(Joueur* joueur, int x, int y, int Margex, int Margey, int tailleObj)
 {
     int a=0;
     int b=0;
     //si joueur 
-    if ((joueur->xdague>=x || joueur->xdague+30>=x) && (joueur->xdague<=x+Margex || joueur->xdague + 30 <=x+Margex))
+    if ((joueur->xdague>=x || joueur->xdague+tailleObj>=x) && (joueur->xdague<=x+Margex || joueur->xdague + tailleObj <=x+Margex))
     {
         a=1;
     }
-    if ((joueur->ydague>=y || joueur->ydague+30>=y) && (joueur->ydague<=y+Margey || joueur->ydague + 30 <= y+Margey))
+    if ((joueur->ydague>=y || joueur->ydague+tailleObj>=y) && (joueur->ydague<=y+Margey || joueur->ydague + tailleObj <= y+Margey))
     {
         b=1;
     }
@@ -518,9 +518,9 @@ int insideDague(Joueur* joueur, int x, int y, int Margex, int Margey)
 
 
 //Indique au chevalier s'il prend des dégats
-int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss)
+int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti)
 {
-    if  (meduse->coup==0 && meduse1->coup==0 && meduse2->coup==0 && chauvesouris->coup==0 && chauvesouris1->coup==0 && boss->coup==0 && boss->coupE1==0 && boss->coupE2==0 && boss->coupE3==0 && boss->coupE4==0)
+    if  (meduse->coup==0 && meduse1->coup==0 && meduse2->coup==0 && chauvesouris->coup==0 && chauvesouris1->coup==0 && boss->coup==0 && boss->coupE1==0 && boss->coupE2==0 && boss->coupE3==0 && boss->coupE4==0 && yeti->coup==0)
     {
         return 1;
     }
