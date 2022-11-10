@@ -29,9 +29,9 @@ extern int insidechevalierBoss (Joueur *joueur, Boss *boss);
 extern int insidechevalieryeti (Joueur *joueur, Yeti *yeti);
 extern int insideBoss (Joueur *joueur, Boss *boss);
 extern int insideEclair(Joueur *joueur,int Eclairx, int Eclairy);
-extern int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss);
+extern int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti);
 extern int insideItem (Joueur *joueur, Boss *boss);
-int insideDague(Joueur* joueur, int x, int y, int Margex, int Margey);
+extern int insideVol(Joueur* joueur, int x, int y, int Margex, int Margey, int tailleObj );
 
 
 //init.c

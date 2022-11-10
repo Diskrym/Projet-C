@@ -31,7 +31,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
     {
         //se deplace si ne prend pas de dégat sinon sprit degat
-        if (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
+        if (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==1)
         {
             if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
             {
@@ -61,7 +61,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         
     }
     //affiche sprite degat si degat de la part du monstre et si degat de la part du monstre lors de notre attack/defense pour la droite
-    if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) && joueur->Direction==0)
+    if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==0) && joueur->Direction==0)
     {
         joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
         drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
@@ -72,7 +72,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     //cf fonction gauche
     if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
     {
-        if(DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==1)
+        if(DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==1)
         {
             if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
             {
@@ -104,7 +104,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         //dague
         
     }
-    if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss)==0) && joueur->Direction==1 )
+    if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==0) && joueur->Direction==1 )
     {
         joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
         drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
@@ -115,7 +115,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     
 
     //Mouvement attaque si Eattack = 1 et si on ne prend pas de dégat
-    if (joueur->Eattack==1 && DegatChevalier(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, &monstre->chauvesouris, &monstre->chauvesouris1,&monstre->boss)==1)
+    if (joueur->Eattack==1 && DegatChevalier(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, &monstre->chauvesouris, &monstre->chauvesouris1,&monstre->boss, &monstre->yeti)==1)
     {
         joueur->Numattack+=1;
         if (joueur->Direction==1)
@@ -333,7 +333,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     meduse->Life--; 
                 }
                 //degat dague
-                if (insideDague(joueur, meduse->posmonsx, meduse->posmonsy,64,64)==1)
+                if (insideVol(joueur, meduse->posmonsx, meduse->posmonsy,64,64,30)==1)
                 {
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
@@ -694,7 +694,13 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             { 
                 yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
                 drawImage(yeti->boule,yeti->xboule,yeti->yboule);
-                yeti->xboule-=5;  
+                
+                if (insideVol(joueur,yeti->xboule,yeti->yboule,64,64,21)==1)
+                {
+                    joueur->life--;
+                    yeti->coup=1;
+                }
+                yeti->xboule-=5;
             }
             else
             {
@@ -709,7 +715,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             { 
                 yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
                 drawImage(yeti->boule,yeti->xboule,yeti->yboule);
-                yeti->xboule+=5;  
+                if (insideVol(joueur,yeti->xboule,yeti->yboule,64,64,21)==1)
+                {
+                    joueur->life--;
+                    yeti->coup=1;
+                }
+                yeti->xboule+=5; 
             }
             else
             {
@@ -1004,7 +1015,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     boss->Life--; 
                 }
                 //degat dague
-                if (insideDague(joueur,boss->posmonsx,boss->posmonsy,128,128)==1)
+                if (insideVol(joueur,boss->posmonsx,boss->posmonsy,128,128,30)==1)
                 {
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
