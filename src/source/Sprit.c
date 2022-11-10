@@ -477,6 +477,11 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
         SDL_DestroyTexture(yeti->attaqueyeti);
         yeti->attaqueyeti=NULL;
     }
+    if (yeti->boule!=NULL)
+    {
+        SDL_DestroyTexture(yeti->boule);
+        yeti->boule=NULL;
+    }
 
  
     //Mouvement  yeti quand en vie
@@ -744,6 +749,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             else
             {
                 yeti->CompteurBoule+=1;
+                printf("%d \n", yeti->CompteurBoule);
                 if (yeti->CompteurBoule>=0 && yeti->CompteurBoule<5)
                 {  
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur1D.png");
