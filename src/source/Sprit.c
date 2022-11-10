@@ -229,7 +229,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         {
             joueur->dague=loadImage("src/graphics/Chevalier/DagueG.png");
             drawImage(joueur->dague,joueur->xdague,joueur->ydague);
-            joueur->xdague-=7;
+            joueur->xdague-=10;
         }
         else
         {
@@ -241,7 +241,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                 SDL_DestroyTexture(joueur->dagueMur);
                 joueur->dagueMur = NULL;
                 joueur->Edague=0;
-                joueur->CoupDague=0;
+                //joueur->CoupDague=0;
             }
         }
     }
@@ -253,7 +253,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
             
             joueur->dague=loadImage("src/graphics/Chevalier/DagueD.png");
             drawImage(joueur->dague,joueur->xdague,joueur->ydague);
-            joueur->xdague+=7;
+            joueur->xdague+=10;
         }
         else
         {
@@ -265,7 +265,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                 SDL_DestroyTexture(joueur->dagueMur);
                 joueur->dagueMur = NULL;
                 joueur->Edague=0;
-                joueur->CoupDague=0;
+                //joueur->CoupDague=0;
 
             }
         }
@@ -337,7 +337,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
-                    joueur->CoupDague=1;
+                    //joueur->CoupDague=1;
                 }
                 
             }
@@ -663,11 +663,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     boss->Life--; 
                 }
                 //degat dague
-                if (insideDague(joueur,boss->posmonsx,boss->posmonsy,128,128)==1 && joueur->CoupDague==0)
+                if (insideDague(joueur,boss->posmonsx,boss->posmonsy,128,128)==1)
                 {
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
-                    joueur->CoupDague=1;
+                    //joueur->CoupDague=1;
                 }
                 
             } 
