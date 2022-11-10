@@ -396,6 +396,30 @@ int insideItem (Joueur *joueur, Boss *boss)
     }
 }
 
+int insideDague(Joueur* joueur, int x, int y, int Margex, int Margey)
+{
+    int a=0;
+    int b=0;
+    //si joueur 
+    if ((joueur->xdague>=x || joueur->xdague+30>=x) && (joueur->xdague<=x+Margex || joueur->xdague + 30 <=x+Margex))
+    {
+        a=1;
+    }
+    if ((joueur->ydague>=y || joueur->ydague+30>=y) && (joueur->ydague<=y+Margey || joueur->ydague + 30 <= y+Margey))
+    {
+        b=1;
+    }
+    if (a==1 && b==1)
+    {
+        return 1;
+    }
+}
+
+
+
+
+
+
 //Indique au chevalier s'il prend des dégats
 int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss)
 {

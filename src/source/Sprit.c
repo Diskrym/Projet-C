@@ -241,7 +241,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                 SDL_DestroyTexture(joueur->dagueMur);
                 joueur->dagueMur = NULL;
                 joueur->Edague=0;
-
+                joueur->CoupDague=0;
             }
         }
     }
@@ -265,6 +265,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                 SDL_DestroyTexture(joueur->dagueMur);
                 joueur->dagueMur = NULL;
                 joueur->Edague=0;
+                joueur->CoupDague=0;
 
             }
         }
@@ -325,11 +326,20 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                     meduse->attack+=1;
                 }
+                //degat epee
                 if(insidechevalier(joueur, meduse)==1 && joueur->Numattack==15)
                 {           
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
                 }
+                //degat dague
+                if (insideDague(joueur, meduse->posmonsx, meduse->posmonsy,64,64)==1 && joueur->CoupDague==0)
+                {
+                    meduse->CompteurSpriteDegat=1; 
+                    meduse->Life--; 
+                    joueur->CoupDague=1;
+                }
+                
             }
 
             else 
@@ -646,11 +656,20 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     boss->Boss=loadImage("src/graphics/Boss/BossMarche4.png");
                     drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);    
                 } 
+                //degat epee
                 if(insidechevalierBoss(joueur, boss)==1 && joueur->Numattack==15)
                 {           
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
                 }
+                //degat dague
+                if (insideDague(joueur,boss->posmonsx,boss->posmonsy,128,128)==1 && joueur->CoupDague==0)
+                {
+                    boss->CompteurSpriteDegat=1; 
+                    boss->Life--; 
+                    joueur->CoupDague=1;
+                }
+                
             } 
             //degat sur Boss
             else 
