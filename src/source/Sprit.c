@@ -670,8 +670,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 //reset compteur yeti
-        
-                
             }
             if (yeti->NumSprit>90)
                 {
@@ -680,13 +678,9 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
         }
         
     
-
-        if (yeti->compteur>=190)
-        {
-            yeti->compteur=0;
-            yeti->coup = 0;
-        }
     }
+    
+    
     //Sprit boule
     if (yeti->Eattaque == 1)
     {
@@ -702,7 +696,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     joueur->life--;
                     yeti->coup=1;
                 }
-                yeti->xboule-=5;
+                yeti->xboule-=7;
             }
             else
             {
@@ -722,7 +716,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     joueur->life--;
                     yeti->coup=1;
                 }
-                yeti->xboule+=5; 
+                yeti->xboule+=7; 
             }
             else
             {
@@ -732,6 +726,21 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             }
         }
         
+    }
+    // timing degat chevalier
+    if (yeti->coup>0)
+    {
+        yeti->coup+=1;
+        if (yeti->coup >25)
+        {
+            yeti->coup=0;
+        }
+    }
+    
+
+    if (yeti->compteur>=190)
+    {
+        yeti->compteur=0;
     }
 
     //Mort yeti
