@@ -26,9 +26,10 @@ typedef struct Meduse
 typedef struct Yeti
 {
  
-    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort;
+    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort, Eattaque, xboule, yboule,directionboule, Eboule;
     SDL_Texture *attaqueyeti;
     SDL_Texture *yeti;
+    SDL_Texture *boule;
     
  
 } Yeti;

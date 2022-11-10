@@ -485,69 +485,68 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
     {
         //compteur < 100 pour déplacement normal
         if (yeti->compteur < 100)
-
         {  
             //si la yeti n'a pas prit de coup
             if (yeti->CompteurSpriteDegat==0)
             {
                 if (yeti->Direction==1)
                 {
-                if (yeti->NumSprit==0 || yeti->NumSprit==1 || yeti->NumSprit==2 || yeti->NumSprit==3 || yeti->NumSprit==8 || yeti->NumSprit==9 || yeti->NumSprit==10 || yeti->NumSprit==11)
-                {
-                    yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreG.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                }
-                if (yeti->NumSprit==4 || yeti->NumSprit==5 || yeti->NumSprit==6 || yeti->NumSprit==7)
-                {
-                    yeti->yeti=loadImage("src/graphics/yeti/YetiMarche1G.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                }
-                if (yeti->NumSprit==12 || yeti->NumSprit==13 || yeti->NumSprit==14 || yeti->NumSprit==15)
-                {
-                    yeti->yeti=loadImage("src/graphics/yeti/YetiMarche2G.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                }
-                if (yeti->NumSprit>=16 )
-                {
-                    yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreG.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                    yeti->attack+=1;
-                }
-                // if(insidechevalier(joueur, yeti)==1 && joueur->Numattack==15)
-                // {          
-                //     yeti->CompteurSpriteDegat=1;
-                //     yeti->Life--;
-                // }
+                    if (yeti->NumSprit==0 || yeti->NumSprit==1 || yeti->NumSprit==2 || yeti->NumSprit==3 || yeti->NumSprit==8 || yeti->NumSprit==9 || yeti->NumSprit==10 || yeti->NumSprit==11)
+                    {
+                        yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreG.png");
+                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    }
+                    if (yeti->NumSprit==4 || yeti->NumSprit==5 || yeti->NumSprit==6 || yeti->NumSprit==7)
+                    {
+                        yeti->yeti=loadImage("src/graphics/yeti/YetiMarche1G.png");
+                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    }
+                    if (yeti->NumSprit==12 || yeti->NumSprit==13 || yeti->NumSprit==14 || yeti->NumSprit==15)
+                    {
+                        yeti->yeti=loadImage("src/graphics/yeti/YetiMarche2G.png");
+                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    }
+                    if (yeti->NumSprit>=16 )
+                    {
+                        yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreG.png");
+                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        yeti->attack+=1;
+                    }
+                    // if(insidechevalier(joueur, yeti)==1 && joueur->Numattack==15)
+                    // {          
+                    //     yeti->CompteurSpriteDegat=1;
+                    //     yeti->Life--;
+                    // }
                 }
 
                  if (yeti->Direction==0)
                 {
-                if (yeti->NumSprit==0 || yeti->NumSprit==1 || yeti->NumSprit==2 || yeti->NumSprit==3 || yeti->NumSprit==8 || yeti->NumSprit==9 || yeti->NumSprit==10 || yeti->NumSprit==11)
-                {
-                    yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreD.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                }
-                if (yeti->NumSprit==4 || yeti->NumSprit==5 || yeti->NumSprit==6 || yeti->NumSprit==7)
-                {
-                    yeti->yeti=loadImage("src/graphics/yeti/YetiMarche1D.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                }
-                if (yeti->NumSprit==12 || yeti->NumSprit==13 || yeti->NumSprit==14 || yeti->NumSprit==15)
-                {
-                    yeti->yeti=loadImage("src/graphics/yeti/YetiMarche2D.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                }
-                if (yeti->NumSprit>=16 )
-                {
-                    yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreD.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                    yeti->attack+=1;
-                }
-                // if(insidechevalier(joueur, yeti)==1 && joueur->Numattack==15)
-                // {          
-                //     yeti->CompteurSpriteDegat=1;
-                //     yeti->Life--;
-                // }
+                    if (yeti->NumSprit==0 || yeti->NumSprit==1 || yeti->NumSprit==2 || yeti->NumSprit==3 || yeti->NumSprit==8 || yeti->NumSprit==9 || yeti->NumSprit==10 || yeti->NumSprit==11)
+                    {
+                        yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreD.png");
+                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    }
+                    if (yeti->NumSprit==4 || yeti->NumSprit==5 || yeti->NumSprit==6 || yeti->NumSprit==7)
+                    {
+                        yeti->yeti=loadImage("src/graphics/yeti/YetiMarche1D.png");
+                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    }
+                    if (yeti->NumSprit==12 || yeti->NumSprit==13 || yeti->NumSprit==14 || yeti->NumSprit==15)
+                    {
+                        yeti->yeti=loadImage("src/graphics/yeti/YetiMarche2D.png");
+                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    }
+                    if (yeti->NumSprit>=16 )
+                    {
+                        yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreD.png");
+                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        yeti->attack+=1;
+                    }
+                    // if(insidechevalier(joueur, yeti)==1 && joueur->Numattack==15)
+                    // {          
+                    //     yeti->CompteurSpriteDegat=1;
+                    //     yeti->Life--;
+                    // }
                 }
             }
  
@@ -555,38 +554,38 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {   
                 if (yeti->Direction==1)
                 {
-                //si la yeti prend un coup
-                yeti->CompteurSpriteDegat+=1;
-                yeti->yeti=loadImage("src/graphics/yeti/YetiDegatG.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                if (yeti->CompteurSpriteDegat==2)
-                {
-                // Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
-                // Mix_PlayChannel(4, son->degatyeti, 0);
-                }          
-                //compteur duree affichage degat yeti
-                if (yeti->CompteurSpriteDegat > 15)
-                {
-                    yeti->CompteurSpriteDegat=0;
-                }
+                    //si la yeti prend un coup
+                    yeti->CompteurSpriteDegat+=1;
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiDegatG.png");
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    if (yeti->CompteurSpriteDegat==2)
+                    {
+                    // Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
+                    // Mix_PlayChannel(4, son->degatyeti, 0);
+                    }          
+                    //compteur duree affichage degat yeti
+                    if (yeti->CompteurSpriteDegat > 15)
+                    {
+                        yeti->CompteurSpriteDegat=0;
+                    }
                 }
 
                 if (yeti->Direction==0)
                 {
-                //si la yeti prend un coup
-                yeti->CompteurSpriteDegat+=1;
-                yeti->yeti=loadImage("src/graphics/yeti/YetiDegatD.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                if (yeti->CompteurSpriteDegat==2)
-                {
-                // Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
-                // Mix_PlayChannel(4, son->degatyeti, 0);
-                }          
-                //compteur duree affichage degat yeti
-                if (yeti->CompteurSpriteDegat > 15)
-                {
-                    yeti->CompteurSpriteDegat=0;
-                }
+                    //si la yeti prend un coup
+                    yeti->CompteurSpriteDegat+=1;
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiDegatD.png");
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    if (yeti->CompteurSpriteDegat==2)
+                    {
+                    // Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
+                    // Mix_PlayChannel(4, son->degatyeti, 0);
+                    }          
+                    //compteur duree affichage degat yeti
+                    if (yeti->CompteurSpriteDegat > 15)
+                    {
+                        yeti->CompteurSpriteDegat=0;
+                    }
                 }
             } 
              if (yeti->NumSprit>=16)
@@ -594,114 +593,102 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                  yeti->NumSprit=0;
             } 
         }
- 
         //attaqueyeti yeti quand compteur > 100
         if  (yeti->compteur>=100)
         {
-
             if (yeti->Direction==1)
-                {             
-            if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 && yeti->NumSprit<90 )
-            {  
-               
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1G.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=70 && yeti->NumSprit<80)
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque2G.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3G.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            {             
+                if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 && yeti->NumSprit<90 )
+                {  
                 
-            }
-            if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
-            {                
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4G.png");                    
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                // Si joueur dans la range de la yeti durant les éclaires
-                // if(inside(joueur, yeti)==1 && (yeti->NumSprit==23 || yeti->NumSprit==14))                    
-                // {
-                //     if (yeti->coup == 0)
-                //     {
-                //         joueur->life--;
-                //         yeti->coup =1 ;
-                //     }
-                // }
-                // yeti->attaqueyeti=loadImage("src/graphics/yeti/.png");
-                // drawImage(yeti->attaqueyeti,yeti->posmonsx -23 ,yeti->posmonsy - 23);
-               
-                
-             
-            }
-            if (yeti->NumSprit>=40 && yeti->NumSprit<50 )
-            {                
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque5G.png");                    
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1G.png");
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                }
+                if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=70 && yeti->NumSprit<80)
+                {
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque2G.png");
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                }
+                if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
+                {
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3G.png");
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    
+                }
+                if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
+                {                
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4G.png");                    
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                }
+                if (yeti->NumSprit>=40 && yeti->NumSprit<50 )
+                {                
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque5G.png");                    
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                }
             }
 
             if (yeti->Direction==0)
-                {             
-            if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 && yeti->NumSprit<90 )
-            {  
-               
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1D.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=70 && yeti->NumSprit<80)
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque2D.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3D.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            {             
+                if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 && yeti->NumSprit<90 )
+                {  
                 
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1D.png");
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                }
+                if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=70 && yeti->NumSprit<80)
+                {
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque2D.png");
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                }
+                if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
+                {
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3D.png");
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    if (yeti->NumSprit == 65)
+                    {
+                        yeti->Eattaque = 1;
+                        yeti->directionboule=yeti->Direction;
+                        yeti->xboule=yeti->posmonsx;
+                        yeti->yboule=yeti->yboule;
+                    }
+                }
+                if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
+                {                
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4D.png");                    
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                }
+                if (yeti->NumSprit>=40 && yeti->NumSprit<50 )
+                {                
+                    yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque5D.png");                    
+                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                }
+                //reset compteur yeti
+        
+                if (yeti->NumSprit>=90)
+                {
+                    yeti->NumSprit=0;
+                } 
             }
-            if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
-            {                
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4D.png");                    
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                // Si joueur dans la range de la yeti durant les éclaires
-                // if(inside(joueur, yeti)==1 && (yeti->NumSprit==23 || yeti->NumSprit==14))                    
-                // {
-                //     if (yeti->coup == 0)
-                //     {
-                //         joueur->life--;
-                //         yeti->coup =1 ;
-                //     }
-                // }
-                // yeti->attaqueyeti=loadImage("src/graphics/yeti/.png");
-                // drawImage(yeti->attaqueyeti,yeti->posmonsx -23 ,yeti->posmonsy - 23);
-               
-                
-             
-            }
-            if (yeti->NumSprit>=40 && yeti->NumSprit<50 )
-            {                
-                yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque5D.png");                    
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            //reset compteur yeti
+        }
+        
     
-            if (yeti->NumSprit>=90)
-            {
-                 yeti->NumSprit=0;
-            } 
-         }
-    }
-    if (yeti->compteur>=190)
-            {
-                yeti->compteur=0;
-                yeti->coup = 0;
-            }
-    }
 
+        if (yeti->compteur>=190)
+        {
+            yeti->compteur=0;
+            yeti->coup = 0;
+        }
+    }
+    //Sprit boule
+    if (yeti->Eattaque == 1)
+    {
+        if (yeti->Direction=1)
+        {
+            yeti->boule=loadImage("src/graphics/yeti/YetiAttaque5D.png");                    
+            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+        }
+        
+    }
 
     //Mort yeti
     if (yeti->Life==0)
