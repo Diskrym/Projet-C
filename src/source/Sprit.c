@@ -236,7 +236,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
             joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
             drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
             //recup dague Gauchemap
-            if (joueur->inposx <= joueur->xdague+20 && (joueur->inposy>=joueur->ydague-30 && joueur->inposy<=joueur->ydague))
+            if (joueur->inposx <= joueur->xdague+20 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
             {
                 SDL_DestroyTexture(joueur->dagueMur);
                 joueur->dagueMur = NULL;
@@ -260,7 +260,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
             joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurD.png");
             drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
             //recup dague Droite map
-            if (joueur->inposx <= joueur->xdague-20 && (joueur->inposy>=joueur->ydague-30 && joueur->inposy<=joueur->ydague))
+            if (joueur->inposx >= joueur->xdague-60 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
             {
                 SDL_DestroyTexture(joueur->dagueMur);
                 joueur->dagueMur = NULL;
