@@ -49,7 +49,9 @@ extern void loadNiv21 (Joueur *jouer, Lvl* lvl);
 extern void cleanup(EffetSon *son);
 extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
 extern void initEclair(Boss *boss);
-extern void loadNiv31(Joueur *joueur,Yeti *yeti, Lvl *lvl);
+extern void loadNiv31(Joueur *joueur,Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl);
+extern void loadNiv32 (Joueur *joueur, Lvl *lvl);
+
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);

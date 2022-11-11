@@ -77,14 +77,11 @@ typedef struct Marchand
 
 typedef struct Monstre
 {
-    Meduse meduse;
-    Meduse meduse1;
-    Meduse meduse2;
-    Chauvesouris chauvesouris;
-    Chauvesouris chauvesouris1;
+    Meduse meduse, meduse1, meduse2;
+    Chauvesouris chauvesouris, chauvesouris1;
     Boss boss;
     Marchand marchand;
-    Yeti yeti;
+    Yeti yeti, yeti1, yeti2;
 } Monstre;
 
 
@@ -152,14 +149,14 @@ typedef struct Lvl
  static const int level [5][5][10]={ 
                                         { 
                                             {NumLvl, NbMonstre, Xjoueur, yjoueur, Range }
-                                            {TypeMonstre, xMonstre, yMonstre, Range monstre, DegatsMoinstre, VieMonstre}
-                                            {TypeMonstre, xMonstre, yMonstre, Range monstre, DegatsMoinstre, VieMonstre}
-                                            {TypeMonstre, xMonstre, yMonstre, Range monstre, DegatsMoinstre, VieMonstre}
-                                            {TypeMonstre, xMonstre, yMonstre, Range monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Num monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Num monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Num monstre, DegatsMoinstre, VieMonstre}
+                                            {TypeMonstre, xMonstre, yMonstre, Num monstre, DegatsMoinstre, VieMonstre}
                                         }
                                     }
  */
-static const int level [6][5][6] = {
+static const int level [7][5][6] = {
                                         {
                                             {1,1,288,160,64,0},
                                             {1,70,70,64,1,3},
@@ -186,8 +183,13 @@ static const int level [6][5][6] = {
                                             {5,0,288,297,0}
                                         },
                                         {
-                                            {6,1,288,297,0},
-                                            {4,70,192,100,2,4}
+                                            {6,3,288,297,0},
+                                            {4,250,70,0,2,4},
+                                            {4,80,290,63,2,4},
+                                            {4,500,290,126,2,4}
+                                        },
+                                        {
+                                            {6,3,288,297,0}
                                         }
                                     };
 
