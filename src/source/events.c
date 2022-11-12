@@ -1,6 +1,5 @@
 #include "../header/proto.h"
 
-
 //collision entre le joueur et les murs 
 void collisionmur (Joueur *joueur)
 {
@@ -25,7 +24,6 @@ void collisionmur (Joueur *joueur)
             joueur->inposy-=3;
         }
 }
-
 
  //collision entre les meduse et joueur
 void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
@@ -107,7 +105,6 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
         }
     }
 }
-
 
 //collision entre le boss et joueur
 void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
@@ -224,8 +221,6 @@ void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
         }
     }
 }
-
-
 
 void collisionDecor (Joueur *joueur, Input *input, Lvl *lvl, int x1, int x2, int y1, int y2)
 {  
@@ -357,7 +352,6 @@ int insidechevalierBoss (Joueur *joueur, Boss *boss)
 
 }
 
-
 //test si l'attaque du joueur touche le yeti
 int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
 {       int x=0;
@@ -395,7 +389,6 @@ int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
     }
  
 }
-
 
 //test si l'attaque de la méduse touche le joueur
 int inside (Joueur *joueur, Meduse *meduse)
@@ -474,6 +467,7 @@ int insideEclair(Joueur *joueur,int Eclairx, int Eclairy)
         return 1;
     }
 }
+
 //recup item
 int insideItem (Joueur *joueur, Boss *boss)
 {
@@ -492,6 +486,7 @@ int insideItem (Joueur *joueur, Boss *boss)
         return 1;
     }
 }
+
 //            pos objet vol x,y  pos cible    taille cible x,y         taille obj vol x
 int insideVol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObj)
 {
@@ -511,11 +506,6 @@ int insideVol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tail
         return 1;
     }
 }
-
-
-
-
-
 
 //Indique au chevalier s'il prend des dégats
 int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti, Yeti *yeti1, Yeti *yeti2)

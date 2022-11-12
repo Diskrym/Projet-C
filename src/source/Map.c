@@ -22,8 +22,6 @@ void initMaps(Lvl *lvl)
     }
 }
   
-
-
 void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input)
 {  
     if (lvl->Num == -1)

@@ -462,8 +462,6 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
     }
 }
 
-
-
 void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
 {  
     //reset pointeur yeti
@@ -875,14 +873,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
     }
    
 }
-
-
- 
-
-
-
-
-
 
 void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {  
@@ -1501,7 +1491,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
             //Achat de coeur
             if (input->attack == 1)
             {   
-                if (joueur->NbPiece-2>=0 && joueur->life<=4)
+                if (joueur->NbPiece-2>=0 && joueur->life<4)
                 {
                 joueur->life+=1;
                 joueur->NbPiece-=2;

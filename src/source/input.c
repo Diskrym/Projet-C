@@ -181,8 +181,6 @@ void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son)
     SpritHeros(joueur, input, son, monstre);
 }
 
-
-
 void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
 {
     meduse->compteur += 1;
@@ -220,7 +218,6 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
     }
     SpritMeduse (meduse, joueur, lvl, son);
 }
-
 
 void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl, EffetSon *son)
 {
@@ -289,7 +286,6 @@ void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
     }
     Sprityeti (yeti, joueur, lvl, son);
 }
-
 
 void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son)
 {
