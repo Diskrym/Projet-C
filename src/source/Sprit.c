@@ -31,7 +31,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
     {
         //se deplace si ne prend pas de dégat sinon sprit degat
-        if (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==1)
+        if (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==1)
         {
             if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
             {
@@ -61,7 +61,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         
     }
     //affiche sprite degat si degat de la part du monstre et si degat de la part du monstre lors de notre attack/defense pour la droite
-    if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==0) && joueur->Direction==0)
+    if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==0) && joueur->Direction==0)
     {
         joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
         drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
@@ -72,7 +72,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     //cf fonction gauche
     if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
     {
-        if(DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==1)
+        if(DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==1)
         {
             if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
             {
@@ -104,7 +104,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         //dague
         
     }
-    if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti)==0) && joueur->Direction==1 )
+    if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==0) && joueur->Direction==1 )
     {
         joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
         drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
@@ -115,7 +115,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     
 
     //Mouvement attaque si Eattack = 1 et si on ne prend pas de dégat
-    if (joueur->Eattack==1 && DegatChevalier(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, &monstre->chauvesouris, &monstre->chauvesouris1,&monstre->boss, &monstre->yeti)==1)
+    if (joueur->Eattack==1 && DegatChevalier(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, &monstre->chauvesouris, &monstre->chauvesouris1,&monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==1)
     {
         joueur->Numattack+=1;
         if (joueur->Direction==1)
