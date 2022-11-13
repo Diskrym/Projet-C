@@ -58,7 +58,7 @@ init("Dungeon Fate");
     //LoadNiv11(&monstre.meduse, &lvl, &joueur);
     go = 1; 
     // Boucle infinie, principale, du jeu
-    Mix_PlayMusic(son.musiqueMapG, -1);
+    Mix_PlayMusic(son.musiqueMapG, -1 /10);
     while (go == 1)
     {    
         

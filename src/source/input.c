@@ -25,10 +25,6 @@ void getInput(Input *input)
                         exit(0);
                     break;
  
-                    case SDLK_DELETE:
-                        input->erase = 1;
-                    break;
- 
                     case SDLK_z:
                         input->shield = 1;
                     break;
@@ -76,10 +72,6 @@ void getInput(Input *input)
             case SDL_KEYUP:
                 switch (event.key.keysym.sym)
                 {
-                    case SDLK_DELETE:
-                        input->erase = 0;
-                    break;
- 
                     case SDLK_z:
                         input->shield = 0;
                     break;
@@ -121,9 +113,7 @@ void getInput(Input *input)
                     break;
                 }
             break;
- 
         }
- 
     }
 }
 
@@ -232,8 +222,7 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *l
         if (joueur->inposx<chauvesouris->posmonsx)
         {
             chauvesouris->posmonsx-=2;
-            chauvesouris->Direction=1;
-            
+            chauvesouris->Direction=1;   
         }
         if (joueur->inposx>chauvesouris->posmonsx)
         {
@@ -248,13 +237,13 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *l
         {
             chauvesouris->posmonsy+=2;
         }
- 
     }
     SpritChauvesouris (chauvesouris, joueur, lvl, son);
 }
 
 void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
-{   yeti->compteur+=1;
+{   
+    yeti->compteur+=1;
     yeti->NumSprit+=1;
     if  (yeti->Life==0 && yeti->CompteurSpriteDegat<19)
     {
