@@ -14,7 +14,7 @@ void init(char *title)
                                   SDL_WINDOWPOS_CENTERED,
                                   SDL_WINDOWPOS_CENTERED,
                                   SCREEN_WIDTH, SCREEN_HEIGHT,
-                                  SDL_WINDOW_SHOWN| SDL_WINDOW_RESIZABLE);
+                                  SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
  
     //On crée un renderer pour la SDL et on active la synchro verticale : VSYNC
     renderer = SDL_CreateRenderer(screen, -1, SDL_RENDERER_PRESENTVSYNC);
@@ -122,6 +122,11 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
     {
         loadNiv32(joueur, &monstre->yeti, &monstre->yeti1, &monstre->yeti2, lvl);
     }
+    if (lvl->Num == 9)
+    {
+        loadNiv41(joueur,lvl);
+    }
+    
     lvl->MortMonstre=0;
 }
 
@@ -130,12 +135,12 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     if(lvl->Num==0)
     {
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
-        collisionmur (joueur);
+        collisionmur (joueur,20,20);
         collision(joueur, &monstre->meduse, input, lvl);
     }
     if(lvl->Num==1)
     {   
-        collisionmur (joueur);
+        collisionmur (joueur,20,20);
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
         deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
         deplacementMeduse(joueur, &monstre->meduse2, lvl, son);
@@ -145,7 +150,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     }
     if(lvl->Num==2)
     {   
-        collisionmur (joueur);
+        collisionmur (joueur,20,20);
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
         deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
         deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl, son);
@@ -156,37 +161,38 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     }
     if (lvl->Num==3)
     {   
-        collisionmur (joueur);
+        collisionmur (joueur,20,20);
         collisionboss(joueur, &monstre->boss, input, lvl);
         deplacementBoss(joueur, &monstre->boss, lvl, input,son);
     }
     if (lvl->Num==4)
     {
-        collisionmur(joueur);
+        collisionmur(joueur,20,20);
         //Table
-        collisionDecor(joueur, input,lvl,223,415,120,55);
+        collisionDecor(joueur, input,223,415,120,55);
         //jermy
-        collisionDecor(joueur, input,lvl,465,530,283,210);
+        collisionDecor(joueur, input,465,530,283,210);
         //Bec
-        collisionDecor(joueur, input,lvl,80,220,320,240);
+        collisionDecor(joueur, input,80,220,320,240);
         GestionMarchands(joueur, input, &monstre->marchand, lvl);
     }   
     if (lvl -> Num == 5)
     {
-        collisionmur(joueur);
+        collisionmur(joueur,20,20);
         collisionyeti (joueur, &monstre->yeti, input, lvl);
         deplacementyeti(joueur,&monstre->yeti, lvl, son);
-        if (lvl->MortMonstre==level[5][0][1])
+        if (lvl->MortMonstre==level[5][0][1] && lvl->WinDonjon<=2)
         {
+            printf("aaa");
             GestionMarchands(joueur, input, &monstre->marchand, lvl);
             //jermy
-            collisionDecor(joueur, input,lvl,465,530,283,210);
+            collisionDecor(joueur, input,465,530,283,210);
         }
         
     }
     if (lvl->Num == 6)
     {
-        collisionmur(joueur);
+        collisionmur(joueur,20,20);
         collisionyeti (joueur, &monstre->yeti, input, lvl);
         deplacementyeti(joueur,&monstre->yeti, lvl, son);
         collisionyeti (joueur, &monstre->yeti1, input, lvl);
@@ -194,6 +200,11 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         deplacementyeti(joueur,&monstre->yeti1, lvl, son);
         deplacementyeti(joueur,&monstre->yeti2, lvl, son);
     }
+    if (lvl->Num == 9)
+    {
+        collisionmur(joueur,25,25);
+    }
+    
     
     
 }
@@ -278,7 +289,7 @@ void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl)
 {
     initMaps(lvl);
     joueur->inposx= level [6][0][2];
-    joueur->inposy= level [6][0][2];
+    joueur->inposy= level [6][0][3];
     yeti->posmonsx =level[6][1][1];
     yeti->posmonsy =level[6][1][2];
     yeti->Life=level [6][1][5];
@@ -290,6 +301,13 @@ void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl)
     yeti2->posmonsy =level[6][3][2];
     yeti2->Life=level [6][3][5];
     yeti2->compteur = level [6][3][3];
+}
+
+void loadNiv41(Joueur *Joueur, Lvl *lvl)
+{
+    initMaps(lvl);
+    Joueur->inposx = level[8][0][2];
+    Joueur->inposy = level[8][0][3];
 }
 
 void cleanup(EffetSon *son)

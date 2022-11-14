@@ -17,10 +17,10 @@ extern void porte (Lvl *lvl);
 extern void menu (Lvl *lvl);
 
 //events.c
-extern void collisionmur (Joueur *joueur);
+extern void collisionmur (Joueur *joueur, int x, int y);
 extern void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl);
 extern void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl);
-extern void collisionDecor (Joueur *joueur, Input *input, Lvl *lvl, int x1, int x2, int y1, int y2);
+extern void collisionDecor (Joueur *joueur, Input *input, int x1, int x2, int y1, int y2);
 extern void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl);
 extern int inside (Joueur *joueur, Meduse *meduse);
 extern int insidechevalier (Joueur *joueur, Meduse *meduse);
@@ -50,6 +50,7 @@ extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son
 extern void initEclair(Boss *boss);
 extern void loadNiv31(Joueur *joueur,Yeti *yeti, Lvl *lvl);
 extern void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl);
+extern void loadNiv41(Joueur *joueur,Lvl *lvl);
 
 //input.c
 extern void gestionInputs(Input *input);

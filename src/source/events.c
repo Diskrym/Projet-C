@@ -1,25 +1,25 @@
 #include "../header/proto.h"
 
 //collision entre le joueur et les murs 
-void collisionmur (Joueur *joueur)
+void collisionmur (Joueur *joueur, int x, int y)
 {
     //mur du haut
-    if (joueur->inposx <= 25)
+    if (joueur->inposx <= y)
     {
         joueur->inposx+=3;
     }
     //mur de droite
-     if (joueur->inposx >= SCREEN_WIDTH-SPRITE_SIZE-25)
+     if (joueur->inposx >= SCREEN_WIDTH-SPRITE_SIZE-x)
     {
         joueur->inposx-=3;
     }
     //mur de gauche
-    if (joueur->inposy <= 25)
+    if (joueur->inposy <= x)
     {
         joueur->inposy+=3;
     }
     //mur du bas 
-    if (joueur->inposy >= SCREEN_HEIGHT-SPRITE_SIZE-20)
+    if (joueur->inposy >= SCREEN_HEIGHT-SPRITE_SIZE-y)
     {
         joueur->inposy-=3;
     }
@@ -222,59 +222,58 @@ void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
     }
 }
 
-void collisionDecor (Joueur *joueur, Input *input, Lvl *lvl, int x1, int x2, int y1, int y2)
+void collisionDecor (Joueur *joueur, Input *input, int x1, int x2, int y1, int y2)
 {  
     
-    if (lvl->Num==4)
-    {   //collision haut joueur
-        if((joueur->inposx>=x1 && joueur->inposx<=x2 )||(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )||((joueur->inposx>=x1 && joueur->inposx<=x2 )&&(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )))
+    //collision haut joueur
+    if((joueur->inposx>=x1 && joueur->inposx<=x2 )||(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )||((joueur->inposx>=x1 && joueur->inposx<=x2 )&&(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )))
+    {
+        if ((joueur->inposy <= y1)&&(joueur->inposy >= y2 ))
         {
-            if ((joueur->inposy <= y1)&&(joueur->inposy >= y2 ))
+            if (input->up == 1)
             {
-               if (input->up == 1)
-                {
-                    joueur->inposy+=3;  
-                }
+                joueur->inposy+=3;  
             }
         }
-        
-        //collision bas joueur
-        if((joueur->inposx>=x1 && joueur->inposx<=x2 )||(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )||((joueur->inposx>=x1 && joueur->inposx<=x2 )&&(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )))
-        {
-            if ((joueur->inposy+SPRITE_SIZE <= y1)&&(joueur->inposy+SPRITE_SIZE >= y2 ))        
-            {
-                if (input->down == 1)
-                {
-                    joueur->inposy-=3;  
-                }   
-            }
-        }
+    }
     
-        // //coter droit joueur
-        if((joueur->inposy>=y2 && joueur->inposy<=y1 )||(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1 )||((joueur->inposy>=y2 && joueur->inposy<=y1 )&&(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1 )))
+    //collision bas joueur
+    if((joueur->inposx>=x1 && joueur->inposx<=x2 )||(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )||((joueur->inposx>=x1 && joueur->inposx<=x2 )&&(joueur->inposx+SPRITE_SIZE>=x1 && joueur->inposx+SPRITE_SIZE<=x2 )))
+    {
+        if ((joueur->inposy+SPRITE_SIZE <= y1)&&(joueur->inposy+SPRITE_SIZE >= y2 ))        
         {
-            if ((joueur->inposx+SPRITE_SIZE <= x2)&&(joueur->inposx+SPRITE_SIZE >= x1 ))
+            if (input->down == 1)
             {
-                if (input->right == 1)
-                {
-                    joueur->inposx-=3;  
-                }   
+                joueur->inposy-=3;  
+            }   
+        }
+    }
+
+    // //coter droit joueur
+    if((joueur->inposy>=y2 && joueur->inposy<=y1 )||(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1 )||((joueur->inposy>=y2 && joueur->inposy<=y1 )&&(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1 )))
+    {
+        if ((joueur->inposx+SPRITE_SIZE <= x2)&&(joueur->inposx+SPRITE_SIZE >= x1 ))
+        {
+            if (input->right == 1)
+            {
+                joueur->inposx-=3;  
+            }   
+        }
+    }
+    
+    // //coter gauche joueur
+    if((joueur->inposy>=y2 && joueur->inposy<=y1 )||(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1)||((joueur->inposy>=y2 && joueur->inposy<=y1 )&&(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1)))
+    {
+        if ((joueur->inposx <= x2)&&(joueur->inposx >= x1 ))
+        {
+            if (input->left == 1)
+            {
+                joueur->inposx+=3;  
             }
         }
-        
-        // //coter gauche joueur
-        if((joueur->inposy>=y2 && joueur->inposy<=y1 )||(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1)||((joueur->inposy>=y2 && joueur->inposy<=y1 )&&(joueur->inposy+SPRITE_SIZE>=y2 && joueur->inposy+SPRITE_SIZE<=y1)))
-        {
-            if ((joueur->inposx <= x2)&&(joueur->inposx >= x1 ))
-            {
-                if (input->left == 1)
-                {
-                    joueur->inposx+=3;  
-                }
-            }
-        }
-    } 
-}
+    }
+} 
+
     
 //test si l'attaque du joueur touche la méduse
 int insidechevalier (Joueur *joueur, Meduse *meduse)

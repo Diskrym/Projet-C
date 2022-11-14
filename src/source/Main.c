@@ -16,6 +16,7 @@ Historique version :
     CoupDague en attente mais pret si double coup sur monstre
     Son attaque chevalier pret mais commenter
     BYPASS A ENLEVER SUR LE MAIN ET DANS INPUT
+    Finir donjon bleu, lvl deja prep dans struct + faire retour map global a la fin du donjon bleu.
 */
 
 #include "../header/proto.h"
@@ -38,10 +39,10 @@ int main(int argc, char *argv[])
 //extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
-joueur.nbDague=0;
 lvl.Num=-1;
 joueur.life=3;
 joueur.NbPiece=0;
+lvl.WinDonjon=5;
 // Initialisation de la SDL
 init("Dungeon Fate");
     Son(&son);
@@ -61,7 +62,6 @@ init("Dungeon Fate");
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
     while (go == 1)
     {    
-        
         //On dessine tout
         drawGame(&joueur, &lvl, &paramtexte);
         GestionMap(&joueur, &lvl, &monstre, &son, &input);

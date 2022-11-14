@@ -20,16 +20,23 @@ void initMaps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon2.png");
     }
+    if (lvl->Num == 9)
+    {
+        lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon2.png");
+    }
+
 }
   
 void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input)
 {  
+    //Map global
     if (lvl->Num == -1)
     {
         MapGlobal(joueur, lvl, monstre, son, input);
     }
     else
     {
+        //Pour marchand
         if (lvl->Num == 4)
         {
             if (joueur->inposy >=298  && joueur->inposx >= 264 && joueur->inposx <= 300)
@@ -42,6 +49,7 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
                 Mix_PlayMusic(son ->musiqueMapG, -1);
             }
         }
+        //tout les autres niv avec sortie haut
         else if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320)
         {   
              //Variable pour bouger sur map global
@@ -49,6 +57,7 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             {
                 lvl->WinDonjon = 1;
             }
+            //retour map global
             if (lvl->NumDonjon == 0 && lvl->Num == 3)
             {
                 lvl->Num = -1;
@@ -159,6 +168,11 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         {
             lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
             drawImage(lvl->Icone,228,125);
+            if (input->attack == 1)
+            {
+                lvl->Num = 9;
+                SelectNiv(joueur, lvl, monstre, son);
+            }
         }
         else
         {
