@@ -22,7 +22,7 @@ void initMaps(Lvl *lvl)
     }
     if (lvl->Num == 9)
     {
-        lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon2.png");
+        lvl->Map = loadImage("src/graphics/Rivière/Ponton.png");
     }
 
 }

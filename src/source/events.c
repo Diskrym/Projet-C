@@ -1,27 +1,27 @@
 #include "../header/proto.h"
 
-//collision entre le joueur et les murs 
-void collisionmur (Joueur *joueur, int x, int y)
+//collision entre le joueur et les murs // haut ,bas ,gauche, droite
+void collisionmur (Joueur *joueur, int x, int y, int z, int u)
 {
     //mur du haut
-    if (joueur->inposx <= y)
-    {
-        joueur->inposx+=3;
-    }
-    //mur de droite
-     if (joueur->inposx >= SCREEN_WIDTH-SPRITE_SIZE-x)
-    {
-        joueur->inposx-=3;
-    }
-    //mur de gauche
     if (joueur->inposy <= x)
     {
         joueur->inposy+=3;
     }
-    //mur du bas 
+    //mur du bas
     if (joueur->inposy >= SCREEN_HEIGHT-SPRITE_SIZE-y)
     {
         joueur->inposy-=3;
+    }
+    //mur de gauche
+    if (joueur->inposx <= z)
+    {
+        joueur->inposx+=3;
+    }
+    //mur de droite
+     if (joueur->inposx >= SCREEN_WIDTH-SPRITE_SIZE-u)
+    {
+        joueur->inposx-=3;
     }
 }
 
