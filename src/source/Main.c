@@ -16,6 +16,7 @@ Historique version :
     CoupDague en attente mais pret si double coup sur monstre
     Son attaque chevalier pret mais commenter
     BYPASS A ENLEVER SUR LE MAIN ET DANS INPUT
+    Finir donjon bleu, lvl deja prep dans struct + faire retour map global a la fin du donjon bleu.
 */
 
 #include "../header/proto.h"

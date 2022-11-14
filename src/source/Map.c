@@ -29,12 +29,14 @@ void initMaps(Lvl *lvl)
   
 void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input)
 {  
+    //Map global
     if (lvl->Num == -1)
     {
         MapGlobal(joueur, lvl, monstre, son, input);
     }
     else
     {
+        //Pour marchand
         if (lvl->Num == 4)
         {
             if (joueur->inposy >=298  && joueur->inposx >= 264 && joueur->inposx <= 300)
@@ -47,6 +49,7 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
                 Mix_PlayMusic(son ->musiqueMapG, -1);
             }
         }
+        //tout les autres niv avec sortie haut
         else if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320)
         {   
              //Variable pour bouger sur map global
@@ -54,6 +57,7 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             {
                 lvl->WinDonjon = 1;
             }
+            //retour map global
             if (lvl->NumDonjon == 0 && lvl->Num == 3)
             {
                 lvl->Num = -1;
