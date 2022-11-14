@@ -532,6 +532,13 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                         yeti->Life--;
                     }
                 }
+                //degat dague
+                if (insideVol(joueur->xdague,joueur->ydague, yeti->posmonsx+10, yeti->posmonsy+15,45,60,30)==1)
+                {
+                    yeti->CompteurSpriteDegat=1; 
+                    yeti->Life--; 
+                    //joueur->CoupDague=1;
+                }
             }
  
             else
