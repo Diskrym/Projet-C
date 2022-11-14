@@ -17,7 +17,7 @@ extern void porte (Lvl *lvl);
 extern void menu (Lvl *lvl);
 
 //events.c
-extern void collisionmur (Joueur *joueur);
+extern void collisionmur (Joueur *joueur, int x, int y);
 extern void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl);
 extern void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl);
 extern void collisionDecor (Joueur *joueur, Input *input, int x1, int x2, int y1, int y2);

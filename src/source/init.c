@@ -135,12 +135,12 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     if(lvl->Num==0)
     {
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
-        collisionmur (joueur);
+        collisionmur (joueur,20,20);
         collision(joueur, &monstre->meduse, input, lvl);
     }
     if(lvl->Num==1)
     {   
-        collisionmur (joueur);
+        collisionmur (joueur,20,20);
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
         deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
         deplacementMeduse(joueur, &monstre->meduse2, lvl, son);
@@ -150,7 +150,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     }
     if(lvl->Num==2)
     {   
-        collisionmur (joueur);
+        collisionmur (joueur,20,20);
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
         deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
         deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl, son);
@@ -161,13 +161,13 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     }
     if (lvl->Num==3)
     {   
-        collisionmur (joueur);
+        collisionmur (joueur,20,20);
         collisionboss(joueur, &monstre->boss, input, lvl);
         deplacementBoss(joueur, &monstre->boss, lvl, input,son);
     }
     if (lvl->Num==4)
     {
-        collisionmur(joueur);
+        collisionmur(joueur,20,20);
         //Table
         collisionDecor(joueur, input,223,415,120,55);
         //jermy
@@ -178,11 +178,12 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     }   
     if (lvl -> Num == 5)
     {
-        collisionmur(joueur);
+        collisionmur(joueur,20,20);
         collisionyeti (joueur, &monstre->yeti, input, lvl);
         deplacementyeti(joueur,&monstre->yeti, lvl, son);
-        if (lvl->MortMonstre==level[5][0][1])
+        if (lvl->MortMonstre==level[5][0][1] && lvl->WinDonjon<=2)
         {
+            printf("aaa");
             GestionMarchands(joueur, input, &monstre->marchand, lvl);
             //jermy
             collisionDecor(joueur, input,465,530,283,210);
@@ -191,7 +192,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     }
     if (lvl->Num == 6)
     {
-        collisionmur(joueur);
+        collisionmur(joueur,20,20);
         collisionyeti (joueur, &monstre->yeti, input, lvl);
         deplacementyeti(joueur,&monstre->yeti, lvl, son);
         collisionyeti (joueur, &monstre->yeti1, input, lvl);
@@ -201,7 +202,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     }
     if (lvl->Num == 9)
     {
-        collisionmur(joueur);
+        collisionmur(joueur,25,25);
     }
     
     
