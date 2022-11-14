@@ -118,12 +118,13 @@ typedef struct ParamTexte
 
 typedef struct Lvl
 {
-    int Num, MortMonstre, NumDonjon, WinDonjon;
+    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
     SDL_Texture *Piece;
     SDL_Texture *Map;
+    SDL_Texture *MapSlide;
     SDL_Texture *SpritLvl;
     SDL_Texture *SpritMotLVL;
     SDL_Texture *Menu;

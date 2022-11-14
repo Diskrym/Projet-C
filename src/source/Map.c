@@ -26,7 +26,7 @@ void initMaps(Lvl *lvl)
     }
     if (lvl->Num == 10)
     {
-        lvl->Map = loadImage("src/graphics/Rivière/Riviere.png");
+        lvl->Map = lvl->MapSlide = loadImage("src/graphics/Rivière/Riviere.png");
     }
     
 
