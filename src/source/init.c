@@ -14,7 +14,7 @@ void init(char *title)
                                   SDL_WINDOWPOS_CENTERED,
                                   SDL_WINDOWPOS_CENTERED,
                                   SCREEN_WIDTH, SCREEN_HEIGHT,
-                                  SDL_WINDOW_SHOWN);
+                                  SDL_WINDOW_SHOWN| SDL_WINDOW_RESIZABLE);
  
     //On crée un renderer pour la SDL et on active la synchro verticale : VSYNC
     renderer = SDL_CreateRenderer(screen, -1, SDL_RENDERER_PRESENTVSYNC);
@@ -116,7 +116,11 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
     }
     if (lvl->Num == 5)
     {
-        loadNiv31(joueur, &monstre->yeti, &monstre->yeti1, &monstre->yeti2, lvl);
+        loadNiv31(joueur, &monstre->yeti, lvl);
+    }
+    if  (lvl->Num == 6)
+    {
+        loadNiv32(joueur, &monstre->yeti, &monstre->yeti1, &monstre->yeti2, lvl);
     }
     lvl->MortMonstre=0;
 }
@@ -171,15 +175,18 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     {
         collisionmur(joueur);
         collisionyeti (joueur, &monstre->yeti, input, lvl);
-        collisionyeti (joueur, &monstre->yeti1, input, lvl);
-        collisionyeti (joueur, &monstre->yeti2, input, lvl);
         deplacementyeti(joueur,&monstre->yeti, lvl, son);
-        deplacementyeti(joueur,&monstre->yeti1, lvl, son);
-        deplacementyeti(joueur,&monstre->yeti2, lvl, son);
+        
     }
     if (lvl->Num == 6)
     {
         collisionmur(joueur);
+        collisionyeti (joueur, &monstre->yeti, input, lvl);
+        deplacementyeti(joueur,&monstre->yeti, lvl, son);
+        collisionyeti (joueur, &monstre->yeti1, input, lvl);
+        collisionyeti (joueur, &monstre->yeti2, input, lvl);
+        deplacementyeti(joueur,&monstre->yeti1, lvl, son);
+        deplacementyeti(joueur,&monstre->yeti2, lvl, son);
     }
     
     
@@ -251,7 +258,7 @@ void loadNiv21 (Joueur *joueur, Lvl* lvl)
     joueur->inposy = level[4][0][3];
 }
 
-void loadNiv31 (Joueur *joueur,Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl)
+void loadNiv31 (Joueur *joueur,Yeti *yeti, Lvl *lvl)
 {
     initMaps(lvl);
     joueur->inposx = level[5][0][2];
@@ -259,21 +266,24 @@ void loadNiv31 (Joueur *joueur,Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl)
     yeti->posmonsx =level[5][1][1];
     yeti->posmonsy =level[5][1][2];
     yeti->Life=level [5][1][5];
-    yeti1->posmonsx =level[5][2][1];
-    yeti1->posmonsy =level[5][2][2];
-    yeti1->Life=level [5][2][5];
-    yeti1->compteur= level [5][2][3];
-    yeti2->posmonsx =level[5][3][1];
-    yeti2->posmonsy =level[5][3][2];
-    yeti2->Life=level [5][3][5];
-    yeti2->compteur = level [5][3][3];
 }
 
-void loadNiv32 (Joueur *joueur, Lvl *lvl)
+void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl)
 {
     initMaps(lvl);
     joueur->inposx= level [6][0][2];
     joueur->inposy= level [6][0][2];
+    yeti->posmonsx =level[6][1][1];
+    yeti->posmonsy =level[6][1][2];
+    yeti->Life=level [6][1][5];
+    yeti1->posmonsx =level[6][2][1];
+    yeti1->posmonsy =level[6][2][2];
+    yeti1->Life=level [6][2][5];
+    yeti1->compteur= level [6][2][3];
+    yeti2->posmonsx =level[6][3][1];
+    yeti2->posmonsy =level[6][3][2];
+    yeti2->Life=level [6][3][5];
+    yeti2->compteur = level [6][3][3];
 }
 
 void cleanup(EffetSon *son)
