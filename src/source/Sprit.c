@@ -1,6 +1,5 @@
 #include "../header/proto.h" 
 
-
 void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
 {   
     //reset des pointeurs des sprites
@@ -25,8 +24,6 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         joueur->dagueMur = NULL;
     }
     
-    
-
     //Mouvement du joueur droite si bouclier baisser ou si timing bouclier dépassé
     if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
     {
@@ -101,8 +98,6 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                 joueur->NumSprit =0;
             }   
         }
-        //dague
-        
     }
     if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==0) || (DegatChevalier(&monstre->meduse, &monstre->meduse1 , &monstre->meduse2, &monstre->chauvesouris , &monstre->chauvesouris1, &monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==0) && joueur->Direction==1 )
     {
@@ -111,9 +106,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
         Mix_PlayChannel(1, son->degatchevalier, 0);
     }
-        
     
-
     //Mouvement attaque si Eattack = 1 et si on ne prend pas de dégat
     if (joueur->Eattack==1 && DegatChevalier(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, &monstre->chauvesouris, &monstre->chauvesouris1,&monstre->boss, &monstre->yeti, &monstre->yeti1, &monstre->yeti2)==1)
     {
@@ -182,7 +175,6 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         }
     }
 
-
     //mouvement defense si etat shield a 1
     if (joueur->Eshield==1)
     {
@@ -220,8 +212,6 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
         joueur->Eattack = 0;
     }
 
-
-
     //Dague
     if (joueur->Edague == 1 && joueur->nbDague>0 && joueur->DirDague==1)
     {
@@ -250,7 +240,6 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     {
         if (joueur->xdague>=20 && joueur->xdague<=600 && joueur->ydague>= 20 && joueur->ydague<=384)
         { 
-            
             joueur->dague=loadImage("src/graphics/Chevalier/DagueD.png");
             drawImage(joueur->dague,joueur->xdague,joueur->ydague);
             joueur->xdague+=10;
@@ -266,7 +255,6 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
                 joueur->dagueMur = NULL;
                 joueur->Edague=0;
                 //joueur->CoupDague=0;
-
             }
         }
     }
@@ -324,7 +312,6 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {
                     meduse->meduse=loadImage("src/graphics/Meduse/Medusemarche1.png");
                     drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-                    meduse->attack+=1;
                 }
                 //degat epee
                 if(insidechevalier(joueur, meduse)==1 && joueur->Numattack==15)
@@ -339,9 +326,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     meduse->Life--; 
                     //joueur->CoupDague=1;
                 }
-                
             }
-
             else 
             {
                 //si la meduse prend un coup
@@ -350,8 +335,8 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 if (meduse->CompteurSpriteDegat==2)
                 {
-                Mix_VolumeChunk(son->degatmeduse, MIX_MAX_VOLUME/2);
-                Mix_PlayChannel(4, son->degatmeduse, 0); 
+                    Mix_VolumeChunk(son->degatmeduse, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(4, son->degatmeduse, 0); 
                 }          
                 //compteur duree affichage degat meduse
                 if (meduse->CompteurSpriteDegat > 15)
@@ -366,7 +351,6 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         {
             if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==2 || meduse->NumSprit==3 )
             {  
-                
                 meduse->meduse=loadImage("src/graphics/Meduse/medusecoup1.png");
                 drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             }
@@ -426,8 +410,8 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
             drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             if (meduse->CompteurSpriteDegat==1)
             {
-            Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME/2);
-            Mix_PlayChannel(9, son->mortmeduse, 0);
+                Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(9, son->mortmeduse, 0);
             }
         }
         if (meduse->CompteurSpriteDegat==4 || meduse->CompteurSpriteDegat==5 || meduse->CompteurSpriteDegat==6 || meduse->CompteurSpriteDegat==7 )
@@ -512,7 +496,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreG.png");
                         drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                        yeti->attack+=1;
                     }
                     if(insidechevalieryeti(joueur, yeti)==1 && joueur->Numattack==15)
                     {          
@@ -542,7 +525,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreD.png");
                         drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                        yeti->attack+=1;
                     }
                     if(insidechevalieryeti(joueur, yeti)==1 && joueur->Numattack==15)
                     {          
@@ -675,14 +657,11 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 //reset compteur yeti
             }
             if (yeti->NumSprit>90)
-                {
-                    yeti->NumSprit=0;
-                } 
+            {
+                yeti->NumSprit=0;
+            } 
         }
-        
-    
     }
-    
     
     //Sprit boule
     if (yeti->Eattaque == 1)
@@ -778,7 +757,6 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 }
             }
         }
-        
     }
     // timing degat chevalier
     if (yeti->coup>0)
@@ -789,82 +767,79 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             yeti->coup=0;
         }
     }
-    
-
     if (yeti->compteur>=190)
     {
         yeti->compteur=0;
     }
-
     //Mort yeti
     if (yeti->Life==0)
     {
         if (yeti->Direction==1)
         {  
-        if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort1G.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            if (yeti->CompteurSpriteDegat==1)
+            if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
             {
-            // Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
-            // Mix_PlayChannel(9, son->mortyeti, 0);
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort1G.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                if (yeti->CompteurSpriteDegat==1)
+                {
+                    // Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
+                    // Mix_PlayChannel(9, son->mortyeti, 0);
+                }
             }
-        }
-        if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort2G.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-        }
-        if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort3G.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-        }
-        if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort4G.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-        }
-        if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort5G.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-        }
+            if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort2G.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort3G.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort4G.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort5G.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
         }
 
         if (yeti->Direction==0)
         {  
-        if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort1D.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            if (yeti->CompteurSpriteDegat==1)
+            if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
             {
-            // Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
-            // Mix_PlayChannel(9, son->mortyeti, 0);
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort1D.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                if (yeti->CompteurSpriteDegat==1)
+                {
+                // Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
+                // Mix_PlayChannel(9, son->mortyeti, 0);
+                }
             }
-        }
-        if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort2D.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-        }
-        if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort3D.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-        }
-        if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort4D.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-        }
-        if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
-        {
-            yeti->yeti=loadImage("src/graphics/yeti/YetiMort5D.png");
-            drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-        }
+            if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort2D.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort3D.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort4D.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort5D.png");
+                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
         }
         if (yeti->CompteurSpriteDegat==0)
         {
@@ -902,10 +877,8 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
                 {
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2D.png");
                     drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-                }
-                 
+                }  
             }
-
 
             if (chauvesouris->Direction==1){
                 if (chauvesouris->NumSprit==0 || chauvesouris->NumSprit==1 || chauvesouris->NumSprit==2 || chauvesouris->NumSprit==3 ||chauvesouris->NumSprit==8 || chauvesouris->NumSprit==9 || chauvesouris->NumSprit==10 || chauvesouris->NumSprit==11 )
@@ -1076,8 +1049,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
                     //joueur->CoupDague=1;
-                }
-                
+                }  
             } 
             //degat sur Boss
             else 
@@ -1372,7 +1344,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
     }
     if (marchand->Enter !=NULL)
     {
-        SDL_DestroyTexture(marchand->Jerem);
+        SDL_DestroyTexture(marchand->Enter);
         marchand->Enter = NULL;
     }
     if (marchand->Bec != NULL)
@@ -1493,8 +1465,8 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
             {   
                 if (joueur->NbPiece-2>=0 && joueur->life<4)
                 {
-                joueur->life+=1;
-                joueur->NbPiece-=2;
+                    joueur->life+=1;
+                    joueur->NbPiece-=2;
                 }
             }
         }

@@ -33,7 +33,6 @@ extern int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Cha
 extern int insideItem (Joueur *joueur, Boss *boss);
 extern int insideVol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObj );
 
-
 //init.c
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
@@ -61,8 +60,6 @@ extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,
 extern void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son);
 extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son);
 
-
-
 //map.c
 extern void initMaps(Lvl *lvl);
 extern SDL_Texture *getBackground(void);
@@ -76,7 +73,6 @@ extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
 extern void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand);
-
 
 //extern void drawMap(int);
 #endif

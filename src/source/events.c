@@ -5,24 +5,24 @@ void collisionmur (Joueur *joueur)
 {
     //mur du haut
     if (joueur->inposx <= 25)
-        {
-            joueur->inposx+=3;
-        }
+    {
+        joueur->inposx+=3;
+    }
     //mur de droite
      if (joueur->inposx >= SCREEN_WIDTH-SPRITE_SIZE-25)
-        {
-            joueur->inposx-=3;
-        }
+    {
+        joueur->inposx-=3;
+    }
     //mur de gauche
     if (joueur->inposy <= 25)
-        {
-            joueur->inposy+=3;
-        }
+    {
+        joueur->inposy+=3;
+    }
     //mur du bas 
     if (joueur->inposy >= SCREEN_HEIGHT-SPRITE_SIZE-20)
-        {
-            joueur->inposy-=3;
-        }
+    {
+        joueur->inposy-=3;
+    }
 }
 
  //collision entre les meduse et joueur
@@ -118,7 +118,7 @@ void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
                 boss->posmonsy-=1;
                 if (input->up == 1)
                 {
-                joueur->inposy+=3;  
+                    joueur->inposy+=3;  
                 }
             }
         }
@@ -176,7 +176,7 @@ void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
                 yeti->posmonsy-=1;
                 if (input->up == 1)
                 {
-                joueur->inposy+=3;  
+                    joueur->inposy+=3;  
                 }
             }
         }
@@ -233,7 +233,7 @@ void collisionDecor (Joueur *joueur, Input *input, Lvl *lvl, int x1, int x2, int
             {
                if (input->up == 1)
                 {
-                joueur->inposy+=3;  
+                    joueur->inposy+=3;  
                 }
             }
         }
@@ -316,8 +316,9 @@ int insidechevalier (Joueur *joueur, Meduse *meduse)
 
 //test si l'attaque du joueur touche le boss
 int insidechevalierBoss (Joueur *joueur, Boss *boss)
-{       int x=0;
-        int y=0;
+{       
+    int x=0;
+    int y=0;
     if (joueur->Direction==1)
     {
         if ((boss->posmonsx>=joueur->inposx-21 || boss->posmonsx+128>=joueur->inposx-21) && (boss->posmonsx<=joueur->inposx || boss->posmonsx+128<=joueur->inposx))
@@ -349,13 +350,13 @@ int insidechevalierBoss (Joueur *joueur, Boss *boss)
         else 
         {return 0;}
     }
-
 }
 
 //test si l'attaque du joueur touche le yeti
 int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
-{       int x=0;
-        int y=0;
+{       
+    int x=0;
+    int y=0;
     if (joueur->Direction==1)
     {
         if ((yeti->posmonsx>=joueur->inposx-21 || yeti->posmonsy+80>=joueur->inposx-21) && (yeti->posmonsx<=joueur->inposx || yeti->posmonsy+80<=joueur->inposx))
@@ -387,7 +388,6 @@ int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
         else
         {return 0;}
     }
- 
 }
 
 //test si l'attaque de la méduse touche le joueur
@@ -414,20 +414,19 @@ int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris)
 {
     int x=0;
     int y=0;
- 
-        if ((chauvesouris->posmonsx+10>=joueur->inposx || chauvesouris->posmonsx+40>=joueur->inposx) && (chauvesouris->posmonsx+10<=joueur->inposx+SPRITE_SIZE || chauvesouris->posmonsx+40<=joueur->inposx+SPRITE_SIZE))
-        {
-            x=1;
-        }
-        if ((chauvesouris->posmonsy+10>=joueur->inposy || chauvesouris->posmonsy+40>=joueur->inposy) && (chauvesouris->posmonsy+10<=joueur->inposy+SPRITE_SIZE || chauvesouris->posmonsy+40<=joueur->inposy+SPRITE_SIZE))
-        {
-            y=1;
-        }
-        if (x==1 && y==1)
-        {return 1;}
-        else
-        {return 0;}
-    
+
+    if ((chauvesouris->posmonsx+10>=joueur->inposx || chauvesouris->posmonsx+40>=joueur->inposx) && (chauvesouris->posmonsx+10<=joueur->inposx+SPRITE_SIZE || chauvesouris->posmonsx+40<=joueur->inposx+SPRITE_SIZE))
+    {
+        x=1;
+    }
+    if ((chauvesouris->posmonsy+10>=joueur->inposy || chauvesouris->posmonsy+40>=joueur->inposy) && (chauvesouris->posmonsy+10<=joueur->inposy+SPRITE_SIZE || chauvesouris->posmonsy+40<=joueur->inposy+SPRITE_SIZE))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {return 1;}
+    else
+    {return 0;}
 }
  
 //test si l'attaque du boss touche le joueur

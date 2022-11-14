@@ -3,54 +3,44 @@
  
 #include "defs.h"
  
- 
 // variable clavier
 typedef struct Input
 {
- 
-    int left, right, up, down, shield, attack, enter, erase, pause, Bypass, dague;
- 
+    int left, right, up, down, shield, attack, enter, Bypass, dague;
 } Input;
 
 
 typedef struct Meduse
 {
- 
-    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort;
+    int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur;
     SDL_Texture *attaque;
     SDL_Texture *meduse;
-    
- 
 } Meduse;
 
 typedef struct Yeti
 {
- 
-    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteMort, Eattaque, xboule, yboule,directionboule, Eboule, CompteurBoule;
+    int NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, Eattaque, xboule, yboule,directionboule, CompteurBoule;
     SDL_Texture *attaqueyeti;
     SDL_Texture *yeti;
     SDL_Texture *boule;
-    
- 
 } Yeti;
 
 typedef struct Chauvesouris
 {
- 
-    int attack, NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteDegatChevalier;
+    int NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteDegatChevalier;
     SDL_Texture *chauvesouris;
 } Chauvesouris;
 
 typedef struct  Boss
 {
-        int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, CompteurSpriteEclair, compteur, Ex1, Ey1, Ex2, Ey2, Ex3, Ey3, Ex4, Ey4, coupE1 , coupE2 ,coupE3, coupE4, RecupCoeur;
-        SDL_Texture *Boss;
-        SDL_Texture *Bossattaque;
-        SDL_Texture *Eclair1;
-        SDL_Texture *Eclair2;
-        SDL_Texture *Eclair3;
-        SDL_Texture *Eclair4;
-        SDL_Texture *Coeur;
+    int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, CompteurSpriteEclair, compteur, Ex1, Ey1, Ex2, Ey2, Ex3, Ey3, Ex4, Ey4, coupE1 , coupE2 ,coupE3, coupE4, RecupCoeur;
+    SDL_Texture *Boss;
+    SDL_Texture *Bossattaque;
+    SDL_Texture *Eclair1;
+    SDL_Texture *Eclair2;
+    SDL_Texture *Eclair3;
+    SDL_Texture *Eclair4;
+    SDL_Texture *Coeur;
 }Boss;
 
 
@@ -112,8 +102,6 @@ typedef struct EffetSon
     Mix_Chunk *porte;
     Mix_Chunk *gameoverson;
     Mix_Chunk *coffre;
-
-
 }EffetSon;
 
 
@@ -123,7 +111,6 @@ typedef struct ParamTexte
     SDL_Surface *SurfacePiece;
     SDL_Texture *TexturePiece;
     char StrPiece[3];
-
 }ParamTexte;
 
 

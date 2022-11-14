@@ -26,6 +26,7 @@ void GameOver (EffetSon *son)
     Mix_PlayChannel(10, son->gameoverson, 2);
     SDL_Delay(3000);
 }
+
 //ecran fin
 void Win (void)
 {
@@ -129,16 +130,13 @@ void AffichagePiece (Joueur *joueur,Lvl *lvl, ParamTexte *paramtexte)
 
     if (lvl->Num >= 0)
     {
-            lvl->Piece=loadImage("src/graphics/lvl/Piece.png");
-            drawImage(lvl->Piece, 405 ,4);
-            SDL_Color color = { 0, 0, 0 };
-            SDL_itoa(joueur->NbPiece, paramtexte->StrPiece,10); 
-            paramtexte->SurfacePiece = TTF_RenderText_Solid(paramtexte->Font, paramtexte->StrPiece, color);
-            paramtexte->TexturePiece = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfacePiece);
-            drawImage(paramtexte->TexturePiece,470,4);
-
-            
-        
+        lvl->Piece=loadImage("src/graphics/lvl/Piece.png");
+        drawImage(lvl->Piece, 405 ,4);
+        SDL_Color color = { 0, 0, 0 };
+        SDL_itoa(joueur->NbPiece, paramtexte->StrPiece,10); 
+        paramtexte->SurfacePiece = TTF_RenderText_Solid(paramtexte->Font, paramtexte->StrPiece, color);
+        paramtexte->TexturePiece = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfacePiece);
+        drawImage(paramtexte->TexturePiece,470,4); 
     }
 }
 

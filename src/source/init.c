@@ -22,8 +22,7 @@ void init(char *title)
     // revoie erreur
     if (screen == NULL || renderer == NULL)
     {
-        printf("Impossible d'initialiser le mode écran à %d x %d: %s\n", SCREEN_WIDTH,
-                                                                    SCREEN_HEIGHT, SDL_GetError());
+        printf("Impossible d'initialiser le mode écran à %d x %d: %s\n", SCREEN_WIDTH,SCREEN_HEIGHT, SDL_GetError());
         exit(1);
     }
  
@@ -51,9 +50,9 @@ void init(char *title)
 void Son (EffetSon *son)
 {
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
-   {
+    {
       printf("%s", Mix_GetError());
-   }
+    }
     Mix_AllocateChannels(32); //Allouer 32 canaux
     son->musiquemenu = Mix_LoadMUS("src/Sik/m_menu.mp3"); //Chargement de la musique
     son->musiqueboss = Mix_LoadMUS("src/Sik/m_Boss.mp3");
@@ -84,24 +83,25 @@ void Son (EffetSon *son)
 
 void Texte(ParamTexte *paramtexte)
 {
-paramtexte->Font = TTF_OpenFont("src/font/Pixel.ttf", 25);
+    paramtexte->Font = TTF_OpenFont("src/font/Pixel.ttf", 25);
 }
 
 void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
 {
     if(lvl->Num == 0)
     {   
-        
         LoadNiv11(&monstre->meduse, lvl, joueur);
         Mix_PlayMusic(son ->musiquelvl, -1);
     }
     if(lvl->Num == 1)
-    {   joueur->AttPiece+=1;
+    {   
+        joueur->AttPiece+=1;
         LoadNiv12(&monstre->meduse, &monstre->meduse1, &monstre->meduse2, lvl, joueur);
     }
     if(lvl->Num == 2)
-    {   joueur->AttPiece+=1;
-         LoadNiv13(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
+    {   
+        joueur->AttPiece+=1;
+        LoadNiv13(&monstre->meduse, &monstre->meduse1, &monstre->chauvesouris , &monstre->chauvesouris1, lvl, joueur);
     }
     if(lvl->Num == 3)
     {   
@@ -118,8 +118,6 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
     {
         loadNiv31(joueur, &monstre->yeti, &monstre->yeti1, &monstre->yeti2, lvl);
     }
-    
-    
     lvl->MortMonstre=0;
 }
 
@@ -130,7 +128,6 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
         collisionmur (joueur);
         collision(joueur, &monstre->meduse, input, lvl);
-
     }
     if(lvl->Num==1)
     {   
@@ -143,7 +140,8 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         collision(joueur, &monstre->meduse2, input, lvl);
     }
     if(lvl->Num==2)
-    {   collisionmur (joueur);
+    {   
+        collisionmur (joueur);
         deplacementMeduse(joueur, &monstre->meduse, lvl, son);
         deplacementMeduse(joueur, &monstre->meduse1, lvl, son);
         deplacementChauvesouris(joueur,&monstre->chauvesouris, lvl, son);
@@ -189,51 +187,51 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
 
 void LoadNiv11(Meduse *meduse, Lvl *lvl, Joueur *joueur)
 {  
-        initMaps(lvl);
-        joueur->inposx = level[0][0][2];
-        joueur->inposy = level[0][0][3];
-        meduse->posmonsx =level[0][1][1];
-        meduse->posmonsy =level[0][1][2];
-        meduse->Life=level[0][1][5];
+    initMaps(lvl);
+    joueur->inposx = level[0][0][2];
+    joueur->inposy = level[0][0][3];
+    meduse->posmonsx =level[0][1][1];
+    meduse->posmonsy =level[0][1][2];
+    meduse->Life=level[0][1][5];
 }
 
 void LoadNiv12(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, Joueur *joueur)
-{       SDL_RenderClear(renderer);
-        SDL_RenderPresent(renderer);
-    
-        initMaps(lvl);
-        joueur->inposx = level[1][0][2];
-        joueur->inposy = level[1][0][3];
-        meduse->posmonsx =level[1][1][1];
-        meduse->posmonsy =level[1][1][2];
-        meduse->Life=level[1][1][5];
-        meduse1->posmonsx =level[1][2][1];
-        meduse1->posmonsy =level[1][2][2];
-        meduse1->Life=level[1][2][5];
-        meduse2->posmonsx =level[1][3][1];
-        meduse2->posmonsy =level[1][3][2];
-        meduse2->Life=level[1][3][5];
+{       
+    // SDL_RenderClear(renderer);
+    // SDL_RenderPresent(renderer);
+    initMaps(lvl);
+    joueur->inposx = level[1][0][2];
+    joueur->inposy = level[1][0][3];
+    meduse->posmonsx =level[1][1][1];
+    meduse->posmonsy =level[1][1][2];
+    meduse->Life=level[1][1][5];
+    meduse1->posmonsx =level[1][2][1];
+    meduse1->posmonsy =level[1][2][2];
+    meduse1->Life=level[1][2][5];
+    meduse2->posmonsx =level[1][3][1];
+    meduse2->posmonsy =level[1][3][2];
+    meduse2->Life=level[1][3][5];
 }
 
 void LoadNiv13(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur)
 {  
-        initMaps(lvl);
-        joueur->inposx = level[2][0][2];
-        joueur->inposy = level[2][0][3];
-        meduse->posmonsx =level[2][1][1];
-        meduse->posmonsy =level[2][1][2];
-        meduse->Life=level[2][1][5];
-        meduse1->posmonsx =level[2][2][1];
-        meduse1->posmonsy =level[2][2][2];
-        meduse1->Life=level[2][2][5];
-        chauvesouris->posmonsx =level[2][3][1];
-        chauvesouris->posmonsy =level[2][3][2];
-        chauvesouris->Life=level[2][3][5];
-        chauvesouris->CompteurSpriteDegat=0;
-        chauvesouris1->posmonsx =level[2][4][1];
-        chauvesouris1->posmonsy =level[2][4][2];
-        chauvesouris1->Life=level[2][4][5];
-        chauvesouris1->CompteurSpriteDegat=0;
+    initMaps(lvl);
+    joueur->inposx = level[2][0][2];
+    joueur->inposy = level[2][0][3];
+    meduse->posmonsx =level[2][1][1];
+    meduse->posmonsy =level[2][1][2];
+    meduse->Life=level[2][1][5];
+    meduse1->posmonsx =level[2][2][1];
+    meduse1->posmonsy =level[2][2][2];
+    meduse1->Life=level[2][2][5];
+    chauvesouris->posmonsx =level[2][3][1];
+    chauvesouris->posmonsy =level[2][3][2];
+    chauvesouris->Life=level[2][3][5];
+    chauvesouris->CompteurSpriteDegat=0;
+    chauvesouris1->posmonsx =level[2][4][1];
+    chauvesouris1->posmonsy =level[2][4][2];
+    chauvesouris1->Life=level[2][4][5];
+    chauvesouris1->CompteurSpriteDegat=0;
 }
 
 void loadNiv14 (Joueur *joueur,Boss *boss, Lvl *lvl)
@@ -289,9 +287,6 @@ void cleanup(EffetSon *son)
     renderer = NULL;
     SDL_DestroyWindow(screen);
     screen = NULL;
-    
-    ;
-
     //On quitte SDL_TTF 2
     //TTF_Quit();
  

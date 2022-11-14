@@ -38,13 +38,10 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
                 {
                     lvl->WinDonjon = 2;
                 }
-                
                 lvl->Num = -1;
                 Mix_PlayMusic(son ->musiqueMapG, -1);
             }
-            
         }
-        
         else if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320)
         {   
              //Variable pour bouger sur map global
@@ -99,7 +96,6 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         lvl->Cadenas4 = NULL;
     }
 
-
     lvl->Map=loadImage("src/graphics/lvl/mapglobal.png");
     if (input->up == 1 && lvl->NumDonjon < 4)
     {
@@ -121,7 +117,6 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             lvl->Num = 0;
             SelectNiv(joueur, lvl, monstre, son);
         }
-        
     }
     if (lvl->NumDonjon == 1)
     {
