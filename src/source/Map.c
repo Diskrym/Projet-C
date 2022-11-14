@@ -26,10 +26,8 @@ void initMaps(Lvl *lvl)
     }
     if (lvl->Num == 10)
     {
-        lvl->Map = lvl->MapSlide = loadImage("src/graphics/Rivière/Riviere.png");
+       lvl->Map = lvl->MapSlide = loadImage("src/graphics/Rivière/Riviere.png");
     }
-    
-
 }
   
 void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input)

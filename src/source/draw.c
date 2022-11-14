@@ -11,12 +11,31 @@ void drawGame(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte)
     }
     else
     {
-        drawImage(lvl->Map,lvl->PosMap10,0);
-        drawImage(lvl->MapSlide,lvl->PosMap10+640,0);
-        lvl->PosMap10-=10;
+
+        
+        if(lvl->Avancement10 <12)
+        {
+            lvl->PosMap10-=10;
+            drawImage(lvl->Map,lvl->PosMap10,0);
+            drawImage(lvl->MapSlide,lvl->PosMap10+640,0);
+        }
+        if (lvl->Avancement10==12)
+        {
+            lvl->PosMap10-=5;
+            lvl->Map = loadImage("src/graphics/Rivière/Ponton.png");
+            drawImage(lvl->MapSlide,lvl->PosMap10,0);
+            drawImage(lvl->Map,lvl->PosMap10+640,0);
+        }
+        if (lvl->Avancement10>12)
+        {
+            drawImage(lvl->Map,lvl->PosMap10,0);
+            drawImage(lvl->MapSlide,lvl->PosMap10+640,0);
+        }
+        
         if (lvl->PosMap10 <= -640)
         {
             lvl->PosMap10 = 0;
+            lvl->Avancement10+=1;
         }
         
     }

@@ -127,34 +127,43 @@ void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son,
             if(lvl->Num!=10)
             {
                 joueur->inposx-=3;
+                joueur->NumSprit+=1;
+                joueur->Direction =1;
+
             }
-            else{
+            else
+            {
                 joueur->inposx-=5;
             }
-            joueur->NumSprit+=1;
-            joueur->Direction =1;
         }
         if (input->right==1)
         {
             if (lvl->Num != 10)
             {
                 joueur->inposx+=3;
+                joueur->NumSprit+=1;
+                joueur->Direction =0;
             }
-            else{
+            else
+            {
                 joueur->inposx+=2;
-            }
-            joueur->NumSprit+=1;
-            joueur->Direction =0;
+            } 
         }
         if (input->up==1)
         {
+            if (lvl->Num !=10)
+            {
+                joueur->NumSprit+=1;  
+            } 
             joueur->inposy-=3;
-            joueur->NumSprit+=1;   
         }
         if (input->down==1)
         {
+            if (lvl->Num != 10)
+            {
+                joueur->NumSprit+=1;
+            }
             joueur->inposy+=3;
-            joueur->NumSprit+=1;
         }
     }
     if (input->dague == 1 && joueur->Edague == 0 && joueur->nbDague>0)

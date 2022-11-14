@@ -263,8 +263,28 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     }
     else
     {
-        joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateau.png");
-        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);  
+        joueur->NumSprit+=1;
+        printf("%d \n",joueur->NumSprit);
+        if(joueur->NumSprit<10 || joueur->NumSprit>=40)
+        {
+            joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateau.png");
+            drawImage(joueur->chevalier,joueur->inposx,joueur->inposy+1);  
+        }
+        if((joueur->NumSprit>=10 && joueur->NumSprit<20) || (joueur->NumSprit>=30 && joueur->NumSprit<40))
+        {
+            joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateau.png");
+            drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);  
+        }
+        if(joueur->NumSprit>=20 && joueur->NumSprit<30)
+        {
+            joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateau.png");
+            drawImage(joueur->chevalier,joueur->inposx,joueur->inposy-1);  
+        }
+        if (joueur->NumSprit >=39)
+        {
+            joueur->NumSprit=0;
+        }
+        
     }
 }
 
