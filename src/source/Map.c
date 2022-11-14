@@ -20,6 +20,11 @@ void initMaps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon2.png");
     }
+    if (lvl->Num == 9)
+    {
+        lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon2.png");
+    }
+
 }
   
 void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input)
@@ -159,6 +164,11 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         {
             lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
             drawImage(lvl->Icone,228,125);
+            if (input->attack == 1)
+            {
+                lvl->Num = 9;
+                SelectNiv(joueur, lvl, monstre, son);
+            }
         }
         else
         {

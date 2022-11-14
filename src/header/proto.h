@@ -50,6 +50,7 @@ extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son
 extern void initEclair(Boss *boss);
 extern void loadNiv31(Joueur *joueur,Yeti *yeti, Lvl *lvl);
 extern void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl);
+extern void loadNiv41(Joueur *joueur,Lvl *lvl);
 
 //input.c
 extern void gestionInputs(Input *input);
