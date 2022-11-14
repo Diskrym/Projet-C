@@ -14,7 +14,7 @@ void init(char *title)
                                   SDL_WINDOWPOS_CENTERED,
                                   SDL_WINDOWPOS_CENTERED,
                                   SCREEN_WIDTH, SCREEN_HEIGHT,
-                                  SDL_WINDOW_SHOWN| SDL_WINDOW_RESIZABLE);
+                                  SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
  
     //On crée un renderer pour la SDL et on active la synchro verticale : VSYNC
     renderer = SDL_CreateRenderer(screen, -1, SDL_RENDERER_PRESENTVSYNC);
@@ -164,11 +164,11 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
     {
         collisionmur(joueur);
         //Table
-        collisionDecor(joueur, input,lvl,223,415,120,55);
+        collisionDecor(joueur, input,223,415,120,55);
         //jermy
-        collisionDecor(joueur, input,lvl,465,530,283,210);
+        collisionDecor(joueur, input,465,530,283,210);
         //Bec
-        collisionDecor(joueur, input,lvl,80,220,320,240);
+        collisionDecor(joueur, input,80,220,320,240);
         GestionMarchands(joueur, input, &monstre->marchand, lvl);
     }   
     if (lvl -> Num == 5)
@@ -180,7 +180,7 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         {
             GestionMarchands(joueur, input, &monstre->marchand, lvl);
             //jermy
-            collisionDecor(joueur, input,lvl,465,530,283,210);
+            collisionDecor(joueur, input,465,530,283,210);
         }
         
     }

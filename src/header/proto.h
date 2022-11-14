@@ -20,7 +20,7 @@ extern void menu (Lvl *lvl);
 extern void collisionmur (Joueur *joueur);
 extern void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl);
 extern void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl);
-extern void collisionDecor (Joueur *joueur, Input *input, Lvl *lvl, int x1, int x2, int y1, int y2);
+extern void collisionDecor (Joueur *joueur, Input *input, int x1, int x2, int y1, int y2);
 extern void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl);
 extern int inside (Joueur *joueur, Meduse *meduse);
 extern int insidechevalier (Joueur *joueur, Meduse *meduse);
