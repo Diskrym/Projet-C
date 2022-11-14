@@ -359,7 +359,7 @@ int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
     int y=0;
     if (joueur->Direction==1)
     {
-        if ((yeti->posmonsx>=joueur->inposx-21 || yeti->posmonsy+80>=joueur->inposx-21) && (yeti->posmonsx<=joueur->inposx || yeti->posmonsy+80<=joueur->inposx))
+        if ((yeti->posmonsx>=joueur->inposx-21 || yeti->posmonsx+80>=joueur->inposx-21) && (yeti->posmonsx<=joueur->inposx || yeti->posmonsx+80<=joueur->inposx))
         {
             x=1;
         }
@@ -374,7 +374,7 @@ int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
     }
     if (joueur->Direction==0)
     {
-        if ((yeti->posmonsx>=joueur->inposx+SPRITE_SIZE || yeti->posmonsy+80>=joueur->inposx+SPRITE_SIZE) && (yeti->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| yeti->posmonsy+80<=joueur->inposx+SPRITE_SIZE+21))
+        if ((yeti->posmonsx>=joueur->inposx+SPRITE_SIZE || yeti->posmonsx+80>=joueur->inposx+SPRITE_SIZE) && (yeti->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| yeti->posmonsx+80<=joueur->inposx+SPRITE_SIZE+21))
         {
             x=1;
         }
