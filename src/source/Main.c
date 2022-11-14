@@ -62,6 +62,8 @@ init("Dungeon Fate");
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
     while (go == 1)
     {    
+        printf("x : %d \n", joueur.inposx);
+        printf("y : %d \n",joueur.inposy);
         //On dessine tout
         drawGame(&joueur, &lvl, &paramtexte);
         GestionMap(&joueur, &lvl, &monstre, &son, &input);
