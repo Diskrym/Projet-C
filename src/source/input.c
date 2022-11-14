@@ -117,20 +117,32 @@ void getInput(Input *input)
     }
 }
 
-void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son)
+void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son,Lvl *lvl)
 {  
     //Si on a pas le bouclier on se déplace
     if (!(joueur->Eshield==1 && joueur->TimingBouclier<15) && input->shield==0)
     {
         if (input->left==1)
         {
-            joueur->inposx-=3;
+            if(lvl->Num!=10)
+            {
+                joueur->inposx-=3;
+            }
+            else{
+                joueur->inposx-=5;
+            }
             joueur->NumSprit+=1;
             joueur->Direction =1;
         }
         if (input->right==1)
         {
-            joueur->inposx+=3;
+            if (lvl->Num != 10)
+            {
+                joueur->inposx+=3;
+            }
+            else{
+                joueur->inposx+=2;
+            }
             joueur->NumSprit+=1;
             joueur->Direction =0;
         }

@@ -72,7 +72,7 @@ init("Dungeon Fate");
             //IA monstre
             GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
             //Gestion des inputs et des déplacements
-            deplacement(&input,&joueur,&monstre, &son);
+            deplacement(&input,&joueur,&monstre, &son, &lvl);
         }
 
         //Rendu des images dans le buffer

@@ -56,7 +56,7 @@ extern void loadNiv42(Joueur *joueur,Lvl *lvl);
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
-extern void deplacement (Input *input, Joueur *joueur, Monstre *monstre,EffetSon *son);
+extern void deplacement (Input *input, Joueur *joueur, Monstre *monstre,EffetSon *son, Lvl *lvl);
 extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son);
 extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Lvl *lvl, EffetSon *son);
 extern void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son);
