@@ -1332,7 +1332,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
     } 
 }
 
-void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
+void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl)
 {   //Verification pointeur pour memoire
     if (marchand->Jerem !=NULL)
     {
@@ -1360,188 +1360,230 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand)
         marchand->Bec = NULL;
     }
     
-    
-    //Affichage de la table 
-    marchand->Table=loadImage("src/graphics/Marchand/Table.png");
-    drawImage(marchand->Table,220,55);
-
+    if (lvl->Num == 4)
+    {
+        //Affichage de la table 
+        marchand->Table=loadImage("src/graphics/Marchand/Table.png");
+        drawImage(marchand->Table,220,55);
+    }
     //Compteur des sprites
     marchand->Compteur1 +=1 ;
 
     //Sprite Jermy
-    //enter
-    marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-    drawImage(marchand->Enter,463,300);
-    if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
+    //affichage jerem dans le marché + dans le donjon bleu une fois
+    if (lvl->Num == 4 || (lvl->Num == 5 && lvl->WinDonjon<=2))
     {
-        marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy1.png");
-        drawImage(marchand->Jerem,450,210);
-    }
-    if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
-    {
-        marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy2.png");
-        drawImage(marchand->Jerem,448,210);
-    }
-    if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
-    { 
-        marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy3.png");
-        drawImage(marchand->Jerem,450,210);
-    }
-
-
-    //Sprite Bulles Jermy en fonction de la position et de entree
-    if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
-    {
-        if (input->enter == 1)
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        drawImage(marchand->Enter,463,300);
+        if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
         {
-            SDL_Delay(200);
-            marchand->CompteurMess1 += 1;
+            marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy1.png");
+            drawImage(marchand->Jerem,450,210);
         }
-        if (marchand->CompteurMess1==1)
+        if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
-            drawImage(marchand->bulle,210,130);
+            marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy2.png");
+            drawImage(marchand->Jerem,448,210);
         }
-        if (marchand->CompteurMess1==2)
-        {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
-            drawImage(marchand->bulle,210,130);
-        }
-        if (marchand->CompteurMess1==3)
-        {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
-            drawImage(marchand->bulle,210,95);
+        if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
+        { 
+            marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy3.png");
+            drawImage(marchand->Jerem,450,210);
         }
     }
-    //remise a zero du compteur
-    else
+    //Bule donjon bleu avec dague
+    if (lvl->Num == 5 && lvl->WinDonjon<=2)
     {
-        marchand->CompteurMess1 = 0;
-    }
-    if (marchand->CompteurMess1 == 4)
-    {
-        marchand->CompteurMess1 = 0;
-    }
-
-
-    //Sprite Karine 
-    marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-    drawImage(marchand->Enter,138,120);
-    if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
-    {
-        marchand->Marchand=loadImage("src/graphics/Marchand/Karine1.png");
-        drawImage(marchand->Marchand,160,50);
-    }
-    if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
-    {
-        marchand->Marchand=loadImage("src/graphics/Marchand/Karine2.png");
-        drawImage(marchand->Marchand,160,50);
-    }
-    if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
-    { 
-        marchand->Marchand=loadImage("src/graphics/Marchand/Karine3.png");
-        drawImage(marchand->Marchand,160,50);
+        if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
+        {
+            if (input->enter == 1)
+            {
+                SDL_Delay(200);
+                marchand->CompteurMess1 += 1;
+            }
+            if (marchand->CompteurMess1==1)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
+                drawImage(marchand->bulle,210,130);
+            }
+            if (marchand->CompteurMess1==2)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
+                drawImage(marchand->bulle,210,130);
+            }
+            if (marchand->CompteurMess1==3)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
+                drawImage(marchand->bulle,210,95);
+            }
+        }
+        //remise a zero du compteur
+        else
+        {
+            marchand->CompteurMess1 = 0;
+        }
+        if (marchand->CompteurMess1 == 4)
+        {
+            marchand->CompteurMess1 = 0;
+        }
     }
     
-
-    //Sprite Bulle Karine
-    if (joueur->inposx >= 170 && joueur->inposx <= 420 && joueur->inposy >= 48 && joueur->inposy<160)
+    // bulle marché
+    if(lvl->Num == 4)
     {
-        if (input->enter == 1)
+        //Sprite Bulles Jermy en fonction de la position et de entree
+        if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
         {
-            SDL_Delay(200);
-            marchand->CompteurMess2 += 1;
+            if (input->enter == 1)
+            {
+                SDL_Delay(200);
+                marchand->CompteurMess1 += 1;
+            }
+            if (marchand->CompteurMess1==1)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
+                drawImage(marchand->bulle,210,130);
+            }
+            if (marchand->CompteurMess1==2)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
+                drawImage(marchand->bulle,210,130);
+            }
+            if (marchand->CompteurMess1==3)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
+                drawImage(marchand->bulle,210,95);
+            }
         }
-        if (marchand->CompteurMess2==1)
+        //remise a zero du compteur
+        else
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine1.png");
-            drawImage(marchand->bulle,10,115);
+            marchand->CompteurMess1 = 0;
         }
-        if (marchand->CompteurMess2==2)
+        if (marchand->CompteurMess1 == 4)
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine2.png");
-            drawImage(marchand->bulle,10,115);
+            marchand->CompteurMess1 = 0;
         }
-        if (marchand->CompteurMess2==3)
-        {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine3.png");
-            drawImage(marchand->bulle,10,115);
 
-            //Achat de coeur
-            if (input->attack == 1)
-            {   
-                if (joueur->NbPiece-2>=0 && joueur->life<4)
-                {
-                    joueur->life+=1;
-                    joueur->NbPiece-=2;
+
+        //Sprite Karine 
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        drawImage(marchand->Enter,138,120);
+        if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
+        {
+            marchand->Marchand=loadImage("src/graphics/Marchand/Karine1.png");
+            drawImage(marchand->Marchand,160,50);
+        }
+        if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
+        {
+            marchand->Marchand=loadImage("src/graphics/Marchand/Karine2.png");
+            drawImage(marchand->Marchand,160,50);
+        }
+        if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
+        { 
+            marchand->Marchand=loadImage("src/graphics/Marchand/Karine3.png");
+            drawImage(marchand->Marchand,160,50);
+        }
+        
+
+        //Sprite Bulle Karine
+        if (joueur->inposx >= 170 && joueur->inposx <= 420 && joueur->inposy >= 48 && joueur->inposy<160)
+        {
+            if (input->enter == 1)
+            {
+                SDL_Delay(200);
+                marchand->CompteurMess2 += 1;
+            }
+            if (marchand->CompteurMess2==1)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine1.png");
+                drawImage(marchand->bulle,10,115);
+            }
+            if (marchand->CompteurMess2==2)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine2.png");
+                drawImage(marchand->bulle,10,115);
+            }
+            if (marchand->CompteurMess2==3)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine3.png");
+                drawImage(marchand->bulle,10,115);
+
+                //Achat de coeur
+                if (input->attack == 1)
+                {   
+                    if (joueur->NbPiece-2>=0 && joueur->life<4)
+                    {
+                        joueur->life+=1;
+                        joueur->NbPiece-=2;
+                    }
                 }
             }
         }
-    }
-    else
-    {
-        marchand->CompteurMess2 = 0;
-    }
-    
-    if (marchand->CompteurMess2 == 4)
-    {
-        marchand->CompteurMess2 = 0;
-    }
+        else
+        {
+            marchand->CompteurMess2 = 0;
+        }
+        
+        if (marchand->CompteurMess2 == 4)
+        {
+            marchand->CompteurMess2 = 0;
+        }
 
-    //Sprite bec
-    marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-    drawImage(marchand->Enter, 95,310);
-    if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
-    {
-        marchand->Bec=loadImage("src/graphics/Marchand/Bec1.png");
-        drawImage(marchand->Bec,60,220); 
-    }
-    if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
-    {
-        marchand->Bec=loadImage("src/graphics/Marchand/Bec2.png");
-        drawImage(marchand->Bec,60,220);
-    }
-    if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
-    { 
-        marchand->Bec=loadImage("src/graphics/Marchand/Bec3.png");
-        drawImage(marchand->Bec,60,220);
-    }
-    //bulle Bec
-    if (joueur->inposx >= 180 && joueur->inposx <= 240 && joueur->inposy >= 185 && joueur->inposy<280)
-    {
-        if (input->enter == 1)
+        //Sprite bec
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        drawImage(marchand->Enter, 95,310);
+        if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
         {
-            joueur->NbPiece+=joueur->AttPiece;
-            joueur->AttPiece = 0;
-            SDL_Delay(200);
-            marchand->CompteurMess3 += 1;
+            marchand->Bec=loadImage("src/graphics/Marchand/Bec1.png");
+            drawImage(marchand->Bec,60,220); 
         }
-        if (marchand->CompteurMess3==1)
+        if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleBec1.png");
-            drawImage(marchand->bulle,55,170);
+            marchand->Bec=loadImage("src/graphics/Marchand/Bec2.png");
+            drawImage(marchand->Bec,60,220);
         }
-        if (marchand->CompteurMess3==2)
-        {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleBec2.png");
-            drawImage(marchand->bulle,55,170);
+        if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
+        { 
+            marchand->Bec=loadImage("src/graphics/Marchand/Bec3.png");
+            drawImage(marchand->Bec,60,220);
         }
-        if (marchand->CompteurMess3==3)
+        //bulle Bec
+        if (joueur->inposx >= 180 && joueur->inposx <= 240 && joueur->inposy >= 185 && joueur->inposy<280)
         {
-            marchand->bulle=loadImage("src/graphics/Marchand/BulleBec3.png");
-            drawImage(marchand->bulle,55,170);
+            if (input->enter == 1)
+            {
+                joueur->NbPiece+=joueur->AttPiece;
+                joueur->AttPiece = 0;
+                SDL_Delay(200);
+                marchand->CompteurMess3 += 1;
+            }
+            if (marchand->CompteurMess3==1)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleBec1.png");
+                drawImage(marchand->bulle,55,170);
+            }
+            if (marchand->CompteurMess3==2)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleBec2.png");
+                drawImage(marchand->bulle,55,170);
+            }
+            if (marchand->CompteurMess3==3)
+            {
+                marchand->bulle=loadImage("src/graphics/Marchand/BulleBec3.png");
+                drawImage(marchand->bulle,55,170);
+            }
+        }
+        //remise a zero du compteur
+        else
+        {
+            marchand->CompteurMess3 = 0;
+        }
+        if (marchand->CompteurMess3 == 4)
+        {
+            marchand->CompteurMess3 = 0;
         }
     }
-    //remise a zero du compteur
-    else
-    {
-        marchand->CompteurMess3 = 0;
-    }
-    if (marchand->CompteurMess3 == 4)
-    {
-        marchand->CompteurMess3 = 0;
-    }
-
     //reset compteur gene sprite
     if (marchand->Compteur1 == 60)
     {

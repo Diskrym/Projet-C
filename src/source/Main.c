@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 //extern void delay(unsigned int frameLimit);
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
-joueur.nbDague=1;
+joueur.nbDague=0;
 lvl.Num=-1;
 joueur.life=3;
 joueur.NbPiece=0;
