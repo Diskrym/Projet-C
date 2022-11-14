@@ -24,6 +24,11 @@ void initMaps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/Rivière/Ponton.png");
     }
+    if (lvl->Num == 10)
+    {
+        lvl->Map = loadImage("src/graphics/Rivière/Riviere.png");
+    }
+    
 
 }
   
@@ -47,6 +52,18 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
                 }
                 lvl->Num = -1;
                 Mix_PlayMusic(son ->musiqueMapG, -1);
+            }
+        }
+        else if (lvl->Num == 9)
+        {
+            if (joueur->inposy <=5)
+            {
+                lvl->Num= -1;
+            }
+            if (joueur->inposx >= 570)
+            {
+                lvl->Num+=1;
+                SelectNiv(joueur, lvl, monstre, son);
             }
         }
         //tout les autres niv avec sortie haut

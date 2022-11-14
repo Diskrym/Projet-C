@@ -126,7 +126,10 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son)
     {
         loadNiv41(joueur,lvl);
     }
-    
+    if (lvl->Num == 10)
+    {
+        loadNiv42(joueur,lvl);
+    }
     lvl->MortMonstre=0;
 }
 
@@ -212,6 +215,11 @@ void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, E
         }
         GestionMarchands(joueur,input,&monstre->marchand,lvl);
     }
+    if (lvl->Num ==10)
+    {
+        collisionmur(joueur,20,40,0,10);
+    }
+    
     
     
     
@@ -316,6 +324,13 @@ void loadNiv41(Joueur *Joueur, Lvl *lvl)
     initMaps(lvl);
     Joueur->inposx = level[8][0][2];
     Joueur->inposy = level[8][0][3];
+}
+
+void loadNiv42(Joueur *joueur, Lvl *lvl)
+{
+    initMaps(lvl);
+    joueur->inposx = level[9][0][2];
+    joueur->inposy = level[9][0][3];
 }
 
 void cleanup(EffetSon *son)

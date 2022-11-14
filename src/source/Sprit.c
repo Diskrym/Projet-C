@@ -264,7 +264,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre)
     else
     {
         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateau.png");
-        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);  
     }
 }
 
