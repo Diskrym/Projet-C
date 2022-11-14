@@ -841,7 +841,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
         }
-        if (yeti->CompteurSpriteDegat==0)
+        if (yeti->CompteurSpriteDegat==15)
         {
             lvl->MortMonstre+=1;
         }  
