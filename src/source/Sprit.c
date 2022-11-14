@@ -1589,6 +1589,33 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
             marchand->CompteurMess3 = 0;
         }
     }
+
+    if (lvl->Num==9)
+    {
+        if (marchand->Compteur1<10 || marchand->Compteur1>=40)
+        {
+            marchand->Tanguy=loadImage("src/graphics/Rivière/TurboTangui.png");
+            drawImage(marchand->Tanguy,255,203);
+        }
+        if ((marchand->Compteur1>=10 && marchand->Compteur1 < 20) ||( marchand->Compteur1>=30 && marchand->Compteur1<40))
+        {
+            marchand->Tanguy=loadImage("src/graphics/Rivière/TurboTangui.png");
+            drawImage(marchand->Tanguy,255,200);
+        }
+        if (marchand->Compteur1>=20 && marchand->Compteur1<30)
+        {
+            marchand->Tanguy=loadImage("src/graphics/Rivière/TurboTangui.png");
+            drawImage(marchand->Tanguy,255,197);
+        }
+
+        if (joueur->inposx >= 100 && joueur->inposx <= 220 && joueur->inposy >= 135 && joueur->inposy<270)
+        {
+            marchand->Bateau=loadImage("src/graphics/Rivière/Bateau.png");
+            drawImage(marchand->Bateau,95,297);
+        }
+        
+    }
+    
     //reset compteur gene sprite
     if (marchand->Compteur1 == 60)
     {

@@ -60,9 +60,11 @@ typedef struct Marchand
     SDL_Texture *Jerem;
     SDL_Texture *Enter;
     SDL_Texture *Marchand;
+    SDL_Texture *Tanguy;
     SDL_Texture *bulle;
     SDL_Texture *Table;
     SDL_Texture *Bec;
+    SDL_Texture *Bateau;
 }Marchand;
 
 typedef struct Monstre
