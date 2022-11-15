@@ -81,7 +81,7 @@ typedef struct Entité
     Boss boss;
     Marchand marchand;
     Yeti yeti, yeti1, yeti2;
-    Obstacle Petit_rocher,Gros_rocher, tronc;
+    Obstacle Petit_rocher,Gros_rocher, tronc, tanguy;
 
 } Entité;
 

@@ -1688,7 +1688,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
     }
 }
 
-void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc, Lvl *lvl)
+void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl)
 {   
     if (tronc->Image !=NULL)
     {
@@ -1752,17 +1752,37 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
 
         if(Gros_rocher->Etat ==0)
         { 
-            printf("aaaaaa");
-            Gros_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
+            Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
             drawImage(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
             Gros_rocher->x-=10;
-            if (Gros_rocher->x <= -120)
+            if (Gros_rocher->x <= -180)
             {
                 Gros_rocher->Etat=1;
-                // Petit_rocher->x=
-                // Petit_rocher->y=
+                tronc->Etat=0;
             }
-            
         }
     }
+    //Gestion tanguy
+    if (lvl->Avancement10>=4 &&lvl->Avancement10<=6)
+    {
+        if(tanguy->x<500 && tanguy->Etat==0)
+        { 
+            tanguy->Image=loadImage("src/graphics/Rivière/TurboTanguiCourse.png");
+            drawImage(tanguy->Image,tanguy->x,tanguy->y);
+            tanguy->x+=5;
+        }
+        else
+        {
+            tanguy->Etat=1;
+            tanguy->Image=loadImage("src/graphics/Rivière/TanguiCoule.png");
+            drawImage(tanguy->Image,tanguy->x,tanguy->y);
+            tanguy->x-=10;
+        }       
+    }
+
+    if (lvl->Avancement10>4 && lvl->Avancement10<=6)
+    {
+        
+    }
+    
 }

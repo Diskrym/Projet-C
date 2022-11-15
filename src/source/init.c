@@ -128,7 +128,7 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     }
     if (lvl->Num == 10)
     {
-        loadNiv42(joueur,&entité->Petit_rocher, &entité->Gros_rocher,&entité->tronc,lvl);
+        loadNiv42(joueur,&entité->Petit_rocher, &entité->Gros_rocher,&entité->tronc,&entité->tanguy,lvl);
     }
     lvl->MortMonstre=0;
 }
@@ -210,7 +210,7 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
         }
         else
         {
-            collisionmur(joueur,267,27,0,0);
+            collisionmur(joueur,267,35,0,0);
         }
         GestionMarchands(joueur,input,&entité->marchand,lvl);
     }
@@ -225,7 +225,7 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
             collisionmur(joueur,267,27,0,0);
         }
 
-        Gestion_Obstacle(joueur,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc, lvl);
+        Gestion_Obstacle(joueur,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc,&entité->tanguy, lvl);
 
     }
     
@@ -335,7 +335,7 @@ void loadNiv41(Joueur *Joueur, Lvl *lvl)
     Joueur->inposy = level[8][0][3];
 }
 
-void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc, Lvl *lvl)
+void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc,Obstacle *tanguy, Lvl *lvl)
 {
     initMaps(lvl);
     joueur->inposx = level[9][0][2];
@@ -346,6 +346,8 @@ void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obsta
     Gros_rocher->y = 160;
     tronc->x = 640;
     tronc->y = 270;
+    tanguy->x = -70;
+    tanguy->y = 180;
 }
 
 void cleanup(EffetSon *son)

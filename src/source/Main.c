@@ -33,7 +33,7 @@ EffetSon son;
 Boss boss;
 Marchand marchand;
 ParamTexte paramtexte;
-Obstacle Petit_rocher,Gros_rocher, tronc;
+Obstacle Petit_rocher,Gros_rocher, tronc, tanguy;
 
 int main(int argc, char *argv[])
 {

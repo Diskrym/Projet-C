@@ -51,7 +51,7 @@ extern void initEclair(Boss *boss);
 extern void loadNiv31(Joueur *joueur,Yeti *yeti, Lvl *lvl);
 extern void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl);
 extern void loadNiv41(Joueur *joueur,Lvl *lvl);
-extern void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc, Lvl *lvl);
+extern void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc,Obstacle *tanguy, Lvl *lvl);
 
 //input.c
 extern void gestionInputs(Input *input);
@@ -75,6 +75,6 @@ extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
 extern void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand, Lvl *lvl);
-extern void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc, Lvl *lvl);
+extern void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle *tanguy, Lvl *lvl);
 //extern void drawMap(int);
 #endif
