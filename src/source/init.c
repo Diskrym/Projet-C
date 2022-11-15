@@ -224,6 +224,9 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
         {
             collisionmur(joueur,267,27,0,0);
         }
+
+        Gestion_Obstacle(joueur,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc, lvl);
+
     }
     
     

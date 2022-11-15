@@ -75,6 +75,6 @@ extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
 extern void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand, Lvl *lvl);
-extern void Gestion_Obstacle (Joueur *joueur, Lvl *lvl);
+extern void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc, Lvl *lvl);
 //extern void drawMap(int);
 #endif

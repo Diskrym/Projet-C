@@ -1688,7 +1688,93 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
     }
 }
 
-void Gestion_Obstacle(Joueur *joueur, Lvl *lvl)
-{
+void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc, Lvl *lvl)
+{   
+    if (tronc->Image !=NULL)
+    {
+        SDL_DestroyTexture(tronc->Image);
+        tronc->Image = NULL;
+    }
+    if (Petit_rocher->Image !=NULL)
+    {
+        SDL_DestroyTexture(Petit_rocher->Image);
+        Petit_rocher->Image = NULL;
+    }
+    if (Gros_rocher->Image !=NULL)
+    {
+        SDL_DestroyTexture(Gros_rocher->Image);
+        Gros_rocher->Image = NULL;
+    }
+    
+    //init tous
+    if (lvl->Avancement10 == 0)
+    {
+        Petit_rocher->x = 641;
+        Petit_rocher->y = 160;
+        Gros_rocher->x = 1150;
+        Gros_rocher->y = 72;
+        tronc->x = 640;
+        tronc->y = 270;
+    }
+    
+    if (lvl->Avancement10 <=2)
+    {
+        if(Petit_rocher->Etat ==0)
+        { 
+            Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
+            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
+            Petit_rocher->x-=10;
+            if (Petit_rocher->x <= -120)
+            {
+                Petit_rocher->Etat=1;
+                Petit_rocher->x= 670;
+                Petit_rocher->y=65;
+            }
+            
+        }
+        if(Gros_rocher->Etat==0)
+        {
+            Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
+            drawImage(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
+            Gros_rocher->x-=10;
+            if (Gros_rocher->x==-140)
+            {
+                Gros_rocher->Etat=1;
+                //reset petit rocher a la fin de map 2
+                Petit_rocher->Etat=0;
+                // Gros_rocher->x=
+                // Gros_rocher->y=
+            } 
+        }
+    }
+    if (lvl->Avancement10>2 && lvl->Avancement10<=4)
+    {  
+        if(tronc->Etat==0)
+        {
+            tronc->Image=loadImage("src/graphics/Rivière/tronc.png");
+            drawImage(tronc->Image,tronc->x,tronc->y);
+            tronc->x-=10;
+            if (tronc->x==-150)
+            {
+                tronc->Etat=1;
+                // tronc_rocher->x=
+                // tronc_rocher->y=
+            } 
+        }
+
+        if(Petit_rocher->Etat ==0)
+        { 
+            Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
+            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
+            Petit_rocher->x-=10;
+            if (Petit_rocher->x <= -120)
+            {
+                Petit_rocher->Etat=1;
+                // Petit_rocher->x=
+                // Petit_rocher->y=
+            }
+            
+        }
+    }
     
 }

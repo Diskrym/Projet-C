@@ -69,7 +69,9 @@ typedef struct Marchand
 
 typedef struct Obstacle
 {
-    int x, y,;
+    int x, y, Etat;
+    SDL_Texture *Image;
+    
 }Obstacle;
 
 typedef struct Entité
@@ -79,7 +81,7 @@ typedef struct Entité
     Boss boss;
     Marchand marchand;
     Yeti yeti, yeti1, yeti2;
-    Obstacle obstacle;
+    Obstacle Petit_rocher,Gros_rocher, tronc;
 
 } Entité;
 
