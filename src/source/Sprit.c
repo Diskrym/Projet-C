@@ -1730,6 +1730,8 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             if (Petit_rocher->x <= -110)
             {
                 Petit_rocher->Etat=1;
+                Petit_rocher->x = 1050;
+                Petit_rocher->y = 150;
                 Gros_rocher->Etat=0;
             }
         }
@@ -1745,8 +1747,8 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             {
                 tronc->Etat=1;
                 Petit_rocher->Etat=0;
-                // tronc_rocher->x=
-                // tronc_rocher->y=
+                tronc->x=640;
+                tronc->y=75;
             } 
         }
 
@@ -1762,6 +1764,113 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             }
         }
     }
+    
+    if (lvl->Avancement10>4 && lvl->Avancement10<=6)
+    {
+        if(Petit_rocher->Etat==0)
+        {
+            Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
+            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
+            Petit_rocher->x-=10;
+            if (Petit_rocher->x <= -110)
+            {
+                Petit_rocher->Etat=1;
+                tronc->Etat=0;
+                tronc->x=1200;
+                tronc->y=75;
+            }
+        }
+        if(tronc->Etat==0)
+        {
+            tronc->Image=loadImage("src/graphics/Rivière/Tronc.png");
+            drawImage(tronc->Image,tronc->x,tronc->y);
+            tronc->x-=10;
+            if (tronc->x<=-150)
+            {
+                tronc->Etat=1;
+                Gros_rocher->Etat=0;
+                Gros_rocher->x=640;
+                Gros_rocher->y=160;
+            }
+        }
+    }
+
+    if(lvl->Avancement10>6&&lvl->Avancement10<=8)
+    {
+        if(Gros_rocher->Etat ==0)
+        { 
+            Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
+            drawImage(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
+            Gros_rocher->x-=10;
+            if (Gros_rocher->x <= -180)
+            {
+                Gros_rocher->Etat=1;
+                Petit_rocher->Etat=0;
+                Petit_rocher->x=640;
+                Petit_rocher->y=250;
+                tronc->Etat=0;
+            }
+        }
+
+        if(tronc->Etat==0)
+        {
+            tronc->Image=loadImage("src/graphics/Rivière/Tronc.png");
+            drawImage(tronc->Image,tronc->x,tronc->y);
+            tronc->x-=10;
+            if (tronc->x<=-150)
+            {
+                tronc->Etat=1;
+                Gros_rocher->Etat=0;
+                Gros_rocher->x=1000;
+                Gros_rocher->y=150;
+            }
+        }
+    }
+
+    if (lvl->Avancement10>8 && lvl->Avancement10<=10)
+    {
+        if (Petit_rocher->Etat==0)
+        {
+            Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
+            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
+            Petit_rocher->x-=10;
+            if (Petit_rocher->x <= -110)
+            {
+                Petit_rocher->Etat=1;
+                tronc->Etat=0;
+                tronc->x = 700;
+                tronc->y = 80;
+            }
+        }
+
+        if(Gros_rocher->Etat ==0)
+        { 
+            Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
+            drawImage(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
+            Gros_rocher->x-=10;
+            if (Gros_rocher->x <= -180)
+            {
+                Gros_rocher->Etat=1;
+                Petit_rocher=0;
+                //
+            }
+        }
+    }
+
+    if (lvl->Avancement10>10)
+    {
+        if(tronc->Etat==0)
+        {
+            tronc->Image=loadImage("src/graphics/Rivière/Tronc.png");
+            drawImage(tronc->Image,tronc->x,tronc->y);
+            tronc->x-=10;
+            if (tronc->x<=-150)
+            {
+                tronc->Etat=1;
+            }
+        }
+    }
+    
     //Gestion tanguy
     if (lvl->Avancement10>=4 &&lvl->Avancement10<=6)
     {
@@ -1779,10 +1888,4 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             tanguy->x-=10;
         }       
     }
-
-    if (lvl->Avancement10>4 && lvl->Avancement10<=6)
-    {
-        
-    }
-    
 }
