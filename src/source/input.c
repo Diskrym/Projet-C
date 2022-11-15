@@ -117,7 +117,7 @@ void getInput(Input *input)
     }
 }
 
-void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son,Lvl *lvl)
+void deplacement (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,Lvl *lvl)
 {  
     //Si on a pas le bouclier on se déplace
     if (!(joueur->Eshield==1 && joueur->TimingBouclier<15) && input->shield==0)
@@ -189,7 +189,7 @@ void deplacement (Input *input, Joueur *joueur, Monstre *monstre, EffetSon *son,
         joueur->Eshield=0;
         joueur->TimingBouclier=0;
     }
-    SpritHeros(joueur, input, son, monstre);
+    SpritHeros(joueur, input, son, entité);
 }
 
 void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)

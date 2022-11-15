@@ -67,14 +67,21 @@ typedef struct Marchand
     SDL_Texture *Bateau;
 }Marchand;
 
-typedef struct Monstre
+typedef struct Obstacle
+{
+    int x, y,;
+}Obstacle;
+
+typedef struct Entité
 {
     Meduse meduse, meduse1, meduse2;
     Chauvesouris chauvesouris, chauvesouris1;
     Boss boss;
     Marchand marchand;
     Yeti yeti, yeti1, yeti2;
-} Monstre;
+    Obstacle obstacle;
+
+} Entité;
 
 
 

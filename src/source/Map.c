@@ -22,7 +22,7 @@ void initMaps(Lvl *lvl)
     }
     if (lvl->Num == 9)
     {
-        lvl->Map = loadImage("src/graphics/Rivière/Ponton.png");
+        lvl->Map = loadImage("src/graphics/Rivière/PontonDépart.png");
     }
     if (lvl->Num == 10)
     {
@@ -30,12 +30,12 @@ void initMaps(Lvl *lvl)
     }
 }
   
-void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input)
+void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input)
 {  
     //Map global
     if (lvl->Num == -1)
     {
-        MapGlobal(joueur, lvl, monstre, son, input);
+        MapGlobal(joueur, lvl, entité, son, input);
     }
     else
     {
@@ -61,7 +61,7 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             if (joueur->inposx >= 570)
             {
                 lvl->Num+=1;
-                SelectNiv(joueur, lvl, monstre, son);
+                SelectNiv(joueur, lvl, entité, son);
             }
         }
         //tout les autres niv avec sortie haut
@@ -81,13 +81,13 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             else
             {
                 lvl->Num += 1;
-                SelectNiv(joueur, lvl, monstre, son);
+                SelectNiv(joueur, lvl, entité, son);
             }
         }
     }
 }
 
-void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input)
+void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input)
 {
     if (lvl->Map != NULL)
     {
@@ -139,7 +139,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
         if (input->attack == 1)
         {
             lvl->Num = 0;
-            SelectNiv(joueur, lvl, monstre, son);
+            SelectNiv(joueur, lvl, entité, son);
         }
     }
     if (lvl->NumDonjon == 1)
@@ -151,7 +151,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             if (input->attack == 1)
             {
                 lvl->Num = 4;
-                SelectNiv(joueur, lvl, monstre, son);
+                SelectNiv(joueur, lvl, entité, son);
             }
             
         }
@@ -169,7 +169,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             if (input->attack == 1)
             {
                 lvl->Num = 5;
-                SelectNiv(joueur, lvl, monstre, son);
+                SelectNiv(joueur, lvl, entité, son);
             }
         }
         else
@@ -186,7 +186,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input 
             if (input->attack == 1)
             {
                 lvl->Num = 9;
-                SelectNiv(joueur, lvl, monstre, son);
+                SelectNiv(joueur, lvl, entité, son);
             }
         }
         else

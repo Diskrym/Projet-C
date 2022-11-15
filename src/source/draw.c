@@ -11,8 +11,6 @@ void drawGame(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte)
     }
     else
     {
-
-        
         if(lvl->Avancement10 <12)
         {
             lvl->PosMap10-=10;
@@ -22,7 +20,7 @@ void drawGame(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte)
         if (lvl->Avancement10==12)
         {
             lvl->PosMap10-=5;
-            lvl->Map = loadImage("src/graphics/Rivière/Ponton.png");
+            lvl->Map = loadImage("src/graphics/Rivière/PontonArrivé.png");
             drawImage(lvl->MapSlide,lvl->PosMap10,0);
             drawImage(lvl->Map,lvl->PosMap10+640,0);
         }
@@ -37,6 +35,7 @@ void drawGame(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte)
             lvl->PosMap10 = 0;
             lvl->Avancement10+=1;
         }
+        printf("Avancement : %d\n",lvl->Avancement10);
         
     }
     AffichageVie (joueur,lvl);

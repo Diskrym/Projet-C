@@ -28,11 +28,12 @@ Chauvesouris chauvesouris, chauvesouris1;
 Meduse meduse, meduse1, meduse2;
 Yeti yeti, yeti1, yeti2;
 Lvl lvl;
-Monstre monstre;
+Entité entité;
 EffetSon son;
 Boss boss;
 Marchand marchand;
 ParamTexte paramtexte;
+Obstacle Petit_rocher,Gros_rocher, tronc;
 
 int main(int argc, char *argv[])
 {
@@ -56,7 +57,7 @@ init("Dungeon Fate");
     }
     // Mix_PauseMusic();
     //atexit(cleanup);
-    //LoadNiv11(&monstre.meduse, &lvl, &joueur);
+    //LoadNiv11(&entité.meduse, &lvl, &joueur);
     go = 1; 
     // Boucle infinie, principale, du jeu
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
@@ -64,15 +65,15 @@ init("Dungeon Fate");
     {    
         //On dessine tout
         drawGame(&joueur, &lvl, &paramtexte);
-        GestionMap(&joueur, &lvl, &monstre, &son, &input);
+        GestionMap(&joueur, &lvl, &entité, &son, &input);
         //Gestion des inputs clavier
         gestionInputs(&input);
         if(lvl.Num != -1)
         {
             //IA monstre
-            GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
+            GestionMonstre(&entité, &lvl, &input ,&joueur, &son);
             //Gestion des inputs et des déplacements
-            deplacement(&input,&joueur,&monstre, &son, &lvl);
+            deplacement(&input,&joueur,&entité, &son, &lvl);
         }
 
         //Rendu des images dans le buffer

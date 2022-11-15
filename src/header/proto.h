@@ -39,14 +39,14 @@ extern void init(char *);
 extern void LoadJoueur(Joueur *joueur);
 extern void LoadNiv11(Meduse *meduse, Lvl *lvl, Joueur *joueur);
 extern void LoadNiv12(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
-extern void GestionMonstre (Monstre* monstre, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son);
+extern void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son);
 extern void LoadNiv13(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur);
 extern void Son (EffetSon *son);
 extern void Texte(ParamTexte *paramtexte);
 extern void loadNiv14 (Joueur *joueur, Boss *boss, Lvl *lvl);
 extern void loadNiv21 (Joueur *jouer, Lvl* lvl);
 extern void cleanup(EffetSon *son);
-extern void SelectNiv (Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son);
+extern void SelectNiv (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son);
 extern void initEclair(Boss *boss);
 extern void loadNiv31(Joueur *joueur,Yeti *yeti, Lvl *lvl);
 extern void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl);
@@ -56,7 +56,7 @@ extern void loadNiv42(Joueur *joueur,Lvl *lvl);
 //input.c
 extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
-extern void deplacement (Input *input, Joueur *joueur, Monstre *monstre,EffetSon *son, Lvl *lvl);
+extern void deplacement (Input *input, Joueur *joueur, Entité *entité,EffetSon *son, Lvl *lvl);
 extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son);
 extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Lvl *lvl, EffetSon *son);
 extern void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son);
@@ -65,16 +65,16 @@ extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input,
 //map.c
 extern void initMaps(Lvl *lvl);
 extern SDL_Texture *getBackground(void);
-extern void GestionMap(Joueur *joueur, Lvl *lvl, Monstre *monstre, EffetSon *son, Input *input);
-extern void MapGlobal (Joueur *joueur, Lvl *lvl, Monstre *monstre,EffetSon *son, Input *input);
+extern void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son, Input *input);
+extern void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input);
 
 //Sprit.c
-extern void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Monstre *monstre);
+extern void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité);
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
 extern void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand, Lvl *lvl);
-
+extern void Gestion_Obstacle (Joueur *joueur, Lvl *lvl);
 //extern void drawMap(int);
 #endif
