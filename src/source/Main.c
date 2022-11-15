@@ -62,8 +62,6 @@ init("Dungeon Fate");
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
     while (go == 1)
     {    
-        printf("x : %d \n", joueur.inposx);
-        printf("y : %d \n",joueur.inposy);
         //On dessine tout
         drawGame(&joueur, &lvl, &paramtexte);
         GestionMap(&joueur, &lvl, &monstre, &son, &input);
@@ -74,7 +72,7 @@ init("Dungeon Fate");
             //IA monstre
             GestionMonstre(&monstre, &lvl, &input ,&joueur, &son);
             //Gestion des inputs et des déplacements
-            deplacement(&input,&joueur,&monstre, &son);
+            deplacement(&input,&joueur,&monstre, &son, &lvl);
         }
 
         //Rendu des images dans le buffer

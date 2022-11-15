@@ -2,8 +2,43 @@
 
 void drawGame(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte)
 {
-    // Affiche le fond (background) aux coordonnées (0,0)
-    drawImage(lvl->Map, 0, 0);
+    
+    
+    // Affiche le fond (background) aux coordonnées (0,0) si on a pas de map qui défile !=NULL
+    if (lvl->Num !=10)
+    {
+        drawImage(lvl->Map, 0, 0);
+    }
+    else
+    {
+
+        
+        if(lvl->Avancement10 <12)
+        {
+            lvl->PosMap10-=10;
+            drawImage(lvl->Map,lvl->PosMap10,0);
+            drawImage(lvl->MapSlide,lvl->PosMap10+640,0);
+        }
+        if (lvl->Avancement10==12)
+        {
+            lvl->PosMap10-=5;
+            lvl->Map = loadImage("src/graphics/Rivière/Ponton.png");
+            drawImage(lvl->MapSlide,lvl->PosMap10,0);
+            drawImage(lvl->Map,lvl->PosMap10+640,0);
+        }
+        if (lvl->Avancement10>12)
+        {
+            drawImage(lvl->Map,lvl->PosMap10,0);
+            drawImage(lvl->MapSlide,lvl->PosMap10+640,0);
+        }
+        
+        if (lvl->PosMap10 <= -640)
+        {
+            lvl->PosMap10 = 0;
+            lvl->Avancement10+=1;
+        }
+        
+    }
     AffichageVie (joueur,lvl);
     AffichagePiece(joueur,lvl,paramtexte);
     AffichageLevel(lvl);

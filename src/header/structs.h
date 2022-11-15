@@ -46,7 +46,7 @@ typedef struct  Boss
 
 typedef struct Joueur
 {
-    int inposx, inposy, Eattack,Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, NumSpriteDague, DirDague;
+    int inposx, inposy, Eattack, Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, NumSpriteDague, DirDague, Ebateau;
     //int  CoupDague;
     SDL_Texture *chevalier;
     SDL_Texture *attaque;
@@ -60,9 +60,11 @@ typedef struct Marchand
     SDL_Texture *Jerem;
     SDL_Texture *Enter;
     SDL_Texture *Marchand;
+    SDL_Texture *Tanguy;
     SDL_Texture *bulle;
     SDL_Texture *Table;
     SDL_Texture *Bec;
+    SDL_Texture *Bateau;
 }Marchand;
 
 typedef struct Monstre
@@ -116,12 +118,13 @@ typedef struct ParamTexte
 
 typedef struct Lvl
 {
-    int Num, MortMonstre, NumDonjon, WinDonjon;
+    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
     SDL_Texture *Piece;
     SDL_Texture *Map;
+    SDL_Texture *MapSlide;
     SDL_Texture *SpritLvl;
     SDL_Texture *SpritMotLVL;
     SDL_Texture *Menu;
@@ -185,6 +188,9 @@ static const int level [10][5][6] = {
                                         },
                                         {
                                             {9,0,98,26,0}
+                                        },
+                                        {
+                                            {9,0,5,290,0}
                                         }
                                     };
 
