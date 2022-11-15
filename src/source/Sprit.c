@@ -1706,32 +1706,10 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
         Gros_rocher->Image = NULL;
     }
     
-    //init tous
-    if (lvl->Avancement10 == 0)
+    if (lvl->Avancement10>0 && lvl->Avancement10 <=2)
     {
-        Petit_rocher->x = 641;
-        Petit_rocher->y = 160;
-        Gros_rocher->x = 1150;
-        Gros_rocher->y = 72;
-        tronc->x = 640;
-        tronc->y = 270;
-    }
-    
-    if (lvl->Avancement10 <=2)
-    {
-        if(Petit_rocher->Etat ==0)
-        { 
-            Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
-            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
-            Petit_rocher->x-=10;
-            if (Petit_rocher->x <= -120)
-            {
-                Petit_rocher->Etat=1;
-                Petit_rocher->x= 670;
-                Petit_rocher->y=65;
-            }
-            
-        }
+
+
         if(Gros_rocher->Etat==0)
         {
             Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
@@ -1740,11 +1718,20 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             if (Gros_rocher->x==-140)
             {
                 Gros_rocher->Etat=1;
-                //reset petit rocher a la fin de map 2
-                Petit_rocher->Etat=0;
-                // Gros_rocher->x=
-                // Gros_rocher->y=
+                Gros_rocher->x=670;
+                Gros_rocher->y=65;
             } 
+        }
+        if(Petit_rocher->Etat ==0)
+        { 
+            Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
+            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
+            Petit_rocher->x-=10;
+            if (Petit_rocher->x <= -110)
+            {
+                Petit_rocher->Etat=1;
+                Gros_rocher->Etat=0;
+            }
         }
     }
     if (lvl->Avancement10>2 && lvl->Avancement10<=4)
@@ -1757,24 +1744,25 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             if (tronc->x==-150)
             {
                 tronc->Etat=1;
+                Petit_rocher->Etat=0;
                 // tronc_rocher->x=
                 // tronc_rocher->y=
             } 
         }
 
-        if(Petit_rocher->Etat ==0)
+        if(Gros_rocher->Etat ==0)
         { 
-            Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
-            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
-            Petit_rocher->x-=10;
-            if (Petit_rocher->x <= -120)
+            printf("aaaaaa");
+            Gros_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
+            drawImage(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
+            Gros_rocher->x-=10;
+            if (Gros_rocher->x <= -120)
             {
-                Petit_rocher->Etat=1;
+                Gros_rocher->Etat=1;
                 // Petit_rocher->x=
                 // Petit_rocher->y=
             }
             
         }
     }
-    
 }

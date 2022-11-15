@@ -128,7 +128,7 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     }
     if (lvl->Num == 10)
     {
-        loadNiv42(joueur,lvl);
+        loadNiv42(joueur,&entité->Petit_rocher, &entité->Gros_rocher,&entité->tronc,lvl);
     }
     lvl->MortMonstre=0;
 }
@@ -335,11 +335,17 @@ void loadNiv41(Joueur *Joueur, Lvl *lvl)
     Joueur->inposy = level[8][0][3];
 }
 
-void loadNiv42(Joueur *joueur, Lvl *lvl)
+void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc, Lvl *lvl)
 {
     initMaps(lvl);
     joueur->inposx = level[9][0][2];
     joueur->inposy = level[9][0][3];
+    Petit_rocher->x = 1150;
+    Petit_rocher->y = 72;
+    Gros_rocher->x = 640;
+    Gros_rocher->y = 160;
+    tronc->x = 640;
+    tronc->y = 270;
 }
 
 void cleanup(EffetSon *son)
