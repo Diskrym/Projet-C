@@ -1666,13 +1666,18 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
             }
              if (marchand->CompteurMess1==1)
             {
-                marchand->bulle=loadImage("src/graphics/Marchand/BulleBec1.png");
-                drawImage(marchand->bulle,55,170);
+                marchand->bulle=loadImage("src/graphics/Rivière/BulleTanguy1.png");
+                drawImage(marchand->bulle,255,62);
             }
             if (marchand->CompteurMess1==2)
             {
-                marchand->bulle=loadImage("src/graphics/Marchand/BulleBec2.png");
-                drawImage(marchand->bulle,55,170);
+                marchand->bulle=loadImage("src/graphics/Rivière/BulleTanguy2.png");
+                drawImage(marchand->bulle,255,62);
+            }
+            if (marchand->CompteurMess1==3)
+            {
+                marchand->bulle=loadImage("src/graphics/Rivière/BulleTanguy3.png");
+                drawImage(marchand->bulle,255,62);
                 joueur->Ebateau=1;
             }
         }
