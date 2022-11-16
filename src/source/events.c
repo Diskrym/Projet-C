@@ -485,17 +485,17 @@ int insideItem (Joueur *joueur, Boss *boss)
     }
 }
 
-//            pos objet vol x,y  pos cible    taille cible x,y         taille obj vol x
-int insideVol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObj)
+//            pos objet vol x,y  pos cible    taille cible x,y         taille obj vol x,y 
+int insideVol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObjx, int tailleObjy)
 {
     int a=0;
     int b=0;
     //si joueur 
-    if ((xobj>=x || xobj+tailleObj>=x) && (xobj<=x+Margex || xobj + tailleObj <=x+Margex))
+    if ((xobj>=x || xobj+tailleObjx>=x) && (xobj<=x+Margex || xobj + tailleObjx <=x+Margex))
     {
         a=1;
     }
-    if ((yobj>=y || yobj+tailleObj>=y) && (yobj<=y+Margey || yobj + tailleObj <= y+Margey))
+    if ((yobj>=y || yobj+tailleObjy>=y) && (yobj<=y+Margey || yobj + tailleObjy <= y+Margey))
     {
         b=1;
     }
@@ -516,4 +516,17 @@ int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesour
     {
         return 0;
     }
+}
+
+int DegatBateau (Obstacle *tronc, Obstacle *Petit_rocher, Obstacle *Gros_rocher)
+{
+    if (tronc->coup == 0 && Gros_rocher->coup == 0 && Petit_rocher->coup == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+    
 }

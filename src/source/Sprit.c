@@ -261,7 +261,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
             }
         }
     }
-    else
+    else if (DegatBateau(&entité->tronc, &entité->Petit_rocher ,&entité->Gros_rocher) == 1)
     {
         joueur->NumSprit+=1;
         if(joueur->NumSprit<10 || joueur->NumSprit>=40)
@@ -284,6 +284,11 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
             joueur->NumSprit=0;
         }
         
+    }
+    else
+    {
+        joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateauDegat.png");
+        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy+1);
     }
 }
 
@@ -347,7 +352,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     meduse->Life--; 
                 }
                 //degat dague
-                if (insideVol(joueur->xdague,joueur->ydague, meduse->posmonsx, meduse->posmonsy,64,64,30)==1)
+                if (insideVol(joueur->xdague,joueur->ydague, meduse->posmonsx, meduse->posmonsy,64,64,30,15)==1)
                 {
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
@@ -560,7 +565,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     }
                 }
                 //degat dague
-                if (insideVol(joueur->xdague,joueur->ydague, yeti->posmonsx+10, yeti->posmonsy+15,45,60,30)==1)
+                if (insideVol(joueur->xdague,joueur->ydague, yeti->posmonsx+10, yeti->posmonsy+15,45,60,30,15)==1)
                 {
                     yeti->CompteurSpriteDegat=1; 
                     yeti->Life--; 
@@ -707,7 +712,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
                 drawImage(yeti->boule,yeti->xboule,yeti->yboule);
                 
-                if (insideVol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21)==1 && yeti->coup == 0)
+                if (insideVol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
                     yeti->coup=1;
@@ -752,7 +757,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             { 
                 yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
                 drawImage(yeti->boule,yeti->xboule,yeti->yboule);
-                if (insideVol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21)==1 && yeti->coup == 0)
+                if (insideVol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
                     yeti->coup=1;
@@ -1078,7 +1083,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     boss->Life--; 
                 }
                 //degat dague
-                if (insideVol(joueur->xdague,joueur->ydague,boss->posmonsx,boss->posmonsy,128,128,30)==1)
+                if (insideVol(joueur->xdague,joueur->ydague,boss->posmonsx,boss->posmonsy,128,128,30,15)==1)
                 {
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
@@ -1888,4 +1893,35 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             tanguy->x-=10;
         }       
     }
+
+    if (insideVol(tronc->x,tronc->y, joueur->inposx, joueur->inposy,79,70,150,52)==1)
+    {
+        if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
+        {
+            joueur->life--; 
+        }
+        tronc->coup += 1;
+    }
+    if (insideVol(Petit_rocher->x,Petit_rocher->y, joueur->inposx, joueur->inposy,79,70,110,80)==1)
+    {
+        if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
+        {
+            joueur->life--; 
+        }
+        Petit_rocher->coup += 1;
+    }
+    if (insideVol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,79,70,165,105)==1)
+    {
+        if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
+        {
+            joueur->life--; 
+        }
+        Gros_rocher->coup += 1;
+    }
+
+    if (tronc->coup >= 15 || Gros_rocher->coup >= 15 || Petit_rocher->coup >=15)
+    {
+        Gros_rocher->coup = Petit_rocher->coup = tronc->coup = 0;
+    }
+    
 }
