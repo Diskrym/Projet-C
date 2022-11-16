@@ -288,7 +288,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
     else
     {
         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateauDegat.png");
-        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy+1);
+        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
     }
 }
 
@@ -1866,21 +1866,55 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             }
         }
     }
-
-    if (lvl->Avancement10>10)
+    if(lvl->Avancement10<10)
     {
-        if(tronc->Etat==0)
+        if (insideVol(tronc->x,tronc->y, joueur->inposx, joueur->inposy,79,70,150,52)==1)
         {
-            tronc->Image=loadImage("src/graphics/Rivière/Tronc.png");
-            drawImage(tronc->Image,tronc->x,tronc->y);
-            tronc->x-=10;
-            if (tronc->x<=-150)
+            if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
             {
-                tronc->Etat=1;
+                //joueur->life--; 
+                tronc->coup = 1;
             }
         }
+        if (tronc->coup >=1)
+        {
+            tronc->coup+=1;
+        }
+        if (insideVol(Petit_rocher->x,Petit_rocher->y, joueur->inposx, joueur->inposy,79,70,110,80)==1)
+        {
+            if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
+            {
+                //joueur->life--; 
+                Petit_rocher->coup = 1;
+            }   
+        }
+        if (Petit_rocher->coup >=1)
+        {
+            Petit_rocher->coup+=1;
+        }
+
+        if (insideVol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,79,70,165,105)==1)
+        {
+            if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
+            {
+                //joueur->life--;
+                Gros_rocher->coup = 1; 
+            }
+        }
+        if (Gros_rocher->coup >= 1)
+        {
+            Gros_rocher->coup +=1;
+        }
+        
+        
+        if (tronc->coup >= 20 || Gros_rocher->coup >= 20 || Petit_rocher->coup >= 20)
+        {
+            Gros_rocher->coup = Petit_rocher->coup = tronc->coup = 0;
+        }
     }
-    
+
+
+
     //Gestion tanguy
     if (lvl->Avancement10>=4 &&lvl->Avancement10<=6)
     {
@@ -1898,35 +1932,4 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             tanguy->x-=10;
         }       
     }
-
-    if (insideVol(tronc->x,tronc->y, joueur->inposx, joueur->inposy,79,70,150,52)==1)
-    {
-        if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
-        {
-            joueur->life--; 
-        }
-        tronc->coup += 1;
-    }
-    if (insideVol(Petit_rocher->x,Petit_rocher->y, joueur->inposx, joueur->inposy,79,70,110,80)==1)
-    {
-        if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
-        {
-            joueur->life--; 
-        }
-        Petit_rocher->coup += 1;
-    }
-    if (insideVol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,79,70,165,105)==1)
-    {
-        if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
-        {
-            joueur->life--; 
-        }
-        Gros_rocher->coup += 1;
-    }
-
-    if (tronc->coup >= 15 || Gros_rocher->coup >= 15 || Petit_rocher->coup >=15)
-    {
-        Gros_rocher->coup = Petit_rocher->coup = tronc->coup = 0;
-    }
-    
 }
