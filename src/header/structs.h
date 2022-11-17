@@ -27,7 +27,7 @@ typedef struct Yeti
 
 typedef struct BossYeti
 {
-    int NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, Eattaque, xcrane, ycrane,directioncrane, Compteurcrane;
+    int NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, Eattaque, xcrane, ycrane,directioncrane, Compteurcrane, compteurfissure;
     SDL_Texture *attaquebossyeti;
     SDL_Texture *bossyeti;
     SDL_Texture *crane;

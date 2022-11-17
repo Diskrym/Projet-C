@@ -1054,7 +1054,9 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
         }
         //attaquebossyeti bossyeti quand compteur > 100
         if  (bossyeti->compteur>=100)
-        {
+        {   
+            if (bossyeti->compteurfissure==0)
+            {
             if (bossyeti->Direction==1)
             {            
                 if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80  )
@@ -1094,6 +1096,8 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5G.png");                    
                     drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    
+
                 }
                
             }
@@ -1138,13 +1142,104 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5D.png");                    
                     drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    
                 }
                 //reset compteur bossyeti
             }
             if (bossyeti->NumSprit>90)
             {
                 bossyeti->NumSprit=0;
+                bossyeti->compteurfissure+=1;
             }
+        }
+        if (bossyeti->compteurfissure==1)
+        {
+            if (bossyeti->Direction==1)
+            {            
+                if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 && bossyeti->NumSprit<90 )
+                {  
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2G.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
+                {
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure3G.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
+                {  
+                 
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4G.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    
+                }
+                if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure5G.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6G.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    
+
+                }
+                if (bossyeti->NumSprit>=90  )
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6G.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    
+
+                }
+               
+            }
+ 
+            if (bossyeti->Direction==0)
+            {            
+                if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 && bossyeti->NumSprit<90 )
+                {  
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2D.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
+                {
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure3D.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
+                {  
+                 
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4D.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    
+                }
+                if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure5D.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6D.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    
+
+                }
+                if (bossyeti->NumSprit>=90  )
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6D.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    
+
+                }
+            }
+            if (bossyeti->NumSprit>100)
+            {
+                bossyeti->NumSprit=0;
+                bossyeti->compteurfissure=0;
+            }
+        }
         }
     }
    
