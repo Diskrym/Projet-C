@@ -224,9 +224,14 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                 joueur->xdague-=10;
             }
             else
-            {
+            {   
+                
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+                
+                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(15, son->dague, 0);
+            
                 //recup dague Gauchemap
                 if (joueur->inposx <= joueur->xdague+20 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
                 {
@@ -250,6 +255,8 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
             {
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurD.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(15, son->dague, 0);
                 //recup dague Droite map
                 if (joueur->inposx >= joueur->xdague-60 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
                 {
