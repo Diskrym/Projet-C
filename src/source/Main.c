@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
 lvl.Num=-1;
-joueur.life=3;
+joueur.life=10;
 joueur.NbPiece=0;
 lvl.WinDonjon=5;
 joueur.nbDague=1;
