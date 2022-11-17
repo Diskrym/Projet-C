@@ -1743,17 +1743,9 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
     
 
 
-    if (tronc->coup >= 25 || Gros_rocher->coup >= 25 || Petit_rocher->coup >= 25)
-    {
-        Gros_rocher->coup = 0;
-        Petit_rocher->coup = 0;
-        tronc->coup = 0;
-    }
+    
     if (lvl->Avancement10>0 && lvl->Avancement10 <=2)
     {
-
-        
-
         if(Gros_rocher->Etat==0)
         {
             Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
@@ -1973,4 +1965,11 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         marchand->Bateau=loadImage("src/graphics/Rivière/Bateau.png");
         drawImage(marchand->Bateau,460,300);
     }    
+
+    if (tronc->coup >= 25 || Gros_rocher->coup >= 25 || Petit_rocher->coup >= 25)
+    {
+        Gros_rocher->coup = 0;
+        Petit_rocher->coup = 0;
+        tronc->coup = 0;
+    }
 }

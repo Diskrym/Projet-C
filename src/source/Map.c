@@ -69,6 +69,7 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
             if (joueur->inposy < 20)
             {
                 lvl->Num = -1;
+                lvl->Avancement10 = 0;
                 if (lvl->WinDonjon == 3)
                 {
                     lvl->WinDonjon = 4;
