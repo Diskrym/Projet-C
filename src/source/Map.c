@@ -64,6 +64,19 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
                 SelectNiv(joueur, lvl, entité, son);
             }
         }
+        else if (lvl->Num == 10 && lvl->Avancement10 ==13)
+        {
+            if (joueur->inposy < 20)
+            {
+                lvl->Num = -1;
+                if (lvl->WinDonjon == 3)
+                {
+                    lvl->WinDonjon = 4;
+                }
+                
+            }
+            
+        }
         //tout les autres niv avec sortie haut
         else if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320)
         {   

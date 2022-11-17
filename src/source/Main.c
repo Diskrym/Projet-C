@@ -58,7 +58,6 @@ init("Dungeon Fate");
     }
     // Mix_PauseMusic();
     //atexit(cleanup);
-    //LoadNiv11(&entité.meduse, &lvl, &joueur);
     go = 1; 
     // Boucle infinie, principale, du jeu
     Mix_PlayMusic(son.musiqueMapG, -1 /10);

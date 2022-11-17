@@ -1724,7 +1724,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
     }
 }
 
-void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl)
+void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl)
 {   
     if (tronc->Image !=NULL)
     {
@@ -1742,9 +1742,18 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
         Gros_rocher->Image = NULL;
     }
     
+
+
+    if (tronc->coup >= 25 || Gros_rocher->coup >= 25 || Petit_rocher->coup >= 25)
+    {
+        Gros_rocher->coup = 0;
+        Petit_rocher->coup = 0;
+        tronc->coup = 0;
+    }
     if (lvl->Avancement10>0 && lvl->Avancement10 <=2)
     {
 
+        
 
         if(Gros_rocher->Etat==0)
         {
@@ -1931,16 +1940,7 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
         {
             Gros_rocher->coup +=1;
         }
-        
-        
-        if (tronc->coup >= 20 || Gros_rocher->coup >= 20 || Petit_rocher->coup >= 20)
-        {
-            Gros_rocher->coup = Petit_rocher->coup = tronc->coup = 0;
-        }
     }
-
-
-
     //Gestion tanguy
     if (lvl->Avancement10>=4 &&lvl->Avancement10<=6)
     {
@@ -1958,4 +1958,20 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
             tanguy->x-=10;
         }       
     }
+
+    if (joueur->inposx>420 && lvl->Avancement10>12 && joueur->Ebateau==2)
+    {
+        joueur->Ebateau= 1;
+        joueur->inposx = 475;
+        joueur->inposy = 180;
+        marchand->Bateau=loadImage("src/graphics/Rivière/Bateau.png");
+        drawImage(marchand->Bateau,450,300);
+    }
+
+    //dessin bateau
+    if (joueur->Ebateau==1)
+    {
+        marchand->Bateau=loadImage("src/graphics/Rivière/Bateau.png");
+        drawImage(marchand->Bateau,460,300);
+    }    
 }
