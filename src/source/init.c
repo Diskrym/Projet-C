@@ -79,6 +79,7 @@ void Son (EffetSon *son)
     son->porte= Mix_LoadWAV("src/Sik/porte.WAV");
     son->gameoverson= Mix_LoadWAV("src/Sik/GameOver.WAV");
     son->coffre= Mix_LoadWAV("src/Sik/OuvertureCoffre.WAV");
+   
 }
 
 void Texte(ParamTexte *paramtexte)
