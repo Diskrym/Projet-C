@@ -95,6 +95,8 @@ typedef struct EffetSon
     Mix_Music *musiqueboss;
     Mix_Music *musiquelvl;
     Mix_Music *musiqueshop;
+    Mix_Music *musiqueriviere;
+    Mix_Music *musiqueyeti;
     Mix_Chunk *epee;
     Mix_Chunk *bouclier;
     Mix_Chunk *depchevalier;
