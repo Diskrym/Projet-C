@@ -1158,7 +1158,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 bossyeti->crane=loadImage("src/graphics/BossYeti/CraneG.png");                    
                 drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
                
-                if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,21,17)==1 && bossyeti->coup == 0)
+                if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
                 {
                     joueur->life--;
                     bossyeti->coup=1;
@@ -1209,7 +1209,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {
                 bossyeti->crane=loadImage("src/graphics/BossYeti/CraneD.png");                    
                 drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,21,17)==1 && bossyeti->coup == 0)
+                if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
                 {
                     joueur->life--;
                     bossyeti->coup=1;

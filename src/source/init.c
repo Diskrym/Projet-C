@@ -234,6 +234,7 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
     {
         collisionmur (joueur,20,20,20,20);
         deplacementbossyeti(joueur, &entité->bossyeti,lvl,son);
+        collisionbossyeti(joueur,&entité->yeti,input,lvl);
     }
     
     if (lvl->Num == 9)
