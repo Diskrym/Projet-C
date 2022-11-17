@@ -133,7 +133,7 @@ void deplacement (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,
             }
             else if( lvl->Avancement10 != 13)
             {
-                joueur->inposx-=5;
+                joueur->inposx-=4;
             }
         }
         if (input->right==1)
