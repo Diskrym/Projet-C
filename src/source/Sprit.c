@@ -914,6 +914,440 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
    
 }
 
+
+
+void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
+{  
+    //reset pointeur bossyeti
+    if (bossyeti->bossyeti!=NULL)
+    {
+        SDL_DestroyTexture(bossyeti->bossyeti);
+        bossyeti->bossyeti=NULL;
+    }
+    if (bossyeti->attaquebossyeti!=NULL)
+    {
+        SDL_DestroyTexture(bossyeti->attaquebossyeti);
+        bossyeti->attaquebossyeti=NULL;
+    }
+    if (bossyeti->crane!=NULL)
+    {
+        SDL_DestroyTexture(bossyeti->crane);
+        bossyeti->crane=NULL;
+    }
+ 
+ 
+    //Mouvement  bossyeti quand en vie
+    if (bossyeti->Life >=1)
+    {
+        //compteur < 100 pour déplacement normal
+        if (bossyeti->compteur < 100)
+        {  
+            //si la bossyeti n'a pas prit de coup
+            if (bossyeti->CompteurSpriteDegat==0)
+            {
+                if (bossyeti->Direction==1)
+                {
+                    if (bossyeti->NumSprit==0 || bossyeti->NumSprit==1 || bossyeti->NumSprit==2 || bossyeti->NumSprit==3 || bossyeti->NumSprit==8 || bossyeti->NumSprit==9 || bossyeti->NumSprit==10 || bossyeti->NumSprit==11)
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiNeutreG.png");
+                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit==4 || bossyeti->NumSprit==5 || bossyeti->NumSprit==6 || bossyeti->NumSprit==7)
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiMarche1G.png");
+                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit==12 || bossyeti->NumSprit==13 || bossyeti->NumSprit==14 || bossyeti->NumSprit==15)
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiMarche2G.png");
+                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=16 )
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiNeutreG.png");
+                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if(insidechevalierbossyeti(joueur, bossyeti)==1 && joueur->Numattack==15)
+                    {          
+                        bossyeti->CompteurSpriteDegat=1;
+                        bossyeti->Life--;
+                    }
+                }
+ 
+                 if (bossyeti->Direction==0)
+                {
+                    if (bossyeti->NumSprit==0 || bossyeti->NumSprit==1 || bossyeti->NumSprit==2 || bossyeti->NumSprit==3 || bossyeti->NumSprit==8 || bossyeti->NumSprit==9 || bossyeti->NumSprit==10 || bossyeti->NumSprit==11)
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiNeutreD.png");
+                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit==4 || bossyeti->NumSprit==5 || bossyeti->NumSprit==6 || bossyeti->NumSprit==7)
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiMarche1D.png");
+                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit==12 || bossyeti->NumSprit==13 || bossyeti->NumSprit==14 || bossyeti->NumSprit==15)
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiMarche2D.png");
+                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=16 )
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiNeutreD.png");
+                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if(insidechevalierbossyeti(joueur, bossyeti)==1 && joueur->Numattack==15)
+                    {          
+                        bossyeti->CompteurSpriteDegat=1;
+                        bossyeti->Life--;
+                    }
+                }
+                //degat dague
+                if (insideVol(joueur->xdague,joueur->ydague, bossyeti->posmonsx+10, bossyeti->posmonsy+15,45,60,30,15)==1)
+                {
+                    bossyeti->CompteurSpriteDegat=1;
+                    bossyeti->Life--;
+                    //joueur->CoupDague=1;
+                }
+            }
+ 
+            else
+            {  
+                if (bossyeti->Direction==1)
+                {
+                    //si la bossyeti prend un coup
+                    bossyeti->CompteurSpriteDegat+=1;
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiDegatG.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    // Mix_VolumeChunk(son->degatbossyeti, MIX_MAX_VOLUME);
+                    // Mix_PlayChannel(4, son->degatbossyeti, 0);
+                   
+                    //compteur duree affichage degat bossyeti
+                    if (bossyeti->CompteurSpriteDegat > 15)
+                    {
+                        bossyeti->CompteurSpriteDegat=0;
+                    }
+                }
+ 
+                if (bossyeti->Direction==0)
+                {
+                    //si la bossyeti prend un coup
+                    bossyeti->CompteurSpriteDegat+=1;
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiDegatD.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    // if (bossyeti->CompteurSpriteDegat==2)
+                    // {
+                    // Mix_VolumeChunk(son->degatbossyeti, MIX_MAX_VOLUME);
+                    //  Mix_PlayChannel(14, son->degatbossyeti, 0);
+                    // }          
+                    //compteur duree affichage degat bossyeti
+                    if (bossyeti->CompteurSpriteDegat > 15)
+                    {
+                        bossyeti->CompteurSpriteDegat=0;
+                    }
+                }
+            }
+             if (bossyeti->NumSprit>=16)
+            {
+                 bossyeti->NumSprit=0;
+            }
+        }
+        //attaquebossyeti bossyeti quand compteur > 100
+        if  (bossyeti->compteur>=100)
+        {
+            if (bossyeti->Direction==1)
+            {            
+                if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80  )
+                {  
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque1G.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
+                {
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque2G.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
+                {  
+                    // if (bossyeti->NumSprit==60)
+                    // {
+                    // Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
+                    // Mix_PlayChannel(16, son->attaquebossyeti, 0);
+                    // }
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3G.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    if (bossyeti->NumSprit == 65)
+                    {
+                        bossyeti->Eattaque = 1;
+                        bossyeti->directioncrane=bossyeti->Direction;
+                        bossyeti->xcrane=bossyeti->posmonsx+33;
+                        bossyeti->ycrane=bossyeti->posmonsy+7;
+                    }
+                   
+                }
+                if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque4G.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5G.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+               
+            }
+ 
+            if (bossyeti->Direction==0)
+            {            
+                if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 )
+                {  
+                   
+               
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque1D.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
+                {
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque2D.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
+                {  
+                    // if (bossyeti->NumSprit==60)
+                    // {
+                    // Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
+                    // Mix_PlayChannel(16, son->attaquebossyeti, 0);
+                    // }
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3D.png");
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    if (bossyeti->NumSprit == 65)
+                    {
+                        bossyeti->Eattaque = 1;
+                        bossyeti->directioncrane=bossyeti->Direction;
+                        bossyeti->xcrane=bossyeti->posmonsx+33;
+                        bossyeti->ycrane=bossyeti->posmonsy+9;
+                    }
+                }
+                if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque4D.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
+                {                
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5D.png");                    
+                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                }
+                //reset compteur bossyeti
+            }
+            if (bossyeti->NumSprit>90)
+            {
+                bossyeti->NumSprit=0;
+            }
+        }
+    }
+   
+    //Sprit crane
+    if (bossyeti->Eattaque == 1)
+    {
+        if (bossyeti->directioncrane==1)
+        {
+            if (bossyeti->xcrane>=20 && bossyeti->xcrane<=600 && bossyeti->ycrane>= 20 && bossyeti->ycrane<=384)
+            {
+                bossyeti->crane=loadImage("src/graphics/BossYeti/Crane.png");                    
+                drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+               
+                if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,21,17)==1 && bossyeti->coup == 0)
+                {
+                    joueur->life--;
+                    bossyeti->coup=1;
+                }
+                bossyeti->xcrane-=7;
+            }
+            else
+            {
+                bossyeti->Compteurcrane+=1;
+                if (bossyeti->Compteurcrane>=0 && bossyeti->Compteurcrane<5)
+                {  
+                    //  if (bossyeti->Compteurcrane==1)
+                    // {
+                    // Mix_VolumeChunk(son->cranedeneige, MIX_MAX_VOLUME);
+                    // Mix_PlayChannel(7, son->cranedeneige, 0);
+                    // }
+                   
+                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1G.png");
+                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                }
+                if (bossyeti->Compteurcrane>=5 && bossyeti->Compteurcrane<10)
+                {  
+                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur2G.png");
+                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                }
+                if (bossyeti->Compteurcrane>=15 && bossyeti->Compteurcrane<20)
+                {  
+                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur3G.png");
+                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                }
+                if (bossyeti->Compteurcrane>=20 && bossyeti->Compteurcrane<25)
+                {  
+                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur4G.png");
+                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                }
+                if (bossyeti->Compteurcrane>=25)
+                {
+                    SDL_DestroyTexture(bossyeti->crane);
+                    bossyeti->crane=NULL;
+                    bossyeti->Eattaque=0;
+                    bossyeti->Compteurcrane=0;
+                }
+            }
+        }
+        if (bossyeti->directioncrane==0)
+        {
+            if (bossyeti->xcrane>=20 && bossyeti->xcrane<=600 && bossyeti->ycrane>= 20 && bossyeti->ycrane<=384)
+            {
+                bossyeti->crane=loadImage("src/graphics/BossYeti/Crane.png");                    
+                drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,21,17)==1 && bossyeti->coup == 0)
+                {
+                    joueur->life--;
+                    bossyeti->coup=1;
+                }
+                bossyeti->xcrane+=7;
+            }
+            else
+            {
+                bossyeti->Compteurcrane+=1;
+                if (bossyeti->Compteurcrane>=0 && bossyeti->Compteurcrane<5)
+                {  
+                    // if (bossyeti->Compteurcrane==1)
+                    // {
+                    // Mix_VolumeChunk(son->cranedeneige, MIX_MAX_VOLUME);
+                    // Mix_PlayChannel(7, son->cranedeneige, 0);
+                    // }
+                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1D.png");
+                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                }
+                if (bossyeti->Compteurcrane>=5 && bossyeti->Compteurcrane<10)
+                {  
+                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur2D.png");
+                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                }
+                if (bossyeti->Compteurcrane>=15 && bossyeti->Compteurcrane<20)
+                {  
+                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur3D.png");
+                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                }
+                if (bossyeti->Compteurcrane>=20 && bossyeti->Compteurcrane<25)
+                {  
+                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur4D.png");
+                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                }
+                if (bossyeti->Compteurcrane>=25)
+                {
+                    SDL_DestroyTexture(bossyeti->crane);
+                    bossyeti->crane=NULL;
+                    bossyeti->Eattaque=0;
+                    bossyeti->Compteurcrane=0;
+                }
+            }
+        }
+    }
+    // timing degat chevalier
+    if (bossyeti->coup>0)
+    {
+        bossyeti->coup+=1;
+        if (bossyeti->coup >25)
+        {
+            bossyeti->coup=0;
+        }
+    }
+    if (bossyeti->compteur>=190)
+    {
+        bossyeti->compteur=0;
+    }
+    //Mort bossyeti
+    if (bossyeti->Life==0)
+    {
+        if (bossyeti->Direction==1)
+        {  
+            if (bossyeti->CompteurSpriteDegat==0 || bossyeti->CompteurSpriteDegat==1 || bossyeti->CompteurSpriteDegat==2 || bossyeti->CompteurSpriteDegat==3 )
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti1G.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                // if (bossyeti->CompteurSpriteDegat==1)
+                // {
+                //     Mix_VolumeChunk(son->mortbossyeti, MIX_MAX_VOLUME);
+                //     Mix_PlayChannel(9, son->mortbossyeti, 0);
+                // }
+            }
+            if (bossyeti->CompteurSpriteDegat==4 || bossyeti->CompteurSpriteDegat==5 || bossyeti->CompteurSpriteDegat==6 || bossyeti->CompteurSpriteDegat==7 )
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti2G.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+            }
+            if (bossyeti->CompteurSpriteDegat==8 || bossyeti->CompteurSpriteDegat==9 || bossyeti->CompteurSpriteDegat==10 || bossyeti->CompteurSpriteDegat==11)
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti3G.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+            }
+            if (bossyeti->CompteurSpriteDegat==12 || bossyeti->CompteurSpriteDegat==13 || bossyeti->CompteurSpriteDegat==14 || bossyeti->CompteurSpriteDegat==15 )
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti4G.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+            }
+            if (bossyeti->CompteurSpriteDegat==16 || bossyeti->CompteurSpriteDegat==17 || bossyeti->CompteurSpriteDegat==18 || bossyeti->CompteurSpriteDegat==19 )
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti5G.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+            }
+        }
+ 
+        if (bossyeti->Direction==0)
+        {  
+            if (bossyeti->CompteurSpriteDegat==0 || bossyeti->CompteurSpriteDegat==1 || bossyeti->CompteurSpriteDegat==2 || bossyeti->CompteurSpriteDegat==3 )
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti1D.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                // if (bossyeti->CompteurSpriteDegat==1)
+                // {
+                // Mix_VolumeChunk(son->mortbossyeti, MIX_MAX_VOLUME);
+                // Mix_PlayChannel(9, son->mortbossyeti, 0);
+                // }
+            }
+            if (bossyeti->CompteurSpriteDegat==4 || bossyeti->CompteurSpriteDegat==5 || bossyeti->CompteurSpriteDegat==6 || bossyeti->CompteurSpriteDegat==7 )
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti2D.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+            }
+            if (bossyeti->CompteurSpriteDegat==8 || bossyeti->CompteurSpriteDegat==9 || bossyeti->CompteurSpriteDegat==10 || bossyeti->CompteurSpriteDegat==11)
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti3D.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+            }
+            if (bossyeti->CompteurSpriteDegat==12 || bossyeti->CompteurSpriteDegat==13 || bossyeti->CompteurSpriteDegat==14 || bossyeti->CompteurSpriteDegat==15 )
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti4D.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+            }
+            if (bossyeti->CompteurSpriteDegat==16 || bossyeti->CompteurSpriteDegat==17 || bossyeti->CompteurSpriteDegat==18 || bossyeti->CompteurSpriteDegat==19 )
+            {
+                bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti5D.png");
+                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+            }
+        }
+        if (bossyeti->CompteurSpriteDegat==15)
+        {
+            lvl->MortMonstre+=1;
+        }  
+    }
+   
+}
+
+
+
+
 void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {  
     //reset pointeur sprite

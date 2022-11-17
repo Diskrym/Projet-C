@@ -25,6 +25,15 @@ typedef struct Yeti
     SDL_Texture *boule;
 } Yeti;
 
+typedef struct BossYeti
+{
+    int NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, Eattaque, xcrane, ycrane,directioncrane, Compteurcrane;
+    SDL_Texture *attaquebossyeti;
+    SDL_Texture *bossyeti;
+    SDL_Texture *crane;
+} BossYeti;
+
+
 typedef struct Chauvesouris
 {
     int NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteDegatChevalier;
