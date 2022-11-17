@@ -606,8 +606,8 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     if (yeti->CompteurSpriteDegat==2)
                     {
-                    // Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
-                    // Mix_PlayChannel(4, son->degatyeti, 0);
+                    Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
+                     Mix_PlayChannel(14, son->degatyeti, 0);
                     }          
                     //compteur duree affichage degat yeti
                     if (yeti->CompteurSpriteDegat > 15)
@@ -627,12 +627,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (yeti->Direction==1)
             {             
                 if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80  )
-                {   if (yeti->NumSprit==1)
-                    {
-                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME/2);
-                    Mix_PlayChannel(6, son->attaqueyeti, 0);
-                    }
-                
+                {   
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1G.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
@@ -642,7 +637,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
-                {
+                {   
+                    if (yeti->NumSprit==60)
+                    {
+                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(16, son->attaqueyeti, 0);
+                    }
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3G.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     if (yeti->NumSprit == 65)
@@ -671,11 +671,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {             
                 if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 )
                 {  
-                    if (yeti->NumSprit==1)
-                    {
-                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME/2);
-                    Mix_PlayChannel(6, son->attaqueyeti, 0);
-                    }
+                    
                 
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1D.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
@@ -686,7 +682,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
-                {
+                {   
+                    if (yeti->NumSprit==60)
+                    {
+                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(16, son->attaqueyeti, 0);
+                    }
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3D.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     if (yeti->NumSprit == 65)
@@ -880,8 +881,8 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 if (yeti->CompteurSpriteDegat==1)
                 {
-                // Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
-                // Mix_PlayChannel(9, son->mortyeti, 0);
+                Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(9, son->mortyeti, 0);
                 }
             }
             if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
