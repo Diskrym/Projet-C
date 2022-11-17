@@ -220,12 +220,16 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
         {
             collisionmur(joueur,20,40,0,10);
         }
-        else
+        else if (joueur->Ebateau==2 && lvl->Avancement10>=13)
         {
             collisionmur(joueur,267,27,0,0);
         }
-
-        Gestion_Obstacle(joueur,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc,&entité->tanguy, lvl);
+        else if(lvl->Avancement10==13 && joueur->Ebateau!=2)
+        {
+            collisionmur(joueur,0,114,400,60);
+        }
+        
+        Gestion_Obstacle(joueur,&entité->marchand,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc,&entité->tanguy, lvl);
 
     }
     

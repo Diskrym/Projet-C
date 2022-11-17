@@ -124,34 +124,34 @@ void deplacement (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,
     {
         if (input->left==1)
         {
-            if(lvl->Num!=10)
+            if(lvl->Num!=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
             {
                 joueur->inposx-=3;
                 joueur->NumSprit+=1;
                 joueur->Direction =1;
 
             }
-            else
+            else if( lvl->Avancement10 != 13)
             {
                 joueur->inposx-=5;
             }
         }
         if (input->right==1)
         {
-            if (lvl->Num != 10)
+            if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
             {
                 joueur->inposx+=3;
                 joueur->NumSprit+=1;
                 joueur->Direction =0;
             }
-            else
+            else if ( lvl->Avancement10 != 13)
             {
                 joueur->inposx+=2;
             } 
         }
         if (input->up==1)
         {
-            if (lvl->Num !=10)
+            if (lvl->Num !=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
             {
                 joueur->NumSprit+=1;  
             } 
@@ -159,7 +159,7 @@ void deplacement (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,
         }
         if (input->down==1)
         {
-            if (lvl->Num != 10)
+            if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
             {
                 joueur->NumSprit+=1;
             }
