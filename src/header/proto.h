@@ -53,6 +53,7 @@ extern void loadNiv31(Joueur *joueur,Yeti *yeti, Lvl *lvl);
 extern void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl);
 extern void loadNiv41(Joueur *joueur,Lvl *lvl);
 extern void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc,Obstacle *tanguy, Lvl *lvl);
+extern void loadNiv33 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Lvl *lvl, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1);
 
 //input.c
 extern void gestionInputs(Input *input);

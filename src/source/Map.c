@@ -16,7 +16,7 @@ void initMaps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundmarchand.png");
     }
-    if  (lvl->Num == 5 || lvl->Num == 6)
+    if  (lvl->Num == 5 || lvl->Num == 6 || lvl->Num ==7)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon2.png");
     }
