@@ -1155,7 +1155,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
         {
             if (bossyeti->xcrane>=20 && bossyeti->xcrane<=600 && bossyeti->ycrane>= 20 && bossyeti->ycrane<=384)
             {
-                bossyeti->crane=loadImage("src/graphics/BossYeti/Crane.png");                    
+                bossyeti->crane=loadImage("src/graphics/BossYeti/CraneG.png");                    
                 drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
                
                 if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,21,17)==1 && bossyeti->coup == 0)
@@ -1165,49 +1165,49 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 }
                 bossyeti->xcrane-=7;
             }
-            else
-            {
-                bossyeti->Compteurcrane+=1;
-                if (bossyeti->Compteurcrane>=0 && bossyeti->Compteurcrane<5)
-                {  
-                    //  if (bossyeti->Compteurcrane==1)
-                    // {
-                    // Mix_VolumeChunk(son->cranedeneige, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(7, son->cranedeneige, 0);
-                    // }
+            // else
+            // {
+            //     bossyeti->Compteurcrane+=1;
+            //     if (bossyeti->Compteurcrane>=0 && bossyeti->Compteurcrane<5)
+            //     {  
+            //         //  if (bossyeti->Compteurcrane==1)
+            //         // {
+            //         // Mix_VolumeChunk(son->cranedeneige, MIX_MAX_VOLUME);
+            //         // Mix_PlayChannel(7, son->cranedeneige, 0);
+            //         // }
                    
-                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1G.png");
-                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                }
-                if (bossyeti->Compteurcrane>=5 && bossyeti->Compteurcrane<10)
-                {  
-                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur2G.png");
-                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                }
-                if (bossyeti->Compteurcrane>=15 && bossyeti->Compteurcrane<20)
-                {  
-                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur3G.png");
-                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                }
-                if (bossyeti->Compteurcrane>=20 && bossyeti->Compteurcrane<25)
-                {  
-                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur4G.png");
-                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                }
-                if (bossyeti->Compteurcrane>=25)
-                {
-                    SDL_DestroyTexture(bossyeti->crane);
-                    bossyeti->crane=NULL;
-                    bossyeti->Eattaque=0;
-                    bossyeti->Compteurcrane=0;
-                }
-            }
+            //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1G.png");
+            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //     }
+            //     if (bossyeti->Compteurcrane>=5 && bossyeti->Compteurcrane<10)
+            //     {  
+            //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur2G.png");
+            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //     }
+            //     if (bossyeti->Compteurcrane>=15 && bossyeti->Compteurcrane<20)
+            //     {  
+            //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur3G.png");
+            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //     }
+            //     if (bossyeti->Compteurcrane>=20 && bossyeti->Compteurcrane<25)
+            //     {  
+            //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur4G.png");
+            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //     }
+            //     if (bossyeti->Compteurcrane>=25)
+            //     {
+            //         SDL_DestroyTexture(bossyeti->crane);
+            //         bossyeti->crane=NULL;
+            //         bossyeti->Eattaque=0;
+            //         bossyeti->Compteurcrane=0;
+            //     }
+            // }
         }
         if (bossyeti->directioncrane==0)
         {
             if (bossyeti->xcrane>=20 && bossyeti->xcrane<=600 && bossyeti->ycrane>= 20 && bossyeti->ycrane<=384)
             {
-                bossyeti->crane=loadImage("src/graphics/BossYeti/Crane.png");                    
+                bossyeti->crane=loadImage("src/graphics/BossYeti/CraneD.png");                    
                 drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
                 if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,21,17)==1 && bossyeti->coup == 0)
                 {
@@ -1216,42 +1216,42 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 }
                 bossyeti->xcrane+=7;
             }
-            else
-            {
-                bossyeti->Compteurcrane+=1;
-                if (bossyeti->Compteurcrane>=0 && bossyeti->Compteurcrane<5)
-                {  
-                    // if (bossyeti->Compteurcrane==1)
-                    // {
-                    // Mix_VolumeChunk(son->cranedeneige, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(7, son->cranedeneige, 0);
-                    // }
-                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1D.png");
-                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                }
-                if (bossyeti->Compteurcrane>=5 && bossyeti->Compteurcrane<10)
-                {  
-                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur2D.png");
-                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                }
-                if (bossyeti->Compteurcrane>=15 && bossyeti->Compteurcrane<20)
-                {  
-                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur3D.png");
-                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                }
-                if (bossyeti->Compteurcrane>=20 && bossyeti->Compteurcrane<25)
-                {  
-                    bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur4D.png");
-                    drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                }
-                if (bossyeti->Compteurcrane>=25)
-                {
-                    SDL_DestroyTexture(bossyeti->crane);
-                    bossyeti->crane=NULL;
-                    bossyeti->Eattaque=0;
-                    bossyeti->Compteurcrane=0;
-                }
-            }
+            // else
+            // {
+            //     bossyeti->Compteurcrane+=1;
+            //     if (bossyeti->Compteurcrane>=0 && bossyeti->Compteurcrane<5)
+            //     {  
+            //         // if (bossyeti->Compteurcrane==1)
+            //         // {
+            //         // Mix_VolumeChunk(son->cranedeneige, MIX_MAX_VOLUME);
+            //         // Mix_PlayChannel(7, son->cranedeneige, 0);
+            //         // }
+            //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1D.png");
+            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //     }
+            //     if (bossyeti->Compteurcrane>=5 && bossyeti->Compteurcrane<10)
+            //     {  
+            //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur2D.png");
+            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //     }
+            //     if (bossyeti->Compteurcrane>=15 && bossyeti->Compteurcrane<20)
+            //     {  
+            //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur3D.png");
+            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //     }
+            //     if (bossyeti->Compteurcrane>=20 && bossyeti->Compteurcrane<25)
+            //     {  
+            //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur4D.png");
+            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //     }
+            //     if (bossyeti->Compteurcrane>=25)
+            //     {
+            //         SDL_DestroyTexture(bossyeti->crane);
+            //         bossyeti->crane=NULL;
+            //         bossyeti->Eattaque=0;
+            //         bossyeti->Compteurcrane=0;
+            //     }
+            // }
         }
     }
     // timing degat chevalier

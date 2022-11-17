@@ -91,6 +91,7 @@ typedef struct Entité
     Marchand marchand;
     Yeti yeti, yeti1, yeti2;
     Obstacle Petit_rocher,Gros_rocher, tronc, tanguy;
+    BossYeti bossyeti;
 
 } Entité;
 
@@ -217,13 +218,15 @@ static const int level [11][5][6] = {
                                             {2,100,200,2,1,1}
                                         },
                                         {
+                                            {9,1,298,384,0,0},
+                                            {5,320,100,1,1,8}
 
                                         },
                                         {
-                                            {9,0,98,26,0}
+                                            {10,0,98,26,0}
                                         },
                                         {
-                                            {10,0,5,290,0}
+                                            {11,0,5,290,0}
                                         }
                                     };
 

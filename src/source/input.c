@@ -297,6 +297,44 @@ void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
     Sprityeti (yeti, joueur, lvl, son);
 }
 
+
+void deplacementbossyeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetSon *son)
+{  
+    bossyeti->compteur+=1;
+    bossyeti->NumSprit+=1;
+    if  (bossyeti->Life==0 && bossyeti->CompteurSpriteDegat<19)
+    {
+        bossyeti->CompteurSpriteDegat+=1;
+    }
+   
+    if (bossyeti->Life >=1 && bossyeti->compteur<100)
+    {
+        if (joueur->inposx<bossyeti->posmonsx)
+        {
+            bossyeti->posmonsx-=1;
+            bossyeti->Direction=1;
+           
+        }
+        if (joueur->inposx>bossyeti->posmonsx)
+        {
+            bossyeti->posmonsx+=1;
+            bossyeti->Direction=0;
+        }
+        if (joueur->inposy<bossyeti->posmonsy+15)
+        {
+            bossyeti->posmonsy-=1;
+        }
+        if (joueur->inposy>bossyeti->posmonsy+15)
+        {
+            bossyeti->posmonsy+=1;
+        }
+ 
+    }
+    Spritbossyeti (bossyeti, joueur, lvl, son);
+}
+
+
+
 void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son)
 {
     boss->compteur += 1;

@@ -389,6 +389,46 @@ int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
     }
 }
 
+
+int insidechevalierbossyeti (Joueur *joueur, BossYeti *bossyeti)
+{      
+    int x=0;
+    int y=0;
+    if (joueur->Direction==1)
+    {
+        if ((bossyeti->posmonsx>=joueur->inposx-21 || bossyeti->posmonsx+108>=joueur->inposx-21) && (bossyeti->posmonsx<=joueur->inposx || bossyeti->posmonsx+108<=joueur->inposx))
+        {
+            x=1;
+        }
+        if ((bossyeti->posmonsy>=joueur->inposy+32 || bossyeti->posmonsy+108>=joueur->inposy+32) && (bossyeti->posmonsy<=joueur->inposy+SPRITE_SIZE || bossyeti->posmonsy+108<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    }
+    if (joueur->Direction==0)
+    {
+        if ((bossyeti->posmonsx>=joueur->inposx+SPRITE_SIZE || bossyeti->posmonsx+108>=joueur->inposx+SPRITE_SIZE) && (bossyeti->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| bossyeti->posmonsx+108<=joueur->inposx+SPRITE_SIZE+21))
+        {
+            x=1;
+        }
+        if ((bossyeti->posmonsy>=joueur->inposy+32 || bossyeti->posmonsy+108>=joueur->inposy+32) && (bossyeti->posmonsy<=joueur->inposy+SPRITE_SIZE || bossyeti->posmonsy+108<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+       
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    }
+}
+
+
+
 //test si l'attaque de la méduse touche le joueur
 int inside (Joueur *joueur, Meduse *meduse)
 {
