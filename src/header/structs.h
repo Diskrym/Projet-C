@@ -69,7 +69,7 @@ typedef struct Marchand
 
 typedef struct Obstacle
 {
-    int x, y, Etat;
+    int x, y, Etat, coup;
     SDL_Texture *Image;
     
 }Obstacle;
