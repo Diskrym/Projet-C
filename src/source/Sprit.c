@@ -1187,7 +1187,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 }
                 if (bossyeti->NumSprit>=90  )
                 {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6G.png");                    
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1G.png");                    
                     drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
 
@@ -1228,7 +1228,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 }
                 if (bossyeti->NumSprit>=90  )
                 {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6D.png");                    
+                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1D.png");                    
                     drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
 
