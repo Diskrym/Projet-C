@@ -44,7 +44,7 @@ lvl.Num=-1;
 joueur.life=10;
 joueur.NbPiece=0;
 lvl.WinDonjon=5;
-joueur.nbDague=1;
+joueur.nbDague=0;
 // Initialisation de la SDL
 init("Dungeon Fate");
     Son(&son);

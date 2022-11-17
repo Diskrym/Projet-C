@@ -1919,7 +1919,7 @@ if (lvl->Avancement10<=11)
         Petit_rocher->coup+=1;
     }
     
-    if (insideVol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,79,70,165,105)==1)
+    if (insideVol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,79,70,110,105)==1)
     {
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
@@ -1966,7 +1966,7 @@ if (lvl->Avancement10<=11)
         drawImage(marchand->Bateau,460,300);
     }   
 
-    if (tronc->coup >= 25 || Gros_rocher->coup >= 25 || Petit_rocher->coup >= 25)
+    if (tronc->coup >= 30 || Gros_rocher->coup >= 30 || Petit_rocher->coup >= 30)
     {
         Gros_rocher->coup = 0;
         Petit_rocher->coup = 0;
