@@ -81,6 +81,11 @@ void Son (EffetSon *son)
     son->porte= Mix_LoadWAV("src/musique/porte.WAV");
     son->gameoverson= Mix_LoadWAV("src/musique/GameOver.WAV");
     son->coffre= Mix_LoadWAV("src/musique/OuvertureCoffre.WAV");
+    son->attaqueyeti= Mix_LoadWAV("src/musique/AttaqueYeti.WAV");
+    son->mortyeti= Mix_LoadWAV("src/musique/MortYeti.WAV");
+    son->degatyeti= Mix_LoadWAV("src/musique/DegatYeti.WAV");
+    son->bouledeneige= Mix_LoadWAV("src/musique/BouleDeNeige.WAV");
+    son->dague= Mix_LoadWAV("src/musique/Dague.WAV");
 }
 
 void Texte(ParamTexte *paramtexte)
