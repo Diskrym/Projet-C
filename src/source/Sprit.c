@@ -42,7 +42,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche1D.png");
                     drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                     // if (joueur->NumSprit==2)
-                    // {Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                    // {Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
                     // Mix_PlayChannel(3, son->depchevalier, 0);}   
                 }
                 if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
@@ -52,7 +52,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     joueur->NumSprit =0;
                     // if (joueur->NumSprit==7)
                     // {
-                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
                     // Mix_PlayChannel(3, son->depchevalier, 0);
                     // }
                 }
@@ -64,7 +64,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
             drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-            Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
+            Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME);
             Mix_PlayChannel(1, son->degatchevalier, 0);
         }
         
@@ -84,7 +84,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                     // if (joueur->NumSprit==2)
                     // {
-                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
                     // Mix_PlayChannel(3, son->depchevalier, 0);
                     // }
                 }
@@ -94,7 +94,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
                     // if (joueur->NumSprit==7)
                     // {
-                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME/2);
+                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
                     // Mix_PlayChannel(3, son->depchevalier, 0);
                     // }
                     joueur->NumSprit =0;
@@ -105,7 +105,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
             drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-            Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME/2);
+            Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME);
             Mix_PlayChannel(1, son->degatchevalier, 0);
         }
         
@@ -139,7 +139,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     if(joueur->Numattack==13)
                     {
                         //Son
-                        Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
+                        Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME);
                         //Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                     }
                 }
@@ -170,7 +170,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     if(joueur->Numattack==13)
                     {
                         //Son
-                        Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
+                        Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME);
                         //Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                     }
                 }
@@ -189,7 +189,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldD.png");
                         drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                        //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME/2);
+                        //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
                         //Mix_PlayChannel(2, son->bouclier, 0);
                     }
                 }
@@ -199,7 +199,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldG.png");
                         drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
-                        //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME/2);
+                        //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
                         //Mix_PlayChannel(2, son->bouclier, 0);
                     }
                 }
@@ -229,7 +229,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
                 
-                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME/2);
+                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME);
                 Mix_PlayChannel(15, son->dague, 0);
             
                 //recup dague Gauchemap
@@ -255,7 +255,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
             {
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurD.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
-                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME/2);
+                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME);
                 Mix_PlayChannel(15, son->dague, 0);
                 //recup dague Droite map
                 if (joueur->inposx >= joueur->xdague-60 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
@@ -374,7 +374,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 if (meduse->CompteurSpriteDegat==2)
                 {
-                    Mix_VolumeChunk(son->degatmeduse, MIX_MAX_VOLUME/2);
+                    Mix_VolumeChunk(son->degatmeduse, MIX_MAX_VOLUME);
                     Mix_PlayChannel(4, son->degatmeduse, 0); 
                 }          
                 //compteur duree affichage degat meduse
@@ -408,7 +408,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 //attaque meduse
                 if (meduse->NumSprit==14 || meduse->NumSprit==14 )
                 {
-                    Mix_VolumeChunk(son->attaquemeduse, MIX_MAX_VOLUME/2);
+                    Mix_VolumeChunk(son->attaquemeduse, MIX_MAX_VOLUME);
                     Mix_PlayChannel(4, son->attaquemeduse, 0);
                 }
 
@@ -449,7 +449,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
             drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             if (meduse->CompteurSpriteDegat==1)
             {
-                Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME/2);
+                Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME);
                 Mix_PlayChannel(9, son->mortmeduse, 0);
             }
         }
@@ -588,7 +588,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     yeti->CompteurSpriteDegat+=1;
                     yeti->yeti=loadImage("src/graphics/yeti/YetiDegatG.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                    Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
+                    Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME);
                     Mix_PlayChannel(4, son->degatyeti, 0);
                    
                     //compteur duree affichage degat yeti
@@ -606,8 +606,8 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     if (yeti->CompteurSpriteDegat==2)
                     {
-                    // Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
-                    // Mix_PlayChannel(4, son->degatyeti, 0);
+                    Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME);
+                     Mix_PlayChannel(14, son->degatyeti, 0);
                     }          
                     //compteur duree affichage degat yeti
                     if (yeti->CompteurSpriteDegat > 15)
@@ -627,12 +627,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (yeti->Direction==1)
             {             
                 if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80  )
-                {   if (yeti->NumSprit==1)
-                    {
-                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME/2);
-                    Mix_PlayChannel(6, son->attaqueyeti, 0);
-                    }
-                
+                {   
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1G.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
@@ -642,7 +637,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
-                {
+                {   
+                    if (yeti->NumSprit==60)
+                    {
+                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(16, son->attaqueyeti, 0);
+                    }
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3G.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     if (yeti->NumSprit == 65)
@@ -671,11 +671,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {             
                 if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 )
                 {  
-                    if (yeti->NumSprit==1)
-                    {
-                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME/2);
-                    Mix_PlayChannel(6, son->attaqueyeti, 0);
-                    }
+                    
                 
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1D.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
@@ -686,7 +682,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
-                {
+                {   
+                    if (yeti->NumSprit==60)
+                    {
+                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(16, son->attaqueyeti, 0);
+                    }
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3D.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     if (yeti->NumSprit == 65)
@@ -740,7 +741,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {  
                      if (yeti->CompteurBoule==1)
                     {
-                    Mix_VolumeChunk(son->bouledeneige, MIX_MAX_VOLUME/2);
+                    Mix_VolumeChunk(son->bouledeneige, MIX_MAX_VOLUME);
                     Mix_PlayChannel(7, son->bouledeneige, 0);
                     }
                     
@@ -791,7 +792,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {  
                     if (yeti->CompteurBoule==1)
                     {
-                    Mix_VolumeChunk(son->bouledeneige, MIX_MAX_VOLUME/2);
+                    Mix_VolumeChunk(son->bouledeneige, MIX_MAX_VOLUME);
                     Mix_PlayChannel(7, son->bouledeneige, 0);
                     }
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur1D.png");
@@ -846,7 +847,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 if (yeti->CompteurSpriteDegat==1)
                 {
-                    Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
+                    Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
                     Mix_PlayChannel(9, son->mortyeti, 0);
                 }
             }
@@ -880,8 +881,8 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 if (yeti->CompteurSpriteDegat==1)
                 {
-                // Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
-                // Mix_PlayChannel(9, son->mortyeti, 0);
+                Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
+                Mix_PlayChannel(9, son->mortyeti, 0);
                 }
             }
             if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
@@ -994,7 +995,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
             drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
             if (chauvesouris->CompteurSpriteDegat==0)
             {
-            Mix_VolumeChunk(son->mortchauvesouris, MIX_MAX_VOLUME/2);
+            Mix_VolumeChunk(son->mortchauvesouris, MIX_MAX_VOLUME);
             Mix_PlayChannel(6, son->mortchauvesouris, 0);
             }
         }
@@ -1123,7 +1124,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 drawImage(boss->Boss,boss->posmonsx,boss->posmonsy); 
                 if (boss->CompteurSpriteDegat==2)
                 {
-                Mix_VolumeChunk(son->degatboss, MIX_MAX_VOLUME/2);
+                Mix_VolumeChunk(son->degatboss, MIX_MAX_VOLUME);
                 Mix_PlayChannel(2, son->degatboss, 0);   
                 }
                 if (boss->CompteurSpriteDegat > 15)
@@ -1271,7 +1272,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if (boss->NumSprit==15 || boss->NumSprit==16 || boss->NumSprit==17 || boss->NumSprit==18 )
             {   if (boss->NumSprit==15)
                 {
-                Mix_VolumeChunk(son->attaqueboss, MIX_MAX_VOLUME/2);
+                Mix_VolumeChunk(son->attaqueboss, MIX_MAX_VOLUME);
                 Mix_PlayChannel(7, son->attaqueboss, 0);
                 }
                 boss->Boss=loadImage("src/graphics/Boss/Bossattaque5.png");
@@ -1311,7 +1312,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort1.png");
             drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
-            Mix_VolumeChunk(son->mortboss, MIX_MAX_VOLUME/2);
+            Mix_VolumeChunk(son->mortboss, MIX_MAX_VOLUME);
             Mix_PlayChannel(6, son->mortboss, 0);
         }
         if (boss->CompteurSpriteDegat>= 6 && boss->CompteurSpriteDegat<=10 )
