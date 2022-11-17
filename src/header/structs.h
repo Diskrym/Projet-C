@@ -95,6 +95,8 @@ typedef struct EffetSon
     Mix_Music *musiqueboss;
     Mix_Music *musiquelvl;
     Mix_Music *musiqueshop;
+    Mix_Music *musiqueriviere;
+    Mix_Music *musiqueyeti;
     Mix_Chunk *epee;
     Mix_Chunk *bouclier;
     Mix_Chunk *depchevalier;
@@ -113,6 +115,12 @@ typedef struct EffetSon
     Mix_Chunk *porte;
     Mix_Chunk *gameoverson;
     Mix_Chunk *coffre;
+    Mix_Chunk *attaqueyeti;
+    Mix_Chunk *mortyeti;
+    Mix_Chunk *degatyeti;
+    Mix_Chunk *bouledeneige;
+    Mix_Chunk *dague;
+
 }EffetSon;
 
 

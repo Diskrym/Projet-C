@@ -54,31 +54,38 @@ void Son (EffetSon *son)
       printf("%s", Mix_GetError());
     }
     Mix_AllocateChannels(32); //Allouer 32 canaux
-    son->musiquemenu = Mix_LoadMUS("src/Sik/m_menu.mp3"); //Chargement de la musique
-    son->musiqueboss = Mix_LoadMUS("src/Sik/m_Boss.mp3");
-    son->musiquelvl = Mix_LoadMUS("src/Sik/MusiqueLvl.mp3");
-    son ->musiqueMapG = Mix_LoadMUS("src/Sik/MapGlobal.mp3");
-    son->musiqueshop= Mix_LoadMUS("src/Sik/m_Shop.mp3");
+    son->musiquemenu = Mix_LoadMUS("src/musique/m_menu.mp3"); //Chargement de la musique
+    son->musiqueboss = Mix_LoadMUS("src/musique/m_Boss.mp3");
+    son->musiquelvl = Mix_LoadMUS("src/musique/MusiqueLvl.mp3");
+    son ->musiqueMapG = Mix_LoadMUS("src/musique/MapGlobal.mp3");
+    son->musiqueshop= Mix_LoadMUS("src/musique/m_Shop.mp3");
+    son->musiqueriviere= Mix_LoadMUS("src/musique/m_riviere.mp3");
+    son->musiqueyeti= Mix_LoadMUS("src/musique/m_yeti.mp3");
 
     Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
     Mix_Volume(1, MIX_MAX_VOLUME/4); //Mettre à mi-volume le post 1
-    son->epee = Mix_LoadWAV("src/Sik/attackChe.WAV"); //Charger un wav dans un pointeur
-    son->bouclier= Mix_LoadWAV("src/Sik/BouclierChe.WAV");
-    son->depchevalier= Mix_LoadWAV("src/Sik/deplacementchevalier.WAV");
-    son->degatchevalier= Mix_LoadWAV("src/Sik/degatChe.WAV");
-    son->mortchevalier= Mix_LoadWAV("src/Sik/mortChe.WAV");
-    son->lowlifechevalier= Mix_LoadWAV("src/Sik/Chelowlife.WAV");
-    son->attaquemeduse= Mix_LoadWAV("src/Sik/Attakmeduz.WAV");
-    son->depmeduse= Mix_LoadWAV("src/Sik/depMeduz.WAV");
-    son->degatmeduse= Mix_LoadWAV("src/Sik/degatMeduz.WAV");
-    son->mortmeduse= Mix_LoadWAV("src/Sik/MortMeduz.WAV");
-    son->mortchauvesouris= Mix_LoadWAV("src/Sik/MortChS.WAV");
-    son->attaqueboss= Mix_LoadWAV("src/Sik/attakBossM.WAV");
-    son->mortboss= Mix_LoadWAV("src/Sik/Mortboss.WAV");
-    son->degatboss= Mix_LoadWAV("src/Sik/degatBoss.WAV");
-    son->porte= Mix_LoadWAV("src/Sik/porte.WAV");
-    son->gameoverson= Mix_LoadWAV("src/Sik/GameOver.WAV");
-    son->coffre= Mix_LoadWAV("src/Sik/OuvertureCoffre.WAV");
+    son->epee = Mix_LoadWAV("src/musique/attackChe.WAV"); //Charger un wav dans un pointeur
+    son->bouclier= Mix_LoadWAV("src/musique/BouclierChe.WAV");
+    son->depchevalier= Mix_LoadWAV("src/musique/deplacementchevalier.WAV");
+    son->degatchevalier= Mix_LoadWAV("src/musique/degatChe.WAV");
+    son->mortchevalier= Mix_LoadWAV("src/musique/mortChe.WAV");
+    son->lowlifechevalier= Mix_LoadWAV("src/musique/Chelowlife.WAV");
+    son->attaquemeduse= Mix_LoadWAV("src/musique/Attakmeduz.WAV");
+    son->depmeduse= Mix_LoadWAV("src/musique/depMeduz.WAV");
+    son->degatmeduse= Mix_LoadWAV("src/musique/degatMeduz.WAV");
+    son->mortmeduse= Mix_LoadWAV("src/musique/MortMeduz.WAV");
+    son->mortchauvesouris= Mix_LoadWAV("src/musique/MortChS.WAV");
+    son->attaqueboss= Mix_LoadWAV("src/musique/attakBossM.WAV");
+    son->mortboss= Mix_LoadWAV("src/musique/Mortboss.WAV");
+    son->degatboss= Mix_LoadWAV("src/musique/degatBoss.WAV");
+    son->porte= Mix_LoadWAV("src/musique/porte.WAV");
+    son->gameoverson= Mix_LoadWAV("src/musique/GameOver.WAV");
+    son->coffre= Mix_LoadWAV("src/musique/OuvertureCoffre.WAV");
+    son->attaqueyeti= Mix_LoadWAV("src/musique/AttaqueYeti.WAV");
+    son->mortyeti= Mix_LoadWAV("src/musique/MortYeti.WAV");
+    son->degatyeti= Mix_LoadWAV("src/musique/DegatYeti.WAV");
+    son->bouledeneige= Mix_LoadWAV("src/musique/BouleDeNeige.WAV");
+    son->dague= Mix_LoadWAV("src/musique/Dague.WAV");
 }
 
 void Texte(ParamTexte *paramtexte)
@@ -117,6 +124,7 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     if (lvl->Num == 5)
     {
         loadNiv31(joueur, &entité->yeti, lvl);
+        Mix_PlayMusic(son->musiqueyeti,-1);
     }
     if  (lvl->Num == 6)
     {
@@ -125,6 +133,7 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     if (lvl->Num == 9)
     {
         loadNiv41(joueur,lvl);
+        Mix_PlayMusic(son->musiqueriviere,-1);
     }
     if (lvl->Num == 10)
     {

@@ -224,9 +224,14 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                 joueur->xdague-=10;
             }
             else
-            {
+            {   
+                
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+                
+                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(15, son->dague, 0);
+            
                 //recup dague Gauchemap
                 if (joueur->inposx <= joueur->xdague+20 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
                 {
@@ -250,6 +255,8 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
             {
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurD.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(15, son->dague, 0);
                 //recup dague Droite map
                 if (joueur->inposx >= joueur->xdague-60 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
                 {
@@ -581,11 +588,9 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     yeti->CompteurSpriteDegat+=1;
                     yeti->yeti=loadImage("src/graphics/yeti/YetiDegatG.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                    if (yeti->CompteurSpriteDegat==2)
-                    {
-                    // Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
-                    // Mix_PlayChannel(4, son->degatyeti, 0);
-                    }          
+                    Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(4, son->degatyeti, 0);
+                   
                     //compteur duree affichage degat yeti
                     if (yeti->CompteurSpriteDegat > 15)
                     {
@@ -622,7 +627,11 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (yeti->Direction==1)
             {             
                 if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80  )
-                {  
+                {   if (yeti->NumSprit==1)
+                    {
+                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(6, son->attaqueyeti, 0);
+                    }
                 
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1G.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
@@ -662,6 +671,11 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {             
                 if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 )
                 {  
+                    if (yeti->NumSprit==1)
+                    {
+                    Mix_VolumeChunk(son->attaqueyeti, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(6, son->attaqueyeti, 0);
+                    }
                 
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1D.png");
                     drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
@@ -724,6 +738,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 yeti->CompteurBoule+=1;
                 if (yeti->CompteurBoule>=0 && yeti->CompteurBoule<5)
                 {  
+                     if (yeti->CompteurBoule==1)
+                    {
+                    Mix_VolumeChunk(son->bouledeneige, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(7, son->bouledeneige, 0);
+                    }
+                    
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur1G.png");
                     drawImage(yeti->boule,yeti->xboule,yeti->yboule);
                 }
@@ -769,6 +789,11 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 yeti->CompteurBoule+=1;
                 if (yeti->CompteurBoule>=0 && yeti->CompteurBoule<5)
                 {  
+                    if (yeti->CompteurBoule==1)
+                    {
+                    Mix_VolumeChunk(son->bouledeneige, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(7, son->bouledeneige, 0);
+                    }
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur1D.png");
                     drawImage(yeti->boule,yeti->xboule,yeti->yboule);
                 }
@@ -821,8 +846,8 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 if (yeti->CompteurSpriteDegat==1)
                 {
-                    // Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
-                    // Mix_PlayChannel(9, son->mortyeti, 0);
+                    Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(9, son->mortyeti, 0);
                 }
             }
             if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
