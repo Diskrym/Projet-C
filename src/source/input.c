@@ -305,7 +305,7 @@ void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetS
     if (boss->CompteurSpriteDegat==21 && insideBoss(joueur, boss)==1 && input->enter == 1)
     {
         boss->CompteurSpriteDegat=22;
-        Mix_VolumeChunk(son->coffre, MIX_MAX_VOLUME/2);
+        Mix_VolumeChunk(son->coffre, MIX_MAX_VOLUME);
         Mix_PlayChannel(6, son->coffre, 0);
     }
     //compteur mort

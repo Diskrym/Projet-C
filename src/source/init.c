@@ -61,9 +61,8 @@ void Son (EffetSon *son)
     son->musiqueshop= Mix_LoadMUS("src/musique/m_Shop.mp3");
     son->musiqueriviere= Mix_LoadMUS("src/musique/m_riviere.mp3");
     son->musiqueyeti= Mix_LoadMUS("src/musique/m_yeti.mp3");
-
+    Mix_VolumeMusic(40);
     Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
-    Mix_Volume(1, MIX_MAX_VOLUME/4); //Mettre à mi-volume le post 1
     son->epee = Mix_LoadWAV("src/musique/attackChe.WAV"); //Charger un wav dans un pointeur
     son->bouclier= Mix_LoadWAV("src/musique/BouclierChe.WAV");
     son->depchevalier= Mix_LoadWAV("src/musique/deplacementchevalier.WAV");
