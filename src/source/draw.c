@@ -290,7 +290,7 @@ void porte (Lvl *lvl)
               
         }
     }
-    if (lvl->Num == 5 || lvl->Num == 6)
+    if (lvl->Num == 5 || lvl->Num == 6 || lvl->Num == 7)
     {
         if (lvl->Num != 5)
         {

@@ -25,6 +25,15 @@ typedef struct Yeti
     SDL_Texture *boule;
 } Yeti;
 
+typedef struct BossYeti
+{
+    int NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, Eattaque, xcrane, ycrane,directioncrane, Compteurcrane, compteurfissure;
+    SDL_Texture *attaquebossyeti;
+    SDL_Texture *bossyeti;
+    SDL_Texture *crane;
+} BossYeti;
+
+
 typedef struct Chauvesouris
 {
     int NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteDegatChevalier;
@@ -82,6 +91,7 @@ typedef struct Entité
     Marchand marchand;
     Yeti yeti, yeti1, yeti2;
     Obstacle Petit_rocher,Gros_rocher, tronc, tanguy;
+    BossYeti bossyeti;
 
 } Entité;
 
@@ -167,7 +177,7 @@ typedef struct Lvl
                                         }
                                     }
  */
-static const int level [10][5][6] = {
+static const int level [11][5][6] = {
                                         {
                                             {1,1,288,160,64,0},
                                             {1,70,70,64,1,3},
@@ -205,13 +215,22 @@ static const int level [10][5][6] = {
                                             {4,500,270,126,2,4}
                                         },
                                         {
-                                            {8,0,288,297,0}
+                                            {8,4,298,384,0,0},
+                                            {1,100,20,63,1,3},
+                                            {1,500,200,126,1,3},
+                                            {2,500,20,2,1,1},
+                                            {2,100,200,2,1,1}
                                         },
                                         {
-                                            {9,0,98,26,0}
+                                            {9,1,298,384,0,0},
+                                            {5,320,100,1,1,8}
+
                                         },
                                         {
-                                            {9,0,5,290,0}
+                                            {10,0,98,26,0}
+                                        },
+                                        {
+                                            {11,0,5,290,0}
                                         }
                                     };
 

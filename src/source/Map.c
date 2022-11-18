@@ -16,7 +16,7 @@ void initMaps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundmarchand.png");
     }
-    if  (lvl->Num == 5 || lvl->Num == 6)
+    if  (lvl->Num == 5 || lvl->Num == 6 || lvl->Num ==7)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon2.png");
     }
@@ -63,6 +63,20 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
                 lvl->Num+=1;
                 SelectNiv(joueur, lvl, entité, son);
             }
+        }
+        else if (lvl->Num == 10 && lvl->Avancement10 ==13)
+        {
+            if (joueur->inposy < 20)
+            {
+                lvl->Num = -1;
+                lvl->Avancement10 = 0;
+                if (lvl->WinDonjon == 3)
+                {
+                    lvl->WinDonjon = 4;
+                }
+                
+            }
+            
         }
         //tout les autres niv avec sortie haut
         else if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320)

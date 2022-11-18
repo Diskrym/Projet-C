@@ -22,6 +22,7 @@ extern void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl);
 extern void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl);
 extern void collisionDecor (Joueur *joueur, Input *input, int x1, int x2, int y1, int y2);
 extern void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl);
+extern void collisionbossyeti (Joueur *joueur, BossYeti *bossyeti, Input *input, Lvl *lvl);
 extern int inside (Joueur *joueur, Meduse *meduse);
 extern int insidechevalier (Joueur *joueur, Meduse *meduse);
 extern int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris);
@@ -29,10 +30,12 @@ extern int insidechevalierBoss (Joueur *joueur, Boss *boss);
 extern int insidechevalieryeti (Joueur *joueur, Yeti *yeti);
 extern int insideBoss (Joueur *joueur, Boss *boss);
 extern int insideEclair(Joueur *joueur,int Eclairx, int Eclairy);
-extern int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti,Yeti *yeti1,Yeti *yeti2);
+extern int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti,Yeti *yeti1,Yeti *yeti2, BossYeti *bossyeti);
 extern int DegatBateau (Obstacle *tronc, Obstacle *Petit_rocher, Obstacle *Gros_rocher);
 extern int insideItem (Joueur *joueur, Boss *boss);
 extern int insideVol (int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObjx, int tailleObjy);
+extern int insidechevalierbossyeti (Joueur *joueur, BossYeti *bossyeti);
+
 
 //init.c
 extern SDL_Renderer *getrenderer(void);
@@ -53,6 +56,8 @@ extern void loadNiv31(Joueur *joueur,Yeti *yeti, Lvl *lvl);
 extern void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl);
 extern void loadNiv41(Joueur *joueur,Lvl *lvl);
 extern void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc,Obstacle *tanguy, Lvl *lvl);
+extern void loadNiv33 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Lvl *lvl, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1);
+extern void loadNiv34 (Joueur *joueur, BossYeti *bossyeti,Lvl *lvl);
 
 //input.c
 extern void gestionInputs(Input *input);
@@ -61,6 +66,7 @@ extern void deplacement (Input *input, Joueur *joueur, Entité *entité,EffetSon
 extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son);
 extern void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris,  Lvl *lvl, EffetSon *son);
 extern void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son);
+extern void deplacementbossyeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetSon *son);
 extern void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son);
 
 //map.c
@@ -75,7 +81,12 @@ extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl, EffetSon *son
 extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
 extern void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
+extern void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand, Lvl *lvl);
+<<<<<<< HEAD
 void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl,EffetSon *son);
+=======
+extern void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle *tanguy, Lvl *lvl);
+>>>>>>> 6e662963abdb18a4cb89f604ea65b709fe127ed7
 //extern void drawMap(int);
 #endif

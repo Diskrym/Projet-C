@@ -44,7 +44,7 @@ lvl.Num=-1;
 joueur.life=3;
 joueur.NbPiece=0;
 lvl.WinDonjon=5;
-joueur.nbDague=1;
+joueur.nbDague=0;
 // Initialisation de la SDL
 init("Dungeon Fate");
     Son(&son);
@@ -58,7 +58,6 @@ init("Dungeon Fate");
     }
     // Mix_PauseMusic();
     //atexit(cleanup);
-    //LoadNiv11(&entité.meduse, &lvl, &joueur);
     go = 1; 
     // Boucle infinie, principale, du jeu
     Mix_PlayMusic(son.musiqueMapG, -1 /10);

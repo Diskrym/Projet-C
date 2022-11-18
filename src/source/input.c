@@ -124,34 +124,34 @@ void deplacement (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,
     {
         if (input->left==1)
         {
-            if(lvl->Num!=10)
+            if(lvl->Num!=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
             {
                 joueur->inposx-=3;
                 joueur->NumSprit+=1;
                 joueur->Direction =1;
 
             }
-            else
+            else if( lvl->Avancement10 != 13)
             {
-                joueur->inposx-=5;
+                joueur->inposx-=4;
             }
         }
         if (input->right==1)
         {
-            if (lvl->Num != 10)
+            if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
             {
                 joueur->inposx+=3;
                 joueur->NumSprit+=1;
                 joueur->Direction =0;
             }
-            else
+            else if ( lvl->Avancement10 != 13)
             {
                 joueur->inposx+=2;
             } 
         }
         if (input->up==1)
         {
-            if (lvl->Num !=10)
+            if (lvl->Num !=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
             {
                 joueur->NumSprit+=1;  
             } 
@@ -159,7 +159,7 @@ void deplacement (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,
         }
         if (input->down==1)
         {
-            if (lvl->Num != 10)
+            if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
             {
                 joueur->NumSprit+=1;
             }
@@ -297,6 +297,44 @@ void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
     Sprityeti (yeti, joueur, lvl, son);
 }
 
+
+void deplacementbossyeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetSon *son)
+{  
+    bossyeti->compteur+=1;
+    bossyeti->NumSprit+=1;
+    if  (bossyeti->Life==0 && bossyeti->CompteurSpriteDegat<19)
+    {
+        bossyeti->CompteurSpriteDegat+=1;
+    }
+   
+    if (bossyeti->Life >=1 && bossyeti->compteur<100)
+    {
+        if (joueur->inposx<bossyeti->posmonsx)
+        {
+            bossyeti->posmonsx-=1;
+            bossyeti->Direction=1;
+           
+        }
+        if (joueur->inposx>bossyeti->posmonsx)
+        {
+            bossyeti->posmonsx+=1;
+            bossyeti->Direction=0;
+        }
+        if (joueur->inposy<bossyeti->posmonsy+15)
+        {
+            bossyeti->posmonsy-=1;
+        }
+        if (joueur->inposy>bossyeti->posmonsy+15)
+        {
+            bossyeti->posmonsy+=1;
+        }
+ 
+    }
+    Spritbossyeti (bossyeti, joueur, lvl, son);
+}
+
+
+
 void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son)
 {
     boss->compteur += 1;
@@ -305,7 +343,7 @@ void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetS
     if (boss->CompteurSpriteDegat==21 && insideBoss(joueur, boss)==1 && input->enter == 1)
     {
         boss->CompteurSpriteDegat=22;
-        Mix_VolumeChunk(son->coffre, MIX_MAX_VOLUME/2);
+        Mix_VolumeChunk(son->coffre, MIX_MAX_VOLUME);
         Mix_PlayChannel(6, son->coffre, 0);
     }
     //compteur mort

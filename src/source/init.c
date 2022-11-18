@@ -61,9 +61,8 @@ void Son (EffetSon *son)
     son->musiqueshop= Mix_LoadMUS("src/musique/m_Shop.mp3");
     son->musiqueriviere= Mix_LoadMUS("src/musique/m_riviere.mp3");
     son->musiqueyeti= Mix_LoadMUS("src/musique/m_yeti.mp3");
-
+    Mix_VolumeMusic(40);
     Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
-    Mix_Volume(1, MIX_MAX_VOLUME/4); //Mettre à mi-volume le post 1
     son->epee = Mix_LoadWAV("src/musique/attackChe.WAV"); //Charger un wav dans un pointeur
     son->bouclier= Mix_LoadWAV("src/musique/BouclierChe.WAV");
     son->depchevalier= Mix_LoadWAV("src/musique/deplacementchevalier.WAV");
@@ -134,6 +133,16 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     {
         loadNiv32(joueur, &entité->yeti, &entité->yeti1, &entité->yeti2, lvl);
     }
+    if (lvl->Num == 7)
+    {
+        loadNiv33(joueur,&entité->yeti,&entité->yeti1,lvl,&entité->chauvesouris,&entité->chauvesouris1);
+    }
+
+    if (lvl->Num == 8)
+    {
+        loadNiv34(joueur,&entité->bossyeti,lvl);
+    }
+    
     if (lvl->Num == 9)
     {
         loadNiv41(joueur,lvl);
@@ -173,7 +182,6 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
         deplacementChauvesouris(joueur, &entité->chauvesouris1, lvl, son);
         collision(joueur, &entité->meduse, input, lvl);
         collision(joueur, &entité->meduse1, input, lvl);
-        collision(joueur, &entité->meduse2, input, lvl);
     }
     if (lvl->Num==3)
     {   
@@ -215,6 +223,24 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
         deplacementyeti(joueur,&entité->yeti1, lvl, son);
         deplacementyeti(joueur,&entité->yeti2, lvl, son);
     }
+    if (lvl->Num == 7)
+    {
+        collisionmur (joueur,20,20,20,20);
+        deplacementyeti(joueur, &entité->yeti, lvl, son);
+        deplacementyeti(joueur, &entité->yeti1, lvl, son);
+        deplacementChauvesouris(joueur,&entité->chauvesouris, lvl, son);
+        deplacementChauvesouris(joueur, &entité->chauvesouris1, lvl, son);
+        collisionyeti(joueur, &entité->yeti, input, lvl);
+        collisionyeti(joueur, &entité->yeti1, input, lvl);
+    }
+
+    if (lvl->Num == 8)
+    {
+        collisionmur (joueur,20,20,20,20);
+        deplacementbossyeti(joueur, &entité->bossyeti,lvl,son);
+        collisionbossyeti(joueur,&entité->bossyeti,input,lvl);
+    }
+    
     if (lvl->Num == 9)
     {
         if (joueur->Ebateau<2)
@@ -233,12 +259,21 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
         {
             collisionmur(joueur,20,40,0,10);
         }
-        else
+        else if (joueur->Ebateau==2 && lvl->Avancement10>=13)
         {
             collisionmur(joueur,267,27,0,0);
         }
+<<<<<<< HEAD
 
         Gestion_Obstacle(joueur,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc,&entité->tanguy, lvl, son);
+=======
+        else if(lvl->Avancement10==13 && joueur->Ebateau!=2)
+        {
+            collisionmur(joueur,0,114,400,60);
+        }
+        
+        Gestion_Obstacle(joueur,&entité->marchand,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc,&entité->tanguy, lvl);
+>>>>>>> 6e662963abdb18a4cb89f604ea65b709fe127ed7
 
     }
     
@@ -341,18 +376,51 @@ void loadNiv32 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, Lvl *lvl)
     yeti2->compteur = level [6][3][3];
 }
 
+void loadNiv33 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Lvl *lvl, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1)
+{
+    initMaps(lvl);
+    joueur->inposx= level [7][0][2];
+    joueur->inposy= level [7][0][3];
+    yeti->posmonsx =level[7][1][1];
+    yeti->posmonsy =level[7][1][2];
+    yeti->Life=level [7][1][5];
+    yeti1->posmonsx =level[7][2][1];
+    yeti1->posmonsy =level[7][2][2];
+    yeti1->Life=level [7][2][5];
+    yeti1->compteur= level [7][2][3];
+    chauvesouris->posmonsx =level[7][3][1];
+    chauvesouris->posmonsy =level[7][3][2];
+    chauvesouris->Life=level[7][3][5];
+    chauvesouris->CompteurSpriteDegat=0;
+    chauvesouris1->posmonsx =level[7][4][1];
+    chauvesouris1->posmonsy =level[7][4][2];
+    chauvesouris1->Life=level[7][4][5];
+    chauvesouris1->CompteurSpriteDegat=0;
+}
+
+void loadNiv34 (Joueur *joueur, BossYeti *bossyeti,Lvl *lvl)
+{
+    initMaps(lvl);
+    joueur->inposx= level [8][0][2];
+    joueur->inposy= level [8][0][3];
+    bossyeti->posmonsx =level[8][1][1];
+    bossyeti->posmonsy =level[8][1][2];
+    bossyeti->Life=level [8][1][5];
+  
+}
+
 void loadNiv41(Joueur *Joueur, Lvl *lvl)
 {
     initMaps(lvl);
-    Joueur->inposx = level[8][0][2];
-    Joueur->inposy = level[8][0][3];
+    Joueur->inposx = level[9][0][2];
+    Joueur->inposy = level[9][0][3];
 }
 
 void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc,Obstacle *tanguy, Lvl *lvl)
 {
     initMaps(lvl);
-    joueur->inposx = level[9][0][2];
-    joueur->inposy = level[9][0][3];
+    joueur->inposx = level[10][0][2];
+    joueur->inposy = level[10][0][3];
     Petit_rocher->x = 1150;
     Petit_rocher->y = 72;
     Gros_rocher->x = 640;
