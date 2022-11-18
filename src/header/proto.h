@@ -83,10 +83,6 @@ extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
 extern void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand, Lvl *lvl);
-<<<<<<< HEAD
-void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl,EffetSon *son);
-=======
-extern void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle *tanguy, Lvl *lvl);
->>>>>>> 6e662963abdb18a4cb89f604ea65b709fe127ed7
+void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl, EffetSon *son);
 //extern void drawMap(int);
 #endif

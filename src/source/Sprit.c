@@ -139,13 +139,8 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     if(joueur->Numattack==13)
                     {
                         //Son
-<<<<<<< HEAD
                         Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
-                        Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
-=======
-                        Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME);
-                        //Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
->>>>>>> 6e662963abdb18a4cb89f604ea65b709fe127ed7
+                        // Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                     }
                 }
             }
@@ -218,7 +213,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
             joueur->Numattack=0;
             joueur->Eattack = 0;
         }
-
+        
         //Dague
         if (joueur->Edague == 1 && joueur->nbDague>0 && joueur->DirDague==1)
         {
@@ -228,6 +223,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                 joueur->dague=loadImage("src/graphics/Chevalier/DagueG.png");
                 drawImage(joueur->dague,joueur->xdague,joueur->ydague);
                 joueur->xdague-=10;
+                joueur->sondagueM=0;
                 if (joueur->sondague==1)
                 {
                     Mix_VolumeChunk(son->dagueLancer, MIX_MAX_VOLUME/2);
@@ -240,9 +236,12 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                 
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
-                
-                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME);
-                Mix_PlayChannel(15, son->dague, 0);
+                joueur->sondagueM++;
+                if (joueur->sondagueM==1)
+                {
+                    Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(4, son->dague, 0);
+                }
             
                 //recup dague Gauchemap
                 if (joueur->inposx <= joueur->xdague+20 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
@@ -264,6 +263,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                 joueur->dague=loadImage("src/graphics/Chevalier/DagueD.png");
                 drawImage(joueur->dague,joueur->xdague,joueur->ydague);
                 joueur->xdague+=10;
+                joueur->sondagueM=0;
                 if (joueur->sondague==1)
                 {
                     Mix_VolumeChunk(son->dagueLancer, MIX_MAX_VOLUME/2);
@@ -274,8 +274,12 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
             {
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurD.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
-                Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME);
-                Mix_PlayChannel(15, son->dague, 0);
+                joueur->sondagueM++;
+                if (joueur->sondagueM==1)
+                {
+                    Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(4, son->dague, 0);
+                }
                 //recup dague Droite map
                 if (joueur->inposx >= joueur->xdague-60 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
                 {
@@ -2273,11 +2277,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
     }
 }
 
-<<<<<<< HEAD
-void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl,EffetSon *son)
-=======
-void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl)
->>>>>>> 6e662963abdb18a4cb89f604ea65b709fe127ed7
+void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl, EffetSon *son)
 {   
     if (tronc->Image !=NULL)
     {
