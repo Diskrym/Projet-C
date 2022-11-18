@@ -140,7 +140,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     {
                         //Son
                         Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
-                        //Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
+                        Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                     }
                 }
             }
@@ -219,9 +219,16 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
         {
             if (joueur->xdague>=20 && joueur->xdague<=600 && joueur->ydague>= 20 && joueur->ydague<=384)
             {
+                joueur->sondague++;
                 joueur->dague=loadImage("src/graphics/Chevalier/DagueG.png");
                 drawImage(joueur->dague,joueur->xdague,joueur->ydague);
                 joueur->xdague-=10;
+                if (joueur->sondague==1)
+                {
+                    Mix_VolumeChunk(son->dagueLancer, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(4, son->dagueLancer, 0);
+                }
+
             }
             else
             {
@@ -233,6 +240,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     SDL_DestroyTexture(joueur->dagueMur);
                     joueur->dagueMur = NULL;
                     joueur->Edague=0;
+                    joueur->sondague=0;
                     //joueur->CoupDague=0;
                 }
             }
@@ -242,9 +250,15 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
         {
             if (joueur->xdague>=20 && joueur->xdague<=600 && joueur->ydague>= 20 && joueur->ydague<=384)
             { 
+                joueur->sondague++;
                 joueur->dague=loadImage("src/graphics/Chevalier/DagueD.png");
                 drawImage(joueur->dague,joueur->xdague,joueur->ydague);
                 joueur->xdague+=10;
+                if (joueur->sondague==1)
+                {
+                    Mix_VolumeChunk(son->dagueLancer, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(4, son->dagueLancer, 0);
+                }
             }
             else
             {
@@ -256,6 +270,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     SDL_DestroyTexture(joueur->dagueMur);
                     joueur->dagueMur = NULL;
                     joueur->Edague=0;
+                    joueur->sondague=0;
                     //joueur->CoupDague=0;
                 }
             }
@@ -1716,7 +1731,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
     }
 }
 
-void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl)
+void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl,EffetSon *son)
 {   
     if (tronc->Image !=NULL)
     {
@@ -1944,10 +1959,18 @@ void Gestion_Obstacle(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_roche
         }
         else
         {
+
             tanguy->Etat=1;
+            tanguy->soncoule+=1;
             tanguy->Image=loadImage("src/graphics/Rivière/TanguiCoule.png");
             drawImage(tanguy->Image,tanguy->x,tanguy->y);
+            if (tanguy->soncoule==1)
+            {
+            Mix_VolumeChunk(son->collisionR, MIX_MAX_VOLUME/2);
+            Mix_PlayChannel(3, son->collisionR, 0);
+            }
             tanguy->x-=10;
+
         }       
     }
 }

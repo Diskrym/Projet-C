@@ -46,7 +46,7 @@ typedef struct  Boss
 
 typedef struct Joueur
 {
-    int inposx, inposy, Eattack, Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, NumSpriteDague, DirDague, Ebateau;
+    int inposx, inposy, Eattack, Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, NumSpriteDague, DirDague, Ebateau, sondague;
     //int  CoupDague;
     SDL_Texture *chevalier;
     SDL_Texture *attaque;
@@ -69,7 +69,7 @@ typedef struct Marchand
 
 typedef struct Obstacle
 {
-    int x, y, Etat, coup;
+    int x, y, Etat, coup, soncoule;
     SDL_Texture *Image;
     
 }Obstacle;
@@ -120,6 +120,10 @@ typedef struct EffetSon
     Mix_Chunk *degatyeti;
     Mix_Chunk *bouledeneige;
     Mix_Chunk *dague;
+    Mix_Chunk *collisionR;
+    Mix_Chunk *Jerem;
+    Mix_Chunk *dagueLancer;
+    Mix_Chunk *JeremDamm;
 
 }EffetSon;
 

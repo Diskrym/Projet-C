@@ -57,7 +57,7 @@ void Son (EffetSon *son)
     son->musiquemenu = Mix_LoadMUS("src/musique/m_menu.mp3"); //Chargement de la musique
     son->musiqueboss = Mix_LoadMUS("src/musique/m_Boss.mp3");
     son->musiquelvl = Mix_LoadMUS("src/musique/MusiqueLvl.mp3");
-    son ->musiqueMapG = Mix_LoadMUS("src/musique/MapGlobal.mp3");
+    son ->musiqueMapG = Mix_LoadMUS("src/musique/MapGlobal.mp3"); 
     son->musiqueshop= Mix_LoadMUS("src/musique/m_Shop.mp3");
     son->musiqueriviere= Mix_LoadMUS("src/musique/m_riviere.mp3");
     son->musiqueyeti= Mix_LoadMUS("src/musique/m_yeti.mp3");
@@ -86,7 +86,11 @@ void Son (EffetSon *son)
     son->degatyeti= Mix_LoadWAV("src/musique/DegatYeti.WAV");
     son->bouledeneige= Mix_LoadWAV("src/musique/BouleDeNeige.WAV");
     son->dague= Mix_LoadWAV("src/musique/Dague.WAV");
-}
+    son->Jerem= Mix_LoadWAV("src/musique/Jerem.wav");
+    son->JeremDamm= Mix_LoadWAV("src/musique/damm.wav");
+    son->dagueLancer = Mix_LoadWAV("src/musique/Dague_lancer.wav");
+    son->collisionR = Mix_LoadWAV("src/musique/CollisionR.WAV");
+    }
 
 void Texte(ParamTexte *paramtexte)
 {
@@ -234,7 +238,7 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
             collisionmur(joueur,267,27,0,0);
         }
 
-        Gestion_Obstacle(joueur,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc,&entité->tanguy, lvl);
+        Gestion_Obstacle(joueur,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc,&entité->tanguy, lvl, son);
 
     }
     
