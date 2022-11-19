@@ -52,8 +52,9 @@ init("Dungeon Fate");
     //Menu
     while(input.enter==0)
     {
-    gestionInputs(&input);
+    //gestionInputs(&input);
     menu(&lvl);
+    getInput(&input);
     SDL_RenderPresent(getrenderer());
     }
     // Mix_PauseMusic();
@@ -70,7 +71,9 @@ init("Dungeon Fate");
 
         GestionMap(&joueur, &lvl, &entité, &son, &input);
         //Gestion des inputs clavier
-        gestionInputs(&input);
+        //gestionInputs(&input);
+        getInput(&input);
+
         if(lvl.Num != -1 && lvl.Num != -2)
         {
             //IA monstre
@@ -82,7 +85,6 @@ init("Dungeon Fate");
         //Rendu des images dans le buffer
         SDL_RenderPresent(getrenderer());
         //Acquisition des inputs du joueur
-        getInput(&input);
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;

@@ -63,7 +63,7 @@ extern void loadNiv34 (Joueur *joueur, BossYeti *bossyeti,Lvl *lvl);
 extern void Save (Joueur*joueur,Lvl *lvl,Input *input, Entité *entité, EffetSon *son);
 
 //input.c
-extern void gestionInputs(Input *input);
+//extern void gestionInputs(Input *input);
 extern void getInput(Input *input);
 extern void deplacement (Input *input, Joueur *joueur, Entité *entité,EffetSon *son, Lvl *lvl);
 extern void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son);

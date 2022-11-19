@@ -1,11 +1,11 @@
 #include "../header/proto.h"
  
 
-void gestionInputs(Input *input)
-{
-    //On gère le clavier
-    getInput(input);
-}
+// void gestionInputs(Input *input)
+// {
+//     //On gère le clavier
+//     getInput(input);
+// }
  
 void getInput(Input *input)
 {
