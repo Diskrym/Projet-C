@@ -6,7 +6,7 @@
 // variable clavier
 typedef struct Input
 {
-    int left, right, up, down, shield, attack, enter, Bypass, dague;
+    int left, right, up, down, shield, attack, enter, Bypass, dague, echap;
 } Input;
 
 
@@ -149,7 +149,7 @@ typedef struct ParamTexte
 
 typedef struct Lvl
 {
-    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10;
+    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, Pause, temp;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;

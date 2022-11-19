@@ -449,3 +449,18 @@ void initEclair(Boss *boss)
     boss->Ex4= rand() % (SCREEN_WIDTH-100)+50;
     boss->Ey4= rand() % (SCREEN_HEIGHT-100)+50;
 }
+
+void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son)
+{
+    if (input->echap == 1 && lvl->Num != -2)
+    {
+        lvl->temp = lvl->Num;
+        lvl->Num = -2;
+    }
+    if (input->enter == 1 && lvl->Num == -2)
+    {
+        lvl->Num = lvl->temp;
+    }
+    
+       
+}

@@ -340,3 +340,14 @@ void menu (Lvl *lvl)
     lvl->Menu=loadImage("src/graphics/lvl/Menu.png");
     drawImage(lvl->Menu,0,0);   
 }
+
+void pause (Lvl *lvl)
+{
+    if (lvl->Menu!=NULL)
+    {
+        SDL_DestroyTexture(lvl->Menu);
+        lvl->Menu=NULL;
+    }
+    lvl->Menu=loadImage("src/graphics/lvl/Game_Menu.png");
+    drawImage(lvl->Menu,0,0); 
+}

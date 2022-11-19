@@ -63,12 +63,15 @@ init("Dungeon Fate");
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
     while (go == 1)
     {    
+            Save(&joueur,&lvl,&input,&entité,&son);
+
         //On dessine tout
         drawGame(&joueur, &lvl, &paramtexte,&son);
+
         GestionMap(&joueur, &lvl, &entité, &son, &input);
         //Gestion des inputs clavier
         gestionInputs(&input);
-        if(lvl.Num != -1)
+        if(lvl.Num != -1 && lvl.Num != -2)
         {
             //IA monstre
             GestionMonstre(&entité, &lvl, &input ,&joueur, &son);

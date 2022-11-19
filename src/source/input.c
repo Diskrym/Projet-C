@@ -22,7 +22,7 @@ void getInput(Input *input)
                 switch (event.key.keysym.sym)
                 {
                     case SDLK_ESCAPE:
-                        exit(0);
+                        input->echap = 1;
                     break;
  
                     case SDLK_z:
@@ -72,6 +72,10 @@ void getInput(Input *input)
             case SDL_KEYUP:
                 switch (event.key.keysym.sym)
                 {
+                    case SDLK_ESCAPE:
+                        input->echap = 0;
+                    break;
+                    
                     case SDLK_z:
                         input->shield = 0;
                     break;

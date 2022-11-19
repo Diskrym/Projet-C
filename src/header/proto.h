@@ -15,6 +15,8 @@ extern void AffichagePiece (Joueur *joueur,Lvl *lvl,ParamTexte *paramtexte);
 extern void AffichageLevel (Lvl *lvl);
 extern void porte (Lvl *lvl);
 extern void menu (Lvl *lvl);
+extern void pause (Lvl *lvl);
+
 
 //events.c
 extern void collisionmur (Joueur *joueur, int x, int y, int z, int u);
@@ -58,6 +60,7 @@ extern void loadNiv41(Joueur *joueur,Lvl *lvl);
 extern void loadNiv42(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc,Obstacle *tanguy, Lvl *lvl);
 extern void loadNiv33 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Lvl *lvl, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1);
 extern void loadNiv34 (Joueur *joueur, BossYeti *bossyeti,Lvl *lvl);
+extern void Save (Joueur*joueur,Lvl *lvl,Input *input, Entité *entité, EffetSon *son);
 
 //input.c
 extern void gestionInputs(Input *input);

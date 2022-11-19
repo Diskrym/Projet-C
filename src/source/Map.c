@@ -37,6 +37,11 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
     {
         MapGlobal(joueur, lvl, entité, son, input);
     }
+    else if (lvl->Num == -2)
+    {
+        pause(lvl);
+    }
+    
     else
     {
         //Pour marchand
