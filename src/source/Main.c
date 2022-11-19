@@ -64,7 +64,7 @@ init("Dungeon Fate");
     while (go == 1)
     {    
         //On dessine tout
-        drawGame(&joueur, &lvl, &paramtexte);
+        drawGame(&joueur, &lvl, &paramtexte,&son);
         GestionMap(&joueur, &lvl, &entité, &son, &input);
         //Gestion des inputs clavier
         gestionInputs(&input);

@@ -4,13 +4,13 @@
 #include "structs.h" 
 
 //draw.c
-extern void drawGame(Joueur *joueur, Lvl *lvl, ParamTexte *paramtexte);
+extern void drawGame(Joueur *joueur, Lvl *lvl, ParamTexte *paramtexte, EffetSon *son);
 extern void GameOver (EffetSon *son);
 extern void Win (void);
 extern SDL_Texture *loadImage(char *name);
 extern void drawImage(SDL_Texture *, int, int);
 extern void delay(unsigned int frameLimit);
-extern void AffichageVie(Joueur *joueur, Lvl *lvl);
+extern void AffichageVie(Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void AffichagePiece (Joueur *joueur,Lvl *lvl,ParamTexte *paramtexte);
 extern void AffichageLevel (Lvl *lvl);
 extern void porte (Lvl *lvl);
@@ -82,7 +82,7 @@ extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
 extern void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
-extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand, Lvl *lvl);
-void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl, EffetSon *son);
+extern void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl, EffetSon *son);
+extern void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl, EffetSon *son);
 //extern void drawMap(int);
 #endif

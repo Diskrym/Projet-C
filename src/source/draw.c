@@ -1,6 +1,6 @@
 #include "../header/proto.h"
 
-void drawGame(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte)
+void drawGame(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
 {
     
     
@@ -38,7 +38,7 @@ void drawGame(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte)
         printf("Avancement : %d\n",lvl->Avancement10);
         
     }
-    AffichageVie (joueur,lvl);
+    AffichageVie (joueur,lvl,son);
     AffichagePiece(joueur,lvl,paramtexte);
     AffichageLevel(lvl);
     porte (lvl);
@@ -124,7 +124,7 @@ void delay(unsigned int frameLimit)
     }
 }
 
-void AffichageVie (Joueur *joueur,Lvl *lvl)
+void AffichageVie (Joueur *joueur,Lvl *lvl, EffetSon *son)
 {   
     if (lvl->Vie != NULL)
     {
@@ -140,8 +140,24 @@ void AffichageVie (Joueur *joueur,Lvl *lvl)
             lvl->Vie=loadImage("src/graphics/lvl/Vie.png");
             drawImage(lvl->Vie,SCREEN_WIDTH-(i*34),0);
             i+=1;
+            if (joueur->life ==1)
+            {
+                joueur->sonLowLife++;
+                if (joueur->sonLowLife==1)
+                {
+                    Mix_VolumeChunk(son->lowlifechevalier, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(2, son->lowlifechevalier, 0); 
+                }
+            }
+            if (joueur->life>1)
+                {
+                    joueur->sonLowLife=0;
+                }
         }
+
     }
+
+    
 }
 
 void AffichagePiece (Joueur *joueur,Lvl *lvl, ParamTexte *paramtexte)

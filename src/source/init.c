@@ -68,7 +68,7 @@ void Son (EffetSon *son)
     son->depchevalier= Mix_LoadWAV("src/musique/deplacementchevalier.WAV");
     son->degatchevalier= Mix_LoadWAV("src/musique/degatChe.WAV");
     son->mortchevalier= Mix_LoadWAV("src/musique/mortChe.WAV");
-    son->lowlifechevalier= Mix_LoadWAV("src/musique/Chelowlife.WAV");
+    son->lowlifechevalier= Mix_LoadWAV("src/musique/onelifeChe.WAV");
     son->attaquemeduse= Mix_LoadWAV("src/musique/Attakmeduz.WAV");
     son->depmeduse= Mix_LoadWAV("src/musique/depMeduz.WAV");
     son->degatmeduse= Mix_LoadWAV("src/musique/degatMeduz.WAV");
@@ -198,7 +198,7 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
         collisionDecor(joueur, input,465,530,283,210);
         //Bec
         collisionDecor(joueur, input,80,220,320,240);
-        GestionMarchands(joueur, input, &entité->marchand, lvl);
+        GestionMarchands(joueur, input, &entité->marchand, lvl,son);
     }   
     if (lvl -> Num == 5)
     {
@@ -207,7 +207,7 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
         deplacementyeti(joueur,&entité->yeti, lvl, son);
         if (lvl->MortMonstre==level[5][0][1] && lvl->WinDonjon<=2)
         {
-            GestionMarchands(joueur, input, &entité->marchand, lvl);
+            GestionMarchands(joueur, input, &entité->marchand, lvl,son);
             //jermy
             collisionDecor(joueur, input,465,530,283,210);
         }
@@ -251,7 +251,7 @@ void GestionMonstre (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, E
         {
             collisionmur(joueur,267,35,0,0);
         }
-        GestionMarchands(joueur,input,&entité->marchand,lvl);
+        GestionMarchands(joueur,input,&entité->marchand,lvl,son);
     }
     if (lvl->Num ==10)
     {   

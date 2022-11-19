@@ -140,7 +140,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
                     {
                         //Son
                         Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME/2);
-                        // Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
+                        Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                     }
                 }
             }
@@ -1943,7 +1943,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
     } 
 }
 
-void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl)
+void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl, EffetSon *son)
 {   //Verification pointeur pour memoire
     if (marchand->Jerem !=NULL)
     {
@@ -2066,21 +2066,40 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
             {
                 SDL_Delay(200);
                 marchand->CompteurMess1 += 1;
+                marchand->CompteurJerm=0;
             }
             if (marchand->CompteurMess1==1)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
                 drawImage(marchand->bulle,210,130);
+                marchand->CompteurJerm++;
+                if (marchand->CompteurJerm==1)
+                {
+                Mix_VolumeChunk(son->JeremDamm, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->JeremDamm, 0);
+                }
             }
             if (marchand->CompteurMess1==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
                 drawImage(marchand->bulle,210,130);
+                marchand->CompteurJerm++;
+                if (marchand->CompteurJerm==1)
+                {
+                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->Jerem, 0);
+                }
             }
             if (marchand->CompteurMess1==3)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
                 drawImage(marchand->bulle,210,95);
+                marchand->CompteurJerm++;
+                if (marchand->CompteurJerm==1)
+                {
+                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->Jerem, 0);
+                }
             }
         }
         //remise a zero du compteur
