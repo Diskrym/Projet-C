@@ -215,7 +215,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
         }
         
         //Dague
-        if (joueur->Edague == 1 && joueur->nbDague>0 && joueur->DirDague==1 && lvl->Num !=4 && lvl->Num !=9)
+        if (joueur->Edague >= 1 && joueur->nbDague>0 && joueur->DirDague==1 && lvl->Num !=4 && lvl->Num !=9)
         {
             if (joueur->xdague>=20 && joueur->xdague<=600 && joueur->ydague>= 20 && joueur->ydague<=384)
             {
@@ -236,6 +236,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
                 
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+                joueur->Edague=2;
                 son->sondagueM++;
                 if (son->sondagueM==1)
                 {
@@ -255,7 +256,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
             }
         }
         //dague
-        if (joueur->Edague == 1 && joueur->nbDague>0 && joueur->DirDague == 0)
+        if (joueur->Edague >= 1 && joueur->nbDague>0 && joueur->DirDague == 0)
         {
             if (joueur->xdague>=20 && joueur->xdague<=600 && joueur->ydague>= 20 && joueur->ydague<=384)
             { 
@@ -274,6 +275,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
             {
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurD.png");
                 drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+                joueur->Edague=2;
                 son->sondagueM++;
                 if (son->sondagueM==1)
                 {

@@ -152,6 +152,11 @@ void SelectNiv (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     {
         loadNiv42(joueur,&entité->Petit_rocher, &entité->Gros_rocher,&entité->tronc,&entité->tanguy,lvl);
     }
+    if (joueur->Edague==2)
+    {
+        joueur->nbDague=0;
+    }
+    
     lvl->MortMonstre=0;
 }
 
