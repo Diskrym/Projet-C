@@ -29,6 +29,14 @@ void getInput(Input *input)
                         input->shield = 1;
                     break;
 
+                    case SDLK_y:
+                        input->yes = 1;
+                    break;
+
+                    case SDLK_n:
+                        input->no = 1;
+                    break;
+
                     case SDLK_e :
                         input->dague = 1;
                     break;
@@ -78,6 +86,14 @@ void getInput(Input *input)
                     
                     case SDLK_z:
                         input->shield = 0;
+                    break;
+
+                    case SDLK_y:
+                        input->yes = 0;
+                    break;
+
+                    case SDLK_n:
+                        input->no = 0;
                     break;
 
                     case SDLK_e :
