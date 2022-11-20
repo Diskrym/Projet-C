@@ -142,8 +142,8 @@ void AffichageVie (Joueur *joueur,Lvl *lvl, EffetSon *son)
             i+=1;
             if (joueur->life ==1)
             {
-                joueur->sonLowLife++;
-                if (joueur->sonLowLife==1)
+                son->sonLowLife++;
+                if (son->sonLowLife==1)
                 {
                     Mix_VolumeChunk(son->lowlifechevalier, MIX_MAX_VOLUME);
                     Mix_PlayChannel(2, son->lowlifechevalier, 0); 
@@ -151,7 +151,7 @@ void AffichageVie (Joueur *joueur,Lvl *lvl, EffetSon *son)
             }
             if (joueur->life>1)
                 {
-                    joueur->sonLowLife=0;
+                    son->sonLowLife=0;
                 }
         }
 

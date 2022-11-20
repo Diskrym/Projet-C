@@ -55,7 +55,7 @@ typedef struct  Boss
 
 typedef struct Joueur
 {
-    int inposx, inposy, Eattack, Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, NumSpriteDague, DirDague, Ebateau, sondague, sondagueM, sonLowLife;
+    int inposx, inposy, Eattack, Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, NumSpriteDague, DirDague, Ebateau;
     //int  CoupDague;
     SDL_Texture *chevalier;
     SDL_Texture *attaque;
@@ -65,7 +65,7 @@ typedef struct Joueur
 
 typedef struct Marchand
 {
-    int CompteurMess1,CompteurMess2, CompteurMess3, Compteur1, CompteurJerm;
+    int CompteurMess1,CompteurMess2, CompteurMess3, Compteur1;
     SDL_Texture *Jerem;
     SDL_Texture *Enter;
     SDL_Texture *Marchand;
@@ -78,7 +78,7 @@ typedef struct Marchand
 
 typedef struct Obstacle
 {
-    int x, y, Etat, coup, soncoule;
+    int x, y, Etat, coup;
     SDL_Texture *Image;
     
 }Obstacle;
@@ -100,6 +100,8 @@ typedef struct Entité
 
 typedef struct EffetSon
 {
+    int soncoule, CompteurJerm, sonLowLife, sondague, sondagueM;
+
     Mix_Music *musiquemenu;
     Mix_Music *musiqueMapG;
     Mix_Music *musiqueboss;
