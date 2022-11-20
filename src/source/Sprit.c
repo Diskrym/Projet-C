@@ -1,6 +1,6 @@
 #include "../header/proto.h" 
 
-void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
+void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, Lvl *lvl)
 {   
     //reset des pointeurs des sprites
     if (joueur->chevalier!=NULL)
@@ -215,7 +215,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité)
         }
         
         //Dague
-        if (joueur->Edague == 1 && joueur->nbDague>0 && joueur->DirDague==1)
+        if (joueur->Edague == 1 && joueur->nbDague>0 && joueur->DirDague==1 && lvl->Num !=4 && lvl->Num !=9)
         {
             if (joueur->xdague>=20 && joueur->xdague<=600 && joueur->ydague>= 20 && joueur->ydague<=384)
             {
