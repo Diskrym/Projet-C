@@ -41,10 +41,11 @@ int main(int argc, char *argv[])
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
 lvl.Num=-1;
-joueur.life=3;
-joueur.NbPiece=0;
-lvl.WinDonjon=5;
-joueur.nbDague=1;
+// joueur.life=3;
+// joueur.NbPiece=0;
+// lvl.WinDonjon=5;
+// joueur.nbDague=1;
+chargement(&joueur,&lvl);
 // Initialisation de la SDL
 init("Dungeon Fate");
     Son(&son);

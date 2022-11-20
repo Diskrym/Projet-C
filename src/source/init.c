@@ -452,15 +452,45 @@ void initEclair(Boss *boss)
 
 void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son)
 {
+    //entrer pause
     if (input->echap == 1 && lvl->Num != -2)
     {
         lvl->temp = lvl->Num;
         lvl->Num = -2;
     }
+    //sortie pause
     if (input->enter == 1 && lvl->Num == -2)
     {
         lvl->Num = lvl->temp;
     }
-    
-       
+
+    if (lvl->Num == -2)
+    {
+        if (input->Bypass == 1)
+        {
+            char* nomFichier = "Save.txt";
+            FILE* fichier = fopen ( nomFichier , "r+" );
+            if ( fichier )
+            {
+                printf ("Le fichier %s a pu etre ouvert en ecriture.\n", nomFichier);
+                fclose (fichier);
+            }
+        }   
+    }   
+}
+
+void chargement (Joueur *joueur, Lvl *lvl)
+{
+    char* nomFichier = "src/Save.txt";
+    FILE* fichier = fopen ( nomFichier , "r+" );
+    if ( fichier )
+    {
+        printf ("Le fichier %s a pu etre ouvert en ecriture.\n", nomFichier);
+        fscanf(fichier,"life=%d AttPice=%d NbPiece=%d WinDonjon=%d nbDague=%d",&joueur->life,&joueur->AttPiece,&joueur->NbPiece,&lvl->WinDonjon,&joueur->nbDague);
+        fclose (fichier);
+    }
+    else
+    {
+        printf("ya r");
+    }
 }

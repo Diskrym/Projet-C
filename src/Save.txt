@@ -1,0 +1,1 @@
+life=4 AttPice=10 NbPiece=0 WinDonjon=5 nbDague=1
