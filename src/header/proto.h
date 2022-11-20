@@ -80,7 +80,7 @@ extern void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son
 extern void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input);
 
 //Sprit.c
-extern void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité);
+extern void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, Lvl *lvl);
 extern void SpritMeduse (Meduse *meduse, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );

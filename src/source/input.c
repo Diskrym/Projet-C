@@ -193,7 +193,7 @@ void deplacement (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,
         joueur->Eshield=0;
         joueur->TimingBouclier=0;
     }
-    SpritHeros(joueur, input, son, entité);
+    SpritHeros(joueur, input, son, entité, lvl);
 }
 
 void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
