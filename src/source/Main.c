@@ -41,11 +41,7 @@ int main(int argc, char *argv[])
 unsigned int frameLimit = SDL_GetTicks() + 16;
 int go;
 lvl.Num=-1;
-// joueur.life=3;
-// joueur.NbPiece=0;
-// lvl.WinDonjon=5;
-// joueur.nbDague=1;
-Load_Game(&joueur,&lvl);
+lvl.Load=0;
 // Initialisation de la SDL
 init("Dungeon Fate");
     Son(&son);
@@ -65,7 +61,13 @@ init("Dungeon Fate");
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
     while (go == 1)
     {    
-            Save(&joueur,&lvl,&input,&entité,&son);
+        if (lvl.Load == 0)
+        {
+            Load_Game(&joueur,&lvl);
+            lvl.Load=1;
+        }
+        
+        Save(&joueur,&lvl,&input,&entité,&son);
 
         //On dessine tout
         Draw_Game(&joueur, &lvl, &paramtexte,&son);
