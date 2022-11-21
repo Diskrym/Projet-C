@@ -471,25 +471,26 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
 
     if (lvl->Num == -2)
     {
-        char* nomFichier = "src/Save.txt";
-        FILE* fichier = fopen ( nomFichier , "r+" );
-        if ( fichier )
-        {
-            printf ("Le fichier %s a pu etre ouvert en ecriture.\n", nomFichier);
+        
+            char* nomFichier = "src/Save.txt";
             if (input->yes == 1)
             {
-                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d WinDonjon=%d nbDague=%d",joueur->life,joueur->AttPiece,joueur->NbPiece,lvl->WinDonjon,joueur->nbDague);
-                fclose(fichier);
-                exit(0);
+                FILE* fichier = fopen ( nomFichier , "r+" );
+                if ( fichier )
+                {
+                    fprintf(fichier,"life=%d AttPice=%d NbPiece=%d WinDonjon=%d nbDague=%d",joueur->life,joueur->AttPiece,joueur->NbPiece,lvl->WinDonjon,joueur->nbDague);
+                    fclose(fichier);
+                    exit(0);
+                }
             }
             if (input->no == 1)
             {
-                fclose(fichier);
+                //fclose(fichier);
                 lvl->Num = lvl->temp;
             }
             
             
-        }
+        
     }   
 }
 

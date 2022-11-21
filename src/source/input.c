@@ -133,6 +133,18 @@ void Get_Input(Input *input)
                     break;
                 }
             break;
+
+            case SDL_MOUSEBUTTONDOWN :
+                switch (event.button.button)
+                {
+                    case SDL_BUTTON_LEFT:
+                        input->PosMouseX = event.motion.x ;
+                        input->PosMouseY = event.motion.y ;
+                    break;
+                    
+                    default:
+                    break;
+                }
         }
     }
 }
