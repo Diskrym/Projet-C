@@ -399,5 +399,4 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
     {
         stats->Total_Mort+=1;
     }
-    printf("%d",stats->Total_Mort);
 }

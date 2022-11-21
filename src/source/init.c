@@ -467,7 +467,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
     if (lvl->Num == -2 || lvl->reset == 1)
     {       
         SDL_ShowCursor(SDL_ENABLE);
-        char* nomFichier = "src/Save.txt";
+        char* nomFichier = "src/Save/Game.txt";
         //save and quit
         if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 230 && input->PosMouseY <= 268)
         {
@@ -508,7 +508,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
 
 void Load_Game (Joueur *joueur, Lvl *lvl)
 {
-    char* nomFichier = "src/Save.txt";
+    char* nomFichier = "src/Save/Game.txt";
     FILE* fichier = fopen ( nomFichier , "r+" );
     if ( fichier )
     {
