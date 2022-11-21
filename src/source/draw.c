@@ -58,7 +58,7 @@ void Game_Over (EffetSon *son)
 
     Mix_VolumeChunk(son->gameoverson, MIX_MAX_VOLUME);
     Mix_PlayChannel(10, son->gameoverson, 2);
-    SDL_Delay(1000);
+    SDL_Delay(2000);
 }
 
 //ecran fin
@@ -394,4 +394,10 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
     {
         stats->Temp_Dague_Lancées=joueur->Edague;
     }    
+    //Gestion Total mort !!! Adiviser par 2 pour affichage
+    if (lvl->reset == 1)
+    {
+        stats->Total_Mort+=1;
+    }
+    printf("%d",stats->Total_Mort);
 }
