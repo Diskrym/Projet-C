@@ -16,6 +16,7 @@ extern void Render_Level (Lvl *lvl);
 extern void Render_Door (Lvl *lvl);
 extern void Menu (Lvl *lvl);
 extern void Break_Menu (Lvl *lvl);
+extern void Stats_Menu(Lvl *lvl);
 extern void Statistiques(Stats *stats,Joueur *joueur, Lvl *lvl);
 
 //events.c

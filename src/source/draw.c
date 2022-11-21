@@ -352,6 +352,17 @@ void Break_Menu (Lvl *lvl)
     Draw_Image(lvl->Menu,0,0); 
 }
 
+void Stats_Menu(Lvl *lvl)
+{
+    if (lvl->Menu!=NULL)
+    {
+        SDL_DestroyTexture(lvl->Menu);
+        lvl->Menu=NULL;
+    }
+    lvl->Menu=loadImage("src/graphics/lvl/Game_Menu.png");
+    Draw_Image(lvl->Menu,0,0);
+}
+
 void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
 {
     // Gestion total pièce

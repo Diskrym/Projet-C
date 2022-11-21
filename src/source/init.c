@@ -474,7 +474,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             FILE* fichier = fopen ( nomFichier , "r+" );
             if ( fichier )
             {
-                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d WinDonjon=%d nbDague=%d",joueur->life,joueur->AttPiece,joueur->NbPiece,lvl->WinDonjon,joueur->nbDague);
+                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",joueur->life,joueur->AttPiece,joueur->NbPiece,joueur->nbDague,lvl->WinDonjon);
                 fclose(fichier);
                 exit(0);
             }
@@ -490,12 +490,12 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         {
             exit(0);
         }
-        if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 172 && input->PosMouseY <= 211 || lvl-> reset == 1)
+        if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 172 && input->PosMouseY <= 211)
         {
             FILE* fichier = fopen ( nomFichier , "r+" );
             if ( fichier )
             {
-                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d WinDonjon=%d nbDague=%d",3,0,0,0,0);
+                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",3,0,0,0,0);
                 fclose(fichier);
                 SDL_ShowCursor(SDL_DISABLE);
                 lvl->Num = -1 ;
@@ -503,6 +503,31 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
                 lvl->Load = 0;
             }
         }
+        //reset si mort
+        if (lvl-> reset == 1)
+        {
+            FILE* fichier = fopen ( nomFichier , "r+" );
+            if ( fichier )
+            {
+                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d",3,0,0,0);
+                fclose(fichier);
+                SDL_ShowCursor(SDL_DISABLE);
+                lvl->Num = -1 ;
+                lvl->reset = 0;
+                lvl->Load = 0;
+            }
+        }
+        if (input->PosMouseX >= 118 && input->PosMouseX <= 523 && input->PosMouseY >= 287 && input->PosMouseY <= 323)
+        {
+            lvl->Num = -3;
+        }
+
+        if (lvl->Num = -3)
+        {
+            
+        }
+        
+        
     }   
 }
 
@@ -513,7 +538,7 @@ void Load_Game (Joueur *joueur, Lvl *lvl)
     if ( fichier )
     {
         printf ("Le fichier %s a pu etre ouvert en ecriture.\n", nomFichier);
-        fscanf(fichier,"life=%d AttPice=%d NbPiece=%d WinDonjon=%d nbDague=%d",&joueur->life,&joueur->AttPiece,&joueur->NbPiece,&lvl->WinDonjon,&joueur->nbDague);
+        fscanf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",&joueur->life,&joueur->AttPiece,&joueur->NbPiece,&joueur->nbDague,&lvl->WinDonjon);
         fclose (fichier);
     }
     else
