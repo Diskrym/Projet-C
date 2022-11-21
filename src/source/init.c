@@ -464,7 +464,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         lvl->Num = -2;
     }
     
-    if (lvl->Num == -2)
+    if (lvl->Num == -2 || lvl->reset == 1)
     {       
         SDL_ShowCursor(SDL_ENABLE);
         char* nomFichier = "src/Save.txt";
@@ -490,7 +490,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         {
             exit(0);
         }
-        if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 172 && input->PosMouseY <= 211)
+        if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 172 && input->PosMouseY <= 211 || lvl-> reset == 1)
         {
             FILE* fichier = fopen ( nomFichier , "r+" );
             if ( fichier )
@@ -499,6 +499,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
                 fclose(fichier);
                 SDL_ShowCursor(SDL_DISABLE);
                 lvl->Num = -1 ;
+                lvl->reset = 0;
                 lvl->Load = 0;
             }
         }

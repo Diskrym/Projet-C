@@ -58,7 +58,7 @@ void Game_Over (EffetSon *son)
 
     Mix_VolumeChunk(son->gameoverson, MIX_MAX_VOLUME);
     Mix_PlayChannel(10, son->gameoverson, 2);
-    SDL_Delay(3000);
+    SDL_Delay(1000);
 }
 
 //ecran fin
@@ -350,4 +350,48 @@ void Break_Menu (Lvl *lvl)
     }
     lvl->Menu=loadImage("src/graphics/lvl/Game_Menu.png");
     Draw_Image(lvl->Menu,0,0); 
+}
+
+void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
+{
+    // Gestion total pièce
+    if (joueur->NbPiece>stats->Temp_pièce)
+    {
+        stats->Total_pièce+=(joueur->NbPiece-stats->Temp_pièce);
+        stats->Temp_pièce=joueur->NbPiece;
+    }
+    if (stats->Temp_pièce>joueur->NbPiece)
+    {
+        stats->Temp_pièce=joueur->NbPiece;
+    }
+    //Gestion total tués
+    if (lvl->MortMonstre>stats->Temp_Tués)
+    {
+        stats->Total_Tués+=(lvl->MortMonstre-stats->Temp_Tués);
+        stats->Temp_Tués=lvl->MortMonstre;
+    }
+    if (stats->Temp_Tués>lvl->MortMonstre)
+    {
+        stats->Temp_Tués=lvl->MortMonstre;
+    }
+    //Gestion compteur dégat
+    if (joueur->life<stats->Temp_Dégats)
+    {
+        stats->Total_Dégats+=(stats->Temp_Dégats-joueur->life);
+        stats->Temp_Dégats=joueur->life;
+    }
+    if (joueur->life>stats->Temp_Dégats)
+    {
+        stats->Temp_Dégats=joueur->life;
+    }
+    //Gestion Nombre dague lancées !!! A diviser par 2 pour affichage
+    if (joueur->Edague>stats->Temp_Dague_Lancées)
+    {
+        stats->Dague_Lancées+=(joueur->Edague-stats->Temp_Dague_Lancées);
+        stats->Temp_Dague_Lancées=joueur->Edague;
+    }
+    if (stats->Temp_Dague_Lancées>joueur->Edague)
+    {
+        stats->Temp_Dague_Lancées=joueur->Edague;
+    }    
 }

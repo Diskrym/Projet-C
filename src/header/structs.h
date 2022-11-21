@@ -151,7 +151,7 @@ typedef struct ParamTexte
 
 typedef struct Lvl
 {
-    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, Pause, temp, Load;
+    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, Pause, temp, Load, reset;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
@@ -167,6 +167,11 @@ typedef struct Lvl
     SDL_Texture *Cadenas3;
     SDL_Texture *Cadenas4;
 } Lvl;
+
+typedef struct Stats
+{
+    int Total_pièce,Temp_pièce, Total_Tués, Temp_Tués, Total_Mort, Dague_Lancées,Temp_Dague_Lancées,Total_Dégats,Temp_Dégats;
+} Stats;
 
  /*
  static const int level [5][5][10]={ 

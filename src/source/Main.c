@@ -34,6 +34,7 @@ Boss boss;
 Marchand marchand;
 ParamTexte paramtexte;
 Obstacle Petit_rocher,Gros_rocher, tronc, tanguy;
+Stats stats;
 
 int main(int argc, char *argv[])
 {
@@ -93,9 +94,10 @@ init("Dungeon Fate");
         frameLimit = SDL_GetTicks() + 4;
         //Test defaite
         if (joueur.life<=0)
-        {   Mix_PauseMusic();
+        {   
+            Mix_PauseMusic();
             Game_Over (&son);
-            exit(0);
+            lvl.reset=1;
         }
         //Test victoire
         // if (meduse.Life<=0)
@@ -112,7 +114,7 @@ init("Dungeon Fate");
             joueur.inposy=28;
             joueur.inposx=300;
         }
-        
+        Statistiques(&stats,&joueur,&lvl);
     }
     // On quitte
     exit(0); 
