@@ -45,7 +45,7 @@ lvl.Num=-1;
 // joueur.NbPiece=0;
 // lvl.WinDonjon=5;
 // joueur.nbDague=1;
-chargement(&joueur,&lvl);
+Load_Game(&joueur,&lvl);
 // Initialisation de la SDL
 init("Dungeon Fate");
     Son(&son);
@@ -54,12 +54,12 @@ init("Dungeon Fate");
     while(input.enter==0)
     {
     //gestionInputs(&input);
-    menu(&lvl);
-    getInput(&input);
+    Menu(&lvl);
+    Get_Input(&input);
     SDL_RenderPresent(getrenderer());
     }
     // Mix_PauseMusic();
-    //atexit(cleanup);
+    //atexit(Clean_Up);
     go = 1; 
     // Boucle infinie, principale, du jeu
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
@@ -68,19 +68,19 @@ init("Dungeon Fate");
             Save(&joueur,&lvl,&input,&entité,&son);
 
         //On dessine tout
-        drawGame(&joueur, &lvl, &paramtexte,&son);
+        Draw_Game(&joueur, &lvl, &paramtexte,&son);
 
-        GestionMap(&joueur, &lvl, &entité, &son, &input);
+        Gestion_Map(&joueur, &lvl, &entité, &son, &input);
         //Gestion des inputs clavier
         //gestionInputs(&input);
-        getInput(&input);
+        Get_Input(&input);
 
         if(lvl.Num != -1 && lvl.Num != -2)
         {
             //IA monstre
-            GestionMonstre(&entité, &lvl, &input ,&joueur, &son);
+            Gestion_Entité(&entité, &lvl, &input ,&joueur, &son);
             //Gestion des inputs et des déplacements
-            deplacement(&input,&joueur,&entité, &son, &lvl);
+            Deplacement_Chevalier(&input,&joueur,&entité, &son, &lvl);
         }
 
         //Rendu des images dans le buffer
@@ -92,7 +92,7 @@ init("Dungeon Fate");
         //Test defaite
         if (joueur.life<=0)
         {   Mix_PauseMusic();
-            GameOver (&son);
+            Game_Over (&son);
             exit(0);
         }
         //Test victoire

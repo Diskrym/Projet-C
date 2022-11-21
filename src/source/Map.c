@@ -1,7 +1,7 @@
 #include "../header/proto.h" 
  
  
-void initMaps(Lvl *lvl)
+void Init_Maps(Lvl *lvl)
 {
     // Charge l'image du fond (background)
     if (lvl->Num == 0 || lvl->Num == 1 || lvl->Num == 2)
@@ -30,16 +30,16 @@ void initMaps(Lvl *lvl)
     }
 }
   
-void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input)
+void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input)
 {  
     //Map global
     if (lvl->Num == -1)
     {
-        MapGlobal(joueur, lvl, entité, son, input);
+        Gestion_Map_Global(joueur, lvl, entité, son, input);
     }
     else if (lvl->Num == -2)
     {
-        pause(lvl);
+        Break_Menu(lvl);
     }
     
     else
@@ -66,7 +66,7 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
             if (joueur->inposx >= 570)
             {
                 lvl->Num+=1;
-                SelectNiv(joueur, lvl, entité, son);
+                Select_Level(joueur, lvl, entité, son);
             }
         }
         else if (lvl->Num == 10 && lvl->Avancement10 ==13)
@@ -100,13 +100,13 @@ void GestionMap(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
             else
             {
                 lvl->Num += 1;
-                SelectNiv(joueur, lvl, entité, son);
+                Select_Level(joueur, lvl, entité, son);
             }
         }
     }
 }
 
-void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input)
+void Gestion_Map_Global (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input)
 {
     if (lvl->Map != NULL)
     {
@@ -154,11 +154,11 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
     if (lvl->NumDonjon == 0)
     {
         lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
-        drawImage(lvl->Icone,313,313);
+        Draw_Image(lvl->Icone,313,313);
         if (input->attack == 1)
         {
             lvl->Num = 0;
-            SelectNiv(joueur, lvl, entité, son);
+            Select_Level(joueur, lvl, entité, son);
         }
     }
     if (lvl->NumDonjon == 1)
@@ -166,11 +166,11 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
         if (lvl->WinDonjon >=1)
         {
             lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
-            drawImage(lvl->Icone,354,253);
+            Draw_Image(lvl->Icone,354,253);
             if (input->attack == 1)
             {
                 lvl->Num = 4;
-                SelectNiv(joueur, lvl, entité, son);
+                Select_Level(joueur, lvl, entité, son);
             }
             
         }
@@ -184,11 +184,11 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
         if (lvl->WinDonjon >=2)
         {
             lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
-            drawImage(lvl->Icone,260,195);
+            Draw_Image(lvl->Icone,260,195);
             if (input->attack == 1)
             {
                 lvl->Num = 5;
-                SelectNiv(joueur, lvl, entité, son);
+                Select_Level(joueur, lvl, entité, son);
             }
         }
         else
@@ -201,11 +201,11 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
         if (lvl->WinDonjon >=3)
         {
             lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
-            drawImage(lvl->Icone,228,125);
+            Draw_Image(lvl->Icone,228,125);
             if (input->attack == 1)
             {
                 lvl->Num = 9;
-                SelectNiv(joueur, lvl, entité, son);
+                Select_Level(joueur, lvl, entité, son);
             }
         }
         else
@@ -218,7 +218,7 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
         if (lvl->WinDonjon >=3)
         {
             lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
-            drawImage(lvl->Icone,293,68);
+            Draw_Image(lvl->Icone,293,68);
         }
         else
         {
@@ -229,42 +229,42 @@ void MapGlobal (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input 
     if (lvl->WinDonjon == 0)
     {
         lvl->Cadenas1=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas1,354,253);
+        Draw_Image(lvl->Cadenas1,354,253);
 
         lvl->Cadenas2=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas2,260,190);
+        Draw_Image(lvl->Cadenas2,260,190);
 
         lvl->Cadenas3=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas3,225,120);
+        Draw_Image(lvl->Cadenas3,225,120);
 
         lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas4,293,68);
+        Draw_Image(lvl->Cadenas4,293,68);
     }
 
     if (lvl->WinDonjon == 1)
     {
 
         lvl->Cadenas2=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas2,260,190);
+        Draw_Image(lvl->Cadenas2,260,190);
 
         lvl->Cadenas3=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas3,225,120);
+        Draw_Image(lvl->Cadenas3,225,120);
 
         lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas4,293,68);
+        Draw_Image(lvl->Cadenas4,293,68);
     }
     if (lvl->WinDonjon == 2)
     {
         lvl->Cadenas3=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas3,225,120);
+        Draw_Image(lvl->Cadenas3,225,120);
 
         lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas4,293,68);
+        Draw_Image(lvl->Cadenas4,293,68);
     }
     if (lvl->WinDonjon == 3)
     {
         lvl->Cadenas4=loadImage("src/graphics/lvl/Cadenas.png");
-        drawImage(lvl->Cadenas4,293,68);
+        Draw_Image(lvl->Cadenas4,293,68);
     }
     
 }
