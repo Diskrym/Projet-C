@@ -950,18 +950,90 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
         SDL_DestroyTexture(bossyeti->bossyeti);
         bossyeti->bossyeti=NULL;
     }
-    if (bossyeti->attaquebossyeti!=NULL)
+    if (bossyeti->fissure!=NULL)
     {
-        SDL_DestroyTexture(bossyeti->attaquebossyeti);
-        bossyeti->attaquebossyeti=NULL;
+        SDL_DestroyTexture(bossyeti->fissure);
+        bossyeti->fissure=NULL;
     }
     if (bossyeti->crane!=NULL)
     {
         SDL_DestroyTexture(bossyeti->crane);
         bossyeti->crane=NULL;
     }
+
+      //sprit fissure
+    if (bossyeti->tempsfissure==1)
+    {
+        bossyeti->spritfissure+=1;
+        if (bossyeti->directionfissure==1)
+        {
+            if (bossyeti->spritfissure>=0 && bossyeti->spritfissure<10)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure1G.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                }
+                if (bossyeti->spritfissure>=10 && bossyeti->spritfissure<20)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure2G.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                }
+                if (bossyeti->spritfissure>=20 && bossyeti->spritfissure<30)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure3G.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                }
+                if (bossyeti->spritfissure>=30 && bossyeti->spritfissure<40)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure4G.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                }
+                if (bossyeti->spritfissure>=40)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure5G.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                }
+        }
+        if (bossyeti->directionfissure==0)
+        {
+            if (bossyeti->spritfissure>=0 && bossyeti->spritfissure<10)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure1D.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                                        printf("1");
+
+                }
+                if (bossyeti->spritfissure>=10 && bossyeti->spritfissure<20)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure2D.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                                        printf("2");
+
+                }
+                if (bossyeti->spritfissure>=20 && bossyeti->spritfissure<30)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure3D.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                                        printf("3");
+
+                }
+                if (bossyeti->spritfissure>=30 && bossyeti->spritfissure<40)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure4D.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                                        printf("4");
+
+                }
+                if (bossyeti->spritfissure>=50)
+                {
+                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure5D.png");                    
+                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                }
+        }
+
+
+    }
  
- 
+    
     //Mouvement  bossyeti quand en vie
     if (bossyeti->Life >=1)
     {
@@ -1081,7 +1153,7 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
         //attaquebossyeti bossyeti quand compteur > 100
         if  (bossyeti->compteur>=100)
         {   
-            if (bossyeti->compteurfissure==0)
+        if (bossyeti->compteurfissure==0 )
             {
             if (bossyeti->Direction==1)
             {            
@@ -1186,6 +1258,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 {  
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2G.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    if (bossyeti->NumSprit==9 && bossyeti->tempsfissure!=0)
+                    {
+                    bossyeti->tempsfissure=0;;
+                    }
                 }
                 if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
                 {
@@ -1215,9 +1291,18 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1G.png");                    
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    if (bossyeti->NumSprit==90)
+                    {
+                    bossyeti->tempsfissure+=1;
+                    bossyeti->xfissure=bossyeti->posmonsx-300;
+                    bossyeti->yfissure=bossyeti->posmonsy+100;
+                    bossyeti->directionfissure=bossyeti->Direction;
+                    bossyeti->spritfissure=0;
+                    }
                     
 
                 }
+                
                
             }
  
@@ -1227,6 +1312,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 {  
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2D.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    if (bossyeti->NumSprit==9 && bossyeti->tempsfissure!=0)
+                    {
+                    bossyeti->tempsfissure=0;
+                    }
                 }
                 if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
                 {
@@ -1256,18 +1345,30 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1D.png");                    
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    if (bossyeti->NumSprit==90)
+                    {
+                    bossyeti->tempsfissure+=1;
+                    bossyeti->xfissure=bossyeti->posmonsx+100;
+                    bossyeti->yfissure=bossyeti->posmonsy+100;
+                    bossyeti->directionfissure=bossyeti->Direction;
+                    bossyeti->spritfissure=0;
+                    }
                     
 
                 }
+                
             }
-            if (bossyeti->NumSprit>100)
+            if (bossyeti->NumSprit>95)
             {
                 bossyeti->NumSprit=0;
                 bossyeti->compteurfissure=0;
+                
             }
         }
         }
     }
+
+  
    
     //Sprit crane
     if (bossyeti->Eattaque == 1)
