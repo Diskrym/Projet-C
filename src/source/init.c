@@ -463,32 +463,45 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         lvl->temp = lvl->Num;
         lvl->Num = -2;
     }
-    //sortie pause
-    if (input->enter == 1 && lvl->Num == -2)
-    {
-        lvl->Num = lvl->temp;
-    }
-
-    if (lvl->Num == -2)
-    {
+    
+    if (lvl->Num == -2 || lvl->reset == 1)
+    {       
+        SDL_ShowCursor(SDL_ENABLE);
         char* nomFichier = "src/Save.txt";
-        FILE* fichier = fopen ( nomFichier , "r+" );
-        if ( fichier )
+        //save and quit
+        if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 230 && input->PosMouseY <= 268)
         {
-            printf ("Le fichier %s a pu etre ouvert en ecriture.\n", nomFichier);
-            if (input->yes == 1)
+            FILE* fichier = fopen ( nomFichier , "r+" );
+            if ( fichier )
             {
                 fprintf(fichier,"life=%d AttPice=%d NbPiece=%d WinDonjon=%d nbDague=%d",joueur->life,joueur->AttPiece,joueur->NbPiece,lvl->WinDonjon,joueur->nbDague);
                 fclose(fichier);
                 exit(0);
             }
-            if (input->no == 1)
+        }
+        //retour jeux
+        if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 117 && input->PosMouseY <= 154)
+        {
+            lvl->Num = lvl->temp;
+            SDL_ShowCursor(SDL_DISABLE);
+        }
+        //Quit sans save
+        if (input->PosMouseX >= 329 && input->PosMouseX <= 522 && input->PosMouseY >= 172 && input->PosMouseY <= 211)
+        {
+            exit(0);
+        }
+        if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 172 && input->PosMouseY <= 211 || lvl-> reset == 1)
+        {
+            FILE* fichier = fopen ( nomFichier , "r+" );
+            if ( fichier )
             {
+                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d WinDonjon=%d nbDague=%d",3,0,0,0,0);
                 fclose(fichier);
-                lvl->Num = lvl->temp;
+                SDL_ShowCursor(SDL_DISABLE);
+                lvl->Num = -1 ;
+                lvl->reset = 0;
+                lvl->Load = 0;
             }
-            
-            
         }
     }   
 }
