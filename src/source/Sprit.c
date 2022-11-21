@@ -1,6 +1,6 @@
 #include "../header/proto.h" 
 
-void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, Lvl *lvl)
+void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, Lvl *lvl)
 {   
     //reset des pointeurs des sprites
     if (joueur->chevalier!=NULL)
@@ -30,17 +30,17 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
         if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
         {
             //se deplace si ne prend pas de dégat sinon sprit degat
-            if (DegatChevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==1)
+            if (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==1)
             {
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/neutreD.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                 }
                 if (joueur->NumSprit==2 || joueur->NumSprit==3  )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche1D.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                     // if (joueur->NumSprit==2)
                     // {Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
                     // Mix_PlayChannel(3, son->depchevalier, 0);}   
@@ -48,7 +48,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
                 if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche2D.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                     joueur->NumSprit =0;
                     // if (joueur->NumSprit==7)
                     // {
@@ -60,10 +60,10 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
             
         }
         //affiche sprite degat si degat de la part du entité et si degat de la part du entité lors de notre attack/defense pour la droite
-        if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==0) || (DegatChevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==0) && joueur->Direction==0)
+        if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==0) || (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==0) && joueur->Direction==0)
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
-            drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+            Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
             Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME);
             Mix_PlayChannel(1, son->degatchevalier, 0);
         }
@@ -71,17 +71,17 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
         //cf fonction gauche
         if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
         {
-            if(DegatChevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==1)
+            if(Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==1)
             {
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/neutreG.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                 }
                 if (joueur->NumSprit==2 || joueur->NumSprit==3  )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche1G.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                     // if (joueur->NumSprit==2)
                     // {
                     // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
@@ -91,7 +91,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
                 if (joueur->NumSprit >=6)
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche2G.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                     // if (joueur->NumSprit==7)
                     // {
                     // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
@@ -101,16 +101,16 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
                 }   
             }
         }
-        if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && DegatChevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==0) || (DegatChevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==0) && joueur->Direction==1 )
+        if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==0) || (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==0) && joueur->Direction==1 )
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
-            drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+            Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
             Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME);
             Mix_PlayChannel(1, son->degatchevalier, 0);
         }
         
         //Mouvement attaque si Eattack = 1 et si on ne prend pas de dégat
-        if (joueur->Eattack==1 && DegatChevalier(&entité->meduse, &entité->meduse1, &entité->meduse2, &entité->chauvesouris, &entité->chauvesouris1,&entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==1)
+        if (joueur->Eattack==1 && Degat_Chevalier(&entité->meduse, &entité->meduse1, &entité->meduse2, &entité->chauvesouris, &entité->chauvesouris1,&entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==1)
         {
             joueur->Numattack+=1;
             if (joueur->Direction==1)
@@ -118,24 +118,24 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
                 if (joueur->Numattack==0 || joueur->Numattack==1 || joueur->Numattack==2 || joueur->Numattack==3 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/Epee2G.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                 }
                 if (joueur->Numattack==4 || joueur->Numattack==5 || joueur->Numattack==6 || joueur->Numattack==7 || joueur->Numattack==20 || joueur->Numattack==21 || joueur->Numattack==22 || joueur->Numattack==23 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/Epee3G.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                 }
                 if (joueur->Numattack==8 || joueur->Numattack==9 || joueur->Numattack==10 || joueur->Numattack==11|| joueur->Numattack==16 || joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19)
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/Epee4G.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                 }
                 if (joueur->Numattack==12 || joueur->Numattack==13 || joueur->Numattack==14 || joueur->Numattack==15 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/Epee5G.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                     joueur->attaque=loadImage("src/graphics/Chevalier/attaqueG.png");
-                    drawImage(joueur->attaque,joueur->inposx-21,joueur->inposy+32);
+                    Draw_Image(joueur->attaque,joueur->inposx-21,joueur->inposy+32);
                     if(joueur->Numattack==13)
                     {
                         //Son
@@ -149,24 +149,24 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
                 if (joueur->Numattack==0 || joueur->Numattack==1 || joueur->Numattack==2 || joueur->Numattack==3 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/Epee2D.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                 }
                 if (joueur->Numattack==4 || joueur->Numattack==5 || joueur->Numattack==6 || joueur->Numattack==7 || joueur->Numattack==20 || joueur->Numattack==21 || joueur->Numattack==22 || joueur->Numattack==23 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/Epee3D.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                 }
                 if (joueur->Numattack==8 || joueur->Numattack==9 || joueur->Numattack==10 || joueur->Numattack==11|| joueur->Numattack==16 || joueur->Numattack==17 || joueur->Numattack==18 || joueur->Numattack==19)
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/Epee4D.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                 }
                 if (joueur->Numattack==12 || joueur->Numattack==13 || joueur->Numattack==14 || joueur->Numattack==15 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/Epee5D.png");
-                    drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                     joueur->attaque=loadImage("src/graphics/Chevalier/attaqueD.png");
-                    drawImage(joueur->attaque,joueur->inposx+SPRITE_SIZE ,joueur->inposy +32);
+                    Draw_Image(joueur->attaque,joueur->inposx+SPRITE_SIZE ,joueur->inposy +32);
                     if(joueur->Numattack==13)
                     {
                         //Son
@@ -188,7 +188,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
                     if (joueur->NumSprit==0 )
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldD.png");
-                        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                        Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                         //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
                         //Mix_PlayChannel(2, son->bouclier, 0);
                     }
@@ -198,7 +198,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
                     if (joueur->NumSprit==0)
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldG.png");
-                        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+                        Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                         //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
                         //Mix_PlayChannel(2, son->bouclier, 0);
                     }
@@ -221,7 +221,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
             {
                 son->sondague++;
                 joueur->dague=loadImage("src/graphics/Chevalier/DagueG.png");
-                drawImage(joueur->dague,joueur->xdague,joueur->ydague);
+                Draw_Image(joueur->dague,joueur->xdague,joueur->ydague);
                 joueur->xdague-=10;
                 son->sondagueM=0;
                 if (son->sondague==1)
@@ -235,7 +235,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
             {   
                 
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
-                drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+                Draw_Image(joueur->dagueMur,joueur->xdague,joueur->ydague);
                 joueur->Edague=2;
                 son->sondagueM++;
                 if (son->sondagueM==1)
@@ -262,7 +262,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
             { 
                 son->sondague++;
                 joueur->dague=loadImage("src/graphics/Chevalier/DagueD.png");
-                drawImage(joueur->dague,joueur->xdague,joueur->ydague);
+                Draw_Image(joueur->dague,joueur->xdague,joueur->ydague);
                 joueur->xdague+=10;
                 son->sondagueM=0;
                 if (son->sondague==1)
@@ -274,7 +274,7 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
             else
             {
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurD.png");
-                drawImage(joueur->dagueMur,joueur->xdague,joueur->ydague);
+                Draw_Image(joueur->dagueMur,joueur->xdague,joueur->ydague);
                 joueur->Edague=2;
                 son->sondagueM++;
                 if (son->sondagueM==1)
@@ -294,23 +294,23 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
             }
         }
     }
-    else if (DegatBateau(&entité->tronc, &entité->Petit_rocher ,&entité->Gros_rocher) == 1)
+    else if (Degat_Bateau(&entité->tronc, &entité->Petit_rocher ,&entité->Gros_rocher) == 1)
     {
         joueur->NumSprit+=1;
         if(joueur->NumSprit<10 || joueur->NumSprit>=40)
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateau.png");
-            drawImage(joueur->chevalier,joueur->inposx,joueur->inposy+1);  
+            Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy+1);  
         }
         if((joueur->NumSprit>=10 && joueur->NumSprit<20) || (joueur->NumSprit>=30 && joueur->NumSprit<40))
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateau.png");
-            drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);  
+            Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);  
         }
         if(joueur->NumSprit>=20 && joueur->NumSprit<30)
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateau.png");
-            drawImage(joueur->chevalier,joueur->inposx,joueur->inposy-1);  
+            Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy-1);  
         }
         if (joueur->NumSprit >=39)
         {
@@ -321,11 +321,11 @@ void SpritHeros(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, L
     else
     {
         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateauDegat.png");
-        drawImage(joueur->chevalier,joueur->inposx,joueur->inposy);
+        Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
     }
 }
 
-void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
+void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
 {   
     //reset pointeur meduse
     if (meduse->meduse!=NULL)
@@ -351,41 +351,41 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==2 || meduse->NumSprit==3 )
                 {
                     meduse->meduse=loadImage("src/graphics/Meduse/Meduseneutre.png");
-                    drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                    Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 }
                 if (meduse->NumSprit==4 || meduse->NumSprit==5 || meduse->NumSprit==6 || meduse->NumSprit==7 || meduse->NumSprit==29 || meduse->NumSprit==30 || meduse->NumSprit==32 || meduse->NumSprit==31 )
                 {
                     meduse->meduse=loadImage("src/graphics/Meduse/Medusemarche1.png");
-                    drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                    Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 }
                 if (meduse->NumSprit==8 || meduse->NumSprit==9 || meduse->NumSprit==10 || meduse->NumSprit==11|| meduse->NumSprit==24 || meduse->NumSprit==25 || meduse->NumSprit==26 || meduse->NumSprit==27 || meduse->NumSprit==28 )
                 {
                     meduse->meduse=loadImage("src/graphics/Meduse/Medusemarche2.png");
-                    drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                    Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 }
                 if (meduse->NumSprit==12 || meduse->NumSprit==13 || meduse->NumSprit==14 || meduse->NumSprit==19 || meduse->NumSprit==20 || meduse->NumSprit==21 || meduse->NumSprit==22 || meduse->NumSprit==23 )                   
                 {
                     meduse->meduse=loadImage("src/graphics/Meduse/Medusemarche3.png");
-                    drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                    Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 }
                 if (meduse->NumSprit==15 || meduse->NumSprit==16 || meduse->NumSprit==17 || meduse->NumSprit==18 )
                 {
                     meduse->meduse=loadImage("src/graphics/Meduse/Medusemarche4.png");
-                    drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);    
+                    Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);    
                 }
                 if (meduse->NumSprit>=33 )
                 {
                     meduse->meduse=loadImage("src/graphics/Meduse/Medusemarche1.png");
-                    drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                    Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 }
                 //degat epee
-                if(insidechevalier(joueur, meduse)==1 && joueur->Numattack==15)
+                if(Inside_Chevalier_Meduse(joueur, meduse)==1 && joueur->Numattack==15)
                 {           
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
                 }
                 //degat dague
-                if (insideVol(joueur->xdague,joueur->ydague, meduse->posmonsx, meduse->posmonsy,64,64,30,15)==1)
+                if (Inside_Vol(joueur->xdague,joueur->ydague, meduse->posmonsx, meduse->posmonsy,64,64,30,15)==1)
                 {
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
@@ -397,7 +397,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 //si la meduse prend un coup
                 meduse->CompteurSpriteDegat+=1;
                 meduse->meduse=loadImage("src/graphics/Meduse/Medusedegat.png");
-                drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 if (meduse->CompteurSpriteDegat==2)
                 {
                     Mix_VolumeChunk(son->degatmeduse, MIX_MAX_VOLUME);
@@ -417,17 +417,17 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==2 || meduse->NumSprit==3 )
             {  
                 meduse->meduse=loadImage("src/graphics/Meduse/medusecoup1.png");
-                drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             }
             if (meduse->NumSprit==4 || meduse->NumSprit==5 || meduse->NumSprit==6 || meduse->NumSprit==7 || meduse->NumSprit==29 || meduse->NumSprit==30 || meduse->NumSprit==31 || meduse->NumSprit==32 )
             {
                 meduse->meduse=loadImage("src/graphics/Meduse/medusecoup2.png");
-                drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             }
             if (meduse->NumSprit==8 || meduse->NumSprit==9 || meduse->NumSprit==10 || meduse->NumSprit==11|| meduse->NumSprit==24 || meduse->NumSprit==25 || meduse->NumSprit==26 || meduse->NumSprit==27 || meduse->NumSprit==28 )
             {
                 meduse->meduse=loadImage("src/graphics/Meduse/medusecoup3.png");
-                drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             }
             if (meduse->NumSprit==12 || meduse->NumSprit==13 || meduse->NumSprit==14 || meduse->NumSprit==19 || meduse->NumSprit==20 || meduse->NumSprit==21 || meduse->NumSprit==22 || meduse->NumSprit==23 )
             {   
@@ -439,12 +439,12 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 }
 
                 meduse->meduse=loadImage("src/graphics/Meduse/medusecoup4.png");                    
-                drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 meduse->attaque=loadImage("src/graphics/Meduse/AttaqueMeduse.png");
-                drawImage(meduse->attaque,meduse->posmonsx -23 ,meduse->posmonsy - 23);
+                Draw_Image(meduse->attaque,meduse->posmonsx -23 ,meduse->posmonsy - 23);
                 
                 // Si joueur dans la range de la meduse durant les éclaires
-                if(inside(joueur, meduse)==1 && (meduse->NumSprit==23 || meduse->NumSprit==14))                    
+                if(Inside_Meduse_Chevalier(joueur, meduse)==1 && (meduse->NumSprit==23 || meduse->NumSprit==14))                    
                 {
                     if (meduse->coup == 0)
                     {
@@ -455,7 +455,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (meduse->NumSprit==15 || meduse->NumSprit==16 || meduse->NumSprit==17 || meduse->NumSprit==18 )
                 {
                     meduse->meduse=loadImage("src/graphics/Meduse/medusecoup2.png");
-                    drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+                    Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 }
             }
             //reset compteur meduse
@@ -472,7 +472,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         if (meduse->CompteurSpriteDegat==0 || meduse->CompteurSpriteDegat==1 || meduse->CompteurSpriteDegat==2 || meduse->CompteurSpriteDegat==3 )
         {
             meduse->meduse=loadImage("src/graphics/Meduse/Medusemort1.png");
-            drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
             if (meduse->CompteurSpriteDegat==1)
             {
                 Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME);
@@ -482,22 +482,22 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         if (meduse->CompteurSpriteDegat==4 || meduse->CompteurSpriteDegat==5 || meduse->CompteurSpriteDegat==6 || meduse->CompteurSpriteDegat==7 )
         {
             meduse->meduse=loadImage("src/graphics/Meduse/Medusemort2.png");
-            drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
         }
         if (meduse->CompteurSpriteDegat==8 || meduse->CompteurSpriteDegat==9 || meduse->CompteurSpriteDegat==10 || meduse->CompteurSpriteDegat==11)
         {
             meduse->meduse=loadImage("src/graphics/Meduse/Medusemort3.png");
-            drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
         }
         if (meduse->CompteurSpriteDegat==12 || meduse->CompteurSpriteDegat==13 || meduse->CompteurSpriteDegat==14 || meduse->CompteurSpriteDegat==15 )
         {
             meduse->meduse=loadImage("src/graphics/Meduse/Medusemort4.png");
-            drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
         }
         if (meduse->CompteurSpriteDegat==16 || meduse->CompteurSpriteDegat==17 || meduse->CompteurSpriteDegat==18 || meduse->CompteurSpriteDegat==19 )
         {
             meduse->meduse=loadImage("src/graphics/Meduse/Medusemort5.png");
-            drawImage(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
         }
         if (meduse->CompteurSpriteDegat==0)
         {
@@ -511,7 +511,7 @@ void SpritMeduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
     }
 }
 
-void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
+void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
 {  
     //reset pointeur yeti
     if (yeti->yeti!=NULL)
@@ -545,24 +545,24 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     if (yeti->NumSprit==0 || yeti->NumSprit==1 || yeti->NumSprit==2 || yeti->NumSprit==3 || yeti->NumSprit==8 || yeti->NumSprit==9 || yeti->NumSprit==10 || yeti->NumSprit==11)
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreG.png");
-                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     }
                     if (yeti->NumSprit==4 || yeti->NumSprit==5 || yeti->NumSprit==6 || yeti->NumSprit==7)
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiMarche1G.png");
-                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     }
                     if (yeti->NumSprit==12 || yeti->NumSprit==13 || yeti->NumSprit==14 || yeti->NumSprit==15)
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiMarche2G.png");
-                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     }
                     if (yeti->NumSprit>=16 )
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreG.png");
-                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     }
-                    if(insidechevalieryeti(joueur, yeti)==1 && joueur->Numattack==15)
+                    if(Inside_Chevalier_Yeti(joueur, yeti)==1 && joueur->Numattack==15)
                     {          
                         yeti->CompteurSpriteDegat=1;
                         yeti->Life--;
@@ -574,31 +574,31 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     if (yeti->NumSprit==0 || yeti->NumSprit==1 || yeti->NumSprit==2 || yeti->NumSprit==3 || yeti->NumSprit==8 || yeti->NumSprit==9 || yeti->NumSprit==10 || yeti->NumSprit==11)
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreD.png");
-                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     }
                     if (yeti->NumSprit==4 || yeti->NumSprit==5 || yeti->NumSprit==6 || yeti->NumSprit==7)
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiMarche1D.png");
-                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     }
                     if (yeti->NumSprit==12 || yeti->NumSprit==13 || yeti->NumSprit==14 || yeti->NumSprit==15)
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiMarche2D.png");
-                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     }
                     if (yeti->NumSprit>=16 )
                     {
                         yeti->yeti=loadImage("src/graphics/yeti/YetiNeutreD.png");
-                        drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                        Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     }
-                    if(insidechevalieryeti(joueur, yeti)==1 && joueur->Numattack==15)
+                    if(Inside_Chevalier_Yeti(joueur, yeti)==1 && joueur->Numattack==15)
                     {          
                         yeti->CompteurSpriteDegat=1;
                         yeti->Life--;
                     }
                 }
                 //degat dague
-                if (insideVol(joueur->xdague,joueur->ydague, yeti->posmonsx+10, yeti->posmonsy+15,45,60,30,15)==1)
+                if (Inside_Vol(joueur->xdague,joueur->ydague, yeti->posmonsx+10, yeti->posmonsy+15,45,60,30,15)==1)
                 {
                     yeti->CompteurSpriteDegat=1; 
                     yeti->Life--; 
@@ -613,7 +613,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     //si la yeti prend un coup
                     yeti->CompteurSpriteDegat+=1;
                     yeti->yeti=loadImage("src/graphics/yeti/YetiDegatG.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME);
                     Mix_PlayChannel(4, son->degatyeti, 0);
                    
@@ -629,7 +629,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     //si la yeti prend un coup
                     yeti->CompteurSpriteDegat+=1;
                     yeti->yeti=loadImage("src/graphics/yeti/YetiDegatD.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     if (yeti->CompteurSpriteDegat==2)
                     {
                     Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME);
@@ -655,12 +655,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80  )
                 {   
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1G.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=70 && yeti->NumSprit<80)
                 {
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque2G.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
                 {   
@@ -670,7 +670,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     Mix_PlayChannel(16, son->attaqueyeti, 0);
                     }
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3G.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     if (yeti->NumSprit == 65)
                     {
                         yeti->Eattaque = 1;
@@ -683,12 +683,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
                 {                
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4G.png");                    
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=40 && yeti->NumSprit<50 )
                 {                
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque5G.png");                    
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 
             }
@@ -700,12 +700,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     
                 
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1D.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=10 && yeti->NumSprit<20 || yeti->NumSprit>=70 && yeti->NumSprit<80)
                 {
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque2D.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=20 && yeti->NumSprit<30 || yeti->NumSprit>=60 && yeti->NumSprit<70)
                 {   
@@ -715,7 +715,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     Mix_PlayChannel(16, son->attaqueyeti, 0);
                     }
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque3D.png");
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                     if (yeti->NumSprit == 65)
                     {
                         yeti->Eattaque = 1;
@@ -727,12 +727,12 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
                 {                
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque4D.png");                    
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 if (yeti->NumSprit>=40 && yeti->NumSprit<50 )
                 {                
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque5D.png");                    
-                    drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }
                 //reset compteur yeti
             }
@@ -751,9 +751,9 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (yeti->xboule>=20 && yeti->xboule<=600 && yeti->yboule>= 20 && yeti->yboule<=384)
             { 
                 yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
-                drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
                 
-                if (insideVol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
+                if (Inside_Vol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
                     yeti->coup=1;
@@ -772,22 +772,22 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     }
                     
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur1G.png");
-                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                    Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
                 }
                 if (yeti->CompteurBoule>=5 && yeti->CompteurBoule<10)
                 {  
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur2G.png");
-                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                    Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
                 }
                 if (yeti->CompteurBoule>=15 && yeti->CompteurBoule<20)
                 {  
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur3G.png");
-                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                    Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
                 }
                 if (yeti->CompteurBoule>=20 && yeti->CompteurBoule<25)
                 {  
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur4G.png");
-                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                    Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
                 }
                 if (yeti->CompteurBoule>=25)
                 {
@@ -803,8 +803,8 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (yeti->xboule>=20 && yeti->xboule<=600 && yeti->yboule>= 20 && yeti->yboule<=384)
             { 
                 yeti->boule=loadImage("src/graphics/yeti/BouleDeNeige.png");                    
-                drawImage(yeti->boule,yeti->xboule,yeti->yboule);
-                if (insideVol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
+                Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
+                if (Inside_Vol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
                     yeti->coup=1;
@@ -822,22 +822,22 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     Mix_PlayChannel(7, son->bouledeneige, 0);
                     }
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur1D.png");
-                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                    Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
                 }
                 if (yeti->CompteurBoule>=5 && yeti->CompteurBoule<10)
                 {  
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur2D.png");
-                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                    Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
                 }
                 if (yeti->CompteurBoule>=15 && yeti->CompteurBoule<20)
                 {  
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur3D.png");
-                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                    Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
                 }
                 if (yeti->CompteurBoule>=20 && yeti->CompteurBoule<25)
                 {  
                     yeti->boule=loadImage("src/graphics/yeti/BouleDeMur4D.png");
-                    drawImage(yeti->boule,yeti->xboule,yeti->yboule);
+                    Draw_Image(yeti->boule,yeti->xboule,yeti->yboule);
                 }
                 if (yeti->CompteurBoule>=25)
                 {
@@ -870,7 +870,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort1G.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 if (yeti->CompteurSpriteDegat==1)
                 {
                     Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
@@ -880,22 +880,22 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort2G.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
             if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort3G.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
             if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort4G.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
             if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort5G.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
         }
 
@@ -904,7 +904,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort1D.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 if (yeti->CompteurSpriteDegat==1)
                 {
                 Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
@@ -914,22 +914,22 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort2D.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
             if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort3D.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
             if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort4D.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
             if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort5D.png");
-                drawImage(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
             }
         }
         if (yeti->CompteurSpriteDegat==15)
@@ -942,7 +942,7 @@ void Sprityeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
 
 
 
-void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
+void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
 {  
     //reset pointeur bossyeti
     if (bossyeti->bossyeti!=NULL)
@@ -976,24 +976,24 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     if (bossyeti->NumSprit==0 || bossyeti->NumSprit==1 || bossyeti->NumSprit==2 || bossyeti->NumSprit==3 || bossyeti->NumSprit==8 || bossyeti->NumSprit==9 || bossyeti->NumSprit==10 || bossyeti->NumSprit==11)
                     {
                         bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiNeutreG.png");
-                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
                     if (bossyeti->NumSprit==4 || bossyeti->NumSprit==5 || bossyeti->NumSprit==6 || bossyeti->NumSprit==7)
                     {
                         bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiMarche1G.png");
-                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
                     if (bossyeti->NumSprit==12 || bossyeti->NumSprit==13 || bossyeti->NumSprit==14 || bossyeti->NumSprit==15)
                     {
                         bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiMarche2G.png");
-                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
                     if (bossyeti->NumSprit>=16 )
                     {
                         bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiNeutreG.png");
-                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
-                    if(insidechevalierbossyeti(joueur, bossyeti)==1 && joueur->Numattack==15)
+                    if(Inside_Chevalier_Boss_Yeti(joueur, bossyeti)==1 && joueur->Numattack==15)
                     {          
                         bossyeti->CompteurSpriteDegat=1;
                         bossyeti->Life--;
@@ -1005,31 +1005,31 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     if (bossyeti->NumSprit==0 || bossyeti->NumSprit==1 || bossyeti->NumSprit==2 || bossyeti->NumSprit==3 || bossyeti->NumSprit==8 || bossyeti->NumSprit==9 || bossyeti->NumSprit==10 || bossyeti->NumSprit==11)
                     {
                         bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiNeutreD.png");
-                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
                     if (bossyeti->NumSprit==4 || bossyeti->NumSprit==5 || bossyeti->NumSprit==6 || bossyeti->NumSprit==7)
                     {
                         bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiMarche1D.png");
-                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
                     if (bossyeti->NumSprit==12 || bossyeti->NumSprit==13 || bossyeti->NumSprit==14 || bossyeti->NumSprit==15)
                     {
                         bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiMarche2D.png");
-                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
                     if (bossyeti->NumSprit>=16 )
                     {
                         bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiNeutreD.png");
-                        drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
-                    if(insidechevalierbossyeti(joueur, bossyeti)==1 && joueur->Numattack==15)
+                    if(Inside_Chevalier_Boss_Yeti(joueur, bossyeti)==1 && joueur->Numattack==15)
                     {          
                         bossyeti->CompteurSpriteDegat=1;
                         bossyeti->Life--;
                     }
                 }
                 //degat dague
-                if (insideVol(joueur->xdague,joueur->ydague, bossyeti->posmonsx+10, bossyeti->posmonsy+15,45,60,30,15)==1)
+                if (Inside_Vol(joueur->xdague,joueur->ydague, bossyeti->posmonsx+10, bossyeti->posmonsy+15,45,60,30,15)==1)
                 {
                     bossyeti->CompteurSpriteDegat=1;
                     bossyeti->Life--;
@@ -1044,7 +1044,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     //si la bossyeti prend un coup
                     bossyeti->CompteurSpriteDegat+=1;
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiDegatG.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     // Mix_VolumeChunk(son->degatbossyeti, MIX_MAX_VOLUME);
                     // Mix_PlayChannel(4, son->degatbossyeti, 0);
                    
@@ -1060,7 +1060,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     //si la bossyeti prend un coup
                     bossyeti->CompteurSpriteDegat+=1;
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiDegatD.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     // if (bossyeti->CompteurSpriteDegat==2)
                     // {
                     // Mix_VolumeChunk(son->degatbossyeti, MIX_MAX_VOLUME);
@@ -1088,12 +1088,12 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80  )
                 {  
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque1G.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
                 {
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque2G.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
                 {  
@@ -1103,7 +1103,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     // Mix_PlayChannel(16, son->attaquebossyeti, 0);
                     // }
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3G.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     if (bossyeti->NumSprit == 65)
                     {
                         bossyeti->Eattaque = 1;
@@ -1116,12 +1116,12 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque4G.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5G.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
 
                 }
@@ -1135,12 +1135,12 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                    
                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque1D.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
                 {
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque2D.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
                 {  
@@ -1150,7 +1150,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     // Mix_PlayChannel(16, son->attaquebossyeti, 0);
                     // }
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3D.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     if (bossyeti->NumSprit == 65)
                     {
                         bossyeti->Eattaque = 1;
@@ -1162,12 +1162,12 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque4D.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5D.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
                 }
                 //reset compteur bossyeti
@@ -1185,36 +1185,36 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 && bossyeti->NumSprit<90 )
                 {  
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2G.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
                 {
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure3G.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
                 {  
                  
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4G.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
                 }
                 if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure5G.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6G.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
 
                 }
                 if (bossyeti->NumSprit>=90  )
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1G.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
 
                 }
@@ -1226,36 +1226,36 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 && bossyeti->NumSprit<90 )
                 {  
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2D.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
                 {
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure3D.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
                 {  
                  
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4D.png");
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
                 }
                 if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure5D.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 }
                 if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6D.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
 
                 }
                 if (bossyeti->NumSprit>=90  )
                 {                
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1D.png");                    
-                    drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     
 
                 }
@@ -1277,9 +1277,9 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (bossyeti->xcrane>=20 && bossyeti->xcrane<=600 && bossyeti->ycrane>= 20 && bossyeti->ycrane<=384)
             {
                 bossyeti->crane=loadImage("src/graphics/BossYeti/CraneG.png");                    
-                drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
                
-                if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
+                if (Inside_Vol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
                 {
                     joueur->life--;
                     bossyeti->coup=1;
@@ -1298,22 +1298,22 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             //         // }
                    
             //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1G.png");
-            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //         Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
             //     }
             //     if (bossyeti->Compteurcrane>=5 && bossyeti->Compteurcrane<10)
             //     {  
             //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur2G.png");
-            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //         Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
             //     }
             //     if (bossyeti->Compteurcrane>=15 && bossyeti->Compteurcrane<20)
             //     {  
             //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur3G.png");
-            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //         Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
             //     }
             //     if (bossyeti->Compteurcrane>=20 && bossyeti->Compteurcrane<25)
             //     {  
             //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur4G.png");
-            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //         Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
             //     }
             //     if (bossyeti->Compteurcrane>=25)
             //     {
@@ -1329,8 +1329,8 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (bossyeti->xcrane>=20 && bossyeti->xcrane<=600 && bossyeti->ycrane>= 20 && bossyeti->ycrane<=384)
             {
                 bossyeti->crane=loadImage("src/graphics/BossYeti/CraneD.png");                    
-                drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-                if (insideVol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
+                Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+                if (Inside_Vol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
                 {
                     joueur->life--;
                     bossyeti->coup=1;
@@ -1348,22 +1348,22 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             //         // Mix_PlayChannel(7, son->cranedeneige, 0);
             //         // }
             //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1D.png");
-            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //         Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
             //     }
             //     if (bossyeti->Compteurcrane>=5 && bossyeti->Compteurcrane<10)
             //     {  
             //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur2D.png");
-            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //         Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
             //     }
             //     if (bossyeti->Compteurcrane>=15 && bossyeti->Compteurcrane<20)
             //     {  
             //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur3D.png");
-            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //         Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
             //     }
             //     if (bossyeti->Compteurcrane>=20 && bossyeti->Compteurcrane<25)
             //     {  
             //         bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur4D.png");
-            //         drawImage(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
+            //         Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
             //     }
             //     if (bossyeti->Compteurcrane>=25)
             //     {
@@ -1396,7 +1396,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (bossyeti->CompteurSpriteDegat==0 || bossyeti->CompteurSpriteDegat==1 || bossyeti->CompteurSpriteDegat==2 || bossyeti->CompteurSpriteDegat==3 )
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti1G.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 // if (bossyeti->CompteurSpriteDegat==1)
                 // {
                 //     Mix_VolumeChunk(son->mortbossyeti, MIX_MAX_VOLUME);
@@ -1406,22 +1406,22 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (bossyeti->CompteurSpriteDegat==4 || bossyeti->CompteurSpriteDegat==5 || bossyeti->CompteurSpriteDegat==6 || bossyeti->CompteurSpriteDegat==7 )
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti2G.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
             }
             if (bossyeti->CompteurSpriteDegat==8 || bossyeti->CompteurSpriteDegat==9 || bossyeti->CompteurSpriteDegat==10 || bossyeti->CompteurSpriteDegat==11)
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti3G.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
             }
             if (bossyeti->CompteurSpriteDegat==12 || bossyeti->CompteurSpriteDegat==13 || bossyeti->CompteurSpriteDegat==14 || bossyeti->CompteurSpriteDegat==15 )
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti4G.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
             }
             if (bossyeti->CompteurSpriteDegat==16 || bossyeti->CompteurSpriteDegat==17 || bossyeti->CompteurSpriteDegat==18 || bossyeti->CompteurSpriteDegat==19 )
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti5G.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
             }
         }
  
@@ -1430,7 +1430,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (bossyeti->CompteurSpriteDegat==0 || bossyeti->CompteurSpriteDegat==1 || bossyeti->CompteurSpriteDegat==2 || bossyeti->CompteurSpriteDegat==3 )
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti1D.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                 // if (bossyeti->CompteurSpriteDegat==1)
                 // {
                 // Mix_VolumeChunk(son->mortbossyeti, MIX_MAX_VOLUME);
@@ -1440,22 +1440,22 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             if (bossyeti->CompteurSpriteDegat==4 || bossyeti->CompteurSpriteDegat==5 || bossyeti->CompteurSpriteDegat==6 || bossyeti->CompteurSpriteDegat==7 )
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti2D.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
             }
             if (bossyeti->CompteurSpriteDegat==8 || bossyeti->CompteurSpriteDegat==9 || bossyeti->CompteurSpriteDegat==10 || bossyeti->CompteurSpriteDegat==11)
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti3D.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
             }
             if (bossyeti->CompteurSpriteDegat==12 || bossyeti->CompteurSpriteDegat==13 || bossyeti->CompteurSpriteDegat==14 || bossyeti->CompteurSpriteDegat==15 )
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti4D.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
             }
             if (bossyeti->CompteurSpriteDegat==16 || bossyeti->CompteurSpriteDegat==17 || bossyeti->CompteurSpriteDegat==18 || bossyeti->CompteurSpriteDegat==19 )
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti5D.png");
-                drawImage(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
             }
         }
         if (bossyeti->CompteurSpriteDegat==15)
@@ -1469,7 +1469,7 @@ void Spritbossyeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
 
 
 
-void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
+void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {  
     //reset pointeur sprite
     if (chauvesouris->chauvesouris!=NULL)
@@ -1486,17 +1486,17 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
                 if (chauvesouris->NumSprit==0 || chauvesouris->NumSprit==1 || chauvesouris->NumSprit==2 || chauvesouris->NumSprit==3 ||chauvesouris->NumSprit==8 || chauvesouris->NumSprit==9 || chauvesouris->NumSprit==10 || chauvesouris->NumSprit==11 )
                 {
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreD.png");
-                    drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                 if (chauvesouris->NumSprit==4 || chauvesouris->NumSprit==5 || chauvesouris->NumSprit==6 || chauvesouris->NumSprit==7  )
                 {
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche1D.png");
-                    drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                 if (chauvesouris->NumSprit==12 || chauvesouris->NumSprit==13 || chauvesouris->NumSprit==14 || chauvesouris->NumSprit==15 )
                 {
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2D.png");
-                    drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }  
             }
 
@@ -1505,23 +1505,23 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
                 {
                     
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreG.png");
-                    drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                 if (chauvesouris->NumSprit==4 || chauvesouris->NumSprit==5 || chauvesouris->NumSprit==6 || chauvesouris->NumSprit==7  )
                 {
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche1G.png");
-                    drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
                 if (chauvesouris->NumSprit==12 || chauvesouris->NumSprit==13 || chauvesouris->NumSprit==14 || chauvesouris->NumSprit==15 )
                 {
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2G.png");
-                    drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
             } 
  
             //Attaque chauvesouris sans compt
             //si non bouclier
-            if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==0)
+            if (Inside_Chauvesouris_Chevalier(joueur,chauvesouris)==1 && joueur->Eshield==0)
             {
                 joueur->life--;
                 chauvesouris->Life--;
@@ -1529,7 +1529,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
                 lvl->MortMonstre+=1;
             }
             //si bouclier
-            if (insidechauvesouris(joueur,chauvesouris)==1 && joueur->Eshield==1)
+            if (Inside_Chauvesouris_Chevalier(joueur,chauvesouris)==1 && joueur->Eshield==1)
             {
                 chauvesouris->Life--;
                 lvl ->MortMonstre+=1;
@@ -1547,7 +1547,7 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
         if (chauvesouris->CompteurSpriteDegat==0 || chauvesouris->CompteurSpriteDegat==1 || chauvesouris->CompteurSpriteDegat==2 || chauvesouris->CompteurSpriteDegat==3 )
         {
             chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort1D.png");
-            drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
             if (chauvesouris->CompteurSpriteDegat==0)
             {
             Mix_VolumeChunk(son->mortchauvesouris, MIX_MAX_VOLUME);
@@ -1557,22 +1557,22 @@ void SpritChauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, Ef
         if (chauvesouris->CompteurSpriteDegat==4 || chauvesouris->CompteurSpriteDegat==5 || chauvesouris->CompteurSpriteDegat==6 || chauvesouris->CompteurSpriteDegat==7 )
         {
             chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort2D.png");
-            drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
         }
         if (chauvesouris->CompteurSpriteDegat==8 || chauvesouris->CompteurSpriteDegat==9 || chauvesouris->CompteurSpriteDegat==10 || chauvesouris->CompteurSpriteDegat==11)
         {
             chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort3D.png");
-            drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
         }
         if (chauvesouris->CompteurSpriteDegat==12 || chauvesouris->CompteurSpriteDegat==13 || chauvesouris->CompteurSpriteDegat==14 || chauvesouris->CompteurSpriteDegat==15 )
         {
             chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort4D.png");
-            drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
         }
         if (chauvesouris->CompteurSpriteDegat==16 || chauvesouris->CompteurSpriteDegat==17 || chauvesouris->CompteurSpriteDegat==18 || chauvesouris->CompteurSpriteDegat==19 )
         {
             chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort5D.png");
-            drawImage(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
         }
     }
     //reset compteur pour sprite
@@ -1635,36 +1635,36 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 if (boss->NumSprit==0 || boss->NumSprit==1 || boss->NumSprit==2 || boss->NumSprit==3 )
                 {
                     boss->Boss=loadImage("src/graphics/Boss/BossNeutre.png");
-                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                    Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
                 }
                 if (boss->NumSprit==4 || boss->NumSprit==5 || boss->NumSprit==6 || boss->NumSprit==7 || boss->NumSprit==29 || boss->NumSprit==30 || boss->NumSprit==31  || boss->NumSprit==32)
                 {
                     boss->Boss=loadImage("src/graphics/Boss/BossMarche1.png");
-                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                    Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
                 }
                 if (boss->NumSprit==8 || boss->NumSprit==9 || boss->NumSprit==10 || boss->NumSprit==11|| boss->NumSprit==24 || boss->NumSprit==25 || boss->NumSprit==26 || boss->NumSprit==27 || boss->NumSprit==28 )
                 {
                     boss->Boss=loadImage("src/graphics/Boss/BossMarche2.png");
-                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                    Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
                 }
                 if (boss->NumSprit==12 || boss->NumSprit==13 || boss->NumSprit==14 || boss->NumSprit==19 || boss->NumSprit==20 || boss->NumSprit==21 || boss->NumSprit==22 || boss->NumSprit==23 )                   
                 {
                     boss->Boss=loadImage("src/graphics/Boss/BossMarche3.png");
-                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                    Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
                 }
                 if (boss->NumSprit==15 || boss->NumSprit==16 || boss->NumSprit==17 || boss->NumSprit==18 )
                 {
                     boss->Boss=loadImage("src/graphics/Boss/BossMarche4.png");
-                    drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);    
+                    Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);    
                 } 
                 //degat epee
-                if(insidechevalierBoss(joueur, boss)==1 && joueur->Numattack==15)
+                if(Inside_Chevalier_Boss(joueur, boss)==1 && joueur->Numattack==15)
                 {           
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
                 }
                 //degat dague
-                if (insideVol(joueur->xdague,joueur->ydague,boss->posmonsx,boss->posmonsy,128,128,30,15)==1)
+                if (Inside_Vol(joueur->xdague,joueur->ydague,boss->posmonsx,boss->posmonsy,128,128,30,15)==1)
                 {
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
@@ -1676,7 +1676,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             {
                 boss->CompteurSpriteDegat+=1;
                 boss->Boss=loadImage("src/graphics/Boss/BossDegat.png");
-                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy); 
+                Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy); 
                 if (boss->CompteurSpriteDegat==2)
                 {
                 Mix_VolumeChunk(son->degatboss, MIX_MAX_VOLUME);
@@ -1691,7 +1691,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         //init eclair une fois par round
         if (boss->compteur == 200)
         {
-            initEclair(boss);
+            Init_Eclair(boss);
         }
         // lancement attaque eclair
         if (boss->compteur >= 200 && boss->compteur < 530)
@@ -1700,20 +1700,20 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if (boss->CompteurSpriteEclair>=0 && boss->CompteurSpriteEclair<=10 )
             {
                 boss->Eclair1=loadImage("src/graphics/Boss/WarningBoss1.png");
-                drawImage(boss->Eclair1,boss->Ex1+12,boss->Ey1-16);   
+                Draw_Image(boss->Eclair1,boss->Ex1+12,boss->Ey1-16);   
             }
             if (boss->CompteurSpriteEclair>=11 && boss->CompteurSpriteEclair<=20 )
             {
                 boss->Eclair1=loadImage("src/graphics/Boss/WarningBoss2.png");
-                drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-26);
+                Draw_Image(boss->Eclair1,boss->Ex1,boss->Ey1-26);
             }
             if (boss->CompteurSpriteEclair>=21 && boss->CompteurSpriteEclair<=30)
             {
                 boss->Eclair1=loadImage("src/graphics/Boss/EclairBoss.png");
-                drawImage(boss->Eclair1,boss->Ex1,boss->Ey1-405);
+                Draw_Image(boss->Eclair1,boss->Ex1,boss->Ey1-405);
             }
             
-            if ((boss->CompteurSpriteEclair==25 && insideEclair(joueur, boss->Ex1, boss->Ey1-405)==1))
+            if ((boss->CompteurSpriteEclair==25 && Inside_Eclair_Chevalier(joueur, boss->Ex1, boss->Ey1-405)==1))
             {
                 joueur->life--;
                 boss->coupE1=1;
@@ -1727,19 +1727,19 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if (boss->CompteurSpriteEclair>=31 && boss->CompteurSpriteEclair<=40 )
             {
                 boss->Eclair2=loadImage("src/graphics/Boss/WarningBoss1.png");
-                drawImage(boss->Eclair2,boss->Ex2+12,boss->Ey2-16);
+                Draw_Image(boss->Eclair2,boss->Ex2+12,boss->Ey2-16);
             }
             if (boss->CompteurSpriteEclair>=41 && boss->CompteurSpriteEclair<=50 )
             {
                 boss->Eclair2=loadImage("src/graphics/Boss/WarningBoss2.png");
-                drawImage(boss->Eclair2,boss->Ex2,boss->Ey2-26);
+                Draw_Image(boss->Eclair2,boss->Ex2,boss->Ey2-26);
             }
             if (boss->CompteurSpriteEclair>=51 && boss->CompteurSpriteEclair<=60 )
             {
                 boss->Eclair2=loadImage("src/graphics/Boss/EclairBoss.png");
-                drawImage(boss->Eclair2,boss->Ex2,boss->Ey2-405);
+                Draw_Image(boss->Eclair2,boss->Ex2,boss->Ey2-405);
             }
-            if ((boss->CompteurSpriteEclair==55 && insideEclair(joueur, boss->Ex2, boss->Ey2-405)==1))
+            if ((boss->CompteurSpriteEclair==55 && Inside_Eclair_Chevalier(joueur, boss->Ex2, boss->Ey2-405)==1))
             {
                 joueur->life--;
                 boss->coupE2=1;
@@ -1752,19 +1752,19 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if (boss->CompteurSpriteEclair>=61 && boss->CompteurSpriteEclair<=70 )
             {
                 boss->Eclair3=loadImage("src/graphics/Boss/WarningBoss1.png");
-                drawImage(boss->Eclair3,boss->Ex3+12,boss->Ey3-16);
+                Draw_Image(boss->Eclair3,boss->Ex3+12,boss->Ey3-16);
             }
             if (boss->CompteurSpriteEclair>=71 && boss->CompteurSpriteEclair<=80 )
             {
                 boss->Eclair3=loadImage("src/graphics/Boss/WarningBoss2.png");
-                drawImage(boss->Eclair3,boss->Ex3,boss->Ey3-26);
+                Draw_Image(boss->Eclair3,boss->Ex3,boss->Ey3-26);
             }
             if (boss->CompteurSpriteEclair>=81 && boss->CompteurSpriteEclair<=90 )
             {
                 boss->Eclair3=loadImage("src/graphics/Boss/EclairBoss.png");
-                drawImage(boss->Eclair3,boss->Ex3,boss->Ey3-405);
+                Draw_Image(boss->Eclair3,boss->Ex3,boss->Ey3-405);
             }
-            if ((boss->CompteurSpriteEclair==85 && insideEclair(joueur, boss->Ex3, boss->Ey3-405)==1))
+            if ((boss->CompteurSpriteEclair==85 && Inside_Eclair_Chevalier(joueur, boss->Ex3, boss->Ey3-405)==1))
             {
                 joueur->life--;
                 boss->coupE3=1;
@@ -1778,19 +1778,19 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if (boss->CompteurSpriteEclair>=91 && boss->CompteurSpriteEclair<=100 )
             {
                 boss->Eclair4=loadImage("src/graphics/Boss/WarningBoss1.png");
-                drawImage(boss->Eclair4,boss->Ex4+12,boss->Ey4-16);
+                Draw_Image(boss->Eclair4,boss->Ex4+12,boss->Ey4-16);
             }
             if (boss->CompteurSpriteEclair>=101 && boss->CompteurSpriteEclair<=110 )
             {
                 boss->Eclair4=loadImage("src/graphics/Boss/WarningBoss2.png");
-                drawImage(boss->Eclair4,boss->Ex4,boss->Ey4-26);
+                Draw_Image(boss->Eclair4,boss->Ex4,boss->Ey4-26);
             }
             if (boss->CompteurSpriteEclair>=111 && boss->CompteurSpriteEclair<=121 )
             {
                 boss->Eclair4=loadImage("src/graphics/Boss/EclairBoss.png");
-                drawImage(boss->Eclair4,boss->Ex4,boss->Ey4-405);
+                Draw_Image(boss->Eclair4,boss->Ex4,boss->Ey4-405);
             }
-            if ((boss->CompteurSpriteEclair==115 && insideEclair(joueur, boss->Ex4, boss->Ey4-405)==1))
+            if ((boss->CompteurSpriteEclair==115 && Inside_Eclair_Chevalier(joueur, boss->Ex4, boss->Ey4-405)==1))
             {
                 joueur->life--;
                 boss->coupE4=1;
@@ -1807,22 +1807,22 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if (boss->NumSprit==0 || boss->NumSprit==1 || boss->NumSprit==2 || boss->NumSprit==3 )
             {
                 boss->Boss=loadImage("src/graphics/Boss/Bossattaque1.png");
-                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
             }
             if (boss->NumSprit==4 || boss->NumSprit==5 || boss->NumSprit==6 || boss->NumSprit==7 || boss->NumSprit==29 || boss->NumSprit==30 || boss->NumSprit==31 || boss->NumSprit==32 )
             {
                 boss->Boss=loadImage("src/graphics/Boss/Bossattaque2.png");
-                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
             }
             if (boss->NumSprit==8 || boss->NumSprit==9 || boss->NumSprit==10 || boss->NumSprit==11|| boss->NumSprit==24 || boss->NumSprit==25 || boss->NumSprit==26 || boss->NumSprit==27 || boss->NumSprit==28 )
             {
                 boss->Boss=loadImage("src/graphics/Boss/Bossattaque3.png");
-                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
             }
             if (boss->NumSprit==12 || boss->NumSprit==13 || boss->NumSprit==14 || boss->NumSprit==19 || boss->NumSprit==20 || boss->NumSprit==21 || boss->NumSprit==22 || boss->NumSprit==23 )
             {
                 boss->Boss=loadImage("src/graphics/Boss/Bossattaque4.png");                    
-                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
             }
             if (boss->NumSprit==15 || boss->NumSprit==16 || boss->NumSprit==17 || boss->NumSprit==18 )
             {   if (boss->NumSprit==15)
@@ -1831,11 +1831,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 Mix_PlayChannel(7, son->attaqueboss, 0);
                 }
                 boss->Boss=loadImage("src/graphics/Boss/Bossattaque5.png");
-                drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+                Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
                 boss->Bossattaque=loadImage("src/graphics/Boss/AttaqueBoss.png");
-                drawImage(boss->Bossattaque,boss->posmonsx -46 ,boss->posmonsy - 46);
+                Draw_Image(boss->Bossattaque,boss->posmonsx -46 ,boss->posmonsy - 46);
                 //fonction inside
-                if(insideBoss(joueur, boss)==1 && (boss->NumSprit==15 || boss->NumSprit==18))                    
+                if(Inside_Boss_Meduse_Chevalier(joueur, boss)==1 && (boss->NumSprit==15 || boss->NumSprit==18))                    
                 {
                     if (boss->coup == 0)
                     {
@@ -1866,55 +1866,55 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         if (boss->CompteurSpriteDegat>=0 && boss->CompteurSpriteDegat <= 5 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort1.png");
-            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
             Mix_VolumeChunk(son->mortboss, MIX_MAX_VOLUME);
             Mix_PlayChannel(6, son->mortboss, 0);
         }
         if (boss->CompteurSpriteDegat>= 6 && boss->CompteurSpriteDegat<=10 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort2.png");
-            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
         if (boss->CompteurSpriteDegat>=11 && boss->CompteurSpriteDegat<=15)
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort3.png");
-            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
         if (boss->CompteurSpriteDegat>=16 && boss->CompteurSpriteDegat<=20 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort4.png");
-            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
         if (boss->CompteurSpriteDegat==21)
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort5.png");
-            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
         //Coffre ouvert
         if (boss->CompteurSpriteDegat>=22 )
         {
             boss->Boss=loadImage("src/graphics/Boss/Bossmort6.png");
-            drawImage(boss->Boss,boss->posmonsx,boss->posmonsy);
+            Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
         }
         if (boss->CompteurSpriteDegat>22 && boss->CompteurSpriteDegat<27)
         {
             boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
-            drawImage(boss->Coeur,boss->posmonsx,boss->posmonsy+78);
+            Draw_Image(boss->Coeur,boss->posmonsx,boss->posmonsy+78);
         }
         if (boss->CompteurSpriteDegat>=27 && boss->CompteurSpriteDegat<32)
         {
             boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
-            drawImage(boss->Coeur,boss->posmonsx-5,boss->posmonsy+73);
+            Draw_Image(boss->Coeur,boss->posmonsx-5,boss->posmonsy+73);
         }
         if (boss->CompteurSpriteDegat>=32 && boss->CompteurSpriteDegat<37)
         {
             boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
-            drawImage(boss->Coeur,boss->posmonsx-10,boss->posmonsy+68);
+            Draw_Image(boss->Coeur,boss->posmonsx-10,boss->posmonsy+68);
         }
         if (boss->CompteurSpriteDegat>=37 && boss->CompteurSpriteDegat<42)
         {
             boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
-            drawImage(boss->Coeur,boss->posmonsx-15,boss->posmonsy+73);
+            Draw_Image(boss->Coeur,boss->posmonsx-15,boss->posmonsy+73);
         }
         if (boss->CompteurSpriteDegat>=42)
         {
@@ -1923,14 +1923,14 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 if (boss->CompteurSpriteDegat % 50 == 0)
                 {
                     boss->Coeur=loadImage("src/graphics/lvl/Coeur1.png");
-                    drawImage(boss->Coeur,boss->posmonsx-20,boss->posmonsy+78);
+                    Draw_Image(boss->Coeur,boss->posmonsx-20,boss->posmonsy+78);
                 }
                 else
                 {
                     boss->Coeur=loadImage("src/graphics/lvl/Coeur2.png");
-                    drawImage(boss->Coeur,boss->posmonsx-20,boss->posmonsy+78);
+                    Draw_Image(boss->Coeur,boss->posmonsx-20,boss->posmonsy+78);
                 }
-                if (insideItem(joueur,boss)==1)
+                if (Inside_Item(joueur,boss)==1)
                 {
                     joueur->life++;
                     boss->RecupCoeur=1;
@@ -1945,7 +1945,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
     } 
 }
 
-void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl, EffetSon *son)
+void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl, EffetSon *son)
 {   //Verification pointeur pour memoire
     if (marchand->Jerem !=NULL)
     {
@@ -1989,7 +1989,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
     {
         //Affichage de la table 
         marchand->Table=loadImage("src/graphics/Marchand/Table.png");
-        drawImage(marchand->Table,220,55);
+        Draw_Image(marchand->Table,220,55);
     }
     //Compteur des sprites
     marchand->Compteur1 +=1 ;
@@ -1999,21 +1999,21 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
     if (lvl->Num == 4 || (lvl->Num == 5 && lvl->WinDonjon<=2))
     {
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        drawImage(marchand->Enter,463,300);
+        Draw_Image(marchand->Enter,463,300);
         if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
         {
             marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy1.png");
-            drawImage(marchand->Jerem,450,210);
+            Draw_Image(marchand->Jerem,450,210);
         }
         if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
         {
             marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy2.png");
-            drawImage(marchand->Jerem,448,210);
+            Draw_Image(marchand->Jerem,448,210);
         }
         if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
         { 
             marchand->Jerem=loadImage("src/graphics/Marchand/Jarmy3.png");
-            drawImage(marchand->Jerem,450,210);
+            Draw_Image(marchand->Jerem,450,210);
         }
     }
     //Bule donjon bleu avec dague
@@ -2029,17 +2029,17 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
             if (marchand->CompteurMess1==1)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau1.png");
-                drawImage(marchand->bulle,210,130);
+                Draw_Image(marchand->bulle,210,130);
             }
             if (marchand->CompteurMess1==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau2.png");
-                drawImage(marchand->bulle,210,130);
+                Draw_Image(marchand->bulle,210,130);
             }
             if (marchand->CompteurMess1==3)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau3.png");
-                drawImage(marchand->bulle,210,95);
+                Draw_Image(marchand->bulle,210,95);
                 if (joueur->nbDague == 0)
                 {
                     joueur->nbDague=1;
@@ -2073,7 +2073,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
             if (marchand->CompteurMess1==1)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy1.png");
-                drawImage(marchand->bulle,210,130);
+                Draw_Image(marchand->bulle,210,130);
                 son->CompteurJerm++;
                 if (son->CompteurJerm==1)
                 {
@@ -2084,7 +2084,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
             if (marchand->CompteurMess1==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy2.png");
-                drawImage(marchand->bulle,210,130);
+                Draw_Image(marchand->bulle,210,130);
                 son->CompteurJerm++;
                 if (son->CompteurJerm==1)
                 {
@@ -2095,7 +2095,7 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
             if (marchand->CompteurMess1==3)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleJermy3.png");
-                drawImage(marchand->bulle,210,95);
+                Draw_Image(marchand->bulle,210,95);
                 son->CompteurJerm++;
                 if (son->CompteurJerm==1)
                 {
@@ -2117,21 +2117,21 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
 
         //Sprite Karine 
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        drawImage(marchand->Enter,138,120);
+        Draw_Image(marchand->Enter,138,120);
         if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
         {
             marchand->Marchand=loadImage("src/graphics/Marchand/Karine1.png");
-            drawImage(marchand->Marchand,160,50);
+            Draw_Image(marchand->Marchand,160,50);
         }
         if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
         {
             marchand->Marchand=loadImage("src/graphics/Marchand/Karine2.png");
-            drawImage(marchand->Marchand,160,50);
+            Draw_Image(marchand->Marchand,160,50);
         }
         if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
         { 
             marchand->Marchand=loadImage("src/graphics/Marchand/Karine3.png");
-            drawImage(marchand->Marchand,160,50);
+            Draw_Image(marchand->Marchand,160,50);
         }
         
 
@@ -2146,17 +2146,17 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
             if (marchand->CompteurMess2==1)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine1.png");
-                drawImage(marchand->bulle,10,115);
+                Draw_Image(marchand->bulle,10,115);
             }
             if (marchand->CompteurMess2==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine2.png");
-                drawImage(marchand->bulle,10,115);
+                Draw_Image(marchand->bulle,10,115);
             }
             if (marchand->CompteurMess2==3)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine3.png");
-                drawImage(marchand->bulle,10,115);
+                Draw_Image(marchand->bulle,10,115);
 
                 //Achat de coeur
                 if (input->attack == 1)
@@ -2181,21 +2181,21 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
 
         //Sprite bec
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        drawImage(marchand->Enter, 95,310);
+        Draw_Image(marchand->Enter, 95,310);
         if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
         {
             marchand->Bec=loadImage("src/graphics/Marchand/Bec1.png");
-            drawImage(marchand->Bec,60,220); 
+            Draw_Image(marchand->Bec,60,220); 
         }
         if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
         {
             marchand->Bec=loadImage("src/graphics/Marchand/Bec2.png");
-            drawImage(marchand->Bec,60,220);
+            Draw_Image(marchand->Bec,60,220);
         }
         if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
         { 
             marchand->Bec=loadImage("src/graphics/Marchand/Bec3.png");
-            drawImage(marchand->Bec,60,220);
+            Draw_Image(marchand->Bec,60,220);
         }
         //bulle Bec
         if (joueur->inposx >= 180 && joueur->inposx <= 240 && joueur->inposy >= 185 && joueur->inposy<280)
@@ -2210,17 +2210,17 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
             if (marchand->CompteurMess3==1)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleBec1.png");
-                drawImage(marchand->bulle,55,170);
+                Draw_Image(marchand->bulle,55,170);
             }
             if (marchand->CompteurMess3==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleBec2.png");
-                drawImage(marchand->bulle,55,170);
+                Draw_Image(marchand->bulle,55,170);
             }
             if (marchand->CompteurMess3==3)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleBec3.png");
-                drawImage(marchand->bulle,55,170);
+                Draw_Image(marchand->bulle,55,170);
             }
         }
         //remise a zero du compteur
@@ -2239,23 +2239,23 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
         if (marchand->Compteur1<10 || marchand->Compteur1>=40)
         {
             marchand->Tanguy=loadImage("src/graphics/Rivière/TurboTangui.png");
-            drawImage(marchand->Tanguy,255,198);
+            Draw_Image(marchand->Tanguy,255,198);
         }
         if ((marchand->Compteur1>=10 && marchand->Compteur1 < 20) ||( marchand->Compteur1>=30 && marchand->Compteur1<40))
         {
             marchand->Tanguy=loadImage("src/graphics/Rivière/TurboTangui.png");
-            drawImage(marchand->Tanguy,255,195);
+            Draw_Image(marchand->Tanguy,255,195);
         }
         if (marchand->Compteur1>=20 && marchand->Compteur1<30)
         {
             marchand->Tanguy=loadImage("src/graphics/Rivière/TurboTangui.png");
-            drawImage(marchand->Tanguy,255,192);
+            Draw_Image(marchand->Tanguy,255,192);
         }
         //Bateau joueur
         if (joueur->Ebateau == 1)
         {
             marchand->Bateau=loadImage("src/graphics/Rivière/Bateau.png");
-            drawImage(marchand->Bateau,95,297);
+            Draw_Image(marchand->Bateau,95,297);
         }
         if (joueur->inposx >= 100 && joueur->inposx <= 220 && joueur->inposy >= 135 && joueur->inposy<200)
         {
@@ -2267,17 +2267,17 @@ void GestionMarchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl
              if (marchand->CompteurMess1==1)
             {
                 marchand->bulle=loadImage("src/graphics/Rivière/BulleTanguy1.png");
-                drawImage(marchand->bulle,255,62);
+                Draw_Image(marchand->bulle,255,62);
             }
             if (marchand->CompteurMess1==2)
             {
                 marchand->bulle=loadImage("src/graphics/Rivière/BulleTanguy2.png");
-                drawImage(marchand->bulle,255,62);
+                Draw_Image(marchand->bulle,255,62);
             }
             if (marchand->CompteurMess1==3)
             {
                 marchand->bulle=loadImage("src/graphics/Rivière/BulleTanguy3.png");
-                drawImage(marchand->bulle,255,62);
+                Draw_Image(marchand->bulle,255,62);
                 joueur->Ebateau=1;
             }
         }
@@ -2324,7 +2324,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if(Gros_rocher->Etat==0)
         {
             Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
-            drawImage(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
+            Draw_Image(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
             Gros_rocher->x-=10;
             if (Gros_rocher->x==-140)
             {
@@ -2336,7 +2336,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if(Petit_rocher->Etat ==0)
         { 
             Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
-            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
+            Draw_Image(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
             Petit_rocher->x-=10;
             if (Petit_rocher->x <= -110)
             {
@@ -2352,7 +2352,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if(tronc->Etat==0)
         {
             tronc->Image=loadImage("src/graphics/Rivière/tronc.png");
-            drawImage(tronc->Image,tronc->x,tronc->y);
+            Draw_Image(tronc->Image,tronc->x,tronc->y);
             tronc->x-=10;
             if (tronc->x==-150)
             {
@@ -2366,7 +2366,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if(Gros_rocher->Etat ==0)
         { 
             Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
-            drawImage(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
+            Draw_Image(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
             Gros_rocher->x-=10;
             if (Gros_rocher->x <= -180)
             {
@@ -2381,7 +2381,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if(Petit_rocher->Etat==0)
         {
             Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
-            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
+            Draw_Image(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
             Petit_rocher->x-=10;
             if (Petit_rocher->x <= -110)
             {
@@ -2394,7 +2394,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if(tronc->Etat==0)
         {
             tronc->Image=loadImage("src/graphics/Rivière/Tronc.png");
-            drawImage(tronc->Image,tronc->x,tronc->y);
+            Draw_Image(tronc->Image,tronc->x,tronc->y);
             tronc->x-=10;
             if (tronc->x<=-150)
             {
@@ -2411,7 +2411,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if(Gros_rocher->Etat ==0)
         { 
             Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
-            drawImage(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
+            Draw_Image(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
             Gros_rocher->x-=10;
             if (Gros_rocher->x <= -180)
             {
@@ -2426,7 +2426,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if(tronc->Etat==0)
         {
             tronc->Image=loadImage("src/graphics/Rivière/Tronc.png");
-            drawImage(tronc->Image,tronc->x,tronc->y);
+            Draw_Image(tronc->Image,tronc->x,tronc->y);
             tronc->x-=10;
             if (tronc->x<=-150)
             {
@@ -2443,7 +2443,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if (Petit_rocher->Etat==0)
         {
             Petit_rocher->Image=loadImage("src/graphics/Rivière/Petitrocher.png");
-            drawImage(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
+            Draw_Image(Petit_rocher->Image,Petit_rocher->x,Petit_rocher->y);
             Petit_rocher->x-=10;
             if (Petit_rocher->x <= -110)
             {
@@ -2457,7 +2457,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         if(Gros_rocher->Etat ==0)
         { 
             Gros_rocher->Image=loadImage("src/graphics/Rivière/Grosrocher.png");
-            drawImage(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
+            Draw_Image(Gros_rocher->Image,Gros_rocher->x,Gros_rocher->y);
             Gros_rocher->x-=10;
             if (Gros_rocher->x <= -180)
             {
@@ -2468,7 +2468,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
     }
 if (lvl->Avancement10<=11)
 {
-    if (insideVol(tronc->x,tronc->y, joueur->inposx, joueur->inposy,79,70,100,52)==1)
+    if (Inside_Vol(tronc->x,tronc->y, joueur->inposx, joueur->inposy,79,70,100,52)==1)
     {
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
@@ -2480,7 +2480,7 @@ if (lvl->Avancement10<=11)
     {
         tronc->coup+=1;
     }
-    if (insideVol(Petit_rocher->x,Petit_rocher->y, joueur->inposx, joueur->inposy,79,70,80,80)==1)
+    if (Inside_Vol(Petit_rocher->x,Petit_rocher->y, joueur->inposx, joueur->inposy,79,70,80,80)==1)
     {
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
@@ -2493,7 +2493,7 @@ if (lvl->Avancement10<=11)
         Petit_rocher->coup+=1;
     }
                                                                                     //x
-    if (insideVol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,79,70,110,105)==1)
+    if (Inside_Vol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,79,70,110,105)==1)
     {
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
@@ -2512,7 +2512,7 @@ if (lvl->Avancement10<=11)
         if(tanguy->x<500 && tanguy->Etat==0)
         { 
             tanguy->Image=loadImage("src/graphics/Rivière/TurboTanguiCourse.png");
-            drawImage(tanguy->Image,tanguy->x,tanguy->y);
+            Draw_Image(tanguy->Image,tanguy->x,tanguy->y);
             tanguy->x+=5;
         }
         else
@@ -2521,7 +2521,7 @@ if (lvl->Avancement10<=11)
             tanguy->Etat=1;
             son->soncoule+=1;
             tanguy->Image=loadImage("src/graphics/Rivière/TanguiCoule.png");
-            drawImage(tanguy->Image,tanguy->x,tanguy->y);
+            Draw_Image(tanguy->Image,tanguy->x,tanguy->y);
             if (son->soncoule==1)
             {
             Mix_VolumeChunk(son->collisionR, MIX_MAX_VOLUME/2);
@@ -2538,14 +2538,14 @@ if (lvl->Avancement10<=11)
         joueur->inposx = 475;
         joueur->inposy = 180;
         marchand->Bateau=loadImage("src/graphics/Rivière/Bateau.png");
-        drawImage(marchand->Bateau,450,300);
+        Draw_Image(marchand->Bateau,450,300);
     }
 
     //dessin bateau
     if (joueur->Ebateau==1)
     {
         marchand->Bateau=loadImage("src/graphics/Rivière/Bateau.png");
-        drawImage(marchand->Bateau,460,300);
+        Draw_Image(marchand->Bateau,460,300);
     }   
 
     if (tronc->coup >= 30 || Gros_rocher->coup >= 30 || Petit_rocher->coup >= 30)

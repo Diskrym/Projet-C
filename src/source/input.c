@@ -4,10 +4,10 @@
 // void gestionInputs(Input *input)
 // {
 //     //On gère le clavier
-//     getInput(input);
+//     Get_Input(input);
 // }
  
-void getInput(Input *input)
+void Get_Input(Input *input)
 {
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -137,7 +137,7 @@ void getInput(Input *input)
     }
 }
 
-void deplacement (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,Lvl *lvl)
+void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,Lvl *lvl)
 {  
     //Si on a pas le bouclier on se déplace
     if (!(joueur->Eshield==1 && joueur->TimingBouclier<15) && input->shield==0)
@@ -209,10 +209,10 @@ void deplacement (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,
         joueur->Eshield=0;
         joueur->TimingBouclier=0;
     }
-    SpritHeros(joueur, input, son, entité, lvl);
+    Sprit_Chevalier(joueur, input, son, entité, lvl);
 }
 
-void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
+void Deplacement_Meduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
 {
     meduse->compteur += 1;
     meduse->NumSprit+=1;
@@ -247,10 +247,10 @@ void deplacementMeduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
         }
 
     }
-    SpritMeduse (meduse, joueur, lvl, son);
+    Sprit_Meduse (meduse, joueur, lvl, son);
 }
 
-void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl, EffetSon *son)
+void Deplacement_Chauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl, EffetSon *son)
 {
     chauvesouris->NumSprit+=1;
     if  (chauvesouris->Life==0 && chauvesouris->CompteurSpriteDegat<19)
@@ -279,10 +279,10 @@ void deplacementChauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *l
             chauvesouris->posmonsy+=2;
         }
     }
-    SpritChauvesouris (chauvesouris, joueur, lvl, son);
+    Sprit_Chauvesouris (chauvesouris, joueur, lvl, son);
 }
 
-void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
+void Deplacement_Yeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
 {   
     yeti->compteur+=1;
     yeti->NumSprit+=1;
@@ -314,11 +314,11 @@ void deplacementyeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
         }
  
     }
-    Sprityeti (yeti, joueur, lvl, son);
+    Sprit_Yeti (yeti, joueur, lvl, son);
 }
 
 
-void deplacementbossyeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetSon *son)
+void Deplacement_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetSon *son)
 {  
     bossyeti->compteur+=1;
     bossyeti->NumSprit+=1;
@@ -350,17 +350,17 @@ void deplacementbossyeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetSon
         }
  
     }
-    Spritbossyeti (bossyeti, joueur, lvl, son);
+    Sprit_Boss_Yeti (bossyeti, joueur, lvl, son);
 }
 
 
 
-void deplacementBoss (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son)
+void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son)
 {
     boss->compteur += 1;
     boss->NumSprit+=1;
     //gestion mort + ouverture coffre
-    if (boss->CompteurSpriteDegat==21 && insideBoss(joueur, boss)==1 && input->enter == 1)
+    if (boss->CompteurSpriteDegat==21 && Inside_Boss_Meduse_Chevalier(joueur, boss)==1 && input->enter == 1)
     {
         boss->CompteurSpriteDegat=22;
         Mix_VolumeChunk(son->coffre, MIX_MAX_VOLUME);

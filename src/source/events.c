@@ -1,7 +1,7 @@
 #include "../header/proto.h"
 
 //collision entre le joueur et les murs // haut ,bas ,gauche, droite
-void collisionmur (Joueur *joueur, int x, int y, int z, int u)
+void Collision_Mur (Joueur *joueur, int x, int y, int z, int u)
 {
     //mur du haut
     if (joueur->inposy <= x)
@@ -26,7 +26,7 @@ void collisionmur (Joueur *joueur, int x, int y, int z, int u)
 }
 
  //collision entre les meduse et joueur
-void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
+void Collision_Meduse (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
 {
    //collision haut joueur
     if (meduse->Life!=0)
@@ -107,7 +107,7 @@ void collision (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
 }
 
 //collision entre le boss et joueur
-void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
+void Collision_Boss_Meduse (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
 {  
     if (boss->Life!=0)
     {   //collision haut joueur
@@ -165,7 +165,7 @@ void collisionboss (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
 }
 
 //collision entre le yeti et joueur
-void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
+void Collision_Yeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
 {  
     if (yeti->Life!=0)
     {   //collision haut joueur
@@ -222,7 +222,7 @@ void collisionyeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
     }
 }
 
-void collisionbossyeti (Joueur *joueur, BossYeti *bossyeti, Input *input, Lvl *lvl)
+void Collision_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Input *input, Lvl *lvl)
 {  
     if (bossyeti->Life!=0)
     {   //collision haut joueur
@@ -282,7 +282,7 @@ void collisionbossyeti (Joueur *joueur, BossYeti *bossyeti, Input *input, Lvl *l
 
 
 
-void collisionDecor (Joueur *joueur, Input *input, int x1, int x2, int y1, int y2)
+void Collision_Decor (Joueur *joueur, Input *input, int x1, int x2, int y1, int y2)
 {  
     
     //collision haut joueur
@@ -336,7 +336,7 @@ void collisionDecor (Joueur *joueur, Input *input, int x1, int x2, int y1, int y
 
     
 //test si l'attaque du joueur touche la méduse
-int insidechevalier (Joueur *joueur, Meduse *meduse)
+int Inside_Chevalier_Meduse (Joueur *joueur, Meduse *meduse)
 {
     int x=0;
     int y=0;
@@ -374,7 +374,7 @@ int insidechevalier (Joueur *joueur, Meduse *meduse)
 }
 
 //test si l'attaque du joueur touche le boss
-int insidechevalierBoss (Joueur *joueur, Boss *boss)
+int Inside_Chevalier_Boss (Joueur *joueur, Boss *boss)
 {       
     int x=0;
     int y=0;
@@ -412,7 +412,7 @@ int insidechevalierBoss (Joueur *joueur, Boss *boss)
 }
 
 //test si l'attaque du joueur touche le yeti
-int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
+int Inside_Chevalier_Yeti (Joueur *joueur, Yeti *yeti)
 {       
     int x=0;
     int y=0;
@@ -450,7 +450,7 @@ int insidechevalieryeti (Joueur *joueur, Yeti *yeti)
 }
 
 
-int insidechevalierbossyeti (Joueur *joueur, BossYeti *bossyeti)
+int Inside_Chevalier_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti)
 {      
     int x=0;
     int y=0;
@@ -490,7 +490,7 @@ int insidechevalierbossyeti (Joueur *joueur, BossYeti *bossyeti)
 
 
 //test si l'attaque de la méduse touche le joueur
-int inside (Joueur *joueur, Meduse *meduse)
+int Inside_Meduse_Chevalier (Joueur *joueur, Meduse *meduse)
 {
     int x=0;
     int y=0;
@@ -509,7 +509,7 @@ int inside (Joueur *joueur, Meduse *meduse)
 }
 
 //test si l'attaque de la chauve-souris touche le joueur
-int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris)
+int Inside_Chauvesouris_Chevalier (Joueur *joueur, Chauvesouris *chauvesouris)
 {
     int x=0;
     int y=0;
@@ -529,7 +529,7 @@ int insidechauvesouris (Joueur *joueur, Chauvesouris *chauvesouris)
 }
  
 //test si l'attaque du boss touche le joueur
-int insideBoss (Joueur *joueur, Boss *boss)
+int Inside_Boss_Meduse_Chevalier (Joueur *joueur, Boss *boss)
 {
     int x=0;
     int y=0;
@@ -548,7 +548,7 @@ int insideBoss (Joueur *joueur, Boss *boss)
 }
 
 //test si les éclairs touchent le joueur
-int insideEclair(Joueur *joueur,int Eclairx, int Eclairy)
+int Inside_Eclair_Chevalier(Joueur *joueur,int Eclairx, int Eclairy)
 {
     int x=0;
     int y=0;
@@ -567,7 +567,7 @@ int insideEclair(Joueur *joueur,int Eclairx, int Eclairy)
 }
 
 //recup item
-int insideItem (Joueur *joueur, Boss *boss)
+int Inside_Item (Joueur *joueur, Boss *boss)
 {
     int x=0;
     int y=0;
@@ -586,7 +586,7 @@ int insideItem (Joueur *joueur, Boss *boss)
 }
 
 //            pos objet vol x,y  pos cible    taille cible x,y         taille obj vol x,y 
-int insideVol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObjx, int tailleObjy)
+int Inside_Vol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObjx, int tailleObjy)
 {
     int a=0;
     int b=0;
@@ -606,7 +606,7 @@ int insideVol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tail
 }
 
 //Indique au chevalier s'il prend des dégats
-int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, BossYeti *bossyeti)
+int Degat_Chevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, BossYeti *bossyeti)
 {
     if  (meduse->coup==0 && meduse1->coup==0 && meduse2->coup==0 && chauvesouris->coup==0 && chauvesouris1->coup==0 && boss->coup==0 && boss->coupE1==0 && boss->coupE2==0 && boss->coupE3==0 && boss->coupE4==0 && yeti->coup==0 && yeti1->coup==0 && yeti2->coup==0 && bossyeti->coup==0)
     {
@@ -618,7 +618,7 @@ int DegatChevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesour
     }
 }
 
-int DegatBateau (Obstacle *tronc, Obstacle *Petit_rocher, Obstacle *Gros_rocher)
+int Degat_Bateau (Obstacle *tronc, Obstacle *Petit_rocher, Obstacle *Gros_rocher)
 {
     if (tronc->coup == 0 && Gros_rocher->coup == 0 && Petit_rocher->coup == 0)
     {
