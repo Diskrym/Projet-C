@@ -82,12 +82,12 @@ init("Dungeon Fate");
             Game_Over (&son);
             lvl.reset=1;
         }
-        Gestion_Map(&joueur, &lvl, &entité, &son, &input);
+        Gestion_Map(&joueur, &lvl, &entité, &son, &input, &stats, &paramtexte);
         //Gestion des inputs clavier
         //gestionInputs(&input);
         Get_Input(&input);
 
-        if(lvl.Num != -1 && lvl.Num != -2)
+        if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num !=-3)
         {
             //IA monstre
             Gestion_Entité(&entité, &lvl, &input ,&joueur, &son);

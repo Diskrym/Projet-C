@@ -16,7 +16,7 @@ extern void Render_Level (Lvl *lvl);
 extern void Render_Door (Lvl *lvl);
 extern void Menu (Lvl *lvl);
 extern void Break_Menu (Lvl *lvl);
-extern void Stats_Menu(Lvl *lvl);
+extern void Stats_Menu(Lvl *lvl,Stats*stats, ParamTexte *paramtexte);
 extern void Statistiques(Stats *stats,Joueur *joueur, Lvl *lvl);
 
 //events.c
@@ -77,7 +77,7 @@ extern void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input
 //map.c
 extern void Init_Maps(Lvl *lvl);
 extern SDL_Texture *getBackground(void);
-extern void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son, Input *input);
+extern void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son, Input *input,Stats*stats, ParamTexte *paramtexte);
 extern void Gestion_Map_Global (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input);
 
 //Sprit.c

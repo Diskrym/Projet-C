@@ -604,7 +604,6 @@ int Inside_Vol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tai
         return 1;
     }
 }
-
 //Indique au chevalier s'il prend des dégats
 int Degat_Chevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, BossYeti *bossyeti)
 {

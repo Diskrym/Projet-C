@@ -94,6 +94,7 @@ void Son (EffetSon *son)
 void Texte(ParamTexte *paramtexte)
 {
     paramtexte->Font = TTF_OpenFont("src/font/Pixel.ttf", 25);
+    paramtexte->Fontpetite = TTF_OpenFont("src/font/Pixel.ttf", 15);
 }
 
 void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
@@ -521,14 +522,15 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         {
             lvl->Num = -3;
         }
-
-        if (lvl->Num = -3)
+    }
+    if (lvl->Num == -3)
+    {
+        if (input->PosMouseX >= 222 && input->PosMouseX <= 416 && input->PosMouseY >= 313 && input->PosMouseY <= 351)
         {
-            
+            lvl->Num = -2 ;
         }
         
-        
-    }   
+    }  
 }
 
 void Load_Game (Joueur *joueur, Lvl *lvl)
@@ -540,9 +542,5 @@ void Load_Game (Joueur *joueur, Lvl *lvl)
         printf ("Le fichier %s a pu etre ouvert en ecriture.\n", nomFichier);
         fscanf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",&joueur->life,&joueur->AttPiece,&joueur->NbPiece,&joueur->nbDague,&lvl->WinDonjon);
         fclose (fichier);
-    }
-    else
-    {
-        printf("ya r");
     }
 }

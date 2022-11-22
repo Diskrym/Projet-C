@@ -143,9 +143,26 @@ typedef struct EffetSon
 typedef struct ParamTexte
 {
     TTF_Font *Font;
+    TTF_Font *Fontpetite;
     SDL_Surface *SurfacePiece;
     SDL_Texture *TexturePiece;
+    SDL_Surface *SurfaceGold;
+    SDL_Texture *TextureGold;
+    SDL_Surface *SurfaceKilled;
+    SDL_Texture *TextureKilled;
+    SDL_Surface *SurfaceDeath;
+    SDL_Texture *TextureDeath;
+    SDL_Surface *SurfaceDaggers;
+    SDL_Texture *TextureDaggers;
+    SDL_Surface *SurfaceRatio;
+    SDL_Texture *TextureRatio;
+    
     char StrPiece[3];
+    char Gold_Won[5];
+    char Monsters_Killed[5];
+    char Total_Death[5];
+    char Thrown_Daggers[5];
+    char Ratio[3];
 }ParamTexte;
 
 
@@ -171,6 +188,7 @@ typedef struct Lvl
 typedef struct Stats
 {
     int Total_pièce,Temp_pièce, Total_Tués, Temp_Tués, Total_Mort, Dague_Lancées,Temp_Dague_Lancées,Total_Dégats,Temp_Dégats;
+    float KDA;
 } Stats;
 
  /*

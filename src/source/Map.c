@@ -30,7 +30,7 @@ void Init_Maps(Lvl *lvl)
     }
 }
   
-void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input)
+void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input,Stats*stats, ParamTexte *paramtexte)
 {  
     //Map global
     if (lvl->Num == -1)
@@ -44,7 +44,7 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
 
     else if (lvl->Num == -3)
     {
-        Stats_Menu(lvl);
+        Stats_Menu(lvl,stats,paramtexte);
     }
     
     else

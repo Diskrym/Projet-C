@@ -352,15 +352,44 @@ void Break_Menu (Lvl *lvl)
     Draw_Image(lvl->Menu,0,0); 
 }
 
-void Stats_Menu(Lvl *lvl)
+void Stats_Menu(Lvl *lvl,Stats *stats, ParamTexte *paramtexte)
 {
     if (lvl->Menu!=NULL)
     {
         SDL_DestroyTexture(lvl->Menu);
         lvl->Menu=NULL;
     }
-    lvl->Menu=loadImage("src/graphics/lvl/Game_Menu.png");
+
+    lvl->Menu=loadImage("src/graphics/lvl/MenuStats.png");
     Draw_Image(lvl->Menu,0,0);
+
+    SDL_Color color = { 255, 255, 255 };
+    //pièce
+    SDL_itoa(stats->Total_pièce, paramtexte->Gold_Won,10); 
+    paramtexte->SurfaceGold = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Gold_Won, color);
+    paramtexte->TextureGold = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceGold);
+    Draw_Image(paramtexte->TextureGold  ,422,135); 
+    //Monstre tués
+    SDL_itoa(stats->Total_Tués, paramtexte->Monsters_Killed,10); 
+    paramtexte->SurfaceKilled = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Monsters_Killed, color);
+    paramtexte->TextureKilled = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceKilled);
+    Draw_Image(paramtexte->TextureKilled  ,422,159); 
+    //Total mort
+    SDL_itoa(stats->Total_Mort/2, paramtexte->Total_Death,10); 
+    paramtexte->SurfaceDeath = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Total_Death, color);
+    paramtexte->TextureDeath = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceDeath);
+    Draw_Image(paramtexte->TextureDeath  ,422,183);
+    //Total dagues
+    SDL_itoa(stats->Dague_Lancées, paramtexte->Thrown_Daggers,10); 
+    paramtexte->SurfaceDaggers = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Thrown_Daggers, color);
+    paramtexte->TextureDaggers = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceDaggers);
+    Draw_Image(paramtexte->TextureDaggers,422,207); 
+    //Ratio
+    SDL_itoa(stats->KDA, paramtexte->Ratio,10); 
+    paramtexte->SurfaceRatio = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Ratio, color);
+    paramtexte->TextureRatio = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceRatio);
+    Draw_Image(paramtexte->TextureRatio,422,231);
+
 }
 
 void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
@@ -410,4 +439,15 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
     {
         stats->Total_Mort+=1;
     }
+    //Ratio
+    if (stats->Total_Mort/2 !=0)
+    {
+        stats->KDA=stats->Total_Tués/stats->Total_Mort/2;
+    }
+    else
+    {
+        stats->KDA = stats->Total_Tués;
+    }
+    
+    
 }
