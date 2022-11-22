@@ -2139,21 +2139,40 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             {
                 SDL_Delay(200);
                 marchand->CompteurMess1 += 1;
+                son->CompteurJerm=0;
             }
             if (marchand->CompteurMess1==1)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau1.png");
                 Draw_Image(marchand->bulle,210,130);
+                son->CompteurJerm++;
+                if (son->CompteurJerm==1)
+                {
+                Mix_VolumeChunk(son->JeremDamm, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->JeremDamm, 0);
+                }
             }
             if (marchand->CompteurMess1==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau2.png");
                 Draw_Image(marchand->bulle,210,130);
+                                son->CompteurJerm++;
+                if (son->CompteurJerm==1)
+                {
+                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->Jerem, 0);
+                }
             }
             if (marchand->CompteurMess1==3)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau3.png");
                 Draw_Image(marchand->bulle,210,95);
+                son->CompteurJerm++;
+                if (son->CompteurJerm==1)
+                {
+                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->Jerem, 0);
+                }
                 if (joueur->nbDague == 0)
                 {
                     joueur->nbDague=1;
