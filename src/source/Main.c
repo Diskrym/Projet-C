@@ -65,14 +65,14 @@ init("Dungeon Fate");
         
         if (lvl.Load == 0)
         {
-            Load_Game(&joueur,&lvl);
+            Load_Game(&joueur,&lvl,&stats);
             lvl.Load=1;
         }
 
         
 
         
-        Save(&joueur,&lvl,&input,&entité,&son);
+        Save(&joueur,&lvl,&input,&entité,&son,&stats);
 
         //On dessine tout
         Draw_Game(&joueur, &lvl, &paramtexte,&son);
