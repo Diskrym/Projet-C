@@ -456,7 +456,7 @@ void Init_Eclair(Boss *boss)
     boss->Ey4= rand() % (SCREEN_HEIGHT-100)+50;
 }
 
-void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son)
+void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son,Stats *stats)
 {
     //entrer pause
     if (input->echap == 1 && lvl->Num != -2)
@@ -469,17 +469,26 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
     {       
         SDL_ShowCursor(SDL_ENABLE);
         char* nomFichier = "src/Save/Game.txt";
-        //save and quit
-        if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 230 && input->PosMouseY <= 268)
+        char* nomFichier1= "src/Save/Stats.txt";
+        //save
+        if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 230 && input->PosMouseY <= 268 || lvl->save == 1)
         {
             FILE* fichier = fopen ( nomFichier , "r+" );
             if ( fichier )
             {
                 fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",joueur->life,joueur->AttPiece,joueur->NbPiece,joueur->nbDague,lvl->WinDonjon);
                 fclose(fichier);
-                exit(0);
             }
+            FILE* fichier1 = fopen ( nomFichier1 , "r+" );
+            if ( fichier1 )
+            {
+                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d Total_Dégats=%d KDA=%f",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->Total_Dégats,stats->KDA);
+                fclose(fichier1);
+            }
+            lvl->save = 0;
+            lvl->Num=lvl->temp;
         }
+
         //retour jeux
         if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 117 && input->PosMouseY <= 154)
         {
@@ -491,6 +500,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         {
             exit(0);
         }
+        //reset base
         if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 172 && input->PosMouseY <= 211)
         {
             FILE* fichier = fopen ( nomFichier , "r+" );
@@ -533,14 +543,21 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
     }  
 }
 
-void Load_Game (Joueur *joueur, Lvl *lvl)
+void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
 {
     char* nomFichier = "src/Save/Game.txt";
+    char* nomFichier1 = "src/Save/Stats.txt";
     FILE* fichier = fopen ( nomFichier , "r+" );
     if ( fichier )
     {
-        printf ("Le fichier %s a pu etre ouvert en ecriture.\n", nomFichier);
         fscanf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",&joueur->life,&joueur->AttPiece,&joueur->NbPiece,&joueur->nbDague,&lvl->WinDonjon);
         fclose (fichier);
+    }
+    FILE* fichier1 = fopen ( nomFichier1 , "r+" );
+    if ( fichier1 )
+    {
+        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d Total_Dégats=%d KDA=%f",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->Total_Dégats,&stats->KDA);
+        fclose (fichier1);
+        printf("aaa");
     }
 }

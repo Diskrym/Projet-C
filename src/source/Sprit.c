@@ -32,6 +32,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
             //se deplace si ne prend pas de dégat sinon sprit degat
             if (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==1)
             {
+                son->sondegat=0;
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/neutreD.png");
@@ -64,8 +65,12 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
             Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
+            son->sondegat++;
+            if(son->sondegat==1)
+            {
             Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME);
             Mix_PlayChannel(1, son->degatchevalier, 0);
+            }
         }
         
         //cf fonction gauche
@@ -73,6 +78,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         {
             if(Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==1)
             {
+                son->sondegat=0;
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/neutreG.png");
@@ -105,8 +111,12 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
             Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
+            son->sondegat++;
+            if(son->sondegat==1)
+            {
             Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME);
             Mix_PlayChannel(1, son->degatchevalier, 0);
+            }
         }
         
         //Mouvement attaque si Eattack = 1 et si on ne prend pas de dégat
@@ -171,7 +181,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                     {
                         //Son
                         Mix_VolumeChunk(son->epee, MIX_MAX_VOLUME);
-                        //Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
+                        Mix_PlayChannel(1, son->epee, 0);//Joue le son 1 sur le canal 1 ; le joue une fois (0 + 1)
                     }
                 }
             }
@@ -614,8 +624,11 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     yeti->CompteurSpriteDegat+=1;
                     yeti->yeti=loadImage("src/graphics/yeti/YetiDegatG.png");
                     Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                    if (yeti->CompteurSpriteDegat==2)
+                    {
                     Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(4, son->degatyeti, 0);
+                     Mix_PlayChannel(14, son->degatyeti, 0);
+                    }
                    
                     //compteur duree affichage degat yeti
                     if (yeti->CompteurSpriteDegat > 15)
@@ -2126,21 +2139,40 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             {
                 SDL_Delay(200);
                 marchand->CompteurMess1 += 1;
+                son->CompteurJerm=0;
             }
             if (marchand->CompteurMess1==1)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau1.png");
                 Draw_Image(marchand->bulle,210,130);
+                son->CompteurJerm++;
+                if (son->CompteurJerm==1)
+                {
+                Mix_VolumeChunk(son->JeremDamm, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->JeremDamm, 0);
+                }
             }
             if (marchand->CompteurMess1==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau2.png");
                 Draw_Image(marchand->bulle,210,130);
+                                son->CompteurJerm++;
+                if (son->CompteurJerm==1)
+                {
+                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->Jerem, 0);
+                }
             }
             if (marchand->CompteurMess1==3)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau3.png");
                 Draw_Image(marchand->bulle,210,95);
+                son->CompteurJerm++;
+                if (son->CompteurJerm==1)
+                {
+                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->Jerem, 0);
+                }
                 if (joueur->nbDague == 0)
                 {
                     joueur->nbDague=1;
