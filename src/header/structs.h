@@ -100,7 +100,7 @@ typedef struct Entité
 
 typedef struct EffetSon
 {
-    int soncoule, CompteurJerm, sonLowLife, sondague, sondagueM;
+    int soncoule, CompteurJerm, sonLowLife, sondague, sondagueM, sondegat;
 
     Mix_Music *musiquemenu;
     Mix_Music *musiqueMapG;
