@@ -465,7 +465,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         lvl->Num = -2;
     }
     
-    if (lvl->Num == -2 || lvl->reset == 1)
+    if (lvl->Num == -2 || lvl->save == 1)
     {       
         SDL_ShowCursor(SDL_ENABLE);
         char* nomFichier = "src/Save/Game.txt";
@@ -482,7 +482,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             FILE* fichier1 = fopen ( nomFichier1 , "r+" );
             if ( fichier1 )
             {
-                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d Total_Dégats=%d KDA=%f",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->Total_Dégats,stats->KDA);
+                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA);
                 fclose(fichier1);
             }
             lvl->save = 0;
@@ -508,25 +508,17 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             {
                 fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",3,0,0,0,0);
                 fclose(fichier);
-                SDL_ShowCursor(SDL_DISABLE);
-                lvl->Num = -1 ;
-                lvl->reset = 0;
-                lvl->Load = 0;
             }
-        }
-        //reset si mort
-        if (lvl-> reset == 1)
-        {
-            FILE* fichier = fopen ( nomFichier , "r+" );
-            if ( fichier )
+            FILE* fichier1 = fopen ( nomFichier1 , "r+" );
+            if ( fichier1 )
             {
-                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d",3,0,0,0);
-                fclose(fichier);
-                SDL_ShowCursor(SDL_DISABLE);
-                lvl->Num = -1 ;
-                lvl->reset = 0;
-                lvl->Load = 0;
+                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f",0,0,0,0,0);
+                fclose(fichier1);
             }
+            SDL_ShowCursor(SDL_DISABLE);
+            lvl->Num = -1 ;
+            lvl->reset = 0;
+            lvl->Load = 0;
         }
         if (input->PosMouseX >= 118 && input->PosMouseX <= 523 && input->PosMouseY >= 287 && input->PosMouseY <= 323)
         {
@@ -541,6 +533,21 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         }
         
     }  
+    //reset si mort
+    if (lvl-> reset == 1)
+    {
+        char* nomFichier = "src/Save/Game.txt";
+        FILE* fichier = fopen ( nomFichier , "r+" );
+        if ( fichier )
+        {
+            fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d",3,0,0,0);
+            fclose(fichier);
+            SDL_ShowCursor(SDL_DISABLE);
+            lvl->Num = -1 ;
+            lvl->reset = 0;
+            lvl->Load = 0;
+        }
+    }
 }
 
 void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
@@ -556,8 +563,7 @@ void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
     FILE* fichier1 = fopen ( nomFichier1 , "r+" );
     if ( fichier1 )
     {
-        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d Total_Dégats=%d KDA=%f",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->Total_Dégats,&stats->KDA);
+        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->KDA);
         fclose (fichier1);
-        printf("aaa");
     }
 }

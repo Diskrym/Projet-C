@@ -187,8 +187,10 @@ typedef struct Lvl
 
 typedef struct Stats
 {
-    int Total_pièce,Temp_pièce, Total_Tués, Temp_Tués, Total_Mort, Dague_Lancées,Temp_Dague_Lancées,Total_Dégats,Temp_Dégats;
-    float KDA;
+    int Total_pièce,Temp_pièce, Total_Tués, Temp_Tués, Total_Mort, Dague_Lancées,Temp_Dague_Lancées;
+    float KDA,DIVI_Mort,DIVI_Tués;
+    char affichage_kda[5];
+    
 } Stats;
 
  /*

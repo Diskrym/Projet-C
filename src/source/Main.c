@@ -68,20 +68,20 @@ init("Dungeon Fate");
             Load_Game(&joueur,&lvl,&stats);
             lvl.Load=1;
         }
-
-        
-
-        
-        Save(&joueur,&lvl,&input,&entité,&son,&stats);
-
         //On dessine tout
-        Draw_Game(&joueur, &lvl, &paramtexte,&son);
-        if (joueur.life<=0)
+        if (joueur.life==0)
         {   
             Mix_PauseMusic();
             Game_Over (&son);
             lvl.reset=1;
+            lvl.save = 1;
+
         }
+        Statistiques(&stats,&joueur,&lvl);
+        Save(&joueur,&lvl,&input,&entité,&son,&stats);
+        Draw_Game(&joueur, &lvl, &paramtexte,&son);
+
+
         Gestion_Map(&joueur, &lvl, &entité, &son, &input, &stats, &paramtexte);
         //Gestion des inputs clavier
         //gestionInputs(&input);
@@ -118,8 +118,6 @@ init("Dungeon Fate");
             joueur.inposx=300;
         }
         //Test defaite
-        
-        Statistiques(&stats,&joueur,&lvl);
     }
     // On quitte
     exit(0); 
