@@ -973,6 +973,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
         SDL_DestroyTexture(bossyeti->crane);
         bossyeti->crane=NULL;
     }
+    if (bossyeti->cachemisere!=NULL)
+    {
+        SDL_DestroyTexture(bossyeti->cachemisere);
+        bossyeti->cachemisere=NULL;
+    }
 
       //sprit fissure
     if (bossyeti->tempsfissure==1)
@@ -984,26 +989,111 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure1G.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 5)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+
+                    }
+
+                    }
+                    else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }
+
                 }
                 if (bossyeti->spritfissure>=10 && bossyeti->spritfissure<20)
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure2G.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 4)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+
+                    }
+
+                    }
+                     else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }
                 }
                 if (bossyeti->spritfissure>=20 && bossyeti->spritfissure<30)
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure3G.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 3)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+                    }
+
+                    }
+                     else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }
                 }
                 if (bossyeti->spritfissure>=30 && bossyeti->spritfissure<40)
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure4G.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 2)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+
+                    }
+
+                    }
+                     else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }
                 }
                 if (bossyeti->spritfissure>=40)
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure5G.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 1)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+
+                    }
+
+                    }
+                     else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }
                 }
         }
         if (bossyeti->directionfissure==0)
@@ -1012,35 +1102,125 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure1D.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                                        printf("1");
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 5)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+
+                    }
+
+                    }
+                     else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }
+                                       
 
                 }
                 if (bossyeti->spritfissure>=10 && bossyeti->spritfissure<20)
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure2D.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                                        printf("2");
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 4)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+                    }
+
+                    }
+                     else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }
+                                        
 
                 }
                 if (bossyeti->spritfissure>=20 && bossyeti->spritfissure<30)
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure3D.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                                        printf("3");
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 3)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+
+                    }
+
+                    }
+                     else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }
+                                        
 
                 }
                 if (bossyeti->spritfissure>=30 && bossyeti->spritfissure<40)
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure4D.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                                        printf("4");
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 2)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+
+                    }
+
+                    }
+                     else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }
 
                 }
-                if (bossyeti->spritfissure>=50)
+                if (bossyeti->spritfissure>=40)
                 {
                     bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure5D.png");                    
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                }
+                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                    Draw_Image(bossyeti->cachemisere,0,0);
+                    if (Inside_fissure (joueur, bossyeti, 1)==1)
+                    {
+                        if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        bossyeti->coupfissure =1 ;
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+
+                    }
+
+                    }
+                     else 
+                    {
+                        bossyeti->coupfissure =0;
+                    }      
+               }
+        
+        
+        if (bossyeti->spritfissure==bossyeti->ticfissure+40)
+        {
+            bossyeti->coupfissure=0;
+        }
+        
         }
 
 

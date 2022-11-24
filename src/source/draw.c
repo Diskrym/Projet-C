@@ -438,12 +438,13 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
     if (lvl->reset == 1)
     {
         stats->Total_Mort+=1;
+        
     }
     //Ratio
     if (stats->Total_Mort/2 !=0)
     {
         stats->KDA=stats->Total_Tués/stats->Total_Mort/2;
-        printf("%d",stats->KDA);
+        
     }
     else
     {

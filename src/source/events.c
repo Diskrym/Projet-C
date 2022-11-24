@@ -585,6 +585,24 @@ int Inside_Item (Joueur *joueur, Boss *boss)
     }
 }
 
+int Inside_fissure (Joueur *joueur, BossYeti *bossyeti, int etape)
+{
+    int x=0;
+    int y=0;
+    if ((joueur->inposx>=bossyeti->xfissure || joueur->inposx+SPRITE_SIZE>=bossyeti->xfissure) && (joueur->inposx<=bossyeti->xfissure+300/etape || joueur->inposx + SPRITE_SIZE <= bossyeti->xfissure+300/etape))
+    {
+        x=1;
+    }
+    if ((joueur->inposy>= bossyeti->yfissure || joueur->inposy+SPRITE_SIZE>=bossyeti->yfissure+20) && (joueur->inposy <=bossyeti->yfissure+20 || joueur->inposy + SPRITE_SIZE <= bossyeti->yfissure+20))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {
+        return 1;
+    }
+}
+
 //            pos objet vol x,y  pos cible    taille cible x,y         taille obj vol x,y 
 int Inside_Vol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObjx, int tailleObjy)
 {
@@ -607,7 +625,7 @@ int Inside_Vol(int xobj, int yobj, int x, int y, int Margex, int Margey, int tai
 //Indique au chevalier s'il prend des dégats
 int Degat_Chevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti, Yeti *yeti1, Yeti *yeti2, BossYeti *bossyeti)
 {
-    if  (meduse->coup==0 && meduse1->coup==0 && meduse2->coup==0 && chauvesouris->coup==0 && chauvesouris1->coup==0 && boss->coup==0 && boss->coupE1==0 && boss->coupE2==0 && boss->coupE3==0 && boss->coupE4==0 && yeti->coup==0 && yeti1->coup==0 && yeti2->coup==0 && bossyeti->coup==0)
+    if  (meduse->coup==0 && meduse1->coup==0 && meduse2->coup==0 && chauvesouris->coup==0 && chauvesouris1->coup==0 && boss->coup==0 && boss->coupE1==0 && boss->coupE2==0 && boss->coupE3==0 && boss->coupE4==0 && yeti->coup==0 && yeti1->coup==0 && yeti2->coup==0 && bossyeti->coup==0 && bossyeti->coupfissure==0)
     {
         return 1;
     }
