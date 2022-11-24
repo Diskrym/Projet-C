@@ -1,1 +1,1 @@
-Total_pièce=0 Total_Tués=9 Total_Mort=0 Dague_Lancées=0 KDA=0.000000 S1=0.000000 S2=0.000000 S3=0.000000 S4=0.000000 S5=0.000000
+Total_pièce=0 Total_Tués=5 Total_Mort=0 Dague_Lancées=0 KDA=0.000000 S1=5.369000 S2=19.730000 S3=200.000000 S4=200.000000 S5=200.000000 C1=0:0:5.37 C2=Null C3=Null C4=Null C5=Null

@@ -93,7 +93,7 @@ init("Dungeon Fate");
         //gestionInputs(&input);
         Get_Input(&input);
 
-        if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num !=-3)
+        if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4)
         {
             //IA monstre
             Gestion_Entité(&entité, &lvl, &input ,&joueur, &son);

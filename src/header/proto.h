@@ -19,6 +19,8 @@ extern void Break_Menu (Lvl *lvl);
 extern void Stats_Menu(Lvl *lvl,Stats*stats, ParamTexte *paramtexte);
 extern void Statistiques(Stats *stats,Joueur *joueur, Lvl *lvl);
 extern void Score_(Stats *stats,clock_t temps);
+extern void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte);
+
 
 
 //events.c
