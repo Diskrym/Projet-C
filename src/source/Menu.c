@@ -56,12 +56,13 @@ void Score_(Stats *stats,clock_t temps)
 {
     for (int i = 0; i < 5; i++)
     {
-        if (((float)temps/CLOCKS_PER_SEC) <= stats->Score_Board[i])
+        if (((double)temps/CLOCKS_PER_SEC)+stats->TEMPS_GENE <= stats->Score_Board[i])
         {
             char tempss[10];
             char tempm [10];
             char temph [10];
-            stats->Score_Board[i]= (double)temps/CLOCKS_PER_SEC;
+            stats->Score_Board[i]= (double)temps/CLOCKS_PER_SEC+stats->TEMPS_GENE;
+            printf("%f",stats->Score_Board[i]);
             //si inférieur a 1minutes alors uniquement seconde
             if (stats->Score_Board[i] < 60)
             {   
@@ -107,8 +108,9 @@ void Score_(Stats *stats,clock_t temps)
 }   
 
 
-void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son,Stats *stats)
+void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son,Stats *stats, clock_t temps)
 {
+    
     //entrer pause
     if (input->echap == 1 && lvl->Num != -2)
     {
@@ -124,6 +126,8 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         //save
         if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 167 && input->PosMouseY <= 204 || lvl->save == 1)
         {
+            stats->TEMPS_GENE=(double)temps/CLOCKS_PER_SEC;
+            printf("%f\n",stats->TEMPS_GENE);
             FILE* fichier = fopen ( nomFichier , "r+" );
             if ( fichier )
             {
@@ -133,7 +137,8 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             FILE* fichier1 = fopen ( nomFichier1 , "r+" );
             if ( fichier1 )
             {
-                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f S1=%f S2=%f S3=%f S4=%f S5=%f C1=%s C2=%s C3=%s C4=%s C5=%s",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA,stats->Score_Board[0],stats->Score_Board[1],stats->Score_Board[2],stats->Score_Board[3],stats->Score_Board[4],stats->Convert_Score[0],stats->Convert_Score[1],stats->Convert_Score[2],stats->Convert_Score[3],stats->Convert_Score[4]);
+                
+                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%lf S1=%f S2=%f S3=%f S4=%f S5=%f C1=%s C2=%s C3=%s C4=%s C5=%s",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA,stats->TEMPS_GENE,stats->Score_Board[0],stats->Score_Board[1],stats->Score_Board[2],stats->Score_Board[3],stats->Score_Board[4],stats->Convert_Score[0],stats->Convert_Score[1],stats->Convert_Score[2],stats->Convert_Score[3],stats->Convert_Score[4]);
                 fclose(fichier1);
             }
             lvl->save = 0;
@@ -163,10 +168,11 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             FILE* fichier1 = fopen ( nomFichier1 , "r+" );
             if ( fichier1 )
             {
-                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f",0,0,0,0,0);
+                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%f",0,0,0,0,0,0);
                 fclose(fichier1);
             }
             SDL_ShowCursor(SDL_DISABLE);
+            stats->Diff_reset=clock();
             lvl->Num = -1 ;
             lvl->reset = 0;
             lvl->Load = 0;
