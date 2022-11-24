@@ -482,7 +482,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             FILE* fichier1 = fopen ( nomFichier1 , "r+" );
             if ( fichier1 )
             {
-                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA);
+                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f S1=%f S2=%f S3=%f S4=%f S5=%f",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA,stats->Score_Board[0],stats->Score_Board[1],stats->Score_Board[2],stats->Score_Board[3],stats->Score_Board[4]);
                 fclose(fichier1);
             }
             lvl->save = 0;
@@ -552,6 +552,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
 
 void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
 {
+    srand(time(NULL));
     char* nomFichier = "src/Save/Game.txt";
     char* nomFichier1 = "src/Save/Stats.txt";
     FILE* fichier = fopen ( nomFichier , "r+" );
@@ -563,7 +564,7 @@ void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
     FILE* fichier1 = fopen ( nomFichier1 , "r+" );
     if ( fichier1 )
     {
-        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->KDA);
+        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f S1=%f S2=%f S3=%f S4=%f S5=%f",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->KDA,&stats->Score_Board[0],&stats->Score_Board[1],&stats->Score_Board[2],&stats->Score_Board[3],&stats->Score_Board[4]);
         fclose (fichier1);
     }
 }

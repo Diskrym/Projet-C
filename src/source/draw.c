@@ -438,3 +438,8 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
         strcpy(stats->affichage_kda,"0.00");
     }
 }
+
+void Score_(Stats *stats,clock_t temps)
+{
+    printf("%f\n", (double)temps/CLOCKS_PER_SEC);
+}   

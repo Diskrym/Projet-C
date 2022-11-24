@@ -35,6 +35,7 @@ Marchand marchand;
 ParamTexte paramtexte;
 Obstacle Petit_rocher,Gros_rocher, tronc, tanguy;
 Stats stats;
+clock_t temps;
 
 int main(int argc, char *argv[])
 {
@@ -62,7 +63,6 @@ init("Dungeon Fate");
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
     while (go == 1)
     {    
-        
         if (lvl.Load == 0)
         {
             Load_Game(&joueur,&lvl,&stats);
@@ -75,8 +75,14 @@ init("Dungeon Fate");
             Game_Over (&son);
             lvl.reset=1;
             lvl.save = 1;
-
         }
+        if (lvl.WinDonjon == 1)
+        {
+            temps=clock();
+            lvl.WinDonjon = 2 ;
+            Score_(&stats,temps);
+        }
+        
         Statistiques(&stats,&joueur,&lvl);
         Save(&joueur,&lvl,&input,&entité,&son,&stats);
         Draw_Game(&joueur, &lvl, &paramtexte,&son);
