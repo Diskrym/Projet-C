@@ -385,7 +385,7 @@ void Stats_Menu(Lvl *lvl,Stats *stats, ParamTexte *paramtexte)
     //Ratio
     paramtexte->SurfaceRatio = TTF_RenderText_Solid(paramtexte->Fontpetite, stats->affichage_kda, color);
     paramtexte->TextureRatio = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceRatio);
-    Draw_Image(paramtexte->TextureRatio,405,231);
+    Draw_Image(paramtexte->TextureRatio,422,231);
 }
 
 void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
@@ -431,10 +431,10 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
         stats->DIVI_Mort=stats->Total_Mort;
         stats->DIVI_Tués=stats->Total_Tués;
         stats->KDA=(stats->DIVI_Tués/stats->DIVI_Mort);
-        sprintf(stats->affichage_kda,"%f",stats->KDA);
+        sprintf(stats->affichage_kda,"%.2f",stats->KDA);
     }
     else
     {
-        strcpy(stats->affichage_kda,"0.0");
+        strcpy(stats->affichage_kda,"0.00");
     }
 }

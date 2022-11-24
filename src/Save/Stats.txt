@@ -1,1 +1,1 @@
-Total_pièce=24 Total_Tués=111502 Total_Mort=1 Dague_Lancées=0 Total_Dégats=5 KDA=111502.000000
+Total_pièce=24 Total_Tués=10 Total_Mort=9 Dague_Lancées=0 KDA=1.111111

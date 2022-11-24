@@ -6,7 +6,7 @@
 // variable clavier
 typedef struct Input
 {
-    int left, right, up, down, shield, attack, enter, Bypass, dague, echap, yes, no, PosMouseX, PosMouseY;
+    int left, right, up, down, shield, attack, enter, Bypass, dague, echap, PosMouseX, PosMouseY;
 } Input;
 
 
