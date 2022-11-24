@@ -34,9 +34,7 @@ void Draw_Game(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
         {
             lvl->PosMap10 = 0;
             lvl->Avancement10+=1;
-        }
-        printf("Avancement : %d\n",lvl->Avancement10);
-        
+        }        
     }
     Render_Life (joueur,lvl,son);
     Render_Coin(joueur,lvl,paramtexte);
@@ -375,7 +373,7 @@ void Stats_Menu(Lvl *lvl,Stats *stats, ParamTexte *paramtexte)
     paramtexte->TextureKilled = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceKilled);
     Draw_Image(paramtexte->TextureKilled  ,422,159); 
     //Total mort
-    SDL_itoa(stats->Total_Mort/2, paramtexte->Total_Death,10); 
+    SDL_itoa(stats->Total_Mort, paramtexte->Total_Death,10); 
     paramtexte->SurfaceDeath = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Total_Death, color);
     paramtexte->TextureDeath = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceDeath);
     Draw_Image(paramtexte->TextureDeath  ,422,183);
@@ -385,11 +383,9 @@ void Stats_Menu(Lvl *lvl,Stats *stats, ParamTexte *paramtexte)
     paramtexte->TextureDaggers = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceDaggers);
     Draw_Image(paramtexte->TextureDaggers,422,207); 
     //Ratio
-    SDL_itoa(stats->KDA, paramtexte->Ratio,10); 
-    paramtexte->SurfaceRatio = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Ratio, color);
+    paramtexte->SurfaceRatio = TTF_RenderText_Solid(paramtexte->Fontpetite, stats->affichage_kda, color);
     paramtexte->TextureRatio = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceRatio);
     Draw_Image(paramtexte->TextureRatio,422,231);
-
 }
 
 void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
@@ -414,16 +410,6 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
     {
         stats->Temp_Tués=lvl->MortMonstre;
     }
-    //Gestion compteur dégat
-    if (joueur->life<stats->Temp_Dégats)
-    {
-        stats->Total_Dégats+=(stats->Temp_Dégats-joueur->life);
-        stats->Temp_Dégats=joueur->life;
-    }
-    if (joueur->life>stats->Temp_Dégats)
-    {
-        stats->Temp_Dégats=joueur->life;
-    }
     //Gestion Nombre dague lancées !!! A diviser par 2 pour affichage
     if (joueur->Edague>stats->Temp_Dague_Lancées)
     {
@@ -434,22 +420,27 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
     {
         stats->Temp_Dague_Lancées=joueur->Edague;
     }    
-    //Gestion Total mort !!! Adiviser par 2 pour affichage
+    //Gestion Total mort
     if (lvl->reset == 1)
     {
         stats->Total_Mort+=1;
         
     }
     //Ratio
-    if (stats->Total_Mort/2 !=0)
+    if (stats->Total_Mort !=0)
     {
-        stats->KDA=stats->Total_Tués/stats->Total_Mort/2;
-        
+        stats->DIVI_Mort=stats->Total_Mort;
+        stats->DIVI_Tués=stats->Total_Tués;
+        stats->KDA=(stats->DIVI_Tués/stats->DIVI_Mort);
+        sprintf(stats->affichage_kda,"%.2f",stats->KDA);
     }
     else
     {
-        stats->KDA = stats->Total_Tués;
+        strcpy(stats->affichage_kda,"0.00");
     }
-    
-    
 }
+
+void Score_(Stats *stats,clock_t temps)
+{
+    printf("%f\n", (double)temps/CLOCKS_PER_SEC);
+}   

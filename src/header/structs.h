@@ -6,7 +6,7 @@
 // variable clavier
 typedef struct Input
 {
-    int left, right, up, down, shield, attack, enter, Bypass, dague, echap, yes, no, PosMouseX, PosMouseY;
+    int left, right, up, down, shield, attack, enter, Bypass, dague, echap, PosMouseX, PosMouseY;
 } Input;
 
 
@@ -188,8 +188,11 @@ typedef struct Lvl
 
 typedef struct Stats
 {
-    int Total_pièce,Temp_pièce, Total_Tués, Temp_Tués, Total_Mort, Dague_Lancées,Temp_Dague_Lancées,Total_Dégats,Temp_Dégats;
-    float KDA;
+    int Total_pièce,Temp_pièce, Total_Tués, Temp_Tués, Total_Mort, Dague_Lancées,Temp_Dague_Lancées,Score;
+    float KDA,DIVI_Mort,DIVI_Tués;
+    char affichage_kda[5];
+    char* Score_Board[5];
+    
 } Stats;
 
  /*

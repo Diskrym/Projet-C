@@ -18,6 +18,8 @@ extern void Menu (Lvl *lvl);
 extern void Break_Menu (Lvl *lvl);
 extern void Stats_Menu(Lvl *lvl,Stats*stats, ParamTexte *paramtexte);
 extern void Statistiques(Stats *stats,Joueur *joueur, Lvl *lvl);
+extern void Score_(Stats *stats,clock_t temps);
+
 
 //events.c
 extern void Collision_Mur (Joueur *joueur, int x, int y, int z, int u);
