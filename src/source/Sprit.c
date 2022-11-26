@@ -2289,7 +2289,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
     marchand->Compteur1 +=1 ;
 
     //Sprite Jermy
-    //affichage jerem dans le marché + dans le donjon bleu une fois
+    //affichage jerem dans le marché 
     if (lvl->Num == 4 || (lvl->Num == 5 && lvl->WinDonjon<=2))
     {
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
@@ -2310,8 +2310,29 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             Draw_Image(marchand->Jerem,450,210);
         }
     }
-    //Bule donjon bleu avec dague
-    if (lvl->Num == 5 && lvl->WinDonjon<=2)
+    // affichage jerem dans le donjon bleu une fois
+    if ((lvl->Num == 5 && lvl->WinDonjon<=20))
+    {
+        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
+        Draw_Image(marchand->Enter,463,310);
+        if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
+        {
+            marchand->Jerem=loadImage("src/graphics/Marchand/JeremDague1.png");
+            Draw_Image(marchand->Jerem,450,210);
+        }
+        if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
+        {
+            marchand->Jerem=loadImage("src/graphics/Marchand/JeremDague2.png");
+            Draw_Image(marchand->Jerem,450,210);
+        }
+        if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
+        { 
+            marchand->Jerem=loadImage("src/graphics/Marchand/JeremDague3.png");
+            Draw_Image(marchand->Jerem,450,210);
+        }
+    }
+    //Bulle donjon bleu avec dague
+    if (lvl->Num == 5 && lvl->WinDonjon<=20)
     {
         if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
         {

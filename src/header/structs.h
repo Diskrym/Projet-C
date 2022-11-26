@@ -106,6 +106,7 @@ typedef struct EffetSon
     Mix_Music *musiquemenu;
     Mix_Music *musiqueMapG;
     Mix_Music *musiqueboss;
+    Mix_Music *musiquebossyeti;
     Mix_Music *musiquelvl;
     Mix_Music *musiqueshop;
     Mix_Music *musiqueriviere;

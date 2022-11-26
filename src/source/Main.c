@@ -92,6 +92,8 @@ init("Dungeon Fate");
         //Gestion des inputs clavier
         //gestionInputs(&input);
         Get_Input(&input);
+        printf("%d\n",lvl.Num);
+        printf("%d\n",lvl.WinDonjon);
 
         if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4)
         {
