@@ -56,6 +56,7 @@ void Son (EffetSon *son)
     Mix_AllocateChannels(32); //Allouer 32 canaux
     son->musiquemenu = Mix_LoadMUS("src/musique/m_menu.mp3"); //Chargement de la musique
     son->musiqueboss = Mix_LoadMUS("src/musique/m_Boss.mp3");
+    son->musiquebossyeti = Mix_LoadMUS("src/musique/m_BossYeti.mp3");
     son->musiquelvl = Mix_LoadMUS("src/musique/MusiqueLvl.mp3");
     son ->musiqueMapG = Mix_LoadMUS("src/musique/MapGlobal.mp3"); 
     son->musiqueshop= Mix_LoadMUS("src/musique/m_Shop.mp3");
@@ -142,6 +143,7 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     if (lvl->Num == 8)
     {
         Load_Level_3_4(joueur,&entité->bossyeti,lvl);
+        Mix_PlayMusic(son ->musiquebossyeti, -1);
     }
     
     if (lvl->Num == 9)
@@ -211,7 +213,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         Collision_Mur(joueur,20,20,20,20);
         Collision_Yeti (joueur, &entité->yeti, input, lvl);
         Deplacement_Yeti(joueur,&entité->yeti, lvl, son);
-        if (lvl->MortMonstre==level[5][0][1] && lvl->WinDonjon<=2)
+        if (lvl->MortMonstre==level[5][0][1] && lvl->WinDonjon<=20)
         {
             Gestion_Marchands(joueur, input, &entité->marchand, lvl,son);
             //jermy
