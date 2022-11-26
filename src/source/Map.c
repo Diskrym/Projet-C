@@ -105,8 +105,18 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
                 lvl->WinDonjon = 1;
                 lvl->save = 1;
             }
+            if (lvl->Num == 8 && lvl->NumDonjon == 2 && lvl->WinDonjon == 2)
+            {
+                lvl->WinDonjon = 3;
+            }
+            
             //retour map global
             if (lvl->NumDonjon == 0 && lvl->Num == 3)
+            {
+                lvl->Num = -1;
+                Mix_PlayMusic(son ->musiqueMapG, -1);
+            }
+            else if(lvl->NumDonjon == 2 && lvl->Num == 8)
             {
                 lvl->Num = -1;
                 Mix_PlayMusic(son ->musiqueMapG, -1);
@@ -229,7 +239,7 @@ void Gestion_Map_Global (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *so
     }
     if (lvl->NumDonjon == 4)
     {
-        if (lvl->WinDonjon >=3)
+        if (lvl->WinDonjon >=4)
         {
             lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
             Draw_Image(lvl->Icone,293,68);

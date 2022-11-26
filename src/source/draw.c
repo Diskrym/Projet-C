@@ -325,6 +325,26 @@ void Render_Door (Lvl *lvl)
         }
         
     }
+
+    if (lvl->Num == 8)
+    {
+        lvl->PorteBas=loadImage("src/graphics/lvl/PorteFermeBleuBas.png");
+        Draw_Image(lvl->PorteBas,SCREEN_WIDTH/2-22,345); 
+
+        if (lvl->MortMonstre==level[lvl->Num][0][1])
+        {
+            lvl->PorteHaut=loadImage("src/graphics/lvl/PorteOuverteBleu.png");
+            Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
+            
+        }
+        else
+        {
+            lvl->PorteHaut=loadImage("src/graphics/lvl/PorteFermeBleu.png");
+            Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
+              
+        }
+    }
+    
     
 }
 
