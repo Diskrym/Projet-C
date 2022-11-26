@@ -422,59 +422,35 @@ void Stats_Menu(Lvl *lvl,Stats *stats, ParamTexte *paramtexte)
     Draw_Image(paramtexte->TextureRatio,422,231);
 }
 
-void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
+void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte)
 {
-    // Gestion total pièce
-    if (joueur->NbPiece>stats->Temp_pièce)
+    if (lvl->Menu!=NULL)
     {
-        stats->Total_pièce+=(joueur->NbPiece-stats->Temp_pièce);
-        stats->Temp_pièce=joueur->NbPiece;
+        SDL_DestroyTexture(lvl->Menu);
+        lvl->Menu=NULL;
     }
-    if (stats->Temp_pièce>joueur->NbPiece)
-    {
-        stats->Temp_pièce=joueur->NbPiece;
-    }
-    //Gestion total tués
-    if (lvl->MortMonstre>stats->Temp_Tués)
-    {
-        stats->Total_Tués+=(lvl->MortMonstre-stats->Temp_Tués);
-        stats->Temp_Tués=lvl->MortMonstre;
-    }
-    if (stats->Temp_Tués>lvl->MortMonstre)
-    {
-        stats->Temp_Tués=lvl->MortMonstre;
-    }
-    //Gestion Nombre dague lancées !!! A diviser par 2 pour affichage
-    if (joueur->Edague>stats->Temp_Dague_Lancées)
-    {
-        stats->Dague_Lancées+=(joueur->Edague-stats->Temp_Dague_Lancées);
-        stats->Temp_Dague_Lancées=joueur->Edague;
-    }
-    if (stats->Temp_Dague_Lancées>joueur->Edague)
-    {
-        stats->Temp_Dague_Lancées=joueur->Edague;
-    }    
-    //Gestion Total mort
-    if (lvl->reset == 1)
-    {
-        stats->Total_Mort+=1;
-        
-    }
-    //Ratio
-    if (stats->Total_Mort !=0)
-    {
-        stats->DIVI_Mort=stats->Total_Mort;
-        stats->DIVI_Tués=stats->Total_Tués;
-        stats->KDA=(stats->DIVI_Tués/stats->DIVI_Mort);
-        sprintf(stats->affichage_kda,"%.2f",stats->KDA);
-    }
-    else
-    {
-        strcpy(stats->affichage_kda,"0.00");
-    }
-}
+    SDL_Color color = { 255, 255, 255 };
 
-void Score_(Stats *stats,clock_t temps)
-{
-    printf("%f\n", (double)temps/CLOCKS_PER_SEC);
-}   
+    lvl->Menu=loadImage("src/graphics/lvl/MenuScore.png");
+    Draw_Image(lvl->Menu,0,0);
+
+    stats->Surface_SCORE_1 = TTF_RenderText_Solid(paramtexte->Fontpetite, stats->Convert_Score[0], color);
+    stats->Texture_SCORE_1 = SDL_CreateTextureFromSurface(getrenderer(), stats->Surface_SCORE_1);
+    Draw_Image(stats->Texture_SCORE_1 ,330,133);
+
+    stats->Surface_SCORE_2 = TTF_RenderText_Solid(paramtexte->Fontpetite, stats->Convert_Score[1], color);
+    stats->Texture_SCORE_2 = SDL_CreateTextureFromSurface(getrenderer(), stats->Surface_SCORE_2);
+    Draw_Image(stats->Texture_SCORE_2 ,330,158);
+
+    stats->Surface_SCORE_3 = TTF_RenderText_Solid(paramtexte->Fontpetite, stats->Convert_Score[2], color);
+    stats->Texture_SCORE_3 = SDL_CreateTextureFromSurface(getrenderer(), stats->Surface_SCORE_3);
+    Draw_Image(stats->Texture_SCORE_3 ,330,181);
+
+    stats->Surface_SCORE_4 = TTF_RenderText_Solid(paramtexte->Fontpetite, stats->Convert_Score[3], color);
+    stats->Texture_SCORE_4 = SDL_CreateTextureFromSurface(getrenderer(), stats->Surface_SCORE_4);
+    Draw_Image(stats->Texture_SCORE_4 ,330,208);
+
+    stats->Surface_SCORE_5 = TTF_RenderText_Solid(paramtexte->Fontpetite, stats->Convert_Score[4], color);
+    stats->Texture_SCORE_5 = SDL_CreateTextureFromSurface(getrenderer(), stats->Surface_SCORE_5);
+    Draw_Image(stats->Texture_SCORE_5 ,330,234);
+}

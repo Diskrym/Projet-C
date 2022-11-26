@@ -78,13 +78,13 @@ init("Dungeon Fate");
         }
         if (lvl.WinDonjon == 1)
         {
-            temps=clock();
             lvl.WinDonjon = 2 ;
             Score_(&stats,temps);
         }
-        
+        temps=clock()-stats.Diff_reset;
+
         Statistiques(&stats,&joueur,&lvl);
-        Save(&joueur,&lvl,&input,&entité,&son,&stats);
+        Save(&joueur,&lvl,&input,&entité,&son,&stats,temps);
         Draw_Game(&joueur, &lvl, &paramtexte,&son);
 
 
@@ -95,7 +95,7 @@ init("Dungeon Fate");
         printf("%d\n",lvl.Num);
         printf("%d\n",lvl.WinDonjon);
 
-        if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num !=-3)
+        if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4)
         {
             //IA monstre
             Gestion_Entité(&entité, &lvl, &input ,&joueur, &son);

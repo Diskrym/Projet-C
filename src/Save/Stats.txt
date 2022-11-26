@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Total_pièce=0 Total_Tués=26 Total_Mort=3 Dague_Lancées=0 KDA=8.666667 S1=0.000000 S2=0.000000 S3=0.000000 S4=0.000000 S5=0.0000000
+=======
+Total_pièce=0 Total_Tués=0 Total_Mort=0 Dague_Lancées=0 KDA=0.000000 TEMPS_GENE=0.000000 S1=3.557000 S2=11.519000 S3=200.000000 S4=200.000000 S5=200.000000 C1=0:0:3.56 C2=0:0:11.52 C3=Null C4=Null C5=Nullllllll
+>>>>>>> e2a1b5edaa2874ad272ebcef101cca8d359a43e9

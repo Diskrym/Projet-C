@@ -191,8 +191,21 @@ typedef struct Stats
 {
     int Total_pièce,Temp_pièce, Total_Tués, Temp_Tués, Total_Mort, Dague_Lancées,Temp_Dague_Lancées,Score;
     float KDA,DIVI_Mort,DIVI_Tués;
+    float TEMPS_GENE , Diff_reset;
     char affichage_kda[5];
-    char* Score_Board[5];
+    float Score_Board[5];
+    char  Convert_Score[5][20];
+
+    SDL_Surface *Surface_SCORE_1;
+    SDL_Texture *Texture_SCORE_1;
+    SDL_Surface *Surface_SCORE_2;
+    SDL_Texture *Texture_SCORE_2;
+    SDL_Surface *Surface_SCORE_3;
+    SDL_Texture *Texture_SCORE_3;
+    SDL_Surface *Surface_SCORE_4;
+    SDL_Texture *Texture_SCORE_4;
+    SDL_Surface *Surface_SCORE_5;
+    SDL_Texture *Texture_SCORE_5;
     
 } Stats;
 

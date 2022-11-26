@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 life=3 AttPice=0 NbPiece=0 nbDague=0 WinDonjon=20
+=======
+life=3 AttPice=0 NbPiece=0 nbDague=0 WinDonjon=0
+>>>>>>> e2a1b5edaa2874ad272ebcef101cca8d359a43e9

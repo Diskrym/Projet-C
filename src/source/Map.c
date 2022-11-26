@@ -46,6 +46,12 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
     {
         Stats_Menu(lvl,stats,paramtexte);
     }
+
+    else if (lvl->Num == -4)
+    {
+        Draw_Score(lvl,stats,paramtexte);
+    }
+    
     
     else
     {

@@ -458,99 +458,6 @@ void Init_Eclair(Boss *boss)
     boss->Ey4= rand() % (SCREEN_HEIGHT-100)+50;
 }
 
-void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son,Stats *stats)
-{
-    //entrer pause
-    if (input->echap == 1 && lvl->Num != -2)
-    {
-        lvl->temp = lvl->Num;
-        lvl->Num = -2;
-    }
-    
-    if (lvl->Num == -2 || lvl->save == 1)
-    {       
-        SDL_ShowCursor(SDL_ENABLE);
-        char* nomFichier = "src/Save/Game.txt";
-        char* nomFichier1= "src/Save/Stats.txt";
-        //save
-        if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 230 && input->PosMouseY <= 268 || lvl->save == 1)
-        {
-            FILE* fichier = fopen ( nomFichier , "r+" );
-            if ( fichier )
-            {
-                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",joueur->life,joueur->AttPiece,joueur->NbPiece,joueur->nbDague,lvl->WinDonjon);
-                fclose(fichier);
-            }
-            FILE* fichier1 = fopen ( nomFichier1 , "r+" );
-            if ( fichier1 )
-            {
-                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f S1=%f S2=%f S3=%f S4=%f S5=%f",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA,stats->Score_Board[0],stats->Score_Board[1],stats->Score_Board[2],stats->Score_Board[3],stats->Score_Board[4]);
-                fclose(fichier1);
-            }
-            lvl->save = 0;
-            lvl->Num=lvl->temp;
-        }
-
-        //retour jeux
-        if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 117 && input->PosMouseY <= 154)
-        {
-            lvl->Num = lvl->temp;
-            SDL_ShowCursor(SDL_DISABLE);
-        }
-        //Quit sans save
-        if (input->PosMouseX >= 329 && input->PosMouseX <= 522 && input->PosMouseY >= 172 && input->PosMouseY <= 211)
-        {
-            exit(0);
-        }
-        //reset base
-        if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 172 && input->PosMouseY <= 211)
-        {
-            FILE* fichier = fopen ( nomFichier , "r+" );
-            if ( fichier )
-            {
-                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",3,0,0,0,0);
-                fclose(fichier);
-            }
-            FILE* fichier1 = fopen ( nomFichier1 , "r+" );
-            if ( fichier1 )
-            {
-                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f",0,0,0,0,0);
-                fclose(fichier1);
-            }
-            SDL_ShowCursor(SDL_DISABLE);
-            lvl->Num = -1 ;
-            lvl->reset = 0;
-            lvl->Load = 0;
-        }
-        if (input->PosMouseX >= 118 && input->PosMouseX <= 523 && input->PosMouseY >= 287 && input->PosMouseY <= 323)
-        {
-            lvl->Num = -3;
-        }
-    }
-    if (lvl->Num == -3)
-    {
-        if (input->PosMouseX >= 222 && input->PosMouseX <= 416 && input->PosMouseY >= 313 && input->PosMouseY <= 351)
-        {
-            lvl->Num = -2 ;
-        }
-        
-    }  
-    //reset si mort
-    if (lvl-> reset == 1)
-    {
-        char* nomFichier = "src/Save/Game.txt";
-        FILE* fichier = fopen ( nomFichier , "r+" );
-        if ( fichier )
-        {
-            fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d",3,0,0,0);
-            fclose(fichier);
-            SDL_ShowCursor(SDL_DISABLE);
-            lvl->Num = -1 ;
-            lvl->reset = 0;
-            lvl->Load = 0;
-        }
-    }
-}
 
 void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
 {
@@ -566,7 +473,7 @@ void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
     FILE* fichier1 = fopen ( nomFichier1 , "r+" );
     if ( fichier1 )
     {
-        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f S1=%f S2=%f S3=%f S4=%f S5=%f",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->KDA,&stats->Score_Board[0],&stats->Score_Board[1],&stats->Score_Board[2],&stats->Score_Board[3],&stats->Score_Board[4]);
+        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%f S1=%f S2=%f S3=%f S4=%f S5=%f C1=%s C2=%s C3=%s C4=%s C5=%s",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->KDA,&stats->TEMPS_GENE,&stats->Score_Board[0],&stats->Score_Board[1],&stats->Score_Board[2],&stats->Score_Board[3],&stats->Score_Board[4],&stats->Convert_Score[0],&stats->Convert_Score[1],&stats->Convert_Score[2],&stats->Convert_Score[3],&stats->Convert_Score[4]);
         fclose (fichier1);
     }
 }
