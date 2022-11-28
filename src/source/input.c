@@ -447,5 +447,5 @@ void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,Effet
         }
     }
     }
-    Sprit_Squelette(lvl,squelette);
+    Sprit_Squelette(lvl,squelette,joueur);
 }
