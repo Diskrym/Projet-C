@@ -1,8 +1,1 @@
-<<<<<<< HEAD
-life=3 AttPice=3 NbPiece=0 nbDague=0 WinDonjon=2=0 WinDonjon=20
-=======
-life=3 AttPice=0 NbPiece=0 nbDague=0 WinDonjon=0
->>>>>>> e2a1b5edaa2874ad272ebcef101cca8d359a43e9
-=======
-life=9 AttPice=0 NbPiece=0 nbDague=0 WinDonjon=4=0 WinDonjon=2
->>>>>>> 91b0386b606877bbf4fa68da50c11da14e7db589
+life=3 AttPice=3 NbPiece=0 nbDague=0 WinDonjon=5
