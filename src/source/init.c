@@ -155,6 +155,11 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     {
         Load_Level_4_2(joueur,&entité->Petit_rocher, &entité->Gros_rocher,&entité->tronc,&entité->tanguy,lvl);
     }
+    if (lvl->Num == 11)
+    {
+        Load_Level_5_1(joueur,lvl,&entité->squelette1,&entité->squelette);
+    }
+    
     if (joueur->Edague==2)
     {
         joueur->nbDague=0;
@@ -273,6 +278,13 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         }
         Gestion_Obstacle(joueur,&entité->marchand,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc,&entité->tanguy, lvl, son);
     }
+    if (lvl->Num == 11)
+    {
+        Collision_Mur(joueur,20,20,20,20);
+        Deplacement_Squelette(joueur,&entité->squelette,lvl,son);
+        Deplacement_Squelette(joueur,&entité->squelette1,lvl,son);
+    }
+    
     
     
     
@@ -427,6 +439,23 @@ void Load_Level_4_2(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,
     tanguy->x = -70;
     tanguy->y = 180;
 }
+
+void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *squelette)
+{
+    Init_Maps(lvl);
+    joueur->inposx = level[11][0][2];
+    joueur->inposy = level[11][0][3];
+    squelette->posmonsx = level[11][1][1];
+    squelette->posmonsy = level[11][1][2];
+    squelette->Direction = 0;
+    squelette->Life = level[11][1][5];
+
+    squelette1->posmonsx = level[11][2][1];
+    squelette1->posmonsy = level[11][2][2];
+    squelette1->Direction = 1;
+    squelette1->Life = level[11][2][5];
+}
+
 
 void Clean_Up(EffetSon *son)
 {

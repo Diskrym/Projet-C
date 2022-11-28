@@ -34,6 +34,14 @@ typedef struct BossYeti
     SDL_Texture *cachemisere;
 } BossYeti;
 
+typedef struct Squelette
+{
+    int NumSprit, posmonsx, posmonsy,Direction, coup, Life, CompteurSpriteDegat, compteur, compteur_cin, Eattaque;
+    SDL_Texture *bulle;
+    SDL_Texture *squelette;
+    SDL_Texture *Jerem_Cin;
+}Squelette;
+
 
 typedef struct Chauvesouris
 {
@@ -93,6 +101,7 @@ typedef struct Entité
     Yeti yeti, yeti1, yeti2;
     Obstacle Petit_rocher,Gros_rocher, tronc, tanguy;
     BossYeti bossyeti;
+    Squelette squelette, squelette1, squelette2;
 
 } Entité;
 
@@ -170,7 +179,7 @@ typedef struct ParamTexte
 
 typedef struct Lvl
 {
-    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, Pause, temp, Load, reset,save;
+    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, Pause, temp, Load, reset,save,cin;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
@@ -220,7 +229,7 @@ typedef struct Stats
                                         }
                                     }
  */
-static const int level [11][5][6] = {
+static const int level [12][5][6] = {
                                         {
                                             {1,1,288,160,64,0},
                                             {1,70,70,64,1,3},
@@ -274,6 +283,11 @@ static const int level [11][5][6] = {
                                         },
                                         {
                                             {11,0,5,290,0}
+                                        },
+                                        {
+                                            {12,3,298,384,64,0},
+                                            {1,215,140,64,1,3},
+                                            {1,365,140,126,1,3}
                                         }
                                     };
 

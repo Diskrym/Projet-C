@@ -422,3 +422,30 @@ void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input
     }
     SpritBoss (boss, joueur, lvl, son);
 }
+
+void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,EffetSon *son)
+{
+    if (lvl->cin == 1)
+    {
+        if (squelette->compteur <= 100 && squelette->Life >=1)
+    {
+        if (joueur->inposx<squelette->posmonsx)
+        {
+            squelette->posmonsx-=1;
+        }
+        if (joueur->inposx>squelette->posmonsx)
+        {
+            squelette->posmonsx+=1;   
+        }
+        if (joueur->inposy<squelette->posmonsy)
+        {
+            squelette->posmonsy-=1;
+        }
+        if (joueur->inposy>squelette->posmonsy)
+        {
+            squelette->posmonsy+=1;
+        }
+    }
+    }
+    Sprit_Squelette(lvl,squelette);
+}

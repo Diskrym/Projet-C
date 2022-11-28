@@ -28,6 +28,11 @@ void Init_Maps(Lvl *lvl)
     {
        lvl->Map = lvl->MapSlide = loadImage("src/graphics/Rivière/Riviere.png");
     }
+    if (lvl->Num == 11)
+    {
+        lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon4.png");
+    }
+    
 }
   
 void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input,Stats*stats, ParamTexte *paramtexte)
@@ -243,6 +248,12 @@ void Gestion_Map_Global (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *so
         {
             lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");
             Draw_Image(lvl->Icone,293,68);
+            if (input->attack == 1)
+            {
+                lvl->Num = 11;
+                Select_Level(joueur,lvl,entité,son);
+            }
+            
         }
         else
         {

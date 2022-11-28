@@ -43,6 +43,8 @@ extern int Degat_Bateau (Obstacle *tronc, Obstacle *Petit_rocher, Obstacle *Gros
 extern int Inside_Item (Joueur *joueur, Boss *boss);
 extern int Inside_Vol (int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObjx, int tailleObjy);
 extern int Inside_Chevalier_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti);
+extern int Inside_Squelette_Chevalier(Joueur *joueur, Squelette*squelette);
+
 
 
 //init.c
@@ -68,6 +70,7 @@ extern void Load_Level_3_3 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Lvl *lvl, C
 extern void Load_Level_3_4 (Joueur *joueur, BossYeti *bossyeti,Lvl *lvl);
 extern void Save (Joueur*joueur,Lvl *lvl,Input *input, Entité *entité, EffetSon *son,Stats *stats,clock_t temps);
 extern void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats);
+extern void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *squelette);
 
 //input.c
 //extern void gestionInputs(Input *input);
@@ -78,6 +81,7 @@ extern void Deplacement_Chauvesouris (Joueur *joueur, Chauvesouris *chauvesouris
 extern void Deplacement_Yeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son);
 extern void Deplacement_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetSon *son);
 extern void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son);
+extern void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,EffetSon *son);
 
 //map.c
 extern void Init_Maps(Lvl *lvl);
@@ -94,5 +98,7 @@ extern void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl, EffetSon *son);
 extern void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl, EffetSon *son);
+extern void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur);
+
 //extern void drawMap(int);
 #endif

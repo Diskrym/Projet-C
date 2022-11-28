@@ -2890,3 +2890,77 @@ if (lvl->Avancement10<=11)
     } 
 
 }
+
+void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
+{
+
+    if (squelette->squelette != NULL)
+    {
+        SDL_DestroyTexture(squelette->squelette);
+        squelette->squelette = NULL;
+    }
+    if (squelette->bulle != NULL)
+    {
+        SDL_DestroyTexture(squelette->bulle);
+        squelette->squelette = NULL;
+    }
+    if (squelette->Jerem_Cin != NULL)
+    {
+        SDL_DestroyTexture(squelette->Jerem_Cin);
+        squelette->Jerem_Cin = NULL;
+    }
+    
+    
+    if (lvl->Num == 11 && lvl->cin == 0)
+    {
+        if (squelette->Direction == 0)
+        {
+            squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreD.png");
+            Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+        }
+        if (squelette->Direction == 1)
+        {
+            squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreG.png");
+            Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+        }
+        if (squelette->compteur_cin < 1000)
+        {
+            if (squelette->compteur_cin>20 && squelette->compteur_cin<200)
+            {
+                squelette->bulle = loadImage ("src/Graphics/Marchand/BulleBec1.png");
+                Draw_Image(squelette->bulle,10,10);
+            }
+            
+        }
+        else
+        {
+            //arret cin
+        }
+        printf("%d\n",squelette->compteur_cin);
+        squelette->compteur_cin+=1;
+    }
+    else 
+    {
+        //Mouvement  squelette quand en vie
+        if (squelette->Life >=1)
+        {
+            if (Inside_Squelette_Chevalier(joueur, squelette)==1 && squelette->Eattaque == 0)
+            {
+                squelette->Eattaque = 1;
+            }
+
+            if (squelette->Eattaque == 1 )
+            {
+                
+            }
+            else 
+            {
+                
+            }
+            
+            
+        }
+
+    }
+    
+}

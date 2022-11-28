@@ -62,7 +62,6 @@ void Score_(Stats *stats,clock_t temps)
             char tempm [10];
             char temph [10];
             stats->Score_Board[i]= (double)temps/CLOCKS_PER_SEC+stats->TEMPS_GENE;
-            printf("%f",stats->Score_Board[i]);
             //si inférieur a 1minutes alors uniquement seconde
             if (stats->Score_Board[i] < 60)
             {   
@@ -127,7 +126,6 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 167 && input->PosMouseY <= 204 || lvl->save == 1)
         {
             stats->TEMPS_GENE=(double)temps/CLOCKS_PER_SEC;
-            printf("%f\n",stats->TEMPS_GENE);
             FILE* fichier = fopen ( nomFichier , "r+" );
             if ( fichier )
             {

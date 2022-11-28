@@ -411,6 +411,7 @@ int Inside_Chevalier_Boss (Joueur *joueur, Boss *boss)
     }
 }
 
+
 //test si l'attaque du joueur touche le yeti
 int Inside_Chevalier_Yeti (Joueur *joueur, Yeti *yeti)
 {       
@@ -499,6 +500,24 @@ int Inside_Meduse_Chevalier (Joueur *joueur, Meduse *meduse)
         x=1;
     }
     if ((joueur->inposy>=meduse->posmonsy-23 || joueur->inposy+SPRITE_SIZE>=meduse->posmonsy-23) && (joueur->inposy<=meduse->posmonsy+SPRITE_SIZE+23 || joueur->inposy + SPRITE_SIZE <=meduse->posmonsy+SPRITE_SIZE+23))
+    {
+        y=1;
+    }
+    if (x==1 && y==1)
+    {
+        return 1;
+    }
+}
+
+int Inside_Squelette_Chevalier(Joueur *joueur, Squelette*squelette)
+{
+    int x=0;
+    int y=0;
+    if ((joueur->inposx>=squelette->posmonsx || joueur->inposx+SPRITE_SIZE>=squelette->posmonsx) && (joueur->inposx<=squelette->posmonsx+SPRITE_SIZE || joueur->inposx + SPRITE_SIZE <= squelette->posmonsx+SPRITE_SIZE))
+    {
+        x=1;
+    }
+    if ((joueur->inposy>=squelette->posmonsy || joueur->inposy+SPRITE_SIZE>=squelette->posmonsy) && (joueur->inposy<= squelette->posmonsy+SPRITE_SIZE || joueur->inposy + SPRITE_SIZE <=squelette->posmonsy+SPRITE_SIZE))
     {
         y=1;
     }
@@ -645,5 +664,4 @@ int Degat_Bateau (Obstacle *tronc, Obstacle *Petit_rocher, Obstacle *Gros_rocher
     {
         return 0;
     }
-    
 }
