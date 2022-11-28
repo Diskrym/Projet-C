@@ -2803,7 +2803,7 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
     }
 if (lvl->Avancement10<=11)
 {
-    if (Inside_Vol(tronc->x,tronc->y, joueur->inposx, joueur->inposy,79,70,100,52)==1)
+    if (Inside_Vol(tronc->x,tronc->y, joueur->inposx, joueur->inposy,60,60,80,40)==1)
     {
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
@@ -2815,7 +2815,7 @@ if (lvl->Avancement10<=11)
     {
         tronc->coup+=1;
     }
-    if (Inside_Vol(Petit_rocher->x,Petit_rocher->y, joueur->inposx, joueur->inposy,79,70,80,80)==1)
+    if (Inside_Vol(Petit_rocher->x,Petit_rocher->y, joueur->inposx, joueur->inposy,60,60,60,60)==1)
     {
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
@@ -2828,7 +2828,7 @@ if (lvl->Avancement10<=11)
         Petit_rocher->coup+=1;
     }
                                                                                     //x
-    if (Inside_Vol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,79,70,110,105)==1)
+    if (Inside_Vol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,60,60,90,85)==1)
     {
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
