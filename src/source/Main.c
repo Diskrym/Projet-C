@@ -27,6 +27,7 @@ Joueur joueur;
 Chauvesouris chauvesouris, chauvesouris1;
 Meduse meduse, meduse1, meduse2;
 Yeti yeti, yeti1, yeti2;
+BossYeti bossyeti;
 Lvl lvl;
 Entité entité;
 EffetSon son;
@@ -94,6 +95,7 @@ init("Dungeon Fate");
         //Gestion des inputs clavier
         //gestionInputs(&input);
         Get_Input(&input);
+        
 
         if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4)
         {
