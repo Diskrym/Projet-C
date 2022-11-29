@@ -3031,7 +3031,54 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             
             
         }
+        //deplacement squelette
+        if (squelette->Life >=1)
+        {
+         if (squelette->CompteurSpriteDegat==0)
+            {
+            if (squelette->Direction==0){
+                if (squelette->NumSprit==0 || squelette->NumSprit==1 || squelette->NumSprit==2 || squelette->NumSprit==3 ||squelette->NumSprit==8 || squelette->NumSprit==9 || squelette->NumSprit==10 || squelette->NumSprit==11 )
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreD.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->NumSprit==4 || squelette->NumSprit==5 || squelette->NumSprit==6 || squelette->NumSprit==7  )
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/squelettemarche1D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->NumSprit==12 || squelette->NumSprit==13 || squelette->NumSprit==14 || squelette->NumSprit==15 )
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/squelettemarche2D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }  
+            }
+ 
+            if (squelette->Direction==1){
+                if (squelette->NumSprit==0 || squelette->NumSprit==1 || squelette->NumSprit==2 || squelette->NumSprit==3 ||squelette->NumSprit==8 || squelette->NumSprit==9 || squelette->NumSprit==10 || squelette->NumSprit==11 )
+                {
+                   
+                    squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreG.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->NumSprit==4 || squelette->NumSprit==5 || squelette->NumSprit==6 || squelette->NumSprit==7  )
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/squelettemarche1G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->NumSprit==12 || squelette->NumSprit==13 || squelette->NumSprit==14 || squelette->NumSprit==15 )
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/squelettemarche2G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+            }
+
+
+
+ 
+
 
     }
     
 }
+    }}

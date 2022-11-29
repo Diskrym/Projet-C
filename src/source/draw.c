@@ -50,13 +50,13 @@ void Draw_Game(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
 void Game_Over (EffetSon *son)
 {   
     // Mix_PauseMusic();
-    SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");
+    SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");  
     Draw_Image(GameOver,0,0);
     SDL_RenderPresent(getrenderer());
 
     Mix_VolumeChunk(son->gameoverson, MIX_MAX_VOLUME);
-    Mix_PlayChannel(10, son->gameoverson, 2);
-    SDL_Delay(2000);
+    Mix_PlayChannel(10, son->gameoverson, 1);
+    SDL_Delay(5000);
 }
 
 //ecran fin
