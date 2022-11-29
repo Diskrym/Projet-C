@@ -283,6 +283,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         Collision_Mur(joueur,20,20,20,20);
         Deplacement_Squelette(joueur,&entité->squelette,lvl,son);
         Deplacement_Squelette(joueur,&entité->squelette1,lvl,son);
+        
     }
     
     
@@ -454,6 +455,8 @@ void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *sq
     squelette1->posmonsy = level[11][2][2];
     squelette1->Direction = 1;
     squelette1->Life = level[11][2][5];
+
+    lvl->cin = 1;
 }
 
 

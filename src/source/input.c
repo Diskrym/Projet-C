@@ -150,7 +150,7 @@ void Get_Input(Input *input)
 void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,Lvl *lvl)
 {  
     //si pas dans une cin
-    if(lvl->cin != 0)
+    if(lvl->cin == 0)
     {
         //Si on a pas le bouclier on se déplace
         if (!(joueur->Eshield==1 && joueur->TimingBouclier<15) && input->shield==0)
@@ -429,7 +429,7 @@ void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input
 
 void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,EffetSon *son)
 {
-    if (lvl->cin == 1)
+    if (lvl->cin == 0)
     {
         if (squelette->Life >=1 && squelette->Eattaque == 0)
         {

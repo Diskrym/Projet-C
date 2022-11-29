@@ -2911,8 +2911,8 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
         squelette->Jerem_Cin = NULL;
     }
     
-    lvl->cin =1;
-    if (lvl->Num == 11 && lvl->cin == 0)
+    
+    if (lvl->Num == 11 && lvl->cin == 1)
     {
         //sprite squeltte
         if (squelette->Direction == 0 && squelette->Parle_S == 0)
@@ -3017,7 +3017,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             squelette->pos_jerem-=2;
             if (squelette->pos_jerem<5)
             {
-                lvl->cin = 1;
+                lvl->cin = 0;
             }
             
         }
@@ -3104,11 +3104,22 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     squelette->NumSprit = 0;
                     squelette->Eattaque = 0;
                 }
-                printf("%d\n",squelette->Eattaque);
             }
             else if (squelette->Eattaque == 2)
             {
-                
+                if (squelette->Direction == 0)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreD.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    
+                }
+                else
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreG.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+
+                squelette->NumSprit+=1;
             }
             else 
             {
