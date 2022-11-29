@@ -1311,8 +1311,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                     bossyeti->CompteurSpriteDegat+=1;
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiDegatG.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    // Mix_VolumeChunk(son->degatbossyeti, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(4, son->degatbossyeti, 0);
+                    if (bossyeti->CompteurSpriteDegat==2)
+                    {
+                    Mix_VolumeChunk(son->degatbossyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(4, son->degatbossyeti, 0);
+                    }
                    
                     //compteur duree affichage degat bossyeti
                     if (bossyeti->CompteurSpriteDegat > 15)
@@ -1327,11 +1330,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                     bossyeti->CompteurSpriteDegat+=1;
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiDegatD.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    // if (bossyeti->CompteurSpriteDegat==2)
-                    // {
-                    // Mix_VolumeChunk(son->degatbossyeti, MIX_MAX_VOLUME);
-                    //  Mix_PlayChannel(14, son->degatbossyeti, 0);
-                    // }          
+                    if (bossyeti->CompteurSpriteDegat==2)
+                    {
+                    Mix_VolumeChunk(son->degatbossyeti, MIX_MAX_VOLUME);
+                     Mix_PlayChannel(14, son->degatbossyeti, 0);
+                    }          
                     //compteur duree affichage degat bossyeti
                     if (bossyeti->CompteurSpriteDegat > 15)
                     {
@@ -1363,11 +1366,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 }
                 if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
                 {  
-                    // if (bossyeti->NumSprit==60)
-                    // {
-                    // Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(16, son->attaquebossyeti, 0);
-                    // }
+                    if (bossyeti->NumSprit==60)
+                    {
+                    Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(16, son->attaquebossyeti, 0);
+                    }
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3G.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     if (bossyeti->NumSprit == 65)
@@ -1410,11 +1413,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 }
                 if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
                 {  
-                    // if (bossyeti->NumSprit==60)
-                    // {
-                    // Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(16, son->attaquebossyeti, 0);
-                    // }
+                    if (bossyeti->NumSprit==60)
+                    {
+                    Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(16, son->attaquebossyeti, 0);
+                    }
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3D.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     if (bossyeti->NumSprit == 65)
@@ -1467,6 +1470,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                  
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4G.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    if (bossyeti->NumSprit==68)
+                    {
+                    Mix_VolumeChunk(son->solbossyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(16, son->solbossyeti, 0);
+                    }
                     
                 }
                 if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
@@ -1521,6 +1529,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                  
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4D.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    if (bossyeti->NumSprit==68)
+                    {
+                    Mix_VolumeChunk(son->solbossyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(16, son->solbossyeti, 0);
+                    }
                     
                 }
                 if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
@@ -1586,11 +1599,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 bossyeti->Compteurcrane+=1;
                 if (bossyeti->Compteurcrane>=0 && bossyeti->Compteurcrane<5)
                 {  
-                    //  if (bossyeti->Compteurcrane==1)
-                    // {
-                    // Mix_VolumeChunk(son->cranedeneige, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(7, son->cranedeneige, 0);
-                    // }
+                     if (bossyeti->Compteurcrane==1)
+                    {
+                    Mix_VolumeChunk(son->cranemur, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(7, son->cranemur, 0);
+                    }
                    
                     bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1G.png");
                     Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
@@ -1637,11 +1650,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 bossyeti->Compteurcrane+=1;
                 if (bossyeti->Compteurcrane>=0 && bossyeti->Compteurcrane<5)
                 {  
-                    // if (bossyeti->Compteurcrane==1)
-                    // {
-                    // Mix_VolumeChunk(son->cranedeneige, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(7, son->cranedeneige, 0);
-                    // }
+                    if (bossyeti->Compteurcrane==1)
+                    {
+                    Mix_VolumeChunk(son->cranemur, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(7, son->cranemur, 0);
+                    }
                     bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1D.png");
                     Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
                 }
@@ -2477,21 +2490,40 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             {
                 SDL_Delay(200);
                 marchand->CompteurMess2 += 1;
+                son->CompteurKarine=0;
             }
             if (marchand->CompteurMess2==1)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine1.png");
                 Draw_Image(marchand->bulle,10,115);
+                son->CompteurKarine++;
+                if (son->CompteurKarine==1)
+                {
+                Mix_VolumeChunk(son->karine, MIX_MAX_VOLUME);
+                Mix_PlayChannel(10, son->karine, 0);
+                }
             }
             if (marchand->CompteurMess2==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine2.png");
                 Draw_Image(marchand->bulle,10,115);
+                son->CompteurKarine++;
+                if (son->CompteurKarine==1)
+                {
+                Mix_VolumeChunk(son->karine, MIX_MAX_VOLUME);
+                Mix_PlayChannel(10, son->karine, 0);
+                }
             }
             if (marchand->CompteurMess2==3)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleKarine3.png");
                 Draw_Image(marchand->bulle,10,115);
+                son->CompteurKarine++;
+                if (son->CompteurKarine==1)
+                {
+                Mix_VolumeChunk(son->karine, MIX_MAX_VOLUME);
+                Mix_PlayChannel(10, son->karine, 0);
+                }
 
                 //Achat de coeur
                 if (input->attack == 1)
@@ -2541,21 +2573,42 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 joueur->AttPiece = 0;
                 SDL_Delay(200);
                 marchand->CompteurMess3 += 1;
+                son->CompteurJeff=0;
+
             }
             if (marchand->CompteurMess3==1)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleBec1.png");
                 Draw_Image(marchand->bulle,55,170);
+                son->CompteurJeff++;
+                if (son->CompteurJeff==1)
+                {
+                Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
+                Mix_PlayChannel(10, son->jeff, 0);
+                }
             }
             if (marchand->CompteurMess3==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleBec2.png");
                 Draw_Image(marchand->bulle,55,170);
+                son->CompteurJeff++;
+                if (son->CompteurJeff==1)
+                {
+                Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
+                Mix_PlayChannel(10, son->jeff, 0);
+                }
+                
             }
             if (marchand->CompteurMess3==3)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleBec3.png");
                 Draw_Image(marchand->bulle,55,170);
+                son->CompteurJeff++;
+                if (son->CompteurJeff==1)
+                {
+                Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
+                Mix_PlayChannel(10, son->jeff, 0);
+                }
             }
         }
         //remise a zero du compteur
@@ -2598,21 +2651,40 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             {
                 SDL_Delay(200);
                 marchand->CompteurMess1 += 1;
+                son->CompteurTanguy=0;
             }
              if (marchand->CompteurMess1==1)
             {
                 marchand->bulle=loadImage("src/graphics/Rivière/BulleTanguy1.png");
                 Draw_Image(marchand->bulle,255,62);
+                son->CompteurTanguy++;
+                if (son->CompteurTanguy==1)
+                {
+                Mix_VolumeChunk(son->tanguy, MIX_MAX_VOLUME);
+                Mix_PlayChannel(10, son->tanguy, 0);
+                }
             }
             if (marchand->CompteurMess1==2)
             {
                 marchand->bulle=loadImage("src/graphics/Rivière/BulleTanguy2.png");
                 Draw_Image(marchand->bulle,255,62);
+                son->CompteurTanguy++;
+                if (son->CompteurTanguy==1)
+                {
+                Mix_VolumeChunk(son->tanguy, MIX_MAX_VOLUME);
+                Mix_PlayChannel(10, son->tanguy, 0);
+                }
             }
             if (marchand->CompteurMess1==3)
             {
                 marchand->bulle=loadImage("src/graphics/Rivière/BulleTanguy3.png");
                 Draw_Image(marchand->bulle,255,62);
+                son->CompteurTanguy++;
+                if (son->CompteurTanguy==1)
+                {
+                Mix_VolumeChunk(son->tanguy, MIX_MAX_VOLUME);
+                Mix_PlayChannel(10, son->tanguy, 0);
+                }
                 joueur->Ebateau=1;
             }
         }
