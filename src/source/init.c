@@ -90,6 +90,21 @@ void Son (EffetSon *son)
     son->JeremDamm= Mix_LoadWAV("src/musique/damm.wav");
     son->dagueLancer = Mix_LoadWAV("src/musique/Dague_lancer.wav");
     son->collisionR = Mix_LoadWAV("src/musique/CollisionR.WAV");
+    son->attaquebossyeti= Mix_LoadWAV("src/musique/AttaqueBossYeti.WAV");
+    son->caisse= Mix_LoadWAV("src/musique/Caisse.WAV");
+    son->cranemur= Mix_LoadWAV("src/musique/Cranemur.WAV");
+    son->degatbossyeti= Mix_LoadWAV("src/musique/DegatBossYeti.WAV");
+    son->solbossyeti= Mix_LoadWAV("src/musique/BossYetiSol.WAV");
+    //son->fissure= Mix_LoadWAV("src/musique/CollisionR.WAV");
+    //son->mortbossyeti= Mix_LoadWAV("src/musique/CollisionR.WAV");
+    son->etourdissement= Mix_LoadWAV("src/musique/Etourdissement.WAV");
+    son->jeff= Mix_LoadWAV("src/musique/Jeff.WAV");
+    son->karine= Mix_LoadWAV("src/musique/Karine.WAV");
+    son->tanguy= Mix_LoadWAV("src/musique/Tanguy.WAV");
+    //son->degatsquelette= Mix_LoadWAV("src/musique/CollisionR.WAV");
+    son->mortsquelette= Mix_LoadWAV("src/musique/MortSquelette.WAV");
+    //son->attaquesquelette= Mix_LoadWAV("src/musique/CollisionR.WAV");
+    //son->tetesquelette= Mix_LoadWAV("src/musique/CollisionR.WAV");
     }
 
 void Texte(ParamTexte *paramtexte)
