@@ -149,75 +149,79 @@ void Get_Input(Input *input)
 
 void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,Lvl *lvl)
 {  
-    //Si on a pas le bouclier on se déplace
-    if (!(joueur->Eshield==1 && joueur->TimingBouclier<15) && input->shield==0)
+    //si pas dans une cin
+    if(lvl->cin != 0)
     {
-        if (input->left==1)
+        //Si on a pas le bouclier on se déplace
+        if (!(joueur->Eshield==1 && joueur->TimingBouclier<15) && input->shield==0)
         {
-            if(lvl->Num!=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
+            if (input->left==1)
             {
-                joueur->inposx-=3;
-                joueur->NumSprit+=1;
-                joueur->Direction =1;
+                if(lvl->Num!=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
+                {
+                    joueur->inposx-=3;
+                    joueur->NumSprit+=1;
+                    joueur->Direction =1;
 
+                }
+                else if( lvl->Avancement10 != 13)
+                {
+                    joueur->inposx-=4;
+                }
             }
-            else if( lvl->Avancement10 != 13)
+            if (input->right==1)
             {
-                joueur->inposx-=4;
+                if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
+                {
+                    joueur->inposx+=3;
+                    joueur->NumSprit+=1;
+                    joueur->Direction =0;
+                }
+                else if ( lvl->Avancement10 != 13)
+                {
+                    joueur->inposx+=2;
+                } 
+            }
+            if (input->up==1)
+            {
+                if (lvl->Num !=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
+                {
+                    joueur->NumSprit+=1;  
+                } 
+                joueur->inposy-=3;
+            }
+            if (input->down==1)
+            {
+                if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
+                {
+                    joueur->NumSprit+=1;
+                }
+                joueur->inposy+=3;
             }
         }
-        if (input->right==1)
+        if (input->dague == 1 && joueur->Edague == 0 && joueur->nbDague>0)
         {
-            if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
-            {
-                joueur->inposx+=3;
-                joueur->NumSprit+=1;
-                joueur->Direction =0;
-            }
-            else if ( lvl->Avancement10 != 13)
-            {
-                joueur->inposx+=2;
-            } 
+            joueur->Edague = 1;
+            joueur->xdague=joueur->inposx;
+            joueur->ydague=joueur->inposy+32;
+            joueur->DirDague=joueur->Direction;
         }
-        if (input->up==1)
+        
+        if (input->attack==1)
         {
-            if (lvl->Num !=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
-            {
-                joueur->NumSprit+=1;  
-            } 
-            joueur->inposy-=3;
+            joueur->NumSprit=0;
+            joueur->Eattack=1;
         }
-        if (input->down==1)
+        if (input->shield==1)
         {
-            if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
-            {
-                joueur->NumSprit+=1;
-            }
-            joueur->inposy+=3;
+            joueur->NumSprit=0;
+            joueur->Eshield=1;
         }
-    }
-    if (input->dague == 1 && joueur->Edague == 0 && joueur->nbDague>0)
-    {
-        joueur->Edague = 1;
-        joueur->xdague=joueur->inposx;
-        joueur->ydague=joueur->inposy+32;
-        joueur->DirDague=joueur->Direction;
-    }
-    
-    if (input->attack==1)
-    {
-        joueur->NumSprit=0;
-        joueur->Eattack=1;
-    }
-    if (input->shield==1)
-    {
-        joueur->NumSprit=0;
-        joueur->Eshield=1;
-    }
-    if (input->shield==0)
-    {
-        joueur->Eshield=0;
-        joueur->TimingBouclier=0;
+        if (input->shield==0)
+        {
+            joueur->Eshield=0;
+            joueur->TimingBouclier=0;
+        }
     }
     Sprit_Chevalier(joueur, input, son, entité, lvl);
 }
@@ -427,7 +431,7 @@ void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,Effet
 {
     if (lvl->cin == 1)
     {
-        if (squelette->compteur <= 100 && squelette->Life >=1)
+    if (squelette->Life >=1)
     {
         if (joueur->inposx<squelette->posmonsx)
         {
