@@ -456,7 +456,7 @@ void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *sq
     squelette1->Direction = 1;
     squelette1->Life = level[11][2][5];
 
-    lvl->cin = 1;
+    //lvl->cin = 1;
 }
 
 

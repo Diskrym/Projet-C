@@ -3033,7 +3033,6 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             {
                 squelette->Eattaque = 1;
                 squelette->NumSprit =0 ;
-                printf("rrrrrrrrrrrrrrrrrrrr\n");
             }
 
             if (squelette->Eattaque == 1 )
@@ -3112,14 +3111,42 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreD.png");
                     Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
                     
+                    if (squelette->NumSprit >= 0 && squelette->NumSprit <25 || squelette->NumSprit>=50 && squelette->NumSprit<75 || squelette->NumSprit>=100 && squelette->NumSprit<125)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Etourdis1.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy+5);
+                    }
+                    if (squelette->NumSprit >= 25 && squelette->NumSprit <50 || squelette->NumSprit>=75 && squelette->NumSprit<100 || squelette->NumSprit>=125 && squelette->NumSprit<150)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Etourdis2.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy+5);
+                    }
+                    
                 }
                 else
                 {
                     squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreG.png");
                     Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+
+                    if (squelette->NumSprit >= 0 && squelette->NumSprit <25 || squelette->NumSprit>=50 && squelette->NumSprit<75 || squelette->NumSprit>=100 && squelette->NumSprit<125)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Etourdis1.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy+5);
+                    }
+                    if (squelette->NumSprit >= 25 && squelette->NumSprit <50 || squelette->NumSprit>=75 && squelette->NumSprit<100 || squelette->NumSprit>=125 && squelette->NumSprit<150)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Etourdis2.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy+5);
+                    }
                 }
 
                 squelette->NumSprit+=1;
+                if (squelette->NumSprit>=150)
+                {
+                    squelette->NumSprit=0 ;
+                    squelette->Eattaque = 0;
+                }
+                
             }
             else 
             {
