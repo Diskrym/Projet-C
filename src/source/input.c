@@ -431,25 +431,29 @@ void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,Effet
 {
     if (lvl->cin == 1)
     {
-    if (squelette->Life >=1)
-    {
-        if (joueur->inposx<squelette->posmonsx)
+        if (squelette->Life >=1 && squelette->Eattaque == 0)
         {
-            squelette->posmonsx-=1;
+            if (joueur->inposx<squelette->posmonsx)
+            {
+                squelette->posmonsx-=1;
+                squelette->Direction = 1;
+            }
+            if (joueur->inposx>squelette->posmonsx)
+            {
+                squelette->posmonsx+=1; 
+                squelette->Direction = 0;  
+            }
+            if (joueur->inposy<squelette->posmonsy)
+            {
+                squelette->posmonsy-=1;
+            }
+            if (joueur->inposy>squelette->posmonsy)
+            {
+                squelette->posmonsy+=1;
+            }
         }
-        if (joueur->inposx>squelette->posmonsx)
-        {
-            squelette->posmonsx+=1;   
-        }
-        if (joueur->inposy<squelette->posmonsy)
-        {
-            squelette->posmonsy-=1;
-        }
-        if (joueur->inposy>squelette->posmonsy)
-        {
-            squelette->posmonsy+=1;
-        }
-    }
+        squelette->NumSprit+=1;
+
     }
     Sprit_Squelette(lvl,squelette,joueur);
 }

@@ -30,7 +30,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
         {
             //se deplace si ne prend pas de dégat sinon sprit degat
-            if (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==1)
+            if (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1)==1)
             {
                 son->sondegat=0;
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
@@ -61,7 +61,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
             
         }
         //affiche sprite degat si degat de la part du entité et si degat de la part du entité lors de notre attack/defense pour la droite
-        if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==0) || (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==0) && joueur->Direction==0)
+        if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1)==0) || (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti,&entité->squelette,&entité->squelette1)==0) && joueur->Direction==0)
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
             Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
@@ -76,7 +76,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         //cf fonction gauche
         if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
         {
-            if(Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==1)
+            if(Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti,&entité->squelette,&entité->squelette1)==1)
             {
                 son->sondegat=0;
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
@@ -107,7 +107,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                 }   
             }
         }
-        if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti)==0) || (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==0) && joueur->Direction==1 )
+        if ((joueur->Direction ==1 && (joueur->Eattack==1 || joueur->Eshield==1) && Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti,&entité->squelette,&entité->squelette1)==0) || (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1)==0) && joueur->Direction==1 )
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/DégatG.png");
             Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
@@ -120,7 +120,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         }
         
         //Mouvement attaque si Eattack = 1 et si on ne prend pas de dégat
-        if (joueur->Eattack==1 && Degat_Chevalier(&entité->meduse, &entité->meduse1, &entité->meduse2, &entité->chauvesouris, &entité->chauvesouris1,&entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti)==1)
+        if (joueur->Eattack==1 && Degat_Chevalier(&entité->meduse, &entité->meduse1, &entité->meduse2, &entité->chauvesouris, &entité->chauvesouris1,&entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1)==1)
         {
             joueur->Numattack+=1;
             if (joueur->Direction==1)
@@ -2911,7 +2911,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
         squelette->Jerem_Cin = NULL;
     }
     
-    
+    lvl->cin =1;
     if (lvl->Num == 11 && lvl->cin == 0)
     {
         //sprite squeltte
@@ -2959,7 +2959,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
         }
 
 
-        if (squelette->compteur_cin < 2100)
+        if (squelette->compteur_cin < 1800)
         {   
             squelette->pos_jerem = 70;
             //jerem
@@ -2987,12 +2987,12 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             if (squelette->compteur_cin>20 && squelette->compteur_cin<500)
             {
                 squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette1.png");
-                Draw_Image(squelette->bulle,170,180);
+                Draw_Image(squelette->bulle,122,175);
             }
             if (squelette->compteur_cin>520 && squelette->compteur_cin<1000)
             {
                 squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette2.png");
-                Draw_Image(squelette->bulle,170,180);
+                Draw_Image(squelette->bulle,122,180);
                 if (squelette->Parle_S == 0)
                 {
                     squelette->Parle_S=1;
@@ -3001,13 +3001,13 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             if (squelette->compteur_cin>1020 && squelette->compteur_cin<1500)
             {
                 squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette3.png");
-                Draw_Image(squelette->bulle,170,180);
+                Draw_Image(squelette->bulle,122,180);
                 squelette->Parle_S=0;
             }
-            if (squelette->compteur_cin>1520 && squelette->compteur_cin<2000)
+            if (squelette->compteur_cin>1520 && squelette->compteur_cin<1700)
             {
                 squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette4.png");
-                Draw_Image(squelette->bulle,170,180);
+                Draw_Image(squelette->bulle,122,180);
             }
         }
         else
@@ -3028,70 +3028,144 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
         //Mouvement  squelette quand en vie
         if (squelette->Life >=1)
         {
+
             if (Inside_Squelette_Chevalier(joueur, squelette)==1 && squelette->Eattaque == 0)
             {
                 squelette->Eattaque = 1;
+                squelette->NumSprit =0 ;
+                printf("rrrrrrrrrrrrrrrrrrrr\n");
             }
 
             if (squelette->Eattaque == 1 )
+            {
+                if(squelette->Direction == 0)
+                {
+                    if (squelette->NumSprit>=0 && squelette->NumSprit <5 || squelette->NumSprit>=30 && squelette->NumSprit <35)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup1D.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    }
+                    if (squelette->NumSprit>=5 && squelette->NumSprit <10 || squelette->NumSprit>=25 && squelette->NumSprit <30)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup2D.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    }
+                    if (squelette->NumSprit>=10 && squelette->NumSprit <15 || squelette->NumSprit>=20 && squelette->NumSprit <25)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup3D.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    }
+                    if (squelette->NumSprit>=15 && squelette->NumSprit <20)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup4D.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    }
+                }
+                if (squelette->Direction == 1)
+                {
+                    if (squelette->NumSprit>=0 && squelette->NumSprit <5 || squelette->NumSprit>=30 && squelette->NumSprit <= 35)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup1G.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    }
+                    if (squelette->NumSprit>=5 && squelette->NumSprit <10 || squelette->NumSprit>=25 && squelette->NumSprit <30)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup2G.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    }
+                    if (squelette->NumSprit>=10 && squelette->NumSprit <15 || squelette->NumSprit>=20 && squelette->NumSprit <25)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup3G.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    }
+                    if (squelette->NumSprit>=15 && squelette->NumSprit <20)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup4G.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        //attaque
+                        if (Inside_Squelette_Chevalier(joueur, squelette)==1 && squelette->NumSprit == 16)
+                        {
+                            if (joueur->Eshield == 0 || joueur->TimingBouclier >15)
+                            {
+                                joueur->life--;
+                                squelette->coup = 1;
+                            }
+                            if (joueur->Eshield == 1 && joueur->TimingBouclier<=15)
+                            {
+                                squelette->Eattaque = 2;
+                                squelette->NumSprit = 0;
+                            }
+                        }
+                        
+                    }
+                }
+                if (squelette->NumSprit >= 35)
+                {
+                    squelette->NumSprit = 0;
+                    squelette->Eattaque = 0;
+                }
+                printf("%d\n",squelette->Eattaque);
+            }
+            else if (squelette->Eattaque == 2)
             {
                 
             }
             else 
             {
-
-            }
-            
-            
-        }
-        //deplacement squelette
-        if (squelette->Life >=1)
+                if (squelette->CompteurSpriteDegat==0)
+                {
+                    if (squelette->Direction==0)
+                    {
+                        if (squelette->NumSprit==0 || squelette->NumSprit==1 || squelette->NumSprit==2 || squelette->NumSprit==3 ||squelette->NumSprit==8 || squelette->NumSprit==9 || squelette->NumSprit==10 || squelette->NumSprit==11 )
+                        {
+                            squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreD.png");
+                            Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        }
+                        if (squelette->NumSprit==4 || squelette->NumSprit==5 || squelette->NumSprit==6 || squelette->NumSprit==7  )
+                        {
+                            squelette->squelette=loadImage("src/graphics/squelette/squelettemarche1D.png");
+                            Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        }
+                        if (squelette->NumSprit==12 || squelette->NumSprit==13 || squelette->NumSprit==14 || squelette->NumSprit==15 )
+                        {
+                            squelette->squelette=loadImage("src/graphics/squelette/squelettemarche2D.png");
+                            Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        }  
+                    }
+        
+                    if (squelette->Direction==1)
+                    {
+                        if (squelette->NumSprit==0 || squelette->NumSprit==1 || squelette->NumSprit==2 || squelette->NumSprit==3 ||squelette->NumSprit==8 || squelette->NumSprit==9 || squelette->NumSprit==10 || squelette->NumSprit==11 )
+                        {
+                        
+                            squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreG.png");
+                            Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        }
+                        if (squelette->NumSprit==4 || squelette->NumSprit==5 || squelette->NumSprit==6 || squelette->NumSprit==7  )
+                        {
+                            squelette->squelette=loadImage("src/graphics/squelette/squelettemarche1G.png");
+                            Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        }
+                        if (squelette->NumSprit==12 || squelette->NumSprit==13 || squelette->NumSprit==14 || squelette->NumSprit==15 )
+                        {
+                            squelette->squelette=loadImage("src/graphics/squelette/squelettemarche2G.png");
+                            Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        }
+                    }
+                    if (squelette->NumSprit>=15)
+                    {
+                        squelette->NumSprit = 0;
+                    }
+                }
+            } 
+        } 
+        if (squelette->coup!=0)
         {
-         if (squelette->CompteurSpriteDegat==0)
-            {
-            if (squelette->Direction==0){
-                if (squelette->NumSprit==0 || squelette->NumSprit==1 || squelette->NumSprit==2 || squelette->NumSprit==3 ||squelette->NumSprit==8 || squelette->NumSprit==9 || squelette->NumSprit==10 || squelette->NumSprit==11 )
-                {
-                    squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreD.png");
-                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                }
-                if (squelette->NumSprit==4 || squelette->NumSprit==5 || squelette->NumSprit==6 || squelette->NumSprit==7  )
-                {
-                    squelette->squelette=loadImage("src/graphics/squelette/squelettemarche1D.png");
-                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                }
-                if (squelette->NumSprit==12 || squelette->NumSprit==13 || squelette->NumSprit==14 || squelette->NumSprit==15 )
-                {
-                    squelette->squelette=loadImage("src/graphics/squelette/squelettemarche2D.png");
-                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                }  
-            }
- 
-            if (squelette->Direction==1){
-                if (squelette->NumSprit==0 || squelette->NumSprit==1 || squelette->NumSprit==2 || squelette->NumSprit==3 ||squelette->NumSprit==8 || squelette->NumSprit==9 || squelette->NumSprit==10 || squelette->NumSprit==11 )
-                {
-                   
-                    squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreG.png");
-                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                }
-                if (squelette->NumSprit==4 || squelette->NumSprit==5 || squelette->NumSprit==6 || squelette->NumSprit==7  )
-                {
-                    squelette->squelette=loadImage("src/graphics/squelette/squelettemarche1G.png");
-                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                }
-                if (squelette->NumSprit==12 || squelette->NumSprit==13 || squelette->NumSprit==14 || squelette->NumSprit==15 )
-                {
-                    squelette->squelette=loadImage("src/graphics/squelette/squelettemarche2G.png");
-                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                }
-            }
-
-
-
- 
-
-
+            squelette->coup+=1;
+        }
+        if (squelette->coup>15)
+        {
+            squelette->coup = 0;
+        }   
     }
-    
 }
-    }}
