@@ -2915,69 +2915,68 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
     if (lvl->Num == 11 && lvl->cin == 0)
     {
         //sprite squeltte
-        if (squelette->Direction == 0 && squelette->Parle == 0)
+        if (squelette->Direction == 0 && squelette->Parle_S == 0)
         {
             squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreD.png");
             Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
         }
-        else if (squelette->Direction == 0 && squelette->Parle == 1)
+        else if (squelette->Direction == 0 && squelette->Parle_S == 1)
         { 
             if (squelette->NumSprit>=0 && squelette->NumSprit<10)
             {
                 squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreD.png");
-                Draw_Image(squelette->squelette,squelette->posmonsx-2,squelette->posmonsy-2);
+                Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy-2);
             }
             else if (squelette->NumSprit>=10 && squelette->NumSprit<20)
             {
                 squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreD.png");
-                Draw_Image(squelette->squelette,squelette->posmonsx+2,squelette->posmonsy+2);
+                Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy+2);
             }
         }
-
-        if (squelette->Direction == 1)
+        if (squelette->Direction == 1 && squelette->Parle_S == 0)
         {
             squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreG.png");
             Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
         }
-        else if (squelette->Direction == 1 && squelette->Parle == 1)
+        else if (squelette->Direction == 1 && squelette->Parle_S == 1)
         { 
+            
             if (squelette->NumSprit>=0 && squelette->NumSprit<10)
             {
-                squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreD.png");
-                Draw_Image(squelette->squelette,squelette->posmonsx-2,squelette->posmonsy-2);
+                squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreG.png");
+                Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy-2);
             }
             else if (squelette->NumSprit>=10 && squelette->NumSprit<20)
             {
-                squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreD.png");
-                Draw_Image(squelette->squelette,squelette->posmonsx+2,squelette->posmonsy+2);
-            }
-            squelette->NumSprit+=1;
-            if (squelette->NumSprit == 20)
-            {
-                squelette->NumSprit = 0;
-            }
-            
+                squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreG.png");
+                Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy+2);
+            } 
+        }
+        squelette->NumSprit+=1;
+        if (squelette->NumSprit == 20)
+        {
+            squelette->NumSprit = 0;
         }
 
 
-
-        if (squelette->compteur_cin < 10000)
+        if (squelette->compteur_cin < 2100)
         {   
+            squelette->pos_jerem = 70;
             //jerem
             if ((squelette->compte_jerem >=0 && squelette->compte_jerem <10) || (squelette->compte_jerem>=50 && squelette->compte_jerem<=60))
             {
                 squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette1.png");
-                Draw_Image(squelette->Jerem_Cin,270,70);
+                Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
             }
             if ((squelette->compte_jerem>=10 && squelette->compte_jerem<20) || (squelette->compte_jerem>=40 && squelette->compte_jerem<50))
             {
                 squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette2.png");
-                Draw_Image(squelette->Jerem_Cin,270,70);
+                Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
             }
             if ((squelette->compte_jerem >=20 && squelette->compte_jerem <40))
             { 
                 squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette3.png");
-               Draw_Image(squelette->Jerem_Cin,270,70);
+                Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
             }
             squelette->compte_jerem+=1;
             if (squelette->compte_jerem >60)
@@ -2985,29 +2984,43 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                 squelette->compte_jerem=0;
             }
             
-            if (squelette->compteur_cin>20 && squelette->compteur_cin<300)
+            if (squelette->compteur_cin>20 && squelette->compteur_cin<500)
             {
                 squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette1.png");
-                Draw_Image(squelette->bulle,170,5);
+                Draw_Image(squelette->bulle,170,180);
             }
-            if (squelette->compteur_cin>20 && squelette->compteur_cin<300)
+            if (squelette->compteur_cin>520 && squelette->compteur_cin<1000)
             {
-                squelette->Parle=1;
+                squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette2.png");
+                Draw_Image(squelette->bulle,170,180);
+                if (squelette->Parle_S == 0)
+                {
+                    squelette->Parle_S=1;
+                } 
             }
-            if (squelette->compteur_cin>20 && squelette->compteur_cin<300)
+            if (squelette->compteur_cin>1020 && squelette->compteur_cin<1500)
             {
-                squelette->Parle=0;
+                squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette3.png");
+                Draw_Image(squelette->bulle,170,180);
+                squelette->Parle_S=0;
             }
-            if (squelette->compteur_cin>20 && squelette->compteur_cin<300)
+            if (squelette->compteur_cin>1520 && squelette->compteur_cin<2000)
             {
-                /* code */
+                squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette4.png");
+                Draw_Image(squelette->bulle,170,180);
             }
         }
         else
         {
-            //arret cin
+            squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette3.png");
+            Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
+            squelette->pos_jerem-=2;
+            if (squelette->pos_jerem<5)
+            {
+                lvl->cin = 1;
+            }
+            
         }
-        printf("%d\n",squelette->compteur_cin);
         squelette->compteur_cin+=1;
     }
     else 

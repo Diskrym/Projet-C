@@ -97,12 +97,12 @@ init("Dungeon Fate");
         Get_Input(&input);
         
 
-        if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4 && lvl.cin == 0)
+        if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4)
         {
             //IA monstre
             Gestion_Entité(&entité, &lvl, &input ,&joueur, &son);
             //Gestion des inputs et des déplacements
-            Deplacement_Chevalier(&input,&joueur,&entité, &son, &lvl);
+                Deplacement_Chevalier(&input,&joueur,&entité, &son, &lvl);
         }
 
         //Rendu des images dans le buffer
