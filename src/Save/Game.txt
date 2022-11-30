@@ -1,1 +1,1 @@
-life=3 AttPice=3 NbPiece=0 nbDague=0 WinDonjon=5
+life=3 AttPice=0 NbPiece=0 nbDague=0 WinDonjon=5

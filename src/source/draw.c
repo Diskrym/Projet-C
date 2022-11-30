@@ -51,11 +51,11 @@ void Game_Over (EffetSon *son)
 {   
     // Mix_PauseMusic();
     SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");  
-    Draw_Image(GameOver,0,0);
+    Draw_Image(GameOver,0,0); 
     SDL_RenderPresent(getrenderer());
 
     Mix_VolumeChunk(son->gameoverson, MIX_MAX_VOLUME);
-    Mix_PlayChannel(10, son->gameoverson, 1);
+    Mix_PlayChannel(10, son->gameoverson, 0);
     SDL_Delay(5000);
 }
 
