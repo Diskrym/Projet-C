@@ -3295,6 +3295,102 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                 squelette->CompteurSpriteDegat = 0;
             }
         }
+        else if (squelette->Life == 0)
+        {
+            if (squelette->Direction == 0)
+            {
+                if (squelette->CompteurSpriteDegat >= 0 && squelette->CompteurSpriteDegat <5)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort1D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 5 && squelette->CompteurSpriteDegat <10)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort2D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 15 && squelette->CompteurSpriteDegat <20)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort3D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 20 && squelette->CompteurSpriteDegat <25)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort4D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 25 && squelette->CompteurSpriteDegat <30)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort5D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+            }
+            if (squelette->Direction == 1)
+            {
+                if (squelette->CompteurSpriteDegat >= 0 && squelette->CompteurSpriteDegat <10)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort1G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 10 && squelette->CompteurSpriteDegat <20)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort2G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >=20 && squelette->CompteurSpriteDegat <30)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort3G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 30 && squelette->CompteurSpriteDegat <40)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort4G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 40 && squelette-> CompteurSpriteDegat <=50)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort5G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+            }
+            if (squelette->CompteurSpriteDegat <= 50)
+            {
+            squelette->CompteurSpriteDegat+=1;
+            }
+            else
+            {
+                squelette->Eattaque = 3 ;
+                squelette->CompteurSpriteDegat = 0 ;
+            }
+        }
+        else if (squelette->Eattaque == 3)
+        {
+            if (squelette->rebond <=3)
+            {
+                if (squelette->CompteurSpriteDegat >= 40 && squelette-> CompteurSpriteDegat <=50)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/SqueletteMort5G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+
+
+                squelette->posmonsx+=10;
+                squelette->rebond+=1;
+            }
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
+        //coup joueur
         if (squelette->coup!=0)
         {
             squelette->coup+=1;
