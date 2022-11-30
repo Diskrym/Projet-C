@@ -111,7 +111,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
 {
     
     //entrer pause
-    if (input->echap == 1 && lvl->Num != -2)
+    if (input->echap == 1 && lvl->Num != -2 && lvl->Num != -3 && lvl->Num !=-4)
     {
         lvl->temp = lvl->Num;
         lvl->Num = -2;
