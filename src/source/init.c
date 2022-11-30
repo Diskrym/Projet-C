@@ -298,6 +298,8 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         Collision_Mur(joueur,20,20,20,20);
         Deplacement_Squelette(joueur,&entité->squelette,lvl,son);
         Deplacement_Squelette(joueur,&entité->squelette1,lvl,son);
+        Collision_Squelette(joueur,&entité->squelette,input,lvl);
+        Collision_Squelette(joueur,&entité->squelette1,input,lvl);
         
     }
     
