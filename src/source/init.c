@@ -174,6 +174,11 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     {
         Load_Level_5_1(joueur,lvl,&entité->squelette1,&entité->squelette);
     }
+    if (lvl->Num == 12)
+    {
+        Load_Level_5_2(joueur,&entité->squelette,&entité->squelette1,&entité->chauvesouris,&entité->chauvesouris1,lvl); 
+    }
+    
     
     if (joueur->Edague==2)
     {
@@ -297,15 +302,21 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     {
         Collision_Mur(joueur,20,20,20,20);
         Deplacement_Squelette(joueur,&entité->squelette,lvl,son);
-        //Deplacement_Squelette(joueur,&entité->squelette1,lvl,son);
+        Deplacement_Squelette(joueur,&entité->squelette1,lvl,son);
         Collision_Squelette(joueur,&entité->squelette,input,lvl);
-        //Collision_Squelette(joueur,&entité->squelette1,input,lvl);
+        Collision_Squelette(joueur,&entité->squelette1,input,lvl);
         
     }
-    
-    
-    
-    
+    if (lvl->Num == 12)
+    {
+        Collision_Mur(joueur,20,20,20,20);
+        Deplacement_Squelette(joueur,&entité->squelette,lvl,son);
+        Deplacement_Squelette(joueur,&entité->squelette1,lvl,son);
+        Collision_Squelette(joueur,&entité->squelette,input,lvl);
+        Collision_Squelette(joueur,&entité->squelette1,input,lvl);
+        Deplacement_Chauvesouris(joueur,&entité->chauvesouris, lvl, son);
+        Deplacement_Chauvesouris(joueur, &entité->chauvesouris1, lvl, son);
+    }
     
 }
 
@@ -473,7 +484,32 @@ void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *sq
     squelette1->Direction = 1;
     squelette1->Life = level[11][2][5];
 
-    //lvl->cin = 1;
+    lvl->cin = 1;
+}
+
+void Load_Level_5_2(Joueur *joueur, Squelette *squelette, Squelette *squelette1,Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl)
+{
+    lvl->cin =0;
+    Init_Maps(lvl);
+    joueur->inposx = level[12][0][2];
+    joueur->inposy = level[12][0][3];
+
+    squelette->posmonsx = level[12][1][1];
+    squelette->posmonsy = level[12][1][2];
+    squelette->Life = level[12][1][5];
+
+    squelette1->posmonsx = level[12][2][1];
+    squelette1->posmonsy = level[12][2][2];
+    squelette1->Life = level[12][2][5];
+
+    chauvesouris->posmonsx =level[12][3][1];
+    chauvesouris->posmonsy =level[12][3][2];
+    chauvesouris->Life=level[12][3][5];
+    chauvesouris->CompteurSpriteDegat=0;
+    chauvesouris1->posmonsx =level[12][4][1];
+    chauvesouris1->posmonsy =level[12][4][2];
+    chauvesouris1->Life=level[12][4][5];
+    chauvesouris1->CompteurSpriteDegat=0;
 }
 
 

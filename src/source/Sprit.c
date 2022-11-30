@@ -3558,20 +3558,12 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             {
                 squelette->CompteurSpriteDegat +=1;
             } 
+            if (squelette->CompteurSpriteDegat == 29)
+            {
+                lvl->MortMonstre+=1;
+            }
+            
         }
-        
-        
-
-
-
-
-
-
-
-
-
-
-
         //coup joueur
         if (squelette->coup!=0)
         {
