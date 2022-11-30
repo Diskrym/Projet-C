@@ -431,7 +431,7 @@ void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,Effet
 {
     if (lvl->cin == 0)
     {
-        if (squelette->Life >=1 && squelette->Eattaque == 0)
+        if (squelette->Life >=1 && squelette->Eattaque == 0 && squelette->CompteurSpriteDegat == 0)
         {
             if (joueur->inposx<squelette->posmonsx)
             {

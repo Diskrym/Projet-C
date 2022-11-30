@@ -44,6 +44,7 @@ extern int Inside_Item (Joueur *joueur, Boss *boss);
 extern int Inside_Vol (int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObjx, int tailleObjy);
 extern int Inside_Chevalier_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti);
 extern int Inside_Squelette_Chevalier(Joueur *joueur, Squelette*squelette);
+extern int Inside_Chevalier_Squelette(Joueur *joueur, Squelette *squelette);
 
 
 

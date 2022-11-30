@@ -79,11 +79,11 @@ init("Dungeon Fate");
             lvl.reset=1;
             lvl.save = 1;
         }
-        if (lvl.WinDonjon == 1)
-        {
-            lvl.WinDonjon = 2 ;
-            Score_(&stats,temps);
-        }
+        // if (lvl.WinDonjon == 1)
+        // {
+        //     lvl.WinDonjon = 2 ;
+        //     Score_(&stats,temps);
+        // }
         temps=clock()-stats.Diff_reset;
 
         Statistiques(&stats,&joueur,&lvl);

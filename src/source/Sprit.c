@@ -3086,7 +3086,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                         {
                             if (joueur->Eshield == 0 || joueur->TimingBouclier >15)
                             {
-                                joueur->life--;
+                                //joueur->life--;
                                 squelette->coup = 1;
                             }
                             if (joueur->Eshield == 1 && joueur->TimingBouclier<=15)
@@ -3120,6 +3120,14 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     {
                         squelette->squelette=loadImage("src/graphics/squelette/Etourdis2.png");
                         Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy+5);
+                    }
+                    
+
+                    if (Inside_Chevalier_Squelette(joueur,squelette)==1 && joueur->Numattack == 15)
+                    {
+                        squelette->Life--;
+                        squelette->CompteurSpriteDegat+=1;
+                        squelette->Eattaque = 0;
                     }
                     
                 }
@@ -3194,6 +3202,26 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     {
                         squelette->NumSprit = 0;
                     }
+                }
+                else 
+                {
+                    if (squelette->Direction == 0)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/SqueletteDegatD.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    }
+                    if (squelette->Direction == 1)
+                    {
+                        squelette->squelette=loadImage("src/graphics/squelette/SqueletteDegatG.png");
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    }
+                    
+                    squelette->CompteurSpriteDegat+=1;
+                    if (squelette->CompteurSpriteDegat >15)
+                    {
+                        squelette->CompteurSpriteDegat = 0;
+                    }
+                    
                 }
             } 
         } 

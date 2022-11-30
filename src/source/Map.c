@@ -252,8 +252,7 @@ void Gestion_Map_Global (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *so
             {
                 lvl->Num = 11;
                 Select_Level(joueur,lvl,entité,son);
-            }
-            
+            }   
         }
         else
         {

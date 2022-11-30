@@ -488,6 +488,42 @@ int Inside_Chevalier_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti)
     }
 }
 
+int Inside_Chevalier_Squelette(Joueur *joueur, Squelette *squelette)
+{
+    int x=0;
+    int y=0;
+    if (joueur->Direction==1)
+    {
+        if ((squelette->posmonsx>=joueur->inposx || squelette->posmonsx+58>=joueur->inposx) && (squelette->posmonsx<=joueur->inposx || squelette->posmonsx+58<=joueur->inposx))
+        {
+            x=1;
+        }
+        if ((squelette->posmonsy>=joueur->inposy+32 || squelette->posmonsy+62>=joueur->inposy+32) && (squelette->posmonsy<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+62<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    }
+    if (joueur->Direction==0)
+    {
+        if ((squelette->posmonsx>=joueur->inposx+SPRITE_SIZE || squelette->posmonsx+58>=joueur->inposx+SPRITE_SIZE) && (squelette->posmonsx<=joueur->inposx+SPRITE_SIZE || squelette->posmonsx+58<=joueur->inposx+SPRITE_SIZE))
+        {
+            x=1;
+        }
+        if ((squelette->posmonsy>=joueur->inposy+32 || squelette->posmonsy+62>=joueur->inposy+32) && (squelette->posmonsy<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+62<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+       
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    }
+}
 
 
 //test si l'attaque de la méduse touche le joueur
