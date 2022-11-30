@@ -3108,7 +3108,12 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             }
 
             if (squelette->Eattaque == 1 )
-            {
+            {   if (Inside_Chevalier_Squelette(joueur,squelette)==1 && joueur->Numattack == 15)
+                    {
+                        squelette->Life--;
+                        squelette->CompteurSpriteDegat+=1;
+                        squelette->Eattaque = 0;
+                    }
                 if(squelette->Direction == 0)
                 {
                     if (squelette->NumSprit>=0 && squelette->NumSprit <5 || squelette->NumSprit>=30 && squelette->NumSprit <35)
@@ -3276,7 +3281,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     }
                 }
                 else 
-                {
+                {   printf("ici");
                     if (squelette->Direction == 0)
                     {
                         squelette->squelette=loadImage("src/graphics/squelette/SqueletteDegatD.png");

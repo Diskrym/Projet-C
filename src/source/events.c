@@ -601,6 +601,10 @@ int Inside_Meduse_Chevalier (Joueur *joueur, Meduse *meduse)
     {
         return 1;
     }
+    else
+    {
+        return 0;
+    }
 }
 
 int Inside_Squelette_Chevalier(Joueur *joueur, Squelette*squelette)
@@ -618,6 +622,10 @@ int Inside_Squelette_Chevalier(Joueur *joueur, Squelette*squelette)
     if (x==1 && y==1)
     {
         return 1;
+    }
+    else
+    {
+    return 0;
     }
 }
 
