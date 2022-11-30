@@ -36,7 +36,7 @@ typedef struct BossYeti
 
 typedef struct Squelette
 {
-    int NumSprit, posmonsx, posmonsy,Direction, coup, Life, CompteurSpriteDegat, compteur, compteur_cin, Eattaque, Parle_S,Parle_J, compte_jerem, pos_jerem;
+    int NumSprit, posmonsx, posmonsy,Direction, coup, Life, CompteurSpriteDegat, compteur, compteur_cin, Eattaque, Parle_S,Parle_J, compte_jerem, pos_jerem, rebond;
     SDL_Texture *bulle;
     SDL_Texture *squelette;
     SDL_Texture *Jerem_Cin;
