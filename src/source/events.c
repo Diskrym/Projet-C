@@ -550,36 +550,73 @@ int Inside_Chevalier_Squelette(Joueur *joueur, Squelette *squelette)
 {
     int x=0;
     int y=0;
-    if (joueur->Direction==1)
+    if (squelette->Eattaque!=3)
     {
-        if ((squelette->posmonsx>=joueur->inposx || squelette->posmonsx+64>=joueur->inposx) && (squelette->posmonsx<=joueur->inposx || squelette->posmonsx+64<=joueur->inposx))
+        if (joueur->Direction==1)
         {
-            x=1;
+            if ((squelette->posmonsx>=joueur->inposx-21|| squelette->posmonsx+64>=joueur->inposx-21) && (squelette->posmonsx<=joueur->inposx || squelette->posmonsx+64<=joueur->inposx))
+            {
+                x=1;
+            }
+            if ((squelette->posmonsy>=joueur->inposy+32 || squelette->posmonsy+62>=joueur->inposy+32) && (squelette->posmonsy<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+62<=joueur->inposy+SPRITE_SIZE))
+            {
+                y=1;
+            }
+            if (x==1 && y==1)
+            {return 1;}
+            else
+            {return 0;}
         }
-        if ((squelette->posmonsy>=joueur->inposy+32 || squelette->posmonsy+62>=joueur->inposy+32) && (squelette->posmonsy<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+62<=joueur->inposy+SPRITE_SIZE))
+        if (joueur->Direction==0)
         {
-            y=1;
+            if ((squelette->posmonsx>=joueur->inposx+SPRITE_SIZE+21 || squelette->posmonsx+64>=joueur->inposx+SPRITE_SIZE+21) && (squelette->posmonsx<=joueur->inposx+SPRITE_SIZE || squelette->posmonsx+64<=joueur->inposx+SPRITE_SIZE))
+            {
+                x=1;
+            }
+            if ((squelette->posmonsy>=joueur->inposy+32 || squelette->posmonsy+62>=joueur->inposy+32) && (squelette->posmonsy<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+62<=joueur->inposy+SPRITE_SIZE))
+            {
+                y=1;
+            }
+        
+            if (x==1 && y==1)
+            {return 1;}
+            else
+            {return 0;}
         }
-        if (x==1 && y==1)
-        {return 1;}
-        else
-        {return 0;}
     }
-    if (joueur->Direction==0)
+    else
     {
-        if ((squelette->posmonsx>=joueur->inposx+SPRITE_SIZE || squelette->posmonsx+64>=joueur->inposx+SPRITE_SIZE) && (squelette->posmonsx<=joueur->inposx+SPRITE_SIZE || squelette->posmonsx+64<=joueur->inposx+SPRITE_SIZE))
+        if (joueur->Direction==1)
         {
-            x=1;
+            if ((squelette->posmonsx+20>=joueur->inposx-21 || squelette->posmonsx+38>=joueur->inposx-21) && (squelette->posmonsx+20<=joueur->inposx || squelette->posmonsx+38<=joueur->inposx))
+            {
+                x=1;
+            }
+            if ((squelette->posmonsy+26>=joueur->inposy+32 || squelette->posmonsy+59>=joueur->inposy+32) && (squelette->posmonsy+26<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+59<=joueur->inposy+SPRITE_SIZE))
+            {
+                y=1;
+            }
+            if (x==1 && y==1)
+            {return 1;}
+            else
+            {return 0;}
         }
-        if ((squelette->posmonsy>=joueur->inposy+32 || squelette->posmonsy+62>=joueur->inposy+32) && (squelette->posmonsy<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+62<=joueur->inposy+SPRITE_SIZE))
+        if (joueur->Direction==0)
         {
-            y=1;
+            if ((squelette->posmonsx+20>=joueur->inposx+SPRITE_SIZE+21|| squelette->posmonsx+38>=joueur->inposx+SPRITE_SIZE+21) && (squelette->posmonsx+20<=joueur->inposx+SPRITE_SIZE || squelette->posmonsx+38<=joueur->inposx+SPRITE_SIZE))
+            {
+                x=1;
+            }
+            if ((squelette->posmonsy+26>=joueur->inposy+32 || squelette->posmonsy+59>=joueur->inposy+32) && (squelette->posmonsy+26<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+59<=joueur->inposy+SPRITE_SIZE))
+            {
+                y=1;
+            }
+        
+            if (x==1 && y==1)
+            {return 1;}
+            else
+            {return 0;}
         }
-       
-        if (x==1 && y==1)
-        {return 1;}
-        else
-        {return 0;}
     }
 }
 
