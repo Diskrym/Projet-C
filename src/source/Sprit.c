@@ -459,7 +459,10 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     if (meduse->coup == 0)
                     {
                         joueur->life--;
-                        meduse->coup =1 ;
+                        if (joueur->life !=0)
+                        {
+                            meduse->coup =1 ;
+                        }
                     }
                 }
                 if (meduse->NumSprit==15 || meduse->NumSprit==16 || meduse->NumSprit==17 || meduse->NumSprit==18 )
@@ -769,7 +772,10 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (Inside_Vol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
-                    yeti->coup=1;
+                    if (joueur->life != 0)
+                    {
+                        yeti->coup=1;
+                    }
                 }
                 yeti->xboule-=7;
             }
@@ -820,7 +826,10 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (Inside_Vol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
-                    yeti->coup=1;
+                    if (joueur->life != 0)
+                    {
+                        yeti->coup=1;
+                    }
                 }
                 yeti->xboule+=7; 
             }
@@ -997,7 +1006,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1015,12 +1028,20 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
                     bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
                     Draw_Image(bossyeti->cachemisere,0,0);
+                    if (bossyeti->spritfissure==15)
+                    {
+                    Mix_VolumeChunk(son->fissure, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->fissure, 0); 
+                    }
                     if (Inside_fissure (joueur, bossyeti, 4)==1)
                     {
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1042,7 +1063,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
                     }
 
@@ -1063,7 +1087,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1085,7 +1112,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1110,7 +1140,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1129,12 +1162,22 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                     Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
                     bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
                     Draw_Image(bossyeti->cachemisere,0,0);
+                    if (bossyeti->spritfissure==15)
+                    {
+                    Mix_VolumeChunk(son->fissure, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->fissure, 0); 
+                    }
                     if (Inside_fissure (joueur, bossyeti, 4)==1)
                     {
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
+                        
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
                     }
 
@@ -1157,7 +1200,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
+                        if (joueur->life != 0)
+                        {
                         bossyeti->coupfissure =1 ;
+                        }
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1181,7 +1228,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1204,7 +1255,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
+                        if (joueur->life != 0)
+                        {
                         bossyeti->coupfissure =1 ;
+                        }
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1590,7 +1645,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 if (Inside_Vol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
                 {
                     joueur->life--;
+                    if (joueur->life != 0)
+                    {
                     bossyeti->coup=1;
+                    }
+                    
                 }
                 bossyeti->xcrane-=7;
             }
@@ -1641,7 +1700,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 if (Inside_Vol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
                 {
                     joueur->life--;
+                    if (joueur->life != 0)
+                    {
                     bossyeti->coup=1;
+                    }
+                    
                 }
                 bossyeti->xcrane+=7;
             }
@@ -1705,11 +1768,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti1G.png");
                 Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                // if (bossyeti->CompteurSpriteDegat==1)
-                // {
-                //     Mix_VolumeChunk(son->mortbossyeti, MIX_MAX_VOLUME);
-                //     Mix_PlayChannel(9, son->mortbossyeti, 0);
-                // }
+                if (bossyeti->CompteurSpriteDegat==1)
+                {
+                    Mix_VolumeChunk(son->mortbossyeti, MIX_MAX_VOLUME);
+                     Mix_PlayChannel(9, son->mortbossyeti, 0);
+                }
             }
             if (bossyeti->CompteurSpriteDegat==4 || bossyeti->CompteurSpriteDegat==5 || bossyeti->CompteurSpriteDegat==6 || bossyeti->CompteurSpriteDegat==7 )
             {
@@ -1833,7 +1896,11 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
             {
                 joueur->life--;
                 chauvesouris->Life--;
-                chauvesouris->coup =1 ;
+                if (joueur->life != 0)
+                {
+                    chauvesouris->coup =1 ;
+                }
+                
                 lvl->MortMonstre+=1;
             }
             //si bouclier
@@ -2024,7 +2091,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if ((boss->CompteurSpriteEclair==25 && Inside_Eclair_Chevalier(joueur, boss->Ex1, boss->Ey1-405)==1))
             {
                 joueur->life--;
-                boss->coupE1=1;
+                if (joueur->life != 0)
+                {
+                    boss->coupE1=1;
+                }
+                
             }
             if (boss->coupE1==1 && boss->compteur>240)
             {
@@ -2050,7 +2121,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if ((boss->CompteurSpriteEclair==55 && Inside_Eclair_Chevalier(joueur, boss->Ex2, boss->Ey2-405)==1))
             {
                 joueur->life--;
-                boss->coupE2=1;
+                if (joueur->life != 0)
+                {
+                    boss->coupE2=1;
+                }
+                
             }
             if (boss->compteur>270 && boss->coupE2==1)
             {
@@ -2075,7 +2150,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if ((boss->CompteurSpriteEclair==85 && Inside_Eclair_Chevalier(joueur, boss->Ex3, boss->Ey3-405)==1))
             {
                 joueur->life--;
-                boss->coupE3=1;
+                if (joueur->life != 0)
+                {
+                    boss->coupE3=1;
+                }
+                
             }
             if (boss->coupE3==1 && boss->compteur==300)
             {
@@ -2101,7 +2180,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if ((boss->CompteurSpriteEclair==115 && Inside_Eclair_Chevalier(joueur, boss->Ex4, boss->Ey4-405)==1))
             {
                 joueur->life--;
-                boss->coupE4=1;
+                if (joueur->life != 0)
+                {
+                    boss->coupE4=1;
+                }
+                
             } 
             // inside eclair 4 hors boucle
             if (boss->compteur>330 && boss->coupE4==1)
@@ -2148,7 +2231,12 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     if (boss->coup == 0)
                     {
                         joueur->life--;
-                        boss->coup =1;
+                        
+                        if (joueur->life != 0)
+                        {
+                            boss->coup =1;
+                        }
+                        
                     }
                 }
             }
@@ -2880,7 +2968,11 @@ if (lvl->Avancement10<=11)
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
             joueur->life--; 
-            tronc->coup = 1;
+            if (joueur->life != 0)
+            {
+                tronc->coup = 1;
+            }
+            
         }
     }
     if (tronc->coup >=1)
@@ -2892,7 +2984,12 @@ if (lvl->Avancement10<=11)
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
             joueur->life--; 
-            Petit_rocher->coup = 1;
+            
+            if (joueur->life != 0)
+            {
+                Petit_rocher->coup = 1;
+            }
+            
         }   
     }
     if (Petit_rocher->coup >=1)
@@ -2905,7 +3002,10 @@ if (lvl->Avancement10<=11)
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
             joueur->life--;
-            Gros_rocher->coup = 1; 
+            if (joueur->life != 0)
+            {
+                Gros_rocher->coup = 1; 
+            }    
         }
     }
     if (Gros_rocher->coup >= 1)
@@ -2964,7 +3064,7 @@ if (lvl->Avancement10<=11)
 
 }
 
-void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
+void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son)
 {
 
     if (squelette->squelette != NULL)
@@ -3039,6 +3139,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             {
                 squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette1.png");
                 Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
+                
             }
             if ((squelette->compte_jerem>=10 && squelette->compte_jerem<20) || (squelette->compte_jerem>=40 && squelette->compte_jerem<50))
             {
@@ -3060,6 +3161,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             {
                 squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette1.png");
                 Draw_Image(squelette->bulle,122,175);
+                if (squelette->compteur_cin==25)
+                {
+                    Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(3, son->Jerem, 0);
+                }
             }
             if (squelette->compteur_cin>520 && squelette->compteur_cin<1000)
             {
@@ -3068,13 +3174,23 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                 if (squelette->Parle_S == 0)
                 {
                     squelette->Parle_S=1;
-                } 
+                }
+                if (squelette->compteur_cin==525)
+                {
+                    Mix_VolumeChunk(son->bullesq, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(3, son->bullesq, 0);
+                }
             }
             if (squelette->compteur_cin>1020 && squelette->compteur_cin<1500)
             {
                 squelette->bulle = loadImage ("src/Graphics/Marchand/BulleJeremSquelette3.png");
                 Draw_Image(squelette->bulle,122,180);
                 squelette->Parle_S=0;
+                if (squelette->compteur_cin==1025)
+                {
+                    Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(3, son->Jerem, 0);
+                }
             }
             if (squelette->compteur_cin>1520 && squelette->compteur_cin<1700)
             {
@@ -3123,6 +3239,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     {
                         squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup1D.png");
                         Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        if(squelette->NumSprit==1)
+                        {
+                            Mix_VolumeChunk(son->attaquesquelette, MIX_MAX_VOLUME/2);
+                            Mix_PlayChannel(3, son->attaquesquelette, 0); 
+                        }
                     }
                     if (squelette->NumSprit>=5 && squelette->NumSprit <10 || squelette->NumSprit>=25 && squelette->NumSprit <30)
                     {
@@ -3146,6 +3267,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     {
                         squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup1G.png");
                         Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        if(squelette->NumSprit==1)
+                        {
+                            Mix_VolumeChunk(son->attaquesquelette, MIX_MAX_VOLUME/2);
+                            Mix_PlayChannel(3, son->attaquesquelette, 0); 
+                        }
                     }
                     if (squelette->NumSprit>=5 && squelette->NumSprit <10 || squelette->NumSprit>=25 && squelette->NumSprit <30)
                     {
@@ -3171,8 +3297,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                 {
                     if (joueur->Eshield == 0 || joueur->TimingBouclier >15)
                     {
-                        //joueur->life--;
-                        squelette->coup = 1;
+                        joueur->life--;
+                        if (joueur->life != 0)
+                        {
+                            squelette->coup = 1;
+                        }
                     }
                     if (joueur->Eshield == 1 && joueur->TimingBouclier<=15)
                     {
@@ -3189,6 +3318,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             }
             else if (squelette->Eattaque == 2)
             {
+            son->sondegatsq=0;
                 if (squelette->Direction == 0)
                 {
                     squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreD.png");
@@ -3198,6 +3328,12 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     {
                         squelette->squelette=loadImage("src/graphics/squelette/Etourdis1.png");
                         Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy+5);
+                        if (squelette->NumSprit==1)
+                        {
+                            Mix_VolumeChunk(son->etourdissement, MIX_MAX_VOLUME);
+                            Mix_PlayChannel(3, son->etourdissement, 0);
+                        }
+                        
                     }
                     if (squelette->NumSprit >= 25 && squelette->NumSprit <50 || squelette->NumSprit>=75 && squelette->NumSprit<100 || squelette->NumSprit>=125 && squelette->NumSprit<150)
                     {
@@ -3214,6 +3350,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     {
                         squelette->squelette=loadImage("src/graphics/squelette/Etourdis1.png");
                         Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy+5);
+                        if (squelette->NumSprit==1)
+                        {
+                            Mix_VolumeChunk(son->etourdissement, MIX_MAX_VOLUME);
+                            Mix_PlayChannel(3, son->etourdissement, 0);
+                        }
                     }
                     if (squelette->NumSprit >= 25 && squelette->NumSprit <50 || squelette->NumSprit>=75 && squelette->NumSprit<100 || squelette->NumSprit>=125 && squelette->NumSprit<150)
                     {
@@ -3288,13 +3429,25 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
         {
             if (squelette->Direction == 0)
             {
+                son->sondegatsq++;
                 squelette->squelette=loadImage("src/graphics/squelette/SqueletteDegatD.png");
                 Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                if(son->sondegatsq==1)
+                {
+                Mix_VolumeChunk(son->degatsquelette, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(3, son->degatsquelette, 0);
+                }
             }
             if (squelette->Direction == 1)
             {
+                son->sondegatsq++;
                 squelette->squelette=loadImage("src/graphics/squelette/SqueletteDegatG.png");
                 Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                if(son->sondegatsq==1)
+                {
+                Mix_VolumeChunk(son->degatsquelette, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(3, son->degatsquelette, 0);
+                }
             }
             
             squelette->CompteurSpriteDegat+=1;
@@ -3391,6 +3544,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     {
                         squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette3G.png");
                         Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        if (squelette->CompteurSpriteDegat==12)
+                    {
+                        Mix_VolumeChunk(son->rebond, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(5, son->rebond, 0);  
+                    }
                     }
                     if (squelette->posmonsx >= 13)
                     {
@@ -3413,6 +3571,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     {
                         squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette3D.png");
                         Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                        if (squelette->CompteurSpriteDegat==12)
+                    {
+                        Mix_VolumeChunk(son->rebond, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(5, son->rebond, 0);  
+                    }
                     }
                     if (squelette->posmonsx <= 620)
                     {

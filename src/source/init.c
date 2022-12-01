@@ -64,7 +64,7 @@ void Son (EffetSon *son)
     son->musiqueyeti= Mix_LoadMUS("src/musique/m_yeti.mp3");
     Mix_VolumeMusic(40);
     Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
-    son->epee = Mix_LoadWAV("src/musique/attackChe.WAV"); //Charger un wav dans un pointeur
+    son->epee = Mix_LoadWAV("src/musique/attackChe2.WAV"); //Charger un wav dans un pointeur
     son->bouclier= Mix_LoadWAV("src/musique/BouclierChe.WAV");
     son->depchevalier= Mix_LoadWAV("src/musique/deplacementchevalier.WAV");
     son->degatchevalier= Mix_LoadWAV("src/musique/degatChe.WAV");
@@ -95,16 +95,17 @@ void Son (EffetSon *son)
     son->cranemur= Mix_LoadWAV("src/musique/Cranemur.WAV");
     son->degatbossyeti= Mix_LoadWAV("src/musique/DegatBossYeti.WAV");
     son->solbossyeti= Mix_LoadWAV("src/musique/BossYetiSol.WAV");
-    //son->fissure= Mix_LoadWAV("src/musique/CollisionR.WAV");
-    //son->mortbossyeti= Mix_LoadWAV("src/musique/CollisionR.WAV");
-    son->etourdissement= Mix_LoadWAV("src/musique/Etourdissement.WAV");
+    son->fissure= Mix_LoadWAV("src/musique/fissure.WAV");
+    son->mortbossyeti= Mix_LoadWAV("src/musique/mortbossyeti.WAV");
+    son->etourdissement= Mix_LoadWAV("src/musique/Etourdissements.WAV");
     son->jeff= Mix_LoadWAV("src/musique/Jeff.WAV");
     son->karine= Mix_LoadWAV("src/musique/Karine.WAV");
     son->tanguy= Mix_LoadWAV("src/musique/Tanguy.WAV");
-    //son->degatsquelette= Mix_LoadWAV("src/musique/CollisionR.WAV");
+    son->degatsquelette= Mix_LoadWAV("src/musique/degatsq.WAV");
     son->mortsquelette= Mix_LoadWAV("src/musique/MortSquelette.WAV");
-    //son->attaquesquelette= Mix_LoadWAV("src/musique/CollisionR.WAV");
-    //son->tetesquelette= Mix_LoadWAV("src/musique/CollisionR.WAV");
+    son->attaquesquelette= Mix_LoadWAV("src/musique/attackSq.WAV");
+    son->rebond= Mix_LoadWAV("src/musique/rebond.WAV");
+    son->bullesq= Mix_LoadWAV("src/musique/voixsq.WAV");
     }
 
 void Texte(ParamTexte *paramtexte)
