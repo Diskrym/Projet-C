@@ -98,6 +98,7 @@ typedef struct Jerem_Boss
         int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSprite2, compteur, Eattaque, Direction, Direction_haltère, xhaltère, yhaltère,Ehaltère, Transformation, cin;
         SDL_Texture *jeremy;
         SDL_Texture *haltère;
+        SDL_Texture *ombre;
 }Jerem_Boss;
 
 typedef struct Entité

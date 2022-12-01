@@ -4112,43 +4112,56 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         {
             if (jerem->Direction==0)
             {
-                if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
+                if (jerem->NumSprit>=0 && jerem->NumSprit<10 || jerem->NumSprit>=50)
                 {
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremNeutreD.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut1D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
-                if (jerem->NumSprit>=5 && jerem->NumSprit<10)
+                if (jerem->NumSprit>=10 && jerem->NumSprit<20 || jerem->NumSprit >= 45 && jerem->NumSprit < 50)
                 {
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche1D.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut2D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
-                if (jerem->NumSprit>=15)
+                if (jerem->NumSprit>=20 && jerem->NumSprit < 30 || jerem->NumSprit >=40 && jerem->NumSprit < 45)
                 {
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche2D.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut3D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }  
+                if (jerem->NumSprit>=30 && jerem->NumSprit < 40)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut4D.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                } 
             }
 
             if (jerem->Direction==1)
             {
-                if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
+                if (jerem->NumSprit>=0 && jerem->NumSprit<10 || jerem->NumSprit>=50)
                 {
-                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremNeutreG.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut1G.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
-                if (jerem->NumSprit>=5 && jerem->NumSprit<10)
+                if (jerem->NumSprit>=10 && jerem->NumSprit<20 || jerem->NumSprit >= 45 && jerem->NumSprit < 50)
                 {
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche1G.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut2G.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
-                if (jerem->NumSprit>=15)
+                if (jerem->NumSprit>=20 && jerem->NumSprit < 30 || jerem->NumSprit >=40 && jerem->NumSprit < 45)
                 {
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche2G.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut3G.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
-                }
+                }  
+                if (jerem->NumSprit>=30 && jerem->NumSprit < 40)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut4G.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                } 
             }
-            if (jerem->NumSprit>=20)
+            if (jerem->NumSprit >= 50)
+            {
+                jerem->posmonsy-=25;
+            }
+            if (jerem->posmonsy+105< 0)
             {
                 jerem->NumSprit = 0;
                 jerem->Eattaque = 3;
@@ -4191,7 +4204,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         }
         else 
         {
-            jerem->Eattaque = 0;
+            jerem->Ehaltère = 0;
         }
     }
     if (jerem->coup != 0)

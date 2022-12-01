@@ -460,9 +460,9 @@ void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,Effet
 
 void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *son)
 {
-    printf("%d\n",jerem->Life);
     if (jerem->Life >=1 && jerem->Eattaque == 0 && jerem->cin == 0)
     {
+        
         if (joueur->inposx<jerem->posmonsx)
         {
             jerem->posmonsx-=1;
@@ -520,7 +520,8 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
     }
     
     
-    
+        printf("%d\n",jerem->Eattaque);
+
     
     Sprite_Boss_Jerem(joueur,jerem,lvl);
 }
