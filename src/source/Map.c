@@ -28,7 +28,7 @@ void Init_Maps(Lvl *lvl)
     {
        lvl->Map = lvl->MapSlide = loadImage("src/graphics/Rivière/Riviere.png");
     }
-    if (lvl->Num == 11 || lvl->Num == 12)
+    if (lvl->Num == 11 || lvl->Num == 12 || lvl->Num == 13)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon4.png");
     }

@@ -342,7 +342,7 @@ void Render_Door (Lvl *lvl)
               
         }
     }
-    if (lvl->Num == 11 || lvl->Num == 12)
+    if (lvl->Num == 11 || lvl->Num == 12 || lvl->Num == 13)
     {
         if (lvl->Num != 11)
         {

@@ -3739,3 +3739,13 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
         }   
     }
 }
+
+void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
+{
+    if (jerem->jeremy != NULL)
+    {
+        SDL_DestroyTexture(jerem->jeremy);
+        jerem->jeremy = NULL;
+    }
+    
+}

@@ -179,8 +179,10 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     {
         Load_Level_5_2(joueur,&entité->squelette,&entité->squelette1,&entité->chauvesouris,&entité->chauvesouris1,lvl); 
     }
-    
-    
+    if (lvl->Num == 13)
+    {
+        Load_Level_5_3(joueur,lvl);
+    }
     if (joueur->Edague==2)
     {
         joueur->nbDague=0;
@@ -318,6 +320,11 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         Deplacement_Chauvesouris(joueur,&entité->chauvesouris, lvl, son);
         Deplacement_Chauvesouris(joueur, &entité->chauvesouris1, lvl, son);
     }
+    if (lvl->Num == 13)
+    {
+        Collision_Mur(joueur,20,20,20,20);
+    }
+    
     
 }
 
@@ -513,6 +520,12 @@ void Load_Level_5_2(Joueur *joueur, Squelette *squelette, Squelette *squelette1,
     chauvesouris1->CompteurSpriteDegat=0;
 }
 
+void Load_Level_5_3(Joueur *joueur, Lvl *lvl)
+{
+    Init_Maps(lvl);
+    joueur->inposx = level[13][0][2];
+    joueur->inposy = level[13][0][3];
+}
 
 void Clean_Up(EffetSon *son)
 {

@@ -457,3 +457,29 @@ void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,Effet
     }
     Sprit_Squelette(lvl,squelette,joueur, son);
 }
+
+void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *son)
+{
+    if (jerem->Life >=1 && jerem->Eattaque == 0)
+    {
+        if (joueur->inposx<jerem->posmonsx)
+        {
+            jerem->posmonsx-=1;
+            jerem->Direction = 1;
+        }
+        if (joueur->inposx>jerem->posmonsx)
+        {
+            jerem->posmonsx+=1; 
+            jerem->Direction = 0;  
+        }
+        if (joueur->inposy<jerem->posmonsy)
+        {
+            jerem->posmonsy-=1;
+        }
+        if (joueur->inposy>jerem->posmonsy)
+        {
+            jerem->posmonsy+=1;
+        }
+    }
+    jerem->NumSprit+=1;
+}

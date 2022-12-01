@@ -93,6 +93,12 @@ typedef struct Obstacle
     
 }Obstacle;
 
+typedef struct Jerem_Boss
+{
+        int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, Eattaque, Direction;
+        SDL_Texture *jeremy;
+}Jerem_Boss;
+
 typedef struct Entité
 {
     Meduse meduse, meduse1, meduse2;
@@ -251,7 +257,7 @@ typedef struct Stats
                                         }
                                     }
  */
-static const int level [13][5][6] = {
+static const int level [14][5][6] = {
                                         {
                                             {1,1,288,160,64,0},
                                             {1,70,70,64,1,3},
@@ -317,6 +323,10 @@ static const int level [13][5][6] = {
                                             {1,39,295,126,1,3},
                                             {2,559,295,2,1,1},
                                             {2,39,56,2,1,1}
+                                        },
+                                        {
+                                            {13,1,298,384,0,0},
+                                            {7,300,120,0,2,10}
                                         }
                                     };
 
