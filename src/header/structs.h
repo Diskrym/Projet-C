@@ -111,7 +111,7 @@ typedef struct Entité
 
 typedef struct EffetSon
 {
-    int soncoule, CompteurJerm,CompteurKarine,CompteurJeff,CompteurTanguy, sonLowLife, sondague, sondagueM, sondegat;
+    int soncoule, CompteurJerm,CompteurKarine,CompteurJeff,CompteurTanguy, sonLowLife, sondague, sondagueM, sondegat, sondegatsq;
 
     Mix_Music *musiquemenu;
     Mix_Music *musiqueMapG;
@@ -153,8 +153,8 @@ typedef struct EffetSon
     Mix_Chunk *cranemur;
     Mix_Chunk *degatbossyeti;
     Mix_Chunk *solbossyeti;
-    //Mix_Chunk *fissure;
-    //Mix_Chunk *mortbossyeti;
+    Mix_Chunk *fissure;
+    Mix_Chunk *mortbossyeti;
     Mix_Chunk *etourdissement;
     Mix_Chunk *jeff;
     Mix_Chunk *karine;
@@ -163,6 +163,8 @@ typedef struct EffetSon
     Mix_Chunk *mortsquelette;
     Mix_Chunk *attaquesquelette;
     Mix_Chunk *tetesquelette;
+    Mix_Chunk *rebond;
+    Mix_Chunk *bullesq;
 
  
 
