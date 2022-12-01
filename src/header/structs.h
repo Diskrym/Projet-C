@@ -95,8 +95,9 @@ typedef struct Obstacle
 
 typedef struct Jerem_Boss
 {
-        int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, Eattaque, Direction;
+        int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSprite2, compteur, Eattaque, Direction, Direction_haltère, xhaltère, yhaltère,Ehaltère, Transformation, cin;
         SDL_Texture *jeremy;
+        SDL_Texture *haltère;
 }Jerem_Boss;
 
 typedef struct Entité
@@ -327,7 +328,7 @@ static const int level [14][5][6] = {
                                         },
                                         {
                                             {13,1,298,384,0,0},
-                                            {7,300,120,0,2,10}
+                                            {7,300,120,0,2,20}
                                         }
                                     };
 

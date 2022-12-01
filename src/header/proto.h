@@ -39,7 +39,7 @@ extern int Inside_Chevalier_Yeti (Joueur *joueur, Yeti *yeti);
 extern int Inside_Boss_Meduse_Chevalier (Joueur *joueur, Boss *boss);
 extern int Inside_fissure (Joueur *joueur, BossYeti *bossyeti, int etape);
 extern int Inside_Eclair_Chevalier(Joueur *joueur,int Eclairx, int Eclairy);
-extern int Degat_Chevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti,Yeti *yeti1,Yeti *yeti2, BossYeti *bossyeti,Squelette *squelette, Squelette *squelette1);
+extern int Degat_Chevalier(Meduse *meduse, Meduse *meduse1 , Meduse *meduse2, Chauvesouris *chauvesouris , Chauvesouris *chauvesouris1, Boss *boss, Yeti *yeti,Yeti *yeti1,Yeti *yeti2, BossYeti *bossyeti,Squelette *squelette, Squelette *squelette1, Jerem_Boss *jerem);
 extern int Degat_Bateau (Obstacle *tronc, Obstacle *Petit_rocher, Obstacle *Gros_rocher);
 extern int Inside_Item (Joueur *joueur, Boss *boss);
 extern int Inside_Vol (int xobj, int yobj, int x, int y, int Margex, int Margey, int tailleObjx, int tailleObjy);
