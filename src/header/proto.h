@@ -73,7 +73,7 @@ extern void Save (Joueur*joueur,Lvl *lvl,Input *input, Entité *entité, EffetSo
 extern void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats);
 extern void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *squelette);
 extern void Load_Level_5_2(Joueur *joueur, Squelette *squelette, Squelette *squelette1,Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl);
-extern void Load_Level_5_3(Joueur *joueur, Lvl *lvl);
+extern void Load_Level_5_3(Joueur *joueur, Jerem_Boss *jerem,Lvl *lvl);
 
 
 //input.c

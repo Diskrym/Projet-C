@@ -181,7 +181,7 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     }
     if (lvl->Num == 13)
     {
-        Load_Level_5_3(joueur,lvl);
+        Load_Level_5_3(joueur,&entité->jerem,lvl);
     }
     if (joueur->Edague==2)
     {
@@ -323,6 +323,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     if (lvl->Num == 13)
     {
         Collision_Mur(joueur,20,20,20,20);
+        Deplacement_Boss_Jerem(joueur,&entité->jerem,lvl,son);
     }
     
     
@@ -520,11 +521,15 @@ void Load_Level_5_2(Joueur *joueur, Squelette *squelette, Squelette *squelette1,
     chauvesouris1->CompteurSpriteDegat=0;
 }
 
-void Load_Level_5_3(Joueur *joueur, Lvl *lvl)
+void Load_Level_5_3(Joueur *joueur, Jerem_Boss *jerem,Lvl *lvl)
 {
     Init_Maps(lvl);
     joueur->inposx = level[13][0][2];
     joueur->inposy = level[13][0][3];
+    jerem->posmonsx = level[13][1][1];
+    jerem->posmonsy = level[13][1][2];
+    jerem->Life = level [13][1][5];
+    
 }
 
 void Clean_Up(EffetSon *son)

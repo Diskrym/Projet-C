@@ -109,6 +109,7 @@ typedef struct Entité
     Obstacle Petit_rocher,Gros_rocher, tronc, tanguy;
     BossYeti bossyeti;
     Squelette squelette, squelette1, squelette2;
+    Jerem_Boss jerem;
 
 } Entité;
 

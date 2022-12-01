@@ -482,4 +482,5 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
         }
     }
     jerem->NumSprit+=1;
+    Sprite_Boss_Jerem(joueur,jerem,lvl);
 }

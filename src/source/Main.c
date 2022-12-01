@@ -40,6 +40,7 @@ Obstacle Petit_rocher,Gros_rocher, tronc, tanguy;
 Stats stats;
 clock_t temps;
 Squelette squelette, squelette1, squelette2;
+Jerem_Boss jerem;
 
 
 int main(int argc, char *argv[])

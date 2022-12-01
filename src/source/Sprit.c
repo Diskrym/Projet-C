@@ -3747,5 +3747,56 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         SDL_DestroyTexture(jerem->jeremy);
         jerem->jeremy = NULL;
     }
+    if (jerem->Life != 0)
+    {
+        if (jerem->CompteurSpriteDegat==0)
+        {
+            if (jerem->Direction==0)
+            {
+                if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremNeutreD.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }
+                if (jerem->NumSprit>=5 && jerem->NumSprit<10)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche1D.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }
+                if (jerem->NumSprit>=15)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche2D.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }  
+            }
+
+            if (jerem->Direction==1)
+            {
+                if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
+                {
+                
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremNeutreG.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }
+                if (jerem->NumSprit>=5 && jerem->NumSprit<10)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche1G.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }
+                if (jerem->NumSprit>=15)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche2G.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }
+            }
+            if (jerem->NumSprit>20)
+            {
+                jerem->NumSprit = 0;
+            }
+        } 
+    }
+    
+       
+
     
 }
