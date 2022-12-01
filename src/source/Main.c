@@ -119,9 +119,19 @@ init("Dungeon Fate");
         if (input.Bypass==1)
         {
             SDL_Delay(250);
-            lvl.MortMonstre=level[lvl.Num][0][1];
-            joueur.inposy=28;
-            joueur.inposx=300;
+
+            if (lvl.Num != 13)
+            {
+                lvl.MortMonstre=level[lvl.Num][0][1];
+                joueur.inposy=28;
+                joueur.inposx=300;
+            }
+            if(lvl.Num == 13)
+            {
+                jerem.Life = 20;
+            }
+            
+            
         }
         //Test defaite
     }

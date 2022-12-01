@@ -460,7 +460,8 @@ void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,Effet
 
 void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *son)
 {
-    if (jerem->Life >=1 && jerem->Eattaque == 0)
+    printf("%d\n",jerem->Life);
+    if (jerem->Life >=1 && jerem->Eattaque == 0 && jerem->cin == 0)
     {
         if (joueur->inposx<jerem->posmonsx)
         {
@@ -485,18 +486,20 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
     jerem->compteur+=1;
 
     //gestion compteur
-    if (jerem->compteur >= 100 && jerem->compteur <=145)
+    if (jerem->Transformation == 0)
     {
-        jerem->Eattaque = 1;
+        if (jerem->compteur >= 100 && jerem->compteur <=145)
+        {
+            jerem->Eattaque = 1;
+        }
+        else if (jerem->compteur >145)
+        {
+            jerem->Eattaque = 0;
+            jerem->compteur = 0;
+        }
     }
-    else if (jerem->compteur >145)
-    {
-        jerem->Eattaque = 0;
-        jerem->compteur = 0;
-    }
     
     
     
-
     Sprite_Boss_Jerem(joueur,jerem,lvl);
 }
