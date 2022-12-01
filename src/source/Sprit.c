@@ -3428,6 +3428,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                 {
                     squelette->Eattaque = 4;
                     squelette->CompteurSpriteDegat = 0;
+                    
                 }
                 
 
