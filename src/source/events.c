@@ -591,14 +591,12 @@ int Inside_Chevalier_Squelette(Joueur *joueur, Squelette *squelette)
             if ((squelette->posmonsx+20>=joueur->inposx-21 || squelette->posmonsx+38>=joueur->inposx-21) && (squelette->posmonsx+20<=joueur->inposx || squelette->posmonsx+38<=joueur->inposx))
             {
                 x=1;
-                printf("x1\n");
 
 
             }
             if ((squelette->posmonsy+26>=joueur->inposy+32 || squelette->posmonsy+59>=joueur->inposy+32) && (squelette->posmonsy+26<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+59<=joueur->inposy+SPRITE_SIZE))
             {
                 y=1;
-                printf("y1\n");
 
             }
             if (x==1 && y==1)
@@ -611,12 +609,10 @@ int Inside_Chevalier_Squelette(Joueur *joueur, Squelette *squelette)
             if ((squelette->posmonsx+20>=joueur->inposx+SPRITE_SIZE+21 || squelette->posmonsx+38>=joueur->inposx+SPRITE_SIZE+21) && (squelette->posmonsx+20<=joueur->inposx+SPRITE_SIZE|| squelette->posmonsx+38<=joueur->inposx+SPRITE_SIZE))
             {
                 x=1;
-                printf("x\n");
             }
             if ((squelette->posmonsy+26>=joueur->inposy+32 || squelette->posmonsy+59>=joueur->inposy+32) && (squelette->posmonsy+26<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+59<=joueur->inposy+SPRITE_SIZE))
             {
                 y=1;
-                printf("y\n");
             }
         
             if (x==1 && y==1)

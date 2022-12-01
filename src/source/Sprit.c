@@ -4108,12 +4108,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
             }
         }
-        if (jerem->Eattaque == 2)
+        if (jerem->Eattaque == 2 || jerem->Eattaque == 3)
         {
             //init ombre
-            if (jerem->NumSprit == 1)
+            if (jerem->NumSprit == 1 && jerem->Eattaque == 2)
             {
-                jerem->pos_ombre_x = jerem->posmonsx;
+                jerem->pos_ombre_x = jerem->posmonsx+5;
                 jerem->pos_ombre_y = jerem->posmonsy+93;
             }
             
@@ -4151,6 +4151,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 {
                     jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut2D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                    if (jerem->NumSprit >= 45 && jerem->NumSprit < 50 && jerem->Eattaque == 3)
+                    {
+                        jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut2D.png");
+                        Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                    }
+                    
                 }
                 if (jerem->NumSprit>=20 && jerem->NumSprit < 30 || jerem->NumSprit >=40 && jerem->NumSprit < 45)
                 {
@@ -4162,6 +4168,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut4D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 } 
+                
 
                 
             }
@@ -4189,21 +4196,35 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 } 
             }
-            if (jerem->NumSprit >= 50)
+            if (jerem->Eattaque == 2)
             {
-                jerem->posmonsy-=25;
+                
+                if (jerem->NumSprit >= 50)
+                {
+                    jerem->posmonsy-=25;
+                }
+                if (jerem->posmonsy+105< 0 && jerem->NumSprit >=130)
+                {
+                    jerem->Eattaque = 3;
+                    jerem->posmonsx = joueur->inposx-15;
+                    jerem->posmonsy = joueur->inposy -2066;
+                    jerem->pos_ombre_x = jerem->posmonsx;
+                    jerem->pos_ombre_y =  joueur->inposy+52;
+                }
             }
-            if (jerem->posmonsy+105< 0 && jerem->NumSprit >=130)
+            else if (jerem->Eattaque == 3)
             {
-                jerem->NumSprit = 0;
-                jerem->Eattaque = 3;
-                jerem->posmonsx = joueur->inposx;
-                jerem->posmonsx = joueur->inposy;
+                if (jerem->NumSprit > 48)
+                {
+                    jerem->posmonsy+=25;
+                }
+                if (jerem->NumSprit == 0)
+                {
+                    jerem->Eattaque =0 ;
+                    jerem->compteur =0;
+                }
+                
             }
-        }
-        if (jerem->Eattaque == 3)
-        {
-            printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         }
     
     }
@@ -4247,4 +4268,5 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
     {
         jerem->coup = 0;
     }
+    printf("%d\n",jerem->posmonsy);
 }

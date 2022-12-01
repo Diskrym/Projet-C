@@ -99,6 +99,7 @@ typedef struct Jerem_Boss
         SDL_Texture *jeremy;
         SDL_Texture *haltère;
         SDL_Texture *ombre;
+        SDL_Texture *fissure;
 }Jerem_Boss;
 
 typedef struct Entité
