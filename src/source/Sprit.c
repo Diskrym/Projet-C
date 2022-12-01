@@ -3506,6 +3506,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                 {
                     squelette->Eattaque = 4;
                     squelette->CompteurSpriteDegat = 0;
+                    
                 }
                 if (Inside_Vol(joueur->xdague,joueur->ydague,squelette->posmonsx+25,squelette->posmonsy+25,43,65,30,15)==1)
                 {

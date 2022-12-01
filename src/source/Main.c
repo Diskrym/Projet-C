@@ -9,6 +9,8 @@ Historique version :
     V2 : Donjon 1 + Son ✓ 29/10/22
     V2.1 : Optimisation ressource jeu + gestion coeur/ ✓ 03/11/22
     V3 : Donjon multiple + map 
+    V4 : Marchand
+    V5 : riv ière
 */
 
 /*
@@ -49,7 +51,9 @@ lvl.Num=-1;
 lvl.Load=0;
 // Initialisation de la SDL
 init("Dungeon Fate");
+    //init son
     Son(&son);
+    //init texte
     Texte(&paramtexte);
     //Menu
     while(input.enter==0)
@@ -57,13 +61,12 @@ init("Dungeon Fate");
     //gestionInputs(&input);
     Menu(&lvl);
     Get_Input(&input);
+    //Affiche tout ce qui a été chargé
     SDL_RenderPresent(getrenderer());
     }
-    // Mix_PauseMusic();
-    //atexit(Clean_Up);
     go = 1; 
-    // Boucle infinie, principale, du jeu
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
+    // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
         if (lvl.Load == 0)
@@ -107,18 +110,10 @@ init("Dungeon Fate");
 
         //Rendu des images dans le buffer
         SDL_RenderPresent(getrenderer());
-        //Acquisition des inputs du joueur
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;
         
-        //Test victoire
-        // if (meduse.Life<=0)
-        // {
-        // Win ();
-        // exit(0);
-        // }
-
         //#A enlver#
         if (input.Bypass==1)
         {
