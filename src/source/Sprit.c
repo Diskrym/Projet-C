@@ -459,7 +459,10 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     if (meduse->coup == 0)
                     {
                         joueur->life--;
-                        meduse->coup =1 ;
+                        if (joueur->life !=0)
+                        {
+                            meduse->coup =1 ;
+                        }
                     }
                 }
                 if (meduse->NumSprit==15 || meduse->NumSprit==16 || meduse->NumSprit==17 || meduse->NumSprit==18 )
@@ -769,7 +772,10 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (Inside_Vol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
-                    yeti->coup=1;
+                    if (joueur->life != 0)
+                    {
+                        yeti->coup=1;
+                    }
                 }
                 yeti->xboule-=7;
             }
@@ -820,7 +826,10 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 if (Inside_Vol(yeti->xboule,yeti->yboule,joueur->inposx,joueur->inposy,64,64,21,17)==1 && yeti->coup == 0)
                 {
                     joueur->life--;
-                    yeti->coup=1;
+                    if (joueur->life != 0)
+                    {
+                        yeti->coup=1;
+                    }
                 }
                 yeti->xboule+=7; 
             }
@@ -997,7 +1006,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1020,7 +1033,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1042,7 +1058,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
                     }
 
@@ -1063,7 +1082,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1085,7 +1107,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1110,7 +1135,10 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1134,7 +1162,12 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
+                        
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
                     }
 
@@ -1157,7 +1190,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
+                        if (joueur->life != 0)
+                        {
                         bossyeti->coupfissure =1 ;
+                        }
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1181,7 +1218,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
-                        bossyeti->coupfissure =1 ;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1204,7 +1245,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
+                        if (joueur->life != 0)
+                        {
                         bossyeti->coupfissure =1 ;
+                        }
+                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
 
                     }
@@ -1590,7 +1635,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 if (Inside_Vol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
                 {
                     joueur->life--;
+                    if (joueur->life != 0)
+                    {
                     bossyeti->coup=1;
+                    }
+                    
                 }
                 bossyeti->xcrane-=7;
             }
@@ -1641,7 +1690,11 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 if (Inside_Vol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
                 {
                     joueur->life--;
+                    if (joueur->life != 0)
+                    {
                     bossyeti->coup=1;
+                    }
+                    
                 }
                 bossyeti->xcrane+=7;
             }
@@ -1833,7 +1886,11 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
             {
                 joueur->life--;
                 chauvesouris->Life--;
-                chauvesouris->coup =1 ;
+                if (joueur->life != 0)
+                {
+                    chauvesouris->coup =1 ;
+                }
+                
                 lvl->MortMonstre+=1;
             }
             //si bouclier
@@ -2024,7 +2081,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if ((boss->CompteurSpriteEclair==25 && Inside_Eclair_Chevalier(joueur, boss->Ex1, boss->Ey1-405)==1))
             {
                 joueur->life--;
-                boss->coupE1=1;
+                if (joueur->life != 0)
+                {
+                    boss->coupE1=1;
+                }
+                
             }
             if (boss->coupE1==1 && boss->compteur>240)
             {
@@ -2050,7 +2111,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if ((boss->CompteurSpriteEclair==55 && Inside_Eclair_Chevalier(joueur, boss->Ex2, boss->Ey2-405)==1))
             {
                 joueur->life--;
-                boss->coupE2=1;
+                if (joueur->life != 0)
+                {
+                    boss->coupE2=1;
+                }
+                
             }
             if (boss->compteur>270 && boss->coupE2==1)
             {
@@ -2075,7 +2140,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if ((boss->CompteurSpriteEclair==85 && Inside_Eclair_Chevalier(joueur, boss->Ex3, boss->Ey3-405)==1))
             {
                 joueur->life--;
-                boss->coupE3=1;
+                if (joueur->life != 0)
+                {
+                    boss->coupE3=1;
+                }
+                
             }
             if (boss->coupE3==1 && boss->compteur==300)
             {
@@ -2101,7 +2170,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if ((boss->CompteurSpriteEclair==115 && Inside_Eclair_Chevalier(joueur, boss->Ex4, boss->Ey4-405)==1))
             {
                 joueur->life--;
-                boss->coupE4=1;
+                if (joueur->life != 0)
+                {
+                    boss->coupE4=1;
+                }
+                
             } 
             // inside eclair 4 hors boucle
             if (boss->compteur>330 && boss->coupE4==1)
@@ -2148,7 +2221,12 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     if (boss->coup == 0)
                     {
                         joueur->life--;
-                        boss->coup =1;
+                        
+                        if (joueur->life != 0)
+                        {
+                            boss->coup =1;
+                        }
+                        
                     }
                 }
             }
@@ -2880,7 +2958,11 @@ if (lvl->Avancement10<=11)
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
             joueur->life--; 
-            tronc->coup = 1;
+            if (joueur->life != 0)
+            {
+                tronc->coup = 1;
+            }
+            
         }
     }
     if (tronc->coup >=1)
@@ -2892,7 +2974,12 @@ if (lvl->Avancement10<=11)
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
             joueur->life--; 
-            Petit_rocher->coup = 1;
+            
+            if (joueur->life != 0)
+            {
+                Petit_rocher->coup = 1;
+            }
+            
         }   
     }
     if (Petit_rocher->coup >=1)
@@ -2905,7 +2992,10 @@ if (lvl->Avancement10<=11)
         if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
         {
             joueur->life--;
-            Gros_rocher->coup = 1; 
+            if (joueur->life != 0)
+            {
+                Gros_rocher->coup = 1; 
+            }    
         }
     }
     if (Gros_rocher->coup >= 1)
@@ -3171,8 +3261,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                 {
                     if (joueur->Eshield == 0 || joueur->TimingBouclier >15)
                     {
-                        //joueur->life--;
-                        squelette->coup = 1;
+                        joueur->life--;
+                        if (joueur->life != 0)
+                        {
+                            squelette->coup = 1;
+                        }
                     }
                     if (joueur->Eshield == 1 && joueur->TimingBouclier<=15)
                     {

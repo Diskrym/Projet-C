@@ -216,6 +216,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             lvl->Num = -1 ;
             lvl->reset = 0;
             lvl->Load = 0;
+            joueur->Ebateau = 1 ;
         }
     }
 }

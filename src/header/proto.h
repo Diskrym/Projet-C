@@ -14,7 +14,7 @@ extern void Render_Life(Joueur *joueur, Lvl *lvl, EffetSon *son);
 extern void Render_Coin (Joueur *joueur,Lvl *lvl,ParamTexte *paramtexte);
 extern void Render_Level (Lvl *lvl);
 extern void Render_Door (Lvl *lvl);
-extern void Menu (Lvl *lvl);
+extern void Draw_Menu (Lvl *lvl);
 extern void Break_Menu (Lvl *lvl);
 extern void Stats_Menu(Lvl *lvl,Stats*stats, ParamTexte *paramtexte);
 extern void Statistiques(Stats *stats,Joueur *joueur, Lvl *lvl);
@@ -52,7 +52,6 @@ extern int Inside_Chevalier_Squelette(Joueur *joueur, Squelette *squelette);
 //init.c
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
-extern void LoadJoueur(Joueur *joueur);
 extern void Load_Level_1_1(Meduse *meduse, Lvl *lvl, Joueur *joueur);
 extern void Load_Level_1_2(Meduse *meduse, Meduse *meduse1,Meduse *meduse2, Lvl *lvl, Joueur *joueur);
 extern void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son);

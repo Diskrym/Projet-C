@@ -366,7 +366,7 @@ void Render_Door (Lvl *lvl)
     
 }
 
-void Menu (Lvl *lvl)
+void Draw_Menu (Lvl *lvl)
 {   
     if (lvl->Menu!=NULL)
     {

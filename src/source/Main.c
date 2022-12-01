@@ -55,7 +55,7 @@ init("Dungeon Fate");
     while(input.enter==0)
     {
     //gestionInputs(&input);
-    Menu(&lvl);
+    Draw_Menu(&lvl);
     Get_Input(&input);
     SDL_RenderPresent(getrenderer());
     }
