@@ -3973,17 +3973,17 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 {
                     if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
                     {
-                        jerem->jeremy=loadImage("src/graphics/BossJermy/JeremNeutreD.png");
+                        jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremNeutreD.png");
                         Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     }
                     if (jerem->NumSprit>=5 && jerem->NumSprit<10)
                     {
-                        jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche1D.png");
+                        jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremMarche1D.png");
                         Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     }
                     if (jerem->NumSprit>=15)
                     {
-                        jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche2D.png");
+                        jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremMarche2D.png");
                         Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     }  
                 }
@@ -3993,17 +3993,17 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
                     {
                     
-                        jerem->jeremy=loadImage("src/graphics/BossJermy/JeremNeutreG.png");
+                        jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremNeutreG.png");
                         Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     }
                     if (jerem->NumSprit>=5 && jerem->NumSprit<10)
                     {
-                        jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche1G.png");
+                        jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremMarche1G.png");
                         Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     }
                     if (jerem->NumSprit>=15)
                     {
-                        jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMarche2G.png");
+                        jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremMarche2G.png");
                         Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     }
                 }
@@ -4019,27 +4019,27 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {            
                 if (jerem->NumSprit>=0 && jerem->NumSprit<5)
                 {   
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere1G.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere1G.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=5 && jerem->NumSprit<10)
                 {
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere2G.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere2G.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=10 && jerem->NumSprit<20)
                 {   
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere3G.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere3G.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);    
                 }
                 if (jerem->NumSprit>=20 && jerem->NumSprit<30)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere4G.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere4G.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=30 && jerem->NumSprit<35)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere5G.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere5G.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     if (jerem->NumSprit == 32)
                     {
@@ -4051,12 +4051,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
                 if (jerem->NumSprit>=35 && jerem->NumSprit<40)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere6G.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere6G.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=40)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere7G.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere7G.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 
@@ -4066,27 +4066,27 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {             
                 if (jerem->NumSprit>=0 && jerem->NumSprit<5)
                 {   
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere1D.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere1D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=5 && jerem->NumSprit<10)
                 {
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere2D.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere2D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=10 && jerem->NumSprit<20)
                 {   
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere3D.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere3D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);    
                 }
                 if (jerem->NumSprit>=20 && jerem->NumSprit<30)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere4D.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere4D.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=30 && jerem->NumSprit<35)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere5D.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere5D.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     if (jerem->NumSprit == 32)
                     {
@@ -4098,12 +4098,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
                 if (jerem->NumSprit>=35 && jerem->NumSprit<40)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere6D.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere6D.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=40)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere7D.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremHaltere7D.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
             }
