@@ -73,6 +73,8 @@ extern void Load_Level_3_4 (Joueur *joueur, BossYeti *bossyeti,Lvl *lvl);
 extern void Save (Joueur*joueur,Lvl *lvl,Input *input, Entité *entité, EffetSon *son,Stats *stats,clock_t temps);
 extern void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats);
 extern void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *squelette);
+extern void Load_Level_5_2(Joueur *joueur, Squelette *squelette, Squelette *squelette1,Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl);
+
 
 //input.c
 //extern void gestionInputs(Input *input);

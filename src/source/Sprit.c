@@ -3100,13 +3100,21 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
         //Mouvement  squelette quand en vie et quand il ne prend pas de degat
         if (squelette->Life >=1 && squelette->CompteurSpriteDegat == 0)
         {
-
+            //Dague
+            if (Inside_Vol(joueur->xdague,joueur->ydague,squelette->posmonsx,squelette->posmonsy,58,64,30,15)==1 && (squelette->Eattaque == 2 ||squelette->Eattaque == 0))
+            {
+                squelette->Life--;
+                squelette->CompteurSpriteDegat +=1;
+            }
+            
+            
+            
+            
             if (Inside_Squelette_Chevalier(joueur, squelette)==1 && squelette->Eattaque == 0)
             {
                 squelette->Eattaque = 1;
                 squelette->NumSprit =0 ;
             }
-
             if (squelette->Eattaque == 1 )
             {   
                 if(squelette->Direction == 0)
@@ -3430,6 +3438,12 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
                     squelette->CompteurSpriteDegat = 0;
                     
                 }
+                if (Inside_Vol(joueur->xdague,joueur->ydague,squelette->posmonsx+25,squelette->posmonsy+25,43,65,30,15)==1)
+                {
+                    squelette->Eattaque = 4;
+                    squelette->CompteurSpriteDegat = 0;
+                }
+                
                 
 
         }
@@ -3545,20 +3559,12 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur)
             {
                 squelette->CompteurSpriteDegat +=1;
             } 
+            if (squelette->CompteurSpriteDegat == 29)
+            {
+                lvl->MortMonstre+=1;
+            }
+            
         }
-        
-        
-
-
-
-
-
-
-
-
-
-
-
         //coup joueur
         if (squelette->coup!=0)
         {
