@@ -498,6 +498,27 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             jerem->compteur = 0;
         }
     }
+    if (jerem->Transformation == 1)
+    {
+        if (jerem->compteur>=0 && jerem->compteur < 100)
+        {
+            jerem->Eattaque = 0;
+        }
+        else if (jerem->compteur >= 100 && jerem->compteur <=145)
+        {
+            jerem->Eattaque = 1;
+        }
+        else if (jerem->compteur > 145 && jerem->compteur < 245)
+        {
+            jerem->Eattaque = 0;
+        }
+        else if (jerem->compteur >= 245)
+        {
+            jerem->Eattaque = 2;
+        }
+        
+    }
+    
     
     
     
