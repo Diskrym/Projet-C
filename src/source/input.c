@@ -514,13 +514,17 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
         }
         else if (jerem->compteur >= 245)
         {
+            if (jerem->compteur == 245)
+            {
+                jerem->NumSprit = 0;
+            }
+            
             jerem->Eattaque = 2;
         }
         
     }
     
     
-        printf("%d\n",jerem->Eattaque);
 
     
     Sprite_Boss_Jerem(joueur,jerem,lvl);

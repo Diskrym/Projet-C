@@ -95,7 +95,7 @@ typedef struct Obstacle
 
 typedef struct Jerem_Boss
 {
-        int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSprite2, compteur, Eattaque, Direction, Direction_haltère, xhaltère, yhaltère,Ehaltère, Transformation, cin;
+        int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSprite2, compteur, Eattaque, Direction, Direction_haltère, xhaltère, yhaltère,Ehaltère, Transformation, cin, pos_ombre_x, pos_ombre_y;
         SDL_Texture *jeremy;
         SDL_Texture *haltère;
         SDL_Texture *ombre;
