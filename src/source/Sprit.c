@@ -3202,7 +3202,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
         {
             squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette3.png");
             Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
-            squelette->pos_jerem-=2;
+            squelette->pos_jerem-=14;
             if (squelette->pos_jerem<5)
             {
                 lvl->cin = 0;
