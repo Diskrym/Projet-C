@@ -3197,7 +3197,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
         {
             squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette3.png");
             Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
-            squelette->pos_jerem-=2;
+            squelette->pos_jerem-=14;
             if (squelette->pos_jerem<5)
             {
                 lvl->cin = 0;
@@ -4181,6 +4181,22 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 jerem->ombre=loadImage("src/graphics/BossJermy/Ombre4.png");
                 Draw_Image(jerem->ombre,jerem->pos_ombre_x,jerem->pos_ombre_y);
             }
+            //onde de choc
+            if (jerem->NumSprit >= 45 && jerem->NumSprit < 50 && jerem->Eattaque == 3)
+            {
+                jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc1.png");
+                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
+            }
+            if (jerem->NumSprit >= 40 && jerem->NumSprit < 45 && jerem->Eattaque == 3)
+            {
+                jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc2.png");
+                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
+            }
+            if (jerem->NumSprit >= 30 && jerem->NumSprit < 40 && jerem->Eattaque == 3)
+            {
+                jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc3.png");
+                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
+            }
 
             if (jerem->Direction==0)
             {
@@ -4234,22 +4250,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 } 
             }
-            //onde de choc
-            if (jerem->NumSprit >= 45 && jerem->NumSprit < 50 && jerem->Eattaque == 3)
-            {
-                jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc1.png");
-                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
-            }
-            if (jerem->NumSprit >= 40 && jerem->NumSprit < 45 && jerem->Eattaque == 3)
-            {
-                jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc2.png");
-                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
-            }
-            if (jerem->NumSprit >= 30 && jerem->NumSprit < 40 && jerem->Eattaque == 3)
-            {
-                jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc3.png");
-                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
-            }
+            
 
 
 

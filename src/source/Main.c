@@ -3,14 +3,17 @@
 /*
 Historique version :
     V0 : Lancement projet ✓ 03/10/22
-    V0.1 : Map + Joueur + Deplacement ✓ 17/10/22
+        V0.1 : Map + Joueur + Deplacement ✓ 17/10/22
     V1 : Meduse seul + degat ✓ 21/10//22
-    V1.1 : Plusieurs mêmes types de monstre + changement de salle ✓ 23/10/22
+        V1.1 : Plusieurs mêmes types de monstre + changement de salle ✓ 23/10/22
     V2 : Donjon 1 + Son ✓ 29/10/22
-    V2.1 : Optimisation ressource jeu + gestion coeur/ ✓ 03/11/22
+        V2.1 : Optimisation ressource jeu + gestion coeur/ ✓ 03/11/22
     V3 : Donjon multiple + map 
-    V4 : Marchand
-    V5 : riv ière
+    V4 : Niveaux spéciaux
+        V4.1 : Marchand
+        V4.2 : Rivière
+        V4.3 : Menu, sauvegarde, score, stats
+    V5 : Boss final/Victoire/Crédits
 */
 
 /*
