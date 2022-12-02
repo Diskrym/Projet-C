@@ -482,7 +482,17 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             jerem->posmonsy+=1;
         }
     }
-    jerem->NumSprit+=1;
+    if (jerem->Eattaque != 3)
+    {
+        jerem->NumSprit+=1;
+    }
+    else
+    {
+        jerem->NumSprit-=1;
+    }
+    
+    
+
     jerem->compteur+=1;
 
     //gestion compteur
@@ -512,7 +522,7 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
         {
             jerem->Eattaque = 0;
         }
-        else if (jerem->compteur >= 245)
+        else if (jerem->compteur >= 245 && jerem->Eattaque !=3)
         {
             if (jerem->compteur == 245)
             {
@@ -521,7 +531,6 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             
             jerem->Eattaque = 2;
         }
-        
     }
     
     
