@@ -546,6 +546,43 @@ int Inside_Chevalier_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti)
     }
 }
 
+int Inside_Chevalier_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem)
+{
+    int x=0;
+    int y=0;
+    if (joueur->Direction==1)
+    {
+        if ((jerem->posmonsx>=joueur->inposx || jerem->posmonsx+108>=joueur->inposx-21) && (jerem->posmonsx<=joueur->inposx || jerem->posmonsx+108<=joueur->inposx))
+        {
+            x=1;
+        }
+        if ((jerem->posmonsy>=joueur->inposy+32 || jerem->posmonsy+108>=joueur->inposy+32) && (jerem->posmonsy<=joueur->inposy+SPRITE_SIZE || jerem->posmonsy+108<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    }
+    if (joueur->Direction==0)
+    {
+        if ((jerem->posmonsx>=joueur->inposx+SPRITE_SIZE || jerem->posmonsx+108>=joueur->inposx+SPRITE_SIZE) && (jerem->posmonsx<=joueur->inposx+SPRITE_SIZE+21|| jerem->posmonsx+108<=joueur->inposx+SPRITE_SIZE+21))
+        {
+            x=1;
+        }
+        if ((jerem->posmonsy>=joueur->inposy+32 || jerem->posmonsy+108>=joueur->inposy+32) && (jerem->posmonsy<=joueur->inposy+SPRITE_SIZE || jerem->posmonsy+108<=joueur->inposy+SPRITE_SIZE))
+        {
+            y=1;
+        }
+       
+        if (x==1 && y==1)
+        {return 1;}
+        else
+        {return 0;}
+    }
+}
+
 int Inside_Chevalier_Squelette(Joueur *joueur, Squelette *squelette)
 {
     int x=0;

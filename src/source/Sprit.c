@@ -962,8 +962,6 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
    
 }
 
-
-
 void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
 {  
     //reset pointeur bossyeti
@@ -1836,9 +1834,6 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
     }
    
 }
-
-
-
 
 void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {  
@@ -3748,6 +3743,26 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         jerem->jeremy = NULL;
     }
 
+    //Degats sur jerem
+    if (jerem->Life != 0 && jerem->Eattaque == 0 && jerem->CompteurSprite2 == 0)
+    {
+        if (Inside_Chevalier_Boss_Jerem(joueur,jerem) == 1 && joueur->Numattack == 15)
+        {
+            jerem->Life--;
+            jerem->CompteurSprite2+=1;
+        }
+        
+    }
+    //reset degats jerem
+    if (jerem->CompteurSprite2 != 0 && !(jerem->Life <=20 && jerem->Transformation == 0))
+    {
+        jerem->CompteurSprite2+=1;
+        if (jerem->CompteurSprite2 >=15)
+        {
+            jerem->CompteurSprite2=0;
+        }
+    }
+
     if (jerem->Life >20 )
     {
         if(jerem->Eattaque == 0)
@@ -3797,8 +3812,20 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     jerem->NumSprit = 0;
                 }
             } 
+            else if (jerem->Direction == 0)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossYeti/BossYetiDegatD.png");
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            else
+            {
+                jerem->jeremy=loadImage("src/graphics/BossYeti/BossYetiDegatG.png");
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            
         }
-        if (jerem->Eattaque == 1)
+        //attaque haltère phase 1
+        if (jerem->Eattaque == 1 && jerem->CompteurSprite2 == 0)
         {
             if (jerem->Direction==1)
             {            
@@ -3893,7 +3920,10 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
             }
         }
+        
+        
     } 
+    //trasnformation 1
     else if (jerem->Life <=20 && jerem->Transformation == 0)
     {
         jerem->cin = 1;
@@ -3965,6 +3995,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
     }
     else if (jerem->Life >10 && jerem->Transformation == 1)
     {
+        //marche phase 2
         if(jerem->Eattaque == 0)
         {
             if (jerem->CompteurSprite2==0)
@@ -4012,7 +4043,18 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     jerem->NumSprit = 0;
                 }
             } 
+            else if (jerem->Direction == 0)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossYeti/BossYetiDegatD.png");
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            else
+            {
+                jerem->jeremy=loadImage("src/graphics/BossYeti/BossYetiDegatG.png");
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
         }
+        //attaque haltère phase 2
         if (jerem->Eattaque == 1)
         {
             if (jerem->Direction==1)
@@ -4108,6 +4150,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
             }
         }
+        //saut et atterissage
         if (jerem->Eattaque == 2 || jerem->Eattaque == 3)
         {
             //init ombre
@@ -4242,7 +4285,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         }
     
     }
-    
+    //gestion haltère
     if (jerem->Ehaltère == 1)
     {
 
@@ -4282,5 +4325,4 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
     {
         jerem->coup = 0;
     }
-    printf("%d\n",jerem->posmonsy);
 }
