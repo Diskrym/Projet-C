@@ -177,6 +177,7 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     }
     if (lvl->Num == 10)
     {
+        printf("aaaaaaaaaaa");
         Load_Level_4_2(joueur,&entité->Petit_rocher, &entité->Gros_rocher,&entité->tronc,&entité->tanguy,lvl);
     }
     if (lvl->Num == 11)

@@ -2687,6 +2687,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
     //Bateau
     if (lvl->Num==9)
     {
+        printf("mess = %d\n",marchand->CompteurMess1);
         if (marchand->Compteur1<10 || marchand->Compteur1>=40)
         {
             marchand->Tanguy=loadImage("src/graphics/Rivière/TurboTangui.png");
@@ -2751,6 +2752,12 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 joueur->Ebateau=1;
             }
         }
+        //reset message
+        if (marchand->CompteurMess1 == 4)
+        {
+            marchand ->CompteurMess1=0;
+        }
+        
 
         //entree joueur dans bateau
         if (joueur->inposx >= 80 && joueur->inposx <= 131 && joueur->inposy >= 205 && joueur->Ebateau == 1)
@@ -2785,6 +2792,15 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         SDL_DestroyTexture(Gros_rocher->Image);
         Gros_rocher->Image = NULL;
     }
+
+    if (lvl->Avancement10 == 0 && (Petit_rocher->Etat != 0 || Gros_rocher->Etat != 0 || tronc->Etat != 0 || tanguy->Etat != 0))
+    {
+        Petit_rocher->Etat = 0;
+        Gros_rocher->Etat = 0;
+        tronc->Etat = 0;
+        tanguy->Etat = 0;
+    }
+    
     
     
 

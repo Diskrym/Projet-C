@@ -210,6 +210,13 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
     //reset si mort
     if (lvl-> reset == 1)
     {
+        //reset si map bateau
+        if (lvl->Num == 9 || lvl->Num == 10)
+        {
+            printf("AAAAAAAAAAAAAAAA");
+            joueur->Ebateau = 0 ;
+            lvl->Avancement10 = 0 ;
+        }
         char* nomFichier = "src/Save/Game.txt";
         FILE* fichier = fopen ( nomFichier , "r+" );
         if ( fichier )
@@ -220,7 +227,6 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             lvl->Num = -1 ;
             lvl->reset = 0;
             lvl->Load = 0;
-            joueur->Ebateau = 1 ;
         }
     }
 }
