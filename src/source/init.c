@@ -324,6 +324,8 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     {
         Collision_Mur(joueur,20,20,20,20);
         Deplacement_Boss_Jerem(joueur,&entité->jerem,lvl,son);
+        Collision_Jerem_Boss (joueur, &entité->jerem, input, lvl);
+
     }
     
     
