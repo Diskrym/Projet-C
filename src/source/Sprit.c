@@ -4520,7 +4520,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             if (jerem->NumSprit == 1 && jerem->Eattaque == 2)
             {
                 jerem->pos_ombre_x = jerem->posmonsx+5;
-                jerem->pos_ombre_y = jerem->posmonsy+95;
+                jerem->pos_ombre_y = jerem->posmonsy+107;
             }
             
             //ombre
@@ -4548,17 +4548,17 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             if (jerem->NumSprit >= 45 && jerem->NumSprit < 50 && jerem->Eattaque == 3)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/3OndeDeChoc1.png");
-                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
+                Draw_Image(jerem->fissure,jerem->posmonsx-85,jerem->posmonsy+87);
             }
             if (jerem->NumSprit >= 40 && jerem->NumSprit < 45 && jerem->Eattaque == 3)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/3OndeDeChoc2.png");
-                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
+                Draw_Image(jerem->fissure,jerem->posmonsx-85,jerem->posmonsy+87);
             }
             if (jerem->NumSprit >= 30 && jerem->NumSprit < 40 && jerem->Eattaque == 3)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/3OndeDeChoc3.png");
-                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
+                Draw_Image(jerem->fissure,jerem->posmonsx-85,jerem->posmonsy+87);
             }
 
             if (jerem->Direction==0)
