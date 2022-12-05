@@ -3292,7 +3292,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                 {
                     if (joueur->Eshield == 0 || joueur->TimingBouclier >45)
                     {
-                        joueur->life--;
+                        //joueur->life--;
                         if (joueur->life != 0)
                         {
                             squelette->coup = 1;
@@ -4783,12 +4783,10 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
                 if (jerem->NumSprit>=30)
                 {   
-                    if (jerem->NumSprit>=30)
-                {
-                    if (jerem->NumSprit == 30)
+                     if (jerem->NumSprit == 30)
                     {
                         //enregistremnt pou effet
-                        jerem->xhaltère = jerem->posmonsx;
+                        jerem->xhaltère = jerem->posmonsx+120;
                         jerem->yhaltère = jerem->posmonsy;
                     }
                     jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDash3G.png");
