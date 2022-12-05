@@ -4737,6 +4737,13 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
                 if (jerem->NumSprit>=30)
                 {
+                    if (jerem->NumSprit == 30)
+                    {
+                        //enregistremnt pou effet
+                        jerem->xhaltère = jerem->posmonsx;
+                        jerem->yhaltère = jerem->posmonsy;
+                    }
+                    
                     jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDash3D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     if (Inside_Vol(jerem->posmonsx,jerem->posmonsy,joueur->inposx,joueur->inposy,64,64,107,120)==1)
@@ -4802,6 +4809,47 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
             }
         }
+        
+        if (jerem->Eattaque == 4 || jerem->Eattaque == 5)
+        {
+            if(jerem->Direction == 0)
+            {
+                if (jerem->NumSprit>=30 && jerem->NumSprit<35)
+                {
+                    jerem->fissure=loadImage("src/graphics/BossJermy/3JeremDashEffet1D.png");
+                    Draw_Image(jerem->fissure,jerem->xhaltère-49,jerem->yhaltère);
+                }
+                if (jerem->NumSprit>=35 && jerem->NumSprit<40)
+                {
+                    jerem->fissure=loadImage("src/graphics/BossJermy/3JeremDashEffet2D.png");
+                    Draw_Image(jerem->fissure,jerem->xhaltère-49,jerem->yhaltère);
+                }
+                if (jerem->NumSprit>=40 && jerem->NumSprit<45)
+                {
+                    jerem->fissure=loadImage("src/graphics/BossJermy/3JeremDashEffet3D.png");
+                    Draw_Image(jerem->fissure,jerem->xhaltère-49,jerem->yhaltère);
+                }
+            }
+            if(jerem->Direction == 1)
+            {
+                if (jerem->NumSprit>=30 && jerem->NumSprit<35)
+                {
+                    jerem->fissure=loadImage("src/graphics/BossJermy/3JeremDashEffet1G.png");
+                    Draw_Image(jerem->fissure,jerem->xhaltère+107,jerem->yhaltère);
+                }
+                if (jerem->NumSprit>=35 && jerem->NumSprit<40)
+                {
+                    jerem->fissure=loadImage("src/graphics/BossJermy/3JeremDashEffet2G.png");
+                    Draw_Image(jerem->fissure,jerem->xhaltère+107,jerem->yhaltère);
+                }
+                if (jerem->NumSprit>=40 && jerem->NumSprit<45)
+                {
+                    jerem->fissure=loadImage("src/graphics/BossJermy/3JeremDashEffet3G.png");
+                    Draw_Image(jerem->fissure,jerem->xhaltère+107,jerem->yhaltère);
+                }
+            }
+        }
+        
     }
 
     //gestion haltère
