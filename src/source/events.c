@@ -450,7 +450,7 @@ if (jerem->Life>20 && jerem->Eattaque!=3)
         }
     	}
  
-if (jerem->Life>=10 && jerem->Eattaque!=3)
+if (jerem->Life<=10 && jerem->Eattaque!=3)
 {
 //collision haut joueur
         if((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+107 )||(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+107 )||((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+107 )&&(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+107 )))
