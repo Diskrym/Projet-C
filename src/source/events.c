@@ -818,6 +818,7 @@ int Inside_Chevalier_Squelette(Joueur *joueur, Squelette *squelette)
             if ((squelette->posmonsx+20>=joueur->inposx+SPRITE_SIZE+21 || squelette->posmonsx+38>=joueur->inposx+SPRITE_SIZE+21) && (squelette->posmonsx+20<=joueur->inposx+SPRITE_SIZE|| squelette->posmonsx+38<=joueur->inposx+SPRITE_SIZE))
             {
                 x=1;
+                
             }
             if ((squelette->posmonsy+26>=joueur->inposy+32 || squelette->posmonsy+59>=joueur->inposy+32) && (squelette->posmonsy+26<=joueur->inposy+SPRITE_SIZE || squelette->posmonsy+59<=joueur->inposy+SPRITE_SIZE))
             {
