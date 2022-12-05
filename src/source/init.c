@@ -358,12 +358,16 @@ void Load_Level_1_2(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, J
     meduse->posmonsx =level[1][1][1];
     meduse->posmonsy =level[1][1][2];
     meduse->Life=level[1][1][5];
+    meduse->compteur=level [1][1][3];
     meduse1->posmonsx =level[1][2][1];
     meduse1->posmonsy =level[1][2][2];
     meduse1->Life=level[1][2][5];
+    meduse1->compteur=level[1][2][3];
     meduse2->posmonsx =level[1][3][1];
     meduse2->posmonsy =level[1][3][2];
     meduse2->Life=level[1][3][5];
+    meduse2->compteur=level[1][3][3];
+
 }
 
 void Load_Level_1_3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur)
