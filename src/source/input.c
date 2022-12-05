@@ -532,9 +532,33 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             jerem->Eattaque = 2;
         }
     }
+    if (jerem->Transformation == 2)
+    {
+        if (jerem->compteur>=0 && jerem->compteur < 100)
+        {
+            jerem->Eattaque = 0;
+        }
+        else if (jerem->compteur >= 100 && jerem->compteur <=145)
+        {
+            jerem->Eattaque = 1;
+        }
+        else if (jerem->compteur > 145 && jerem->compteur < 245)
+        {
+            jerem->Eattaque = 0;
+        }
+        else if (jerem->compteur >= 245 && jerem->Eattaque !=3)
+        {
+            if (jerem->compteur == 245)
+            {
+                jerem->NumSprit = 0;
+            }
+            
+            jerem->Eattaque = 2;
+        }
+    }
+    
     
     
 
-    
     Sprite_Boss_Jerem(joueur,jerem,lvl);
 }
