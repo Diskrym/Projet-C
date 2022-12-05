@@ -4349,6 +4349,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             jerem->NumSprit = 0;
             jerem->CompteurSprite2 = 0;
             jerem->cin = 0;
+            lvl->Avancement10 =0;
         }
     }
     //phase 2
@@ -4641,11 +4642,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             }
         }
     }
-
-    
-    
-    
-
 
     //gestion haltère
     if (jerem->Ehaltère == 1)

@@ -308,6 +308,10 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         {
             Collision_Mur(joueur,20,40,0,10);
         }
+        else if(lvl->Avancement10==13 && joueur->Ebateau ==2)
+        {
+            Collision_Mur(joueur,267,35,0,0);
+        }
         else if(lvl->Avancement10==13 && joueur->Ebateau!=2)
         {
             Collision_Mur(joueur,0,114,400,60);
