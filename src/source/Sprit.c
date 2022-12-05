@@ -3814,12 +3814,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             } 
             else if (jerem->Direction == 0)
             {
-                jerem->jeremy=loadImage("src/graphics/BossYeti/JeremDegatD.png");
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremDegatD.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
             }
             else
             {
-                jerem->jeremy=loadImage("src/graphics/BossYeti/JeremDegatG.png");
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremDegatG.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
             }
             
@@ -4045,12 +4045,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             } 
             else if (jerem->Direction == 0)
             {
-                jerem->jeremy=loadImage("src/graphics/BossYeti/2JeremDegatD.png");
+                jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremDegatD.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
             }
             else
             {
-                jerem->jeremy=loadImage("src/graphics/BossYeti/2JeremDegatG.png");
+                jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremDegatG.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
             }
         }
@@ -4408,12 +4408,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             } 
             else if (jerem->Direction == 0)
             {
-                jerem->jeremy=loadImage("src/graphics/BossYeti/3JeremDegatD.png");
+                jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDegatD.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
             }
             else
             {
-                jerem->jeremy=loadImage("src/graphics/BossYeti/3JeremDegatG.png");
+                jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDegatG.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
             }
         }
