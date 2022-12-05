@@ -337,6 +337,178 @@ void Collision_Squelette (Joueur *joueur, Squelette *squelette, Input *input, Lv
     }
 }
  
+void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl *lvl)
+{ 
+    if (jerem->Life!=0)
+    { 
+if (jerem->Life>20 && jerem->Eattaque!=3)
+{
+//collision haut joueur
+        if((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+84 )||(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+84 )||((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+84 )&&(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+84 )))
+        {
+            if ((joueur->inposy <= jerem->posmonsy+95)&&(joueur->inposy >= jerem->posmonsy ))
+            {
+                jerem->posmonsy-=1;
+                if (input->up == 1)
+                {
+                    joueur->inposy+=3;  
+                }
+            }
+        }
+       
+        //collision bas joueur
+        if((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+84 )||(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+84 )||((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+84 )&&(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+84 )))
+        {
+            if ((joueur->inposy+SPRITE_SIZE <= jerem->posmonsy+95)&&(joueur->inposy+SPRITE_SIZE >= jerem->posmonsy ))        
+            {
+                jerem->posmonsy+=1;
+                if (input->down == 1)
+                {
+                    joueur->inposy-=3;  
+                }  
+            }
+        }
+   
+        // //coter droit joueur
+        if((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+95 )||(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+95 )||((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+95 )&&(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+95 )))
+        {
+            if ((joueur->inposx+SPRITE_SIZE <= jerem->posmonsx+84)&&(joueur->inposx+SPRITE_SIZE >= jerem->posmonsx ))
+            {
+                jerem->posmonsx+=1;
+                if (input->right == 1)
+                {
+                    joueur->inposx-=3;  
+                }  
+            }
+        }
+       
+        // //coter gauche joueur
+        if((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+95 )||(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+95 )||((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+95 )&&(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+95 )))
+        {
+            if ((joueur->inposx <= jerem->posmonsx+84)&&(joueur->inposx >= jerem->posmonsx ))
+            {
+                jerem->posmonsx-=1;
+                if (input->left == 1)
+                {
+                    joueur->inposx+=3;  
+                }
+            }
+        }
+    	}
+	if (jerem->Life<21 && jerem->Life>10 && jerem->Eattaque!=3)
+{
+//collision haut joueur
+        if((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+93 )||(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+93 )||((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+93 )&&(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+93 )))
+        {
+            if ((joueur->inposy <= jerem->posmonsy+105)&&(joueur->inposy >= jerem->posmonsy ))
+            {
+                jerem->posmonsy-=1;
+                if (input->up == 1)
+                {
+                    joueur->inposy+=3;  
+                }
+            }
+        }
+       
+        //collision bas joueur
+        if((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+93 )||(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+93 )||((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+93 )&&(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+93 )))
+        {
+            if ((joueur->inposy+SPRITE_SIZE <= jerem->posmonsy+105)&&(joueur->inposy+SPRITE_SIZE >= jerem->posmonsy ))        
+            {
+                jerem->posmonsy+=1;
+                if (input->down == 1)
+                {
+                    joueur->inposy-=3;  
+                }  
+            }
+        }
+   
+        // //coter droit joueur
+        if((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+105 )||(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+105 )||((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+105 )&&(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+105 )))
+        {
+            if ((joueur->inposx+SPRITE_SIZE <= jerem->posmonsx+93)&&(joueur->inposx+SPRITE_SIZE >= jerem->posmonsx ))
+            {
+                jerem->posmonsx+=1;
+                if (input->right == 1)
+                {
+                    joueur->inposx-=3;  
+                }  
+            }
+        }
+       
+        // //coter gauche joueur
+        if((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+105 )||(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+105 )||((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+105 )&&(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+105 )))
+        {
+            if ((joueur->inposx <= jerem->posmonsx+93)&&(joueur->inposx >= jerem->posmonsx ))
+            {
+                jerem->posmonsx-=1;
+                if (input->left == 1)
+                {
+                    joueur->inposx+=3;  
+                }
+            }
+        }
+    	}
+ 
+if (jerem->Life>=10 && jerem->Eattaque!=3)
+{
+//collision haut joueur
+        if((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+107 )||(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+107 )||((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+107 )&&(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+107 )))
+        {
+            if ((joueur->inposy <= jerem->posmonsy+120)&&(joueur->inposy >= jerem->posmonsy ))
+            {
+                jerem->posmonsy-=1;
+                if (input->up == 1)
+                {
+                    joueur->inposy+=3;  
+                }
+            }
+        }
+       
+        //collision bas joueur
+        if((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+107 )||(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+107 )||((joueur->inposx>=jerem->posmonsx && joueur->inposx<=jerem->posmonsx+107 )&&(joueur->inposx+SPRITE_SIZE>=jerem->posmonsx && joueur->inposx+SPRITE_SIZE<=jerem->posmonsx+107 )))
+        {
+            if ((joueur->inposy+SPRITE_SIZE <= jerem->posmonsy+120)&&(joueur->inposy+SPRITE_SIZE >= jerem->posmonsy ))        
+            {
+                jerem->posmonsy+=1;
+                if (input->down == 1)
+                {
+                    joueur->inposy-=3;  
+                }  
+            }
+        }
+   
+        // //coter droit joueur
+        if((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+120 )||(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+120 )||((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+120 )&&(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+120 )))
+        {
+            if ((joueur->inposx+SPRITE_SIZE <= jerem->posmonsx+107)&&(joueur->inposx+SPRITE_SIZE >= jerem->posmonsx ))
+            {
+                jerem->posmonsx+=1;
+                if (input->right == 1)
+                {
+                    joueur->inposx-=3;  
+                }  
+            }
+        }
+       
+        // //coter gauche joueur
+        if((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+120 )||(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+120 )||((joueur->inposy>=jerem->posmonsy && joueur->inposy<=jerem->posmonsy+120 )&&(joueur->inposy+SPRITE_SIZE>=jerem->posmonsy && joueur->inposy+SPRITE_SIZE<=jerem->posmonsy+120 )))
+        {
+            if ((joueur->inposx <= jerem->posmonsx+107)&&(joueur->inposx >= jerem->posmonsx ))
+            {
+                jerem->posmonsx-=1;
+                if (input->left == 1)
+                {
+                    joueur->inposx+=3;  
+                }
+            }
+        }
+    	}
+ 
+ 
+   }
+}
+ 
 
 
 
