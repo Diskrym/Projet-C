@@ -551,7 +551,7 @@ void Load_Level_5_3(Joueur *joueur, Jerem_Boss *jerem,Lvl *lvl)
     joueur->inposy = level[13][0][3];
     jerem->posmonsx = level[13][1][1];
     jerem->posmonsy = level[13][1][2];
-    jerem->Life = level [13][1][5];
+    jerem->Life = level[13][1][5];
     
 }
 

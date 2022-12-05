@@ -4705,7 +4705,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     jerem->posmonsx = joueur->inposx-15;
                     jerem->posmonsy = joueur->inposy -2066;
                     jerem->pos_ombre_x = jerem->posmonsx;
-                    jerem->pos_ombre_y =  joueur->inposy+52;
+                    jerem->pos_ombre_y =  joueur->inposy+64;
                 }
             }
             else if (jerem->Eattaque == 3)
@@ -4782,7 +4782,15 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=30)
+                {   
+                    if (jerem->NumSprit>=30)
                 {
+                    if (jerem->NumSprit == 30)
+                    {
+                        //enregistremnt pou effet
+                        jerem->xhaltère = jerem->posmonsx;
+                        jerem->yhaltère = jerem->posmonsy;
+                    }
                     jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDash3G.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     if (Inside_Vol(jerem->posmonsx,jerem->posmonsy,joueur->inposx,joueur->inposy,64,64,107,120)==1)
