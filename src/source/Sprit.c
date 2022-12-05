@@ -27,7 +27,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
     if(joueur->Ebateau<2)
     {
         //Mouvement du joueur droite si bouclier baisser ou si timing bouclier dépassé
-        if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
+        if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>45)))
         {
             //se deplace si ne prend pas de dégat sinon sprit degat
             if (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1, &entité->jerem)==1)
@@ -74,7 +74,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         }
         
         //cf fonction gauche
-        if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
+        if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>45)))
         {
             if(Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti,&entité->squelette,&entité->squelette1,&entité->jerem)==1)
             {
@@ -191,7 +191,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         if (joueur->Eshield==1)
         {
             //timer shield
-            if (joueur->TimingBouclier<=15)
+            if (joueur->TimingBouclier<=45)
             {
                 if (joueur->Direction==0)
                 {
@@ -1904,7 +1904,7 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
                 chauvesouris->Life--;
                 lvl ->MortMonstre+=1;
                 //si bouclier boucle active
-                if (joueur->TimingBouclier>15)
+                if (joueur->TimingBouclier>45)
                 {
                     joueur->life--;
                 }
@@ -2407,27 +2407,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             Draw_Image(marchand->Jerem,450,210);
         }
     }
-    // affichage jerem dans le donjon bleu une fois
-    if ((lvl->Num == 5 && lvl->WinDonjon<=20))
-    {
-        marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
-        Draw_Image(marchand->Enter,463,310);
-        if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
-        {
-            marchand->Jerem=loadImage("src/graphics/Marchand/JeremDague1.png");
-            Draw_Image(marchand->Jerem,450,210);
-        }
-        if ((marchand->Compteur1>=10 && marchand->Compteur1<20) || (marchand->Compteur1>=40 && marchand->Compteur1<50))
-        {
-            marchand->Jerem=loadImage("src/graphics/Marchand/JeremDague2.png");
-            Draw_Image(marchand->Jerem,450,210);
-        }
-        if ((marchand->Compteur1>=20 && marchand->Compteur1<40))
-        { 
-            marchand->Jerem=loadImage("src/graphics/Marchand/JeremDague3.png");
-            Draw_Image(marchand->Jerem,450,210);
-        }
-    }
+    
     //Bulle donjon bleu avec dague
     if (lvl->Num == 5 && lvl->WinDonjon<=20)
     {
@@ -2707,6 +2687,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
     //Bateau
     if (lvl->Num==9)
     {
+        printf("mess = %d\n",marchand->CompteurMess1);
         if (marchand->Compteur1<10 || marchand->Compteur1>=40)
         {
             marchand->Tanguy=loadImage("src/graphics/Rivière/TurboTangui.png");
@@ -2771,6 +2752,12 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 joueur->Ebateau=1;
             }
         }
+        //reset message
+        if (marchand->CompteurMess1 == 4)
+        {
+            marchand ->CompteurMess1=0;
+        }
+        
 
         //entree joueur dans bateau
         if (joueur->inposx >= 80 && joueur->inposx <= 131 && joueur->inposy >= 205 && joueur->Ebateau == 1)
@@ -2805,6 +2792,15 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         SDL_DestroyTexture(Gros_rocher->Image);
         Gros_rocher->Image = NULL;
     }
+
+    if (lvl->Avancement10 == 0 && (Petit_rocher->Etat != 0 || Gros_rocher->Etat != 0 || tronc->Etat != 0 || tanguy->Etat != 0))
+    {
+        Petit_rocher->Etat = 0;
+        Gros_rocher->Etat = 0;
+        tronc->Etat = 0;
+        tanguy->Etat = 0;
+    }
+    
     
     
 
@@ -3290,7 +3286,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                 //attaque
                 if (Inside_Squelette_Chevalier(joueur, squelette)==1 && squelette->NumSprit == 16)
                 {
-                    if (joueur->Eshield == 0 || joueur->TimingBouclier >15)
+                    if (joueur->Eshield == 0 || joueur->TimingBouclier >45)
                     {
                         joueur->life--;
                         if (joueur->life != 0)
@@ -3298,7 +3294,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                             squelette->coup = 1;
                         }
                     }
-                    if (joueur->Eshield == 1 && joueur->TimingBouclier<=15)
+                    if (joueur->Eshield == 1 && joueur->TimingBouclier<=45)
                     {
                         squelette->Eattaque = 2;
                         squelette->NumSprit = 0;
@@ -4353,6 +4349,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             jerem->NumSprit = 0;
             jerem->CompteurSprite2 = 0;
             jerem->cin = 0;
+            lvl->Avancement10 =0;
         }
     }
     //phase 2
@@ -4645,11 +4642,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             }
         }
     }
-
-    
-    
-    
-
 
     //gestion haltère
     if (jerem->Ehaltère == 1)

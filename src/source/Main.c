@@ -79,7 +79,7 @@ init("Dungeon Fate");
             lvl.Load=1;
         }
         //On dessine tout
-        if (joueur.life==0)
+        if (joueur.life<=0)
         {   
             Mix_PauseMusic();
             Game_Over (&son);
