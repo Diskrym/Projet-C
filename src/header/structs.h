@@ -225,6 +225,7 @@ typedef struct Lvl
     SDL_Texture *MapSlide;
     SDL_Texture *SpritLvl;
     SDL_Texture *SpritMotLVL;
+    SDL_Texture *Tiret;
     SDL_Texture *Menu;
     SDL_Texture *Icone;
     SDL_Texture *Cadenas1;
@@ -310,6 +311,7 @@ static const int level [14][5][6] = {
                                             {2,500,20,2,1,1},
                                             {2,100,200,2,1,1}
                                         },
+                                    
                                         {
                                             {9,1,298,384,0,0},
                                             {5,320,100,1,1,8}

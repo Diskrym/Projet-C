@@ -200,6 +200,11 @@ void Render_Level (Lvl *lvl)
         SDL_DestroyTexture(lvl->SpritLvl);
         lvl->SpritLvl = NULL;
     }
+    if (lvl->Tiret != NULL)
+    {
+        SDL_DestroyTexture(lvl->Tiret);
+        lvl->Tiret = NULL;
+    }
     
     if (lvl->Num >= 0 && lvl->Num != 4)
     {
@@ -211,26 +216,106 @@ void Render_Level (Lvl *lvl)
     {
         lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
         Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,157,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
+        Draw_Image(lvl->SpritLvl,170,0);
     }
     if (lvl->Num==1)
     {
-        lvl->SpritLvl=loadImage("src/graphics/lvl/2.png");
+        lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
         Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,157,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/2.png");
+        Draw_Image(lvl->SpritLvl,170,0);
     }
     if (lvl->Num==2)
-    {
-        lvl->SpritLvl=loadImage("src/graphics/lvl/3.png");
+    {   
+        lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
         Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,157,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/3.png");
+        Draw_Image(lvl->SpritLvl,170,0);
     }
     if (lvl->Num==3)
     {
-        lvl->SpritLvl=loadImage("src/graphics/lvl/4.png");
+        lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
         Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,157,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/4.png");
+        Draw_Image(lvl->SpritLvl,170,0);
     }
     if (lvl->Num==4)
     {
         lvl->SpritLvl=loadImage("src/graphics/lvl/shop.png");
         Draw_Image(lvl->SpritLvl,5,5);
+    }
+    if (lvl->Num==5)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/2.png");
+        Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,170,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
+        Draw_Image(lvl->SpritLvl,183,0);
+    }
+    if (lvl->Num==6)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/2.png");
+        Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,170,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/2.png");
+        Draw_Image(lvl->SpritLvl,183,0);
+    }
+    if (lvl->Num==7)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/2.png");
+        Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,170,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/3.png");
+        Draw_Image(lvl->SpritLvl,183,0);
+    }
+    if (lvl->Num==8)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/2.png");
+        Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,170,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/4.png");
+        Draw_Image(lvl->SpritLvl,183,0);
+    }
+
+    if (lvl->Num==11)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/3.png");
+        Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,184,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
+        Draw_Image(lvl->SpritLvl,197,0);
+    }
+    if (lvl->Num==12)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/3.png");
+        Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,184,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/2.png");
+        Draw_Image(lvl->SpritLvl,197,0);
+    }
+    if (lvl->Num==13)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/3.png");
+        Draw_Image(lvl->SpritLvl,139,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
+        Draw_Image(lvl->SpritLvl,184,0);
+        lvl->SpritLvl=loadImage("src/graphics/lvl/3.png");
+        Draw_Image(lvl->SpritLvl,197,0);
     }
 }
 
