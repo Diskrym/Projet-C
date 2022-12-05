@@ -3754,7 +3754,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         
     }
     //reset degats jerem
-    if (jerem->CompteurSprite2 != 0 && !(jerem->Life <=20 && jerem->Transformation == 0) && !(jerem->Life <=10 && jerem->Transformation == 1))
+    if (jerem->CompteurSprite2 != 0 && !(jerem->Life <=20 && jerem->Transformation == 0) && !(jerem->Life <=10 && jerem->Transformation == 1) && jerem->Life != 0)
     {
         jerem->CompteurSprite2+=1;
         if (jerem->CompteurSprite2 >=15)
@@ -3924,7 +3924,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         
     } 
     //trasnformation 1
-    else if (jerem->Life <=20 && jerem->Transformation == 0)
+    else if (jerem->Life <=20 && jerem->Transformation == 0 && jerem->Life != 0)
     {
         jerem->cin = 1;
         if (jerem->Direction == 0)
@@ -3993,7 +3993,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         }
         
     }
-    else if (jerem->Life >10 && jerem->Transformation == 1)
+    else if (jerem->Life >10 && jerem->Transformation == 1 && jerem->Life != 0)
     {
         //marche phase 2
         if(jerem->Eattaque == 0)
@@ -4309,7 +4309,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
     
     }
     //transformation 3
-    else if (jerem->Life <=10 && jerem->Transformation == 1)
+    else if (jerem->Life <=10 && jerem->Transformation == 1 && jerem->Life != 0)
     {
         jerem->cin = 1;
         if (jerem->Direction == 0)
@@ -4379,7 +4379,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         }
     }
     //phase 2
-    else if (jerem->Life <= 10 && jerem->Transformation == 2)
+    else if (jerem->Life <= 10 && jerem->Transformation == 2 && jerem->Life != 0)
     {
         if(jerem->Eattaque == 0 || jerem->Eattaque == 5)
         {
@@ -4851,6 +4851,119 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         }
         
     }
+    else if (jerem->Life == 0)
+    {
+        if (jerem->CompteurSprite2 < 100)
+        {
+            jerem->CompteurSprite2+=1;
+        }
+        if (jerem->Direction == 0)
+        {
+            if (jerem->CompteurSprite2>=0 && jerem->CompteurSprite2<10)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort1D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=10 && jerem->CompteurSprite2<20)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort2D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=20 && jerem->CompteurSprite2<30)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort3D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=30 && jerem->CompteurSprite2<40)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort4D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=40 && jerem->CompteurSprite2<50)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort5D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=50 && jerem->CompteurSprite2<60)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort6D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=60 && jerem->CompteurSprite2<70)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort7D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=70 && jerem->CompteurSprite2<80)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort8D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=80 && jerem->CompteurSprite2<90)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort9D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=90 && jerem->CompteurSprite2<=100)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort10D.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+        }
+        if (jerem->Direction == 1)
+        {
+            if (jerem->CompteurSprite2>=0 && jerem->CompteurSprite2<10)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort1G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=10 && jerem->CompteurSprite2<20)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort2G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=20 && jerem->CompteurSprite2<30)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort3G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=30 && jerem->CompteurSprite2<40)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort4G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=40 && jerem->CompteurSprite2<50)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort5G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=50 && jerem->CompteurSprite2<60)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort6G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=60 && jerem->CompteurSprite2<70)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort7G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=70 && jerem->CompteurSprite2<80)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort8G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=80 && jerem->CompteurSprite2<90)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort9G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+            if (jerem->CompteurSprite2>=90 && jerem->CompteurSprite2<=100)
+            {
+                jerem->jeremy=loadImage("src/graphics/BossJermy/JeremMort10G.png");   
+                Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+            }
+        } 
+    }
 
     //gestion haltère
     if (jerem->Ehaltère == 1)
@@ -4898,6 +5011,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             jerem->Ehaltère = 0;
         }
     }
+    
     if (jerem->coup != 0)
     {
         jerem->coup+=1;
@@ -4906,4 +5020,5 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
     {
         jerem->coup = 0;
     }
+
 }
