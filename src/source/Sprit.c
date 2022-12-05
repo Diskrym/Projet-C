@@ -4471,27 +4471,27 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {             
                 if (jerem->NumSprit>=0 && jerem->NumSprit<5)
                 {   
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere1D.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremHaltere1D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=5 && jerem->NumSprit<10)
                 {
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere2D.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremHaltere2D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=10 && jerem->NumSprit<20)
                 {   
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere3D.png");
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremHaltere3D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);    
                 }
                 if (jerem->NumSprit>=20 && jerem->NumSprit<30)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere4D.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremHaltere4D.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=30 && jerem->NumSprit<35)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere5D.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremHaltere5D.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     if (jerem->NumSprit == 32)
                     {
@@ -4503,12 +4503,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
                 if (jerem->NumSprit>=35 && jerem->NumSprit<40)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere6D.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremHaltere6D.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
                 if (jerem->NumSprit>=40)
                 {                
-                    jerem->jeremy=loadImage("src/graphics/BossJermy/JeremHaltere7D.png");                    
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremHaltere7D.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 }
             }
@@ -4521,7 +4521,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             if (jerem->NumSprit == 1 && jerem->Eattaque == 2)
             {
                 jerem->pos_ombre_x = jerem->posmonsx+5;
-                jerem->pos_ombre_y = jerem->posmonsy+93;
+                jerem->pos_ombre_y = jerem->posmonsy+95;
             }
             
             //ombre
