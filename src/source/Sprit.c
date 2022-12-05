@@ -4381,7 +4381,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
     //phase 2
     else if (jerem->Life <= 10 && jerem->Transformation == 2)
     {
-        if(jerem->Eattaque == 0)
+        if(jerem->Eattaque == 0 || jerem->Eattaque == 5)
         {
             if (jerem->CompteurSprite2==0)
             {
@@ -4438,6 +4438,40 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDegatG.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
             }
+
+
+
+            //pousse joueur
+            if (jerem->Eattaque == 5)
+            {
+                if (jerem->Direction_haltère == 0)
+                {
+                    if (joueur->inposx>=556)
+                    {
+                        jerem->Eattaque =0;
+                        jerem->NumSprit =0;
+                        jerem->compteur =0;
+                    }
+                    else
+                    {
+                        joueur->inposx +=10;
+                    }
+                }
+                else
+                {
+                    if (joueur->inposx<=20)
+                    {
+                        jerem->Eattaque =0;
+                        jerem->NumSprit =0;
+                        jerem->compteur =0;
+                    }
+                    else
+                    {
+                        joueur->inposx -=10;
+                    }
+                }
+            }
+            
         }
         //haltère
         if (jerem->Eattaque == 1 && jerem->CompteurSprite2 == 0)
@@ -4682,10 +4716,90 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
                 if (jerem->NumSprit == 0)
                 {
-                    jerem->Eattaque =0 ;
-                    jerem->compteur =0;
+                    jerem->Eattaque = 0;
                 }
                 
+            }
+        }
+        else if (jerem->Eattaque == 4)
+        {
+            if(jerem->Direction == 0)
+            {
+                if (jerem->NumSprit>=0 && jerem->NumSprit<15)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDash1D.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }
+                if (jerem->NumSprit>=15 && jerem->NumSprit<30)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDash2D.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }
+                if (jerem->NumSprit>=30)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDash3D.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                    if (Inside_Vol(jerem->posmonsx,jerem->posmonsy,joueur->inposx,joueur->inposy,64,64,107,120)==1)
+                    {
+                        jerem->Eattaque = 5;
+                        jerem->Direction_haltère=jerem->Direction;
+                        joueur->life --;
+                        if (joueur->life != 0)
+                        {
+                            jerem->coup =1;
+                        }
+                        
+                    }
+                    
+                    if (jerem->posmonsx<=513)
+                    {
+                        jerem->posmonsx +=10;
+                    }
+                    else 
+                    {
+                        jerem->Eattaque = 0;
+                        jerem->compteur = 0;
+                    }
+                }  
+            }
+            if (jerem->Direction == 1)
+            {
+                if (jerem->NumSprit>=0 && jerem->NumSprit<15)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDash1G.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }
+                if (jerem->NumSprit>=15 && jerem->NumSprit<30)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDash2G.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                }
+                if (jerem->NumSprit>=30)
+                {
+                    jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDash3G.png");
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                    if (Inside_Vol(jerem->posmonsx,jerem->posmonsy,joueur->inposx,joueur->inposy,64,64,107,120)==1)
+                    {
+                        jerem->Eattaque = 5;
+                        jerem->Direction_haltère=jerem->Direction;
+                        joueur->life --;
+                        if (joueur->life != 0)
+                        {
+                            jerem->coup =1;
+                        }
+                        
+                    }
+                    
+                    if (jerem->posmonsx>=20)
+                    {
+                        jerem->posmonsx -=10;
+                    }
+                    else 
+                    {
+                        jerem->Eattaque = 0;
+                        jerem->compteur = 0;
+                    }
+                }
             }
         }
     }

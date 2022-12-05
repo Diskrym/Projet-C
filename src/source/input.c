@@ -546,7 +546,7 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
         {
             jerem->Eattaque = 0;
         }
-        else if (jerem->compteur >= 245 && jerem->Eattaque !=3)
+        else if (jerem->compteur >= 245 && jerem->Eattaque !=3 && jerem->compteur<473)
         {
             if (jerem->compteur == 245)
             {
@@ -555,10 +555,14 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             
             jerem->Eattaque = 2;
         }
+        else if (jerem->compteur == 600)
+        {
+            jerem->Eattaque = 4;
+        }
     }
     
     
     
-
+    
     Sprite_Boss_Jerem(joueur,jerem,lvl);
 }
