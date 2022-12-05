@@ -62,6 +62,7 @@ void Son (EffetSon *son)
     son->musiqueshop= Mix_LoadMUS("src/musique/m_Shop.mp3");
     son->musiqueriviere= Mix_LoadMUS("src/musique/m_riviere.mp3");
     son->musiqueyeti= Mix_LoadMUS("src/musique/m_yeti.mp3");
+    son->musiquebossjermy= Mix_LoadMUS("src/musique/m_BossJerem.mp3");
     Mix_VolumeMusic(40);
     Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
     son->epee = Mix_LoadWAV("src/musique/attackChe2.WAV"); //Charger un wav dans un pointeur
@@ -106,6 +107,10 @@ void Son (EffetSon *son)
     son->attaquesquelette= Mix_LoadWAV("src/musique/attackSq.WAV");
     son->rebond= Mix_LoadWAV("src/musique/rebond.WAV");
     son->bullesq= Mix_LoadWAV("src/musique/voixsq.WAV");
+    son->attackJerem= Mix_LoadWAV("src/musique/attackJerem.WAV");
+    son->degatjerem= Mix_LoadWAV("src/musique/degatjerem.WAV");
+    son->sautjerem= Mix_LoadWAV("src/musique/saut.WAV");
+    son->haltere= Mix_LoadWAV("src/musique/haltere.WAV");
     }
 
 void Texte(ParamTexte *paramtexte)
@@ -174,6 +179,7 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     if (lvl->Num == 11)
     {
         Load_Level_5_1(joueur,lvl,&entité->squelette1,&entité->squelette);
+        Mix_PlayMusic(son->musiquelvl,-1);
     }
     if (lvl->Num == 12)
     {
@@ -182,6 +188,7 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     if (lvl->Num == 13)
     {
         Load_Level_5_3(joueur,&entité->jerem,lvl);
+        Mix_PlayMusic(son->musiquebossjermy,-1);
     }
     if (joueur->Edague==2)
     {
