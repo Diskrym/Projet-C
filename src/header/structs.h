@@ -131,6 +131,7 @@ typedef struct EffetSon
     Mix_Music *musiqueshop;
     Mix_Music *musiqueriviere;
     Mix_Music *musiqueyeti;
+    Mix_Music *musiquebossjermy;
     Mix_Chunk *epee;
     Mix_Chunk *bouclier;
     Mix_Chunk *depchevalier;
@@ -175,6 +176,10 @@ typedef struct EffetSon
     Mix_Chunk *tetesquelette;
     Mix_Chunk *rebond;
     Mix_Chunk *bullesq;
+    Mix_Chunk *attackJerem;
+    Mix_Chunk *haltere;
+    Mix_Chunk *degatjerem;
+    Mix_Chunk *sautjerem;
 
  
 
