@@ -27,7 +27,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
     if(joueur->Ebateau<2)
     {
         //Mouvement du joueur droite si bouclier baisser ou si timing bouclier dépassé
-        if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
+        if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>45)))
         {
             //se deplace si ne prend pas de dégat sinon sprit degat
             if (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1, &entité->jerem)==1)
@@ -74,7 +74,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         }
         
         //cf fonction gauche
-        if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>15)))
+        if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>45)))
         {
             if(Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti,&entité->squelette,&entité->squelette1,&entité->jerem)==1)
             {
@@ -191,7 +191,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         if (joueur->Eshield==1)
         {
             //timer shield
-            if (joueur->TimingBouclier<=15)
+            if (joueur->TimingBouclier<=45)
             {
                 if (joueur->Direction==0)
                 {
@@ -1904,7 +1904,7 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
                 chauvesouris->Life--;
                 lvl ->MortMonstre+=1;
                 //si bouclier boucle active
-                if (joueur->TimingBouclier>15)
+                if (joueur->TimingBouclier>45)
                 {
                     joueur->life--;
                 }
@@ -3290,7 +3290,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                 //attaque
                 if (Inside_Squelette_Chevalier(joueur, squelette)==1 && squelette->NumSprit == 16)
                 {
-                    if (joueur->Eshield == 0 || joueur->TimingBouclier >15)
+                    if (joueur->Eshield == 0 || joueur->TimingBouclier >45)
                     {
                         joueur->life--;
                         if (joueur->life != 0)
@@ -3298,7 +3298,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                             squelette->coup = 1;
                         }
                     }
-                    if (joueur->Eshield == 1 && joueur->TimingBouclier<=15)
+                    if (joueur->Eshield == 1 && joueur->TimingBouclier<=45)
                     {
                         squelette->Eattaque = 2;
                         squelette->NumSprit = 0;

@@ -153,7 +153,7 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
     if(lvl->cin == 0)
     {
         //Si on a pas le bouclier on se déplace
-        if (!(joueur->Eshield==1 && joueur->TimingBouclier<15) && input->shield==0)
+        if (!(joueur->Eshield==1 && joueur->TimingBouclier<45) && input->shield==0)
         {
             if (input->left==1)
             {

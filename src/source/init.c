@@ -154,15 +154,18 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     }
     if  (lvl->Num == 6)
     {
+        joueur->AttPiece+=1;
         Load_Level_3_2(joueur, &entité->yeti, &entité->yeti1, &entité->yeti2, lvl);
     }
     if (lvl->Num == 7)
     {
+        joueur->AttPiece+=1;
         Load_Level_3_3(joueur,&entité->yeti,&entité->yeti1,lvl,&entité->chauvesouris,&entité->chauvesouris1);
     }
 
     if (lvl->Num == 8)
     {
+        joueur->AttPiece+=1;
         Load_Level_3_4(joueur,&entité->bossyeti,lvl);
         Mix_PlayMusic(son ->musiquebossyeti, -1);
     }
@@ -178,11 +181,13 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     }
     if (lvl->Num == 11)
     {
+        joueur->AttPiece+=1;
         Load_Level_5_1(joueur,lvl,&entité->squelette1,&entité->squelette);
         Mix_PlayMusic(son->musiquelvl,-1);
     }
     if (lvl->Num == 12)
     {
+        joueur->AttPiece+=1;
         Load_Level_5_2(joueur,&entité->squelette,&entité->squelette1,&entité->chauvesouris,&entité->chauvesouris1,lvl); 
     }
     if (lvl->Num == 13)
