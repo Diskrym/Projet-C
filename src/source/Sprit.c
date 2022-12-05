@@ -4289,7 +4289,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
     //transformation 3
     else if (jerem->Life <=10 && jerem->Transformation == 1)
     {
-        printf("%d\n",jerem->CompteurSprite2);
         jerem->cin = 1;
         if (jerem->Direction == 0)
         {

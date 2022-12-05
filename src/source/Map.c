@@ -105,7 +105,7 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
             
         }
         //tout les autres niv avec sortie haut
-        else if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320)
+        else if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320 && lvl->Num != -1)
         {   
              //Variable pour bouger sur map global
             if (lvl->Num == 3 && lvl->NumDonjon == 0 && lvl->WinDonjon == 0)
@@ -117,7 +117,6 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
             {
                 lvl->WinDonjon = 3;
             }
-            
             //retour map global
             if (lvl->NumDonjon == 0 && lvl->Num == 3)
             {
@@ -129,11 +128,12 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
                 lvl->Num = -1;
                 Mix_PlayMusic(son ->musiqueMapG, -1);
             }
-            else
+            else if (lvl->Num != -1)
             {
                 lvl->Num += 1;
                 Select_Level(joueur, lvl, entité, son);
             }
+
         }
     }
 }
