@@ -139,8 +139,12 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
                 fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%lf S1=%f S2=%f S3=%f S4=%f S5=%f C1=%s C2=%s C3=%s C4=%s C5=%s",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA,stats->TEMPS_GENE,stats->Score_Board[0],stats->Score_Board[1],stats->Score_Board[2],stats->Score_Board[3],stats->Score_Board[4],stats->Convert_Score[0],stats->Convert_Score[1],stats->Convert_Score[2],stats->Convert_Score[3],stats->Convert_Score[4]);
                 fclose(fichier1);
             }
+            if (lvl->save != 1)
+            {
+                lvl->Num=lvl->temp;
+            }
             lvl->save = 0;
-            lvl->Num=lvl->temp;
+
         }
 
         //retour jeux

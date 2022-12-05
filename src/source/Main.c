@@ -93,12 +93,15 @@ init("Dungeon Fate");
         // }
         temps=clock()-stats.Diff_reset;
 
+
         Statistiques(&stats,&joueur,&lvl);
+
         Save(&joueur,&lvl,&input,&entité,&son,&stats,temps);
+
         Draw_Game(&joueur, &lvl, &paramtexte,&son);
 
-
         Gestion_Map(&joueur, &lvl, &entité, &son, &input, &stats, &paramtexte);
+
         //Gestion des inputs clavier
         //gestionInputs(&input);
         Get_Input(&input);
@@ -117,7 +120,7 @@ init("Dungeon Fate");
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;
-        
+
         //#A enlver#
         if (input.Bypass==1)
         {
