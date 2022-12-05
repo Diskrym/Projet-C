@@ -2752,6 +2752,10 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 joueur->Ebateau=1;
             }
         }
+        else
+        {
+            marchand->CompteurMess1 = 0;
+        }
         //reset message
         if (marchand->CompteurMess1 == 4)
         {
@@ -4182,6 +4186,15 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc1.png");
                 Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
+                if (jerem->NumSprit == 47 && Inside_Vol(jerem->posmonsx-78+63,jerem->posmonsy+80,joueur->inposx,joueur->inposy,64,64,214,58)==1 && jerem->coup == 0)
+                {
+                    joueur->life--;
+                    if (joueur->life != 0)
+                    {
+                        jerem->coup = 1;
+                    }
+                }
+                
             }
             if (jerem->NumSprit >= 40 && jerem->NumSprit < 45 && jerem->Eattaque == 3)
             {
@@ -4191,7 +4204,20 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             if (jerem->NumSprit >= 30 && jerem->NumSprit < 40 && jerem->Eattaque == 3)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc3.png");
-                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
+                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);   
+            }
+            //pour 2 et 3
+            if ((jerem->NumSprit == 35 || jerem->NumSprit == 42) && jerem->Eattaque == 3 && jerem->coup == 0)
+            {
+                if (Inside_Vol(jerem->posmonsx-78,jerem->posmonsy+80,joueur->inposx,joueur->inposy,64,64,250,58)==1 && jerem->coup == 0)
+                {
+                    joueur->life--;
+                    if (joueur->life != 0)
+                    {
+                        jerem->coup = 1;
+                    }
+                }
+                
             }
 
             if (jerem->Direction==0)
@@ -4546,6 +4572,14 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/3OndeDeChoc1.png");
                 Draw_Image(jerem->fissure,jerem->posmonsx-85,jerem->posmonsy+87);
+                if (jerem->NumSprit == 47 && Inside_Vol(jerem->posmonsx-85+67,jerem->posmonsy+87,joueur->inposx,joueur->inposy,64,64,250,54)==1)
+                    {
+                        joueur->life--;
+                        if (joueur->life != 0)
+                        {
+                            jerem->coup = 1;
+                        }
+                    }
             }
             if (jerem->NumSprit >= 40 && jerem->NumSprit < 45 && jerem->Eattaque == 3)
             {
@@ -4556,6 +4590,19 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/3OndeDeChoc3.png");
                 Draw_Image(jerem->fissure,jerem->posmonsx-85,jerem->posmonsy+87);
+            }
+            //pour 2 et 3
+            if ((jerem->NumSprit == 35 || jerem->NumSprit == 42) && jerem->Eattaque == 3 && jerem->coup == 0)
+            {
+                if (Inside_Vol(jerem->posmonsx-85+67,jerem->posmonsy+87,joueur->inposx,joueur->inposy,64,64,290,67)==1 && jerem->coup == 0)
+                {
+                    joueur->life--;
+                    if (joueur->life != 0)
+                    {
+                        jerem->coup = 1;
+                    }
+                }
+                
             }
 
             if (jerem->Direction==0)
@@ -4646,7 +4693,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
     //gestion haltère
     if (jerem->Ehaltère == 1)
     {
-
         if (jerem->xhaltère>=20 && jerem->xhaltère<=600 && jerem->yhaltère>= 20 && jerem->yhaltère<=384)
         {
             if(jerem->Transformation == 2)
