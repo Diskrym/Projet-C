@@ -543,3 +543,12 @@ void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte)
     stats->Texture_SCORE_5 = SDL_CreateTextureFromSurface(getrenderer(), stats->Surface_SCORE_5);
     Draw_Image(stats->Texture_SCORE_5 ,330,234);
 }
+
+void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte)
+{
+        lvl->Map=loadImage("src/graphics/lvl/Win.png");
+        Draw_Image(lvl->Map,0,0);
+    
+    
+    
+}

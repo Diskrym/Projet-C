@@ -88,8 +88,11 @@ init("Dungeon Fate");
         }
         if (lvl.WinDonjon == 5)
         {
-            lvl.WinDonjon = 6 ;
             Score_(&stats,temps);
+            
+            
+            
+            lvl.WinDonjon = 6 ;
             lvl.save = 1;
         }
         temps=clock()-stats.Diff_reset;
