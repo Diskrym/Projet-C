@@ -2708,7 +2708,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             marchand->Bateau=loadImage("src/graphics/Rivière/Bateau.png");
             Draw_Image(marchand->Bateau,95,297);
         }
-        if (joueur->inposx >= 100 && joueur->inposx <= 220 && joueur->inposy >= 135 && joueur->inposy<200)
+        if (joueur->inposx >= 100 && joueur->inposx <= 220 && joueur->inposy >= 135 && joueur->inposy<220)
         {
             if (input->enter == 1)
             {
