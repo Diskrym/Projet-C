@@ -3,6 +3,12 @@
  
 void Init_Maps(Lvl *lvl)
 {
+    if (lvl->Map != NULL)
+    {
+        SDL_DestroyTexture(lvl->Map);
+        lvl->Map = NULL;
+    }
+    
     // Charge l'image du fond (background)
     if (lvl->Num == 0 || lvl->Num == 1 || lvl->Num == 2)
     {
@@ -16,7 +22,7 @@ void Init_Maps(Lvl *lvl)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundmarchand.png");
     }
-    if  (lvl->Num == 5 || lvl->Num == 6 || lvl->Num ==7)
+    if  (lvl->Num == 5 || lvl->Num == 6 || lvl->Num ==7 || lvl->Num == 8)
     {
         lvl->Map = loadImage("src/graphics/lvl/backgroundDonjon2.png");
     }
