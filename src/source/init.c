@@ -14,7 +14,7 @@ void init(char *title)
                                   SDL_WINDOWPOS_CENTERED,
                                   SDL_WINDOWPOS_CENTERED,
                                   SCREEN_WIDTH, SCREEN_HEIGHT,
-                                  SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+                                  SDL_WINDOW_SHOWN );
  
     //On crée un renderer pour la SDL et on active la synchro verticale : VSYNC
     renderer = SDL_CreateRenderer(screen, -1, SDL_RENDERER_PRESENTVSYNC);

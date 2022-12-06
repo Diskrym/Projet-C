@@ -255,6 +255,9 @@ typedef struct Stats
     SDL_Texture *Texture_SCORE_4;
     SDL_Surface *Surface_SCORE_5;
     SDL_Texture *Texture_SCORE_5;
+
+    SDL_Surface *Surface_Actuelle;
+    SDL_Texture *Texture_Actuelle;
     
 } Stats;
 

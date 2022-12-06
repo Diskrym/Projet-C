@@ -89,11 +89,7 @@ init("Dungeon Fate");
         if (lvl.WinDonjon == 5)
         {
             Score_(&stats,temps);
-            
-            
-            
             lvl.WinDonjon = 6 ;
-            lvl.save = 1;
         }
         temps=clock()-stats.Diff_reset;
 
@@ -103,7 +99,7 @@ init("Dungeon Fate");
         Save(&joueur,&lvl,&input,&entité,&son,&stats,temps);
 
         Draw_Game(&joueur, &lvl, &paramtexte,&son);
-
+                                
         Gestion_Map(&joueur, &lvl, &entité, &son, &input, &stats, &paramtexte);
 
         //Gestion des inputs clavier
@@ -111,7 +107,7 @@ init("Dungeon Fate");
         Get_Input(&input);
         
 
-        if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4)
+        if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4 && lvl.Num != -5)
         {
             //IA monstre
             Gestion_Entité(&entité, &lvl, &input ,&joueur, &son);
@@ -136,6 +132,7 @@ init("Dungeon Fate");
                 joueur.inposx=300;
            
         }
+
     }
     // On quitte
     exit(0); 

@@ -59,7 +59,12 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
     {
         Draw_Score(lvl,stats,paramtexte);
     }
-    
+
+    else if (lvl->Num == -5)
+    {
+
+        Render_Win(lvl, stats, paramtexte);
+    }
     
     else
     {
@@ -135,7 +140,7 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
             }
             else if (lvl->NumDonjon == 4 && lvl->Num == 13)
             {
-                lvl->Num = -1;
+                lvl->Num = -5;
                 Mix_PlayMusic(son ->musiqueMapG, -1);
             }
             else if (lvl->Num != -1)

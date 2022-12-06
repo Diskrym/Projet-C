@@ -546,9 +546,37 @@ void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte)
 
 void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte)
 {
-        lvl->Map=loadImage("src/graphics/lvl/Win.png");
-        Draw_Image(lvl->Map,0,0);
+    if (lvl->Map!=NULL)
+    {
+        SDL_DestroyTexture(lvl->Map);
+        lvl->Map=NULL;
+    }
+    SDL_Color color = { 255, 255, 255 };
+
     
+    if(lvl->PosMap10 >= -1290)
+    {
+        printf("%s\n",stats->Score_act);
+        lvl->Map=loadImage("src/graphics/lvl/Win.png");
+        Draw_Image(lvl->Map,0,0+lvl->PosMap10);
+        stats->Surface_Actuelle = TTF_RenderText_Solid(paramtexte->Font, stats->Score_act, color);
+        stats->Texture_Actuelle = SDL_CreateTextureFromSurface(getrenderer(), stats->Surface_Actuelle);
+        Draw_Image(stats->Texture_Actuelle ,335,275+lvl->PosMap10);
+
+        if (lvl->PosMap10 == 0)
+        {
+            SDL_RenderPresent(getrenderer());
+            SDL_Delay(5000);
+        }  
+        lvl->PosMap10 -=1; 
+
+    }
+    else
+    {
+        lvl->PosMap10 = 0;
+        lvl->Num = -1;
+        lvl->save = 1;
+    }
     
     
 }
