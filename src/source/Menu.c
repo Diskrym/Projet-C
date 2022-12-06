@@ -55,9 +55,14 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
 void Score_(Stats *stats,clock_t temps)
 {
     for (int i = 0; i < 5; i++)
-    {
+    {    
         if (((double)temps/CLOCKS_PER_SEC)+stats->TEMPS_GENE <= stats->Score_Board[i])
         {
+            for (int y = 5; y > i; y--)
+            {
+                strcpy(stats->Convert_Score[y],stats->Convert_Score[y-1]);
+                stats->Score_Board[y]=stats->Score_Board[y-1];
+            }
             char tempss[10];
             char tempm [10];
             char temph [10];
@@ -213,7 +218,6 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         //reset si map bateau
         if (lvl->Num == 9 || lvl->Num == 10)
         {
-            printf("AAAAAAAAAAAAAAAA");
             joueur->Ebateau = 0 ;
             lvl->Avancement10 = 0 ;
         }

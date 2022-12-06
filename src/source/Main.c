@@ -90,6 +90,7 @@ init("Dungeon Fate");
         {
             lvl.WinDonjon = 6 ;
             Score_(&stats,temps);
+            lvl.save = 1;
         }
         temps=clock()-stats.Diff_reset;
 
