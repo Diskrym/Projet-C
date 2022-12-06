@@ -2,8 +2,6 @@
 
 void Draw_Game(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
 {
-    
-    
     // Affiche le fond (background) aux coordonnées (0,0) si on a pas de map qui défile !=NULL
     if (lvl->Num !=10)
     {
@@ -59,14 +57,6 @@ void Game_Over (EffetSon *son)
     SDL_Delay(5000);
 }
 
-//ecran fin
-void Win (void)
-{
-    SDL_Texture *GameOver=loadImage("src/graphics/lvl/Win.png");
-    Draw_Image(GameOver,0,0);
-    SDL_RenderPresent(getrenderer());
-    SDL_Delay(3000);
-}
 
 SDL_Texture *loadImage(char *name)
 { 
@@ -148,9 +138,9 @@ void Render_Life (Joueur *joueur,Lvl *lvl, EffetSon *son)
                 }
             }
             if (joueur->life>1)
-                {
-                    son->sonLowLife=0;
-                }
+            {
+                son->sonLowLife=0;
+            }
         }
 
     }
@@ -554,7 +544,7 @@ void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte)
     SDL_Color color = { 255, 255, 255 };
 
     
-    if(lvl->PosMap10 >= -1290)
+    if(lvl->PosMap10 >= -1700)
     {
         printf("%s\n",stats->Score_act);
         lvl->Map=loadImage("src/graphics/lvl/Win.png");
