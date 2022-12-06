@@ -58,7 +58,7 @@ void Score_(Stats *stats,clock_t temps)
     {    
         if (((double)temps/CLOCKS_PER_SEC)+stats->TEMPS_GENE <= stats->Score_Board[i])
         {
-            for (int y = 5; y > i; y--)
+            for (int y = 4; y > i; y--)
             {
                 strcpy(stats->Convert_Score[y],stats->Convert_Score[y-1]);
                 stats->Score_Board[y]=stats->Score_Board[y-1];
@@ -141,7 +141,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             if ( fichier1 )
             {
                 
-                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%lf S1=%f S2=%f S3=%f S4=%f S5=%f C1=%s C2=%s C3=%s C4=%s C5=%s a",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA,stats->TEMPS_GENE,stats->Score_Board[0],stats->Score_Board[1],stats->Score_Board[2],stats->Score_Board[3],stats->Score_Board[4],stats->Convert_Score[0],stats->Convert_Score[1],stats->Convert_Score[2],stats->Convert_Score[3],stats->Convert_Score[4]);
+                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%lf S1=%f S2=%f S3=%f S4=%f S5=%f %s %s %s %s %s",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA,stats->TEMPS_GENE,stats->Score_Board[0],stats->Score_Board[1],stats->Score_Board[2],stats->Score_Board[3],stats->Score_Board[4],stats->Convert_Score[0],stats->Convert_Score[1],stats->Convert_Score[2],stats->Convert_Score[3],stats->Convert_Score[4]);
                 fclose(fichier1);
             }
             if (lvl->save != 1)

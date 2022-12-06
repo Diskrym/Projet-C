@@ -2687,7 +2687,6 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
     //Bateau
     if (lvl->Num==9)
     {
-        printf("mess = %d\n",marchand->CompteurMess1);
         if (marchand->Compteur1<10 || marchand->Compteur1>=40)
         {
             marchand->Tanguy=loadImage("src/graphics/Rivière/TurboTangui.png");
