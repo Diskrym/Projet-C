@@ -117,6 +117,11 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
             {
                 lvl->WinDonjon = 3;
             }
+            if (lvl->Num == 13 && lvl->NumDonjon == 4 && lvl->WinDonjon == 4)
+            {
+                lvl->WinDonjon = 5;
+            }
+            
             //retour map global
             if (lvl->NumDonjon == 0 && lvl->Num == 3)
             {
@@ -124,6 +129,11 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
                 Mix_PlayMusic(son ->musiqueMapG, -1);
             }
             else if(lvl->NumDonjon == 2 && lvl->Num == 8)
+            {
+                lvl->Num = -1;
+                Mix_PlayMusic(son ->musiqueMapG, -1);
+            }
+            else if (lvl->NumDonjon == 4 && lvl->Num == 13)
             {
                 lvl->Num = -1;
                 Mix_PlayMusic(son ->musiqueMapG, -1);

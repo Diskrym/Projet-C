@@ -4969,6 +4969,11 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
             }
         } 
+        if (jerem->CompteurSprite2 == 99)
+        {
+            lvl->MortMonstre+=1;
+        }
+        
     }
 
     //gestion haltère

@@ -86,11 +86,12 @@ init("Dungeon Fate");
             lvl.reset=1;
             lvl.save = 1;
         }
-        // if (lvl.WinDonjon == 1)
-        // {
-        //     lvl.WinDonjon = 2 ;
-        //     Score_(&stats,temps);
-        // }
+        if (lvl.WinDonjon == 5)
+        {
+            lvl.WinDonjon = 6 ;
+            Score_(&stats,temps);
+            lvl.Num = -4;
+        }
         temps=clock()-stats.Diff_reset;
 
 
@@ -126,20 +127,12 @@ init("Dungeon Fate");
         {
             SDL_Delay(250);
 
-            if (lvl.Num != 13)
-            {
+            
                 lvl.MortMonstre=level[lvl.Num][0][1];
                 joueur.inposy=28;
                 joueur.inposx=300;
-            }
-            if(lvl.Num == 13)
-            {
-                jerem.Life = 20;
-            }
-            
-            
+           
         }
-        //Test defaite
     }
     // On quitte
     exit(0); 
