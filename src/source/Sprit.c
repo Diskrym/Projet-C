@@ -3752,6 +3752,8 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         jerem->jeremy = NULL;
     }
 
+    printf("%d\n",jerem->Life);
+
     //Degats sur jerem
     if (jerem->Life != 0 && jerem->Eattaque == 0 && jerem->CompteurSprite2 == 0)
     {
@@ -3760,13 +3762,31 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             jerem->Life--;
             jerem->CompteurSprite2+=1;
         }
+        if (Inside_Vol(joueur->xdague,joueur->ydague,jerem->posmonsx,jerem->posmonsy,84,91,30,15)==1 && jerem->Transformation == 0)
+        {
+            jerem->Life--;
+            jerem->CompteurSprite2+=1;
+        }
+        if (Inside_Vol(joueur->xdague,joueur->ydague,jerem->posmonsx,jerem->posmonsy,93,105,30,15)==1&& jerem->Transformation == 1)
+        {
+            jerem->Life--;
+            jerem->CompteurSprite2+=1;
+        }
+        if (Inside_Vol(joueur->xdague,joueur->ydague,jerem->posmonsx,jerem->posmonsy,107,120,30,15)==1&& jerem->Transformation == 2)
+        {
+            jerem->Life--;
+            jerem->CompteurSprite2+=1;
+        }
+        
+        
+        
         
     }
     //reset degats jerem
     if (jerem->CompteurSprite2 != 0 && !(jerem->Life <=20 && jerem->Transformation == 0) && !(jerem->Life <=10 && jerem->Transformation == 1) && jerem->Life != 0)
     {
         jerem->CompteurSprite2+=1;
-        if (jerem->CompteurSprite2 >=15)
+        if (jerem->CompteurSprite2 >=20)
         {
             jerem->CompteurSprite2=0;
         }
@@ -4864,6 +4884,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
             }
         }
+
         
     }
     else if (jerem->Life == 0)
