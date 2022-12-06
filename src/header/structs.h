@@ -40,6 +40,7 @@ typedef struct Squelette
     SDL_Texture *bulle;
     SDL_Texture *squelette;
     SDL_Texture *Jerem_Cin;
+    SDL_Texture *Porte;
     SDL_Texture *étoiles;
 }Squelette;
 

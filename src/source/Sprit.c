@@ -3076,11 +3076,17 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
         SDL_DestroyTexture(squelette->Jerem_Cin);
         squelette->Jerem_Cin = NULL;
     }
+    if (squelette->Porte != NULL)
+    {
+        SDL_DestroyTexture(squelette->Porte);
+        squelette->Porte = NULL;
+    }
     
     
     if (lvl->Num == 11 && lvl->cin == 1)
     {
-        //sprite squeltte
+        //sprite squelette
+        
         if (squelette->Direction == 0 && squelette->Parle_S == 0)
         {
             squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreD.png");
@@ -3193,10 +3199,14 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
             }
         }
         else
-        {
+        {   if (squelette->pos_jerem>5 && squelette->pos_jerem<=50)
+            {
+            squelette->Porte=loadImage("src/graphics/lvl/PorteNoirOuverteHaut.png");
+            Draw_Image(squelette->Porte,SCREEN_WIDTH/2-22,0);
+            }
             squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette3.png");
             Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
-            squelette->pos_jerem-=14;
+            squelette->pos_jerem-=5;
             if (squelette->pos_jerem<5)
             {
                 lvl->cin = 0;
