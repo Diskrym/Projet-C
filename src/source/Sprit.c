@@ -2373,6 +2373,12 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
         SDL_DestroyTexture(marchand->Bateau);
         marchand->Bateau = NULL;
     }
+    if (marchand->Table != NULL)
+    {
+        SDL_DestroyTexture(marchand->Table);
+        marchand->Table = NULL;
+    }
+    
     
     
     
@@ -3081,6 +3087,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
         SDL_DestroyTexture(squelette->Porte);
         squelette->Porte = NULL;
     }
+    if (squelette->étoiles != NULL)
+    {
+        SDL_DestroyTexture(squelette->étoiles);
+        squelette->étoiles = NULL;
+    }
     
     
     if (lvl->Num == 11 && lvl->cin == 1)
@@ -3751,9 +3762,21 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         SDL_DestroyTexture(jerem->jeremy);
         jerem->jeremy = NULL;
     }
-
-    printf("%d\n",jerem->Life);
-
+    if (jerem->haltère != NULL)
+    {
+        SDL_DestroyTexture(jerem->haltère);
+        jerem->haltère = NULL;
+    }
+    if (jerem->ombre != NULL)
+    {
+        SDL_DestroyTexture(jerem->ombre);
+        jerem->ombre = NULL;
+    }
+    if (jerem->fissure != NULL)
+    {
+        SDL_DestroyTexture(jerem->fissure);
+        jerem->fissure = NULL;
+    }
     //Degats sur jerem
     if (jerem->Life != 0 && jerem->Eattaque == 0 && jerem->CompteurSprite2 == 0)
     {
