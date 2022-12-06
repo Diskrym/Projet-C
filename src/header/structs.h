@@ -216,7 +216,7 @@ typedef struct ParamTexte
 
 typedef struct Lvl
 {
-    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, Pause, temp, Load, reset,save,cin;
+    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, Pause, temp, Load, reset,save,cin, Win_screen;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie;
@@ -242,6 +242,8 @@ typedef struct Stats
     char affichage_kda[5];
     float Score_Board[5];
     char  Convert_Score[5][20];
+    float Score_act_f;
+    char Score_act[20];
 
     SDL_Surface *Surface_SCORE_1;
     SDL_Texture *Texture_SCORE_1;

@@ -54,6 +54,50 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
 
 void Score_(Stats *stats,clock_t temps)
 {
+    char tempss[10];
+    char tempm [10];
+    char temph [10];
+    stats->Score_act_f= (double)temps/CLOCKS_PER_SEC+stats->TEMPS_GENE;
+    //si inférieur a 1minutes alors uniquement seconde
+    if (stats->Score_act_f< 60)
+    {   
+        //sec
+        sprintf(tempss,"%.2f",stats->Score_act_f);
+        //Heure et Minute
+        strcpy(stats->Score_act,"0:0:");
+        strcat(stats->Score_act,tempss);
+    }
+    else if (stats->Score_act_f > 60 && stats->Score_act_f < 3600)
+    {
+        //Minute
+        sprintf(tempm,"%.0f",stats->Score_act_f/60);
+
+        //Seconde
+        sprintf(tempss,"%.2f", (stats->Score_act_f/60-atof(tempm))*60);
+
+        //tout
+        strcpy(stats->Score_act,"0:");
+        strcat(stats->Score_act,tempm);
+        strcat(stats->Score_act,":");
+        strcat(stats->Score_act,tempss);
+    }
+    else
+    {
+        //heure
+        sprintf(temph,"%.0f",stats->Score_act_f/3600);
+        //min
+        sprintf(tempm,"%.0f",((stats->Score_act_f-atof(temph)*3600)/60));
+        //sec
+        sprintf(tempss,"%.2f", (stats->Score_act_f/60-atof(tempm))*60);
+
+        strcpy(stats->Score_act,temph);
+        strcat(stats->Score_act,":");
+        strcat(stats->Score_act,tempm);
+        strcat(stats->Score_act,":");
+        strcat(stats->Score_act,tempss);
+    }
+
+    //gestion meilleur score
     for (int i = 0; i < 5; i++)
     {    
         if (((double)temps/CLOCKS_PER_SEC)+stats->TEMPS_GENE <= stats->Score_Board[i])
@@ -63,9 +107,6 @@ void Score_(Stats *stats,clock_t temps)
                 strcpy(stats->Convert_Score[y],stats->Convert_Score[y-1]);
                 stats->Score_Board[y]=stats->Score_Board[y-1];
             }
-            char tempss[10];
-            char tempm [10];
-            char temph [10];
             stats->Score_Board[i]= (double)temps/CLOCKS_PER_SEC+stats->TEMPS_GENE;
             //si inférieur a 1minutes alors uniquement seconde
             if (stats->Score_Board[i] < 60)
