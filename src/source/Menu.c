@@ -266,7 +266,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         FILE* fichier = fopen ( nomFichier , "r+" );
         if ( fichier )
         {
-            fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d",3,0,0,0);
+            fprintf(fichier,"life=%d AttPice=%d NbPiece=%d",3,0,0);
             fclose(fichier);
             SDL_ShowCursor(SDL_DISABLE);
             lvl->Num = -1 ;
