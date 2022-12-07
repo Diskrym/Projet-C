@@ -3322,7 +3322,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                 {
                     if (joueur->Eshield == 0 || joueur->TimingBouclier >45)
                     {
-                        //joueur->life--;
+                        joueur->life--;
                         if (joueur->life != 0)
                         {
                             squelette->coup = 1;
