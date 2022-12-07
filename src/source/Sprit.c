@@ -349,6 +349,44 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         SDL_DestroyTexture(meduse->attaque);
         meduse->attaque=NULL;
     }
+     //Mort meduse
+    if (meduse->Life==0)
+    {
+        if (meduse->CompteurSpriteDegat==0 || meduse->CompteurSpriteDegat==1 || meduse->CompteurSpriteDegat==2 || meduse->CompteurSpriteDegat==3 )
+        {
+            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort1.png");
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+            if (meduse->CompteurSpriteDegat==1)
+            {
+                Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME);
+                Mix_PlayChannel(9, son->mortmeduse, 0);
+            }
+        }
+        if (meduse->CompteurSpriteDegat==4 || meduse->CompteurSpriteDegat==5 || meduse->CompteurSpriteDegat==6 || meduse->CompteurSpriteDegat==7 )
+        {
+            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort2.png");
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+        }
+        if (meduse->CompteurSpriteDegat==8 || meduse->CompteurSpriteDegat==9 || meduse->CompteurSpriteDegat==10 || meduse->CompteurSpriteDegat==11)
+        {
+            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort3.png");
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+        }
+        if (meduse->CompteurSpriteDegat==12 || meduse->CompteurSpriteDegat==13 || meduse->CompteurSpriteDegat==14 || meduse->CompteurSpriteDegat==15 )
+        {
+            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort4.png");
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+        }
+        if (meduse->CompteurSpriteDegat==16 || meduse->CompteurSpriteDegat==17 || meduse->CompteurSpriteDegat==18 || meduse->CompteurSpriteDegat==19 )
+        {
+            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort5.png");
+            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+        }
+        if (meduse->CompteurSpriteDegat==0)
+        {
+            lvl->MortMonstre+=1;
+        }  
+    }
 
     //Mouvement  meduse quand en vie
     if (meduse->Life >=1)
@@ -480,44 +518,7 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
             }
         }
     }
-    //Mort meduse
-    if (meduse->Life==0)
-    {
-        if (meduse->CompteurSpriteDegat==0 || meduse->CompteurSpriteDegat==1 || meduse->CompteurSpriteDegat==2 || meduse->CompteurSpriteDegat==3 )
-        {
-            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort1.png");
-            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-            if (meduse->CompteurSpriteDegat==1)
-            {
-                Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME);
-                Mix_PlayChannel(9, son->mortmeduse, 0);
-            }
-        }
-        if (meduse->CompteurSpriteDegat==4 || meduse->CompteurSpriteDegat==5 || meduse->CompteurSpriteDegat==6 || meduse->CompteurSpriteDegat==7 )
-        {
-            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort2.png");
-            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-        }
-        if (meduse->CompteurSpriteDegat==8 || meduse->CompteurSpriteDegat==9 || meduse->CompteurSpriteDegat==10 || meduse->CompteurSpriteDegat==11)
-        {
-            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort3.png");
-            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-        }
-        if (meduse->CompteurSpriteDegat==12 || meduse->CompteurSpriteDegat==13 || meduse->CompteurSpriteDegat==14 || meduse->CompteurSpriteDegat==15 )
-        {
-            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort4.png");
-            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-        }
-        if (meduse->CompteurSpriteDegat==16 || meduse->CompteurSpriteDegat==17 || meduse->CompteurSpriteDegat==18 || meduse->CompteurSpriteDegat==19 )
-        {
-            meduse->meduse=loadImage("src/graphics/Meduse/Medusemort5.png");
-            Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-        }
-        if (meduse->CompteurSpriteDegat==0)
-        {
-            lvl->MortMonstre+=1;
-        }  
-    }
+   
     //reset compteur pour sprite
     if (meduse->NumSprit>=33)
     {
