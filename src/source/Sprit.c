@@ -2398,6 +2398,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
     //affichage jerem dans le marché 
     if (lvl->Num == 4 || (lvl->Num == 5 && lvl->WinDonjon<=2))
     {
+        printf("aaaaaaaaaaa");
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
         Draw_Image(marchand->Enter,463,300);
         if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
@@ -2418,7 +2419,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
     }
     
     //Bulle donjon bleu avec dague
-    if (lvl->Num == 5 && lvl->WinDonjon<=20)
+    if (lvl->Num == 5 && lvl->WinDonjon<=2)
     {
         if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
         {

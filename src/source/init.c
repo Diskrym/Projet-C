@@ -267,7 +267,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         Collision_Mur(joueur,20,20,20,20);
         Collision_Yeti (joueur, &entité->yeti, input, lvl);
         Deplacement_Yeti(joueur,&entité->yeti, lvl, son);
-        if (lvl->MortMonstre==level[5][0][1] && lvl->WinDonjon<=20)
+        if (lvl->MortMonstre==level[5][0][1] && lvl->WinDonjon<=2)
         {
             Gestion_Marchands(joueur, input, &entité->marchand, lvl,son);
             //jermy
