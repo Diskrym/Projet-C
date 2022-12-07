@@ -189,7 +189,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         }
 
         //mouvement defense si etat shield a 1
-        if (joueur->Eshield==1)
+        if (joueur->Eshield==1 && joueur->Eattack == 0)
         {
             //timer shield
             if (joueur->TimingBouclier<=45)
