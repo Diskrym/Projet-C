@@ -544,6 +544,83 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
         yeti->boule=NULL;
     }
 
+    //Mort yeti
+    if (yeti->Life==0)
+    {
+        if (yeti->Direction==1)
+        {  
+            if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort1G.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                if (yeti->CompteurSpriteDegat==1)
+                {
+                    Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(9, son->mortyeti, 0);
+                }
+            }
+            if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort2G.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort3G.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort4G.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort5G.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+        }
+
+        if (yeti->Direction==0)
+        {  
+            if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort1D.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                if (yeti->CompteurSpriteDegat==1)
+                {
+                Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
+                Mix_PlayChannel(9, son->mortyeti, 0);
+                }
+            }
+            if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort2D.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort3D.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort4D.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+            if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
+            {
+                yeti->yeti=loadImage("src/graphics/yeti/YetiMort5D.png");
+                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+            }
+        }
+        if (yeti->CompteurSpriteDegat==15)
+        {
+            lvl->MortMonstre+=1;
+        }  
+    }
+   
+
  
     //Mouvement  yeti quand en vie
     if (yeti->Life >=1)
@@ -885,82 +962,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
     {
         yeti->compteur=0;
     }
-    //Mort yeti
-    if (yeti->Life==0)
-    {
-        if (yeti->Direction==1)
-        {  
-            if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort1G.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                if (yeti->CompteurSpriteDegat==1)
-                {
-                    Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(9, son->mortyeti, 0);
-                }
-            }
-            if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort2G.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort3G.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort4G.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort5G.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-        }
-
-        if (yeti->Direction==0)
-        {  
-            if (yeti->CompteurSpriteDegat==0 || yeti->CompteurSpriteDegat==1 || yeti->CompteurSpriteDegat==2 || yeti->CompteurSpriteDegat==3 )
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort1D.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                if (yeti->CompteurSpriteDegat==1)
-                {
-                Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
-                Mix_PlayChannel(9, son->mortyeti, 0);
-                }
-            }
-            if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort2D.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort3D.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->CompteurSpriteDegat==12 || yeti->CompteurSpriteDegat==13 || yeti->CompteurSpriteDegat==14 || yeti->CompteurSpriteDegat==15 )
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort4D.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-            if (yeti->CompteurSpriteDegat==16 || yeti->CompteurSpriteDegat==17 || yeti->CompteurSpriteDegat==18 || yeti->CompteurSpriteDegat==19 )
-            {
-                yeti->yeti=loadImage("src/graphics/yeti/YetiMort5D.png");
-                Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-            }
-        }
-        if (yeti->CompteurSpriteDegat==15)
-        {
-            lvl->MortMonstre+=1;
-        }  
-    }
-   
+    
 }
 
 void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
