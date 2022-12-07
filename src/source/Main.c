@@ -84,6 +84,7 @@ init("Dungeon Fate");
         {   
             Mix_PauseMusic();
             Game_Over (&son);
+            lvl.Num = -1;
             lvl.reset=1;
             lvl.save = 1;
         }
