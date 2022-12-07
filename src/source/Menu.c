@@ -175,7 +175,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             FILE* fichier = fopen ( nomFichier , "r+" );
             if ( fichier )
             {
-                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",joueur->life,joueur->AttPiece,joueur->NbPiece,joueur->nbDague,lvl->WinDonjon);
+                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d/fin ",joueur->life,joueur->AttPiece,joueur->NbPiece,joueur->nbDague,lvl->WinDonjon);
                 fclose(fichier);
             }
             FILE* fichier1 = fopen ( nomFichier1 , "r+" );
@@ -210,7 +210,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             FILE* fichier = fopen ( nomFichier , "r+" );
             if ( fichier )
             {
-                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d",3,0,0,0,0);
+                fprintf(fichier,"life=%d AttPice=%d NbPiece=%d nbDague=%d WinDonjon=%d/fin ",3,0,0,0,0);
                 fclose(fichier);
             }
             FILE* fichier1 = fopen ( nomFichier1 , "r+" );
