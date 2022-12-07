@@ -251,9 +251,9 @@ void Render_Level (Lvl *lvl)
     if (lvl->Num==0)
     {
         lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
-        Draw_Image(lvl->SpritDonjon,139,0);
+        Draw_Image(lvl->SpritLvl,139,0);
         lvl->SpritLvl=loadImage("src/graphics/lvl/Tiret.png");
-        Draw_Image(lvl->SpritTiret,157,0);
+        Draw_Image(lvl->SpritLvl,157,0);
         lvl->SpritLvl=loadImage("src/graphics/lvl/1.png");
         Draw_Image(lvl->SpritLvl,170,0);
     }
