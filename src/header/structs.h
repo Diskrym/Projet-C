@@ -220,7 +220,10 @@ typedef struct Lvl
     int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, Pause, temp, Load, reset,save,cin, Win_screen;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
-    SDL_Texture *Vie;
+    SDL_Texture *Vie1;
+    SDL_Texture *Vie2;
+    SDL_Texture *Vie3;
+    SDL_Texture *Vie4;
     SDL_Texture *Piece;
     SDL_Texture *Map;
     SDL_Texture *MapSlide;

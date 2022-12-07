@@ -125,20 +125,55 @@ void delay(unsigned int frameLimit)
 
 void Render_Life (Joueur *joueur,Lvl *lvl, EffetSon *son)
 {   
-    if (lvl->Vie != NULL)
+    if (lvl->Vie1 != NULL)
     {
-        SDL_DestroyTexture(lvl->Vie);
-        lvl->Vie=NULL;
+        SDL_DestroyTexture(lvl->Vie1);
+        lvl->Vie1=NULL;
     }
-    int i=1;
+    if (lvl->Vie2 != NULL)
+    {
+        SDL_DestroyTexture(lvl->Vie2);
+        lvl->Vie2=NULL;
+    }
+    if (lvl->Vie3 != NULL)
+    {
+        SDL_DestroyTexture(lvl->Vie3);
+        lvl->Vie3=NULL;
+    }
+    if (lvl->Vie4 != NULL)
+    {
+        SDL_DestroyTexture(lvl->Vie4);
+        lvl->Vie4=NULL;
+    }
 
     if (lvl->Num >= 0)
     {
-        while (i<=joueur->life)
+        if (joueur->life>=4 )      
         {
-            lvl->Vie=loadImage("src/graphics/lvl/Vie.png");
-            Draw_Image(lvl->Vie,SCREEN_WIDTH-(i*34),0);
-            i+=1;
+            lvl->Vie4=loadImage("src/graphics/lvl/Vie.png");
+            Draw_Image(lvl->Vie4,SCREEN_WIDTH-(4*34),0);
+            
+        }
+        if (joueur->life==3 || joueur->life>=4)      
+        {
+            lvl->Vie3=loadImage("src/graphics/lvl/Vie.png");
+            Draw_Image(lvl->Vie3,SCREEN_WIDTH-(3*34),0);
+            
+        }
+        if (joueur->life==2 ||joueur->life==3 || joueur->life>=4)      
+        {
+            lvl->Vie2=loadImage("src/graphics/lvl/Vie.png");
+            Draw_Image(lvl->Vie2,SCREEN_WIDTH-(2*34),0);
+            
+        }
+        if (joueur->life==1 ||joueur->life==2 ||joueur->life==3 || joueur->life>=4)      
+        {
+            lvl->Vie1=loadImage("src/graphics/lvl/Vie.png");
+            Draw_Image(lvl->Vie1,SCREEN_WIDTH-(1*34),0);
+            
+        }         
+        
+           
             if (joueur->life ==1)
             {
                 son->sonLowLife++;
@@ -157,7 +192,7 @@ void Render_Life (Joueur *joueur,Lvl *lvl, EffetSon *son)
     }
 
     
-}
+
 
 void Render_Coin (Joueur *joueur,Lvl *lvl, ParamTexte *paramtexte)
 {   
