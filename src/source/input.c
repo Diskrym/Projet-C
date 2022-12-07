@@ -414,11 +414,11 @@ void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input
         {
             boss->posmonsx+=1;   
         }
-        if (joueur->inposy<boss->posmonsy)
+        if (joueur->inposy - 35<boss->posmonsy)
         {
             boss->posmonsy-=1;
         }
-        if (joueur->inposy>boss->posmonsy)
+        if (joueur->inposy - 35>boss->posmonsy)
         {
             boss->posmonsy+=1;
         }

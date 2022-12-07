@@ -121,7 +121,6 @@ void Texte(ParamTexte *paramtexte)
 
 void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
 {
-    printf("aaaaaaaaaaa");
     if (lvl->Map != NULL)
     {
         SDL_DestroyTexture(lvl->Map);
@@ -422,6 +421,7 @@ void Load_Level_1_4 (Joueur *joueur,Boss *boss, Lvl *lvl)
     boss->posmonsx =level[3][1][1];
     boss->posmonsy =level[3][1][2];
     boss->Life=level [3][1][5];
+    boss->RecupCoeur = 0;
 }
 
 void Load_Level_2_1 (Joueur *joueur, Lvl* lvl)

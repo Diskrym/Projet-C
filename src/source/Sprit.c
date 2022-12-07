@@ -189,7 +189,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         }
 
         //mouvement defense si etat shield a 1
-        if (joueur->Eshield==1)
+        if (joueur->Eshield==1 && joueur->Eattack == 0)
         {
             //timer shield
             if (joueur->TimingBouclier<=45)
@@ -4536,7 +4536,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             
         }
         //haltère
-        if (jerem->Eattaque == 1 && jerem->CompteurSprite2 == 0)
+        if (jerem->Eattaque == 1)
         {
             if (jerem->Direction==1)
             {            
