@@ -123,6 +123,7 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
             if (lvl->Num == 8 && lvl->NumDonjon == 2 && lvl->WinDonjon == 2)
             {
                 lvl->WinDonjon = 3;
+                lvl->save = 1;
             }
             if (lvl->Num == 13 && lvl->NumDonjon == 4 && lvl->WinDonjon == 4)
             {
