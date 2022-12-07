@@ -535,6 +535,7 @@ void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *sq
 void Load_Level_5_2(Joueur *joueur, Squelette *squelette, Squelette *squelette1,Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl)
 {
     lvl->cin =0;
+    
     Init_Maps(lvl);
     joueur->inposx = level[12][0][2];
     joueur->inposy = level[12][0][3];
@@ -542,11 +543,11 @@ void Load_Level_5_2(Joueur *joueur, Squelette *squelette, Squelette *squelette1,
     squelette->posmonsx = level[12][1][1];
     squelette->posmonsy = level[12][1][2];
     squelette->Life = level[12][1][5];
-
+    squelette->Eattaque = 0;
     squelette1->posmonsx = level[12][2][1];
     squelette1->posmonsy = level[12][2][2];
     squelette1->Life = level[12][2][5];
-
+    squelette1->Eattaque = 0;
     chauvesouris->posmonsx =level[12][3][1];
     chauvesouris->posmonsy =level[12][3][2];
     chauvesouris->Life=level[12][3][5];

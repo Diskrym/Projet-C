@@ -132,6 +132,11 @@ init("Dungeon Fate");
                 lvl.MortMonstre=level[lvl.Num][0][1];
                 joueur.inposy=28;
                 joueur.inposx=300;
+                if (lvl.Num == 10)
+                {
+                    lvl.Avancement10 = 13;
+                }
+                
            
         }
         
