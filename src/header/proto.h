@@ -26,7 +26,7 @@ extern void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte);
 
 
 //events.c
-extern void Collision_Mur (Joueur *joueur, int x, int y, int z, int u);
+extern void Collision_Mur (Joueur *joueur, int x, int y, int z, int u, Lvl *lvl);
 extern void Collision_Boss_Meduse (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl);
 extern void Collision_Meduse (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl);
 extern void Collision_Decor (Joueur *joueur, Input *input, int x1, int x2, int y1, int y2);

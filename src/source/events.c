@@ -1,7 +1,7 @@
 #include "../header/proto.h"
 
 //collision entre le joueur et les murs // haut ,bas ,gauche, droite
-void Collision_Mur (Joueur *joueur, int x, int y, int z, int u)
+void Collision_Mur (Joueur *joueur, int x, int y, int z, int u, Lvl *lvl)
 {
     //mur du haut
     if (joueur->inposy <= x)
@@ -16,12 +16,20 @@ void Collision_Mur (Joueur *joueur, int x, int y, int z, int u)
     //mur de gauche
     if (joueur->inposx <= z)
     {
-        joueur->inposx+=3;
+        if (lvl -> Num == 10)
+        {
+            joueur->inposx+=4;
+        }
+        else{joueur->inposx+=3;}
     }
     //mur de droite
-     if (joueur->inposx >= SCREEN_WIDTH-SPRITE_SIZE-u)
+    if (joueur->inposx >= SCREEN_WIDTH-SPRITE_SIZE-u)
     {
-        joueur->inposx-=3;
+        if (lvl->Num == 10)
+        {
+            joueur->inposx-=2;
+        }
+        else{joueur->inposx-=3;}
     }
 }
 

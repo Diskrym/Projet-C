@@ -221,12 +221,12 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     if(lvl->Num==0)
     {
         Deplacement_Meduse(joueur, &entité->meduse, lvl, son);
-        Collision_Mur (joueur,20,20,20,20);
+        Collision_Mur (joueur,20,20,20,20, lvl);
         Collision_Meduse(joueur, &entité->meduse, input, lvl);
     }
     if(lvl->Num==1)
     {   
-        Collision_Mur (joueur,20,20,20,20);
+        Collision_Mur (joueur,20,20,20,20, lvl);
         Deplacement_Meduse(joueur, &entité->meduse, lvl, son);
         Deplacement_Meduse(joueur, &entité->meduse1, lvl, son);
         Deplacement_Meduse(joueur, &entité->meduse2, lvl, son);
@@ -236,7 +236,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     }
     if(lvl->Num==2)
     {   
-        Collision_Mur (joueur,20,20,20,20);
+        Collision_Mur (joueur,20,20,20,20,lvl);
         Deplacement_Meduse(joueur, &entité->meduse, lvl, son);
         Deplacement_Meduse(joueur, &entité->meduse1, lvl, son);
         Deplacement_Chauvesouris(joueur,&entité->chauvesouris, lvl, son);
@@ -246,13 +246,13 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     }
     if (lvl->Num==3)
     {   
-        Collision_Mur (joueur,20,20,20,20);
+        Collision_Mur (joueur,20,20,20,20,lvl);
         Collision_Boss_Meduse(joueur, &entité->boss, input, lvl);
         Deplacement_Boss_Meduse(joueur, &entité->boss, lvl, input,son);
     }
     if (lvl->Num==4)
     {
-        Collision_Mur(joueur,20,20,20,20);
+        Collision_Mur(joueur,20,20,20,20,lvl);
         //Table
         Collision_Decor(joueur, input,223,415,120,55);
         //jermy
@@ -263,7 +263,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     }   
     if (lvl -> Num == 5)
     {
-        Collision_Mur(joueur,20,20,20,20);
+        Collision_Mur(joueur,20,20,20,20,lvl);
         Collision_Yeti (joueur, &entité->yeti, input, lvl);
         Deplacement_Yeti(joueur,&entité->yeti, lvl, son);
         if (lvl->MortMonstre==level[5][0][1] && lvl->WinDonjon<=2)
@@ -276,7 +276,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     }
     if (lvl->Num == 6)
     {
-        Collision_Mur(joueur,20,20,20,20);
+        Collision_Mur(joueur,20,20,20,20,lvl);
         Collision_Yeti (joueur, &entité->yeti, input, lvl);
         Deplacement_Yeti(joueur,&entité->yeti, lvl, son);
         Collision_Yeti (joueur, &entité->yeti1, input, lvl);
@@ -286,7 +286,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     }
     if (lvl->Num == 7)
     {
-        Collision_Mur (joueur,20,20,20,20);
+        Collision_Mur (joueur,20,20,20,20, lvl);
         Deplacement_Yeti(joueur, &entité->yeti, lvl, son);
         Deplacement_Yeti(joueur, &entité->yeti1, lvl, son);
         Deplacement_Chauvesouris(joueur,&entité->chauvesouris, lvl, son);
@@ -297,7 +297,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
 
     if (lvl->Num == 8)
     {
-        Collision_Mur (joueur,20,20,20,20);
+        Collision_Mur (joueur,20,20,20,20,lvl);
         Deplacement_Boss_Yeti(joueur, &entité->bossyeti,lvl,son);
         Collision_Boss_Yeti(joueur,&entité->bossyeti,input,lvl);
     }
@@ -306,11 +306,11 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     {
         if (joueur->Ebateau<2)
         {
-            Collision_Mur(joueur,0,110,30,400);
+            Collision_Mur(joueur,0,110,30,400,lvl);
         }
         else
         {
-            Collision_Mur(joueur,267,35,0,0);
+            Collision_Mur(joueur,267,35,0,0,lvl);
         }
         Gestion_Marchands(joueur,input,&entité->marchand,lvl,son);
     }
@@ -318,21 +318,21 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     {   
         if (lvl->Avancement10<13)
         {
-            Collision_Mur(joueur,30,40,0,10);
+            Collision_Mur(joueur,30,40,0,10,lvl);
         }
         else if(lvl->Avancement10==13 && joueur->Ebateau ==2)
         {
-            Collision_Mur(joueur,267,35,0,0);
+            Collision_Mur(joueur,267,35,0,0,lvl);
         }
         else if(lvl->Avancement10==13 && joueur->Ebateau!=2)
         {
-            Collision_Mur(joueur,0,114,400,60);
+            Collision_Mur(joueur,0,114,400,60,lvl);
         }
         Gestion_Obstacle(joueur,&entité->marchand,&entité->Petit_rocher,&entité->Gros_rocher,&entité->tronc,&entité->tanguy, lvl, son);
     }
     if (lvl->Num == 11)
     {
-        Collision_Mur(joueur,20,20,20,20);
+        Collision_Mur(joueur,20,20,20,20,lvl);
         Deplacement_Squelette(joueur,&entité->squelette,lvl,son);
         Deplacement_Squelette(joueur,&entité->squelette1,lvl,son);
         Collision_Squelette(joueur,&entité->squelette,input,lvl);
@@ -341,7 +341,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     }
     if (lvl->Num == 12)
     {
-        Collision_Mur(joueur,20,20,20,20);
+        Collision_Mur(joueur,20,20,20,20,lvl);
         Deplacement_Squelette(joueur,&entité->squelette,lvl,son);
         Deplacement_Squelette(joueur,&entité->squelette1,lvl,son);
         Collision_Squelette(joueur,&entité->squelette,input,lvl);
@@ -351,7 +351,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     }
     if (lvl->Num == 13)
     {
-        Collision_Mur(joueur,20,20,20,20);
+        Collision_Mur(joueur,20,20,20,20,lvl);
         Deplacement_Boss_Jerem(joueur,&entité->jerem,lvl,son);
         Collision_Jerem_Boss (joueur, &entité->jerem, input, lvl);
 
