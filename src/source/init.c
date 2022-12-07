@@ -121,6 +121,18 @@ void Texte(ParamTexte *paramtexte)
 
 void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
 {
+    printf("aaaaaaaaaaa");
+    if (lvl->Map != NULL)
+    {
+        SDL_DestroyTexture(lvl->Map);
+        lvl->Map = NULL;
+    }
+    if (lvl->MapSlide != NULL)
+    {
+        SDL_DestroyTexture(lvl->MapSlide);
+        lvl->MapSlide = NULL;
+    }
+
     if(lvl->Num == 0)
     {   
         Load_Level_1_1(&entité->meduse, lvl, joueur);
@@ -199,6 +211,8 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     {
         joueur->nbDague=0;
     }
+    
+    
     
     lvl->MortMonstre=0;
 }

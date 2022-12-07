@@ -3,11 +3,7 @@
  
 void Init_Maps(Lvl *lvl)
 {
-    if (lvl->Map != NULL)
-    {
-        SDL_DestroyTexture(lvl->Map);
-        lvl->Map = NULL;
-    }
+    
     
     // Charge l'image du fond (background)
     if (lvl->Num == 0 || lvl->Num == 1 || lvl->Num == 2)

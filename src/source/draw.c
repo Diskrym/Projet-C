@@ -2,9 +2,11 @@
 
 void Draw_Game(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
 {
+    
     // Affiche le fond (background) aux coordonnées (0,0) si on a pas de map qui défile !=NULL
     if (lvl->Num !=10)
     {
+        
         Draw_Image(lvl->Map, 0, 0);
     }
     else
@@ -42,15 +44,24 @@ void Draw_Game(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
     
     // Délai
     SDL_Delay(1);
+    
 }
 
 //ecran fin 
 void Game_Over (EffetSon *son)
 {   
+    
+    
     // Mix_PauseMusic();
     SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");  
     Draw_Image(GameOver,0,0); 
     SDL_RenderPresent(getrenderer());
+
+    if (GameOver != NULL)
+    {
+        SDL_DestroyTexture(GameOver);
+        GameOver =NULL;
+    }
 
     Mix_VolumeChunk(son->gameoverson, MIX_MAX_VOLUME);
     Mix_PlayChannel(10, son->gameoverson, 0);
@@ -480,6 +491,42 @@ void Stats_Menu(Lvl *lvl,Stats *stats, ParamTexte *paramtexte)
         SDL_DestroyTexture(lvl->Menu);
         lvl->Menu=NULL;
     }
+    if (paramtexte->SurfaceGold != NULL)
+    {
+        SDL_DestroyTexture(paramtexte->TextureGold);
+        SDL_FreeSurface(paramtexte->SurfaceGold);
+        paramtexte->TextureGold = NULL;
+        paramtexte->SurfaceGold = NULL;
+    } 
+    if (paramtexte->SurfaceKilled != NULL)
+    {
+        SDL_DestroyTexture(paramtexte->TextureKilled);
+        SDL_FreeSurface(paramtexte->SurfaceKilled);
+        paramtexte->TextureKilled = NULL;
+        paramtexte->SurfaceKilled = NULL;
+    }
+    if (paramtexte->SurfaceDeath != NULL)
+    {
+        SDL_DestroyTexture(paramtexte->TextureDeath);
+        SDL_FreeSurface(paramtexte->SurfaceDeath);
+        paramtexte->TextureDeath = NULL;
+        paramtexte->SurfaceDeath = NULL;
+    }
+    if (paramtexte->SurfaceDaggers != NULL)
+    {
+        SDL_DestroyTexture(paramtexte->TextureDaggers);
+        SDL_FreeSurface(paramtexte->SurfaceDaggers);
+        paramtexte->TextureDaggers = NULL;
+        paramtexte->SurfaceDaggers = NULL;
+    }
+    if (paramtexte->SurfaceRatio != NULL)
+    {
+        SDL_DestroyTexture(paramtexte->TextureRatio);
+        SDL_FreeSurface(paramtexte->SurfaceRatio);
+        paramtexte->TextureRatio = NULL;
+        paramtexte->SurfaceRatio = NULL;
+    }
+    
 
     lvl->Menu=loadImage("src/graphics/lvl/MenuStats.png");
     Draw_Image(lvl->Menu,0,0);
@@ -518,6 +565,30 @@ void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte)
         SDL_DestroyTexture(lvl->Menu);
         lvl->Menu=NULL;
     }
+    if (stats->Surface_SCORE_1 != NULL || stats->Texture_SCORE_1 != NULL)
+    {
+        SDL_DestroyTexture(stats->Texture_SCORE_1);
+        SDL_DestroyTexture(stats->Texture_SCORE_2);
+        SDL_DestroyTexture(stats->Texture_SCORE_3);
+        SDL_DestroyTexture(stats->Texture_SCORE_4);
+        SDL_DestroyTexture(stats->Texture_SCORE_5);
+        stats->Texture_SCORE_1 = NULL;
+        stats->Texture_SCORE_2 = NULL;
+        stats->Texture_SCORE_3 = NULL;
+        stats->Texture_SCORE_4 = NULL;
+        stats->Texture_SCORE_5 = NULL;
+        SDL_FreeSurface(stats->Surface_SCORE_1);
+        SDL_FreeSurface(stats->Surface_SCORE_2);
+        SDL_FreeSurface(stats->Surface_SCORE_3);
+        SDL_FreeSurface(stats->Surface_SCORE_4);
+        SDL_FreeSurface(stats->Surface_SCORE_5);
+        stats->Surface_SCORE_1 = NULL;
+        stats->Surface_SCORE_2 = NULL;
+        stats->Surface_SCORE_3 = NULL;
+        stats->Surface_SCORE_4 = NULL;
+        stats->Surface_SCORE_5 = NULL;
+    }
+    
     SDL_Color color = { 255, 255, 255 };
 
     lvl->Menu=loadImage("src/graphics/lvl/MenuScore.png");
@@ -551,6 +622,14 @@ void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte)
         SDL_DestroyTexture(lvl->Map);
         lvl->Map=NULL;
     }
+    if (stats->Surface_Actuelle !=NULL || stats->Texture_Actuelle != NULL)
+    {
+        SDL_DestroyTexture(stats->Texture_Actuelle);
+        stats->Texture_Actuelle=NULL;
+        SDL_FreeSurface(stats->Surface_Actuelle);
+        stats->Surface_Actuelle = NULL;
+    }
+    
     SDL_Color color = { 255, 255, 255 };
 
     
