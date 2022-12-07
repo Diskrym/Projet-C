@@ -196,7 +196,7 @@ void Render_Level (Lvl *lvl)
         lvl->Tiret = NULL;
     }
     
-    if (lvl->Num >= 0 && lvl->Num != 4)
+    if (lvl->Num >= 0 && lvl->Num != 4 && lvl->Num !=9  && lvl->Num !=10)
     {
         lvl->SpritMotLVL=loadImage("src/graphics/lvl/Level.png");
         Draw_Image(lvl->SpritMotLVL,0,0);
@@ -278,6 +278,16 @@ void Render_Level (Lvl *lvl)
         Draw_Image(lvl->SpritLvl,170,0);
         lvl->SpritLvl=loadImage("src/graphics/lvl/4.png");
         Draw_Image(lvl->SpritLvl,183,0);
+    }
+    if (lvl->Num==9)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/river.png");
+        Draw_Image(lvl->SpritLvl,5,5);
+    }
+    if (lvl->Num==10)
+    {
+        lvl->SpritLvl=loadImage("src/graphics/lvl/river.png");
+        Draw_Image(lvl->SpritLvl,5,5);
     }
 
     if (lvl->Num==11)
