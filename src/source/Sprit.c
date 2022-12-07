@@ -4536,7 +4536,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             
         }
         //haltère
-        if (jerem->Eattaque == 1 && jerem->CompteurSprite2 == 0)
+        if (jerem->Eattaque == 1)
         {
             if (jerem->Direction==1)
             {            
