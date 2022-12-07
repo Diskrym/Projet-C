@@ -62,6 +62,7 @@ init("Dungeon Fate");
     //Menu
     while(input.enter==0)
     {
+        
     //gestionInputs(&input);
     Draw_Menu(&lvl);
     Get_Input(&input);
@@ -97,7 +98,7 @@ init("Dungeon Fate");
         Statistiques(&stats,&joueur,&lvl);
 
         Save(&joueur,&lvl,&input,&entité,&son,&stats,temps);
-
+        
         Draw_Game(&joueur, &lvl, &paramtexte,&son);
                                 
         Gestion_Map(&joueur, &lvl, &entité, &son, &input, &stats, &paramtexte);
@@ -132,7 +133,7 @@ init("Dungeon Fate");
                 joueur.inposx=300;
            
         }
-
+        
     }
     // On quitte
     exit(0); 

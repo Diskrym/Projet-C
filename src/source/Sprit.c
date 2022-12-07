@@ -2,6 +2,7 @@
 
 void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, Lvl *lvl)
 {   
+    
     //reset des pointeurs des sprites
     if (joueur->chevalier!=NULL)
     {  
@@ -1975,7 +1976,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         SDL_DestroyTexture(boss->Bossattaque);
         boss->Bossattaque=NULL;
     }
-    if (boss->Eclair4!=NULL)
+    if (boss->Eclair1!=NULL)
     {
         SDL_DestroyTexture(boss->Eclair1);
         SDL_DestroyTexture(boss->Eclair2);
@@ -2801,7 +2802,12 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         SDL_DestroyTexture(Gros_rocher->Image);
         Gros_rocher->Image = NULL;
     }
-
+    if (tanguy->Image != NULL)
+    {
+        SDL_DestroyTexture(tanguy->Image);
+        tanguy->Image = NULL;
+    }
+    
     if (lvl->Avancement10 == 0 && (Petit_rocher->Etat != 0 || Gros_rocher->Etat != 0 || tronc->Etat != 0 || tanguy->Etat != 0))
     {
         Petit_rocher->Etat = 0;
@@ -3075,7 +3081,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
     if (squelette->bulle != NULL)
     {
         SDL_DestroyTexture(squelette->bulle);
-        squelette->squelette = NULL;
+        squelette->bulle = NULL;
     }
     if (squelette->Jerem_Cin != NULL)
     {
