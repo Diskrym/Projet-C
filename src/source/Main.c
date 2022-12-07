@@ -87,6 +87,11 @@ init("Dungeon Fate");
             lvl.Num = -1;
             lvl.reset=1;
             lvl.save = 1;
+            if (joueur.Ebateau != 0)
+            {
+                joueur.Ebateau = 0;
+            }
+            
         }
         if (lvl.WinDonjon == 5)
         {
