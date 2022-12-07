@@ -87,6 +87,11 @@ init("Dungeon Fate");
             lvl.Num = -1;
             lvl.reset=1;
             lvl.save = 1;
+            if (input.attack == 1)
+            {
+                input.attack = 0;
+            }
+            
             if (joueur.Ebateau != 0)
             {
                 joueur.Ebateau = 0;
@@ -148,7 +153,7 @@ init("Dungeon Fate");
                 
         }
         
-           
+        printf("%d\n",lvl.Num);
     }
     // On quitte
     exit(0); 

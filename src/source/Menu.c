@@ -224,6 +224,8 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             lvl->Num = -1 ;
             lvl->reset = 0;
             lvl->Load = 0;
+            joueur->Ebateau = 0;
+            lvl->cin = 1;
         }
         //Stats
         if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 213 && input->PosMouseY <= 250)
