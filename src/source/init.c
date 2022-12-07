@@ -501,6 +501,7 @@ void Load_Level_4_1(Joueur *Joueur, Lvl *lvl)
 
 void Load_Level_4_2(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc,Obstacle *tanguy, Lvl *lvl)
 {
+    printf("rest");
     Init_Maps(lvl);
     joueur->inposx = level[10][0][2];
     joueur->inposy = level[10][0][3];
@@ -512,6 +513,12 @@ void Load_Level_4_2(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,
     tronc->y = 270;
     tanguy->x = -70;
     tanguy->y = 180;
+
+    Petit_rocher->Etat = 0;
+    Gros_rocher->Etat = 0;
+    tronc->Etat =0;
+    tanguy->Etat = 0;
+    lvl->Avancement10 = 0;
 }
 
 void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *squelette)

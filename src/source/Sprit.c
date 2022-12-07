@@ -2812,15 +2812,6 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
         tanguy->Image = NULL;
     }
     
-    if (lvl->Avancement10 == 0 && (Petit_rocher->Etat != 0 || Gros_rocher->Etat != 0 || tronc->Etat != 0 || tanguy->Etat != 0))
-    {
-        Petit_rocher->Etat = 0;
-        Gros_rocher->Etat = 0;
-        tronc->Etat = 0;
-        tanguy->Etat = 0;
-    }
-    
-    
     
 
     
