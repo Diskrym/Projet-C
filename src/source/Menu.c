@@ -58,6 +58,7 @@ void Score_(Stats *stats,clock_t temps)
     char tempm [10];
     char temph [10];
     char tempMM[10];
+    char tempHH[10];
     stats->Score_act_f= (double)temps/CLOCKS_PER_SEC+stats->TEMPS_GENE;
     
     //si inférieur a 1minutes alors uniquement seconde
@@ -75,7 +76,14 @@ void Score_(Stats *stats,clock_t temps)
         sprintf(tempm,"%f",(stats->Score_act_f/60));
         printf("%f\n",stats->Score_act_f/60);
         //Seconde
-        strncpy(tempMM,tempm,1);
+        if (stats->Score_act_f > 600)
+        {
+            strncpy(tempMM,tempm,2);
+        }
+        else
+        {
+            strncpy(tempMM,tempm,1);
+        }
         sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
 
         //tout
@@ -83,20 +91,38 @@ void Score_(Stats *stats,clock_t temps)
         strcat(stats->Score_act,tempm);
         strcat(stats->Score_act,":");
         strcat(stats->Score_act,tempss);
-        printf("%s\n",tempss);
     }
     else
     {
         //heure
-        sprintf(temph,"%.0f",stats->Score_act_f/3600);
-        //min
-        sprintf(tempm,"%.0f",((stats->Score_act_f-atof(temph)*3600)/60));
-        //sec
-        sprintf(tempss,"%.2f", (stats->Score_act_f/60-atof(tempm))*60);
+        sprintf(temph,"%f",stats->Score_act_f/3600);
+        if (stats->Score_act_f > 36000)
+        {
+            strncpy(tempHH,temph,2);
+        }
+        else
+        {
+            strncpy(tempHH,temph,1);
+        }
 
-        strcpy(stats->Score_act,temph);
+        //min
+        sprintf(tempm,"%f",(stats->Score_act_f - atof(tempHH)*3600));
+        
+
+        //sec
+        if (stats->Score_act_f > 600)
+        {
+            strncpy(tempMM,tempm,2);
+        }
+        else
+        {
+            strncpy(tempMM,tempm,1);
+        }
+        sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
+
+        strcpy(stats->Score_act,tempHH);
         strcat(stats->Score_act,":");
-        strcat(stats->Score_act,tempm);
+        strcat(stats->Score_act,tempMM);
         strcat(stats->Score_act,":");
         strcat(stats->Score_act,tempss);
     }
@@ -128,7 +154,14 @@ void Score_(Stats *stats,clock_t temps)
                 sprintf(tempm,"%f",stats->Score_Board[i]/60);
 
                 //Seconde
-                strncpy(tempMM,tempm,1);
+                if (stats->Score_act_f > 600)
+                {
+                    strncpy(tempMM,tempm,2);
+                }
+                else
+                {
+                    strncpy(tempMM,tempm,1);
+                }
                 sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
     
                 //tout
@@ -141,17 +174,35 @@ void Score_(Stats *stats,clock_t temps)
             else
             {
                 //heure
-                sprintf(temph,"%.0f",stats->Score_Board[i]/3600);
+                sprintf(temph,"%f",stats->Score_Board[i]/3600);
+                if (stats->Score_act_f > 36000)
+                {
+                    strncpy(tempHH,temph,2);
+                }
+                else
+                {
+                    strncpy(tempHH,temph,1);
+                }
                 //min
-                sprintf(tempm,"%.0f",((stats->Score_Board[i]-atof(temph)*3600)/60));
+                sprintf(tempm,"%f",(stats->Score_Board[i]- atof(tempHH)*3600));
                 //sec
-                sprintf(tempss,"%.2f", (stats->Score_Board[i]/60-atof(tempm))*60);
+                if (stats->Score_act_f > 600)
+                {
+                    strncpy(tempMM,tempm,2);
+                }
+                else
+                {
+                    strncpy(tempMM,tempm,1);
+                }
 
-                strcpy(stats->Convert_Score[i],temph);
+                sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
+
+                strcpy(stats->Convert_Score[i],tempHH);
                 strcat(stats->Convert_Score[i],":");
-                strcat(stats->Convert_Score[i],tempm);
+                strcat(stats->Convert_Score[i],tempMM);
                 strcat(stats->Convert_Score[i],":");
                 strcat(stats->Convert_Score[i],tempss);
+
             }
             break;
         }
