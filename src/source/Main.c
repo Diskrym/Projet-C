@@ -18,7 +18,7 @@ Historique version :
 /*
     !!! INFO !!!
     CoupDague en attente mais pret si double coup sur monstre
-    Son attaque chevalier pret mais commenter
+    Son attaque chevalier prêt mais commenté
     BYPASS A ENLEVER SUR LE MAIN ET DANS INPUT
     Finir donjon bleu, lvl deja prep dans struct + faire retour map global a la fin du donjon bleu.
 */
@@ -69,10 +69,10 @@ init("Dungeon Fate");
     //Variable de la boucle infinie
     go = 1; 
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
-    // Boucle infinie, principale, du jeu
+    // Boucle infinie principale du jeu
     while (go == 1)
     {    
-        //Si load a 0 alors rechargement du jeu
+        //Si load à , alors rechargement du jeu
         if (lvl.Load == 0)
         {
             Load_Game(&joueur,&lvl,&stats);
@@ -101,22 +101,22 @@ init("Dungeon Fate");
             Score_(&stats,temps);
             lvl.WinDonjon = 6 ;
         }
-        //Compteur temps en fonction des ticks du proc
+        //Compteur temps en fonction des ticks du processeur
         temps=clock()-stats.Diff_reset;
-        //Gestion des stats
+        //Gestion des statistiques
         Statistiques(&stats,&joueur,&lvl);
-        //Gestion de la save
+        //Gestion de la sauvegarde
         Save(&joueur,&lvl,&input,&entité,&son,&stats,temps);
         //On dessine tous les éléments de la map
         Draw_Game(&joueur, &lvl, &paramtexte,&son);
-        //On selectione le niveau a afficher                  
+        //On sélectione le niveau à afficher                  
         Gestion_Map(&joueur, &lvl, &entité, &son, &input, &stats, &paramtexte);
-        //Aquisition des inputs
+        //Acquisition des inputs
         Get_Input(&input);
-        //Si on est dans un niveau normal (les niveaux positives)
+        //Si on est dans un niveau normal (les niveaux positifs)
         if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4 && lvl.Num != -5)
         {
-            //Deplacment monstre
+            //Déplacement monstre
             Gestion_Entité(&entité, &lvl, &input ,&joueur, &son);
             //Gestion des deplacments du joueur
             Deplacement_Chevalier(&input,&joueur,&entité, &son, &lvl);

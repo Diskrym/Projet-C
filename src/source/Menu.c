@@ -2,7 +2,7 @@
 
 void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
 {
-    // Gestion total pièce
+    // Gestion total pièce(s)
     if (joueur->NbPiece>stats->Temp_pièce)
     {
         stats->Total_pièce+=(joueur->NbPiece-stats->Temp_pièce);
@@ -12,7 +12,7 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
     {
         stats->Temp_pièce=joueur->NbPiece;
     }
-    //Gestion total tués
+    //Gestion total tué(s)
     if (lvl->MortMonstre>stats->Temp_Tués)
     {
         stats->Total_Tués+=(lvl->MortMonstre-stats->Temp_Tués);
@@ -22,7 +22,7 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
     {
         stats->Temp_Tués=lvl->MortMonstre;
     }
-    //Gestion Nombre dague lancées !!! A diviser par 2 pour affichage
+    //Gestion Nombre dague(s) lancée(s) !!! A diviser par 2 pour affichage
     if (joueur->Edague>stats->Temp_Dague_Lancées)
     {
         stats->Dague_Lancées+=(joueur->Edague-stats->Temp_Dague_Lancées);
@@ -32,7 +32,7 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
     {
         stats->Temp_Dague_Lancées=joueur->Edague;
     }    
-    //Gestion Total mort
+    //Gestion Total mort(s)
     if (lvl->reset == 1)
     {
         stats->Total_Mort+=1;
@@ -62,21 +62,21 @@ void Score_(Stats *stats,clock_t temps)
     char tempSS[3]= "";
     stats->Score_act_f= (double)temps/CLOCKS_PER_SEC+stats->TEMPS_GENE;
     
-    //si inférieur a 1minutes alors uniquement seconde
+    //si inférieur à 1 minute, alors uniquement secondes
     if (stats->Score_act_f< 60)
     {   
-        //sec
+        //Seconde(s)
         sprintf(tempss,"%.2f",stats->Score_act_f);
-        //Heure et Minute
+        //Heure(s) et Minute(s)
         strcpy(stats->Score_act,"0:00:");
         strcat(stats->Score_act,tempss);
     }
-    //si supèrieur a une min et infèrieur a une heure
+    //si supérieur à 1 min et inférieur à 1 heure
     else if (stats->Score_act_f >= 60 && stats->Score_act_f < 3600)
     {
-        //Minute
+        //Minute(s)
         sprintf(tempm,"%f",(stats->Score_act_f/60));
-        //Seconde
+        //Seconde(s)
         if (stats->Score_act_f > 600)
         {
             strncat(tempMM,tempm,2);
@@ -86,7 +86,7 @@ void Score_(Stats *stats,clock_t temps)
             strcpy(tempMM,"0");
             strncat(tempMM,tempm,1);
         }
-        //sec
+        //Seconde(s)
          sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
 
         if ((atof(tempm)-atof(tempMM))*60 >=10)
@@ -99,16 +99,16 @@ void Score_(Stats *stats,clock_t temps)
             strncat(tempSS,tempss,1);
         }
 
-        //tout en chaîne de caractères
+        //Tout en chaînes de caractères
         strcpy(stats->Score_act,"0:");
         strcat(stats->Score_act,tempMM);
         strcat(stats->Score_act,":");
         strcat(stats->Score_act,tempSS);
     }
-    //Si supèrieur a une heure
+    //Si supérieur à 1 heure
     else
     {
-        //heure
+        //Heure(s)
         sprintf(temph,"%f",stats->Score_act_f/3600);
         if (stats->Score_act_f > 36000)
         {
@@ -119,9 +119,9 @@ void Score_(Stats *stats,clock_t temps)
             strcpy(tempHH,"0");
             strncat(tempHH,temph,1);
         }
-        //min
+        //Minute(s)
         sprintf(tempm,"%f",(stats->Score_act_f - atof(tempHH)*3600));
-        //sec
+        //Seconde(s)
         if (stats->Score_act_f > 600)
         {
             strncat(tempMM,tempm,2);
@@ -131,7 +131,7 @@ void Score_(Stats *stats,clock_t temps)
             strcpy(tempMM,0);
             strncat(tempMM,tempm,1);
         }
-        //sec
+        //Seconde(s)
         sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
         if ((atof(tempm)-atof(tempMM))*60 >= 10)
         {
@@ -166,21 +166,21 @@ void Score_(Stats *stats,clock_t temps)
                 stats->Score_Board[y]=stats->Score_Board[y-1];
             }
             stats->Score_Board[i]= (double)temps/CLOCKS_PER_SEC+stats->TEMPS_GENE;
-            //si inférieur a 1minutes alors uniquement seconde
+            //si inférieur à 1 minute, alors uniquement seconde(s)
             if (stats->Score_Board[i] < 60)
             {   
-                //sec
+                //Seconde(s)
                 sprintf(tempss,"%.2f",stats->Score_Board[i]);
-                //Heure et Minute
+                //Heure(s) et Minute(s)
                 strcpy(stats->Convert_Score[i],"0:0:");
                 strcat(stats->Convert_Score[i],tempss);
             }
             else if (stats->Score_Board[i] >= 60 && stats->Score_Board[i] < 3600)
             {
-                //Minute
+                //Minute(s)
                 sprintf(tempm,"%f",stats->Score_Board[i]/60);
 
-                //Seconde
+                //Seconde(s)
                 if (stats->Score_act_f > 600)
                 {
                     strncat(tempMM,tempm,2);
@@ -198,7 +198,7 @@ void Score_(Stats *stats,clock_t temps)
             }
             else
             {
-                //heure
+                //Heure(s)
                 sprintf(temph,"%f",stats->Score_Board[i]/3600);
                 if (stats->Score_act_f > 36000)
                 {
@@ -208,9 +208,9 @@ void Score_(Stats *stats,clock_t temps)
                 {
                     strncpy(tempHH,temph,1);
                 }
-                //min
+                //Minute(s)
                 sprintf(tempm,"%f",(stats->Score_Board[i]- atof(tempHH)*3600));
-                //sec
+                //Seconde(s)
                 if (stats->Score_act_f > 600)
                 {
                     strncpy(tempMM,tempm,2);
@@ -236,7 +236,7 @@ void Score_(Stats *stats,clock_t temps)
 void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son,Stats *stats, clock_t temps)
 {
     
-    //entrer pause
+    //Entrée pause
     if (input->echap == 1 && lvl->Num != -2 && lvl->Num != -3 && lvl->Num !=-4)
     {
         lvl->temp = lvl->Num;
@@ -249,20 +249,20 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         char* nomFichier = "src/Save/Game.txt";
         char* nomFichier1= "src/Save/Stats.txt";
 
-        //retour jeux
+        //retour jeu
         if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 117 && input->PosMouseY <= 154)
         {
             lvl->Num = lvl->temp;
             SDL_ShowCursor(SDL_DISABLE);
         }
-        //Quit sans save
+        //Quitter sans sauvegarde
         if (input->PosMouseX >= 329 && input->PosMouseX <= 522 && input->PosMouseY >= 164 && input->PosMouseY <= 203)
         {
             stats->TEMPS_GENE+=(double)temps/CLOCKS_PER_SEC;
             lvl->save = 1;
             lvl->quit = 1;
         }
-        //save
+        //Sauvegarder
         if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 167 && input->PosMouseY <= 204 || lvl->save == 1)
         {
             FILE* fichier = fopen ( nomFichier , "r+" );
@@ -311,7 +311,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             joueur->Ebateau = 0;
             lvl->cin = 1;
         }
-        //Stats
+        //Statistiques
         if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 213 && input->PosMouseY <= 250)
         {
             lvl->Num = -3;
@@ -322,7 +322,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             lvl->Num = -4;
         }
     }
-    // quit scoreboard
+    // quitter scoreboard
     if (lvl->Num == -3)
     {
         if (input->PosMouseX >= 222 && input->PosMouseX <= 416 && input->PosMouseY >= 313 && input->PosMouseY <= 351)
@@ -330,7 +330,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             lvl->Num = -2 ;
         }  
     }  
-    //quit score
+    //quitter score
     if (lvl->Num == -4)
     {
         if (input->PosMouseX >= 222 && input->PosMouseX <= 416 && input->PosMouseY >= 305 && input->PosMouseY <= 343)

@@ -26,13 +26,13 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
     //Si le joueur est en dehors du bateau
     if(joueur->Ebateau<2)
     {
-        //Mouvement du joueur droite si bouclier baisser ou si timing bouclier dépassé
+        //Mouvement du joueur droite si bouclier baissé ou si timing bouclier dépassé
         if (joueur->Direction ==0 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>45)))
         {
-            //se deplace si ne prend pas de dégat sinon sprit degat
+            //se déplace s'il ne prend pas de dégât sinon sprit dégât
             if (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1, &entité->jerem)==1)
             {
-                //Affcihe le sprit en fonction du NumSprit
+                //Affiche le sprit en fonction du NumSprit
                 son->sondegat=0;
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
@@ -52,7 +52,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                 }
             }
         }
-        //affiche sprite degat si degat de la part du entité et si degat de la part du entité lors de notre attack/defense pour la droite
+        //affiche sprit dégât si dégât de la part de l'entité et si dégât de la part de l'entité lors de notre attaque/défense pour la droite
         if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1,&entité->jerem)==0) || (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti,&entité->squelette,&entité->squelette1,&entité->jerem)==0) && joueur->Direction==0)
         {
             joueur->chevalier=loadImage("src/graphics/Chevalier/DégatD.png");
@@ -65,7 +65,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
             }
         }
 
-        //cf fonction gauche
+        //idem fonction gauche
         if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>45)))
         {
             if(Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti,&entité->squelette,&entité->squelette1,&entité->jerem)==1)
@@ -101,7 +101,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
             }
         }
         
-        //Mouvement attaque si Eattack = 1 et si on ne prend pas de dégat
+        //Mouvement attaque si Eattack = 1 et si on ne prend pas de dégât
         if (joueur->Eattack==1 && Degat_Chevalier(&entité->meduse, &entité->meduse1, &entité->meduse2, &entité->chauvesouris, &entité->chauvesouris1,&entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1,&entité->jerem)==1)
         {
             joueur->Numattack+=1;
@@ -169,7 +169,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
             }
         }
 
-        //mouvement defense si etat shield a 1
+        //mouvement défense si état bouclier (shield) à 1
         if (joueur->Eshield==1 && joueur->Eattack == 0)
         {
             //timer shield
@@ -181,6 +181,11 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldD.png");
                         Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
+                        if(joueur->TimingBouclier==1)
+                        {
+                            Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
+                            Mix_PlayChannel(1, son->bouclier, 0);
+                        }
                     }
                 }
                 if (joueur->Direction==1)
@@ -189,13 +194,18 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldG.png");
                         Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
+                        if(joueur->TimingBouclier==1)
+                        {
+                            Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
+                            Mix_PlayChannel(1, son->bouclier, 0);
+                        }
                     }
                 }
-                //incrémentation de timer shield jusqu'a 45
+                //incrémentation de timer shield jusqu'à 45
                 joueur->TimingBouclier+=1;
             }
         }
-        //reset des compteur pour sprite et attaque (attaque pour les sprit)
+        //reset des compteurs pour sprit et attaque (attaque pour les sprit)
         if(joueur->Numattack >= 23)
         {
             joueur->Numattack=0;
@@ -277,7 +287,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
             }
         }
     }
-    //Si joueur prend des dégâtes et est dans le bateau
+    //Si joueur prend des dégâts et est dans le bateau
     else if (Degat_Bateau(&entité->tronc, &entité->Petit_rocher ,&entité->Gros_rocher) == 1)
     {
         joueur->NumSprit+=1;
@@ -366,7 +376,7 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         //compteur < 100 pour déplacement normal
         if (meduse->compteur < 100)
         {
-            //si la meduse n'a pas prit de coup
+            //si la meduse n'a pas pris de coup(s)
             if (meduse->CompteurSpriteDegat==0)
             {
                 if (meduse->NumSprit==0 || meduse->NumSprit==1 || meduse->NumSprit==2 || meduse->NumSprit==3 )
@@ -399,13 +409,13 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     meduse->meduse=loadImage("src/graphics/Meduse/Medusemarche1.png");
                     Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
                 }
-                //degat epee
+                //dégât épée
                 if(Inside_Chevalier_Meduse(joueur, meduse)==1 && joueur->Numattack==15)
                 {           
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
                 }
-                //degat dague
+                //dégât dague
                 if (Inside_Vol(joueur->xdague,joueur->ydague, meduse->posmonsx, meduse->posmonsy,64,64,30,15)==1)
                 {
                     meduse->CompteurSpriteDegat=1; 
@@ -423,7 +433,7 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     Mix_VolumeChunk(son->degatmeduse, MIX_MAX_VOLUME);
                     Mix_PlayChannel(4, son->degatmeduse, 0); 
                 }          
-                //compteur duree affichage degat meduse
+                //compteur durée affichage dégât meduse
                 if (meduse->CompteurSpriteDegat > 15)
                 {
                     meduse->CompteurSpriteDegat=0;
@@ -463,7 +473,7 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 meduse->attaque=loadImage("src/graphics/Meduse/AttaqueMeduse.png");
                 Draw_Image(meduse->attaque,meduse->posmonsx -23 ,meduse->posmonsy - 23);
                 
-                // Si joueur dans la range de la meduse durant les éclaires
+                // Si joueur dans la zone de la meduse durant les éclairs
                 if(Inside_Meduse_Chevalier(joueur, meduse)==1 && (meduse->NumSprit==23 || meduse->NumSprit==14))                    
                 {
                     if (meduse->coup == 0)
@@ -490,7 +500,7 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         }
     }
    
-    //reset compteur pour sprite
+    //reset compteur pour sprit
     if (meduse->NumSprit>=33)
     {
         meduse->NumSprit=0;
@@ -591,13 +601,13 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             lvl->MortMonstre+=1;
         }  
     }
-    //Mouvement  yeti quand en vie
+    //Mouvement yeti quand en vie
     if (yeti->Life >=1)
     {
         //compteur < 100 pour déplacement normal
         if (yeti->compteur < 100)
         {  
-            //si la yeti n'a pas prit de coup
+            //si la yeti n'a pas pris de coup
             if (yeti->CompteurSpriteDegat==0)
             {
                 if (yeti->Direction==1)
@@ -657,7 +667,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                         yeti->Life--;
                     }
                 }
-                //degat dague
+                //dégât dague
                 if (Inside_Vol(joueur->xdague,joueur->ydague, yeti->posmonsx+10, yeti->posmonsy+15,45,60,30,15)==1)
                 {
                     yeti->CompteurSpriteDegat=1; 
@@ -668,7 +678,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {   
                 if (yeti->Direction==1)
                 {
-                    //si la yeti prend un coup
+                    //si le yeti prend un coup
                     yeti->CompteurSpriteDegat+=1;
                     yeti->yeti=loadImage("src/graphics/yeti/YetiDegatG.png");
                     Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
@@ -677,7 +687,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME);
                      Mix_PlayChannel(14, son->degatyeti, 0);
                     }
-                    //compteur duree affichage degat yeti
+                    //compteur durée affichage dégât yeti
                     if (yeti->CompteurSpriteDegat > 15)
                     {
                         yeti->CompteurSpriteDegat=0;
@@ -685,7 +695,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 }
                 if (yeti->Direction==0)
                 {
-                    //si la yeti prend un coup
+                    //si le yeti prend un coup
                     yeti->CompteurSpriteDegat+=1;
                     yeti->yeti=loadImage("src/graphics/yeti/YetiDegatD.png");
                     Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
@@ -694,7 +704,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME);
                      Mix_PlayChannel(14, son->degatyeti, 0);
                     }          
-                    //compteur duree affichage degat yeti
+                    //compteur durée affichage dégât yeti
                     if (yeti->CompteurSpriteDegat > 15)
                     {
                         yeti->CompteurSpriteDegat=0;
@@ -706,7 +716,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 yeti->NumSprit=0;
             } 
         }
-        //attaqueyeti yeti quand compteur > 100
+        //attaque yeti quand compteur > 100
         if  (yeti->compteur>=100)
         {
             if (yeti->Direction==1)
@@ -911,7 +921,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             }
         }
     }
-    // timing degat chevalier
+    // timing dégât chevalier
     if (yeti->coup>0)
     {
         yeti->coup+=1;
@@ -1220,7 +1230,7 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
         //compteur < 100 pour déplacement normal
         if (bossyeti->compteur < 100)
         {  
-            //si la bossyeti n'a pas prit de coup
+            //si le bossyeti n'a pas pris de coup
             if (bossyeti->CompteurSpriteDegat==0)
             {
                 if (bossyeti->Direction==1)
@@ -1280,7 +1290,7 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         bossyeti->Life--;
                     }
                 }
-                //degat dague
+                //dégât dague
                 if (Inside_Vol(joueur->xdague,joueur->ydague, bossyeti->posmonsx+10, bossyeti->posmonsy+15,45,60,30,15)==1)
                 {
                     bossyeti->CompteurSpriteDegat=1;
@@ -1293,7 +1303,7 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
             {  
                 if (bossyeti->Direction==1)
                 {
-                    //si la bossyeti prend un coup
+                    //si le bossyeti prend un coup
                     bossyeti->CompteurSpriteDegat+=1;
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiDegatG.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
@@ -1303,7 +1313,7 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                     Mix_PlayChannel(4, son->degatbossyeti, 0);
                     }
                    
-                    //compteur duree affichage degat bossyeti
+                    //compteur durée affichage dégât bossyeti
                     if (bossyeti->CompteurSpriteDegat > 15)
                     {
                         bossyeti->CompteurSpriteDegat=0;
@@ -1312,7 +1322,7 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
  
                 if (bossyeti->Direction==0)
                 {
-                    //si la bossyeti prend un coup
+                    //si le bossyeti prend un coup
                     bossyeti->CompteurSpriteDegat+=1;
                     bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiDegatD.png");
                     Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
@@ -1321,7 +1331,7 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                     Mix_VolumeChunk(son->degatbossyeti, MIX_MAX_VOLUME);
                      Mix_PlayChannel(14, son->degatbossyeti, 0);
                     }          
-                    //compteur duree affichage degat bossyeti
+                    //compteur durée affichage dégât bossyeti
                     if (bossyeti->CompteurSpriteDegat > 15)
                     {
                         bossyeti->CompteurSpriteDegat=0;
@@ -1333,7 +1343,7 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 bossyeti->NumSprit=0;
             }
         }
-        //attaquebossyeti bossyeti quand compteur > 100
+        //attaque bossyeti quand compteur > 100
         if  (bossyeti->compteur>=100)
         {   
             if (bossyeti->compteurfissure==0 )
@@ -1645,7 +1655,7 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
             }
         }
     }
-    // timing degat chevalier
+    // timing dégât chevalier
     if (bossyeti->coup>0)
     {
         bossyeti->coup+=1;
@@ -1738,7 +1748,7 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
         SDL_DestroyTexture(chauvesouris->chauvesouris);
         chauvesouris->chauvesouris=NULL;
     }
-    //Qd en vie et quelle ne prend pas dégât
+    //Quand en vie et qu'elle ne prend pas de dégât
     if (chauvesouris->Life >=1)
     {
         if (chauvesouris->CompteurSpriteDegat==0)
@@ -1839,17 +1849,17 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
             Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
         }
     }
-    //reset compteur pour sprite
+    //reset compteur pour sprit
     if (chauvesouris->NumSprit>=15)
     {
         chauvesouris->NumSprit=0;
     }
-    //activation boucle dans event des degats chevalier
+    //activation boucle dans event des dégâts chevalier
     if (chauvesouris->coup==1)
     {
         chauvesouris->CompteurSpriteDegatChevalier+=1;
     }
-    //reset degat chevalier
+    //reset dégât chevalier
     if  (chauvesouris->CompteurSpriteDegatChevalier==15)
     {
         chauvesouris->coup=0;
@@ -1858,7 +1868,7 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
 
 void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {
-    //suppression pointeur des images
+    //suppression pointeurs des images
    if (boss->Boss!=NULL)
     {
         SDL_DestroyTexture(boss->Boss);
@@ -1891,7 +1901,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         //compteur sans attaque boss
         if (boss->compteur <= 450)
         {   
-            //si il ne prend pas de degat
+            //s'il ne prend pas de dégât
             if (boss->CompteurSpriteDegat==0)
             {
                 if (boss->NumSprit==0 || boss->NumSprit==1 || boss->NumSprit==2 || boss->NumSprit==3 )
@@ -1919,20 +1929,20 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                     boss->Boss=loadImage("src/graphics/Boss/BossMarche4.png");
                     Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);    
                 } 
-                //degat epee
+                //dégât épée
                 if(Inside_Chevalier_Boss(joueur, boss)==1 && joueur->Numattack==15)
                 {           
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
                 }
-                //degat dague
+                //dégât dague
                 if (Inside_Vol(joueur->xdague,joueur->ydague,boss->posmonsx,boss->posmonsy,128,128,30,15)==1)
                 {
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
                 }  
             } 
-            //degat sur Boss
+            //dégât sur Boss
             else 
             {
                 boss->CompteurSpriteDegat+=1;
@@ -1949,12 +1959,12 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 }
             }   
         }
-        //init eclair une fois par round
+        //initialisation éclair une fois par round
         if (boss->compteur == 200)
         {
             Init_Eclair(boss);
         }
-        // lancement attaque eclair
+        // lancement attaque éclair
         if (boss->compteur >= 200 && boss->compteur < 530)
         {   
             //Eclair 1
@@ -1972,6 +1982,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             {
                 boss->Eclair1=loadImage("src/graphics/Boss/EclairBoss.png");
                 Draw_Image(boss->Eclair1,boss->Ex1,boss->Ey1-405);
+                if (boss->CompteurSpriteEclair==22)
+                {
+                    Mix_VolumeChunk(son->attaquemeduse, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(1, son->attaquemeduse, 0);
+                }
             }
             
             if ((boss->CompteurSpriteEclair==25 && Inside_Eclair_Chevalier(joueur, boss->Ex1, boss->Ey1-405)==1))
@@ -2002,6 +2017,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             {
                 boss->Eclair2=loadImage("src/graphics/Boss/EclairBoss.png");
                 Draw_Image(boss->Eclair2,boss->Ex2,boss->Ey2-405);
+                if (boss->CompteurSpriteEclair==52)
+                {
+                    Mix_VolumeChunk(son->attaquemeduse, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(1, son->attaquemeduse, 0);
+                }
             }
             if ((boss->CompteurSpriteEclair==55 && Inside_Eclair_Chevalier(joueur, boss->Ex2, boss->Ey2-405)==1))
             {
@@ -2031,6 +2051,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             {
                 boss->Eclair3=loadImage("src/graphics/Boss/EclairBoss.png");
                 Draw_Image(boss->Eclair3,boss->Ex3,boss->Ey3-405);
+                if (boss->CompteurSpriteEclair==82)
+                {
+                    Mix_VolumeChunk(son->attaquemeduse, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(1, son->attaquemeduse, 0);
+                }
             }
             if ((boss->CompteurSpriteEclair==85 && Inside_Eclair_Chevalier(joueur, boss->Ex3, boss->Ey3-405)==1))
             {
@@ -2060,6 +2085,11 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             {
                 boss->Eclair4=loadImage("src/graphics/Boss/EclairBoss.png");
                 Draw_Image(boss->Eclair4,boss->Ex4,boss->Ey4-405);
+                if (boss->CompteurSpriteEclair==112)
+                {
+                    Mix_VolumeChunk(son->attaquemeduse, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(1, son->attaquemeduse, 0);
+                }
             }
             if ((boss->CompteurSpriteEclair==115 && Inside_Eclair_Chevalier(joueur, boss->Ex4, boss->Ey4-405)==1))
             {
@@ -2223,7 +2253,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
 }
 
 void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl, EffetSon *son)
-{   //Verification pointeur pour memoire
+{   //Verification pointeur pour mémoire
     if (marchand->Jerem !=NULL)
     {
         SDL_DestroyTexture(marchand->Jerem);
@@ -2271,11 +2301,11 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
         marchand->Table=loadImage("src/graphics/Marchand/Table.png");
         Draw_Image(marchand->Table,220,55);
     }
-    //Compteur des sprites
+    //Compteur des sprits
     marchand->Compteur1 +=1 ;
 
     //Sprite Jermy
-    //affichage jerem dans le marché 
+    //affichage Jermy dans le marché 
     if (lvl->Num == 4 || (lvl->Num == 5 && lvl->WinDonjon<=2))
     {
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
@@ -2346,7 +2376,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 } 
             }
         }
-        //remise a zero du compteur
+        //remise à zero du compteur
         else
         {
             marchand->CompteurMess1 = 0;
@@ -2360,7 +2390,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
     // bulle marché
     if(lvl->Num == 4)
     {
-        //Sprite Bulles Jermy en fonction de la position et de entree
+        //Sprit Bulles Jermy en fonction de la position et de "Entrer"
         if (joueur->inposx >= 350 && joueur->inposx <= 539 && joueur->inposy >= 210 && joueur->inposy<270)
         {
             if (input->enter == 1)
@@ -2403,7 +2433,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 }
             }
         }
-        //remise a zero du compteur
+        //remise à zero du compteur
         else
         {
             marchand->CompteurMess1 = 0;
@@ -2494,7 +2524,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             marchand->CompteurMess2 = 0;
         }
 
-        //Sprite bec
+        //Sprit bec
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
         Draw_Image(marchand->Enter, 95,310);
         if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
@@ -2557,7 +2587,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 }
             }
         }
-        //remise a zero du compteur
+        //remise à zero du compteur
         else
         {
             marchand->CompteurMess3 = 0;
@@ -2653,7 +2683,7 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
         }
     }
 
-    //reset compteur gene sprite
+    //reset compteur génération sprit
     if (marchand->Compteur1 >= 60)
     {
         marchand->Compteur1 = 0;
@@ -3322,7 +3352,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                 squelette->CompteurSpriteDegat = 0;
             }
         }
-        // si mort et pas de gestion tete (juste anim mort)
+        // si mort et pas de gestion tête (juste animation mort)
         else if (squelette->Life == 0 && squelette->Eattaque != 3 && squelette->Eattaque !=4)
         {
             if (squelette->Direction == 0)
@@ -3603,7 +3633,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
     }
 }
 
-void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
+void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *son)
 {
     if (jerem->jeremy != NULL)
     {
@@ -3649,7 +3679,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             jerem->CompteurSprite2+=1;
         }
     }
-    //reset degats jerem
+    //reset dégâts jerem
     if (jerem->CompteurSprite2 != 0 && !(jerem->Life <=20 && jerem->Transformation == 0) && !(jerem->Life <=10 && jerem->Transformation == 1) && jerem->Life != 0)
     {
         jerem->CompteurSprite2+=1;
@@ -3667,6 +3697,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             //Si il ne prend pas de degats
             if (jerem->CompteurSprite2==0)
             {
+            son->sondegatjerem=0;
                 if (jerem->Direction==0)
                 {
                     if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
@@ -3714,11 +3745,23 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->jeremy=loadImage("src/graphics/BossJermy/JeremDegatD.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                son->sondegatjerem++;
+                if (son->sondegatjerem==1)
+                {
+                    Mix_VolumeChunk(son->degatjerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->degatjerem, 0);
+                }  
             }
             else
             {
                 jerem->jeremy=loadImage("src/graphics/BossJermy/JeremDegatG.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                son->sondegatjerem++;
+                if (son->sondegatjerem==1)
+                {
+                    Mix_VolumeChunk(son->degatjerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->degatjerem, 0);
+                } 
             }
             
         }
@@ -3821,7 +3864,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         
         
     } 
-    //trasnformation 1
+    //transformation 1
     else if (jerem->Life <=20 && jerem->Transformation == 0 && jerem->Life != 0)
     {
         jerem->cin = 1;
@@ -3899,6 +3942,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         {
             if (jerem->CompteurSprite2==0)
             {
+            son->sondegatjerem=0;
                 if (jerem->Direction==0)
                 {
                     if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
@@ -3946,11 +3990,23 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremDegatD.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                son->sondegatjerem++;
+                if (son->sondegatjerem==1)
+                {
+                    Mix_VolumeChunk(son->degatjerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->degatjerem, 0);
+                }  
             }
             else
             {
                 jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremDegatG.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                son->sondegatjerem++;
+                if (son->sondegatjerem==1)
+                {
+                    Mix_VolumeChunk(son->degatjerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->degatjerem, 0);
+                }  
             }
         }
         //attaque haltère phase 2
@@ -4049,10 +4105,10 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
             }
         }
-        //saut et atterissage
+        //saut et atterrissage
         if (jerem->Eattaque == 2 || jerem->Eattaque == 3)
         {
-            //init ombre
+            //initialisation ombre
             if (jerem->NumSprit == 1 && jerem->Eattaque == 2)
             {
                 jerem->pos_ombre_x = jerem->posmonsx+5;
@@ -4085,6 +4141,11 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc1.png");
                 Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);
+                if (jerem->NumSprit==46)
+                {
+                    Mix_VolumeChunk(son->sautjerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->sautjerem, 0);
+                }  
                 if (jerem->NumSprit == 47 && Inside_Vol(jerem->posmonsx-78+63,jerem->posmonsy+80,joueur->inposx,joueur->inposy,64,64,214,58)==1 && jerem->coup == 0)
                 {
                     joueur->life--;
@@ -4103,7 +4164,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             if (jerem->NumSprit >= 30 && jerem->NumSprit < 40 && jerem->Eattaque == 3)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/OndeDeChoc3.png");
-                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);   
+                Draw_Image(jerem->fissure,jerem->posmonsx-78,jerem->posmonsy+80);           
             }
             //pour 2 et 3
             if ((jerem->NumSprit == 35 || jerem->NumSprit == 42) && jerem->Eattaque == 3 && jerem->coup == 0)
@@ -4273,6 +4334,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         {
             if (jerem->CompteurSprite2==0)
             {
+            son->sondegatjerem=0;
                 if (jerem->Direction==0)
                 {
                     if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
@@ -4318,11 +4380,23 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDegatD.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                son->sondegatjerem++;
+                if (son->sondegatjerem==1)
+                {
+                    Mix_VolumeChunk(son->degatjerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->degatjerem, 0);
+                }  
             }
             else
             {
                 jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDegatG.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                son->sondegatjerem++;
+                if (son->sondegatjerem==1)
+                {
+                    Mix_VolumeChunk(son->degatjerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->degatjerem, 0);
+                }  
             }
             //pousse joueur
             if (jerem->Eattaque == 5)
@@ -4408,7 +4482,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 if (jerem->NumSprit>=0 && jerem->NumSprit<5)
                 {   
                     jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremHaltere1D.png");
-                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
+                    Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy); 
                 }
                 if (jerem->NumSprit>=5 && jerem->NumSprit<10)
                 {
@@ -4453,7 +4527,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         //saut et atterissage
         if (jerem->Eattaque == 2 || jerem->Eattaque == 3)
         {
-            //init ombre
+            //initialisation ombre
             if (jerem->NumSprit == 1 && jerem->Eattaque == 2)
             {
                 jerem->pos_ombre_x = jerem->posmonsx+5;
@@ -4485,6 +4559,11 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/3OndeDeChoc1.png");
                 Draw_Image(jerem->fissure,jerem->posmonsx-85,jerem->posmonsy+87);
+                if (jerem->NumSprit==46)
+                {
+                    Mix_VolumeChunk(son->sautjerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->sautjerem, 0);
+                }  
                 if (jerem->NumSprit == 47 && Inside_Vol(jerem->posmonsx-85+67,jerem->posmonsy+87,joueur->inposx,joueur->inposy,64,64,250,54)==1)
                 {
                     joueur->life--;
@@ -4502,7 +4581,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             if (jerem->NumSprit >= 30 && jerem->NumSprit < 40 && jerem->Eattaque == 3)
             {
                 jerem->fissure=loadImage("src/graphics/BossJermy/3OndeDeChoc3.png");
-                Draw_Image(jerem->fissure,jerem->posmonsx-85,jerem->posmonsy+87);
+                Draw_Image(jerem->fissure,jerem->posmonsx-85,jerem->posmonsy+87); 
             }
             //pour 2 et 3
             if ((jerem->NumSprit == 35 || jerem->NumSprit == 42) && jerem->Eattaque == 3 && jerem->coup == 0)
@@ -4853,6 +4932,11 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->haltère=loadImage("src/graphics/BossJermy/3Haltere.png");   
                 Draw_Image(jerem->haltère,jerem->xhaltère,jerem->yhaltère);
+                if (son->sonhaltere==1)
+                {
+                    Mix_VolumeChunk(son->attackJerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->attackJerem, 0);
+                }
                 if (Inside_Vol(jerem->xhaltère, jerem->yhaltère,joueur->inposx,joueur->inposy,64,64,16,45)==1 && jerem->coup == 0)
                 {
                     joueur->life--;
@@ -4866,6 +4950,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             {
                 jerem->haltère=loadImage("src/graphics/BossJermy/Haltere.png");   
                 Draw_Image(jerem->haltère,jerem->xhaltère,jerem->yhaltère);
+                son->sonhaltere++;
+                if (son->sonhaltere==1)
+                {
+                    Mix_VolumeChunk(son->attackJerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(14, son->attackJerem, 0);
+                }
                 if (Inside_Vol(jerem->xhaltère, jerem->yhaltère,joueur->inposx,joueur->inposy,64,64,12,34)==1 && jerem->coup == 0)
                 {
                     joueur->life--;
@@ -4888,6 +4978,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         else 
         {
             jerem->Ehaltère = 0;
+            son->sonhaltere=0;
         }
     }
     if (jerem->coup != 0)

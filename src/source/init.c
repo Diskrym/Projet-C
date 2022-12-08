@@ -19,7 +19,7 @@ void init(char *title)
     //On crée un renderer pour la SDL et on active la synchro verticale : VSYNC
     renderer = SDL_CreateRenderer(screen, -1, SDL_RENDERER_PRESENTVSYNC);
  
-    // revoie erreur
+    // Renvoie erreur
     if (screen == NULL || renderer == NULL)
     {
         printf("Impossible d'initialiser le mode écran à %d x %d: %s\n", SCREEN_WIDTH,SCREEN_HEIGHT, SDL_GetError());
@@ -38,7 +38,7 @@ void init(char *title)
     SDL_Event event;
 }
 
-//Init de tous les sons du jeu
+//Initialisation de tous les sons du jeu
 void Son (EffetSon *son)
 {
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
@@ -106,14 +106,14 @@ void Son (EffetSon *son)
     son->haltere= Mix_LoadWAV("src/musique/haltere.WAV");
 }
 
-//Init des différentes polices utilisées pour le jeu
+//Initialisation des différentes polices utilisées pour le jeu
 void Texte(ParamTexte *paramtexte)
 {
     paramtexte->Font = TTF_OpenFont("src/font/Pixel.ttf", 25);
     paramtexte->Fontpetite = TTF_OpenFont("src/font/Pixel.ttf", 15);
 }
 
-//Permet de charger les paramtres d'un niveau en fonction du lvl->Num (et ajoute aussi 1 au compteur pièce a chaque passage de lvl)
+//Permet de charger les paramètres d'un niveau en fonction du lvl->Num (et ajoute aussi 1 au compteur pièce à chaque passage de lvl)
 void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
 {
     if (lvl->Map != NULL)
@@ -208,9 +208,9 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
     lvl->MortMonstre=0;
 }
 
-/*Fonction appellé en boucle pour le déroulement des niveaux en fonction du lvl->Num
-Deplacement_XXXX permet de faire bouger les entité et appelle la fonction sprite_XXXX correpondant a l'entité
-Collision_Mur permet de créer une limite artificielle en faisant reculer le joueur sur les bordures de map (chaque map n'a pas les même limites)
+/*Fonction appelée en boucle pour le déroulement des niveaux en fonction du lvl->Num
+Deplacement_XXXX permet de faire bouger les entités et appelle la fonction sprite_XXXX correspondant à l'entité
+Collision_Mur permet de créer une limite artificielle en faisant reculer le joueur sur les bordures de map (chaque map n'a pas les mêmes limites)
 Collision_XXXXX permet de générer une collision entre une entité et le joueur*/
 void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son)
 {
@@ -350,7 +350,7 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
     }
 }
 
-//Les fonctions Load_Level_X_X permet de charger les variables initials des entité pour débuter un niveaux
+//Les fonctions Load_Level_X_X permettent de charger les variables initiales des entités pour débuter un niveaux
 void Load_Level_1_1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
 {  
     Init_Maps(lvl);
@@ -568,7 +568,7 @@ void Load_Level_5_3(Joueur *joueur, Jerem_Boss *jerem,Lvl *lvl)
     
 }
 
-//Permet de séléctionner aléatoirement les positions des éclaires du boss meduse dans les limites de la map
+//Permet de séléctionner aléatoirement les positions des éclairs du boss méduse dans les limites de la map
 void Init_Eclair(Boss *boss)
 {
     boss->Ex1= rand() % (SCREEN_WIDTH-100)+50;
@@ -581,7 +581,7 @@ void Init_Eclair(Boss *boss)
     boss->Ey4= rand() % (SCREEN_HEIGHT-100)+50;
 }
 
-//Permet de charger les sauvegardes écrites sur les fichiers txt
+//Permet de charger les sauvegardes écrites sur les fichiers .txt
 void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
 {
     srand(time(NULL));
