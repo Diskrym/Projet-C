@@ -639,8 +639,13 @@ void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte)
     Draw_Image(stats->Texture_SCORE_5 ,330,234);
 }
 
-void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte)
+void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte, EffetSon *son)
 {
+    son->musicfin++;
+    if (son->musicfin ==1 )
+    {
+    Mix_PlayMusic(son->win,-1);
+    }
     if (lvl->Map!=NULL)
     {
         SDL_DestroyTexture(lvl->Map);

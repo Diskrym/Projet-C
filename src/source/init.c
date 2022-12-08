@@ -55,6 +55,7 @@ void Son (EffetSon *son)
     son->musiqueriviere= Mix_LoadMUS("src/musique/m_riviere.mp3");
     son->musiqueyeti= Mix_LoadMUS("src/musique/m_yeti.mp3");
     son->musiquebossjermy= Mix_LoadMUS("src/musique/m_BossJerem.mp3");
+    son->win= Mix_LoadMUS("src/musique/win.mp3");
     Mix_VolumeMusic(40);
     Mix_PlayMusic(son ->musiquemenu, -1); //Jouer infiniment la musique
     son->epee = Mix_LoadWAV("src/musique/attackChe2.WAV"); //Charger un wav dans un pointeur
