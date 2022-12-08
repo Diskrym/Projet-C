@@ -526,15 +526,18 @@ void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *sq
     Init_Maps(lvl);
     joueur->inposx = level[11][0][2];
     joueur->inposy = level[11][0][3];
+
     squelette->posmonsx = level[11][1][1];
     squelette->posmonsy = level[11][1][2];
     squelette->Direction = 0;
     squelette->Life = level[11][1][5];
+    squelette->Eattaque = 0;
 
     squelette1->posmonsx = level[11][2][1];
     squelette1->posmonsy = level[11][2][2];
     squelette1->Direction = 1;
     squelette1->Life = level[11][2][5];
+    squelette1->Eattaque = 0;
 
     lvl->cin = 1;
 }
