@@ -2,7 +2,7 @@
 
 void Draw_Game(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
 {
-    // Affiche le fond (background) aux coordonnées (0,0) si on a pas de map qui défile !=10
+    // Affiche le fond (background) aux coordonnées (0,0) si pas de map qui défile soit !=10
     if (lvl->Num !=10)
     {
         Draw_Image(lvl->Map, 0, 0);
@@ -43,7 +43,7 @@ void Draw_Game(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
     SDL_Delay(1);
 }
 
-//ecran fin 
+//Ecran fin 
 void Game_Over (EffetSon *son)
 {   
     //Affichage de l'écran Game_Over
@@ -196,7 +196,7 @@ void Render_Coin (Joueur *joueur,Lvl *lvl, ParamTexte *paramtexte)
         SDL_FreeSurface(paramtexte->SurfacePiece);
         paramtexte->SurfacePiece=NULL;
     }
-    //Affcichage des pièces dans le niveau (lvl->Num >=0)
+    //Affichage des pièces dans le niveau (lvl->Num >=0)
     if (lvl->Num >= 0)
     {
         lvl->Piece=loadImage("src/graphics/lvl/Piece.png");
@@ -371,13 +371,13 @@ void Render_Door (Lvl *lvl)
     //Gestion des portes de chaque niveau
     if(lvl->Num==0 || lvl->Num==1)
     {
-        //si tous les monstres sont mort
+        //Si tous les monstres sont morts
         if (lvl->MortMonstre==level[lvl->Num][0][1])
         {
             //Porte ouverte pour les prochains niveaux
             lvl->PorteHaut=loadImage("src/graphics/lvl/Porteouverte.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-            // si le niveaux est differents du premier niv du donjon alors on affiche une porte en bas
+            // Si le niveaux est different du premier niv du donjon, alors on affiche une porte en bas
             if (lvl->Num != 0)
             {
                 lvl->PorteBas=loadImage("src/graphics/lvl/Portefermebas.png");
@@ -395,7 +395,7 @@ void Render_Door (Lvl *lvl)
             }    
         }
     }
-    //Idem pour chaques donjons
+    //Idem pour chaque donjon
     if (lvl->Num==2)
     {
         lvl->PorteBas=loadImage("src/graphics/lvl/Portefermebas.png");
@@ -553,25 +553,25 @@ void Stats_Menu(Lvl *lvl,Stats *stats, ParamTexte *paramtexte)
 
     /*On affiche chaque stats
     Utilisation de itoa pour convertir un int en char %s pour afficher chiffre grace au module .ttf
-    affichage sur écran grâce a Draw_Image*/
+    Affichage sur écran grâce a Draw_Image*/
 
     SDL_Color color = { 255, 255, 255 };
-    //pièce
+    //Pièce(s)
     SDL_itoa(stats->Total_pièce, paramtexte->Gold_Won,10); 
     paramtexte->SurfaceGold = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Gold_Won, color);
     paramtexte->TextureGold = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceGold);
     Draw_Image(paramtexte->TextureGold  ,422,135); 
-    //Monstre tués
+    //Monstre(s) tué(s)
     SDL_itoa(stats->Total_Tués, paramtexte->Monsters_Killed,10); 
     paramtexte->SurfaceKilled = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Monsters_Killed, color);
     paramtexte->TextureKilled = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceKilled);
     Draw_Image(paramtexte->TextureKilled  ,422,159); 
-    //Total mort
+    //Total mort(s)
     SDL_itoa(stats->Total_Mort, paramtexte->Total_Death,10); 
     paramtexte->SurfaceDeath = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Total_Death, color);
     paramtexte->TextureDeath = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceDeath);
     Draw_Image(paramtexte->TextureDeath  ,422,183);
-    //Total dagues
+    //Total dague(s)
     SDL_itoa(stats->Dague_Lancées, paramtexte->Thrown_Daggers,10); 
     paramtexte->SurfaceDaggers = TTF_RenderText_Solid(paramtexte->Fontpetite, paramtexte->Thrown_Daggers, color);
     paramtexte->TextureDaggers = SDL_CreateTextureFromSurface(getrenderer(), paramtexte->SurfaceDaggers);
@@ -612,7 +612,7 @@ void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte)
         stats->Surface_SCORE_4 = NULL;
         stats->Surface_SCORE_5 = NULL;
     }
-    //Affichage du fond du score_board (menu pause )
+    //Affichage du fond du score_board (menu pause)
     SDL_Color color = { 255, 255, 255 };
 
     lvl->Menu=loadImage("src/graphics/lvl/MenuScore.png");
@@ -660,7 +660,7 @@ void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte, EffetSon *son)
     }
     SDL_Color color = { 255, 255, 255 };
 
-    //Gestion de l'affichage du fond de win et affichage des crédit qui défile grâce a lvl->PosMap10
+    //Gestion de l'affichage du fond de win et affichage des crédits qui défilent grâce a lvl->PosMap10
     if(lvl->PosMap10 >= -1700)
     {
         lvl->Map=loadImage("src/graphics/lvl/Win.png");

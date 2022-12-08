@@ -38,7 +38,7 @@ void Init_Maps(Lvl *lvl)
     }
 }
   
-//Selectionne le niveaux a afficher
+//Selectionne le niveau à afficher
 void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input,Stats*stats, ParamTexte *paramtexte)
 {  
     //Map global
@@ -110,8 +110,8 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
             }
             
         }
-        //tout les autres niv avec sortie haut
-        //Si tous les monstres tuées et joueur devant la porte alors on change de niveau
+        //tous les autres niveau avec sortie en haut
+        //Si tous les monstres tués et joueur devant la porte alors on change de niveau
         else if (lvl->MortMonstre == level[lvl->Num][0][1] && joueur->inposy <= 28 && joueur->inposx >= 298 && joueur->inposx <= 320 && lvl->Num != -1)
         {   
              //Variable pour bouger sur map global
@@ -190,7 +190,7 @@ void Gestion_Map_Global (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *so
     }
 
     lvl->Map=loadImage("src/graphics/lvl/mapglobal.png");
-    //Gestion inout pour se déplacer
+    //Gestion input pour se déplacer
     if (input->up == 1 && lvl->NumDonjon < 4)
     {
         SDL_Delay(200);
@@ -201,7 +201,7 @@ void Gestion_Map_Global (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *so
         SDL_Delay(200);
         lvl->NumDonjon -= 1;
     }
-    //En fonction des donjons validé on peut ou pas accéder au autre donjon
+    //En fonction des donjons validés, on peut (ou non) accéder aux autres donjons
     if (lvl->NumDonjon == 0)
     {
         lvl->Icone=loadImage("src/graphics/lvl/TeteChevalier.png");

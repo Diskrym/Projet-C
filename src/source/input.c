@@ -11,7 +11,7 @@ void Get_Input(Input *input)
             case SDL_QUIT:
                 exit(0);
             break;
-            //Cas dan lequel on appuie sur une touche
+            //Cas dans lequel on appuie sur une touche
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym)
                 {
@@ -112,7 +112,7 @@ void Get_Input(Input *input)
                     break;
                 }
             break;
-            //Gestion déplacment souris//boutton
+            //Gestion déplacement souris//boutton
             case SDL_MOUSEBUTTONDOWN :
                 switch (event.button.button)
                 {
@@ -142,18 +142,18 @@ void Get_Input(Input *input)
     }
 }
 
-//Gestion deplacement du chevalier
+//Gestion déplacement du chevalier
 void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,Lvl *lvl)
 {  
     //si pas dans la cinématique du niv 11
     if(!(lvl->cin == 1 && lvl->Num == 11))
     {
-        //Si on a pas le bouclier on se déplace
+        //Si on a pas le bouclier, on se déplace
         if (!(joueur->Eshield==1 && joueur->TimingBouclier<45) && input->shield==0)
         {
             if (input->left==1)
             {
-                //si on est pas dans la rivière on change l'image a afficher avec le NumSprit/changement de la direction du sprit entre gauche et droite et changement de la position du joueur sur le fenetre sdl
+                //si on est pas dans la rivière, on change l'image à afficher avec le NumSprit/changement de la direction du sprit entre gauche et droite et changement de la position du joueur sur le fenetre sdl
                 if(lvl->Num!=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
                 {
                     joueur->inposx-=3;
@@ -219,13 +219,13 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
             joueur->TimingBouclier=0;
         }
     }
-    //Appel de la fonction chargé de la séléction du sprit a afficher
+    //Appel de la fonction chargée de la sélection du sprit à afficher
     Sprit_Chevalier(joueur, input, son, entité, lvl);
 }
 
 void Deplacement_Meduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
 {
-    //Compteur qui permet de choisir l'action a effectuer par la meduse (attaque/deplacement)
+    //Compteur qui permet de choisir l'action à effectuer par la méduse (attaque/déplacement)
     meduse->compteur += 1;
     meduse->NumSprit+=1;
     //Compteur mort méduse
@@ -238,7 +238,7 @@ void Deplacement_Meduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son
     {
         lvl->MortMonstre+=1;
     }
-    //Deplacement meduse
+    //Déplacement méduse
     if (meduse->compteur <= 100 && meduse->Life >=1)
     {
         if (joueur->inposx<meduse->posmonsx)
@@ -389,12 +389,12 @@ void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input
     {
         lvl->MortMonstre+=1;
     }
-    //Gestion coimmepteur eclair
+    //Gestion compteur éclair
     if (boss->compteur > 200 && boss->compteur < 530)
     {
         boss->CompteurSpriteEclair+=1;
     }
-    //Deplacment de base
+    //Déplacement de base
     if (boss->compteur <= 400 && boss->Life >=1 && boss->compteur%2==0)
     {
         if (joueur->inposx<boss->posmonsx)
