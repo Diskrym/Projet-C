@@ -58,6 +58,7 @@ void Score_(Stats *stats,clock_t temps)
     char tempm [10];
     char temph [10];
     stats->Score_act_f= (double)temps/CLOCKS_PER_SEC+stats->TEMPS_GENE;
+    
     //si inférieur a 1minutes alors uniquement seconde
     if (stats->Score_act_f< 60)
     {   
@@ -168,10 +169,24 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         SDL_ShowCursor(SDL_ENABLE);
         char* nomFichier = "src/Save/Game.txt";
         char* nomFichier1= "src/Save/Stats.txt";
+        
+
+        //retour jeux
+        if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 117 && input->PosMouseY <= 154)
+        {
+            lvl->Num = lvl->temp;
+            SDL_ShowCursor(SDL_DISABLE);
+        }
+        //Quit sans save
+        if (input->PosMouseX >= 329 && input->PosMouseX <= 522 && input->PosMouseY >= 164 && input->PosMouseY <= 203)
+        {
+            stats->TEMPS_GENE+=(double)temps/CLOCKS_PER_SEC;
+            lvl->save = 1;
+            exit(0);
+        }
         //save
         if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 167 && input->PosMouseY <= 204 || lvl->save == 1)
         {
-            stats->TEMPS_GENE=(double)temps/CLOCKS_PER_SEC;
             FILE* fichier = fopen ( nomFichier , "r+" );
             if ( fichier )
             {
@@ -191,18 +206,6 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             }
             lvl->save = 0;
 
-        }
-
-        //retour jeux
-        if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 117 && input->PosMouseY <= 154)
-        {
-            lvl->Num = lvl->temp;
-            SDL_ShowCursor(SDL_DISABLE);
-        }
-        //Quit sans save
-        if (input->PosMouseX >= 329 && input->PosMouseX <= 522 && input->PosMouseY >= 164 && input->PosMouseY <= 203)
-        {
-            exit(0);
         }
         //reset base
         if (input->PosMouseX >= 118 && input->PosMouseX <= 524 && input->PosMouseY >= 263 && input->PosMouseY <= 300)
