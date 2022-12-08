@@ -2,7 +2,6 @@
 
 void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, Lvl *lvl)
 {   
-    
     //reset des pointeurs des sprites
     if (joueur->chevalier!=NULL)
     {  
@@ -24,7 +23,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         SDL_DestroyTexture(joueur->dagueMur);
         joueur->dagueMur = NULL;
     }
-    
+    //Si le joueur est en dehors du bateau
     if(joueur->Ebateau<2)
     {
         //Mouvement du joueur droite si bouclier baisser ou si timing bouclier dépassé
@@ -33,6 +32,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
             //se deplace si ne prend pas de dégat sinon sprit degat
             if (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1, &entité->jerem)==1)
             {
+                //Affcihe le sprit en fonction du NumSprit
                 son->sondegat=0;
                 if (joueur->NumSprit==0 || joueur->NumSprit ==1 || joueur->NumSprit==4 || joueur->NumSprit ==5)
                 {
@@ -42,24 +42,15 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                 if (joueur->NumSprit==2 || joueur->NumSprit==3  )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche1D.png");
-                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
-                    // if (joueur->NumSprit==2)
-                    // {Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(3, son->depchevalier, 0);}   
+                    Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);  
                 }
                 if (joueur->NumSprit >=7 || joueur->NumSprit ==6 )
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche2D.png");
                     Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
                     joueur->NumSprit =0;
-                    // if (joueur->NumSprit==7)
-                    // {
-                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(3, son->depchevalier, 0);
-                    // }
                 }
             }
-            
         }
         //affiche sprite degat si degat de la part du entité et si degat de la part du entité lors de notre attack/defense pour la droite
         if((joueur->Direction ==0 && (joueur->Eattack==1 || joueur->Eshield==1) && Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2, &entité->bossyeti,&entité->squelette,&entité->squelette1,&entité->jerem)==0) || (Degat_Chevalier(&entité->meduse, &entité->meduse1 , &entité->meduse2, &entité->chauvesouris , &entité->chauvesouris1, &entité->boss, &entité->yeti, &entité->yeti1, &entité->yeti2 , &entité->bossyeti,&entité->squelette,&entité->squelette1,&entité->jerem)==0) && joueur->Direction==0)
@@ -73,7 +64,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
             Mix_PlayChannel(1, son->degatchevalier, 0);
             }
         }
-        
+
         //cf fonction gauche
         if (joueur->Direction ==1 && joueur->Eattack==0 && (joueur->Eshield==0 || (joueur->Eshield==1 && joueur->TimingBouclier>45)))
         {
@@ -89,21 +80,11 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche1G.png");
                     Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
-                    // if (joueur->NumSprit==2)
-                    // {
-                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(3, son->depchevalier, 0);
-                    // }
                 }
                 if (joueur->NumSprit >=6)
                 {
                     joueur->chevalier=loadImage("src/graphics/Chevalier/marche2G.png");
                     Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
-                    // if (joueur->NumSprit==7)
-                    // {
-                    // Mix_VolumeChunk(son->depchevalier, MIX_MAX_VOLUME);
-                    // Mix_PlayChannel(3, son->depchevalier, 0);
-                    // }
                     joueur->NumSprit =0;
                 }   
             }
@@ -200,8 +181,6 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldD.png");
                         Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
-                        //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
-                        //Mix_PlayChannel(2, son->bouclier, 0);
                     }
                 }
                 if (joueur->Direction==1)
@@ -210,11 +189,9 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldG.png");
                         Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
-                        //Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
-                        //Mix_PlayChannel(2, son->bouclier, 0);
                     }
                 }
-                //incrémentation de timer shield jusqu'a 15
+                //incrémentation de timer shield jusqu'a 45
                 joueur->TimingBouclier+=1;
             }
         }
@@ -225,7 +202,7 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
             joueur->Eattack = 0;
         }
         
-        //Dague
+        //Gestion Dague droite et gauche
         if (joueur->Edague >= 1 && joueur->nbDague>0 && joueur->DirDague==1 && lvl->Num !=4 && lvl->Num !=9)
         {
             if (joueur->xdague>=20 && joueur->xdague<=600 && joueur->ydague>= 20 && joueur->ydague<=384)
@@ -240,11 +217,9 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                     Mix_VolumeChunk(son->dagueLancer, MIX_MAX_VOLUME/2);
                     Mix_PlayChannel(4, son->dagueLancer, 0);
                 }
-
             }
             else
             {   
-                
                 joueur->dagueMur=loadImage("src/graphics/Chevalier/DagueMurG.png");
                 Draw_Image(joueur->dagueMur,joueur->xdague,joueur->ydague);
                 joueur->Edague=2;
@@ -254,7 +229,6 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                     Mix_VolumeChunk(son->dague, MIX_MAX_VOLUME/2);
                     Mix_PlayChannel(4, son->dague, 0);
                 }
-            
                 //recup dague Gauchemap
                 if (joueur->inposx <= joueur->xdague+20 && (joueur->inposy+SPRITE_SIZE>=joueur->ydague && joueur->inposy<=joueur->ydague))
                 {
@@ -262,7 +236,6 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                     joueur->dagueMur = NULL;
                     joueur->Edague=0;
                     son->sondague=0;
-                    //joueur->CoupDague=0;
                 }
             }
         }
@@ -300,11 +273,11 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
                     joueur->dagueMur = NULL;
                     joueur->Edague=0;
                     son->sondague=0;
-                    //joueur->CoupDague=0;
                 }
             }
         }
     }
+    //Si joueur prend des dégâtes et est dans le bateau
     else if (Degat_Bateau(&entité->tronc, &entité->Petit_rocher ,&entité->Gros_rocher) == 1)
     {
         joueur->NumSprit+=1;
@@ -327,7 +300,6 @@ void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entit
         {
             joueur->NumSprit=0;
         }
-        
     }
     else
     {
@@ -349,7 +321,7 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         SDL_DestroyTexture(meduse->attaque);
         meduse->attaque=NULL;
     }
-     //Mort meduse
+    //Mort meduse
     if (meduse->Life==0)
     {
         if (meduse->CompteurSpriteDegat==0 || meduse->CompteurSpriteDegat==1 || meduse->CompteurSpriteDegat==2 || meduse->CompteurSpriteDegat==3 )
@@ -438,7 +410,6 @@ void Sprit_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {
                     meduse->CompteurSpriteDegat=1; 
                     meduse->Life--; 
-                    //joueur->CoupDague=1;
                 }
             }
             else 
@@ -620,9 +591,6 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             lvl->MortMonstre+=1;
         }  
     }
-   
-
- 
     //Mouvement  yeti quand en vie
     if (yeti->Life >=1)
     {
@@ -694,10 +662,8 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                 {
                     yeti->CompteurSpriteDegat=1; 
                     yeti->Life--; 
-                    //joueur->CoupDague=1;
                 }
             }
- 
             else
             {   
                 if (yeti->Direction==1)
@@ -711,14 +677,12 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                     Mix_VolumeChunk(son->degatyeti, MIX_MAX_VOLUME);
                      Mix_PlayChannel(14, son->degatyeti, 0);
                     }
-                   
                     //compteur duree affichage degat yeti
                     if (yeti->CompteurSpriteDegat > 15)
                     {
                         yeti->CompteurSpriteDegat=0;
                     }
                 }
-
                 if (yeti->Direction==0)
                 {
                     //si la yeti prend un coup
@@ -739,7 +703,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             } 
              if (yeti->NumSprit>=16)
             {
-                 yeti->NumSprit=0;
+                yeti->NumSprit=0;
             } 
         }
         //attaqueyeti yeti quand compteur > 100
@@ -772,8 +736,7 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
                         yeti->directionboule=yeti->Direction;
                         yeti->xboule=yeti->posmonsx+33;
                         yeti->yboule=yeti->posmonsy+7;
-                    }
-                    
+                    } 
                 }
                 if (yeti->NumSprit>=30 && yeti->NumSprit<40 || yeti->NumSprit>=50 && yeti->NumSprit<60)
                 {                
@@ -792,8 +755,6 @@ void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {             
                 if (yeti->NumSprit>=0 && yeti->NumSprit<10 || yeti->NumSprit>=80 )
                 {  
-                    
-                
                     yeti->yeti=loadImage("src/graphics/yeti/YetiAttaque1D.png");
                     Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
                 }

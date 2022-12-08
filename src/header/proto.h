@@ -22,9 +22,6 @@ extern void Score_(Stats *stats,clock_t temps);
 extern void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte);
 extern void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte, EffetSon *son);
 
-
-
-
 //events.c
 extern void Collision_Mur (Joueur *joueur, int x, int y, int z, int u, Lvl *lvl);
 extern void Collision_Boss_Meduse (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl);
@@ -51,8 +48,6 @@ extern int Inside_Squelette_Chevalier(Joueur *joueur, Squelette*squelette);
 extern int Inside_Chevalier_Squelette(Joueur *joueur, Squelette *squelette);
 extern int Inside_Chevalier_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem);
 
-
-
 //init.c
 extern SDL_Renderer *getrenderer(void);
 extern void init(char *);
@@ -64,7 +59,6 @@ extern void Son (EffetSon *son);
 extern void Texte(ParamTexte *paramtexte);
 extern void Load_Level_1_4 (Joueur *joueur, Boss *boss, Lvl *lvl);
 extern void Load_Level_2_1 (Joueur *jouer, Lvl* lvl);
-extern void Clean_Up(EffetSon *son);
 extern void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son);
 extern void Init_Eclair(Boss *boss);
 extern void Load_Level_3_1(Joueur *joueur,Yeti *yeti, Lvl *lvl);
@@ -79,9 +73,7 @@ extern void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squele
 extern void Load_Level_5_2(Joueur *joueur, Squelette *squelette, Squelette *squelette1,Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl);
 extern void Load_Level_5_3(Joueur *joueur, Jerem_Boss *jerem,Lvl *lvl);
 
-
 //input.c
-//extern void gestionInputs(Input *input);
 extern void Get_Input(Input *input);
 extern void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité,EffetSon *son, Lvl *lvl);
 extern void Deplacement_Meduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son);
@@ -110,5 +102,4 @@ extern void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_r
 extern void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son);
 extern void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl);
 
-//extern void drawMap(int);
 #endif

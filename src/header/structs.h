@@ -9,7 +9,6 @@ typedef struct Input
     int left, right, up, down, shield, attack, enter, Bypass, dague, echap, PosMouseX, PosMouseY;
 } Input;
 
-
 typedef struct Meduse
 {
     int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur;
@@ -44,7 +43,6 @@ typedef struct Squelette
     SDL_Texture *étoiles;
 }Squelette;
 
-
 typedef struct Chauvesouris
 {
     int NumSprit, Direction, posmonsx, posmonsy, coup, Life, CompteurSpriteDegat, compteur, CompteurSpriteDegatChevalier;
@@ -63,11 +61,9 @@ typedef struct  Boss
     SDL_Texture *Coeur;
 }Boss;
 
-
 typedef struct Joueur
 {
     int inposx, inposy, Eattack, Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, NumSpriteDague, DirDague, Ebateau;
-    //int  CoupDague;
     SDL_Texture *chevalier;
     SDL_Texture *attaque;
     SDL_Texture *dague;
@@ -114,16 +110,11 @@ typedef struct Entité
     BossYeti bossyeti;
     Squelette squelette, squelette1, squelette2;
     Jerem_Boss jerem;
-
 } Entité;
-
-
-
 
 typedef struct EffetSon
 {
     int soncoule, CompteurJerm,CompteurKarine,CompteurJeff,CompteurTanguy, sonLowLife, sondague, sondagueM, sondegat, sondegatsq, musicfin;
-
     Mix_Music *musiquemenu;
     Mix_Music *musiqueMapG;
     Mix_Music *musiqueboss;
@@ -182,11 +173,6 @@ typedef struct EffetSon
     Mix_Chunk *haltere;
     Mix_Chunk *degatjerem;
     Mix_Chunk *sautjerem;
-
- 
-
-
-
 }EffetSon;
 
 
@@ -214,7 +200,6 @@ typedef struct ParamTexte
     char Thrown_Daggers[5];
     char Ratio[3];
 }ParamTexte;
-
 
 typedef struct Lvl
 {
@@ -264,8 +249,7 @@ typedef struct Stats
     SDL_Texture *Texture_SCORE_5;
 
     SDL_Surface *Surface_Actuelle;
-    SDL_Texture *Texture_Actuelle;
-    
+    SDL_Texture *Texture_Actuelle; 
 } Stats;
 
  /*
@@ -323,7 +307,6 @@ static const int level [14][5][6] = {
                                             {2,500,20,2,1,1},
                                             {2,100,200,2,1,1}
                                         },
-                                    
                                         {
                                             {9,1,298,384,0,0},
                                             {5,320,100,1,1,8}
@@ -352,6 +335,4 @@ static const int level [14][5][6] = {
                                             {7,300,120,0,2,30}
                                         }
                                     };
-
-
 #endif

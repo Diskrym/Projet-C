@@ -71,6 +71,7 @@ void Score_(Stats *stats,clock_t temps)
         strcpy(stats->Score_act,"0:00:");
         strcat(stats->Score_act,tempss);
     }
+    //si supèrieur a une min et infèrieur a une heure
     else if (stats->Score_act_f >= 60 && stats->Score_act_f < 3600)
     {
         //Minute
@@ -97,15 +98,14 @@ void Score_(Stats *stats,clock_t temps)
             strcpy(tempSS,"0");
             strncat(tempSS,tempss,1);
         }
-        
 
-        //tout
-        
+        //tout en chaîne de caractères
         strcpy(stats->Score_act,"0:");
         strcat(stats->Score_act,tempMM);
         strcat(stats->Score_act,":");
         strcat(stats->Score_act,tempSS);
     }
+    //Si supèrieur a une heure
     else
     {
         //heure
@@ -119,11 +119,8 @@ void Score_(Stats *stats,clock_t temps)
             strcpy(tempHH,"0");
             strncat(tempHH,temph,1);
         }
-
         //min
         sprintf(tempm,"%f",(stats->Score_act_f - atof(tempHH)*3600));
-        
-
         //sec
         if (stats->Score_act_f > 600)
         {
@@ -136,7 +133,6 @@ void Score_(Stats *stats,clock_t temps)
         }
         //sec
         sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
-        
         if ((atof(tempm)-atof(tempMM))*60 >= 10)
         {
              strncat(tempSS,tempss,2);
@@ -154,14 +150,14 @@ void Score_(Stats *stats,clock_t temps)
         strcat(stats->Score_act,tempSS);
     }
 
-
-    //reset pour gestion score
+    //reset pour gestion score_board
     strcpy(tempHH,"");
     strcpy(tempMM,"");
     strcpy(tempSS,"");
     //gestion meilleur score
     for (int i = 0; i < 5; i++)
     {    
+        //Si nouveau meilleur score
         if (((double)temps/CLOCKS_PER_SEC)+stats->TEMPS_GENE <= stats->Score_Board[i])
         {
             for (int y = 4; y > i; y--)
@@ -181,7 +177,6 @@ void Score_(Stats *stats,clock_t temps)
             }
             else if (stats->Score_Board[i] >= 60 && stats->Score_Board[i] < 3600)
             {
-
                 //Minute
                 sprintf(tempm,"%f",stats->Score_Board[i]/60);
 
@@ -195,13 +190,11 @@ void Score_(Stats *stats,clock_t temps)
                     strncat(tempMM,tempm,1);
                 }
                 sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
-    
-                //tout
+
                 strcpy(stats->Convert_Score[i],"0:");
                 strcat(stats->Convert_Score[i],tempMM);
                 strcat(stats->Convert_Score[i],":");
                 strcat(stats->Convert_Score[i],tempss);
-
             }
             else
             {
@@ -234,13 +227,11 @@ void Score_(Stats *stats,clock_t temps)
                 strcat(stats->Convert_Score[i],tempMM);
                 strcat(stats->Convert_Score[i],":");
                 strcat(stats->Convert_Score[i],tempss);
-
             }
             break;
         }
     }
 }   
-
 
 void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son,Stats *stats, clock_t temps)
 {
@@ -257,7 +248,6 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         SDL_ShowCursor(SDL_ENABLE);
         char* nomFichier = "src/Save/Game.txt";
         char* nomFichier1= "src/Save/Stats.txt";
-        
 
         //retour jeux
         if (input->PosMouseX >= 118 && input->PosMouseX <= 522 && input->PosMouseY >= 117 && input->PosMouseY <= 154)
@@ -331,7 +321,6 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         {
             lvl->Num = -4;
         }
-        
     }
     // quit scoreboard
     if (lvl->Num == -3)
