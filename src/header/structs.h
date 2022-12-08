@@ -35,7 +35,7 @@ typedef struct BossYeti
 
 typedef struct Squelette
 {
-    int NumSprit, posmonsx, posmonsy,Direction, coup, Life, CompteurSpriteDegat, compteur, compteur_cin, Eattaque, Parle_S,Parle_J, compte_jerem, pos_jerem, rebond;
+    int NumSprit, posmonsx, posmonsy,Direction, coup, Life, CompteurSpriteDegat, compteur, compteur_cin, Eattaque, Parle_S, compte_jerem, pos_jerem, rebond;
     SDL_Texture *bulle;
     SDL_Texture *squelette;
     SDL_Texture *Jerem_Cin;
@@ -63,7 +63,7 @@ typedef struct  Boss
 
 typedef struct Joueur
 {
-    int inposx, inposy, Eattack, Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, NumSpriteDague, DirDague, Ebateau;
+    int inposx, inposy, Eattack, Eshield, life, Direction, NumSprit, Numattack, coup, TimingBouclier, AttPiece ,NbPiece, nbDague , xdague, ydague, Edague, DirDague, Ebateau;
     SDL_Texture *chevalier;
     SDL_Texture *attaque;
     SDL_Texture *dague;
@@ -92,11 +92,11 @@ typedef struct Obstacle
 
 typedef struct Jerem_Boss
 {
-        int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSprite2, compteur, Eattaque, Direction, Direction_haltère, xhaltère, yhaltère,Ehaltère, Transformation, cin, pos_ombre_x, pos_ombre_y;
-        SDL_Texture *jeremy;
-        SDL_Texture *haltère;
-        SDL_Texture *ombre;
-        SDL_Texture *fissure;
+    int NumSprit, posmonsx, posmonsy, coup, Life, CompteurSprite2, compteur, Eattaque, Direction, Direction_haltère, xhaltère, yhaltère,Ehaltère, Transformation, cin, pos_ombre_x, pos_ombre_y;
+    SDL_Texture *jeremy;
+    SDL_Texture *haltère;
+    SDL_Texture *ombre;
+    SDL_Texture *fissure;
 }Jerem_Boss;
 
 typedef struct Entité
@@ -203,7 +203,7 @@ typedef struct ParamTexte
 
 typedef struct Lvl
 {
-    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, Pause, temp, Load, reset,save,cin, Win_screen, quit;
+    int Num, MortMonstre, NumDonjon, WinDonjon, PosMap10,Avancement10, temp, Load, reset,save,cin, quit;
     SDL_Texture *PorteHaut;
     SDL_Texture *PorteBas;
     SDL_Texture *Vie1;
@@ -228,7 +228,7 @@ typedef struct Lvl
 
 typedef struct Stats
 {
-    int Total_pièce,Temp_pièce, Total_Tués, Temp_Tués, Total_Mort, Dague_Lancées,Temp_Dague_Lancées,Score;
+    int Total_pièce,Temp_pièce, Total_Tués, Temp_Tués, Total_Mort, Dague_Lancées,Temp_Dague_Lancées;
     float KDA,DIVI_Mort,DIVI_Tués;
     float TEMPS_GENE , Diff_reset;
     char affichage_kda[5];
@@ -236,7 +236,7 @@ typedef struct Stats
     char  Convert_Score[5][20];
     float Score_act_f;
     char Score_act[20];
-
+    char debug[5];
     SDL_Surface *Surface_SCORE_1;
     SDL_Texture *Texture_SCORE_1;
     SDL_Surface *Surface_SCORE_2;
