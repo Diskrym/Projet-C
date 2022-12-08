@@ -680,7 +680,6 @@ void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte, EffetSon *son)
     
     if(lvl->PosMap10 >= -1700)
     {
-        printf("%s\n",stats->Score_act);
         lvl->Map=loadImage("src/graphics/lvl/Win.png");
         Draw_Image(lvl->Map,0,0+lvl->PosMap10);
         stats->Surface_Actuelle = TTF_RenderText_Solid(paramtexte->Font, stats->Score_act, color);

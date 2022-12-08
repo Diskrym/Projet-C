@@ -2399,7 +2399,6 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
     //affichage jerem dans le marché 
     if (lvl->Num == 4 || (lvl->Num == 5 && lvl->WinDonjon<=2))
     {
-        printf("aaaaaaaaaaa");
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
         Draw_Image(marchand->Enter,463,300);
         if ((marchand->Compteur1>=0 && marchand->Compteur1<10) || (marchand->Compteur1>=50 && marchand->Compteur1<=60))
