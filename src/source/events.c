@@ -33,7 +33,7 @@ void Collision_Mur (Joueur *joueur, int x, int y, int z, int u, Lvl *lvl)
     }
 }
 
- //collision entre les meduse et joueur
+//collision entre les meduse et joueur
 void Collision_Meduse (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
 {
    //collision haut joueur
