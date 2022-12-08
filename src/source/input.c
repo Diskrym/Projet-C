@@ -150,7 +150,6 @@ void Get_Input(Input *input)
 void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,Lvl *lvl)
 {  
     //si pas dans une cin
-    printf("%d\n",lvl->cin);
     if(!(lvl->cin == 1 && lvl->Num == 11))
     {
         //Si on a pas le bouclier on se déplace

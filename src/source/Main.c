@@ -154,7 +154,7 @@ init("Dungeon Fate");
                 
         }
         
-        // printf("temps en seconde : %f\n",stats.Score_act_f);
+        printf("temps en seconde : %f\n",stats.Score_act_f);
         // printf("temps general : %f\n",stats.TEMPS_GENE);
         // printf("convertie : %s\n",stats.Score_act);
 

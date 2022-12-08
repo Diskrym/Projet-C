@@ -501,7 +501,6 @@ void Load_Level_4_1(Joueur *Joueur, Lvl *lvl)
 
 void Load_Level_4_2(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc,Obstacle *tanguy, Lvl *lvl)
 {
-    printf("rest");
     Init_Maps(lvl);
     joueur->inposx = level[10][0][2];
     joueur->inposy = level[10][0][3];

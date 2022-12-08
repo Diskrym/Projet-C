@@ -57,6 +57,7 @@ void Score_(Stats *stats,clock_t temps)
     char tempss[10];
     char tempm [10];
     char temph [10];
+    char tempMM[10];
     stats->Score_act_f= (double)temps/CLOCKS_PER_SEC+stats->TEMPS_GENE;
     
     //si inférieur a 1minutes alors uniquement seconde
@@ -68,19 +69,21 @@ void Score_(Stats *stats,clock_t temps)
         strcpy(stats->Score_act,"0:0:");
         strcat(stats->Score_act,tempss);
     }
-    else if (stats->Score_act_f > 60 && stats->Score_act_f < 3600)
+    else if (stats->Score_act_f >= 60 && stats->Score_act_f < 3600)
     {
         //Minute
-        sprintf(tempm,"%.0f",stats->Score_act_f/60);
-
+        sprintf(tempm,"%f",(stats->Score_act_f/60));
+        printf("%f\n",stats->Score_act_f/60);
         //Seconde
-        sprintf(tempss,"%.2f", (stats->Score_act_f/60-atof(tempm))*60);
+        strncpy(tempMM,tempm,1);
+        sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
 
         //tout
         strcpy(stats->Score_act,"0:");
         strcat(stats->Score_act,tempm);
         strcat(stats->Score_act,":");
         strcat(stats->Score_act,tempss);
+        printf("%s\n",tempss);
     }
     else
     {
@@ -118,20 +121,22 @@ void Score_(Stats *stats,clock_t temps)
                 strcpy(stats->Convert_Score[i],"0:0:");
                 strcat(stats->Convert_Score[i],tempss);
             }
-            else if (stats->Score_Board[i] > 60 && stats->Score_Board[i] < 3600)
+            else if (stats->Score_Board[i] >= 60 && stats->Score_Board[i] < 3600)
             {
 
                 //Minute
-                sprintf(tempm,"%.0f",stats->Score_Board[i]/60);
+                sprintf(tempm,"%f",stats->Score_Board[i]/60);
 
                 //Seconde
-                sprintf(tempss,"%.2f", (stats->Score_Board[i]/60-atof(tempm))*60);
+                strncpy(tempMM,tempm,1);
+                sprintf(tempss,"%.2f", (atof(tempm)-atof(tempMM))*60);
     
                 //tout
                 strcpy(stats->Convert_Score[i],"0:");
-                strcat(stats->Convert_Score[i],tempm);
+                strcat(stats->Convert_Score[i],tempMM);
                 strcat(stats->Convert_Score[i],":");
                 strcat(stats->Convert_Score[i],tempss);
+
             }
             else
             {
@@ -222,7 +227,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             FILE* fichier1 = fopen ( nomFichier1 , "r+" );
             if ( fichier1 )
             {
-                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%f temps=%s",0,0,0,0,0,0,"NULL");
+                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%f temps=%s:%s:%s.%s",0,0,0,0,0,0,"0","00","00","00");
                 fclose(fichier1);
             }
             SDL_ShowCursor(SDL_DISABLE);
