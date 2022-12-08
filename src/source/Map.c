@@ -65,7 +65,7 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
     else if (lvl->Num == -5)
     {
 
-        Render_Win(lvl, stats, paramtexte);
+        Render_Win(lvl, stats, paramtexte, son);
     }
     
     else
