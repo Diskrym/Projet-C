@@ -952,78 +952,49 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
     }
 
 
-      //sprit fissure
+    //sprit fissure
     if (bossyeti->tempsfissure==1)
     {
         bossyeti->spritfissure+=1;
         if (bossyeti->directionfissure==1)
         {
             if (bossyeti->spritfissure>=0 && bossyeti->spritfissure<10)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure1G.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (Inside_fissure (joueur, bossyeti, 5)==1)
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure1G.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (Inside_fissure (joueur, bossyeti, 5)==1)
-                    {
-                        if (bossyeti->coupfissure == 0)
+                    if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
                         if (joueur->life != 0)
                         {
                             bossyeti->coupfissure =1 ;
                         }
-                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
-
                     }
-
-                    }
-                    else 
-                    {
-                        bossyeti->coupfissure =0;
-                    }
-
                 }
-                if (bossyeti->spritfissure>=10 && bossyeti->spritfissure<20)
+                else 
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure2G.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (bossyeti->spritfissure==15)
-                    {
+                    bossyeti->coupfissure =0;
+                }
+            }
+            if (bossyeti->spritfissure>=10 && bossyeti->spritfissure<20)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure2G.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (bossyeti->spritfissure==15)
+                {
                     Mix_VolumeChunk(son->fissure, MIX_MAX_VOLUME);
                     Mix_PlayChannel(10, son->fissure, 0); 
-                    }
-                    if (Inside_fissure (joueur, bossyeti, 4)==1)
-                    {
-                        if (bossyeti->coupfissure == 0)
-                    {
-                        joueur->life--;
-                        if (joueur->life != 0)
-                        {
-                            bossyeti->coupfissure =1 ;
-                        }
-                        bossyeti->ticfissure=bossyeti->spritfissure;
-
-                    }
-
-                    }
-                     else 
-                    {
-                        bossyeti->coupfissure =0;
-                    }
                 }
-                if (bossyeti->spritfissure>=20 && bossyeti->spritfissure<30)
+                if (Inside_fissure (joueur, bossyeti, 4)==1)
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure3G.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (Inside_fissure (joueur, bossyeti, 3)==1)
-                    {
-                        if (bossyeti->coupfissure == 0)
+                    if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
                         if (joueur->life != 0)
@@ -1032,47 +1003,21 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                         }
                         bossyeti->ticfissure=bossyeti->spritfissure;
                     }
-
-                    }
-                     else 
-                    {
-                        bossyeti->coupfissure =0;
-                    }
                 }
-                if (bossyeti->spritfissure>=30 && bossyeti->spritfissure<40)
+                    else 
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure4G.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (Inside_fissure (joueur, bossyeti, 2)==1)
-                    {
-                        if (bossyeti->coupfissure == 0)
-                    {
-                        joueur->life--;
-                        if (joueur->life != 0)
-                        {
-                            bossyeti->coupfissure =1 ;
-                        }
-                        bossyeti->ticfissure=bossyeti->spritfissure;
-
-                    }
-
-                    }
-                     else 
-                    {
-                        bossyeti->coupfissure =0;
-                    }
+                    bossyeti->coupfissure =0;
                 }
-                if (bossyeti->spritfissure>=40)
+            }
+            if (bossyeti->spritfissure>=20 && bossyeti->spritfissure<30)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure3G.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (Inside_fissure (joueur, bossyeti, 3)==1)
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure5G.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (Inside_fissure (joueur, bossyeti, 1)==1)
-                    {
-                        if (bossyeti->coupfissure == 0)
+                    if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
                         if (joueur->life != 0)
@@ -1080,27 +1025,71 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                             bossyeti->coupfissure =1 ;
                         }
                         bossyeti->ticfissure=bossyeti->spritfissure;
-
-                    }
-
-                    }
-                     else 
-                    {
-                        bossyeti->coupfissure =0;
                     }
                 }
+                    else 
+                {
+                    bossyeti->coupfissure =0;
+                }
+            }
+            if (bossyeti->spritfissure>=30 && bossyeti->spritfissure<40)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure4G.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (Inside_fissure (joueur, bossyeti, 2)==1)
+                {
+                    if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+                    }
+                }
+                    else 
+                {
+                    bossyeti->coupfissure =0;
+                }
+            }
+            if (bossyeti->spritfissure>=40)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure5G.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (Inside_fissure (joueur, bossyeti, 1)==1)
+                {
+                    if (bossyeti->coupfissure == 0)
+                    {
+                        joueur->life--;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        }
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+                    }
+                }
+                    else 
+                {
+                    bossyeti->coupfissure =0;
+                }
+            }
         }
         if (bossyeti->directionfissure==0)
         {
             if (bossyeti->spritfissure>=0 && bossyeti->spritfissure<10)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure1D.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (Inside_fissure (joueur, bossyeti, 5)==1)
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure1D.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (Inside_fissure (joueur, bossyeti, 5)==1)
-                    {
-                        if (bossyeti->coupfissure == 0)
+                    if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
                         if (joueur->life != 0)
@@ -1108,131 +1097,110 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                             bossyeti->coupfissure =1 ;
                         }
                         bossyeti->ticfissure=bossyeti->spritfissure;
-
                     }
-
-                    }
-                     else 
-                    {
-                        bossyeti->coupfissure =0;
-                    }
-                                       
-
                 }
-                if (bossyeti->spritfissure>=10 && bossyeti->spritfissure<20)
+                else 
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure2D.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (bossyeti->spritfissure==15)
-                    {
+                    bossyeti->coupfissure =0;
+                }
+            }
+            if (bossyeti->spritfissure>=10 && bossyeti->spritfissure<20)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure2D.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (bossyeti->spritfissure==15)
+                {
                     Mix_VolumeChunk(son->fissure, MIX_MAX_VOLUME);
                     Mix_PlayChannel(10, son->fissure, 0); 
-                    }
-                    if (Inside_fissure (joueur, bossyeti, 4)==1)
+                }
+                if (Inside_fissure (joueur, bossyeti, 4)==1)
+                {
+                    if (bossyeti->coupfissure == 0)
                     {
-                        if (bossyeti->coupfissure == 0)
+                        joueur->life--;
+                        if (joueur->life != 0)
+                        {
+                            bossyeti->coupfissure =1 ;
+                        } 
+                        bossyeti->ticfissure=bossyeti->spritfissure;
+                    }
+                }
+                else 
+                {
+                    bossyeti->coupfissure =0;
+                }
+            }
+            if (bossyeti->spritfissure>=20 && bossyeti->spritfissure<30)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure3D.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (Inside_fissure (joueur, bossyeti, 3)==1)
+                {
+                    if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
                         if (joueur->life != 0)
                         {
                             bossyeti->coupfissure =1 ;
                         }
-                        
-                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
                     }
-
-                    }
-                     else 
-                    {
-                        bossyeti->coupfissure =0;
-                    }
-                                        
-
                 }
-                if (bossyeti->spritfissure>=20 && bossyeti->spritfissure<30)
+                else 
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure3D.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (Inside_fissure (joueur, bossyeti, 3)==1)
-                    {
-                        if (bossyeti->coupfissure == 0)
-                    {
-                        joueur->life--;
-                        if (joueur->life != 0)
-                        {
-                        bossyeti->coupfissure =1 ;
-                        }
-                        
-                        bossyeti->ticfissure=bossyeti->spritfissure;
-
-                    }
-
-                    }
-                     else 
-                    {
-                        bossyeti->coupfissure =0;
-                    }
-                                        
-
+                    bossyeti->coupfissure =0;
                 }
-                if (bossyeti->spritfissure>=30 && bossyeti->spritfissure<40)
+            }
+            if (bossyeti->spritfissure>=30 && bossyeti->spritfissure<40)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure4D.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (Inside_fissure (joueur, bossyeti, 2)==1)
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure4D.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (Inside_fissure (joueur, bossyeti, 2)==1)
-                    {
-                        if (bossyeti->coupfissure == 0)
+                    if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
                         if (joueur->life != 0)
                         {
                             bossyeti->coupfissure =1 ;
                         }
-                        
                         bossyeti->ticfissure=bossyeti->spritfissure;
-
                     }
-
-                    }
-                     else 
-                    {
-                        bossyeti->coupfissure =0;
-                    }
-
                 }
-                if (bossyeti->spritfissure>=40)
+                else 
                 {
-                    bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure5D.png");                    
-                    Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
-                    bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
-                    Draw_Image(bossyeti->cachemisere,0,0);
-                    if (Inside_fissure (joueur, bossyeti, 1)==1)
-                    {
-                        if (bossyeti->coupfissure == 0)
+                    bossyeti->coupfissure =0;
+                }
+            }
+            if (bossyeti->spritfissure>=40)
+            {
+                bossyeti->fissure=loadImage("src/graphics/BossYeti/Fissure5D.png");                    
+                Draw_Image(bossyeti->fissure,bossyeti->xfissure,bossyeti->yfissure);
+                bossyeti->cachemisere=loadImage("src/graphics/BossYeti/cachemisere.png");                    
+                Draw_Image(bossyeti->cachemisere,0,0);
+                if (Inside_fissure (joueur, bossyeti, 1)==1)
+                {
+                    if (bossyeti->coupfissure == 0)
                     {
                         joueur->life--;
                         if (joueur->life != 0)
                         {
-                        bossyeti->coupfissure =1 ;
-                        }
-                        
+                            bossyeti->coupfissure =1 ;
+                        } 
                         bossyeti->ticfissure=bossyeti->spritfissure;
-
                     }
-
-                    }
-                     else 
-                    {
-                        bossyeti->coupfissure =0;
-                    }      
-               }
+                }
+                else 
+                {
+                    bossyeti->coupfissure =0;
+                }      
+            }
         
         
         if (bossyeti->spritfissure==bossyeti->ticfissure+40)
@@ -1360,241 +1328,213 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                     }
                 }
             }
-             if (bossyeti->NumSprit>=16)
+            if (bossyeti->NumSprit>=16)
             {
-                 bossyeti->NumSprit=0;
+                bossyeti->NumSprit=0;
             }
         }
         //attaquebossyeti bossyeti quand compteur > 100
         if  (bossyeti->compteur>=100)
         {   
-        if (bossyeti->compteurfissure==0 )
+            if (bossyeti->compteurfissure==0 )
             {
-            if (bossyeti->Direction==1)
-            {            
-                if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80  )
-                {  
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque1G.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                }
-                if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
-                {
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque2G.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                }
-                if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
-                {  
-                    if (bossyeti->NumSprit==60)
-                    {
-                    Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(16, son->attaquebossyeti, 0);
+                if (bossyeti->Direction==1)
+                {            
+                    if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80  )
+                    {  
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque1G.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3G.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    if (bossyeti->NumSprit == 65)
+                    if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
                     {
-                        bossyeti->Eattaque = 1;
-                        bossyeti->directioncrane=bossyeti->Direction;
-                        bossyeti->xcrane=bossyeti->posmonsx+33;
-                        bossyeti->ycrane=bossyeti->posmonsy+7;
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque2G.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
-                   
-                }
-                if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque4G.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                }
-                if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5G.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    
-
-                }
-               
-            }
- 
-            if (bossyeti->Direction==0)
-            {            
-                if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 )
-                {  
-                   
-               
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque1D.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                }
-                if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
-                {
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque2D.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                }
-                if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
-                {  
-                    if (bossyeti->NumSprit==60)
-                    {
-                    Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(16, son->attaquebossyeti, 0);
+                    if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
+                    {  
+                        if (bossyeti->NumSprit==60)
+                        {
+                            Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
+                            Mix_PlayChannel(16, son->attaquebossyeti, 0);
+                        }
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3G.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        if (bossyeti->NumSprit == 65)
+                        {
+                            bossyeti->Eattaque = 1;
+                            bossyeti->directioncrane=bossyeti->Direction;
+                            bossyeti->xcrane=bossyeti->posmonsx+33;
+                            bossyeti->ycrane=bossyeti->posmonsy+7;
+                        }
                     }
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3D.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    if (bossyeti->NumSprit == 65)
-                    {
-                        bossyeti->Eattaque = 1;
-                        bossyeti->directioncrane=bossyeti->Direction;
-                        bossyeti->xcrane=bossyeti->posmonsx+33;
-                        bossyeti->ycrane=bossyeti->posmonsy+9;
+                    if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque4G.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5G.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
                     }
                 }
-                if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque4D.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                }
-                if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5D.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    
-                }
+                if (bossyeti->Direction==0)
+                {            
+                    if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 )
+                    {  
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque1D.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque2D.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
+                    {  
+                        if (bossyeti->NumSprit==60)
+                        {
+                            Mix_VolumeChunk(son->attaquebossyeti, MIX_MAX_VOLUME);
+                            Mix_PlayChannel(16, son->attaquebossyeti, 0);
+                        }
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque3D.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        if (bossyeti->NumSprit == 65)
+                        {
+                            bossyeti->Eattaque = 1;
+                            bossyeti->directioncrane=bossyeti->Direction;
+                            bossyeti->xcrane=bossyeti->posmonsx+33;
+                            bossyeti->ycrane=bossyeti->posmonsy+9;
+                        }
+                    }
+                    if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque4D.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiAttaque5D.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy); 
+                    }
                 //reset compteur bossyeti
-            }
-            if (bossyeti->NumSprit>90)
-            {
-                bossyeti->NumSprit=0;
-                bossyeti->compteurfissure+=1;
-            }
-        }
-        if (bossyeti->compteurfissure==1)
-        {
-            if (bossyeti->Direction==1)
-            {            
-                if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 && bossyeti->NumSprit<90 )
-                {  
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2G.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    if (bossyeti->NumSprit==9 && bossyeti->tempsfissure!=0)
-                    {
-                    bossyeti->tempsfissure=0;;
-                    }
                 }
-                if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
+                if (bossyeti->NumSprit>90)
                 {
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure3G.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    bossyeti->NumSprit=0;
+                    bossyeti->compteurfissure+=1;
                 }
-                if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
-                {  
-                 
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4G.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    if (bossyeti->NumSprit==68)
-                    {
-                    Mix_VolumeChunk(son->solbossyeti, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(16, son->solbossyeti, 0);
-                    }
-                    
-                }
-                if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure5G.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                }
-                if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6G.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    
-
-                }
-                if (bossyeti->NumSprit>=90  )
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1G.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    if (bossyeti->NumSprit==90)
-                    {
-                    bossyeti->tempsfissure=1;
-                    bossyeti->xfissure=bossyeti->posmonsx-300;
-                    bossyeti->yfissure=bossyeti->posmonsy+100;
-                    bossyeti->directionfissure=bossyeti->Direction;
-                    bossyeti->spritfissure=0;
-                    }
-                    
-
-                }
-                
-               
             }
- 
-            if (bossyeti->Direction==0)
-            {            
-                if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 && bossyeti->NumSprit<90 )
-                {  
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2D.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    if (bossyeti->NumSprit==9 && bossyeti->tempsfissure!=0)
-                    {
-                    bossyeti->tempsfissure=0;
-                    }
-                }
-                if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
-                {
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure3D.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                }
-                if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
-                {  
-                 
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4D.png");
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    if (bossyeti->NumSprit==68)
-                    {
-                    Mix_VolumeChunk(son->solbossyeti, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(16, son->solbossyeti, 0);
-                    }
-                    
-                }
-                if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure5D.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                }
-                if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6D.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    
-
-                }
-                if (bossyeti->NumSprit>=90  )
-                {                
-                    bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1D.png");                    
-                    Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                    if (bossyeti->NumSprit==90)
-                    {
-                    bossyeti->tempsfissure=1;
-                    bossyeti->xfissure=bossyeti->posmonsx+100;
-                    bossyeti->yfissure=bossyeti->posmonsy+100;
-                    bossyeti->directionfissure=bossyeti->Direction;
-                    bossyeti->spritfissure=0;
-                    }
-                    
-
-                }
-                
-            }
-            if (bossyeti->NumSprit>95)
+            if (bossyeti->compteurfissure==1)
             {
-                bossyeti->NumSprit=0;
-                bossyeti->compteurfissure=0;
-                
+                if (bossyeti->Direction==1)
+                {            
+                    if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 && bossyeti->NumSprit<90 )
+                    {  
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2G.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        if (bossyeti->NumSprit==9 && bossyeti->tempsfissure!=0)
+                        {
+                            bossyeti->tempsfissure=0;;
+                        }
+                    }
+                    if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure3G.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
+                    {  
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4G.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        if (bossyeti->NumSprit==68)
+                        {
+                            Mix_VolumeChunk(son->solbossyeti, MIX_MAX_VOLUME);
+                            Mix_PlayChannel(16, son->solbossyeti, 0);
+                        } 
+                    }
+                    if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure5G.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6G.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=90  )
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1G.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        if (bossyeti->NumSprit==90)
+                        {
+                            bossyeti->tempsfissure=1;
+                            bossyeti->xfissure=bossyeti->posmonsx-300;
+                            bossyeti->yfissure=bossyeti->posmonsy+100;
+                            bossyeti->directionfissure=bossyeti->Direction;
+                            bossyeti->spritfissure=0;
+                        }
+                    }
+                }
+                if (bossyeti->Direction==0)
+                {            
+                    if (bossyeti->NumSprit>=0 && bossyeti->NumSprit<10 || bossyeti->NumSprit>=80 && bossyeti->NumSprit<90 )
+                    {  
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure2D.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        if (bossyeti->NumSprit==9 && bossyeti->tempsfissure!=0)
+                        {
+                            bossyeti->tempsfissure=0;
+                        }
+                    }
+                    if (bossyeti->NumSprit>=10 && bossyeti->NumSprit<20 || bossyeti->NumSprit>=70 && bossyeti->NumSprit<80)
+                    {
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure3D.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=20 && bossyeti->NumSprit<30 || bossyeti->NumSprit>=60 && bossyeti->NumSprit<70)
+                    {  
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure4D.png");
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        if (bossyeti->NumSprit==68)
+                        {
+                            Mix_VolumeChunk(son->solbossyeti, MIX_MAX_VOLUME);
+                            Mix_PlayChannel(16, son->solbossyeti, 0);
+                        }
+                    }
+                    if (bossyeti->NumSprit>=30 && bossyeti->NumSprit<40 || bossyeti->NumSprit>=50 && bossyeti->NumSprit<60)
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure5D.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=40 && bossyeti->NumSprit<50 )
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure6D.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                    }
+                    if (bossyeti->NumSprit>=90  )
+                    {                
+                        bossyeti->bossyeti=loadImage("src/graphics/BossYeti/BossYetiFissure1D.png");                    
+                        Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
+                        if (bossyeti->NumSprit==90)
+                        {
+                            bossyeti->tempsfissure=1;
+                            bossyeti->xfissure=bossyeti->posmonsx+100;
+                            bossyeti->yfissure=bossyeti->posmonsy+100;
+                            bossyeti->directionfissure=bossyeti->Direction;
+                            bossyeti->spritfissure=0;
+                        }
+                    }
+                }
+                if (bossyeti->NumSprit>95)
+                {
+                    bossyeti->NumSprit=0;
+                    bossyeti->compteurfissure=0;
+                }
             }
-        }
         }
     }
-
-  
-   
     //Sprit crane
     if (bossyeti->Eattaque == 1)
     {
@@ -1604,15 +1544,13 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
             {
                 bossyeti->crane=loadImage("src/graphics/BossYeti/CraneG.png");                    
                 Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
-               
                 if (Inside_Vol(bossyeti->xcrane,bossyeti->ycrane,joueur->inposx,joueur->inposy,64,64,35,26)==1 && bossyeti->coup == 0)
                 {
                     joueur->life--;
                     if (joueur->life != 0)
                     {
-                    bossyeti->coup=1;
-                    }
-                    
+                        bossyeti->coup=1;
+                    } 
                 }
                 bossyeti->xcrane-=7;
             }
@@ -1623,10 +1561,9 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 {  
                      if (bossyeti->Compteurcrane==1)
                     {
-                    Mix_VolumeChunk(son->cranemur, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(7, son->cranemur, 0);
+                        Mix_VolumeChunk(son->cranemur, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(7, son->cranemur, 0);
                     }
-                   
                     bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1G.png");
                     Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
                 }
@@ -1665,9 +1602,8 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                     joueur->life--;
                     if (joueur->life != 0)
                     {
-                    bossyeti->coup=1;
+                        bossyeti->coup=1;
                     }
-                    
                 }
                 bossyeti->xcrane+=7;
             }
@@ -1678,8 +1614,8 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
                 {  
                     if (bossyeti->Compteurcrane==1)
                     {
-                    Mix_VolumeChunk(son->cranemur, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(7, son->cranemur, 0);
+                        Mix_VolumeChunk(son->cranemur, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(7, son->cranemur, 0);
                     }
                     bossyeti->crane=loadImage("src/graphics/BossYeti/CraneMur1D.png");
                     Draw_Image(bossyeti->crane,bossyeti->xcrane,bossyeti->ycrane);
@@ -1765,11 +1701,6 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
             {
                 bossyeti->bossyeti=loadImage("src/graphics/BossYeti/MortBossYeti1D.png");
                 Draw_Image(bossyeti->bossyeti,bossyeti->posmonsx,bossyeti->posmonsy);
-                // if (bossyeti->CompteurSpriteDegat==1)
-                // {
-                // Mix_VolumeChunk(son->mortbossyeti, MIX_MAX_VOLUME);
-                // Mix_PlayChannel(9, son->mortbossyeti, 0);
-                // }
             }
             if (bossyeti->CompteurSpriteDegat==4 || bossyeti->CompteurSpriteDegat==5 || bossyeti->CompteurSpriteDegat==6 || bossyeti->CompteurSpriteDegat==7 )
             {
@@ -1797,7 +1728,6 @@ void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son
             lvl->MortMonstre+=1;
         }  
     }
-   
 }
 
 void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
@@ -1811,9 +1741,10 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
     //Qd en vie et quelle ne prend pas dégât
     if (chauvesouris->Life >=1)
     {
-         if (chauvesouris->CompteurSpriteDegat==0)
+        if (chauvesouris->CompteurSpriteDegat==0)
+        {
+            if (chauvesouris->Direction==0)
             {
-            if (chauvesouris->Direction==0){
                 if (chauvesouris->NumSprit==0 || chauvesouris->NumSprit==1 || chauvesouris->NumSprit==2 || chauvesouris->NumSprit==3 ||chauvesouris->NumSprit==8 || chauvesouris->NumSprit==9 || chauvesouris->NumSprit==10 || chauvesouris->NumSprit==11 )
                 {
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreD.png");
@@ -1831,10 +1762,10 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
                 }  
             }
 
-            if (chauvesouris->Direction==1){
+            if (chauvesouris->Direction==1)
+            {
                 if (chauvesouris->NumSprit==0 || chauvesouris->NumSprit==1 || chauvesouris->NumSprit==2 || chauvesouris->NumSprit==3 ||chauvesouris->NumSprit==8 || chauvesouris->NumSprit==9 || chauvesouris->NumSprit==10 || chauvesouris->NumSprit==11 )
                 {
-                    
                     chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreG.png");
                     Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
@@ -1849,7 +1780,6 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
                     Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
                 }
             } 
- 
             //Attaque chauvesouris sans compt
             //si non bouclier
             if (Inside_Chauvesouris_Chevalier(joueur,chauvesouris)==1 && joueur->Eshield==0)
@@ -1860,7 +1790,6 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
                 {
                     chauvesouris->coup =1 ;
                 }
-                
                 lvl->MortMonstre+=1;
             }
             //si bouclier
@@ -1885,8 +1814,8 @@ void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, E
             Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
             if (chauvesouris->CompteurSpriteDegat==0)
             {
-            Mix_VolumeChunk(son->mortchauvesouris, MIX_MAX_VOLUME);
-            Mix_PlayChannel(6, son->mortchauvesouris, 0);
+                Mix_VolumeChunk(son->mortchauvesouris, MIX_MAX_VOLUME);
+                Mix_PlayChannel(6, son->mortchauvesouris, 0);
             }
         }
         if (chauvesouris->CompteurSpriteDegat==4 || chauvesouris->CompteurSpriteDegat==5 || chauvesouris->CompteurSpriteDegat==6 || chauvesouris->CompteurSpriteDegat==7 )
@@ -1956,8 +1885,6 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         SDL_DestroyTexture(boss->Coeur);
         boss->Coeur=NULL;
     }
-    
-
     //Mouvement  meduse qd en vie
     if (boss->Life >=1)
     {
@@ -2003,7 +1930,6 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 {
                     boss->CompteurSpriteDegat=1; 
                     boss->Life--; 
-                    //joueur->CoupDague=1;
                 }  
             } 
             //degat sur Boss
@@ -2014,8 +1940,8 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy); 
                 if (boss->CompteurSpriteDegat==2)
                 {
-                Mix_VolumeChunk(son->degatboss, MIX_MAX_VOLUME);
-                Mix_PlayChannel(2, son->degatboss, 0);   
+                    Mix_VolumeChunk(son->degatboss, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(2, son->degatboss, 0);   
                 }
                 if (boss->CompteurSpriteDegat > 15)
                 {
@@ -2055,7 +1981,6 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 {
                     boss->coupE1=1;
                 }
-                
             }
             if (boss->coupE1==1 && boss->compteur>240)
             {
@@ -2113,8 +2038,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 if (joueur->life != 0)
                 {
                     boss->coupE3=1;
-                }
-                
+                }   
             }
             if (boss->coupE3==1 && boss->compteur==300)
             {
@@ -2143,8 +2067,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                 if (joueur->life != 0)
                 {
                     boss->coupE4=1;
-                }
-                
+                } 
             } 
             // inside eclair 4 hors boucle
             if (boss->compteur>330 && boss->coupE4==1)
@@ -2178,8 +2101,8 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
             if (boss->NumSprit==15 || boss->NumSprit==16 || boss->NumSprit==17 || boss->NumSprit==18 )
             {   if (boss->NumSprit==15)
                 {
-                Mix_VolumeChunk(son->attaqueboss, MIX_MAX_VOLUME);
-                Mix_PlayChannel(7, son->attaqueboss, 0);
+                    Mix_VolumeChunk(son->attaqueboss, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(7, son->attaqueboss, 0);
                 }
                 boss->Boss=loadImage("src/graphics/Boss/Bossattaque5.png");
                 Draw_Image(boss->Boss,boss->posmonsx,boss->posmonsy);
@@ -2195,8 +2118,7 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
                         if (joueur->life != 0)
                         {
                             boss->coup =1;
-                        }
-                        
+                        }  
                     }
                 }
             }
@@ -2212,7 +2134,6 @@ void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
         {
             boss->NumSprit=0;
         }
-        
     }
 
     //mort boss
@@ -2344,9 +2265,6 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
         marchand->Table = NULL;
     }
     
-    
-    
-    
     if (lvl->Num == 4)
     {
         //Affichage de la table 
@@ -2397,19 +2315,19 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurJerm++;
                 if (son->CompteurJerm==1)
                 {
-                Mix_VolumeChunk(son->JeremDamm, MIX_MAX_VOLUME);
-                Mix_PlayChannel(2, son->JeremDamm, 0);
+                    Mix_VolumeChunk(son->JeremDamm, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(2, son->JeremDamm, 0);
                 }
             }
             if (marchand->CompteurMess1==2)
             {
                 marchand->bulle=loadImage("src/graphics/Marchand/BulleCouteau2.png");
                 Draw_Image(marchand->bulle,210,130);
-                                son->CompteurJerm++;
+                son->CompteurJerm++;
                 if (son->CompteurJerm==1)
                 {
-                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
-                Mix_PlayChannel(2, son->Jerem, 0);
+                    Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(2, son->Jerem, 0);
                 }
             }
             if (marchand->CompteurMess1==3)
@@ -2419,14 +2337,13 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurJerm++;
                 if (son->CompteurJerm==1)
                 {
-                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
-                Mix_PlayChannel(2, son->Jerem, 0);
+                    Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(2, son->Jerem, 0);
                 }
                 if (joueur->nbDague == 0)
                 {
                     joueur->nbDague=1;
-                }
-                
+                } 
             }
         }
         //remise a zero du compteur
@@ -2459,8 +2376,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurJerm++;
                 if (son->CompteurJerm==1)
                 {
-                Mix_VolumeChunk(son->JeremDamm, MIX_MAX_VOLUME);
-                Mix_PlayChannel(2, son->JeremDamm, 0);
+                    Mix_VolumeChunk(son->JeremDamm, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(2, son->JeremDamm, 0);
                 }
             }
             if (marchand->CompteurMess1==2)
@@ -2470,8 +2387,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurJerm++;
                 if (son->CompteurJerm==1)
                 {
-                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
-                Mix_PlayChannel(2, son->Jerem, 0);
+                    Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(2, son->Jerem, 0);
                 }
             }
             if (marchand->CompteurMess1==3)
@@ -2481,8 +2398,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurJerm++;
                 if (son->CompteurJerm==1)
                 {
-                Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
-                Mix_PlayChannel(2, son->Jerem, 0);
+                    Mix_VolumeChunk(son->Jerem, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(2, son->Jerem, 0);
                 }
             }
         }
@@ -2495,7 +2412,6 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
         {
             marchand->CompteurMess1 = 0;
         }
-
 
         //Sprite Karine 
         marchand->Enter=loadImage("src/graphics/Marchand/Enter.png");
@@ -2516,7 +2432,6 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             Draw_Image(marchand->Marchand,160,50);
         }
         
-
         //Sprite Bulle Karine
         if (joueur->inposx >= 170 && joueur->inposx <= 420 && joueur->inposy >= 48 && joueur->inposy<160)
         {
@@ -2533,8 +2448,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurKarine++;
                 if (son->CompteurKarine==1)
                 {
-                Mix_VolumeChunk(son->karine, MIX_MAX_VOLUME);
-                Mix_PlayChannel(10, son->karine, 0);
+                    Mix_VolumeChunk(son->karine, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->karine, 0);
                 }
             }
             if (marchand->CompteurMess2==2)
@@ -2544,8 +2459,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurKarine++;
                 if (son->CompteurKarine==1)
                 {
-                Mix_VolumeChunk(son->karine, MIX_MAX_VOLUME);
-                Mix_PlayChannel(10, son->karine, 0);
+                    Mix_VolumeChunk(son->karine, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->karine, 0);
                 }
             }
             if (marchand->CompteurMess2==3)
@@ -2555,10 +2470,9 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurKarine++;
                 if (son->CompteurKarine==1)
                 {
-                Mix_VolumeChunk(son->karine, MIX_MAX_VOLUME);
-                Mix_PlayChannel(10, son->karine, 0);
+                    Mix_VolumeChunk(son->karine, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->karine, 0);
                 }
-
                 //Achat de coeur
                 if (input->attack == 1)
                 {   
@@ -2608,7 +2522,6 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 SDL_Delay(200);
                 marchand->CompteurMess3 += 1;
                 son->CompteurJeff=0;
-
             }
             if (marchand->CompteurMess3==1)
             {
@@ -2617,8 +2530,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurJeff++;
                 if (son->CompteurJeff==1)
                 {
-                Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
-                Mix_PlayChannel(10, son->jeff, 0);
+                    Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->jeff, 0);
                 }
             }
             if (marchand->CompteurMess3==2)
@@ -2628,10 +2541,9 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurJeff++;
                 if (son->CompteurJeff==1)
                 {
-                Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
-                Mix_PlayChannel(10, son->jeff, 0);
-                }
-                
+                    Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->jeff, 0);
+                } 
             }
             if (marchand->CompteurMess3==3)
             {
@@ -2640,8 +2552,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurJeff++;
                 if (son->CompteurJeff==1)
                 {
-                Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
-                Mix_PlayChannel(10, son->jeff, 0);
+                    Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->jeff, 0);
                 }
             }
         }
@@ -2694,8 +2606,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurTanguy++;
                 if (son->CompteurTanguy==1)
                 {
-                Mix_VolumeChunk(son->tanguy, MIX_MAX_VOLUME);
-                Mix_PlayChannel(10, son->tanguy, 0);
+                    Mix_VolumeChunk(son->tanguy, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->tanguy, 0);
                 }
             }
             if (marchand->CompteurMess1==2)
@@ -2705,8 +2617,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurTanguy++;
                 if (son->CompteurTanguy==1)
                 {
-                Mix_VolumeChunk(son->tanguy, MIX_MAX_VOLUME);
-                Mix_PlayChannel(10, son->tanguy, 0);
+                    Mix_VolumeChunk(son->tanguy, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->tanguy, 0);
                 }
             }
             if (marchand->CompteurMess1==3)
@@ -2716,8 +2628,8 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
                 son->CompteurTanguy++;
                 if (son->CompteurTanguy==1)
                 {
-                Mix_VolumeChunk(son->tanguy, MIX_MAX_VOLUME);
-                Mix_PlayChannel(10, son->tanguy, 0);
+                    Mix_VolumeChunk(son->tanguy, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(10, son->tanguy, 0);
                 }
                 joueur->Ebateau=1;
             }
@@ -2732,7 +2644,6 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
             marchand ->CompteurMess1=0;
         }
         
-
         //entree joueur dans bateau
         if (joueur->inposx >= 80 && joueur->inposx <= 131 && joueur->inposy >= 205 && joueur->Ebateau == 1)
         {
@@ -2922,58 +2833,55 @@ void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,O
             }
         }
     }
-if (lvl->Avancement10<=11)
-{
-    if (Inside_Vol(tronc->x,tronc->y, joueur->inposx, joueur->inposy,60,60,80,40)==1)
+    if (lvl->Avancement10<=11)
     {
-        if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
+        if (Inside_Vol(tronc->x,tronc->y, joueur->inposx, joueur->inposy,60,60,80,40)==1)
         {
-            joueur->life--; 
-            if (joueur->life != 0)
+            if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
             {
-                tronc->coup = 1;
+                joueur->life--; 
+                if (joueur->life != 0)
+                {
+                    tronc->coup = 1;
+                }
             }
-            
+        }
+        if (tronc->coup >=1)
+        {
+            tronc->coup+=1;
+        }
+        if (Inside_Vol(Petit_rocher->x,Petit_rocher->y, joueur->inposx, joueur->inposy,60,60,60,60)==1)
+        {
+            if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
+            {
+                joueur->life--; 
+                if (joueur->life != 0)
+                {
+                    Petit_rocher->coup = 1;
+                }
+            }   
+        }
+        if (Petit_rocher->coup >=1)
+        {
+            Petit_rocher->coup+=1;
+        }
+                                                                                        //x
+        if (Inside_Vol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,60,60,90,85)==1)
+        {
+            if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
+            {
+                joueur->life--;
+                if (joueur->life != 0)
+                {
+                    Gros_rocher->coup = 1; 
+                }    
+            }
+        }
+        if (Gros_rocher->coup >= 1)
+        {
+            Gros_rocher->coup +=1;
         }
     }
-    if (tronc->coup >=1)
-    {
-        tronc->coup+=1;
-    }
-    if (Inside_Vol(Petit_rocher->x,Petit_rocher->y, joueur->inposx, joueur->inposy,60,60,60,60)==1)
-    {
-        if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
-        {
-            joueur->life--; 
-            
-            if (joueur->life != 0)
-            {
-                Petit_rocher->coup = 1;
-            }
-            
-        }   
-    }
-    if (Petit_rocher->coup >=1)
-    {
-        Petit_rocher->coup+=1;
-    }
-                                                                                    //x
-    if (Inside_Vol(Gros_rocher->x,Gros_rocher->y, joueur->inposx, joueur->inposy,60,60,90,85)==1)
-    {
-        if (tronc->coup == 0 && Petit_rocher->coup == 0 && Gros_rocher->coup == 0)
-        {
-            joueur->life--;
-            if (joueur->life != 0)
-            {
-                Gros_rocher->coup = 1; 
-            }    
-        }
-    }
-    if (Gros_rocher->coup >= 1)
-    {
-        Gros_rocher->coup +=1;
-    }
-}
     //Gestion tanguy
     if (lvl->Avancement10>=4 &&lvl->Avancement10<=6)
     {
@@ -2992,11 +2900,10 @@ if (lvl->Avancement10<=11)
             Draw_Image(tanguy->Image,tanguy->x,tanguy->y);
             if (son->soncoule==1)
             {
-            Mix_VolumeChunk(son->collisionR, MIX_MAX_VOLUME/2);
-            Mix_PlayChannel(3, son->collisionR, 0);
+                Mix_VolumeChunk(son->collisionR, MIX_MAX_VOLUME/2);
+                Mix_PlayChannel(3, son->collisionR, 0);
             }
             tanguy->x-=10;
-
         }       
     }
 
@@ -3027,7 +2934,6 @@ if (lvl->Avancement10<=11)
 
 void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son)
 {
-
     if (squelette->squelette != NULL)
     {
         SDL_DestroyTexture(squelette->squelette);
@@ -3054,11 +2960,9 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
         squelette->étoiles = NULL;
     }
     
-    
     if (lvl->Num == 11 && lvl->cin == 1)
     {
         //sprite squelette
-        
         if (squelette->Direction == 0 && squelette->Parle_S == 0)
         {
             squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreD.png");
@@ -3084,7 +2988,6 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
         }
         else if (squelette->Direction == 1 && squelette->Parle_S == 1)
         { 
-            
             if (squelette->NumSprit>=0 && squelette->NumSprit<10)
             {
                 squelette->squelette= loadImage("src/Graphics/Squelette/SqueletteneutreG.png");
@@ -3101,8 +3004,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
         {
             squelette->NumSprit = 0;
         }
-
-
+        
         if (squelette->compteur_cin < 1800)
         {   
             squelette->pos_jerem = 70;
@@ -3111,7 +3013,6 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
             {
                 squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette1.png");
                 Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
-                
             }
             if ((squelette->compte_jerem>=10 && squelette->compte_jerem<20) || (squelette->compte_jerem>=40 && squelette->compte_jerem<50))
             {
@@ -3171,10 +3072,11 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
             }
         }
         else
-        {   if (squelette->pos_jerem>5 && squelette->pos_jerem<=50)
+        {   
+            if (squelette->pos_jerem>5 && squelette->pos_jerem<=50)
             {
-            squelette->Porte=loadImage("src/graphics/lvl/PorteNoirOuverteHaut.png");
-            Draw_Image(squelette->Porte,SCREEN_WIDTH/2-22,0);
+                squelette->Porte=loadImage("src/graphics/lvl/PorteNoirOuverteHaut.png");
+                Draw_Image(squelette->Porte,SCREEN_WIDTH/2-22,0);
             }
             squelette->Jerem_Cin=loadImage("src/graphics/Marchand/JeremSquelette3.png");
             Draw_Image(squelette->Jerem_Cin,270,squelette->pos_jerem);
@@ -3183,7 +3085,6 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
             {
                 lvl->cin = 0;
             }
-            
         }
         squelette->compteur_cin+=1;
     }
@@ -3198,10 +3099,6 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                 squelette->Life--;
                 squelette->CompteurSpriteDegat +=1;
             }
-            
-            
-            
-            
             if (Inside_Squelette_Chevalier(joueur, squelette)==1 && squelette->Eattaque == 0)
             {
                 squelette->Eattaque = 1;
@@ -3262,9 +3159,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                     if (squelette->NumSprit>=15 && squelette->NumSprit <20)
                     {
                         squelette->squelette=loadImage("src/graphics/squelette/Squelettecoup4G.png");
-                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                        
-                        
+                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);  
                     }
                 }
 
@@ -3294,7 +3189,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
             }
             else if (squelette->Eattaque == 2)
             {
-            son->sondegatsq=0;
+                son->sondegatsq=0;
                 if (squelette->Direction == 0)
                 {
                     squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreD.png");
@@ -3308,8 +3203,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                         {
                             Mix_VolumeChunk(son->etourdissement, MIX_MAX_VOLUME);
                             Mix_PlayChannel(3, son->etourdissement, 0);
-                        }
-                        
+                        } 
                     }
                     if (squelette->NumSprit >= 25 && squelette->NumSprit <50 || squelette->NumSprit>=75 && squelette->NumSprit<100 || squelette->NumSprit>=125 && squelette->NumSprit<150)
                     {
@@ -3350,7 +3244,6 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                     squelette->NumSprit=0 ;
                     squelette->Eattaque = 0;
                 }
-                
             }
             else 
             {
@@ -3374,12 +3267,10 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                             Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
                         }  
                     }
-        
                     if (squelette->Direction==1)
                     {
                         if (squelette->NumSprit==0 || squelette->NumSprit==1 || squelette->NumSprit==2 || squelette->NumSprit==3 ||squelette->NumSprit==8 || squelette->NumSprit==9 || squelette->NumSprit==10 || squelette->NumSprit==11 )
                         {
-                        
                             squelette->squelette=loadImage("src/graphics/squelette/squeletteneutreG.png");
                             Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
                         }
@@ -3410,8 +3301,8 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                 Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
                 if(son->sondegatsq==1)
                 {
-                Mix_VolumeChunk(son->degatsquelette, MIX_MAX_VOLUME/2);
-                Mix_PlayChannel(3, son->degatsquelette, 0);
+                    Mix_VolumeChunk(son->degatsquelette, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(3, son->degatsquelette, 0);
                 }
             }
             if (squelette->Direction == 1)
@@ -3421,11 +3312,10 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
                 Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
                 if(son->sondegatsq==1)
                 {
-                Mix_VolumeChunk(son->degatsquelette, MIX_MAX_VOLUME/2);
-                Mix_PlayChannel(3, son->degatsquelette, 0);
+                    Mix_VolumeChunk(son->degatsquelette, MIX_MAX_VOLUME/2);
+                    Mix_PlayChannel(3, son->degatsquelette, 0);
                 }
             }
-            
             squelette->CompteurSpriteDegat+=1;
             if (squelette->CompteurSpriteDegat >15)
             {
@@ -3503,88 +3393,85 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
         }
         else if (squelette->Eattaque == 3 && squelette->rebond <=4)
         {
-                if (squelette->Direction == 0)
+            if (squelette->Direction == 0)
+            {
+                //boucle une fois et demi
+                if (squelette->CompteurSpriteDegat >= 0 && squelette-> CompteurSpriteDegat < 5|| (squelette->CompteurSpriteDegat >= 20 && squelette->rebond <=3))
                 {
-                    //boucle une fois et demi
-                    if (squelette->CompteurSpriteDegat >= 0 && squelette-> CompteurSpriteDegat < 5|| (squelette->CompteurSpriteDegat >= 20 && squelette->rebond <=3))
-                    {
-                        squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette1G.png");
-                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                    }
-                    if (squelette->CompteurSpriteDegat >= 5 && squelette-> CompteurSpriteDegat < 10 || (squelette->CompteurSpriteDegat >= 15 && squelette-> CompteurSpriteDegat < 20 && squelette->rebond <=3))
-                    {
-                        squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette2G.png");
-                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                    }
-                    if (squelette->CompteurSpriteDegat >= 10 && squelette-> CompteurSpriteDegat < 15)
-                    {
-                        squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette3G.png");
-                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                        if (squelette->CompteurSpriteDegat==12)
+                    squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette1G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 5 && squelette-> CompteurSpriteDegat < 10 || (squelette->CompteurSpriteDegat >= 15 && squelette-> CompteurSpriteDegat < 20 && squelette->rebond <=3))
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette2G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 10 && squelette-> CompteurSpriteDegat < 15)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette3G.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    if (squelette->CompteurSpriteDegat==12)
                     {
                         Mix_VolumeChunk(son->rebond, MIX_MAX_VOLUME);
                         Mix_PlayChannel(5, son->rebond, 0);  
                     }
-                    }
-                    if (squelette->posmonsx >= 13)
-                    {
-                        squelette->posmonsx-=1;
-                    } 
                 }
-                if (squelette->Direction == 1)
+                if (squelette->posmonsx >= 13)
                 {
-                    if (squelette->CompteurSpriteDegat >= 0 && squelette-> CompteurSpriteDegat < 5|| (squelette->CompteurSpriteDegat >= 20 && squelette->rebond <=3))
-                    {
-                        squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette1D.png");
-                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                    }
-                    if (squelette->CompteurSpriteDegat >= 5 && squelette-> CompteurSpriteDegat < 10 || (squelette->CompteurSpriteDegat >= 15 && squelette-> CompteurSpriteDegat < 20 && squelette->rebond <=3))
-                    {
-                        squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette2D.png");
-                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                    }
-                    if (squelette->CompteurSpriteDegat >= 10 && squelette-> CompteurSpriteDegat < 15)
-                    {
-                        squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette3D.png");
-                        Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
-                        if (squelette->CompteurSpriteDegat==12)
+                    squelette->posmonsx-=1;
+                } 
+            }
+            if (squelette->Direction == 1)
+            {
+                if (squelette->CompteurSpriteDegat >= 0 && squelette-> CompteurSpriteDegat < 5|| (squelette->CompteurSpriteDegat >= 20 && squelette->rebond <=3))
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette1D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 5 && squelette-> CompteurSpriteDegat < 10 || (squelette->CompteurSpriteDegat >= 15 && squelette-> CompteurSpriteDegat < 20 && squelette->rebond <=3))
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette2D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                }
+                if (squelette->CompteurSpriteDegat >= 10 && squelette-> CompteurSpriteDegat < 15)
+                {
+                    squelette->squelette=loadImage("src/graphics/squelette/TeteSquelette3D.png");
+                    Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    if (squelette->CompteurSpriteDegat==12)
                     {
                         Mix_VolumeChunk(son->rebond, MIX_MAX_VOLUME);
                         Mix_PlayChannel(5, son->rebond, 0);  
                     }
-                    }
-                    if (squelette->posmonsx <= 620)
-                    {
-                        squelette->posmonsx+=1;
-                    } 
                 }
-                //pour demi boucle
-                if (squelette->rebond == 4 && squelette->CompteurSpriteDegat == 14)
+                if (squelette->posmonsx <= 620)
                 {
-                    squelette->rebond = 5;
-                    squelette->CompteurSpriteDegat = 0;
-                }
-                else if (squelette->CompteurSpriteDegat == 25 )
-                {
-                    squelette->CompteurSpriteDegat = 0;
-                    squelette->rebond+=1;
-                }
-                squelette->CompteurSpriteDegat+=1;
+                    squelette->posmonsx+=1;
+                } 
+            }
+            //pour demi boucle
+            if (squelette->rebond == 4 && squelette->CompteurSpriteDegat == 14)
+            {
+                squelette->rebond = 5;
+                squelette->CompteurSpriteDegat = 0;
+            }
+            else if (squelette->CompteurSpriteDegat == 25 )
+            {
+                squelette->CompteurSpriteDegat = 0;
+                squelette->rebond+=1;
+            }
+            squelette->CompteurSpriteDegat+=1;
 
-                if (Inside_Chevalier_Squelette(joueur,squelette)==1 && joueur->Numattack == 15)
-                {
-                    squelette->Eattaque = 4;
-                    squelette->CompteurSpriteDegat = 0;
-                    
-                }
-                if (Inside_Vol(joueur->xdague,joueur->ydague,squelette->posmonsx+25,squelette->posmonsy+25,43,65,30,15)==1)
-                {
-                    squelette->Eattaque = 4;
-                    squelette->CompteurSpriteDegat = 0;
-                }
+            if (Inside_Chevalier_Squelette(joueur,squelette)==1 && joueur->Numattack == 15)
+            {
+                squelette->Eattaque = 4;
+                squelette->CompteurSpriteDegat = 0;
                 
-                
-
+            }
+            if (Inside_Vol(joueur->xdague,joueur->ydague,squelette->posmonsx+25,squelette->posmonsy+25,43,65,30,15)==1)
+            {
+                squelette->Eattaque = 4;
+                squelette->CompteurSpriteDegat = 0;
+            }
         }
         else if (squelette->Eattaque == 3 && squelette->rebond >4)
         {
@@ -3646,7 +3533,7 @@ void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son
             }
             if (squelette->CompteurSpriteDegat < 50)
             {
-            squelette->CompteurSpriteDegat+=1;
+                squelette->CompteurSpriteDegat+=1;
             }
             else
             {
@@ -3738,7 +3625,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         SDL_DestroyTexture(jerem->fissure);
         jerem->fissure = NULL;
     }
-    //Degats sur jerem
+    //Degats sur jerem en fonction de son niveau de transformation
     if (jerem->Life != 0 && jerem->Eattaque == 0 && jerem->CompteurSprite2 == 0)
     {
         if (Inside_Chevalier_Boss_Jerem(joueur,jerem) == 1 && joueur->Numattack == 15)
@@ -3761,10 +3648,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             jerem->Life--;
             jerem->CompteurSprite2+=1;
         }
-        
-        
-        
-        
     }
     //reset degats jerem
     if (jerem->CompteurSprite2 != 0 && !(jerem->Life <=20 && jerem->Transformation == 0) && !(jerem->Life <=10 && jerem->Transformation == 1) && jerem->Life != 0)
@@ -3775,11 +3658,13 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             jerem->CompteurSprite2=0;
         }
     }
-
+    //Si jerem en vie
     if (jerem->Life >20 )
     {
+        //Eattaque=0 correspond a la marche basique
         if(jerem->Eattaque == 0)
         {
+            //Si il ne prend pas de degats
             if (jerem->CompteurSprite2==0)
             {
                 if (jerem->Direction==0)
@@ -3805,7 +3690,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 {
                     if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
                     {
-                    
                         jerem->jeremy=loadImage("src/graphics/BossJermy/JeremNeutreG.png");
                         Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     }
@@ -3825,6 +3709,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     jerem->NumSprit = 0;
                 }
             } 
+            //degat
             else if (jerem->Direction == 0)
             {
                 jerem->jeremy=loadImage("src/graphics/BossJermy/JeremDegatD.png");
@@ -3837,7 +3722,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             }
             
         }
-        //attaque haltère phase 1
+        //attaque haltère phase 1 (Eattaque == 1)
         if (jerem->Eattaque == 1)
         {
             if (jerem->Direction==1)
@@ -4006,6 +3891,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         }
         
     }
+    //phase 2
     else if (jerem->Life >10 && jerem->Transformation == 1 && jerem->Life != 0)
     {
         //marche phase 2
@@ -4230,7 +4116,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                         jerem->coup = 1;
                     }
                 }
-                
             }
 
             if (jerem->Direction==0)
@@ -4256,10 +4141,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 {
                     jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut4D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
-                } 
-                
-
-                
+                }   
             }
 
             if (jerem->Direction==1)
@@ -4285,13 +4167,8 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 } 
             }
-            
-
-
-
             if (jerem->Eattaque == 2)
             {
-                
                 if (jerem->NumSprit >= 50)
                 {
                     jerem->posmonsy-=25;
@@ -4316,10 +4193,8 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     jerem->Eattaque =0 ;
                     jerem->compteur =0;
                 }
-                
             }
         }
-    
     }
     //transformation 3
     else if (jerem->Life <=10 && jerem->Transformation == 1 && jerem->Life != 0)
@@ -4416,12 +4291,10 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                         Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     }  
                 }
-
                 if (jerem->Direction==1)
                 {
                     if (jerem->NumSprit>=0 && jerem->NumSprit<5 || jerem->NumSprit>=10 && jerem->NumSprit<15)
                     {
-                    
                         jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremNeutreG.png");
                         Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                     }
@@ -4451,9 +4324,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremDegatG.png");
                 Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
             }
-
-
-
             //pousse joueur
             if (jerem->Eattaque == 5)
             {
@@ -4484,7 +4354,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     }
                 }
             }
-            
         }
         //haltère
         if (jerem->Eattaque == 1)
@@ -4532,10 +4401,8 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 {                
                     jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremHaltere7G.png");                    
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
-                }
-                
+                }  
             }
-
             if (jerem->Direction==0)
             {             
                 if (jerem->NumSprit>=0 && jerem->NumSprit<5)
@@ -4592,7 +4459,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 jerem->pos_ombre_x = jerem->posmonsx+5;
                 jerem->pos_ombre_y = jerem->posmonsy+107;
             }
-            
             //ombre
             if (jerem->NumSprit>=0 && jerem->NumSprit<10 || jerem->NumSprit>=90 && jerem->NumSprit < 110)
             {
@@ -4620,13 +4486,13 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 jerem->fissure=loadImage("src/graphics/BossJermy/3OndeDeChoc1.png");
                 Draw_Image(jerem->fissure,jerem->posmonsx-85,jerem->posmonsy+87);
                 if (jerem->NumSprit == 47 && Inside_Vol(jerem->posmonsx-85+67,jerem->posmonsy+87,joueur->inposx,joueur->inposy,64,64,250,54)==1)
+                {
+                    joueur->life--;
+                    if (joueur->life != 0)
                     {
-                        joueur->life--;
-                        if (joueur->life != 0)
-                        {
-                            jerem->coup = 1;
-                        }
+                        jerem->coup = 1;
                     }
+                }
             }
             if (jerem->NumSprit >= 40 && jerem->NumSprit < 45 && jerem->Eattaque == 3)
             {
@@ -4649,7 +4515,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                         jerem->coup = 1;
                     }
                 }
-                
             }
 
             if (jerem->Direction==0)
@@ -4676,9 +4541,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                     jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremSaut4D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
                 } 
-                
-
-                
             }
 
             if (jerem->Direction==1)
@@ -4707,7 +4569,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
 
             if (jerem->Eattaque == 2)
             {
-                
                 if (jerem->NumSprit >= 50)
                 {
                     jerem->posmonsy-=25;
@@ -4731,7 +4592,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 {
                     jerem->Eattaque = 0;
                 }
-                
             }
         }
         else if (jerem->Eattaque == 4)
@@ -4767,8 +4627,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                         if (joueur->life != 0)
                         {
                             jerem->coup =1;
-                        }
-                        
+                        } 
                     }
                     
                     if (jerem->posmonsx<=513)
@@ -4796,7 +4655,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
                 if (jerem->NumSprit>=30)
                 {   
-                     if (jerem->NumSprit == 30)
+                    if (jerem->NumSprit == 30)
                     {
                         //enregistremnt pou effet
                         jerem->xhaltère = jerem->posmonsx+120;
@@ -4812,10 +4671,8 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                         if (joueur->life != 0)
                         {
                             jerem->coup =1;
-                        }
-                        
+                        } 
                     }
-                    
                     if (jerem->posmonsx>=20)
                     {
                         jerem->posmonsx -=10;
@@ -4868,8 +4725,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
                 }
             }
         }
-
-        
     }
     else if (jerem->Life == 0)
     {
@@ -4987,7 +4842,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
         {
             lvl->MortMonstre+=1;
         }
-        
     }
 
     //gestion haltère
@@ -5036,7 +4890,6 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
             jerem->Ehaltère = 0;
         }
     }
-    
     if (jerem->coup != 0)
     {
         jerem->coup+=1;
@@ -5045,5 +4898,4 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl)
     {
         jerem->coup = 0;
     }
-
 }
