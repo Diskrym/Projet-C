@@ -2,13 +2,12 @@
 
 void Draw_Game(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
 {
-    
-    // Affiche le fond (background) aux coordonnées (0,0) si on a pas de map qui défile !=NULL
+    // Affiche le fond (background) aux coordonnées (0,0) si on a pas de map qui défile !=10
     if (lvl->Num !=10)
     {
-        
         Draw_Image(lvl->Map, 0, 0);
     }
+    //Map qui bouge
     else
     {
         if(lvl->Avancement10 <12)
@@ -29,40 +28,33 @@ void Draw_Game(Joueur *joueur, Lvl *lvl,ParamTexte *paramtexte,EffetSon *son)
             Draw_Image(lvl->Map,lvl->PosMap10,0);
             Draw_Image(lvl->MapSlide,lvl->PosMap10+640,0);
         }
-        
         if (lvl->PosMap10 <= -640)
         {
             lvl->PosMap10 = 0;
             lvl->Avancement10+=1;
         }        
     }
+    // Affiche du HUD
     Render_Life (joueur,lvl,son);
     Render_Coin(joueur,lvl,paramtexte);
     Render_Level(lvl);
     Render_Door (lvl);
-    // Affiche l'écran
-    
     // Délai
     SDL_Delay(1);
-    
 }
 
 //ecran fin 
 void Game_Over (EffetSon *son)
 {   
-    
-    
-    // Mix_PauseMusic();
+    //Affichage de l'écran Game_Over
     SDL_Texture *GameOver=loadImage("src/graphics/lvl/GameOver.png");  
     Draw_Image(GameOver,0,0); 
     SDL_RenderPresent(getrenderer());
-
     if (GameOver != NULL)
     {
         SDL_DestroyTexture(GameOver);
         GameOver =NULL;
     }
-
     Mix_VolumeChunk(son->gameoverson, MIX_MAX_VOLUME);
     Mix_PlayChannel(10, son->gameoverson, 0);
     SDL_Delay(5000);
@@ -111,12 +103,10 @@ void delay(unsigned int frameLimit)
     {
         return;
     }
- 
     if (frameLimit > ticks + 16)
     {
         SDL_Delay(16);
     }
- 
     else
     {
         SDL_Delay(frameLimit - ticks);
@@ -148,6 +138,7 @@ void Render_Life (Joueur *joueur,Lvl *lvl, EffetSon *son)
 
     if (lvl->Num >= 0)
     {
+        //Affichage des coeurs en fonction des vies du joueur
         if (joueur->life>=4 )      
         {
             lvl->Vie4=loadImage("src/graphics/lvl/Vie.png");
@@ -172,27 +163,21 @@ void Render_Life (Joueur *joueur,Lvl *lvl, EffetSon *son)
             Draw_Image(lvl->Vie1,SCREEN_WIDTH-(1*34),0);
             
         }         
-        
-           
-            if (joueur->life ==1)
+        if (joueur->life ==1)
+        {
+            son->sonLowLife++;
+            if (son->sonLowLife==1)
             {
-                son->sonLowLife++;
-                if (son->sonLowLife==1)
-                {
-                    Mix_VolumeChunk(son->lowlifechevalier, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(2, son->lowlifechevalier, 0); 
-                }
-            }
-            if (joueur->life>1)
-            {
-                son->sonLowLife=0;
+                Mix_VolumeChunk(son->lowlifechevalier, MIX_MAX_VOLUME);
+                Mix_PlayChannel(2, son->lowlifechevalier, 0); 
             }
         }
-
+        if (joueur->life>1)
+        {
+            son->sonLowLife=0;
+        }
     }
-
-    
-
+}
 
 void Render_Coin (Joueur *joueur,Lvl *lvl, ParamTexte *paramtexte)
 {   
@@ -211,7 +196,7 @@ void Render_Coin (Joueur *joueur,Lvl *lvl, ParamTexte *paramtexte)
         SDL_FreeSurface(paramtexte->SurfacePiece);
         paramtexte->SurfacePiece=NULL;
     }
-
+    //Affcichage des pièces dans le niveau (lvl->Num >=0)
     if (lvl->Num >= 0)
     {
         lvl->Piece=loadImage("src/graphics/lvl/Piece.png");
@@ -246,7 +231,8 @@ void Render_Level (Lvl *lvl)
         SDL_DestroyTexture(lvl->SpritDonjon);
         lvl->SpritDonjon = NULL;
     }
-    
+
+    //Affichage des niveaux en haut a gauche durant les niveaux classiques (lvl->Num>=0)
     if (lvl->Num >= 0 && lvl->Num != 4 && lvl->Num !=9  && lvl->Num !=10)
     {
         lvl->SpritMotLVL=loadImage("src/graphics/lvl/Level.png");
@@ -340,7 +326,6 @@ void Render_Level (Lvl *lvl)
         lvl->SpritLvl=loadImage("src/graphics/lvl/river.png");
         Draw_Image(lvl->SpritLvl,5,5);
     }
-
     if (lvl->Num==11)
     {
         lvl->SpritDonjon=loadImage("src/graphics/lvl/3.png");
@@ -382,13 +367,17 @@ void Render_Door (Lvl *lvl)
         SDL_DestroyTexture (lvl->PorteBas) ;
         lvl->PorteBas =NULL ;
     }
+
+    //Gestion des portes de chaque niveau
     if(lvl->Num==0 || lvl->Num==1)
     {
+        //si tous les monstres sont mort
         if (lvl->MortMonstre==level[lvl->Num][0][1])
         {
+            //Porte ouverte pour les prochains niveaux
             lvl->PorteHaut=loadImage("src/graphics/lvl/Porteouverte.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-
+            // si le niveaux est differents du premier niv du donjon alors on affiche une porte en bas
             if (lvl->Num != 0)
             {
                 lvl->PorteBas=loadImage("src/graphics/lvl/Portefermebas.png");
@@ -406,6 +395,7 @@ void Render_Door (Lvl *lvl)
             }    
         }
     }
+    //Idem pour chaques donjons
     if (lvl->Num==2)
     {
         lvl->PorteBas=loadImage("src/graphics/lvl/Portefermebas.png");
@@ -414,30 +404,26 @@ void Render_Door (Lvl *lvl)
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteBossOuverte.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-            
         }
         else
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteBossFerme.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-              
         }
     }
     if (lvl->Num==3)
     {
         lvl->PorteBas=loadImage("src/graphics/lvl/PorteBossFermeBas.png");
         Draw_Image(lvl->PorteBas,SCREEN_WIDTH/2-22,345);
-         if (lvl->MortMonstre==level[lvl->Num][0][1])
+        if (lvl->MortMonstre==level[lvl->Num][0][1])
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteRougeOuverte.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-            
         }
         else
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteRougeFerme.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-              
         }
     }
     if (lvl->Num == 5 || lvl->Num == 6 || lvl->Num == 7)
@@ -451,13 +437,11 @@ void Render_Door (Lvl *lvl)
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteOuverteBleu.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-            
         }
         else
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteFermeBleu.png");
-            Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-              
+            Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);   
         }
         
     }
@@ -465,17 +449,15 @@ void Render_Door (Lvl *lvl)
     {
         lvl->PorteBas=loadImage("src/graphics/lvl/PorteBossFermeBas.png");
         Draw_Image(lvl->PorteBas,SCREEN_WIDTH/2-22,345);
-         if (lvl->MortMonstre==level[lvl->Num][0][1])
+        if (lvl->MortMonstre==level[lvl->Num][0][1])
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteNoirOuverteHaut.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-            
         }
         else
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteNoirFermeHaut.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-              
         }
     }
     if (lvl->Num == 11 || lvl->Num == 12 || lvl->Num == 13)
@@ -489,17 +471,13 @@ void Render_Door (Lvl *lvl)
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteNoirOuverteHaut.png");
             Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-            
         }
         else
         {
             lvl->PorteHaut=loadImage("src/graphics/lvl/PorteNoirFermeHaut.png");
-            Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);
-              
+            Draw_Image(lvl->PorteHaut,SCREEN_WIDTH/2-22,0);   
         }
-        
     }
-    
 }
 
 void Draw_Menu (Lvl *lvl)
@@ -513,6 +491,7 @@ void Draw_Menu (Lvl *lvl)
     Draw_Image(lvl->Menu,0,0);   
 }
 
+//Affichage menu pause (touch échap)
 void Break_Menu (Lvl *lvl)
 {
     if (lvl->Menu!=NULL)
@@ -524,6 +503,7 @@ void Break_Menu (Lvl *lvl)
     Draw_Image(lvl->Menu,0,0); 
 }
 
+//Affichage menu des statistiques (dans menu pause -> statistiques)
 void Stats_Menu(Lvl *lvl,Stats *stats, ParamTexte *paramtexte)
 {
     if (lvl->Menu!=NULL)
@@ -567,9 +547,13 @@ void Stats_Menu(Lvl *lvl,Stats *stats, ParamTexte *paramtexte)
         paramtexte->SurfaceRatio = NULL;
     }
     
-
+    //Affichage du fond
     lvl->Menu=loadImage("src/graphics/lvl/MenuStats.png");
     Draw_Image(lvl->Menu,0,0);
+
+    /*On affiche chaque stats
+    Utilisation de itoa pour convertir un int en char %s pour afficher chiffre grace au module .ttf
+    affichage sur écran grâce a Draw_Image*/
 
     SDL_Color color = { 255, 255, 255 };
     //pièce
@@ -628,7 +612,7 @@ void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte)
         stats->Surface_SCORE_4 = NULL;
         stats->Surface_SCORE_5 = NULL;
     }
-    
+    //Affichage du fond du score_board (menu pause )
     SDL_Color color = { 255, 255, 255 };
 
     lvl->Menu=loadImage("src/graphics/lvl/MenuScore.png");
@@ -669,10 +653,9 @@ void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte)
         SDL_FreeSurface(stats->Surface_Actuelle);
         stats->Surface_Actuelle = NULL;
     }
-    
     SDL_Color color = { 255, 255, 255 };
 
-    
+    //Gestion de l'affichage du fond de win et affichage des crédit qui défile grâce a lvl->PosMap10
     if(lvl->PosMap10 >= -1700)
     {
         lvl->Map=loadImage("src/graphics/lvl/Win.png");
@@ -687,7 +670,6 @@ void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte)
             SDL_Delay(5000);
         }  
         lvl->PosMap10 -=1; 
-
     }
     else
     {
@@ -695,6 +677,4 @@ void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte)
         lvl->Num = -1;
         lvl->save = 1;
     }
-    
-    
 }

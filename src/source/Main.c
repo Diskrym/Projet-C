@@ -15,7 +15,6 @@ Historique version :
         V4.3 : Menu, sauvegarde, score, stats
     V5 : Boss final/Victoire/Crédits
 */
-
 /*
     !!! INFO !!!
     CoupDague en attente mais pret si double coup sur monstre
@@ -45,7 +44,6 @@ clock_t temps;
 Squelette squelette, squelette1, squelette2;
 Jerem_Boss jerem;
 
-
 int main(int argc, char *argv[])
 {
 //extern void delay(unsigned int frameLimit);
@@ -61,25 +59,26 @@ init("Dungeon Fate");
     Texte(&paramtexte);
     //Menu
     while(input.enter==0)
-    {
-        
-    //gestionInputs(&input);
-    Draw_Menu(&lvl);
-    Get_Input(&input);
-    //Affiche tout ce qui a été chargé
-    SDL_RenderPresent(getrenderer());
+    {  
+        //gestionInputs(&input);
+        Draw_Menu(&lvl);
+        Get_Input(&input);
+        //Affiche tout ce qui a été chargé
+        SDL_RenderPresent(getrenderer());
     }
+    //Variable de la boucle infinie
     go = 1; 
     Mix_PlayMusic(son.musiqueMapG, -1 /10);
     // Boucle infinie, principale, du jeu
     while (go == 1)
     {    
+        //Si load a 0 alors rechargement du jeu
         if (lvl.Load == 0)
         {
             Load_Game(&joueur,&lvl,&stats);
             lvl.Load=1;
         }
-        //On dessine tout
+        //Gestion du game over
         if (joueur.life<=0)
         {   
             Mix_PauseMusic();
@@ -91,72 +90,61 @@ init("Dungeon Fate");
             {
                 input.attack = 0;
             }
-            
             if (joueur.Ebateau != 0)
             {
                 joueur.Ebateau = 0;
             }
-            
         }
+        //Si jeu fini, calcul des scores
         if (lvl.WinDonjon == 5)
         {
             Score_(&stats,temps);
             lvl.WinDonjon = 6 ;
         }
+        //Compteur temps en fonction des ticks du proc
         temps=clock()-stats.Diff_reset;
-
-
+        //Gestion des stats
         Statistiques(&stats,&joueur,&lvl);
-
+        //Gestion de la save
         Save(&joueur,&lvl,&input,&entité,&son,&stats,temps);
-        
+        //On dessine tous les éléments de la map
         Draw_Game(&joueur, &lvl, &paramtexte,&son);
-                                
+        //On selectione le niveau a afficher                  
         Gestion_Map(&joueur, &lvl, &entité, &son, &input, &stats, &paramtexte);
-
-        //Gestion des inputs clavier
-        //gestionInputs(&input);
+        //Aquisition des inputs
         Get_Input(&input);
-        
-
+        //Si on est dans un niveau normal (les niveaux positives)
         if(lvl.Num != -1 && lvl.Num != -2 && lvl.Num != -3 && lvl.Num != -4 && lvl.Num != -5)
         {
-            //IA monstre
+            //Deplacment monstre
             Gestion_Entité(&entité, &lvl, &input ,&joueur, &son);
-            //Gestion des inputs et des déplacements
-                Deplacement_Chevalier(&input,&joueur,&entité, &son, &lvl);
+            //Gestion des deplacments du joueur
+            Deplacement_Chevalier(&input,&joueur,&entité, &son, &lvl);
         }
 
-        //Rendu des images dans le buffer
+        //Rendu des images
         SDL_RenderPresent(getrenderer());
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;
 
-        //#A enlver#
+        //Bypass uniquement pour dev
         if (input.Bypass==1)
         {
             SDL_Delay(250);
-
-            
-                lvl.MortMonstre=level[lvl.Num][0][1];
-                joueur.inposy=28;
-                joueur.inposx=300;
-                if (lvl.Num == 10)
-                {
-                    lvl.Avancement10 = 13;
-                    lvl.PosMap10 =0;
-                }
-                if (lvl.Num == -5 && lvl.PosMap10 < - 10)
-                {
-                    lvl.PosMap10 = -2000;
-                }
-                
+            lvl.MortMonstre=level[lvl.Num][0][1];
+            joueur.inposy=28;
+            joueur.inposx=300;
+            if (lvl.Num == 10)
+            {
+                lvl.Avancement10 = 13;
+                lvl.PosMap10 =0;
+            }
+            if (lvl.Num == -5 && lvl.PosMap10 < - 10)
+            {
+                lvl.PosMap10 = -2000;
+            }
         }
-        
-        //printf("temps en seconde : %f\n",stats.Score_act_f);
-        // printf("temps general : %f\n",stats.TEMPS_GENE);
-        // printf("convertie : %s\n",stats.Score_act);
     }
     // On quitte
     exit(0); 

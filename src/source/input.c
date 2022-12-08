@@ -1,12 +1,6 @@
 #include "../header/proto.h"
- 
 
-// void gestionInputs(Input *input)
-// {
-//     //On gère le clavier
-//     Get_Input(input);
-// }
- 
+//Gestion des inputs clavier et souris
 void Get_Input(Input *input)
 {
     SDL_Event event;
@@ -17,7 +11,7 @@ void Get_Input(Input *input)
             case SDL_QUIT:
                 exit(0);
             break;
-
+            //Cas dan lequel on appuie sur une touche
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym)
                 {
@@ -68,7 +62,8 @@ void Get_Input(Input *input)
                     break;
                 }
             break;
- 
+
+            //Cas dans lequel la touche est levée
             case SDL_KEYUP:
                 switch (event.key.keysym.sym)
                 {
@@ -117,7 +112,7 @@ void Get_Input(Input *input)
                     break;
                 }
             break;
-
+            //Gestion déplacment souris//boutton
             case SDL_MOUSEBUTTONDOWN :
                 switch (event.button.button)
                 {
@@ -147,9 +142,10 @@ void Get_Input(Input *input)
     }
 }
 
+//Gestion deplacement du chevalier
 void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, EffetSon *son,Lvl *lvl)
 {  
-    //si pas dans une cin
+    //si pas dans la cinématique du niv 11
     if(!(lvl->cin == 1 && lvl->Num == 11))
     {
         //Si on a pas le bouclier on se déplace
@@ -157,6 +153,7 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
         {
             if (input->left==1)
             {
+                //si on est pas dans la rivière on change l'image a afficher avec le NumSprit/changement de la direction du sprit entre gauche et droite et changement de la position du joueur sur le fenetre sdl
                 if(lvl->Num!=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
                 {
                     joueur->inposx-=3;
@@ -206,7 +203,6 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
             joueur->ydague=joueur->inposy+32;
             joueur->DirDague=joueur->Direction;
         }
-        
         if (input->attack==1)
         {
             joueur->NumSprit=0;
@@ -223,11 +219,13 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
             joueur->TimingBouclier=0;
         }
     }
+    //Appel de la fonction chargé de la séléction du sprit a afficher
     Sprit_Chevalier(joueur, input, son, entité, lvl);
 }
 
 void Deplacement_Meduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
 {
+    //Compteur qui permet de choisir l'action a effectuer par la meduse (attaque/deplacement)
     meduse->compteur += 1;
     meduse->NumSprit+=1;
     //Compteur mort méduse
@@ -259,7 +257,6 @@ void Deplacement_Meduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son
         {
             meduse->posmonsy+=1;
         }
-
     }
     Sprit_Meduse (meduse, joueur, lvl, son);
 }
@@ -310,8 +307,7 @@ void Deplacement_Yeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
         if (joueur->inposx<yeti->posmonsx)
         {
             yeti->posmonsx-=1;
-            yeti->Direction=1;
-           
+            yeti->Direction=1; 
         }
         if (joueur->inposx>yeti->posmonsx)
         {
@@ -326,11 +322,9 @@ void Deplacement_Yeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
         {
             yeti->posmonsy+=1;
         }
- 
     }
     Sprit_Yeti (yeti, joueur, lvl, son);
 }
-
 
 void Deplacement_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetSon *son)
 {  
@@ -367,8 +361,6 @@ void Deplacement_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetS
     Sprit_Boss_Yeti (bossyeti, joueur, lvl, son);
 }
 
-
-
 void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son)
 {
     boss->compteur += 1;
@@ -402,8 +394,7 @@ void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input
     {
         boss->CompteurSpriteEclair+=1;
     }
-    
-    
+    //Deplacment de base
     if (boss->compteur <= 400 && boss->Life >=1 && boss->compteur%2==0)
     {
         if (joueur->inposx<boss->posmonsx)
@@ -422,7 +413,6 @@ void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input
         {
             boss->posmonsy+=1;
         }
-
     }
     SpritBoss (boss, joueur, lvl, son);
 }
@@ -453,7 +443,6 @@ void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,Effet
             }
         }
         squelette->NumSprit+=1;
-
     }
     Sprit_Squelette(lvl,squelette,joueur, son);
 }
@@ -462,7 +451,6 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
 {
     if (jerem->Life >=1 && jerem->Eattaque == 0 && jerem->cin == 0)
     {
-        
         if (joueur->inposx<jerem->posmonsx)
         {
             jerem->posmonsx-=1;
@@ -490,9 +478,6 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
     {
         jerem->NumSprit-=1;
     }
-    
-    
-
     jerem->compteur+=1;
 
     //gestion compteur
@@ -527,8 +512,7 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             if (jerem->compteur == 245)
             {
                 jerem->NumSprit = 0;
-            }
-            
+            }            
             jerem->Eattaque = 2;
         }
     }
@@ -552,7 +536,6 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             {
                 jerem->NumSprit = 0;
             }
-            
             jerem->Eattaque = 2;
         }
         else if (jerem->compteur == 600)
@@ -560,9 +543,5 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             jerem->Eattaque = 4;
         }
     }
-    
-    
-    
-    
     Sprite_Boss_Jerem(joueur,jerem,lvl);
 }

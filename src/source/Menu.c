@@ -75,7 +75,6 @@ void Score_(Stats *stats,clock_t temps)
     {
         //Minute
         sprintf(tempm,"%f",(stats->Score_act_f/60));
-        printf("%f\n",stats->Score_act_f/60);
         //Seconde
         if (stats->Score_act_f > 600)
         {
@@ -286,7 +285,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             if ( fichier1 )
             {
                 
-                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%lf temps=%s S1=%f S2=%f S3=%f S4=%f S5=%f %s %s %s %s %s/fin",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA,stats->TEMPS_GENE,stats->Score_act,stats->Score_Board[0],stats->Score_Board[1],stats->Score_Board[2],stats->Score_Board[3],stats->Score_Board[4],stats->Convert_Score[0],stats->Convert_Score[1],stats->Convert_Score[2],stats->Convert_Score[3],stats->Convert_Score[4]);
+                fprintf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%lf temps=%s S1=%f S2=%f S3=%f S4=%f S5=%f %s %s %s %s %s",stats->Total_pièce,stats->Total_Tués,stats->Total_Mort,stats->Dague_Lancées,stats->KDA,stats->TEMPS_GENE,stats->Score_act,stats->Score_Board[0],stats->Score_Board[1],stats->Score_Board[2],stats->Score_Board[3],stats->Score_Board[4],stats->Convert_Score[0],stats->Convert_Score[1],stats->Convert_Score[2],stats->Convert_Score[3],stats->Convert_Score[4]);
                 fclose(fichier1);
             }
             if (lvl->save != 1)

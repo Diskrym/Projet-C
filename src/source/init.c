@@ -26,14 +26,6 @@ void init(char *title)
         exit(1);
     }
  
-    //Initialisation du Load_Game des images png avec SDL_Image 2
-    // int imgFlags = IMG_INIT_PNG;
-    // if( !( IMG_Init( imgFlags ) & imgFlags ) )
-    // {
-    //     printf( "SDL_image n'a pu être initialisée! SDL_image Error: %s\n", IMG_GetError() );
-    //     exit(1);
-    // }
- 
     //On cache le curseur de la souris
     SDL_ShowCursor(SDL_DISABLE);
  
@@ -44,9 +36,9 @@ void init(char *title)
         exit(1);
     }
     SDL_Event event;
-
 }
 
+//Init de tous les sons du jeu
 void Son (EffetSon *son)
 {
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
@@ -111,14 +103,16 @@ void Son (EffetSon *son)
     son->degatjerem= Mix_LoadWAV("src/musique/degatjerem.WAV");
     son->sautjerem= Mix_LoadWAV("src/musique/saut.WAV");
     son->haltere= Mix_LoadWAV("src/musique/haltere.WAV");
-    }
+}
 
+//Init des différentes polices utilisées pour le jeu
 void Texte(ParamTexte *paramtexte)
 {
     paramtexte->Font = TTF_OpenFont("src/font/Pixel.ttf", 25);
     paramtexte->Fontpetite = TTF_OpenFont("src/font/Pixel.ttf", 15);
 }
 
+//Permet de charger les paramtres d'un niveau en fonction du lvl->Num (et ajoute aussi 1 au compteur pièce a chaque passage de lvl)
 void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
 {
     if (lvl->Map != NULL)
@@ -173,14 +167,12 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
         joueur->AttPiece+=1;
         Load_Level_3_3(joueur,&entité->yeti,&entité->yeti1,lvl,&entité->chauvesouris,&entité->chauvesouris1);
     }
-
     if (lvl->Num == 8)
     {
         joueur->AttPiece+=1;
         Load_Level_3_4(joueur,&entité->bossyeti,lvl);
         Mix_PlayMusic(son ->musiquebossyeti, -1);
     }
-    
     if (lvl->Num == 9)
     {
         Load_Level_4_1(joueur,lvl);
@@ -206,16 +198,19 @@ void Select_Level (Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *son)
         Load_Level_5_3(joueur,&entité->jerem,lvl);
         Mix_PlayMusic(son->musiquebossjermy,-1);
     }
+
+    //Vérifie que la dague est sur le joueur au passage du niveau sinon perte total de la dague
     if (joueur->Edague==2)
     {
         joueur->nbDague=0;
     }
-    
-    
-    
     lvl->MortMonstre=0;
 }
 
+/*Fonction appellé en boucle pour le déroulement des niveaux en fonction du lvl->Num
+Deplacement_XXXX permet de faire bouger les entité et appelle la fonction sprite_XXXX correpondant a l'entité
+Collision_Mur permet de créer une limite artificielle en faisant reculer le joueur sur les bordures de map (chaque map n'a pas les même limites)
+Collision_XXXXX permet de générer une collision entre une entité et le joueur*/
 void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, EffetSon *son)
 {
     if(lvl->Num==0)
@@ -294,14 +289,12 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         Collision_Yeti(joueur, &entité->yeti, input, lvl);
         Collision_Yeti(joueur, &entité->yeti1, input, lvl);
     }
-
     if (lvl->Num == 8)
     {
         Collision_Mur (joueur,20,20,20,20,lvl);
         Deplacement_Boss_Yeti(joueur, &entité->bossyeti,lvl,son);
         Collision_Boss_Yeti(joueur,&entité->bossyeti,input,lvl);
     }
-    
     if (lvl->Num == 9)
     {
         if (joueur->Ebateau<2)
@@ -337,7 +330,6 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         Deplacement_Squelette(joueur,&entité->squelette1,lvl,son);
         Collision_Squelette(joueur,&entité->squelette,input,lvl);
         Collision_Squelette(joueur,&entité->squelette1,input,lvl);
-        
     }
     if (lvl->Num == 12)
     {
@@ -354,12 +346,10 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         Collision_Mur(joueur,20,20,20,20,lvl);
         Deplacement_Boss_Jerem(joueur,&entité->jerem,lvl,son);
         Collision_Jerem_Boss (joueur, &entité->jerem, input, lvl);
-
     }
-    
-    
 }
 
+//Les fonctions Load_Level_X_X permet de charger les variables initials des entité pour débuter un niveaux
 void Load_Level_1_1(Meduse *meduse, Lvl *lvl, Joueur *joueur)
 {  
     Init_Maps(lvl);
@@ -389,7 +379,6 @@ void Load_Level_1_2(Meduse *meduse,Meduse *meduse1,Meduse *meduse2 , Lvl *lvl, J
     meduse2->posmonsy =level[1][3][2];
     meduse2->Life=level[1][3][5];
     meduse2->compteur=level[1][3][3];
-
 }
 
 void Load_Level_1_3(Meduse *meduse, Meduse *meduse1, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl, Joueur *joueur)
@@ -489,7 +478,6 @@ void Load_Level_3_4 (Joueur *joueur, BossYeti *bossyeti,Lvl *lvl)
     bossyeti->posmonsx =level[8][1][1];
     bossyeti->posmonsy =level[8][1][2];
     bossyeti->Life=level [8][1][5];
-  
 }
 
 void Load_Level_4_1(Joueur *Joueur, Lvl *lvl)
@@ -579,24 +567,7 @@ void Load_Level_5_3(Joueur *joueur, Jerem_Boss *jerem,Lvl *lvl)
     
 }
 
-void Clean_Up(EffetSon *son)
-{
-    Mix_FreeMusic(son->musiquemenu); //Libération de la musique
-    //Mix_FreeChunk(son);
-    Mix_CloseAudio(); //Fermeture de l'API
-
-    //On fait le ménage et on remet les pointeurs à NULL
-    SDL_DestroyRenderer(renderer);
-    renderer = NULL;
-    SDL_DestroyWindow(screen);
-    screen = NULL;
-    //On quitte SDL_TTF 2
-    //TTF_Quit();
- 
-    //On quitte la SDL
-    SDL_Quit();
-}
-
+//Permet de séléctionner aléatoirement les positions des éclaires du boss meduse dans les limites de la map
 void Init_Eclair(Boss *boss)
 {
     boss->Ex1= rand() % (SCREEN_WIDTH-100)+50;
@@ -609,7 +580,7 @@ void Init_Eclair(Boss *boss)
     boss->Ey4= rand() % (SCREEN_HEIGHT-100)+50;
 }
 
-
+//Permet de charger les sauvegardes écrites sur les fichiers txt
 void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
 {
     srand(time(NULL));
@@ -624,7 +595,7 @@ void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
     FILE* fichier1 = fopen ( nomFichier1 , "r+" );
     if ( fichier1 )
     {
-        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%f temps=%s S1=%f S2=%f S3=%f S4=%f S5=%f %s %s %s %s %s/fin",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->KDA,&stats->TEMPS_GENE,stats->Score_act,&stats->Score_Board[0],&stats->Score_Board[1],&stats->Score_Board[2],&stats->Score_Board[3],&stats->Score_Board[4],&stats->Convert_Score[0],&stats->Convert_Score[1],&stats->Convert_Score[2],&stats->Convert_Score[3],&stats->Convert_Score[4]);
+        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%f temps=%s S1=%f S2=%f S3=%f S4=%f S5=%f %s %s %s %s %s",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->KDA,&stats->TEMPS_GENE,stats->Score_act,&stats->Score_Board[0],&stats->Score_Board[1],&stats->Score_Board[2],&stats->Score_Board[3],&stats->Score_Board[4],&stats->Convert_Score[0],&stats->Convert_Score[1],&stats->Convert_Score[2],&stats->Convert_Score[3],&stats->Convert_Score[4]);
         fclose (fichier1);
     }
 }
