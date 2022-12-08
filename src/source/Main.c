@@ -145,6 +145,7 @@ init("Dungeon Fate");
                 if (lvl.Num == 10)
                 {
                     lvl.Avancement10 = 13;
+                    lvl.PosMap10 =0;
                 }
                 if (lvl.Num == -5 && lvl.PosMap10 < - 10)
                 {

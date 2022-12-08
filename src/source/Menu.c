@@ -182,7 +182,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
         {
             stats->TEMPS_GENE+=(double)temps/CLOCKS_PER_SEC;
             lvl->save = 1;
-            exit(0);
+            lvl->quit = 1;
         }
         //save
         if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 167 && input->PosMouseY <= 204 || lvl->save == 1)
@@ -205,7 +205,10 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
                 lvl->Num=lvl->temp;
             }
             lvl->save = 0;
-
+            if (lvl->quit == 1)
+            {
+                exit(0);
+            }
         }
         //reset base
         if (input->PosMouseX >= 118 && input->PosMouseX <= 524 && input->PosMouseY >= 263 && input->PosMouseY <= 300)
