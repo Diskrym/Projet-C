@@ -153,11 +153,11 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
         {
             if (input->left==1)
             {
-                //si on est pas dans la rivière, on change l'image à afficher avec le NumSprit/changement de la direction du sprit entre gauche et droite et changement de la position du joueur sur le fenetre sdl
+                //si on est pas dans la rivière, on change l'image à afficher avec le NumSprite/changement de la direction du sprit entre gauche et droite et changement de la position du joueur sur le fenetre sdl
                 if(lvl->Num!=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
                 {
                     joueur->inposx-=3;
-                    joueur->NumSprit+=1;
+                    joueur->NumSprite+=1;
                     joueur->Direction =1;
 
                 }
@@ -171,7 +171,7 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
                 if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
                 {
                     joueur->inposx+=3;
-                    joueur->NumSprit+=1;
+                    joueur->NumSprite+=1;
                     joueur->Direction =0;
                 }
                 else if ( lvl->Avancement10 != 13)
@@ -183,7 +183,7 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
             {
                 if (lvl->Num !=10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
                 {
-                    joueur->NumSprit+=1;  
+                    joueur->NumSprite+=1;  
                 } 
                 joueur->inposy-=3;
             }
@@ -191,7 +191,7 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
             {
                 if (lvl->Num != 10 || (lvl->Avancement10 == 13 && lvl->Num == 10))
                 {
-                    joueur->NumSprit+=1;
+                    joueur->NumSprite+=1;
                 }
                 joueur->inposy+=3;
             }
@@ -205,12 +205,12 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
         }
         if (input->attack==1)
         {
-            joueur->NumSprit=0;
+            joueur->NumSprite=0;
             joueur->Eattack=1;
         }
         if (input->shield==1)
         {
-            joueur->NumSprit=0;
+            joueur->NumSprite=0;
             joueur->Eshield=1;
         }
         if (input->shield==0)
@@ -220,14 +220,14 @@ void Deplacement_Chevalier (Input *input, Joueur *joueur, Entité *entité, Effe
         }
     }
     //Appel de la fonction chargée de la sélection du sprit à afficher
-    Sprit_Chevalier(joueur, input, son, entité, lvl);
+    Sprite_Chevalier(joueur, input, son, entité, lvl);
 }
 
 void Deplacement_Meduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son)
 {
     //Compteur qui permet de choisir l'action à effectuer par la méduse (attaque/déplacement)
     meduse->compteur += 1;
-    meduse->NumSprit+=1;
+    meduse->NumSprite+=1;
     //Compteur mort méduse
     if  (meduse->Life==0 && meduse->CompteurSpriteDegat<19)
     {
@@ -258,12 +258,12 @@ void Deplacement_Meduse (Joueur *joueur, Meduse *meduse, Lvl *lvl, EffetSon *son
             meduse->posmonsy+=1;
         }
     }
-    Sprit_Meduse (meduse, joueur, lvl, son);
+    Sprite_Meduse (meduse, joueur, lvl, son);
 }
 
 void Deplacement_Chauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *lvl, EffetSon *son)
 {
-    chauvesouris->NumSprit+=1;
+    chauvesouris->NumSprite+=1;
     if  (chauvesouris->Life==0 && chauvesouris->CompteurSpriteDegat<19)
     {
         chauvesouris->CompteurSpriteDegat+=1;
@@ -290,13 +290,13 @@ void Deplacement_Chauvesouris (Joueur *joueur, Chauvesouris *chauvesouris, Lvl *
             chauvesouris->posmonsy+=2;
         }
     }
-    Sprit_Chauvesouris (chauvesouris, joueur, lvl, son);
+    Sprite_Chauvesouris (chauvesouris, joueur, lvl, son);
 }
 
 void Deplacement_Yeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
 {   
     yeti->compteur+=1;
-    yeti->NumSprit+=1;
+    yeti->NumSprite+=1;
     if  (yeti->Life==0 && yeti->CompteurSpriteDegat<19)
     {
         yeti->CompteurSpriteDegat+=1;
@@ -323,13 +323,13 @@ void Deplacement_Yeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
             yeti->posmonsy+=1;
         }
     }
-    Sprit_Yeti (yeti, joueur, lvl, son);
+    Sprite_Yeti (yeti, joueur, lvl, son);
 }
 
 void Deplacement_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetSon *son)
 {  
     bossyeti->compteur+=1;
-    bossyeti->NumSprit+=1;
+    bossyeti->NumSprite+=1;
     if  (bossyeti->Life==0 && bossyeti->CompteurSpriteDegat<19)
     {
         bossyeti->CompteurSpriteDegat+=1;
@@ -358,13 +358,13 @@ void Deplacement_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Lvl *lvl, EffetS
         }
  
     }
-    Sprit_Boss_Yeti (bossyeti, joueur, lvl, son);
+    Sprite_Boss_Yeti (bossyeti, joueur, lvl, son);
 }
 
 void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input, EffetSon *son)
 {
     boss->compteur += 1;
-    boss->NumSprit+=1;
+    boss->NumSprite+=1;
     //gestion mort + ouverture coffre
     if (boss->CompteurSpriteDegat==21 && Inside_Boss_Meduse_Chevalier(joueur, boss)==1 && input->enter == 1)
     {
@@ -414,7 +414,7 @@ void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input
             boss->posmonsy+=1;
         }
     }
-    SpritBoss (boss, joueur, lvl, son);
+    Sprite_Boss (boss, joueur, lvl, son);
 }
 
 void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,EffetSon *son)
@@ -442,9 +442,9 @@ void Deplacement_Squelette(Joueur *joueur, Squelette *squelette ,Lvl *lvl ,Effet
                 squelette->posmonsy+=1;
             }
         }
-        squelette->NumSprit+=1;
+        squelette->NumSprite+=1;
     }
-    Sprit_Squelette(lvl,squelette,joueur, son);
+    Sprite_Squelette(lvl,squelette,joueur, son);
 }
 
 void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *son)
@@ -472,11 +472,11 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
     }
     if (jerem->Eattaque != 3)
     {
-        jerem->NumSprit+=1;
+        jerem->NumSprite+=1;
     }
     else
     {
-        jerem->NumSprit-=1;
+        jerem->NumSprite-=1;
     }
     jerem->compteur+=1;
 
@@ -511,7 +511,7 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
         {
             if (jerem->compteur == 245)
             {
-                jerem->NumSprit = 0;
+                jerem->NumSprite = 0;
             }            
             jerem->Eattaque = 2;
         }
@@ -534,7 +534,7 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
         {
             if (jerem->compteur == 245)
             {
-                jerem->NumSprit = 0;
+                jerem->NumSprite = 0;
             }
             jerem->Eattaque = 2;
         }

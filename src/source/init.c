@@ -600,7 +600,7 @@ void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats)
     FILE* fichier1 = fopen ( nomFichier1 , "r+" );
     if ( fichier1 )
     {
-        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%f temps=%s S1=%f S2=%f S3=%f S4=%f S5=%f %s %s %s %s %s",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->KDA,&stats->TEMPS_GENE,stats->Score_act,&stats->Score_Board[0],&stats->Score_Board[1],&stats->Score_Board[2],&stats->Score_Board[3],&stats->Score_Board[4],&stats->Convert_Score[0],&stats->Convert_Score[1],&stats->Convert_Score[2],&stats->Convert_Score[3],&stats->Convert_Score[4]);
+        fscanf(fichier1,"Total_pièce=%d Total_Tués=%d Total_Mort=%d Dague_Lancées=%d KDA=%f TEMPS_GENE=%f temps=%s S1=%f S2=%f S3=%f S4=%f S5=%f %s %s %s %s %s %s",&stats->Total_pièce,&stats->Total_Tués,&stats->Total_Mort,&stats->Dague_Lancées,&stats->KDA,&stats->TEMPS_GENE,stats->Score_act,&stats->Score_Board[0],&stats->Score_Board[1],&stats->Score_Board[2],&stats->Score_Board[3],&stats->Score_Board[4],&stats->Convert_Score[0],&stats->Convert_Score[1],&stats->Convert_Score[2],&stats->Convert_Score[3],&stats->Convert_Score[4],&stats->debug);
         fclose (fichier1);
     }
 }
