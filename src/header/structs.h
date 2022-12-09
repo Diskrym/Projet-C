@@ -173,6 +173,10 @@ typedef struct EffetSon
     Mix_Chunk *haltere;
     Mix_Chunk *degatjerem;
     Mix_Chunk *sautjerem;
+    Mix_Chunk *dash;
+    Mix_Chunk *transformation;
+    Mix_Chunk *envol;
+    Mix_Chunk *mortjerem;
 }EffetSon;
 
 

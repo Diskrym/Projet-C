@@ -104,6 +104,10 @@ void Son (EffetSon *son)
     son->degatjerem= Mix_LoadWAV("src/musique/degatjerem.WAV");
     son->sautjerem= Mix_LoadWAV("src/musique/saut.WAV");
     son->haltere= Mix_LoadWAV("src/musique/haltere.WAV");
+    son->dash= Mix_LoadWAV("src/musique/dash.WAV");
+    son->transformation=Mix_LoadWAV("src/musique/transformation.WAV");
+    son->envol=Mix_LoadWAV("src/musique/Envol.WAV");
+    son->mortjerem =Mix_LoadWAV("src/musique/mortjerem.WAV");
 }
 
 //Initialisation des différentes polices utilisées pour le jeu
