@@ -325,6 +325,132 @@ void Sprite_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *enti
     }
 }
 
+void Sprite_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
+{  
+    //reset pointeur sprite
+    if (chauvesouris->chauvesouris!=NULL)
+    {
+        SDL_DestroyTexture(chauvesouris->chauvesouris);
+        chauvesouris->chauvesouris=NULL;
+    }
+    //Quand en vie et qu'elle ne prend pas de dégât
+    if (chauvesouris->Life >=1)
+    {
+        if (chauvesouris->CompteurSpriteDegat==0)
+        {
+            if (chauvesouris->Direction==0)
+            {
+                if (chauvesouris->NumSprite==0 || chauvesouris->NumSprite==1 || chauvesouris->NumSprite==2 || chauvesouris->NumSprite==3 ||chauvesouris->NumSprite==8 || chauvesouris->NumSprite==9 || chauvesouris->NumSprite==10 || chauvesouris->NumSprite==11 )
+                {
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreD.png");
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                }
+                if (chauvesouris->NumSprite==4 || chauvesouris->NumSprite==5 || chauvesouris->NumSprite==6 || chauvesouris->NumSprite==7  )
+                {
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche1D.png");
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                }
+                if (chauvesouris->NumSprite==12 || chauvesouris->NumSprite==13 || chauvesouris->NumSprite==14 || chauvesouris->NumSprite==15 )
+                {
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2D.png");
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                }  
+            }
+
+            if (chauvesouris->Direction==1)
+            {
+                if (chauvesouris->NumSprite==0 || chauvesouris->NumSprite==1 || chauvesouris->NumSprite==2 || chauvesouris->NumSprite==3 ||chauvesouris->NumSprite==8 || chauvesouris->NumSprite==9 || chauvesouris->NumSprite==10 || chauvesouris->NumSprite==11 )
+                {
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreG.png");
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                }
+                if (chauvesouris->NumSprite==4 || chauvesouris->NumSprite==5 || chauvesouris->NumSprite==6 || chauvesouris->NumSprite==7  )
+                {
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche1G.png");
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                }
+                if (chauvesouris->NumSprite==12 || chauvesouris->NumSprite==13 || chauvesouris->NumSprite==14 || chauvesouris->NumSprite==15 )
+                {
+                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2G.png");
+                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+                }
+            } 
+            //Attaque chauvesouris sans compt
+            //si non bouclier
+            if (Inside_Chauvesouris_Chevalier(joueur,chauvesouris)==1 && joueur->Eshield==0)
+            {
+                joueur->life--;
+                chauvesouris->Life--;
+                if (joueur->life != 0)
+                {
+                    chauvesouris->coup =1 ;
+                }
+                lvl->MortMonstre+=1;
+            }
+            //si bouclier
+            if (Inside_Chauvesouris_Chevalier(joueur,chauvesouris)==1 && joueur->Eshield==1)
+            {
+                chauvesouris->Life--;
+                lvl ->MortMonstre+=1;
+                //si bouclier boucle active
+                if (joueur->TimingBouclier>45)
+                {
+                    joueur->life--;
+                }
+            }
+        }
+    }
+    //Mort chauvesouris
+    if (chauvesouris->Life==0)
+    {
+        if (chauvesouris->CompteurSpriteDegat==0 || chauvesouris->CompteurSpriteDegat==1 || chauvesouris->CompteurSpriteDegat==2 || chauvesouris->CompteurSpriteDegat==3 )
+        {
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort1D.png");
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+            if (chauvesouris->CompteurSpriteDegat==0)
+            {
+                Mix_VolumeChunk(son->mortchauvesouris, MIX_MAX_VOLUME);
+                Mix_PlayChannel(6, son->mortchauvesouris, 0);
+            }
+        }
+        if (chauvesouris->CompteurSpriteDegat==4 || chauvesouris->CompteurSpriteDegat==5 || chauvesouris->CompteurSpriteDegat==6 || chauvesouris->CompteurSpriteDegat==7 )
+        {
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort2D.png");
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+        }
+        if (chauvesouris->CompteurSpriteDegat==8 || chauvesouris->CompteurSpriteDegat==9 || chauvesouris->CompteurSpriteDegat==10 || chauvesouris->CompteurSpriteDegat==11)
+        {
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort3D.png");
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+        }
+        if (chauvesouris->CompteurSpriteDegat==12 || chauvesouris->CompteurSpriteDegat==13 || chauvesouris->CompteurSpriteDegat==14 || chauvesouris->CompteurSpriteDegat==15 )
+        {
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort4D.png");
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+        }
+        if (chauvesouris->CompteurSpriteDegat==16 || chauvesouris->CompteurSpriteDegat==17 || chauvesouris->CompteurSpriteDegat==18 || chauvesouris->CompteurSpriteDegat==19 )
+        {
+            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort5D.png");
+            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
+        }
+    }
+    //reset compteur pour Sprite
+    if (chauvesouris->NumSprite>=15)
+    {
+        chauvesouris->NumSprite=0;
+    }
+    //activation boucle dans event des dégâts chevalier
+    if (chauvesouris->coup==1)
+    {
+        chauvesouris->CompteurSpriteDegatChevalier+=1;
+    }
+    //reset dégât chevalier
+    if  (chauvesouris->CompteurSpriteDegatChevalier==15)
+    {
+        chauvesouris->coup=0;
+    }   
+}
+
 void Sprite_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
 {   
     //reset pointeur meduse
@@ -1747,131 +1873,7 @@ void Sprite_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *so
     }
 }
 
-void Sprite_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son)
-{  
-    //reset pointeur sprite
-    if (chauvesouris->chauvesouris!=NULL)
-    {
-        SDL_DestroyTexture(chauvesouris->chauvesouris);
-        chauvesouris->chauvesouris=NULL;
-    }
-    //Quand en vie et qu'elle ne prend pas de dégât
-    if (chauvesouris->Life >=1)
-    {
-        if (chauvesouris->CompteurSpriteDegat==0)
-        {
-            if (chauvesouris->Direction==0)
-            {
-                if (chauvesouris->NumSprite==0 || chauvesouris->NumSprite==1 || chauvesouris->NumSprite==2 || chauvesouris->NumSprite==3 ||chauvesouris->NumSprite==8 || chauvesouris->NumSprite==9 || chauvesouris->NumSprite==10 || chauvesouris->NumSprite==11 )
-                {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreD.png");
-                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-                }
-                if (chauvesouris->NumSprite==4 || chauvesouris->NumSprite==5 || chauvesouris->NumSprite==6 || chauvesouris->NumSprite==7  )
-                {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche1D.png");
-                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-                }
-                if (chauvesouris->NumSprite==12 || chauvesouris->NumSprite==13 || chauvesouris->NumSprite==14 || chauvesouris->NumSprite==15 )
-                {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2D.png");
-                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-                }  
-            }
 
-            if (chauvesouris->Direction==1)
-            {
-                if (chauvesouris->NumSprite==0 || chauvesouris->NumSprite==1 || chauvesouris->NumSprite==2 || chauvesouris->NumSprite==3 ||chauvesouris->NumSprite==8 || chauvesouris->NumSprite==9 || chauvesouris->NumSprite==10 || chauvesouris->NumSprite==11 )
-                {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourisneutreG.png");
-                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-                }
-                if (chauvesouris->NumSprite==4 || chauvesouris->NumSprite==5 || chauvesouris->NumSprite==6 || chauvesouris->NumSprite==7  )
-                {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche1G.png");
-                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-                }
-                if (chauvesouris->NumSprite==12 || chauvesouris->NumSprite==13 || chauvesouris->NumSprite==14 || chauvesouris->NumSprite==15 )
-                {
-                    chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismarche2G.png");
-                    Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-                }
-            } 
-            //Attaque chauvesouris sans compt
-            //si non bouclier
-            if (Inside_Chauvesouris_Chevalier(joueur,chauvesouris)==1 && joueur->Eshield==0)
-            {
-                joueur->life--;
-                chauvesouris->Life--;
-                if (joueur->life != 0)
-                {
-                    chauvesouris->coup =1 ;
-                }
-                lvl->MortMonstre+=1;
-            }
-            //si bouclier
-            if (Inside_Chauvesouris_Chevalier(joueur,chauvesouris)==1 && joueur->Eshield==1)
-            {
-                chauvesouris->Life--;
-                lvl ->MortMonstre+=1;
-                //si bouclier boucle active
-                if (joueur->TimingBouclier>45)
-                {
-                    joueur->life--;
-                }
-            }
-        }
-    }
-    //Mort chauvesouris
-    if (chauvesouris->Life==0)
-    {
-        if (chauvesouris->CompteurSpriteDegat==0 || chauvesouris->CompteurSpriteDegat==1 || chauvesouris->CompteurSpriteDegat==2 || chauvesouris->CompteurSpriteDegat==3 )
-        {
-            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort1D.png");
-            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-            if (chauvesouris->CompteurSpriteDegat==0)
-            {
-                Mix_VolumeChunk(son->mortchauvesouris, MIX_MAX_VOLUME);
-                Mix_PlayChannel(6, son->mortchauvesouris, 0);
-            }
-        }
-        if (chauvesouris->CompteurSpriteDegat==4 || chauvesouris->CompteurSpriteDegat==5 || chauvesouris->CompteurSpriteDegat==6 || chauvesouris->CompteurSpriteDegat==7 )
-        {
-            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort2D.png");
-            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-        }
-        if (chauvesouris->CompteurSpriteDegat==8 || chauvesouris->CompteurSpriteDegat==9 || chauvesouris->CompteurSpriteDegat==10 || chauvesouris->CompteurSpriteDegat==11)
-        {
-            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort3D.png");
-            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-        }
-        if (chauvesouris->CompteurSpriteDegat==12 || chauvesouris->CompteurSpriteDegat==13 || chauvesouris->CompteurSpriteDegat==14 || chauvesouris->CompteurSpriteDegat==15 )
-        {
-            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort4D.png");
-            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-        }
-        if (chauvesouris->CompteurSpriteDegat==16 || chauvesouris->CompteurSpriteDegat==17 || chauvesouris->CompteurSpriteDegat==18 || chauvesouris->CompteurSpriteDegat==19 )
-        {
-            chauvesouris->chauvesouris=loadImage("src/graphics/Chauvesouris/chauvesourismort5D.png");
-            Draw_Image(chauvesouris->chauvesouris,chauvesouris->posmonsx,chauvesouris->posmonsy);
-        }
-    }
-    //reset compteur pour Sprite
-    if (chauvesouris->NumSprite>=15)
-    {
-        chauvesouris->NumSprite=0;
-    }
-    //activation boucle dans event des dégâts chevalier
-    if (chauvesouris->coup==1)
-    {
-        chauvesouris->CompteurSpriteDegatChevalier+=1;
-    }
-    //reset dégât chevalier
-    if  (chauvesouris->CompteurSpriteDegatChevalier==15)
-    {
-        chauvesouris->coup=0;
-    }   
-}
 
 void Sprite_Boss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son)
 {
