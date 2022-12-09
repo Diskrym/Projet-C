@@ -310,11 +310,18 @@ void Sprite_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *enti
         {
             joueur->NumSprite=0;
         }
+        son->degatriviere=0;
     }
     else
     {
         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevalierBateauDegat.png");
         Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
+        son->degatriviere++;
+        if (son->degatriviere==1)
+        {
+            Mix_VolumeChunk(son->degatchevalier, MIX_MAX_VOLUME);
+            Mix_PlayChannel(6, son->degatchevalier, 0);  
+        }
     }
 }
 
@@ -3590,6 +3597,11 @@ void Sprite_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *so
                 {
                     squelette->squelette=loadImage("src/graphics/squelette/SqueletteCraneMort3G.png");
                     Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    if (squelette->CompteurSpriteDegat==21)
+                    {
+                        Mix_VolumeChunk(son->cranemur, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(6, son->cranemur, 0);  
+                    }
                 }
             }
             if (squelette->Direction == 1)
@@ -3608,6 +3620,11 @@ void Sprite_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *so
                 {
                     squelette->squelette=loadImage("src/graphics/squelette/SqueletteCraneMort3D.png");
                     Draw_Image(squelette->squelette,squelette->posmonsx,squelette->posmonsy);
+                    if (squelette->CompteurSpriteDegat==21)
+                    {
+                        Mix_VolumeChunk(son->cranemur, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(6, son->cranemur, 0);  
+                    }
                 }
             }
             if (squelette->CompteurSpriteDegat <30)

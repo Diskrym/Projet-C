@@ -114,7 +114,7 @@ typedef struct Entité
 
 typedef struct EffetSon
 {
-    int soncoule, CompteurJerm,CompteurKarine,CompteurJeff,CompteurTanguy, sonLowLife, sondague, sondagueM, sondegat, sondegatsq, musicfin, sondegatjerem, sonhaltere;
+    int soncoule, CompteurJerm,CompteurKarine,CompteurJeff,CompteurTanguy, sonLowLife, sondague, sondagueM, sondegat, sondegatsq, musicfin, sondegatjerem, sonhaltere, degatriviere;
     Mix_Music *musiquemenu;
     Mix_Music *musiqueMapG;
     Mix_Music *musiqueboss;
