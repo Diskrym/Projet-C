@@ -181,7 +181,7 @@ void Sprite_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *enti
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldD.png");
                         Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
-                        if(joueur->TimingBouclier==1)
+                        if(joueur->TimingBouclier==5)
                         {
                             Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
                             Mix_PlayChannel(1, son->bouclier, 0);
@@ -194,7 +194,7 @@ void Sprite_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *enti
                     {
                         joueur->chevalier=loadImage("src/graphics/Chevalier/ChevaliershieldG.png");
                         Draw_Image(joueur->chevalier,joueur->inposx,joueur->inposy);
-                        if(joueur->TimingBouclier==1)
+                        if(joueur->TimingBouclier==5)
                         {
                             Mix_VolumeChunk(son->bouclier, MIX_MAX_VOLUME);
                             Mix_PlayChannel(1, son->bouclier, 0);
@@ -4038,6 +4038,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *so
         //attaque haltère phase 2
         if (jerem->Eattaque == 1)
         {
+            son->sonsaut=0;
             if (jerem->Direction==1)
             {            
                 if (jerem->NumSprite>=0 && jerem->NumSprite<5)
@@ -4228,11 +4229,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *so
                 {
                     jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut4D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
-                    if (jerem->NumSprite==31)
+                    son->sonsaut++;
+                    if (son->sonsaut==1)
                     {
                         Mix_VolumeChunk(son->envol, MIX_MAX_VOLUME);
                         Mix_PlayChannel(14, son->envol, 0);
-                    }
+                    } 
                 } 
                 
 
@@ -4260,11 +4262,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *so
                 {
                     jerem->jeremy=loadImage("src/graphics/BossJermy/2JeremSaut4G.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
-                    if (jerem->NumSprite==31)
-                {
-                    Mix_VolumeChunk(son->envol, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(14, son->envol, 0);
-                } 
+                    son->sonsaut++;
+                    if (son->sonsaut==1)
+                    {
+                        Mix_VolumeChunk(son->envol, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(14, son->envol, 0);
+                    } 
                 } 
             }
             if (jerem->Eattaque == 2)
@@ -4481,6 +4484,7 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *so
         //haltère
         if (jerem->Eattaque == 1)
         {
+            son->sonsaut=0;
             if (jerem->Direction==1)
             {            
                 if (jerem->NumSprite>=0 && jerem->NumSprite<5)
@@ -4572,6 +4576,8 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *so
                 }
             }
         }
+
+        
 
         //saut et atterissage
         if (jerem->Eattaque == 2 || jerem->Eattaque == 3)
@@ -4668,11 +4674,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *so
                 {
                     jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremSaut4D.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
-                    if (jerem->NumSprite==31)
+                    son->sonsaut++;
+                    if (son->sonsaut==1)
                     {
                         Mix_VolumeChunk(son->envol, MIX_MAX_VOLUME);
                         Mix_PlayChannel(14, son->envol, 0);
-                    }
+                    } 
                 } 
             }
 
@@ -4697,11 +4704,12 @@ void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *so
                 {
                     jerem->jeremy=loadImage("src/graphics/BossJermy/3JeremSaut4G.png");
                     Draw_Image(jerem->jeremy,jerem->posmonsx,jerem->posmonsy);
-                    if (jerem->NumSprite==31)
+                    son->sonsaut++;
+                    if (son->sonsaut==1)
                     {
                         Mix_VolumeChunk(son->envol, MIX_MAX_VOLUME);
                         Mix_PlayChannel(14, son->envol, 0);
-                    }
+                    } 
                 } 
             }
 
