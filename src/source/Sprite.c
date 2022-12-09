@@ -535,16 +535,16 @@ void Sprite_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort1G.png");
                 Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                if (yeti->CompteurSpriteDegat==1)
-                {
-                    Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(9, son->mortyeti, 0);
-                }
             }
             if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort2G.png");
                 Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                if (yeti->CompteurSpriteDegat==4)
+                {
+                    Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(9, son->mortyeti, 0);
+                }
             }
             if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
             {
@@ -569,16 +569,16 @@ void Sprite_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son)
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort1D.png");
                 Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
-                if (yeti->CompteurSpriteDegat==1)
-                {
-                Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
-                Mix_PlayChannel(9, son->mortyeti, 0);
-                }
             }
             if (yeti->CompteurSpriteDegat==4 || yeti->CompteurSpriteDegat==5 || yeti->CompteurSpriteDegat==6 || yeti->CompteurSpriteDegat==7 )
             {
                 yeti->yeti=loadImage("src/graphics/yeti/YetiMort2D.png");
                 Draw_Image(yeti->yeti,yeti->posmonsx,yeti->posmonsy);
+                if (yeti->CompteurSpriteDegat==4)
+                {
+                    Mix_VolumeChunk(son->mortyeti, MIX_MAX_VOLUME);
+                    Mix_PlayChannel(9, son->mortyeti, 0);
+                }
             }
             if (yeti->CompteurSpriteDegat==8 || yeti->CompteurSpriteDegat==9 || yeti->CompteurSpriteDegat==10 || yeti->CompteurSpriteDegat==11)
             {
