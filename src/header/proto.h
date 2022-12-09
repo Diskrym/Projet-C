@@ -6,7 +6,6 @@
 //draw.c
 extern void Draw_Game(Joueur *joueur, Lvl *lvl, ParamTexte *paramtexte, EffetSon *son);
 extern void Game_Over (EffetSon *son);
-extern void Win (void);
 extern SDL_Texture *loadImage(char *name);
 extern void Draw_Image(SDL_Texture *, int, int);
 extern void delay(unsigned int frameLimit);

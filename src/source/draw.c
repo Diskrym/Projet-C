@@ -672,7 +672,7 @@ void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte, EffetSon *son)
         if (lvl->PosMap10 == 0)
         {
             SDL_RenderPresent(getrenderer());
-            SDL_Delay(5000);
+            SDL_Delay(4600);
         }  
         lvl->PosMap10 -=1; 
     }
@@ -680,6 +680,8 @@ void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte, EffetSon *son)
     {
         lvl->PosMap10 = 0;
         lvl->Num = -1;
+        Mix_PlayMusic(son ->musiqueMapG, -1);
         lvl->save = 1;
+        son->musicfin=0;
     }
 }

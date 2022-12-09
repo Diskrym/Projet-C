@@ -125,6 +125,7 @@ typedef struct EffetSon
     Mix_Music *musiqueyeti;
     Mix_Music *musiquebossjermy;
     Mix_Music *win;
+    Mix_Music *musiquesquelette;
     Mix_Chunk *epee;
     Mix_Chunk *bouclier;
     Mix_Chunk *depchevalier;

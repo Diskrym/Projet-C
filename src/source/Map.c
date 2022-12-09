@@ -100,6 +100,7 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
             if (joueur->inposy < 20)
             {
                 lvl->Num = -1;
+                Mix_PlayMusic(son ->musiqueMapG, -1);
                 lvl->Avancement10 = 0;
                 if (lvl->WinDonjon == 3)
                 {
