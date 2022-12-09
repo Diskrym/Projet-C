@@ -1355,8 +1355,6 @@ void Sprite_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *so
 
 
     }
- 
-    
     //Mouvement  bossyeti quand en vie
     if (bossyeti->Life >=1)
     {
