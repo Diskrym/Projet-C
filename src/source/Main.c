@@ -81,7 +81,6 @@ init("Dungeon Fate");
         //Gestion du game over
         if (joueur.life<=0)
         {   
-            Mix_PauseMusic();
             Game_Over (&son);
             lvl.Num = -1;
             lvl.reset=1;

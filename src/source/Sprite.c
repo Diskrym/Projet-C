@@ -345,16 +345,16 @@ void Sprite_Meduse (Meduse *meduse, Joueur *joueur,Lvl *lvl, EffetSon *son)
         {
             meduse->meduse=loadImage("src/graphics/Meduse/Medusemort1.png");
             Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
-            if (meduse->CompteurSpriteDegat==1)
-            {
-                Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME);
-                Mix_PlayChannel(9, son->mortmeduse, 0);
-            }
         }
         if (meduse->CompteurSpriteDegat==4 || meduse->CompteurSpriteDegat==5 || meduse->CompteurSpriteDegat==6 || meduse->CompteurSpriteDegat==7 )
         {
             meduse->meduse=loadImage("src/graphics/Meduse/Medusemort2.png");
             Draw_Image(meduse->meduse,meduse->posmonsx,meduse->posmonsy);
+            if (meduse->CompteurSpriteDegat==4)
+            {
+                Mix_VolumeChunk(son->mortmeduse, MIX_MAX_VOLUME);
+                Mix_PlayChannel(9, son->mortmeduse, 0);
+            }
         }
         if (meduse->CompteurSpriteDegat==8 || meduse->CompteurSpriteDegat==9 || meduse->CompteurSpriteDegat==10 || meduse->CompteurSpriteDegat==11)
         {
