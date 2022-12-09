@@ -397,11 +397,11 @@ void Deplacement_Boss_Meduse (Joueur *joueur, Boss *boss, Lvl *lvl, Input *input
     //Déplacement de base
     if (boss->compteur <= 400 && boss->Life >=1 && boss->compteur%2==0)
     {
-        if (joueur->inposx<boss->posmonsx)
+        if (joueur->inposx-32<boss->posmonsx)
         {
             boss->posmonsx-=1;
         }
-        if (joueur->inposx>boss->posmonsx)
+        if (joueur->inposx-32>boss->posmonsx)
         {
             boss->posmonsx+=1;   
         }
