@@ -119,24 +119,6 @@ int main(int argc, char *argv[])
         // Gestion des 60 fps (1000ms/60 = 16.6 -> 16
         delay(frameLimit);
         frameLimit = SDL_GetTicks() + 4;
-
-        //Bypass uniquement pour dev
-        if (input.Bypass==1)
-        {
-            SDL_Delay(250);
-            lvl.MortMonstre=level[lvl.Num][0][1];
-            joueur.inposy=28;
-            joueur.inposx=300;
-            if (lvl.Num == 10)
-            {
-                lvl.Avancement10 = 13;
-                lvl.PosMap10 =0;
-            }
-            if (lvl.Num == -5 && lvl.PosMap10 < - 10)
-            {
-                lvl.PosMap10 = -2000;
-            }
-        }
     }
     // On quitte
     exit(0); 

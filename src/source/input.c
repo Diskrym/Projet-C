@@ -52,12 +52,6 @@ void Get_Input(Input *input)
                         input->enter = 1;
                     break;
 
-                    //#A enlever#
-                    case SDLK_o:
-                        input->Bypass = 1;
-                    break;
- 
- 
                     default:
                     break;
                 }
@@ -103,11 +97,6 @@ void Get_Input(Input *input)
                         input->attack = 0;
                     break;
 
-                    //#A enlever#
-                    case SDLK_o:
-                        input->Bypass = 0;
-                    break;
- 
                     default:
                     break;
                 }
@@ -542,6 +531,6 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             jerem->Eattaque = 4;
         }
     }
-    
+
     Sprite_Boss_Jerem(joueur,jerem,lvl, son);
 }
