@@ -147,5 +147,4 @@ init("Dungeon Fate");
     }
     // On quitte
     exit(0); 
-    
 }

@@ -35,6 +35,7 @@ void init(char *title)
         printf("Impossible d'initialiser SDL TTF: %s\n", TTF_GetError());
         exit(1);
     }
+    SDL_SetWindowIcon(screen, IMG_Load("src/graphics/lvl/icon.png"));
     SDL_Event event;
 }
 
