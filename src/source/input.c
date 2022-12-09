@@ -542,5 +542,6 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             jerem->Eattaque = 4;
         }
     }
+    
     Sprite_Boss_Jerem(joueur,jerem,lvl, son);
 }
