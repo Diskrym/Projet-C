@@ -41,7 +41,11 @@ void Collision_Meduse (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
     {
         if (((joueur->inposy <= meduse->posmonsy + SPRITE_SIZE)&&(joueur->inposy >= meduse->posmonsy )) && (((meduse->posmonsx >= joueur->inposx) && (meduse->posmonsx <= joueur->inposx+SPRITE_SIZE)) || ((meduse->posmonsx + SPRITE_SIZE >= joueur->inposx) && (meduse->posmonsx + SPRITE_SIZE <= joueur->inposx+SPRITE_SIZE))))
         {
-            meduse->posmonsy-=1;
+            if (meduse->compteur <= 100)
+            {
+                meduse->posmonsy-=1;
+            }
+            
             if (input->up == 1)
             {
                 joueur->inposy+=3;  
@@ -51,7 +55,11 @@ void Collision_Meduse (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
         //Collision bas joueur
         if (((joueur->inposy + SPRITE_SIZE >= meduse->posmonsy) && (joueur->inposy <= meduse->posmonsy)) && (((meduse->posmonsx >= joueur->inposx) && (meduse->posmonsx <= joueur->inposx+SPRITE_SIZE)) || ((meduse->posmonsx + SPRITE_SIZE >= joueur->inposx) && (meduse->posmonsx + SPRITE_SIZE <= joueur->inposx+SPRITE_SIZE))))
         {
-            meduse->posmonsy+=1;
+            if (meduse->compteur <= 100)
+            {
+                meduse->posmonsy+=1;
+            }
+            
             if (input->down == 1)
             {
                 joueur->inposy-=3;  
@@ -66,7 +74,10 @@ void Collision_Meduse (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
                 ("condition 2 \n");
                 if ((meduse->posmonsy >= joueur->inposy) && (meduse->posmonsy <= joueur->inposy+SPRITE_SIZE))
                 {
+                    if (meduse->compteur <= 100)
+                    {
                     meduse->posmonsx+=1;
+                    }
                     if (input->right == 1)
                     {
                         joueur->inposx-=3;  
@@ -75,7 +86,10 @@ void Collision_Meduse (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
 
                 if ((meduse->posmonsy + SPRITE_SIZE >= joueur->inposy) && (meduse->posmonsy + SPRITE_SIZE <= joueur->inposy + SPRITE_SIZE))
                 {
+                    if (meduse->compteur <= 100)
+                    {
                     meduse->posmonsx+=1;
+                    }
                     if (input->right == 1)
                     {
                         joueur->inposx-=3;  
@@ -93,8 +107,11 @@ void Collision_Meduse (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
 
                 if (meduse->posmonsy >= joueur->inposy && meduse->posmonsy <= joueur->inposy+SPRITE_SIZE)
                 {
-
+                    if (meduse->compteur <= 100)
+                    {
                     meduse->posmonsx-=1;
+                    }
+                    
                     if (input->left == 1)
                     {
                         joueur->inposx+=3;  
@@ -102,8 +119,10 @@ void Collision_Meduse (Joueur *joueur, Meduse *meduse, Input *input, Lvl *lvl)
                 }
                 if (meduse->posmonsy + SPRITE_SIZE >= joueur->inposy && meduse->posmonsy + SPRITE_SIZE <= joueur->inposy + SPRITE_SIZE)
                 {
-
+                    if (meduse->compteur <= 100)
+                    {
                     meduse->posmonsx-=1;
+                    }
                     if (input->left == 1)
                     {
                         joueur->inposx+=3;  
@@ -123,7 +142,11 @@ void Collision_Boss_Meduse (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
         {
             if ((joueur->inposy <= boss->posmonsy + 128)&&(joueur->inposy >= boss->posmonsy ))
             {
-                boss->posmonsy-=1;
+                if (boss->compteur%2 ==0 && boss->compteur <= 400)
+                {
+                    boss->posmonsy-=1;
+                }
+                
                 if (input->up == 1)
                 {
                     joueur->inposy+=3;  
@@ -136,7 +159,11 @@ void Collision_Boss_Meduse (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
         {
             if ((joueur->inposy+SPRITE_SIZE <= boss->posmonsy + 128)&&(joueur->inposy+SPRITE_SIZE >= boss->posmonsy ))        
             {
-                boss->posmonsy+=1;
+                if (boss->compteur%2==0 && boss->compteur <= 400)
+                {
+                    boss->posmonsy+=1;
+                }
+                
                 if (input->down == 1)
                 {
                     joueur->inposy-=3;  
@@ -149,7 +176,11 @@ void Collision_Boss_Meduse (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
         {
             if ((joueur->inposx+SPRITE_SIZE <= boss->posmonsx + 128)&&(joueur->inposx+SPRITE_SIZE >= boss->posmonsx ))
             {
-                boss->posmonsx+=1;
+                if (boss->compteur%2 == 0 && boss->compteur <= 400)
+                {
+                    boss->posmonsx+=1;
+                }
+                
                 if (input->right == 1)
                 {
                     joueur->inposx-=3;  
@@ -162,7 +193,11 @@ void Collision_Boss_Meduse (Joueur *joueur, Boss *boss, Input *input, Lvl *lvl)
         {
             if ((joueur->inposx <= boss->posmonsx + 128)&&(joueur->inposx >= boss->posmonsx ))
             {
-                boss->posmonsx-=1;
+                if (boss->compteur%2==0&& boss->compteur <= 400)
+                {
+                    boss->posmonsx-=1;
+                }
+                
                 if (input->left == 1)
                 {
                     joueur->inposx+=3;  
@@ -181,7 +216,11 @@ void Collision_Yeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
         {
             if ((joueur->inposy <= yeti->posmonsy+80)&&(joueur->inposy >= yeti->posmonsy+20 ))
             {
+                if (yeti->compteur<100)
+                {
                 yeti->posmonsy-=1;
+                }
+                
                 if (input->up == 1)
                 {
                     joueur->inposy+=3;  
@@ -194,7 +233,10 @@ void Collision_Yeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
         {
             if ((joueur->inposy+SPRITE_SIZE <= yeti->posmonsy+80)&&(joueur->inposy+SPRITE_SIZE >= yeti->posmonsy+20 ))        
             {
+                if (yeti->compteur<100)
+                {
                 yeti->posmonsy+=1;
+                }
                 if (input->down == 1)
                 {
                     joueur->inposy-=3;  
@@ -207,7 +249,10 @@ void Collision_Yeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
         {
             if ((joueur->inposx+SPRITE_SIZE <= yeti->posmonsx + 65)&&(joueur->inposx+SPRITE_SIZE >= yeti->posmonsx ))
             {
+                if (yeti->compteur<100)
+                {
                 yeti->posmonsx+=1;
+                }
                 if (input->right == 1)
                 {
                     joueur->inposx-=3;  
@@ -220,7 +265,10 @@ void Collision_Yeti (Joueur *joueur, Yeti *yeti, Input *input, Lvl *lvl)
         {
             if ((joueur->inposx <= yeti->posmonsx + 65)&&(joueur->inposx >= yeti->posmonsx ))
             {
+                if (yeti->compteur<100)
+                {
                 yeti->posmonsx-=1;
+                }
                 if (input->left == 1)
                 {
                     joueur->inposx+=3;  
@@ -238,7 +286,11 @@ void Collision_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Input *input, Lvl 
         {
             if ((joueur->inposy <= bossyeti->posmonsy+108)&&(joueur->inposy >= bossyeti->posmonsy+20 ))
             {
+                if (bossyeti->compteur<100)
+                {
                 bossyeti->posmonsy-=1;
+                }
+                
                 if (input->up == 1)
                 {
                     joueur->inposy+=3;  
@@ -251,7 +303,10 @@ void Collision_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Input *input, Lvl 
         {
             if ((joueur->inposy+SPRITE_SIZE <= bossyeti->posmonsy+108)&&(joueur->inposy+SPRITE_SIZE >= bossyeti->posmonsy+20 ))        
             {
+                if (bossyeti->compteur<100)
+                {
                 bossyeti->posmonsy+=1;
+                }
                 if (input->down == 1)
                 {
                     joueur->inposy-=3;  
@@ -264,7 +319,10 @@ void Collision_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Input *input, Lvl 
         {
             if ((joueur->inposx+SPRITE_SIZE <= bossyeti->posmonsx + 65)&&(joueur->inposx+SPRITE_SIZE >= bossyeti->posmonsx ))
             {
+                if (bossyeti->compteur<100)
+                {
                 bossyeti->posmonsx+=1;
+                }
                 if (input->right == 1)
                 {
                     joueur->inposx-=3;  
@@ -277,7 +335,10 @@ void Collision_Boss_Yeti (Joueur *joueur, BossYeti *bossyeti, Input *input, Lvl 
         {
             if ((joueur->inposx <= bossyeti->posmonsx + 65)&&(joueur->inposx >= bossyeti->posmonsx ))
             {
+                if (bossyeti->compteur<100)
+                {
                 bossyeti->posmonsx-=1;
+                }
                 if (input->left == 1)
                 {
                     joueur->inposx+=3;  
@@ -296,7 +357,11 @@ void Collision_Squelette (Joueur *joueur, Squelette *squelette, Input *input, Lv
         {
             if ((joueur->inposy <= squelette->posmonsy+64)&&(joueur->inposy >= squelette->posmonsy+13 ))
             {
+                if (squelette->Eattaque == 0)
+                {
                 squelette->posmonsy-=1;
+                }
+                
                 if (input->up == 1)
                 {
                     joueur->inposy+=3;  
@@ -309,7 +374,10 @@ void Collision_Squelette (Joueur *joueur, Squelette *squelette, Input *input, Lv
         {
             if ((joueur->inposy+SPRITE_SIZE <= squelette->posmonsy+64)&&(joueur->inposy+SPRITE_SIZE >= squelette->posmonsy+13 ))        
             {
+                if (squelette->Eattaque == 0)
+                {
                 squelette->posmonsy+=1;
+                }
                 if (input->down == 1)
                 {
                     joueur->inposy-=3;  
@@ -322,7 +390,10 @@ void Collision_Squelette (Joueur *joueur, Squelette *squelette, Input *input, Lv
         {
             if ((joueur->inposx+SPRITE_SIZE <= squelette->posmonsx+4+ 65)&&(joueur->inposx+SPRITE_SIZE >= squelette->posmonsx+4))
             {
+                if (squelette->Eattaque == 0)
+                {
                 squelette->posmonsx+=1;
+                }
                 if (input->right == 1)
                 {
                     joueur->inposx-=3;  
@@ -335,7 +406,10 @@ void Collision_Squelette (Joueur *joueur, Squelette *squelette, Input *input, Lv
         {
             if ((joueur->inposx <= squelette->posmonsx+57)&&(joueur->inposx >= squelette->posmonsx+4))
             {
+                if (squelette->Eattaque == 0)
+                {
                 squelette->posmonsx-=1;
+                }
                 if (input->left == 1)
                 {
                     joueur->inposx+=3;  
@@ -356,7 +430,11 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposy <= jerem->posmonsy+95)&&(joueur->inposy >= jerem->posmonsy ))
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsy-=1;
+                    }
+                    
                     if (input->up == 1)
                     {
                         joueur->inposy+=3;  
@@ -369,7 +447,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposy+SPRITE_SIZE <= jerem->posmonsy+95)&&(joueur->inposy+SPRITE_SIZE >= jerem->posmonsy ))        
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsy+=1;
+                    }
                     if (input->down == 1)
                     {
                         joueur->inposy-=3;  
@@ -382,7 +463,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposx+SPRITE_SIZE <= jerem->posmonsx+84)&&(joueur->inposx+SPRITE_SIZE >= jerem->posmonsx ))
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsx+=1;
+                    }
                     if (input->right == 1)
                     {
                         joueur->inposx-=3;  
@@ -395,7 +479,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposx <= jerem->posmonsx+84)&&(joueur->inposx >= jerem->posmonsx ))
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsx-=1;
+                    }
                     if (input->left == 1)
                     {
                         joueur->inposx+=3;  
@@ -410,7 +497,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposy <= jerem->posmonsy+105)&&(joueur->inposy >= jerem->posmonsy ))
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsy-=1;
+                    }
                     if (input->up == 1)
                     {
                         joueur->inposy+=3;  
@@ -423,7 +513,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposy+SPRITE_SIZE <= jerem->posmonsy+105)&&(joueur->inposy+SPRITE_SIZE >= jerem->posmonsy ))        
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsy+=1;
+                    }
                     if (input->down == 1)
                     {
                         joueur->inposy-=3;  
@@ -436,7 +529,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposx+SPRITE_SIZE <= jerem->posmonsx+93)&&(joueur->inposx+SPRITE_SIZE >= jerem->posmonsx ))
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsx+=1;
+                    }
                     if (input->right == 1)
                     {
                         joueur->inposx-=3;  
@@ -449,7 +545,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposx <= jerem->posmonsx+93)&&(joueur->inposx >= jerem->posmonsx ))
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsx-=1;
+                    }
                     if (input->left == 1)
                     {
                         joueur->inposx+=3;  
@@ -465,7 +564,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposy <= jerem->posmonsy+120)&&(joueur->inposy >= jerem->posmonsy ))
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsy-=1;
+                    }
                     if (input->up == 1)
                     {
                         joueur->inposy+=3;  
@@ -478,7 +580,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposy+SPRITE_SIZE <= jerem->posmonsy+120)&&(joueur->inposy+SPRITE_SIZE >= jerem->posmonsy ))        
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsy+=1;
+                    }
                     if (input->down == 1)
                     {
                         joueur->inposy-=3;  
@@ -491,7 +596,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposx+SPRITE_SIZE <= jerem->posmonsx+107)&&(joueur->inposx+SPRITE_SIZE >= jerem->posmonsx ))
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsx+=1;
+                    }
                     if (input->right == 1)
                     {
                         joueur->inposx-=3;  
@@ -504,7 +612,10 @@ void Collision_Jerem_Boss (Joueur *joueur, Jerem_Boss *jerem, Input *input, Lvl 
             {
                 if ((joueur->inposx <= jerem->posmonsx+107)&&(joueur->inposx >= jerem->posmonsx ))
                 {
+                    if (jerem->Eattaque == 0)
+                    {
                     jerem->posmonsx-=1;
+                    }
                     if (input->left == 1)
                     {
                         joueur->inposx+=3;  
