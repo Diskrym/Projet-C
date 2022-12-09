@@ -301,7 +301,6 @@ void Deplacement_Yeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
     {
         yeti->CompteurSpriteDegat+=1;
     }
-   
     if (yeti->Life >=1 && yeti->compteur<100)
     {
         if (joueur->inposx<yeti->posmonsx)
