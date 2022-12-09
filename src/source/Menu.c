@@ -310,6 +310,7 @@ void Save(Joueur *joueur,Lvl *lvl, Input *input, Entité *entité, EffetSon *son
             lvl->Load = 0;
             joueur->Ebateau = 0;
             lvl->cin = 1;
+            Mix_PlayMusic(son->musiqueMapG, -1 /10);
         }
         //Statistiques
         if (input->PosMouseX >= 118 && input->PosMouseX <= 311 && input->PosMouseY >= 213 && input->PosMouseY <= 250)

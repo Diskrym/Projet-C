@@ -15,13 +15,6 @@ Historique version :
         V4.3 : Menu, sauvegarde, score, stats
     V5 : Boss final/Victoire/Crédits
 */
-/*
-    !!! INFO !!!
-    CoupDague en attente mais pret si double coup sur monstre
-    Son attaque chevalier prêt mais commenté
-    BYPASS A ENLEVER SUR LE MAIN ET DANS INPUT
-    Finir donjon bleu, lvl deja prep dans struct + faire retour map global a la fin du donjon bleu.
-*/
 
 #include "../header/proto.h"
  
@@ -46,13 +39,13 @@ Jerem_Boss jerem;
 
 int main(int argc, char *argv[])
 {
-//extern void delay(unsigned int frameLimit);
-unsigned int frameLimit = SDL_GetTicks() + 16;
-int go;
-lvl.Num=-1;
-lvl.Load=0;
-// Initialisation de la SDL
-init("Dungeon Fate");
+    //extern void delay(unsigned int frameLimit);
+    unsigned int frameLimit = SDL_GetTicks() + 16;
+    int go;
+    lvl.Num=-1;
+    lvl.Load=0;
+    // Initialisation de la SDL
+    init("Dungeon Fate");
     //init son
     Son(&son);
     //init texte

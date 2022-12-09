@@ -1428,7 +1428,6 @@ void Sprite_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *so
                 {
                     bossyeti->CompteurSpriteDegat=1;
                     bossyeti->Life--;
-                    //joueur->CoupDague=1;
                 }
             }
  

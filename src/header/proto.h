@@ -16,8 +16,6 @@ extern void Render_Door (Lvl *lvl);
 extern void Draw_Menu (Lvl *lvl);
 extern void Break_Menu (Lvl *lvl);
 extern void Stats_Menu(Lvl *lvl,Stats*stats, ParamTexte *paramtexte);
-extern void Statistiques(Stats *stats,Joueur *joueur, Lvl *lvl);
-extern void Score_(Stats *stats,clock_t temps);
 extern void Draw_Score (Lvl* lvl, Stats *stats, ParamTexte *paramtexte);
 extern void Render_Win(Lvl *lvl, Stats *stats,ParamTexte *paramtexte, EffetSon *son);
 
@@ -66,7 +64,6 @@ extern void Load_Level_4_1(Joueur *joueur,Lvl *lvl);
 extern void Load_Level_4_2(Joueur *joueur,Obstacle *Petit_rocher,Obstacle *Gros_rocher,Obstacle *tronc,Obstacle *tanguy, Lvl *lvl);
 extern void Load_Level_3_3 (Joueur *joueur, Yeti *yeti, Yeti *yeti1, Lvl *lvl, Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1);
 extern void Load_Level_3_4 (Joueur *joueur, BossYeti *bossyeti,Lvl *lvl);
-extern void Save (Joueur*joueur,Lvl *lvl,Input *input, Entité *entité, EffetSon *son,Stats *stats,clock_t temps);
 extern void Load_Game (Joueur *joueur, Lvl *lvl, Stats *stats);
 extern void Load_Level_5_1(Joueur *joueur,Lvl *lvl, Squelette *squelette1,Squelette *squelette);
 extern void Load_Level_5_2(Joueur *joueur, Squelette *squelette, Squelette *squelette1,Chauvesouris *chauvesouris, Chauvesouris *chauvesouris1, Lvl *lvl);
@@ -100,5 +97,10 @@ extern void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,
 extern void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl, EffetSon *son);
 extern void Sprite_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son);
 extern void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *son);
+
+//Menu.c
+extern void Statistiques(Stats *stats,Joueur *joueur, Lvl *lvl);
+extern void Score_(Stats *stats,clock_t temps);
+extern void Save (Joueur*joueur,Lvl *lvl,Input *input, Entité *entité, EffetSon *son,Stats *stats,clock_t temps);
 
 #endif
