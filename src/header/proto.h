@@ -91,15 +91,15 @@ extern void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité, EffetSon *so
 extern void Gestion_Map_Global (Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input *input);
 
 //Sprit.c
-extern void Sprit_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, Lvl *lvl);
-extern void Sprit_Meduse (Meduse *meduse, Joueur *joueur, Lvl *lvl, EffetSon *son);
-extern void Sprit_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son);
-extern void SpritBoss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
-extern void Sprit_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
-extern void Sprit_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
+extern void Sprite_Chevalier(Joueur *joueur, Input *input, EffetSon *son, Entité *entité, Lvl *lvl);
+extern void Sprite_Meduse (Meduse *meduse, Joueur *joueur, Lvl *lvl, EffetSon *son);
+extern void Sprite_Chauvesouris (Chauvesouris *chauvesouris, Joueur *joueur, Lvl *lvl, EffetSon *son);
+extern void Sprite_Boss (Boss *boss, Joueur *joueur, Lvl *lvl, EffetSon *son );
+extern void Sprite_Yeti (Yeti *yeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
+extern void Sprite_Boss_Yeti (BossYeti *bossyeti, Joueur *joueur,Lvl *lvl, EffetSon *son);
 extern void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lvl, EffetSon *son);
 extern void Gestion_Obstacle(Joueur *joueur,Marchand *marchand,Obstacle *Petit_rocher,Obstacle *Gros_rocher, Obstacle *tronc,Obstacle* tanguy, Lvl *lvl, EffetSon *son);
-extern void Sprit_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son);
+extern void Sprite_Squelette(Lvl *lvl,Squelette *squelette,Joueur *joueur, EffetSon *son);
 extern void Sprite_Boss_Jerem(Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetSon *son);
 
 #endif
