@@ -45,6 +45,7 @@ void Gestion_Map(Joueur *joueur, Lvl *lvl, Entité *entité,EffetSon *son, Input
     if (lvl->Num == -1)
     {
         Gestion_Map_Global(joueur, lvl, entité, son, input);
+        SDL_ShowCursor(SDL_DISABLE);
     }
     else if (lvl->Num == -2)
     {
