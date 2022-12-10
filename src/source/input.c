@@ -301,7 +301,6 @@ void Deplacement_Yeti (Joueur *joueur, Yeti *yeti, Lvl *lvl, EffetSon *son)
     {
         yeti->CompteurSpriteDegat+=1;
     }
-   
     if (yeti->Life >=1 && yeti->compteur<100)
     {
         if (joueur->inposx<yeti->posmonsx)
@@ -543,5 +542,6 @@ void Deplacement_Boss_Jerem (Joueur *joueur, Jerem_Boss *jerem, Lvl *lvl, EffetS
             jerem->Eattaque = 4;
         }
     }
+    
     Sprite_Boss_Jerem(joueur,jerem,lvl, son);
 }
