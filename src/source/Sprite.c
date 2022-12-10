@@ -2556,54 +2556,94 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
         //bulle Bec
         if (joueur->inposx >= 180 && joueur->inposx <= 240 && joueur->inposy >= 185 && joueur->inposy<280)
         {
-            if (input->enter == 1)
+            if (lvl->WinDonjon <=1)
             {
-                joueur->NbPiece+=joueur->AttPiece;
-                joueur->AttPiece = 0;
-                SDL_Delay(200);
-                marchand->CompteurMess3 += 1;
-                son->CompteurJeff=0;
-            }
-            if (marchand->CompteurMess3==1)
-            {
-                marchand->bulle=loadImage("src/graphics/Marchand/BulleBec1.png");
-                Draw_Image(marchand->bulle,55,170);
-                son->CompteurJeff++;
-                if (son->CompteurJeff==1)
+                printf("%d",marchand->CompteurMess3);
+                if (input->enter == 1)
                 {
-                    Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(10, son->jeff, 0);
+                    joueur->NbPiece+=joueur->AttPiece;
+                    joueur->AttPiece = 0;
+                    SDL_Delay(200);
+                    marchand->CompteurMess3 += 1;
+                    son->CompteurJeff=0;
+                }
+                if (marchand->CompteurMess3==1)
+                {
+                    marchand->bulle=loadImage("src/graphics/Marchand/BulleBec1.png");
+                    Draw_Image(marchand->bulle,55,170);
+                    son->CompteurJeff++;
+                    if (son->CompteurJeff==1)
+                    {
+                        Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(10, son->jeff, 0);
+                    }
+                }
+                if (marchand->CompteurMess3==2)
+                {
+                    marchand->bulle=loadImage("src/graphics/Marchand/BulleBec2.png");
+                    Draw_Image(marchand->bulle,55,170);
+                    son->CompteurJeff++;
+                    if (son->CompteurJeff==1)
+                    {
+                        Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(10, son->jeff, 0);
+                    } 
+                }
+                if (marchand->CompteurMess3==3)
+                {
+                    marchand->bulle=loadImage("src/graphics/Marchand/BulleBec3.png");
+                    Draw_Image(marchand->bulle,55,170);
+                    son->CompteurJeff++;
+                    if (son->CompteurJeff==1)
+                    {
+                        Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
+                        Mix_PlayChannel(10, son->jeff, 0);
+                    }
+                }
+                if (marchand->CompteurMess3 == 4)
+                {
+                    marchand->CompteurMess3 = 0;
                 }
             }
-            if (marchand->CompteurMess3==2)
+            else
             {
-                marchand->bulle=loadImage("src/graphics/Marchand/BulleBec2.png");
-                Draw_Image(marchand->bulle,55,170);
-                son->CompteurJeff++;
-                if (son->CompteurJeff==1)
+                if (input->enter == 1)
                 {
-                    Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(10, son->jeff, 0);
-                } 
-            }
-            if (marchand->CompteurMess3==3)
-            {
-                marchand->bulle=loadImage("src/graphics/Marchand/BulleBec3.png");
-                Draw_Image(marchand->bulle,55,170);
-                son->CompteurJeff++;
-                if (son->CompteurJeff==1)
-                {
-                    Mix_VolumeChunk(son->jeff, MIX_MAX_VOLUME);
-                    Mix_PlayChannel(10, son->jeff, 0);
+                    marchand->CompteurMess3 += 1;
+                    SDL_Delay(200);
+                    son->CompteurJeff=0;
                 }
+                if (joueur->AttPiece >0)
+                {
+                    if (marchand->CompteurMess3 == 1)
+                    {
+                        marchand->bulle=loadImage("src/graphics/Marchand/BulleBec2.png");
+                        Draw_Image(marchand->bulle,55,170);
+                    }
+                    if (marchand->CompteurMess3 == 2)
+                    {
+                        joueur->NbPiece+=joueur->AttPiece;
+                        joueur->AttPiece = 0;
+                    }
+                }
+                else
+                {
+                    if (marchand->CompteurMess3 == 1)
+                    {
+                        marchand->bulle=loadImage("src/graphics/Marchand/BulleBec4.png");
+                        Draw_Image(marchand->bulle,55,170);
+                    }
+                }
+
+                if (marchand->CompteurMess3 == 2)
+                {
+                    marchand->CompteurMess3 = 0;
+                }
+                
+            
             }
         }
-        //remise à zero du compteur
         else
-        {
-            marchand->CompteurMess3 = 0;
-        }
-        if (marchand->CompteurMess3 == 4)
         {
             marchand->CompteurMess3 = 0;
         }
