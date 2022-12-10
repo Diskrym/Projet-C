@@ -258,7 +258,10 @@ void Gestion_Entité (Entité* entité, Lvl *lvl, Input *input, Joueur *joueur, 
         //Table
         Collision_Decor(joueur, input,223,415,120,55);
         //jermy
-        Collision_Decor(joueur, input,465,530,283,210);
+        if (lvl->WinDonjon<4)
+        {
+            Collision_Decor(joueur, input,465,530,283,210);
+        }
         //Bec
         Collision_Decor(joueur, input,80,220,320,240);
         Gestion_Marchands(joueur, input, &entité->marchand, lvl,son);
