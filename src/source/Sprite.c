@@ -2558,7 +2558,6 @@ void Gestion_Marchands (Joueur *joueur, Input *input, Marchand *marchand,Lvl *lv
         {
             if (lvl->WinDonjon <=1)
             {
-                printf("%d",marchand->CompteurMess3);
                 if (input->enter == 1)
                 {
                     joueur->NbPiece+=joueur->AttPiece;
