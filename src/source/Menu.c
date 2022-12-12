@@ -23,15 +23,18 @@ void Statistiques(Stats * stats, Joueur *joueur, Lvl*lvl)
         stats->Temp_Tués=lvl->MortMonstre;
     }
     //Gestion Nombre dague(s) lancée(s) !!! A diviser par 2 pour affichage
-    if (joueur->Edague>stats->Temp_Dague_Lancées)
+    if (joueur->Edague != 2)
     {
-        stats->Dague_Lancées+=(joueur->Edague-stats->Temp_Dague_Lancées);
-        stats->Temp_Dague_Lancées=joueur->Edague;
-    }
-    if (stats->Temp_Dague_Lancées>joueur->Edague)
-    {
-        stats->Temp_Dague_Lancées=joueur->Edague;
-    }    
+        if (joueur->Edague>stats->Temp_Dague_Lancées)
+        {
+            stats->Dague_Lancées+=(joueur->Edague-stats->Temp_Dague_Lancées);
+            stats->Temp_Dague_Lancées=joueur->Edague;
+        }
+        if (stats->Temp_Dague_Lancées>joueur->Edague)
+        {
+            stats->Temp_Dague_Lancées=joueur->Edague;
+        }   
+    } 
     //Gestion Total mort(s)
     if (lvl->reset == 1)
     {
